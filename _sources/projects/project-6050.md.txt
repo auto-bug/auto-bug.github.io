@@ -43,7 +43,9 @@ Affordable spider robot
 
 
 
-    <iframe style="width: 500px; height: 281px;" width="500" height="281" src="//www.youtube.com/embed/XXotn-8DPQo" frameborder="0" allowfullscreen=""></iframe>Where are my robots? It's already 15 years into the twenty-first
+    
+[https://www.youtube.com/embed/XXotn-8DPQo](https://www.youtube.com/embed/XXotn-8DPQo)
+Where are my robots? It's already 15 years into the twenty-first
 century, and we still don't have robots everywhere. Sure, there are
 some simple vacuum cleaners and some robo-pets for the ultimate geeks,
 but that is not enough! Especially since the vacuum cleaners don't
@@ -839,7 +841,9 @@ result:
 
 And here's a short video:
 
-<iframe style="width: 500px; height: 281px;" width="500" height="281" src="//www.youtube.com/embed/sBmQx8Rb05I" frameborder="0" allowfullscreen="None"></iframe>
+
+[https://www.youtube.com/embed/sBmQx8Rb05I](https://www.youtube.com/embed/sBmQx8Rb05I)
+
 
 
 
@@ -1175,7 +1179,9 @@ it's an equally frustrating process of figuring out why the leg is
 moving in the direction opposite to expected. It took me several
 hours, but I finally did it.
 
-<iframe style="width: 500px; height: 281px;" width="500" height="281" src="//www.youtube.com/embed/VZ7vxIEno0o" frameborder="0" allowfullscreen="None"></iframe>Then some more frustration while I tried to make the walking code
+
+[https://www.youtube.com/embed/VZ7vxIEno0o](https://www.youtube.com/embed/VZ7vxIEno0o)
+Then some more frustration while I tried to make the walking code
 work. Here the challenge was not so much the code itself, because once
 you know what the robot has to do, it's quite simple, but the fact
 that I ran out of memory and stack space. I had to do a few unpythonic
@@ -1183,7 +1189,9 @@ things to my code to make it fit on this small board, but finally I
 got a (very bad) gait working. So I strapped the micro:bit on top of
 Tote, and let it walk:
 
-<iframe style="width: 500px; height: 281px;" width="500" height="281" src="//www.youtube.com/embed/SMqX_yPnfVI" frameborder="0" allowfullscreen="None"></iframe>I know there is a lot that could be improved here. In fact, this is
+
+[https://www.youtube.com/embed/SMqX_yPnfVI](https://www.youtube.com/embed/SMqX_yPnfVI)
+I know there is a lot that could be improved here. In fact, this is
 quite horrible, compared to how Tote walks normally. This is not the
 fault of micro:bit, but rather my sloppy programming and the fact that
 I was in hurry.
@@ -1431,11 +1439,15 @@ Since the magnets seemed to be small and weak, I used two of them on
 every foot initially. The effect wasn't very good -- they turned out
 to be too strong, and Tote couldn't lift any of its feet:
 
-<iframe style="width: 500px; height: 281px;" width="500" height="281" src="//www.youtube.com/embed/4jt5LtwM7lM" frameborder="0" allowfullscreen="None"></iframe>Fine, let's try with fewer magnets then. That turned out to be just
+
+[https://www.youtube.com/embed/4jt5LtwM7lM](https://www.youtube.com/embed/4jt5LtwM7lM)
+Fine, let's try with fewer magnets then. That turned out to be just
 strong enough to hold the robot when all four feet are touching the
 metal surface, but not strong enough when on of the feet is raised:
 
-<iframe style="width: 500px; height: 281px;" width="500" height="281" src="//www.youtube.com/embed/ECNVdPBbJJM" frameborder="0" allowfullscreen="None"></iframe>Oh well, nobody said it will be easy. Back to the drawing board now.
+
+[https://www.youtube.com/embed/ECNVdPBbJJM](https://www.youtube.com/embed/ECNVdPBbJJM)
+Oh well, nobody said it will be easy. Back to the drawing board now.
 Maybe I will try to climb a net next time?
 
 
@@ -1695,7 +1707,9 @@ Of course we also need software to make use of those sensors. For now
 I went with something really simple -- just keep lowering the leg
 slowly until it touches the ground. You can see the code in[the "switches" branch](https://bitbucket.org/thesheep/tote/src/80f55d5a512f389c991f28f3e281c279de9f15d6/start/creep.ino?at=switches#creep.ino-102). And the effect? See for yourself:
 
-<iframe style="width: 500px; height: 281px;" width="500" height="281" src="//www.youtube.com/embed/-KoazMHrplg" frameborder="0" allowfullscreen="None"></iframe>If you look closely you will notice, that even after the robot extends
+
+[https://www.youtube.com/embed/-KoazMHrplg](https://www.youtube.com/embed/-KoazMHrplg)
+If you look closely you will notice, that even after the robot extends
 the leg far down because it didn't find the floor, it moves it back to
 its default position anyways -- that's why the robot's body stays at
 the same height even several steps, despite the imprecision of the
@@ -1711,7 +1725,9 @@ the reader, though (or a future experiment log).
 ### Hackaday Prize Quaterfinals Video
 Created 2015-08-15.
 
-<iframe width="500" height="281" src="//www.youtube.com/embed/_RqtMg66i5g" frameborder="0" allowfullscreen=""></iframe>I decided to make it a bloopers video, showing the stages of
+
+[https://www.youtube.com/embed/_RqtMg66i5g](https://www.youtube.com/embed/_RqtMg66i5g)
+I decided to make it a bloopers video, showing the stages of
 development of this robot and how it reached the current form. Enjoy!
 
 
@@ -1947,7 +1963,9 @@ void sharp_loop() {
 }
 ```
 
-And here we go:<iframe style="width: 500px; height: 281px;" width="500" height="281" src="//www.youtube.com/embed/1I-EeEPEjx8" frameborder="0" allowfullscreen="None"></iframe>There still can be a lot of improvements. Instead of rotating in one
+And here we go:
+[https://www.youtube.com/embed/1I-EeEPEjx8](https://www.youtube.com/embed/1I-EeEPEjx8)
+There still can be a lot of improvements. Instead of rotating in one
 direction, the robot could first just rotate its body left and right
 to see if the target is still there. I could use some timeouts between
 switching into the "search" mode, so that it doesn't switch back and
@@ -2042,7 +2060,9 @@ that should be better. I will try again when they arrive.
 
 Finally, a video of Tote failing to follow my hand:
 
-<iframe style="width: 500px; height: 281px;" width="500" height="281" src="//www.youtube.com/embed/u7CzJw-UeYg" frameborder="0" allowfullscreen="None"></iframe>
+
+[https://www.youtube.com/embed/u7CzJw-UeYg](https://www.youtube.com/embed/u7CzJw-UeYg)
+
 
 
 
@@ -2125,7 +2145,9 @@ for cross-compiling to ARM and a complicated GDB configuration? Turns
 out that I don't, because there is the[stm32duino](http://www.stm32duino.com/) project! And they even have a step-by-step YouTube video on how to
 program that board:
 
-<iframe style="width: 500px; height: 281px;" width="500" height="281" src="//www.youtube.com/embed/Ze6q6NidS5w" frameborder="0" allowfullscreen="None"></iframe>Turns out it's very simple and works like a charm. They also have the
+
+[https://www.youtube.com/embed/Ze6q6NidS5w](https://www.youtube.com/embed/Ze6q6NidS5w)
+Turns out it's very simple and works like a charm. They also have the
 pinout of that board[on their forum](http://www.stm32duino.com/viewtopic.php?f=28&t=117):
 
 
@@ -2249,7 +2271,9 @@ in a box:
 Some stickers taken from LiPo cells complete the look. Here's the
 controller in action:
 
-<iframe style="width: 500px; height: 281px;" width="500" height="281" src="//www.youtube.com/embed/uX7K6_ChTmM" frameborder="0" allowfullscreen="None"></iframe>
+
+[https://www.youtube.com/embed/uX7K6_ChTmM](https://www.youtube.com/embed/uX7K6_ChTmM)
+
 
 
 
@@ -2351,7 +2375,9 @@ it hits an obstacle.
 I used adhesive tape to attach the sensor to the front of the robot. I
 might come up with a better way of doing it in the future, but this is
 good enough for now. Now let's add some code that does the stopping.
-We just add a[_sharp.ino_](https://bitbucket.org/thesheep/tote/src/52697d7f12c87825ac4579f371ccd22bdd2151bc/start/sharp.ino?at=sharp) file, with corresponding_sharp.h_, and call it all from[_start.ino_](https://bitbucket.org/thesheep/tote/src/9aa456eb0395f03c488d6ef61da6a31f7e39ff4d/start/start.ino?at=sharp). And let's see the results:<iframe style="width: 500px; height: 281px;" width="500" height="281" src="//www.youtube.com/embed/WR_0yxW_Ba0" frameborder="0" allowfullscreen="None"></iframe>It works as expected, the robot consistently stops at about 15cm from
+We just add a[_sharp.ino_](https://bitbucket.org/thesheep/tote/src/52697d7f12c87825ac4579f371ccd22bdd2151bc/start/sharp.ino?at=sharp) file, with corresponding_sharp.h_, and call it all from[_start.ino_](https://bitbucket.org/thesheep/tote/src/9aa456eb0395f03c488d6ef61da6a31f7e39ff4d/start/start.ino?at=sharp). And let's see the results:
+[https://www.youtube.com/embed/WR_0yxW_Ba0](https://www.youtube.com/embed/WR_0yxW_Ba0)
+It works as expected, the robot consistently stops at about 15cm from
 the obstacle. That's it for today, in the future I will show how to
 code a simple obstacle-avoiding algorithm, and then how to make the
 robot follow you around.
@@ -2393,9 +2419,13 @@ to just order ready servos.
 For now, just for testing, I have two separate programs, one for just
 driving forward:
 
-<iframe style="width: 500px; height: 281px;" width="500" height="281" src="//www.youtube.com/embed/WvPRhwA7Aa0" frameborder="0" allowfullscreen="None"></iframe>And one for walking forward:
 
-<iframe style="width: 500px; height: 281px;" width="500" height="281" src="//www.youtube.com/embed/2LjSKvdbtPk" frameborder="0" allowfullscreen="None"></iframe>I'm sure I will be able to add a lot more, and also add all the props
+[https://www.youtube.com/embed/WvPRhwA7Aa0](https://www.youtube.com/embed/WvPRhwA7Aa0)
+And one for walking forward:
+
+
+[https://www.youtube.com/embed/2LjSKvdbtPk](https://www.youtube.com/embed/2LjSKvdbtPk)
+I'm sure I will be able to add a lot more, and also add all the props
 that will make it look like a real Logicoma, but that's it for a
 start.
 
@@ -2487,7 +2517,9 @@ the robot went crazy.
 After replacing the chars with ints, everything went more or less
 smoothly:
 
-<iframe style="width: 500px; height: 281px;" width="500" height="281" src="//www.youtube.com/embed/7N34Yd2vMS0" frameborder="0" allowfullscreen="None"></iframe>Remember kids, don't write "char" when you mean "int8"!
+
+[https://www.youtube.com/embed/7N34Yd2vMS0](https://www.youtube.com/embed/7N34Yd2vMS0)
+Remember kids, don't write "char" when you mean "int8"!
 
 
 
@@ -2591,7 +2623,9 @@ has.
 \
 
 
-<iframe style="width: 500px; height: 281px;" width="500" height="281" src="//www.youtube.com/embed/qmuZv3mmvRI" frameborder="0" allowfullscreen=""></iframe>So let's do it. The trigger pin is connected to pin 3 on the Arduino,
+
+[https://www.youtube.com/embed/qmuZv3mmvRI](https://www.youtube.com/embed/qmuZv3mmvRI)
+So let's do it. The trigger pin is connected to pin 3 on the Arduino,
 and the echo is on pin 13 -- yes, I ran out of pins and had to reuse
 the LED pin for this. As a side effect, the LED blinks every time we
 read the distance. A quick sketch to test the sensor:
@@ -2626,7 +2660,9 @@ void loop() {
 
 ```
 
-And lo and behold, proper readings:<iframe style="width: 500px; height: 281px;" width="500" height="281" src="//www.youtube.com/embed/_Bw_2RLY4qY" frameborder="0" allowfullscreen=""></iframe>Yay, so that's it, right? Now just add[some basic logic to the code](https://bitbucket.org/thesheep/tote/src/eda3cc49cbb6e0774d22d0e6b12d5ccc45cfd3c9/start/ping.ino?at=ping) to make the robot stop when there is an obstacle in front, and we are
+And lo and behold, proper readings:
+[https://www.youtube.com/embed/_Bw_2RLY4qY](https://www.youtube.com/embed/_Bw_2RLY4qY)
+Yay, so that's it, right? Now just add[some basic logic to the code](https://bitbucket.org/thesheep/tote/src/eda3cc49cbb6e0774d22d0e6b12d5ccc45cfd3c9/start/ping.ino?at=ping) to make the robot stop when there is an obstacle in front, and we are
 ready to go, right? Wrong.
 
 For some reason, the robot stop immediately after the first step.
@@ -2654,7 +2690,9 @@ like the 3.3V version does, so don't connect it to the USB2TTL while
 it's in the robot -- the power draw will quickly fry the power
 regulator in Pro Mini. You have to remove it for programming.
 
-<iframe style="width: 500px; height: 281px;" width="500" height="281" src="//www.youtube.com/embed/QjZ5rQOpvEw" frameborder="0" allowfullscreen=""></iframe>You can see that now it kinda works, except for random times when the
+
+[https://www.youtube.com/embed/QjZ5rQOpvEw](https://www.youtube.com/embed/QjZ5rQOpvEw)
+You can see that now it kinda works, except for random times when the
 sensor returns completely weird values. Maybe the sensor is broken?
 Replacing the sensor didn't help much. Taking three readings in a
 quick succession and taking maximum of them didn't help either -- it
@@ -2727,7 +2765,9 @@ Python side.
 
 The other way is to leave all the[Arduino code from original Tote](https://bitbucket.org/thesheep/tote/src/tip/start/), but replace the TV remote part with[code that simply reads the key presses from the serial](https://bitbucket.org/thesheep/tote/src/460f15fa2da489125bb3ade9d76b81fb3b1b60ad/start/serial.ino?at=serial-control). That's the route we are going to take, and it looks like this:
 
-<iframe style="width: 500px; height: 281px;" width="500" height="281" src="//www.youtube.com/embed/Da69xJNugLQ" frameborder="0" allowfullscreen="None"></iframe>Now, let's replace that cable with something a little bit more modern.
+
+[https://www.youtube.com/embed/Da69xJNugLQ](https://www.youtube.com/embed/Da69xJNugLQ)
+Now, let's replace that cable with something a little bit more modern.
 ESP8266 is all the rage these days, and there is a highly experimental
 port of Micropython for it, so why not? Those ESP-01 boards are not
 too useful anyways, because they have hardly any pins broken out, but
@@ -2818,7 +2858,9 @@ After a night's sleep, I went back to that Micropython code, grepped
 for "115200", and changed it to "9600", recompiled, flashed, changed
 the speed on the Arduino side and what do you know, it works!
 
-<iframe style="width: 500px; height: 281px;" width="500" height="281" src="//www.youtube.com/embed/4HnUbrXEJcQ" frameborder="0" allowfullscreen="None"></iframe>Next I will try to get that SD card for the RPI and show you the more
+
+[https://www.youtube.com/embed/4HnUbrXEJcQ](https://www.youtube.com/embed/4HnUbrXEJcQ)
+Next I will try to get that SD card for the RPI and show you the more
 low-level control. Who knows, maybe by this time the picam also
 arrives, and we can have some OpenCV fun.
 
@@ -2909,7 +2951,9 @@ in the air, knowing if there is something blocking its movement. If we
 got smart with programming, we could even make it "obedient" and go in
 the direction you push it, just like this robot:
 
-<iframe style="width: 500px; height: 281px;" width="500" height="281" src="//www.youtube.com/embed/AMVO6rI5mL4" frameborder="0" allowfullscreen="None"></iframe>OK, well, maybe not as well. After all, we have limited budget and
+
+[https://www.youtube.com/embed/AMVO6rI5mL4](https://www.youtube.com/embed/AMVO6rI5mL4)
+OK, well, maybe not as well. After all, we have limited budget and
 time. Plus programming the algorithm that calculates the overall force
 from the feedback from all the joint could be a challenge...
 
@@ -2940,7 +2984,9 @@ that this works quite well, at least with the SG90 servos that I have.
 Here's an experiment that I performed to test a "compliant motion"
 servo:
 
-<iframe style="width: 500px; height: 281px;" width="500" height="281" src="//www.youtube.com/embed/Ms8yTKYebaI" frameborder="0" allowfullscreen="None"></iframe>I soldered an additional wire to the servo's motor, like this:\
+
+[https://www.youtube.com/embed/Ms8yTKYebaI](https://www.youtube.com/embed/Ms8yTKYebaI)
+I soldered an additional wire to the servo's motor, like this:\
 
 
 
@@ -2972,7 +3018,9 @@ other legs move up slightly just before the reading, to shift the
 weight more to the leg that we are interested in. The result is not
 very pretty yet, but I'm sure I can tweak it to look better:
 
-<iframe style="width: 500px; height: 281px;" width="500" height="281" src="//www.youtube.com/embed/Q08YaEeYNSg" frameborder="0" allowfullscreen="None"></iframe>With some tricks, I might even be able to make it walk on uneven
+
+[https://www.youtube.com/embed/Q08YaEeYNSg](https://www.youtube.com/embed/Q08YaEeYNSg)
+With some tricks, I might even be able to make it walk on uneven
 terrain without additional endstop switches at the ends of the legs.
 
 
@@ -3038,17 +3086,23 @@ also the current you can draw from them is almost nothing, and they
 will discharge pretty quickly, after which you can simply throw them
 away. So can Tote be powered with alkaline batteries? Let's find out!
 
-<iframe style="width: 500px; height: 281px;" width="500" height="281" src="//www.youtube.com/embed/SZiQHDCJas0" frameborder="0" allowfullscreen="None"></iframe>As you can see, you can, but not for very long. But it's nice to see
+
+[https://www.youtube.com/embed/SZiQHDCJas0](https://www.youtube.com/embed/SZiQHDCJas0)
+As you can see, you can, but not for very long. But it's nice to see
 that Tote can actually lift them. That means that I could probably
 swap them for some**NiMH** or**NiCd** rechargeable batteries, and it would be all good. Let's see!
 
-<iframe style="width: 500px; height: 281px;" width="500" height="281" src="//www.youtube.com/embed/7EXs-lPbF28" frameborder="0" allowfullscreen="None"></iframe>That actually went pretty well! Apart from some weight-shifting
+
+[https://www.youtube.com/embed/7EXs-lPbF28](https://www.youtube.com/embed/7EXs-lPbF28)
+That actually went pretty well! Apart from some weight-shifting
 problems, I would probably need to find a better way of attaching
 them. Also, using AAA cells instead of AA would improve the weight,
 but unfortunately I don't have any AAA rechargeable batteries on me at
 the moment. Finally, a**LiPo** battery salvaged from a broken power bank, for comparison.
 
-<iframe style="width: 500px; height: 281px;" width="500" height="281" src="//www.youtube.com/embed/2oY1tgPdmVQ" frameborder="0" allowfullscreen="None"></iframe>That huge battery should keep it going whole day.
+
+[https://www.youtube.com/embed/2oY1tgPdmVQ](https://www.youtube.com/embed/2oY1tgPdmVQ)
+That huge battery should keep it going whole day.
 
 Now, let's look at some more advanced hack. For an experiment with
 force-sensing servos, that I will describe separately at some point, I
