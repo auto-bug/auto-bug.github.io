@@ -1,0 +1,70 @@
+---
+blogpost: true
+date: 2020-05-03
+category: project
+tags:  ongoing project, hardware
+image: 1
+---
+
+# Fluff M0
+
+Cheapskate version of Adafruit Feather M0
+
+<div class="project-thumb">
+
+:::{image} images/326901588527521732.png
+:target: /_images/326901588527521732.png
+:::
+
+:::{image} images/1054511590153837647.jpg
+:target: /_images/1054511590153837647.jpg
+:::
+
+:::{image} images/8657751593703348936.jpg
+:target: /_images/8657751593703348936.jpg
+:::
+
+:::{image} images/61581594303976605.jpg
+:target: /_images/61581594303976605.jpg
+:::
+
+</div>
+
+
+    Adafruit makes really great prototyping boards, and especially their
+"Feather" series of boards is great. The pinout is actually designed,
+with a lot of thought put into it, and the boards are all top quality.
+They also contain a lot of stuff on them already, just in case you
+need it: LEDs, battery charger, debugging interface, STEMMA
+connectors, prototyping area, you name it. It means that while you are
+prototyping and you suddenly need any of this, it's there for you
+already and you don't have to go out of your way to find it. And the
+documentation is great as well, not to mention all the work that went
+into developing CircuitPython and a million libraries. But it comes at
+a price.
+
+When you finish your project, and it turns out you don't need all
+those extra things in the end, it feels like a waste to leave that
+awesome (and relatively expensive) board in your project. That's why
+I'm making the Fluff. It has the same pinout as the feathers, but it
+literally only has five components on it — everything non-essential
+has been removed. Functionally it's a Trinket M0 with more pins and
+without the diodes. It's the cheapest possible Feather-compatible
+board that runs CircuitPython.
+
+I'm making this for my own use, and I don't plan on selling it, but as
+usual all the design files are available, so you can make your own if
+you want to.
+
+
+
+
+
+## Logs
+
+:::{postlist}
+:category: project-171381
+:::
+
+## Instructions
+

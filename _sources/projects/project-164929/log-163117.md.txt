@@ -1,0 +1,21 @@
+---
+blogpost: true
+date: 2019-05-08
+category: project-164929
+---
+
+# Bugs Bugs Bugs
+Published on 2019-05-08 in {ref}`project-164929`.
+
+So there is some problem with running my games on the actual final
+version of the PyBadge — the display goes white randomly several
+seconds after starting the game. If you have stumbled into that, don't
+worry, it's not you, it's me.
+
+The bad news is that it's very hard to debug without actually having a
+unit that exhibits the problem — it all works perfectly fine on the
+prototype I have. There has been some changes to pins, in particular
+the TFT_RST pin was swapped with the TFT_LITE pin internally, but that
+should be handled by the firmware. I'm still trying to figure out what
+is happening there.
+

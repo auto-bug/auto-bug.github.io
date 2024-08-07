@@ -1,0 +1,38 @@
+---
+blogpost: true
+date: 2020-07-13
+category: project-158981
+---
+
+# Fix it in Software
+Published on 2020-07-13 in {ref}`project-158981`.
+
+I've been struggling a little bit more with the safe mode problems.
+Even with the capacitors, the battery simply can't give enough current
+at startup to handle at the same time the servos twitching, the
+capacitors charging and the microcontroller requiring that minimum
+2.7V. The previous robots worked, because I just happened to use
+better quality servos that twitched less at startup, but I want this
+design to work with the crappiest and cheapest servos you can find.
+
+Turns out there have been similar problems with CircuitPython on the
+SAMD51, and now the bootloader for SAMD51 has a loop that pauses
+execution until the voltage stabilizes over the required threshold. I
+could port that to SAMD21 as well, but I found an easier solution, and
+one that will also improve the life of robot on a single battery —
+simply lower that threshold. SAMD21 can work with voltage as low as
+1.6V. CircuitPython defaults to 2.7V because the boards that use an
+external flash chip require that voltage for the flash to work
+properly — but I don't have external flash chip on my robots! So  [I submitted a pull request that allows to change this threshold in the
+board definition](https://github.com/adafruit/circuitpython/pull/3130) , and I also lowered it for the {ref}`project-159733` and {ref}`project-165032` boards — they will live longer on battery now!
+
+Testing shows that this solves the problem, so now I have to find
+another excuse to keep avoiding programming those robots.
+
+
+
+:::{image} images/7063291594675931357.jpg
+
+:::
+
+

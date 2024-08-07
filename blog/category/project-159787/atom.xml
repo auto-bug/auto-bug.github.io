@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>http://deshipu.art/</id>
+  <title>deshipu.art - Posts in project-159787</title>
+  <updated>2024-08-07T20:33:02.286046+00:00</updated>
+  <link href="http://deshipu.art/"/>
+  <link href="http://deshipu.art/blog/category/project-159787/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-159787/log-149627/</id>
+    <title>Why?</title>
+    <updated>2018-07-17T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="why"&gt;
+
+&lt;p&gt;Published on 2018-07-17 in &lt;a class="reference internal" href="../../../projects/project-159787/#project-159787"&gt;&lt;span class="std std-ref"&gt;Skull&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Every time I looked at a development board that had USB A plug
+integrated into its PCB, I saw the teeth of a skull. So one night when
+I couldn’t sleep, I fired up Inkscape, drew a rectangle and three
+ellipses, and made this.&lt;/p&gt;
+&lt;p&gt;Once I had it imported into Fritzing, I had to decide what components
+to put on it. I could simply make it an USB light, with two LEDs in
+the eyes. Or I could make it play a melody, like the &lt;a class="reference internal" href="../../../projects/project-7860/#project-7860"&gt;&lt;span class="std std-ref"&gt;Nyan Board&lt;/span&gt;&lt;/a&gt; . In the end, I decided to just put a SAMD21 chip on it, and make it
+equivalent to an Adafruit Gema M0.&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://oshpark.com/shared_projects/xNvQYFxd"&gt;You can get the boards&lt;/a&gt;  at &lt;a class="reference external" href="https://hackaday.io/hacker/131216"&gt;&amp;#64;oshpark &lt;/a&gt; if you want to make your own. It only has four components, but one of
+them is a QFN package, so a hot air gun is recommended.&lt;/p&gt;
+&lt;p&gt;Once the PCBs arrive, I will make a board definition for CircuitPython
+for it.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-159787/log-149627/" rel="alternate"/>
+    <summary>Published on 2018-07-17 in project-159787.</summary>
+    <published>2018-07-17T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-159787/log-150322/</id>
+    <title>Hackaday Logo</title>
+    <updated>2018-08-02T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="hackaday-logo"&gt;
+
+&lt;p&gt;Published on 2018-08-02 in &lt;a class="reference internal" href="../../../projects/project-159787/#project-159787"&gt;&lt;span class="std std-ref"&gt;Skull&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;A version that looks closer to the Jolly Wrencher (but not identical).
+Instead of pads on the back it has holes for alligator clips/banana
+plugs/sewing.&lt;/p&gt;
+&lt;p&gt;OSHPark board here:  &lt;a class="reference external" href="https://oshpark.com/shared_projects/TnMcb1Nm"&gt;https://oshpark.com/shared_projects/TnMcb1Nm&lt;/a&gt;&lt;/p&gt;
+&lt;img alt="projects/project-159787/images/5732671533180844740.png" src="projects/project-159787/images/5732671533180844740.png" /&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-159787/log-150322/" rel="alternate"/>
+    <summary>Published on 2018-08-02 in project-159787.</summary>
+    <published>2018-08-02T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-159787/log-150335/</id>
+    <title>Jolly Wrencher Redoux</title>
+    <updated>2018-08-02T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="jolly-wrencher-redoux"&gt;
+
+&lt;p&gt;Published on 2018-08-02 in &lt;a class="reference internal" href="../../../projects/project-159787/#project-159787"&gt;&lt;span class="std std-ref"&gt;Skull&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I didn’t particularly like how the Jolly Wrencher from the previous
+log came out, so I played with it a little bit more and shrunk it
+somewhat.&lt;/p&gt;
+&lt;img alt="projects/project-159787/images/1837311533211938192.png" src="projects/project-159787/images/1837311533211938192.png" /&gt;
+&lt;p&gt;I removed the two pads from the eyes, because they made it look
+scared. I also rearranged them so that you have at least one i2c/spi
+peripheral on the pads.&lt;/p&gt;
+&lt;img alt="projects/project-159787/images/7295121533212011214.png" src="projects/project-159787/images/7295121533212011214.png" /&gt;
+&lt;p&gt;And of course the OSHPark link:  &lt;a class="reference external" href="https://oshpark.com/shared_projects/pNBTHZMx"&gt;https://oshpark.com/shared_projects/pNBTHZMx&lt;/a&gt;&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-159787/log-150335/" rel="alternate"/>
+    <summary>Published on 2018-08-02 in project-159787.</summary>
+    <published>2018-08-02T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-159787/log-150869/</id>
+    <title>Jolly Wrencher Done</title>
+    <updated>2018-08-12T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="jolly-wrencher-done"&gt;
+
+&lt;p&gt;Published on 2018-08-12 in &lt;a class="reference internal" href="../../../projects/project-159787/#project-159787"&gt;&lt;span class="std std-ref"&gt;Skull&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The PCBs arrived from &lt;a class="reference external" href="https://hackaday.io/hacker/131216"&gt;&amp;#64;oshpark &lt;/a&gt; (thank you again for all the help!) and the Jolly Wrencher USB key is
+assembled:&lt;/p&gt;
+&lt;img alt="projects/project-159787/images/1668651534101718840.jpg" src="projects/project-159787/images/1668651534101718840.jpg" /&gt;
+&lt;p&gt;As the previous board, it just runs CircuitPython, with some tiny USB
+mass storage for the scripts, and a serial console with the Python
+REPL. I imagine it could be useful for testing various sensors and
+displays and such — the pins I have broken out support I2C and SPI,
+they also all have ADC and one even has a DAC. One pin is also
+internally connected to the copper pour, to detect touches. But there
+are 20 unused GPIO pins there, and I wonder if I should add some
+blinky LEDs or something in there… but then the board would look
+much busier. I’m torn between simplicity and optimization.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-159787/log-150869/" rel="alternate"/>
+    <summary>Published on 2018-08-12 in project-159787.</summary>
+    <published>2018-08-12T00:00:00+02:00</published>
+  </entry>
+</feed>

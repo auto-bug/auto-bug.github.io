@@ -1,0 +1,137 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>http://deshipu.art/</id>
+  <title>deshipu.art - Posts in project-164929</title>
+  <updated>2024-08-07T20:33:02.310637+00:00</updated>
+  <link href="http://deshipu.art/"/>
+  <link href="http://deshipu.art/blog/category/project-164929/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-164929/log-163117/</id>
+    <title>Bugs Bugs Bugs</title>
+    <updated>2019-05-08T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="bugs-bugs-bugs"&gt;
+
+&lt;p&gt;Published on 2019-05-08 in &lt;a class="reference internal" href="../../../projects/project-164929/#project-164929"&gt;&lt;span class="std std-ref"&gt;PyBadge Hacking&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;So there is some problem with running my games on the actual final
+version of the PyBadge — the display goes white randomly several
+seconds after starting the game. If you have stumbled into that, don’t
+worry, it’s not you, it’s me.&lt;/p&gt;
+&lt;p&gt;The bad news is that it’s very hard to debug without actually having a
+unit that exhibits the problem — it all works perfectly fine on the
+prototype I have. There has been some changes to pins, in particular
+the TFT_RST pin was swapped with the TFT_LITE pin internally, but that
+should be handled by the firmware. I’m still trying to figure out what
+is happening there.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-164929/log-163117/" rel="alternate"/>
+    <summary>Published on 2019-05-08 in project-164929.</summary>
+    <published>2019-05-08T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-164929/log-163168/</id>
+    <title>Finish</title>
+    <updated>2019-05-09T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="finish"&gt;
+
+&lt;p&gt;Published on 2019-05-09 in &lt;a class="reference internal" href="../../../projects/project-164929/#project-164929"&gt;&lt;span class="std std-ref"&gt;PyBadge Hacking&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Since I have no means of fixing or even debugging that problem (it
+doesn’t appear on the board I have), there is really little I can do
+further. I’m ending up a proud owner of one of the only few PyBadges
+in the world on which my games work, yay.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-164929/log-163168/" rel="alternate"/>
+    <summary>Published on 2019-05-09 in project-164929.</summary>
+    <published>2019-05-09T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-164929/log-164760/</id>
+    <title>PyGamer</title>
+    <updated>2019-06-17T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="pygamer"&gt;
+
+&lt;p&gt;Published on 2019-06-17 in &lt;a class="reference internal" href="../../../projects/project-164929/#project-164929"&gt;&lt;span class="std std-ref"&gt;PyBadge Hacking&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Two news here. First of all, the Stage library now has support for the
+PyGamer device, so you can play all the games on it. The analog
+joystick is translated into button presses.&lt;/p&gt;
+&lt;img alt="projects/project-164929/images/4622351560804271123.jpg" src="projects/project-164929/images/4622351560804271123.jpg" /&gt;
+&lt;p&gt;Second, the official displayio library grew support for partial screen
+updates, which makes it much faster — sufficiently to replace the
+Stage library in the future. So far I have ported the bouncing balls
+demo to it, and I’m working on the remaining games. I also plan to
+write some tutorials.&lt;/p&gt;
+&lt;img alt="projects/project-164929/images/7005531560804372993.jpg" src="projects/project-164929/images/7005531560804372993.jpg" /&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-164929/log-164760/" rel="alternate"/>
+    <summary>Published on 2019-06-17 in project-164929.</summary>
+    <published>2019-06-17T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-164929/log-164989/</id>
+    <title>Jumper Wire with displayio for PyGamer</title>
+    <updated>2019-06-24T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="jumper-wire-with-displayio-for-pygamer"&gt;
+
+&lt;p&gt;Published on 2019-06-24 in &lt;a class="reference internal" href="../../../projects/project-164929/#project-164929"&gt;&lt;span class="std std-ref"&gt;PyBadge Hacking&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Over the weekend I sat down and ported the Jumper Wire platformer game
+to use displayio entirely instead of my stage/ugame libraries.&lt;/p&gt;
+&lt;img alt="projects/project-164929/images/9193121561389367140.jpg" src="projects/project-164929/images/9193121561389367140.jpg" /&gt;
+&lt;p&gt;Here are some thoughts I have from that exercise:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;Since there is no one common library for handling initialization and
+inputs (like the “ugame” library for stage), there is currently no way
+to write a portable game — you have to target a particular revision of
+a particular device — the PyGamer in this case, which uses
+“gamepadshift” for the buttons, and “analogio” for the joystick. Other
+devices might use “gampad” or “seesaw” for the buttons and/or
+joystick, or even come up with something entirely new.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The refresh rate is fixed and decoupled from the game logic, which
+results in the sprites moving in a jittery fashion and missing
+animation frames. Fixing the game logic to the refresh rate would
+help, but would result on widely varying playing experience depending
+on the device and version of firmware, as performance varies.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The removal of “flip_x” attribute forced me to double the number of
+sprite graphics, and consequently the memory being used up by them, to
+include flipped versions of practically all of them.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;While the partial screen updates sped up displayio enough to make such
+a game possible in the first place, the result is still slower on
+SAMD51 than the same game using stage library on the SAMD21. This
+alone makes me thing that it’s worth it to keep stage around.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The analog joystick knob on the PyGamer is horrible — maybe a better
+version could be 3D-printed.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Having to pre-commit on a fixed size of the groups is a huge pain —
+especially when your game creates sprites dynamically (missiles,
+explosions, drops). Adding them to the group at the right layer is a
+challenge as well.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Figuring out how to load a BMP file was a bit of a challenge, and
+opening the file in the wrong mode stopped me for quite a while.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;And finally, here’s the repository with the game: &lt;a class="reference external" href="https://github.com/deshipu/jumper-wire-displayio-pygamer"&gt;https://github.com/deshipu/jumper-wire-displayio-pygamer&lt;/a&gt;&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-164929/log-164989/" rel="alternate"/>
+    <summary>Published on 2019-06-24 in project-164929.</summary>
+    <published>2019-06-24T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-164929/log-165222/</id>
+    <title>Adafruit Learn Guide</title>
+    <updated>2019-06-30T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="adafruit-learn-guide"&gt;
+
+&lt;p&gt;Published on 2019-06-30 in &lt;a class="reference internal" href="../../../projects/project-164929/#project-164929"&gt;&lt;span class="std std-ref"&gt;PyBadge Hacking&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I wrote a learn guide for Adafruit for using the Stage library on the
+PyGamer and PyBadge consoles. You can find it here:  &lt;a class="reference external" href="https://learn.adafruit.com/circuitpython-stage-game-library"&gt;https://learn.adafruit.com/circuitpython-stage-game-library&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;It’s basically a re-hashing of the bouncing-ball tutorial from µGame
+documentation, but slightly adjusted. Hopefully it will get people
+started on writing games with CircuitPython.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-164929/log-165222/" rel="alternate"/>
+    <summary>Published on 2019-06-30 in project-164929.</summary>
+    <published>2019-06-30T00:00:00+02:00</published>
+  </entry>
+</feed>

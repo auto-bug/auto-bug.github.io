@@ -1,0 +1,48 @@
+---
+blogpost: true
+date: 2018-08-03
+category: project-158981
+---
+
+# Improved Legs
+Published on 2018-08-03 in {ref}`project-158981`.
+
+One of the advantages of having the legs made out of PCB is that you
+can easily put things on them. Like, for example, switches that detect
+when the leg is touching the ground. I didn't include that in the
+original design, because I was a bit in a hurry, but that's not a
+problem, since I can make a separate set of legs easily.
+
+It's a bit problematic to find the right kind of switch for this. For
+one, it has to be edge-mounted, but more importantly, it has to
+require very little strength. Regular "tactswitch" buttons are useless
+for that, but if you look around carefully, you will find something
+that is labeled "card detection switch" — those switches are supposed
+to detect when something, such as an SD card, is inserted into a slot.
+As such, they are rather sensitive, requiring very little force to be
+pressed. And they are usually in the correct orientation.
+
+One such switch is the Panasonic ESE22MH27 that I happen to have in my
+drawer. A quick search for images reveals this footprint image:
+
+
+
+:::{image} images/1175331533286601499.png
+
+:::
+
+
+So I quickly made a PCB with the footprint, and added some prototyping
+area to the leg, for good measure:
+
+
+
+:::{image} images/4255831533286644525.png
+
+:::
+
+
+One annoyance is that I need 4 of those, but OSHPark makes them in
+batches of 3, so I need to order 6. At least I will have some extras
+to break.
+

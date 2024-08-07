@@ -1,0 +1,48 @@
+---
+blogpost: true
+date: 2019-11-11
+category: project-168395
+---
+
+# Execution
+Published on 2019-11-11 in {ref}`project-168395`.
+
+So let's get this thing done. First, it's good to start with a mock-
+up, so that we catch any obvious errors:
+
+
+
+:::{image} images/7279861573429571872.jpg
+
+:::
+
+
+I also checked that the APA102 LED fits inside that window in the
+switch. All seems good, so let's work on the footprint. Kailh has some
+dimensions in their docs:
+
+
+
+:::{image} images/253891573429655653.png
+
+:::
+
+
+That lets me draw the footprint in Inkscape and import it into
+Fritzing. I already had a footprint for the APA102 LED, so all that is
+left is to route it all:
+
+
+
+:::{image} images/9896781573429710513.png
+
+:::
+
+
+The keys go to their own pins each, and the LEDs are chained together
+and connected to the SPI bus. The DRC check passes, I can't see any
+obvious errors, but it's past midnight already, so I won't be ordering
+this PCB yet. I will wait until morning, to take one more look at it,
+and then order it, like a responsible person that I pretend to be when
+someone is looking.
+

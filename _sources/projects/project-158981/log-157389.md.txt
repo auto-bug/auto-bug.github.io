@@ -1,0 +1,25 @@
+---
+blogpost: true
+date: 2018-12-21
+category: project-158981
+---
+
+# Immediate Plans
+Published on 2018-12-21 in {ref}`project-158981`.
+
+I had a bit of a break with this project, while I worked on other
+projects and dealt with some life stuff, but I very much still want to
+work on it. Obviously the very next step that needs to be done is to
+program the robot to do actual walking, at least at the level of {ref}`project-6050` , and then possibly make use of the accelerometer and the leg
+switches. I assume that this will actually take me some time. In the
+mean time, CircuitPython is being developed further and ported to the
+NRF52 chip, growing bluetooth support along the way, so the long-term
+plan is to switch to NRF52 from the SAMD21 chip. That will probably
+involve a redesign of the extension connector as well, so I don't
+think I will be working on any extensions until that happens.
+
+Once the connector design is finalized, it will be time to look at
+possible extensions and the sensors to include on them. I want to have
+an OpenMV adapter, and also a simple "face" with distance sensors on
+it.
+

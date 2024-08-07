@@ -1,0 +1,61 @@
+---
+blogpost: true
+date: 2019-04-25
+category: project-165032
+---
+
+# PewPew Pew
+Published on 2019-04-25 in {ref}`project-165032`.
+
+So the Pew library is now ported. It's still not as fast as on the
+other boards, I might need to rewrite it in C after all, but it's a
+good first step for testing.
+
+
+
+:::{image} images/551741556206881375.jpg
+
+:::
+
+
+The heart of the whole porting effort is the function that draws those
+dithered pixels. It's surprisingly simple:
+
+
+```python
+_PATTERNS = (
+    b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00',
+    b'\x44\x11\x44\x11\x44\x11\x44\x11\x44\x11',
+    b'\xee\xbb\xee\xbb\xee\xbb\xee\xbb\xee\xbb',
+    b'\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff',
+)
+
+
+def show(pix):
+    pix_buffer = pix.buffer
+    display_buffer = _display.buffer
+    index = 24
+    for y in range(8):
+        pix_index = pix.width * y
+        for x in range(8):
+            display_buffer[index:index+10] = _PATTERNS[pix_buffer[pix_index]]
+            pix_index += 1
+            index += 10
+        index += 48
+    _display.show()
+
+```
+
+Basically we have pre-recorded images of the pixels, that we copy into
+the buffer at the right places based on the image to be displayed. I
+also tested doing this on the fly while sending data to the display,
+and with a per-line buffer, but that didn't make it faster, and
+resulted in some tearing effects — sending the whole frame all at once
+to the display has the advantage of it appearing instantly and whole.
+
+I might try keeping track of dirty pixels, and only update those, and
+maybe even updating the display buffer right away when the drawing
+operations are happening, though that would require changes in Pew's
+architecture. Most likely I will probably keep the current logic and
+just move it to C to make it faster. 
+

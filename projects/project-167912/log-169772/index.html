@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>PCB - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="pcb">
+<h1>PCB<a class="headerlink" href="#pcb" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2019-10-10 in <a class="reference internal" href="../#project-167912"><span class="std std-ref">Flounder Keyboard</span></a>.</p>
+<p>I decided to go with the stabilizers I currently have, and maybe cut
+them up a bit—we will see how that works. Having finally measured the
+key caps, and figured out where the stabilizers should go and whether
+the caps won’t be too close together, all that is left to do is to
+actually design the PCB. Here it is:</p>
+<img alt="projects/project-167912/images/8572791570729071035.png" src="projects/project-167912/images/8572791570729071035.png" />
+<img alt="projects/project-167912/images/5464891570729080902.png" src="projects/project-167912/images/5464891570729080902.png" />
+<p>As you can see, it’s a tight fit. I will probably end up gluing the
+stabilizers to the board anyways (after cutting off the parts that go
+under the board and that normally hold them in place). I had to drop
+the USB port, and I will instead use a USB cable—there simply wasn’t
+enough room for it at the top of the board, between the switches and
+the stabilizers. The 48-pin SAMD21 microcontroller is perfect—just the
+right number of pins for a 5×15 matrix, with an extra pin left for the
+NumLock LED (also re-used as a status LED).</p>
+<p>I will let this design sit there for a while, as I’m sure I will find
+some errors in it. I might even get rid of all those right angles if
+I’m bored, but I decided to not care much for them.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

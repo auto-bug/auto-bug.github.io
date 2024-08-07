@@ -1,0 +1,61 @@
+---
+blogpost: true
+date: 2018-02-20
+category: project
+tags:  ESP8266, MOONSHOT, usb, researching project, hardware, 2018hackadayprize, msc
+image: 1
+---
+
+# ESP8266 with True USB
+
+Make it act as a USB disk and just copy files on it.
+
+<div class="project-thumb">
+
+:::{image} images/6948611519591644761.jpg
+:target: /_images/6948611519591644761.jpg
+:::
+
+:::{image} images/2044731522754346153.jpg
+:target: /_images/2044731522754346153.jpg
+:::
+
+</div>
+
+
+    The ESP8266 (and ESP32) is a great chip: powerful, versatile, cheap,
+easily obtainable. But it's a little bit fiddly when it comes to
+programming the development boards and transferring the files onto and
+from them. You have to install the drivers (good luck if you have a
+mac), install the flasher software, get the flash parameters just
+right, get the boot pin low (or make sure the auto-reset circuit
+works), etc. Individually, each of those steps is easy. Together, they
+make it hard to simply just start coding.
+
+Wouldn't it be great if there was a development board that, instead of
+the dumb USB to serial converter, would sport a small and cheap USB-
+capable microcontroller, just like the Arduino UNO or Micro:bit, which
+would let you simply copy files over to a USB drive it would expose?
+
+That idea is not mine, of course, I heard it for the first time from [@tannewt](https://hackaday.io/hacker/194126) . But I really want this to happen.
+
+However, I know almost nothing about USB, and this is very much a
+research project. I expect extremely slow progress and possibly
+shelving of this project later on. I believe it is possible to do what
+I want (at least the filesystem and serial access), but I'm not sure I
+have enough experience to pull it off.
+
+All help is greatly appreciated!
+
+
+
+
+
+## Logs
+
+:::{postlist}
+:category: project-58788
+:::
+
+## Instructions
+

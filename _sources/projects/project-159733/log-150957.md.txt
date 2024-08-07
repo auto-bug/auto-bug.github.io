@@ -1,0 +1,102 @@
+---
+blogpost: true
+date: 2018-08-14
+category: project-159733
+---
+
+# Saving Pins
+Published on 2018-08-14 in {ref}`project-159733`.
+
+As the prototypes are coming, this device is becoming a pretty nice
+thing for teaching game programming, which is its main focus. However,
+wouldn't it be great if it could also be used for hobby electronics
+projects, like the micro:bit or any number of development boards? For
+that it would need to break out more pins than the SWD and SWC it
+breaks out right now, and they would need to be broken out in a way
+that makes it easy to connect stuff to them.
+
+The current pin budget is as follows:
+
+
+ * 8 pins for the LED matrix rows
+ * 8 pins for the LED matrix columns
+ * 6 pins for the buttons
+ * 2 pins for programming/debugging/connecting stuff
+ * 2 pins for USB
+
+One way to free some pins would be to drop the LED matrix and use
+charlieplexed LEDs like in the business card prototype — then I can
+get away with 9 pins instead of 16, and would have 7 free pins, which
+is enough for this kind of use in my opinion. However, while the parts
+cost is similar, the assembly costs might go up, and the display is
+much less readable, due to lack of diffusing. I could add a 3D-printed
+diffuser on top, but that again adds to the cost.
+
+Is there any way I could save pins on the buttons? Right now I use one
+pin per button, which is kinda wasteful. I could arrange them in a 2×3
+matrix, which would require 5 pins, saving me one, but I don't think
+it's worth it, especially since I would then need additional diodes to
+avoid ghosting. I could use a resistor ladder and connect all the
+buttons to an analog pin — but then reading the button state would
+take longer, as ADC is not as fast as simple digital pins. Can I share
+the LED matrix pins with the buttons? If I just connected them to the
+row pins via diodes, I could have an additional fake column for which
+I would scan the buttons, but that's 6 extra diodes. Hmm, what if the
+other end of the buttons wasn't connected to GND or VCC, but instead
+to an additional pin? I already scan the columns, so I could connect
+the buttons to that, and on every column check the additional pin
+(with a pullup) for the value of the corresponding button. As a bonus,
+no extra components and no extra cycles in the matrix scanning, so the
+brightness shouldn't suffer. That seems like the way to go!
+
+
+
+:::{image} images/549491534237194069.jpg
+
+:::
+
+
+And that gives me 5 free pins, which together with the 2 debugging
+pins give me a nice 7 pin header. That should be enough for most basic
+hobby electronic uses, especially since I can choose pretty much any
+pins for that, so I can take  all the ones that have interesting
+peripherals on them: ADC, DAC, serial, I2C, SPI, timers.\
+
+
+Now, onto the connector.
+
+I can't just use normal male headers, even though that would make it
+super-easy to connect the device to a breadboard, because it's
+supposed to be carried in a pocket, and the pins could lead to
+injuries, torn clothes and, what's worse, bent pins. I don't want to
+use an edge connector, like the microbit, because it forces you to buy
+special hardware and defeats the whole idea of a cheap device. I don't
+like the big holes for banana plugs/crocodile clips, because who uses
+banana plugs today? Also they are huge and wasteful. I could use a
+female pin header — then you could easily use dupont cables to connect
+it to anything you need. It would even look good next to the matrix
+display. Or I could just leave the holes for the header unpopulated
+(which saves me part and some soldering), and use staggered holes, so
+that you can insert a male pin header when you need it, or solder a
+female header if you want. I think I will go with that.
+
+The last question is where should the header be located? Obviously we
+don't want to have it on the same side as the USB plug and power
+switch. In fact, if this is going to be connected to a breadboard, we
+don't want an USB plug anymore, and we will need to switch back to a
+micro USB socket, so that you can have some distance between your
+computer and the breadboard. But still we don't want them on the same
+side.
+
+When we put all this together, we get something roughly like this:
+
+
+
+:::{image} images/5442961534238067640.png
+
+:::
+
+
+I have ordered enough PCBs this month already, so I will keep thinking
+about this and maybe adding small improvements.
+

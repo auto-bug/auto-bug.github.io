@@ -1,0 +1,75 @@
+---
+blogpost: true
+date: 2020-05-26
+category: project-171381
+---
+
+# Oops!
+Published on 2020-05-26 in {ref}`project-171381`.
+
+Would you believe me if I told you that I made a pretty stupid (and
+easily avoided) mistake in this design? If you have followed any of my
+previous projects, this should be an obvious thing to you. Of course I
+made a stupid mistake, that's how I work after all! And you would be
+completely right! Here is a fragment of the schematic that I posted
+earlier, with one little detail marked in red. Does it strike it as
+somewhat odd, perhaps?
+
+
+
+:::{image} images/7563971590454102343.png
+
+:::
+
+
+Yes, I swapped MISO and SCK pins. No, any FeatherWing that uses SPI
+will not work with Fluff M0 v1.0 because of that. Sorry to anyone who
+used my gerbers. What can be done about it? Well, those are the tracks
+in real life:
+
+
+
+:::{image} images/5636161590454212036.jpg
+
+:::
+
+
+What can you do when your project has a mistake like that? There is
+only one thing left to do: scrape it. With a sharp knife. Like this:
+
+
+
+:::{image} images/6503381590455284545.jpg
+
+:::
+
+
+(Sorry for potatocam.) And then you solder some thin wires to it, like
+this:
+
+
+
+:::{image} images/4636261590455315015.jpg
+
+:::
+
+
+And then you fix the firmware and the gerbers:
+
+
+
+:::{image} images/5174031590455394627.png
+
+:::
+
+
+It's a bit sad, because it's actually easier to route the correct
+pins. Oh well. In any case, version 1.1 is here:
+
+
+
+:::{image} images/2292041590455679798.png
+
+:::
+
+

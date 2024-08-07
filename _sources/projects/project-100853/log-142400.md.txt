@@ -1,0 +1,37 @@
+---
+blogpost: true
+date: 2018-04-10
+category: project-100853
+---
+
+# Mark II
+Published on 2018-04-10 in {ref}`project-100853`.
+
+After realizing that that LCD display is way too slow for games, I
+quickly designed a version with an OLED display, re-using the designs
+and the parts from the {ref}`project-27757` project — I didn't get the display to work there, but now that I knew
+about the reset requirements, I was confident it will work. Surprise!
+It doesn't. I now suspect that the whole batch of displays I got might
+be faulty, or simply using a different chip than advertised. In any
+case, here are some photos of the assembled device:
+
+
+
+:::{image} images/7064461523353328678.jpg
+
+:::
+
+
+
+
+:::{image} images/784501523353347676.jpg
+
+:::
+
+
+Note how few components are required!
+
+I decided to not pursue that direction much, and instead focus on the
+e-ink display. Right now I'm exploring the different possible shapes
+the badge could have — more about it in a separate log.
+

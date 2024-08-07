@@ -1,0 +1,26 @@
+---
+blogpost: true
+date: 2019-12-26
+category: project-165032
+---
+
+# Menu Program
+Published on 2019-12-26 in {ref}`project-165032`.
+
+The holidays came, so I finally have some time to work on the software
+for this device. For now I only did some simple housekeeping: included
+the pew library in the default firmware, together with the graphics
+for the PewPew emulation and for the menu. I also wrote a very simple
+program selection menu — for now without pagination:
+
+
+
+:::{image} images/7727171577315633432.jpg
+
+:::
+
+
+Including all that in the firmware required some changes in the board
+definition. The pull request for that will probably get merged after
+the holidays, but it should be included in CircuitPython 5.0.0.
+

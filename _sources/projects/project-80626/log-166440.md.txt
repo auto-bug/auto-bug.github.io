@@ -1,0 +1,28 @@
+---
+blogpost: true
+date: 2019-08-01
+category: project-80626
+---
+
+# Proper Repository
+Published on 2019-08-01 in {ref}`project-80626`.
+
+While the CircuitPython port of this library is being used both on the {ref}`project-27629` and a number of Adafruit boards (see {ref}`project-164929` ), and is included in the official repository, the MicroPython port is
+not as well supported. In fact, if you wanted to use it on
+MicroPython, you were up for a bit of a challenge, figuring out what
+files to modify in order to have the C portion of the library compiled
+in your firmware. But that is no more.
+
+Recent releases of MicroPython have [a primitive but workable way for adding third-party modules](http://docs.micropython.org/en/latest/develop/cmodules.html) , and I finally took the time to follow that guide and make a proper
+repository for the MicroPython version of Stage, available now at  [https://github.com/python-ugame/micropython-stage](https://github.com/python-ugame/micropython-stage) . The documentation is still lacking, and the only fully working
+example is for a D1 Mini with the {ref}`project-19371` and an ST7735 display, with some partial support for M5Stack, but I
+plan to extend that to a couple of third-party devices, including
+OdroidGo, Meowbit, and maybe even Pokitto.
+
+
+
+:::{image} images/4654951564667579588.JPG
+
+:::
+
+

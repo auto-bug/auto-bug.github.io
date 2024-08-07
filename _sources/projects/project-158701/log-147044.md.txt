@@ -1,0 +1,29 @@
+---
+blogpost: true
+date: 2018-05-30
+category: project-158701
+---
+
+# Schematic
+Published on 2018-05-30 in {ref}`project-158701`.
+
+The PCB is ordered and should arrive in a few weeks, so in the mean
+time I made a pretty schematic for the thing:
+
+
+
+:::{image} images/5924171527693442635.png
+
+:::
+
+
+I got around needed a diode for the battery by using a switch — it
+switches between the battery power or the USB power (or off when USB
+is disconnected). Battery charging is connected to USB directly, so it
+will always charge (unless the battery is full). I'm also putting a
+way bigger resistor on the charging chip than the datasheet has,
+because this is a tiny battery and I want to charge it at 8mA max. Not
+sure what the chip will do in this situation, we will see. Since the
+display connectors are done as pads, they don't show on the schematic,
+so I added net labels to show what is connected to them.
+

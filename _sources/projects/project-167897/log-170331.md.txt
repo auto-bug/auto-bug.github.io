@@ -1,0 +1,27 @@
+---
+blogpost: true
+date: 2019-10-27
+category: project-167897
+---
+
+# Waiting for Diodes
+Published on 2019-10-27 in {ref}`project-167897`.
+
+All the components slowly arrived, and now I only have one thing
+missing: the diodes for de-ghosting the keys. Unfortunately, this
+design uses through-hole diodes, and I only have SMD ones in my
+drawers, because I avoid through-hole parts whenever I can. So I had
+to order them, and they take a long time. I guess in the worst case I
+could solder some wires to the SMD diodes, but I don't really feel
+like doing that for 36 diodes.
+
+
+
+:::{image} images/6911231572207959428.jpg
+
+:::
+
+
+While waiting for the diodes, I should probably start looking into
+programming the pro micros with the right firmware.
+

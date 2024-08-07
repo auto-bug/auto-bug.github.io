@@ -1,0 +1,196 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>http://deshipu.art/</id>
+  <title>deshipu.art - Posts in project-171381</title>
+  <updated>2024-08-07T20:33:02.443217+00:00</updated>
+  <link href="http://deshipu.art/"/>
+  <link href="http://deshipu.art/blog/category/project-171381/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-171381/log-180103/</id>
+    <title>Version 1.3 Testing</title>
+    <updated>2020-07-02T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="version-1-3-testing"&gt;
+
+&lt;p&gt;Published on 2020-07-02 in &lt;a class="reference internal" href="../../../projects/project-171381/#project-171381"&gt;&lt;span class="std std-ref"&gt;Fluff M0&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;img alt="projects/project-171381/images/1574421593703185668.jpg" src="projects/project-171381/images/1574421593703185668.jpg" /&gt;
+&lt;p&gt;The PCBs arrived after their 3-week trip around the Europe, and as
+usual I assembled and tested one. The good news is that it works very
+well with any USB-A to USB-C cable. The plug is a bit wobbly, because
+there is no metal sleeve to stabilize it, but it doesn’t disconnect or
+otherwise cause problems. The CNC router was even precise enough to
+mill the small teeth on the sides of the socket, so it goes in with a
+slight click. I’m pretty happy with that.\&lt;/p&gt;
+&lt;p&gt;The bad news is that it completely fails to work when connected to an
+actual USB-C socket with a proper USB-C cable. It simply doesn’t
+receive any power. A little bit of research easily explains why: I
+didn’t add pull-downs on the CC1 and CC2 pins, because I thought it’s
+only needed for OTG devices. Turns out that the wording is a bit
+confusing, and it’s required to have those resistors for USB 2.0
+device to receive any power from an USB-C port.&lt;/p&gt;
+&lt;p&gt;That means there will be version 1.4 of the board, and it means the
+parts count also raises — I need to squeeze 2 more resistors in there.
+I could probably get away with just one resistor — only one of CC1 or
+CC2 is ever connected — but I will make room for two, and use a bodge
+wire to see if it works also with one — I will need fewer prototypes
+that way.\&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-171381/log-180103/" rel="alternate"/>
+    <summary>Published on 2020-07-02 in project-171381.</summary>
+    <published>2020-07-02T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-171381/log-180508/</id>
+    <title>Version 1.4</title>
+    <updated>2020-07-09T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="version-1-4"&gt;
+
+&lt;p&gt;Published on 2020-07-09 in &lt;a class="reference internal" href="../../../projects/project-171381/#project-171381"&gt;&lt;span class="std std-ref"&gt;Fluff M0&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;After the fail with missing pulld-downs on CC pins for USB-C, I re-
+designed the board a little bit:&lt;/p&gt;
+&lt;img alt="projects/project-171381/images/9170771594311980013.png" src="projects/project-171381/images/9170771594311980013.png" /&gt;
+&lt;p&gt;There are now contacts and pull-downs for the CC pins, and I also
+added a large prototyping area in the empty part of the board. The
+holes are now just on the silkscreen. This time the boards arrived in
+a few days:&lt;/p&gt;
+&lt;img alt="projects/project-171381/images/2936651594312097316.jpg" src="projects/project-171381/images/2936651594312097316.jpg" /&gt;
+&lt;p&gt;I put the address of my website on the other side, so that I can use
+the very flat board as a kind of business card:&lt;/p&gt;
+&lt;img alt="projects/project-171381/images/8593701594312139405.jpg" src="projects/project-171381/images/8593701594312139405.jpg" /&gt;
+&lt;p&gt;That’s pretty much it. The new version works perfectly fine both with
+USB 2.0 and actual USB-C ports. I’m publishing the fritzing design
+file, the gerbers and the BOM, so that anyone can make their own — you
+can find them in the downloads section of this page.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-171381/log-180508/" rel="alternate"/>
+    <summary>Published on 2020-07-09 in project-171381.</summary>
+    <published>2020-07-09T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-171381/log-180917/</id>
+    <title>Micro-USB</title>
+    <updated>2020-07-17T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="micro-usb"&gt;
+
+&lt;p&gt;Published on 2020-07-17 in &lt;a class="reference internal" href="../../../projects/project-171381/#project-171381"&gt;&lt;span class="std std-ref"&gt;Fluff M0&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The last version is all correct — it has all the pins in the right
+places, the USB-C socket works well with the pull-down resistors in
+place, there is a large prototyping area and the staggered pin holes.
+Not much left to improve. However, if I think about the original goal
+of being a cheap replacement for the Feather M0 Basic to be left in
+projects or used for workshop, there is still some room for
+improvement, so I decided to try one more time.&lt;/p&gt;
+&lt;p&gt;First of all, black silkscreen with yellow soldermask is uncommon
+combination (which is a damn shame, it looks much better than white
+silkscreen, and they use black silkscreen for white soldermask already
+anyways), so to get the cheesy looks I would need to pay extra for the
+uncommon color combination. So if I used a decoration that works well
+with other colors, I could save here.&lt;/p&gt;
+&lt;p&gt;Second, USB-C cables are expensive, and USB-C ports are usually only
+on new and expensive devices. If I organize a workshop, I want it to
+be available for everyone, and not just the rich kids — so I would
+have to provide USB-C to USB-A cables (expensive). However, the same
+technique as used for the USB-C socket can be also used for the Micro-
+USB socket — you won’t get the satisfying click when the plug is
+inserted, but otherwise it should work the same. And I can ditch the
+two resistors then!&lt;/p&gt;
+&lt;p&gt;Third, the prototyping area on the Feather M0 Basic has some
+additional rails for power — that would be useful and help avoid some
+cable mess.&lt;/p&gt;
+&lt;p&gt;So I designed this:&lt;/p&gt;
+&lt;img alt="projects/project-171381/images/9382171594990082794.png" src="projects/project-171381/images/9382171594990082794.png" /&gt;
+&lt;img alt="projects/project-171381/images/277211594990091459.png" src="projects/project-171381/images/277211594990091459.png" /&gt;
+&lt;p&gt;This version is a little bit more obviously Swiss, uses micro-USB
+socket, and has a prototyping area with power rails and some extra
+pads in it for squeezing SMD components in there. It also has the LED
+in a position a little bit more similar to where original Feathers
+have it, and a second prototyping area where the battery socket
+normally goes. Otherwise it’s all the same stuff as previously.&lt;/p&gt;
+&lt;p&gt;The PCBs are ordered and I will be testing the prototypes as soon as
+they arrive. I will publish the designs if they test fine.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-171381/log-180917/" rel="alternate"/>
+    <summary>Published on 2020-07-17 in project-171381.</summary>
+    <published>2020-07-17T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-171381/log-181174/</id>
+    <title>Version 1.5</title>
+    <updated>2020-07-22T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="version-1-5"&gt;
+
+&lt;p&gt;Published on 2020-07-22 in &lt;a class="reference internal" href="../../../projects/project-171381/#project-171381"&gt;&lt;span class="std std-ref"&gt;Fluff M0&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The PCBs for the micro-USB version arrived:&lt;/p&gt;
+&lt;img alt="projects/project-171381/images/6853911595411016973.jpg" src="projects/project-171381/images/6853911595411016973.jpg" /&gt;
+&lt;p&gt;Some notes:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;The connector works. Yay.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;It’s a little bit tight thickness-wise. More on that below.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;I made it a little too deep — I can make it about 1.5mm smaller.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;It’s strong, even with the vias all lined up like that (later version
+has the vias more spread). It shouldn’t break off.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;There is a bit of sideways wobble possible, but it doesn’t seem to
+cause any connection problems.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The width of the cutout is just right.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The pad on the top of the connector, that was supposed to connect to
+the shield, is useless, and can cause a short if the plug is inserted
+wrong way around.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;I’m happy with the prototyping areas, I’m going to leave them like
+that.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The connector doesn’t necessarily look like an USB connector, so I’m
+going to add a label to it describing it as such.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The staggering of the contacts, so that power gets connected before
+the signals, is superfluous, because they are already staggered in the
+plug. I will remove that.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Now, speaking about the thickness of the connector, it seems to be on
+the edge of acceptable. The first insertion requires a bit of force
+and leaves marks on the contacts:&lt;/p&gt;
+&lt;img alt="projects/project-171381/images/4250601595411886408.jpg" src="projects/project-171381/images/4250601595411886408.jpg" /&gt;
+&lt;p&gt;This seems to be mostly to the thickness added by the HASL process of
+coating the contacts with solder. I hope that removing the pad from
+the other side will improve the situation here.&lt;/p&gt;
+&lt;p&gt;Speaking of the board thickness, I also made some 0.8mm PCBs for the
+USB-C version, and it does sit in the plug much better, while still
+not being too tight, so that is the preferred thickness for that kind
+of connector for me.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-171381/log-181174/" rel="alternate"/>
+    <summary>Published on 2020-07-22 in project-171381.</summary>
+    <published>2020-07-22T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-171381/log-181344/</id>
+    <title>Pinout</title>
+    <updated>2020-07-25T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="pinout"&gt;
+
+&lt;p&gt;Published on 2020-07-25 in &lt;a class="reference internal" href="../../../projects/project-171381/#project-171381"&gt;&lt;span class="std std-ref"&gt;Fluff M0&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;To actually do something with a board, it’s good to know which pin
+does what. The Feather standard already defines the functions of some
+pins, but they can do so much more. So here is a pinout with the most
+useful pin functions documented:&lt;/p&gt;
+&lt;img alt="projects/project-171381/images/9063121595704910506.png" src="projects/project-171381/images/9063121595704910506.png" /&gt;
+&lt;p&gt;Initially I tried to figure it all out from the datasheet, but I
+quickly noticed it’s non-trivial. Some timers and some sercoms are
+used internally by CircuitPython, and some are not available in the
+version of the chip I’m using. So instead I decided to take a brute
+force approach, and wrote a simple program that just tries all the
+possible combinations.\&lt;/p&gt;
+&lt;p&gt;However, when it came to PWM, I simply gave up. The number of
+combinations is huge, especially since order of creating the PWM
+outputs matters, so I’m simply just marking which pins can have PWM at
+all. It’s up to the user to check if the particular combination of
+pins they want to use for PWM is viable. I simply can’t think of a way
+to present this information clearly in a graphical way.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-171381/log-181344/" rel="alternate"/>
+    <summary>Published on 2020-07-25 in project-171381.</summary>
+    <published>2020-07-25T00:00:00+02:00</published>
+  </entry>
+</feed>

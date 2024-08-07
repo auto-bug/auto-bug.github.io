@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>USBtoSerial with LUFA - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="usbtoserial-with-lufa">
+<h1>USBtoSerial with LUFA<a class="headerlink" href="#usbtoserial-with-lufa" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2018-03-05 in <a class="reference internal" href="../#project-58788"><span class="std std-ref">ESP8266 with True USB</span></a>.</p>
+<p>I didn’t have much time this week, since I was travelling (and got
+stuck in Dublin due to cancelled flights), but I did take a Pro Micro
+with me for experimenting, and after some poking around the LUFA
+project’s directories, I found a ready to use USBtoSerial demo. It is
+in fact very similar to the Arduino code I was trying to get to run
+earlier, but this one comes with a specific version of the library
+that it works with.</p>
+<p>The project is in the Projects/USBtoSerial directory, and all you need
+to change to make it work on the Pro Micro is the makefile — the usual
+MCU, BOARD and F_CPU changes. Then make, objcopy to make a hex file,
+and avrdude to flash it. And it seems to be working!</p>
+<img alt="projects/project-58788/images/3054091520214688244.jpg" src="projects/project-58788/images/3054091520214688244.jpg" />
+<p>I didn’t actually have a USB serial dongle to test it properly, but I
+shorted TX and RX pins to get to test the echo, and that seems fine.
+When I get back home I will try to program the ESP8266 with this, but
+I don’t expect any problems.</p>
+<p>Next step is getting the mass storage demo to work with my own flash
+chip — since the Leonardo board definition misses the header files for
+flash, I will need to write those — hopefully I will be able to figure
+them out from the files for other boards. When that works, I will need
+to figure out how to make it look for the filesystem at an offset, and
+what the offset is for MicroPython (or even better, how to find it).</p>
+</section>
+
+
+</div>
+  </body>
+</html>

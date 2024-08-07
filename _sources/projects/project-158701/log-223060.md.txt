@@ -1,0 +1,88 @@
+---
+blogpost: true
+date: 2023-09-11
+category: project-158701
+---
+
+# Goodbye
+Published on 2023-09-11 in {ref}`project-158701`.
+
+I decided to stop pretending I will ever finish this project, and put
+it out of its misery.
+
+I still believe it's generally possible to get the exact hardware I
+used to display animated GIF that you can easily upload to an USB
+drive. However, it would require a bit of work to write the firmware
+that does it, and I find that I no longer am interested in doing that
+work.
+
+While I was procrastinating, CircuitPython grew a gifio library, that
+displays animated GIFs straight from the filesystem. It's as simple to
+use as:
+
+
+```
+import board
+import gifio
+import displayio
+import time
+import struct
+
+
+display = board.DISPLAY
+odg = gifio.OnDiskGif('sample.gif')
+
+start = time.monotonic()
+next_delay = odg.next_frame() # Load the first frame
+end = time.monotonic()
+overhead = end - start
+display.auto_refresh = False
+display_bus = display.bus
+
+while True:
+    time.sleep(max(0, next_delay - overhead))
+    next_delay = odg.next_frame()
+
+    display_bus.send(42, struct.pack(">hh", 0, odg.bitmap.width - 1))
+    display_bus.send(43, struct.pack(">hh", 0, odg.bitmap.height - 1))
+    display_bus.send(44, odg.bitmap)
+
+```
+
+That's it. It works. But of course not on the SAMD21, which has way
+too little flash and memory to fit it all. I have built a custom
+version of CircuitPython that has almost everything disabled to fit
+gifio, and it kinda works, except of course:
+
+
+```
+Auto-reload is on. Simply save files over USB to run them or enter REPL to disable.
+code.py output:
+Traceback (most recent call last):
+  File "code.py", line 9, in 
+MemoryError: memory allocation failed, allocating 24024 bytes
+
+Code done running.
+
+Press any key to enter the REPL. Use CTRL-D to reload.
+
+```
+
+I'm sure I could tweak the gifio library to make it use smaller
+buffers and make it fit in that RAM. But I don't want to.
+
+I also don't want to write the whole thing in C, using tinyUSB and a
+gif library. It just feels too much like work, and very little like
+fun exploration.
+
+Note that I will probably get back to the idea of a pendant with a
+display showing animated GIFs. Especially since it's now literally
+just a few lines of code in CircuitPython. But I will probably use a
+different displays and definitely a more powerful microcontroller. And
+I will possibly just use a ready development board, such as the
+Seeedstudio Xiao, because there is very little I would gain doing a
+bare chip thing from scratch at this point (and because I got spoiled
+by SAMD21's minimal component count, and any other microcontroller
+feels like too much work now). \
+
+

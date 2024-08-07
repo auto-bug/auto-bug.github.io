@@ -1,0 +1,36 @@
+---
+blogpost: true
+date: 2020-07-25
+category: project-171381
+---
+
+# Pinout
+Published on 2020-07-25 in {ref}`project-171381`.
+
+To actually do something with a board, it's good to know which pin
+does what. The Feather standard already defines the functions of some
+pins, but they can do so much more. So here is a pinout with the most
+useful pin functions documented:
+
+
+
+:::{image} images/9063121595704910506.png
+
+:::
+
+
+Initially I tried to figure it all out from the datasheet, but I
+quickly noticed it's non-trivial. Some timers and some sercoms are
+used internally by CircuitPython, and some are not available in the
+version of the chip I'm using. So instead I decided to take a brute
+force approach, and wrote a simple program that just tries all the
+possible combinations.\
+
+
+However, when it came to PWM, I simply gave up. The number of
+combinations is huge, especially since order of creating the PWM
+outputs matters, so I'm simply just marking which pins can have PWM at
+all. It's up to the user to check if the particular combination of
+pins they want to use for PWM is viable. I simply can't think of a way
+to present this information clearly in a graphical way.
+

@@ -1,0 +1,157 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>http://deshipu.art/</id>
+  <title>deshipu.art - Posts in project-58788</title>
+  <updated>2024-08-07T20:33:02.980846+00:00</updated>
+  <link href="http://deshipu.art/"/>
+  <link href="http://deshipu.art/blog/category/project-58788/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-58788/log-100478/</id>
+    <title>Arduino’s ATmega16u2 Firmware</title>
+    <updated>2018-02-24T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="arduino-s-atmega16u2-firmware"&gt;
+
+&lt;p&gt;Published on 2018-02-24 in &lt;a class="reference internal" href="../../../projects/project-58788/#project-58788"&gt;&lt;span class="std std-ref"&gt;ESP8266 with True USB&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The first thing I want to make is a USB to serial converter, so why
+not look at something that does it already. The ATmega16u2 chip on
+Arduino UNO is programmed as just such a device. A quick search, &lt;a class="reference external" href="https://github.com/arduino/Arduino/blob/master/hardware/arduino/avr/firmwares/atmegaxxu2/arduino-usbserial/Arduino-usbserial.c"&gt;and we have the source code for its firmware&lt;/a&gt; . As I expected, it uses LUFA to do the USB work, and hardware serial
+to do the UART work. Pretty straightforward stuff, two ring buffers
+are used to keep the data before it is sent on its way, one for each
+direction.&lt;/p&gt;
+&lt;p&gt;What I’m disappointed about, though, is that the baud rate of the
+physical UART is hardwired as 9600 in that code. I was hoping for some
+AT code parsing and setting the speed. This is much more primitive.&lt;/p&gt;
+&lt;p&gt;Why? Because to program ESP8266 you need to talk several speeds. At
+least I think you do. The default serial speed after boot is some
+weird value like 74880, and then, I think, esptool changes that to
+whatever you have configured. And that means that the operating system
+drivers need to know how to change speeds, and that is usually done
+with AT commands, since USB to serial converters usually emulate a
+modem device.&lt;/p&gt;
+&lt;p&gt;There is a chance that it will work if I set 74880 hardwired, and tell
+esptool to use that speed for everything. It might just work, who
+knows. More testing required.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-58788/log-100478/" rel="alternate"/>
+    <summary>Published on 2018-02-24 in project-58788.</summary>
+    <published>2018-02-24T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-58788/log-102598/</id>
+    <title>LUFA Demos</title>
+    <updated>2018-02-26T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="lufa-demos"&gt;
+
+&lt;p&gt;Published on 2018-02-26 in &lt;a class="reference internal" href="../../../projects/project-58788/#project-58788"&gt;&lt;span class="std std-ref"&gt;ESP8266 with True USB&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Today I tried to actually compile the arduino firmware for the
+atmega16u2, however, without much success. It seems to be written for
+an unspecified version of LUFA different than the current release.
+Rather than try to guess what version it should be, I decided to
+instead try the demos included with LUFA. That turned out to be
+remarkably simple.&lt;/p&gt;
+&lt;p&gt;All you have to do is unpack the LUFA zip file, open a terminal in the
+directory of one of the demos, edit the Makefile to replace
+“at90usb1287” with “atmega32u4”, “8000000” with “16000000”, and
+“USBKEY” with “LEONARDO”, edit the sources to remove all references to
+joystick and instead make it spew some text constantly, and then do:&lt;/p&gt;
+&lt;div class="highlight-vbscript notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;make&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;all&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="n"&gt;avr&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;objcopy&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;O&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;ihex&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;VirtualSerial&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;elf&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;VirtualSerial&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nb"&gt;hex&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="n"&gt;avrdude&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;usbtiny&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;atmega32u4&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;U&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;flash&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;w&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;VirtualSerial&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nb"&gt;hex&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;(I have and USBTiny ISP programmer connected to pins 14, 15 and 16 of
+the Pro Micro.)&lt;/p&gt;
+&lt;p&gt;And it works — I get spam from the serial on the /dev/ttyACM0 device.
+Yay.&lt;/p&gt;
+&lt;p&gt;Sadly, I can’t see any demo that would be reading from the serial, but
+I hope I can steal that from the Arduino firmware code.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-58788/log-102598/" rel="alternate"/>
+    <summary>Published on 2018-02-26 in project-58788.</summary>
+    <published>2018-02-26T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-58788/log-110199/</id>
+    <title>USBtoSerial with LUFA</title>
+    <updated>2018-03-05T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="usbtoserial-with-lufa"&gt;
+
+&lt;p&gt;Published on 2018-03-05 in &lt;a class="reference internal" href="../../../projects/project-58788/#project-58788"&gt;&lt;span class="std std-ref"&gt;ESP8266 with True USB&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I didn’t have much time this week, since I was travelling (and got
+stuck in Dublin due to cancelled flights), but I did take a Pro Micro
+with me for experimenting, and after some poking around the LUFA
+project’s directories, I found a ready to use USBtoSerial demo. It is
+in fact very similar to the Arduino code I was trying to get to run
+earlier, but this one comes with a specific version of the library
+that it works with.&lt;/p&gt;
+&lt;p&gt;The project is in the Projects/USBtoSerial directory, and all you need
+to change to make it work on the Pro Micro is the makefile — the usual
+MCU, BOARD and F_CPU changes. Then make, objcopy to make a hex file,
+and avrdude to flash it. And it seems to be working!&lt;/p&gt;
+&lt;img alt="projects/project-58788/images/3054091520214688244.jpg" src="projects/project-58788/images/3054091520214688244.jpg" /&gt;
+&lt;p&gt;I didn’t actually have a USB serial dongle to test it properly, but I
+shorted TX and RX pins to get to test the echo, and that seems fine.
+When I get back home I will try to program the ESP8266 with this, but
+I don’t expect any problems.&lt;/p&gt;
+&lt;p&gt;Next step is getting the mass storage demo to work with my own flash
+chip — since the Leonardo board definition misses the header files for
+flash, I will need to write those — hopefully I will be able to figure
+them out from the files for other boards. When that works, I will need
+to figure out how to make it look for the filesystem at an offset, and
+what the offset is for MicroPython (or even better, how to find it).&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-58788/log-110199/" rel="alternate"/>
+    <summary>Published on 2018-03-05 in project-58788.</summary>
+    <published>2018-03-05T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-58788/log-112037/</id>
+    <title>MassStorage Demo with LUFA</title>
+    <updated>2018-03-08T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="massstorage-demo-with-lufa"&gt;
+
+&lt;p&gt;Published on 2018-03-08 in &lt;a class="reference internal" href="../../../projects/project-58788/#project-58788"&gt;&lt;span class="std std-ref"&gt;ESP8266 with True USB&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Today I experimented a little bit with the mass storage demo. I
+created the Dataflash.h and flash command header files based on the
+modified demo from  &lt;a class="reference external" href="https://github.com/JayconSystems/EPaper-Mass-Storage-Demo-LUFA"&gt;https://github.com/JayconSystems/EPaper-Mass-Storage-Demo-LUFA&lt;/a&gt;  and I got it to compile. Then I changed the pins and the flash id to
+fit my project. Flashed it and lo and behold — it enumerates!
+Unfortunately, I was unable to write anything to the flash — I suspect
+I need to provide the commands for this particular model of flash from
+its datasheet. More debugging to come.&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;
+I also didn’t try to use the USBtoSerial to actually flash the ESP8266
+— I will do that later.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-58788/log-112037/" rel="alternate"/>
+    <summary>Published on 2018-03-08 in project-58788.</summary>
+    <published>2018-03-08T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-58788/log-127609/</id>
+    <title>First PCB</title>
+    <updated>2018-03-23T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="first-pcb"&gt;
+
+&lt;p&gt;Published on 2018-03-23 in &lt;a class="reference internal" href="../../../projects/project-58788/#project-58788"&gt;&lt;span class="std std-ref"&gt;ESP8266 with True USB&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I still didn’t get the flash to work correctly, but I had some
+sleepless night, so I sketched up a PCB for the first prototype. This
+is the top where the ESP-12F module goes:&lt;/p&gt;
+&lt;img alt="https://644db4de3505c40a0444-327723bce298e3ff5813fb42baeefbaa.ssl.cf1.rackcdn.com/4ef17e5fc60a756e2aa5f81f12861cd4.png" src="https://644db4de3505c40a0444-327723bce298e3ff5813fb42baeefbaa.ssl.cf1.rackcdn.com/4ef17e5fc60a756e2aa5f81f12861cd4.png" /&gt;
+&lt;p&gt;And this is the bottom, where a Pro Micro goes:&lt;/p&gt;
+&lt;img alt="https://644db4de3505c40a0444-327723bce298e3ff5813fb42baeefbaa.ssl.cf1.rackcdn.com/d5a694001e96570093b6d096c92aea04.png" src="https://644db4de3505c40a0444-327723bce298e3ff5813fb42baeefbaa.ssl.cf1.rackcdn.com/d5a694001e96570093b6d096c92aea04.png" /&gt;
+&lt;p&gt;There is also an extra button on the opposite side than the reset, for
+selecting the USB mode. That’s pretty much it, since the Pro Mini
+already hast he voltage regulator and all that, and the programming
+pin can be held down by software.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-58788/log-127609/" rel="alternate"/>
+    <summary>Published on 2018-03-23 in project-58788.</summary>
+    <published>2018-03-23T00:00:00+01:00</published>
+  </entry>
+</feed>

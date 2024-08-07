@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Better Buttons? - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="better-buttons">
+<h1>Better Buttons?<a class="headerlink" href="#better-buttons" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2021-04-08 in <a class="reference internal" href="../#project-159733"><span class="std std-ref">PewPew Standalone</span></a>.</p>
+<p>Buttons are always a huge problem in a hand-held device. Sure, when
+making the prototype you can just slap any tact switches on there, and
+they work well enough. But for something like a game console, where
+you are going to be pressing those buttons a lot of time, the feel
+they provide is very important.</p>
+<p>You can dismiss right away most of the metal switches available out
+there — their stem is too small to be pressed comfortably multiple
+times, and they require quite a bit of force to be pressed as well.
+Unless you are also doing custom case and key caps, they are simply
+not suitable.</p>
+<p>The standard 6mm tact switches are not completely hopeless. They are
+common and cheap, come with the stems of different heights, and
+sometimes you can even find versions of them with lower than regular
+actuation force, which helps a lot. But they still are pretty hard and
+noisy.</p>
+<p>Then you have the “quiet” silicone switches, which look great, with
+their large square stem, but feel extremely mushy. There is
+practically no tactile feedback at all.</p>
+<p>But recently I found one more source of buttons, which have very nice
+feel. I didn’t see them before, because they are not sold in the “tact
+switch” category, and they are usually through-hole, not SMD (though
+can be hacked for that). I’m talking about the buttons that are used
+in computer mice. They used to be very large, and thus unsuitable for
+our small devices, but recently there are versions of them that look
+very much like our tact switches, except they have much lower
+actuation force and much more pleasant and crisp click. After all,
+they are for clicking your mouse.</p>
+<p>As an experiment, I replaced the tact switches on one of my PewPew
+prototypes with those switches, and I am very pleased with the
+outcome:</p>
+<img alt="projects/project-159733/images/6455601617889700312.jpg" src="projects/project-159733/images/6455601617889700312.jpg" />
+<p>As you can see, the stem is rather small, but it’s big enough to be
+pressed comfortably. The travel is short, and the actuation force is
+small, but the click is very pronounced and satisfying.</p>
+<p>You can see on the photo that one of the switches has its legs bent —
+this, together with small pieces of the legs visible on the opposite
+side, makes it possible to solder it to a reguar 6mm SMD tact switch
+footprint. However, there is really no reason for PewPew Standalone to
+use only SMD switches — I could easily add holes to the footprint, to
+make such buttons an option.</p>
+<p>I also found some “low-profile” versions of mouse button switches,
+that are only 4mm high, but they are “quiet”, with the click being
+much quieter and less satisfying — but they are still much better than
+regular tact switches, due to much lower actuation force and travel.
+I’m considering using them in future handheld devices.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

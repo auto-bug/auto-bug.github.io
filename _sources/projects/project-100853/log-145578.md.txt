@@ -1,0 +1,56 @@
+---
+blogpost: true
+date: 2018-05-01
+category: project-100853
+---
+
+# QFN48: Welcome to Hell
+Published on 2018-05-01 in {ref}`project-100853`.
+
+Turns out the hot air gun helps, but not nearly as much as I hoped.
+And putting other parts on top of your part, to make the rework
+impossible certainly doesn't help. Long story short, I had to desolder
+both matrices (suction tool helped a lot), and rework the chip. When
+assembling it back, I decided I don't need the sleek look for now, and
+instead I would like ease of debugging, so instead of matrices I
+soldered female headers that I can plug them into:
+
+---------- more ----------
+
+:::{image} images/977811525175136368.jpg
+
+:::
+
+
+But even then not all the rows would light up as they should:
+
+
+
+:::{image} images/3267861525175176669.jpg
+
+:::
+
+
+Hmm... but that can't be a bad physical connection, because only half
+of the row is dark... it took me embarrassingly long time to figure
+out that I didn't enable all the pixels in the driver! Once I got that
+right, it was just a matter of figuring out the row and column
+reordering, and I got this pretty gradient:
+
+
+
+:::{image} images/9968791525175302341.jpg
+
+:::
+
+
+I still need to add gamma correction, so that the steps seem more
+equally spaced. I think a logarithmic scale will work nicely for that.
+
+Thanks to all the code I had already for {ref}`project-21578` , I already have scrolling text support and blitting, so I think I'm
+pretty much good with the display. Next I will need a driver for the
+accelerometer and the NRF25L01 module.
+
+I will also need to write some example demos for it, so that people
+can customize them.
+

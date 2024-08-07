@@ -1,0 +1,27 @@
+---
+blogpost: true
+date: 2018-05-06
+category: project-100853
+---
+
+# Repository and Schematic
+Published on 2018-05-06 in {ref}`project-100853`.
+
+I spent some time cleaning up the schematic — fixing the custom part
+graphics, adding net labels and arranging it in a way that hopefully
+makes it a bit easier to read. In the proces I noticed that I didn't
+connect the ground of the buttons on the right side to the ground —
+another bodge wire needed. Also, all the values for resistors and
+capacitors are still wrong — I will need to change them.
+
+
+
+:::{image} images/6428911525643260686.png
+
+:::
+
+
+I also put all the design files and code into a [repository](https://bitbucket.org/thesheep/circuitpython-badge) , for everybody to enjoy. Please be aware that it is still work in
+progress and that there most likely will be changes.\
+
+

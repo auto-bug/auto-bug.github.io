@@ -1,0 +1,134 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>http://deshipu.art/</id>
+  <title>deshipu.art - Posts in project-100853</title>
+  <updated>2024-08-07T20:33:02.107846+00:00</updated>
+  <link href="http://deshipu.art/"/>
+  <link href="http://deshipu.art/blog/category/project-100853/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-100853/log-146732/</id>
+    <title>Full PCB</title>
+    <updated>2018-05-25T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="full-pcb"&gt;
+
+&lt;p&gt;Published on 2018-05-25 in &lt;a class="reference internal" href="../../../projects/project-100853/#project-100853"&gt;&lt;span class="std std-ref"&gt;CircuitPython Badge&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Of course the PCBs arrived just as I’m leaving for the Belgrade
+conference, so no chance to assemble one and use there as a badge. Oh
+well, I think I will wear an unpopulated PCB anyways.&lt;/p&gt;
+&lt;img alt="projects/project-100853/images/8404511527239263946.jpg" src="projects/project-100853/images/8404511527239263946.jpg" /&gt;
+&lt;p&gt;As I was afraid, the large white area of the silkscreen doesn’t look
+too great. I think that I will use a white PCB and just a black
+outline next time.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-100853/log-146732/" rel="alternate"/>
+    <summary>Published on 2018-05-25 in project-100853.</summary>
+    <published>2018-05-25T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-100853/log-147120/</id>
+    <title>Full Badge Assembled and Working</title>
+    <updated>2018-05-31T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="full-badge-assembled-and-working"&gt;
+
+&lt;p&gt;Published on 2018-05-31 in &lt;a class="reference internal" href="../../../projects/project-100853/#project-100853"&gt;&lt;span class="std std-ref"&gt;CircuitPython Badge&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I finally had some time to sit down and assemble the badge. The
+accelerometer chips still didn’t arrive, but I just desoldered one
+from some breakout board I found in my drawer. As usual, the QFN
+matrix controller chip didn’t get soldered properly, and I had to
+desolder the matrices, fix the chip, and re-solder them back. Some
+traces got pulled in the process, but fortunately for unused pins of
+the matrices, so it’s fine.&lt;/p&gt;
+&lt;img alt="projects/project-100853/images/1471681527790546762.jpg" src="projects/project-100853/images/1471681527790546762.jpg" /&gt;
+&lt;p&gt;Of course my camera can’t handle the brightness of the LEDs, so
+instead of red they appear yellow.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-100853/log-147120/" rel="alternate"/>
+    <summary>Published on 2018-05-31 in project-100853.</summary>
+    <published>2018-05-31T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-100853/log-149596/</id>
+    <title>Testing Prototypes and Possible Optimizations</title>
+    <updated>2018-07-16T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="testing-prototypes-and-possible-optimizations"&gt;
+
+&lt;p&gt;Published on 2018-07-16 in &lt;a class="reference internal" href="../../../projects/project-100853/#project-100853"&gt;&lt;span class="std std-ref"&gt;CircuitPython Badge&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I have five prototypes assembled and tested, and I’m going to take
+them next week to Europython to Edinburgh and pass them on for
+testing. We decided to skip this year and I’m for next year, which
+will give us more time to develop the libraries and examples for them.&lt;/p&gt;
+&lt;p&gt;In the mean time, as I’m working on the &lt;a class="reference internal" href="../../../projects/project-159733/#project-159733"&gt;&lt;span class="std std-ref"&gt;PewPew Standalone&lt;/span&gt;&lt;/a&gt; , I’m getting ideas about how to reduce the parts count and price of
+those badges. Since I’m using two 7×11 matrices, I can drive them with
+just 18 pins by using a kind of charlieplexing approach — that means
+that a bigger SAMD21 chip should be able drive them all, and still
+have spare pins for breaking out. That could shave off as much as ¼ of
+the cost. Of course the cost of that would be scanning the matrix in
+software, but I already have to write the library for this for the
+PewPew.&lt;/p&gt;
+&lt;p&gt;I also still need to get the radio going. There are ready NRF24
+libraries, but I think we will want to have something custom more
+similar to Micro:bit’s “radio” library.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-100853/log-149596/" rel="alternate"/>
+    <summary>Published on 2018-07-16 in project-100853.</summary>
+    <published>2018-07-16T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-100853/log-153620/</id>
+    <title>Prototypes in Good Hands</title>
+    <updated>2018-10-01T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="prototypes-in-good-hands"&gt;
+
+&lt;p&gt;Published on 2018-10-01 in &lt;a class="reference internal" href="../../../projects/project-100853/#project-100853"&gt;&lt;span class="std std-ref"&gt;CircuitPython Badge&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;It took some logistic trickery, but we got five prototypes of the
+badge into hands of willing and skilled people, who will now test and
+improve the hardware, software and documentation. There is a
+repository at  &lt;a class="reference external" href="https://github.com/circuitpython-badge/circuitpython-badge"&gt;https://github.com/circuitpython-badge/circuitpython-badge&lt;/a&gt;  containing what was produced during the sprints at &lt;a class="reference external" href="http://PyCon.UK"&gt;PyCon.UK&lt;/a&gt; , and some discussions in the issues section. After the initial
+prototype design we can now hopefully take it to the next step, to
+make it fit the needs of the conference participants.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-100853/log-153620/" rel="alternate"/>
+    <summary>Published on 2018-10-01 in project-100853.</summary>
+    <published>2018-10-01T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-100853/log-153701/</id>
+    <title>Sketching the Next Version</title>
+    <updated>2018-10-02T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="sketching-the-next-version"&gt;
+
+&lt;p&gt;Published on 2018-10-02 in &lt;a class="reference internal" href="../../../projects/project-100853/#project-100853"&gt;&lt;span class="std std-ref"&gt;CircuitPython Badge&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Together with the volunteers we already started working on the next
+version of the prototype. I started to slowly lay out the components
+for it:&lt;/p&gt;
+&lt;img alt="projects/project-100853/images/8415261538488477681.png" src="projects/project-100853/images/8415261538488477681.png" /&gt;
+&lt;p&gt;Several things are happening there:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;switched to a SAMD51 microcontroller, in place of the smaller SAMD21 —
+that gives us more memory, better speed and more pins,&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;moved the electronics under the display, to make more room on the
+sides,&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;switched to non-clicky buttons, same as I used in &lt;a class="reference internal" href="../../../projects/project-27629/#project-27629"&gt;&lt;span class="std std-ref"&gt;µGame&lt;/span&gt;&lt;/a&gt; ,&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;got rid of the snake heads at the top, to make more room,&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;added a pin header for connecting extra stuff to GPIO pins,&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;considering using a different USB port, though I don’t have a
+footprint for it yet,&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;considering using IR communication in place of the NRF24, but that
+requires some experiments,&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;considering moving the batteries from the back to the front, to make
+the whole thing more flat.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This is all just playing for now, to see how it fits together. We will
+probably still make a lot of changes.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-100853/log-153701/" rel="alternate"/>
+    <summary>Published on 2018-10-02 in project-100853.</summary>
+    <published>2018-10-02T00:00:00+02:00</published>
+  </entry>
+</feed>

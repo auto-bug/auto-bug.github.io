@@ -1,0 +1,34 @@
+---
+blogpost: true
+date: 2018-03-26
+category: project-100853
+---
+
+# Breaking: Liquid Crystals are Slow!
+Published on 2018-03-26 in {ref}`project-100853`.
+
+So I wrote the code to do all the blit magic and stuff, and coded a
+bouncing ball demo, and the effect is a little bit disappointing:
+
+
+
+:::{image} images/9751551522070745235.jpg
+
+:::
+
+
+Hardware special effects! Who would have thought that the low price,
+low-res, old LCD would be so slow to update? I guess that power
+efficiency comes at a cost.
+
+Well, since the PCB is already ordered, I guess I will build it
+anyways, and try to make some games that don't do any sudden moves.
+Maybe it will be enough for the usual tetris, snake and 2048.
+
+On the other hand, I have some loose OLED displays that I got for the {ref}`project-27757` , but couldn't get them to work (and later discovered that it was a
+reset issue). I could use them for this, though they are about half as
+small as this display.
+
+If you know of any ~1.5" displays with relatively low resolution and
+big pixels, but decent update speed, let me know!
+

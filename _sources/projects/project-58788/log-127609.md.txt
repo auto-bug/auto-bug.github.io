@@ -1,0 +1,34 @@
+---
+blogpost: true
+date: 2018-03-23
+category: project-58788
+---
+
+# First PCB
+Published on 2018-03-23 in {ref}`project-58788`.
+
+I still didn't get the flash to work correctly, but I had some
+sleepless night, so I sketched up a PCB for the first prototype. This
+is the top where the ESP-12F module goes:
+
+
+
+:::{image} https://644db4de3505c40a0444-327723bce298e3ff5813fb42baeefbaa.ssl.cf1.rackcdn.com/4ef17e5fc60a756e2aa5f81f12861cd4.png
+
+:::
+
+
+And this is the bottom, where a Pro Micro goes:
+
+
+
+:::{image} https://644db4de3505c40a0444-327723bce298e3ff5813fb42baeefbaa.ssl.cf1.rackcdn.com/d5a694001e96570093b6d096c92aea04.png
+
+:::
+
+
+There is also an extra button on the opposite side than the reset, for
+selecting the USB mode. That's pretty much it, since the Pro Mini
+already hast he voltage regulator and all that, and the programming
+pin can be held down by software.
+

@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>QFN48: Welcome to Hell - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="qfn48-welcome-to-hell">
+<h1>QFN48: Welcome to Hell<a class="headerlink" href="#qfn48-welcome-to-hell" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2018-05-01 in <a class="reference internal" href="../#project-100853"><span class="std std-ref">CircuitPython Badge</span></a>.</p>
+<p>Turns out the hot air gun helps, but not nearly as much as I hoped.
+And putting other parts on top of your part, to make the rework
+impossible certainly doesn’t help. Long story short, I had to desolder
+both matrices (suction tool helped a lot), and rework the chip. When
+assembling it back, I decided I don’t need the sleek look for now, and
+instead I would like ease of debugging, so instead of matrices I
+soldered female headers that I can plug them into:</p>
+<p>———- more ———-</p>
+<img alt="projects/project-100853/images/977811525175136368.jpg" src="projects/project-100853/images/977811525175136368.jpg" />
+<p>But even then not all the rows would light up as they should:</p>
+<img alt="projects/project-100853/images/3267861525175176669.jpg" src="projects/project-100853/images/3267861525175176669.jpg" />
+<p>Hmm… but that can’t be a bad physical connection, because only half
+of the row is dark… it took me embarrassingly long time to figure
+out that I didn’t enable all the pixels in the driver! Once I got that
+right, it was just a matter of figuring out the row and column
+reordering, and I got this pretty gradient:</p>
+<img alt="projects/project-100853/images/9968791525175302341.jpg" src="projects/project-100853/images/9968791525175302341.jpg" />
+<p>I still need to add gamma correction, so that the steps seem more
+equally spaced. I think a logarithmic scale will work nicely for that.</p>
+<p>Thanks to all the code I had already for <a class="reference internal" href="../../project-21578/#project-21578"><span class="std std-ref">PewPew FeatherWing</span></a> , I already have scrolling text support and blitting, so I think I’m
+pretty much good with the display. Next I will need a driver for the
+accelerometer and the NRF25L01 module.</p>
+<p>I will also need to write some example demos for it, so that people
+can customize them.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

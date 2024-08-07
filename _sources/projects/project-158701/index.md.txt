@@ -1,0 +1,63 @@
+---
+blogpost: true
+date: 2018-05-30
+category: project
+tags:  wearable, pendant, video, scrapped project, hardware, jewelry, display, NECKLACE
+image: 1
+---
+
+# Video Pendant
+
+Put screens on your jewelry.
+
+<div class="project-thumb">
+
+:::{image} images/1733951527672383384.jpg
+:target: /_images/1733951527672383384.jpg
+:::
+
+:::{image} images/7138221527672332831.jpeg
+:target: /_images/7138221527672332831.jpeg
+:::
+
+:::{image} images/672011528554530136.jpg
+:target: /_images/672011528554530136.jpg
+:::
+
+:::{image} images/6583351528554548233.jpg
+:target: /_images/6583351528554548233.jpg
+:::
+
+:::{image} images/9529091528554559604.jpg
+:target: /_images/9529091528554559604.jpg
+:::
+
+:::{image} images/148021528921138407.jpg
+:target: /_images/148021528921138407.jpg
+:::
+
+</div>
+
+
+    Whenever people see the 0.9" TFT ST7735S screen, they tell me I should
+make jewelry with this. So here it goes. A small color screen that you
+wear on your neck, that displays some cool animations.
+
+Inside there is a SAMD21 (because that's what I have in my drawer), a
+LIR1220 battery (whooping 8mAh), and the minimum of components needed
+to make it work. USB socket lets you charge it and upload the images,
+and a switch lets you, well, switch it on an off. All fits on the 0.9"
+PCB under the display.
+
+
+
+
+
+## Logs
+
+:::{postlist}
+:category: project-158701
+:::
+
+## Instructions
+

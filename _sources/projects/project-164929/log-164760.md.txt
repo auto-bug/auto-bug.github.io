@@ -1,0 +1,33 @@
+---
+blogpost: true
+date: 2019-06-17
+category: project-164929
+---
+
+# PyGamer
+Published on 2019-06-17 in {ref}`project-164929`.
+
+Two news here. First of all, the Stage library now has support for the
+PyGamer device, so you can play all the games on it. The analog
+joystick is translated into button presses.
+
+
+
+:::{image} images/4622351560804271123.jpg
+
+:::
+
+
+Second, the official displayio library grew support for partial screen
+updates, which makes it much faster — sufficiently to replace the
+Stage library in the future. So far I have ported the bouncing balls
+demo to it, and I'm working on the remaining games. I also plan to
+write some tutorials.
+
+
+
+:::{image} images/7005531560804372993.jpg
+
+:::
+
+

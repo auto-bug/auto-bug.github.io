@@ -1,0 +1,176 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Tinypico Play Shield - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="tinypico-play-shield">
+<h1>Tinypico Play Shield<a class="headerlink" href="#tinypico-play-shield" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2020-12-18 in <a class="reference internal" href="../#project-80626"><span class="std std-ref">Stage, a Tile and Sprite Engine</span></a>.</p>
+<p>After watching Unexpected Maker’s stream on which he builds his Play
+Shield for Tinypico, I decided to try and see if the Stage library
+would run on it.</p>
+<iframe style="width: 500px; height: 281px;" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/jhAU2u_NUlE"></iframe>
+<p>I asked him about which display he uses and how it is connected, and
+made this “driver” for it:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="kn">import</span> <span class="nn">ustruct</span>
+<span class="kn">import</span> <span class="nn">utime</span>
+
+
+<span class="k">class</span> <span class="nc">Display</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>  <span class="c1"># ST7739</span>
+    <span class="n">_BUF</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+
+    <span class="n">width</span> <span class="o">=</span> <span class="mi">240</span>
+    <span class="n">height</span> <span class="o">=</span> <span class="mi">240</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spi</span><span class="p">,</span> <span class="n">dc</span><span class="p">,</span> <span class="n">cs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rst</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">spi</span> <span class="o">=</span> <span class="n">spi</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dc</span> <span class="o">=</span> <span class="n">dc</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cs</span> <span class="o">=</span> <span class="n">cs</span> <span class="ow">or</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rst</span> <span class="o">=</span> <span class="n">rst</span> <span class="ow">or</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rst</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">utime</span><span class="o">.</span><span class="n">sleep_ms</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rst</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">utime</span><span class="o">.</span><span class="n">sleep_ms</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cs</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">command</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="p">(</span>
+<span class="c1">#            (b&#39;\x01&#39;, None), # reset</span>
+            <span class="p">(</span><span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x11</span><span class="s1">&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span> <span class="c1"># wake</span>
+            <span class="p">(</span><span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x3a</span><span class="s1">&#39;</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x55</span><span class="s1">&#39;</span><span class="p">),</span>  <span class="c1"># format</span>
+            <span class="p">(</span><span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x36</span><span class="s1">&#39;</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\xc8</span><span class="s1">&#39;</span><span class="p">),</span>  <span class="c1"># mad</span>
+            <span class="p">(</span><span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x21</span><span class="s1">&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span> <span class="c1"># invert</span>
+            <span class="p">(</span><span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x13</span><span class="s1">&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span> <span class="c1"># no partial</span>
+            <span class="p">(</span><span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x29</span><span class="s1">&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span> <span class="c1"># on</span>
+        <span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">command</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+            <span class="n">utime</span><span class="o">.</span><span class="n">sleep_ms</span><span class="p">(</span><span class="mi">150</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cs</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">utime</span><span class="o">.</span><span class="n">sleep_ms</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">command</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dc</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">spi</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">data</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dc</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">spi</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">block</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">):</span>
+        <span class="n">y0</span> <span class="o">+=</span> <span class="mi">80</span>
+        <span class="n">y1</span> <span class="o">+=</span> <span class="mi">80</span>
+        <span class="n">ustruct</span><span class="o">.</span><span class="n">pack_into</span><span class="p">(</span><span class="s1">&#39;&gt;HH&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_BUF</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x2a</span><span class="s1">&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_BUF</span><span class="p">)</span>
+        <span class="n">ustruct</span><span class="o">.</span><span class="n">pack_into</span><span class="p">(</span><span class="s1">&#39;&gt;HH&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_BUF</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">y1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x2b</span><span class="s1">&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_BUF</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x2c</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dc</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">clear</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="mh">0x00</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cs</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">block</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="p">)</span>
+        <span class="n">chunks</span><span class="p">,</span> <span class="n">rest</span> <span class="o">=</span> <span class="nb">divmod</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="p">,</span> <span class="mi">512</span><span class="p">)</span>
+        <span class="n">pixel</span> <span class="o">=</span> <span class="n">ustruct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s1">&#39;&gt;H&#39;</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">chunks</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">pixel</span> <span class="o">*</span> <span class="mi">512</span>
+            <span class="k">for</span> <span class="n">count</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">chunks</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">spi</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">rest</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">spi</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">pixel</span> <span class="o">*</span> <span class="n">rest</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cs</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cs</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_val</span><span class="p">,</span> <span class="n">exc_tb</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cs</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>One surprising thing that took me a while to figure out is that to get
+correct colors, you have to put the display in inverted color mode — a
+bit weird, but I guess it’s a question of how the actual LCD is
+connected to the chip inside. A quick test confirms that it works:</p>
+<img alt="projects/project-80626/images/1361301608312513697.jpg" src="projects/project-80626/images/1361301608312513697.jpg" />
+<p>Next I needed to handle the buttons. The Play Shield uses MPR121 chip
+to handle them, so I just added this button-handling class:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="k">class</span> <span class="nc">Buttons</span><span class="p">:</span> <span class="c1"># mpr121</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i2c</span><span class="p">,</span> <span class="n">address</span><span class="o">=</span><span class="mh">0x5a</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_i2c</span> <span class="o">=</span> <span class="n">i2c</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_address</span> <span class="o">=</span> <span class="n">address</span>
+        <span class="k">for</span> <span class="n">register</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="p">(</span>
+            <span class="p">(</span><span class="mh">0x80</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x63</span><span class="s1">&#39;</span><span class="p">),</span> <span class="c1"># reset</span>
+            <span class="p">(</span><span class="mh">0x53</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x00</span><span class="s1">&#39;</span><span class="p">),</span> <span class="c1"># stop mode, reset config</span>
+            <span class="p">(</span><span class="mh">0x2b</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x01\x01\x0e\x00\x01\x05\x01\x00\x00\x00\x00</span><span class="s1">&#39;</span><span class="p">),</span>
+            <span class="p">(</span><span class="mh">0x5b</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x00\x10\x20</span><span class="s1">&#39;</span><span class="p">),</span> <span class="c1"># debounce, config1, config2</span>
+            <span class="p">(</span><span class="mh">0x53</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x8f</span><span class="s1">&#39;</span><span class="p">),</span> <span class="c1"># exit stop mode</span>
+        <span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_i2c</span><span class="o">.</span><span class="n">writeto_mem</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_address</span><span class="p">,</span> <span class="n">register</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_get_pressed</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">int</span><span class="o">.</span><span class="n">from_bytes</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_i2c</span><span class="o">.</span><span class="n">readfrom_mem</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_address</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="s1">&#39;big&#39;</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>Not having an MPR121 chip at hand, I couldn’t test it, but once I sent
+the compiled binaries and some example code to Unexpected Maker to
+test on the actual shield, it ran correctly, as he shows on Twitter:   <a class="reference external" href="https://twitter.com/unexpectedmaker/status/1339756136224890880">https://twitter.com/unexpectedmaker/status/1339756136224890880</a></p>
+<p>Well, OK, that demo doesn’t actually use the buttons, but it
+initializes the chip, and that seems to have worked.</p>
+<p>I can do further refining once I get my hands on the actual shield.</p>
+<p>The full code and compiling instructions are at  <a class="reference external" href="https://github.com/python-ugame/micropython-stage/tree/master/tinypicost7789">https://github.com/python-ugame/micropython-
+stage/tree/master/tinypicost7789</a></p>
+</section>
+
+
+</div>
+  </body>
+</html>

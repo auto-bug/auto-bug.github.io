@@ -1,0 +1,28 @@
+---
+blogpost: true
+date: 2022-11-01
+category: project-158701
+---
+
+# Where Are We?
+Published on 2022-11-01 in {ref}`project-158701`.
+
+Hardware-wise, I think I'm reasonably happy with what I have – at
+least it's more than sufficient as a prototype for testing. What I
+need now is the software. I have tested the device with CircuitPython
+– I have even written a GIF decoding library in pure Python specially
+for this – and I'm confident this can work, but not with
+CircuitPython. So the next step is to get the the firmware for this
+working.
+
+I can use the TinyUSB library to expose the filesystem over USB – it's
+the same library that CircuitPython is using, in fact. And I can use a
+super-optimized GIF library written by [@Larry Bank](https://hackaday.io/hacker/269676) . That should get me the minimal functionality. I can then also
+experiment with sleep modes and touch and all that stuff.
+
+The problem I am facing right now is setting up an environment for
+development for the SAMD21. I will probably start with Arduino,
+because that is already mostly ready out of the box, but there is
+still some work with that, that I currently just can't get myself
+started on. So until I get that going, the project is on hold.
+

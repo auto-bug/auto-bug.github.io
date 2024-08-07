@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>PewPew Pew - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="pewpew-pew">
+<h1>PewPew Pew<a class="headerlink" href="#pewpew-pew" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2019-04-25 in <a class="reference internal" href="../#project-165032"><span class="std std-ref">PewPew M4</span></a>.</p>
+<p>So the Pew library is now ported. It’s still not as fast as on the
+other boards, I might need to rewrite it in C after all, but it’s a
+good first step for testing.</p>
+<img alt="projects/project-165032/images/551741556206881375.jpg" src="projects/project-165032/images/551741556206881375.jpg" />
+<p>The heart of the whole porting effort is the function that draws those
+dithered pixels. It’s surprisingly simple:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">_PATTERNS</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x44\x11\x44\x11\x44\x11\x44\x11\x44\x11</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\xee\xbb\xee\xbb\xee\xbb\xee\xbb\xee\xbb</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff</span><span class="s1">&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">show</span><span class="p">(</span><span class="n">pix</span><span class="p">):</span>
+    <span class="n">pix_buffer</span> <span class="o">=</span> <span class="n">pix</span><span class="o">.</span><span class="n">buffer</span>
+    <span class="n">display_buffer</span> <span class="o">=</span> <span class="n">_display</span><span class="o">.</span><span class="n">buffer</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="mi">24</span>
+    <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">):</span>
+        <span class="n">pix_index</span> <span class="o">=</span> <span class="n">pix</span><span class="o">.</span><span class="n">width</span> <span class="o">*</span> <span class="n">y</span>
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">):</span>
+            <span class="n">display_buffer</span><span class="p">[</span><span class="n">index</span><span class="p">:</span><span class="n">index</span><span class="o">+</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="n">_PATTERNS</span><span class="p">[</span><span class="n">pix_buffer</span><span class="p">[</span><span class="n">pix_index</span><span class="p">]]</span>
+            <span class="n">pix_index</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">index</span> <span class="o">+=</span> <span class="mi">10</span>
+        <span class="n">index</span> <span class="o">+=</span> <span class="mi">48</span>
+    <span class="n">_display</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+</pre></div>
+</div>
+<p>Basically we have pre-recorded images of the pixels, that we copy into
+the buffer at the right places based on the image to be displayed. I
+also tested doing this on the fly while sending data to the display,
+and with a per-line buffer, but that didn’t make it faster, and
+resulted in some tearing effects — sending the whole frame all at once
+to the display has the advantage of it appearing instantly and whole.</p>
+<p>I might try keeping track of dirty pixels, and only update those, and
+maybe even updating the display buffer right away when the drawing
+operations are happening, though that would require changes in Pew’s
+architecture. Most likely I will probably keep the current logic and
+just move it to C to make it faster.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

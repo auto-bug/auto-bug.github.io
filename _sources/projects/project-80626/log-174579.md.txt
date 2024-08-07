@@ -1,0 +1,30 @@
+---
+blogpost: true
+date: 2020-03-08
+category: project-80626
+---
+
+# Dynamically Loadable Modules, Continued
+Published on 2020-03-08 in {ref}`project-80626`.
+
+I got some help with that, and did a little bit of progress, though it
+still doesn't work the way it should.
+
+People who are smarter than me started to figure things out, and there
+is a [pull request with more documention](https://github.com/micropython/micropython/pull/5463)  with some additional discussion that has cleared some stuff for me.
+
+Basically you can only call functions that have been explicitly
+exposed to the native module mechanism, and if you need some
+additional functions, they need to be added to a list. Sounds simple
+enough, and I managed to get that to work, but there is a small catch:
+it will only work with the firmware that has those functions added as
+well, so it kind of defeats the whole purpose.
+
+Fortunately, there seems to be some ongoing work on solving this:
+
+
+ *  [https://github.com/micropython/micropython/pull/5682](https://github.com/micropython/micropython/pull/5682) 
+ *  [https://github.com/micropython/micropython/pull/5653](https://github.com/micropython/micropython/pull/5653) 
+
+So hopefully in a couple of months it will be possible.
+

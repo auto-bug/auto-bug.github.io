@@ -1,0 +1,68 @@
+---
+blogpost: true
+date: 2018-07-15
+category: project
+tags:  LEDS, circuitpython, python, business card, hardware, charlieplexing, pewpew, game, researching project
+image: 1
+---
+
+# PewPew Standalone
+
+A Python-based micro game console, optimized for game development workshops.
+
+<div class="project-thumb">
+
+:::{image} images/5267771533379701591.jpg
+:target: /_images/5267771533379701591.jpg
+:::
+
+:::{image} images/935141533379686290.jpg
+:target: /_images/935141533379686290.jpg
+:::
+
+:::{image} images/9166951534075934916.jpg
+:target: /_images/9166951534075934916.jpg
+:::
+
+:::{image} images/6174551535027103963.jpg
+:target: /_images/6174551535027103963.jpg
+:::
+
+:::{image} images/6480971540220805035.jpg
+:target: /_images/6480971540220805035.jpg
+:::
+
+:::{image} images/7546251540220815821.jpg
+:target: /_images/7546251540220815821.jpg
+:::
+
+</div>
+
+
+    A Python-based micro game console, optimized for game development
+workshops.\
+
+
+I really like the {ref}`project-21578` as a platform for teaching game development, but the cost of Feather
+boards needed to use it makes it difficult to organize workshops for
+larger groups of people. I have previously tried to work around that
+problem by merging the FeatherWing with the schematic stolen from a
+Trinket M0 (with an additional flash memory), but the resulting design
+was complex, difficult to make and still a bit expensive. Now after
+having designed a few more CircuitPython boards I think I can really
+cut the costs and make a standalone device with all the functionality
+of the original shield, but optimized for workshops.\
+
+
+
+
+
+
+## Logs
+
+:::{postlist}
+:category: project-159733
+:::
+
+## Instructions
+

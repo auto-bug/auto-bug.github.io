@@ -1,0 +1,29 @@
+---
+blogpost: true
+date: 2019-07-28
+category: project-165032
+---
+
+# Silkscreen
+Published on 2019-07-28 in {ref}`project-165032`.
+
+The microcontrollers should arrive on Monday, but since I had some
+time today, I decided to work a little bit on the graphical side of
+this. After all, we want it to look appealing. So I sat down with
+Inkscape and prepared this silkscreen for the front:
+
+
+
+:::{image} images/1250791564264866647.png
+
+:::
+
+
+I will need to move that via for the "z" button. The buttons are
+labelled "o" for "accept/select", "x" for "reject/back", "s" for
+"start" and "z" for "pause". As usual, I spent about 15 minutes
+drawing it, and then another 30 fiddling with the nodes, trying to
+work around Fritzing's gerber rendering bugs. Also, had to rotate the
+actual PCB image up-side down, and then rotate it back in Fritzing —
+for some reason that fixes it. Don't ask.
+

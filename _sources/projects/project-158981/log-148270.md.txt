@@ -1,0 +1,53 @@
+---
+blogpost: true
+date: 2018-06-23
+category: project-158981
+---
+
+# First Prototype
+Published on 2018-06-23 in {ref}`project-158981`.
+
+The PCBs from DirtyPCBs arrived today — pretty fast, I have to admit!
+
+
+
+:::{image} images/2437381529707194907.jpg
+
+:::
+
+
+I got one of them assembled. The microcontroller worked first time,
+but I had to do several resolderings before I got the accelerometer to
+work. Seems like one of the pins in my gerbers is weird — probably
+another Fritzing bug. But no that I know it's there, I can scrap it a
+bit before soldering and it should be fine.
+
+
+
+:::{image} images/4330421529707304982.jpg
+
+:::
+
+
+As you can see, everything fits neatly inside the hole of the battery
+holder, and around it. I decided to use a large, good quality speaker
+this time — maybe I can have it say the turret lines from Portal. Next
+up are the legs. Unfortunately that part still requires the use of hot
+glue.
+
+
+
+:::{image} images/8199621529707399475.jpg
+
+:::
+
+
+I got the first four servos connected — since I don't want too long
+cables, I decided to cut them and solder them directly into the PCB,
+but you can as well solder male headers in there and plug the servos
+in. There is room for that.
+
+I compiled a version of CircuitPython for Trinket M0 with adjusted
+pins, and the servos work nicely! Now I need to connect the remaining
+servos, and port the IK code I have to this.
+

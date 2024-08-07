@@ -1,0 +1,37 @@
+---
+blogpost: true
+date: 2018-07-31
+category: project-159733
+---
+
+# A Prototype
+Published on 2018-07-31 in {ref}`project-159733`.
+
+The boards arrived when I was travelling, and now that I am home
+again, I can actually work on this again. As a start, I assembled one
+of them:
+
+
+
+:::{image} images/6815091533071489375.jpg
+
+:::
+
+
+I am still waiting for the battery holders — in the mean time, I used
+one that I had available, which has the + and - reversed — that's why
+it's soldered wrong. That's actually convenient, because it gives me
+access to the programming and reset pins under the matrix. Of course
+the final version will have the batteries under the device.
+
+The USB plug works, but I think I made the pads a bit too wide and the
+spacing too large — they have a good contact, but it's lost when you
+wiggle the device.
+
+I have the CircuitPython firmware with the custom pin definitions and
+increased internal disk size flashed. The next step is to write the
+matrix-driving code in Python, to test it, and then to rewrite it in C
+as part of the firmware, so that it can run in the background. I was
+hoping to start on that today, but there was no time this evening.
+Tomorrow is a holiday, so I hope to get that working then.
+

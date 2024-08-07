@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Saving Pins - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="saving-pins">
+<h1>Saving Pins<a class="headerlink" href="#saving-pins" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2018-08-14 in <a class="reference internal" href="../#project-159733"><span class="std std-ref">PewPew Standalone</span></a>.</p>
+<p>As the prototypes are coming, this device is becoming a pretty nice
+thing for teaching game programming, which is its main focus. However,
+wouldn’t it be great if it could also be used for hobby electronics
+projects, like the micro:bit or any number of development boards? For
+that it would need to break out more pins than the SWD and SWC it
+breaks out right now, and they would need to be broken out in a way
+that makes it easy to connect stuff to them.</p>
+<p>The current pin budget is as follows:</p>
+<ul class="simple">
+<li><p>8 pins for the LED matrix rows</p></li>
+<li><p>8 pins for the LED matrix columns</p></li>
+<li><p>6 pins for the buttons</p></li>
+<li><p>2 pins for programming/debugging/connecting stuff</p></li>
+<li><p>2 pins for USB</p></li>
+</ul>
+<p>One way to free some pins would be to drop the LED matrix and use
+charlieplexed LEDs like in the business card prototype — then I can
+get away with 9 pins instead of 16, and would have 7 free pins, which
+is enough for this kind of use in my opinion. However, while the parts
+cost is similar, the assembly costs might go up, and the display is
+much less readable, due to lack of diffusing. I could add a 3D-printed
+diffuser on top, but that again adds to the cost.</p>
+<p>Is there any way I could save pins on the buttons? Right now I use one
+pin per button, which is kinda wasteful. I could arrange them in a 2×3
+matrix, which would require 5 pins, saving me one, but I don’t think
+it’s worth it, especially since I would then need additional diodes to
+avoid ghosting. I could use a resistor ladder and connect all the
+buttons to an analog pin — but then reading the button state would
+take longer, as ADC is not as fast as simple digital pins. Can I share
+the LED matrix pins with the buttons? If I just connected them to the
+row pins via diodes, I could have an additional fake column for which
+I would scan the buttons, but that’s 6 extra diodes. Hmm, what if the
+other end of the buttons wasn’t connected to GND or VCC, but instead
+to an additional pin? I already scan the columns, so I could connect
+the buttons to that, and on every column check the additional pin
+(with a pullup) for the value of the corresponding button. As a bonus,
+no extra components and no extra cycles in the matrix scanning, so the
+brightness shouldn’t suffer. That seems like the way to go!</p>
+<img alt="projects/project-159733/images/549491534237194069.jpg" src="projects/project-159733/images/549491534237194069.jpg" />
+<p>And that gives me 5 free pins, which together with the 2 debugging
+pins give me a nice 7 pin header. That should be enough for most basic
+hobby electronic uses, especially since I can choose pretty much any
+pins for that, so I can take  all the ones that have interesting
+peripherals on them: ADC, DAC, serial, I2C, SPI, timers.\</p>
+<p>Now, onto the connector.</p>
+<p>I can’t just use normal male headers, even though that would make it
+super-easy to connect the device to a breadboard, because it’s
+supposed to be carried in a pocket, and the pins could lead to
+injuries, torn clothes and, what’s worse, bent pins. I don’t want to
+use an edge connector, like the microbit, because it forces you to buy
+special hardware and defeats the whole idea of a cheap device. I don’t
+like the big holes for banana plugs/crocodile clips, because who uses
+banana plugs today? Also they are huge and wasteful. I could use a
+female pin header — then you could easily use dupont cables to connect
+it to anything you need. It would even look good next to the matrix
+display. Or I could just leave the holes for the header unpopulated
+(which saves me part and some soldering), and use staggered holes, so
+that you can insert a male pin header when you need it, or solder a
+female header if you want. I think I will go with that.</p>
+<p>The last question is where should the header be located? Obviously we
+don’t want to have it on the same side as the USB plug and power
+switch. In fact, if this is going to be connected to a breadboard, we
+don’t want an USB plug anymore, and we will need to switch back to a
+micro USB socket, so that you can have some distance between your
+computer and the breadboard. But still we don’t want them on the same
+side.</p>
+<p>When we put all this together, we get something roughly like this:</p>
+<img alt="projects/project-159733/images/5442961534238067640.png" src="projects/project-159733/images/5442961534238067640.png" />
+<p>I have ordered enough PCBs this month already, so I will keep thinking
+about this and maybe adding small improvements.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

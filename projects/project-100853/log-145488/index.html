@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Got Pixel? - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="got-pixel">
+<h1>Got Pixel?<a class="headerlink" href="#got-pixel" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2018-04-30 in <a class="reference internal" href="../#project-100853"><span class="std std-ref">CircuitPython Badge</span></a>.</p>
+<p>Now it’s time to assemble the boards. The microcontroller part was
+easy, and I got the bootloader on it to test that everything works.
+The hard part is the accelerometer and matrix driver chips, as they
+are QFN. Especially the driver is scary, with its 48 pins. Let’s see
+if my new super power, the hot air gun, will give me an upper hand
+here.</p>
+<p>———- more ———-</p>
+<img alt="projects/project-100853/images/4815361525111090171.jpg" src="projects/project-100853/images/4815361525111090171.jpg" />
+<p>It’s soldered and an inspection under magnification suggests it’s all
+fine. You can see the bodge wire I had to add for one of the
+resistors, because I pulled the pin down while it should be pulled up.
+The accelerometer is LIS3DH, and I simply desoldered it from a module.
+A quick build of the CircuitPython firmware, and I verified that both
+the accelerometer and the driver enumerate on the I2C bus. Yay!</p>
+<p>So I guess I just solder the matrices and pray it works. Of course I
+initially started soldering the first matrix the wrong way around —
+but fortunately I noticed after just a few pins, and managed to
+desolder it and rotate properly. The text on the matrix needs to point
+to the right of the board, where the fire buttons are.</p>
+<p>Then I just copied the library from the <a class="reference internal" href="../../project-21578/#project-21578"><span class="std std-ref">PewPew FeatherWing</span></a> , and I tried to display a filled rectangle:</p>
+<img alt="projects/project-100853/images/1746131525111481386.jpg" src="projects/project-100853/images/1746131525111481386.jpg" />
+<p>The good news is that it displays something! The bad news is that I
+still need to do that “I will fix it in software” re-numbering of rows
+and columns. Oh well, it would be probably completely impossible to
+route if I insisted on keeping the order.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

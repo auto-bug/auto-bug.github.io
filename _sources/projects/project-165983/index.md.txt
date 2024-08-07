@@ -1,0 +1,60 @@
+---
+blogpost: true
+date: 2019-06-08
+category: project
+tags:  ongoing project, hardware
+image: 1
+---
+
+# D1 Mini UI Shield
+
+Add a user interface to a D1 mini
+
+<div class="project-thumb">
+
+:::{image} images/4743301559990613460.jpg
+:target: /_images/4743301559990613460.jpg
+:::
+
+:::{image} images/5283701559992879127.jpg
+:target: /_images/5283701559992879127.jpg
+:::
+
+:::{image} images/3579601560843885135.jpg
+:target: /_images/3579601560843885135.jpg
+:::
+
+:::{image} images/6909541560843878063.jpg
+:target: /_images/6909541560843878063.jpg
+:::
+
+</div>
+
+
+    Often you need some kind of a user interface for your project — a
+display, a menu, maybe some icons, some numbers or some plot, etc.
+Sure, you can simply slap a display module on it, but then you still
+need some kind of input. If your display comes with a touchscreen and
+you are ready to handle the complexity in code, then great. Otherwise
+you need to add a bunch of buttons, a joystick, an encoder or some
+other way of selecting options. And since at that point you have ran
+out of GPIO pins on your D1 Mini, you also need some kind of GPIO
+expander. And then you have to put it in some box to attach the
+buttons to, and it all gets complicated quickly.
+
+So this is a quick solution for that problem: basically an OLED
+display module and the {ref}`project-19371` squeezed together on a single small shield. You can even play games on
+it, if you feel like that!
+
+
+
+
+
+## Logs
+
+:::{postlist}
+:category: project-165983
+:::
+
+## Instructions
+

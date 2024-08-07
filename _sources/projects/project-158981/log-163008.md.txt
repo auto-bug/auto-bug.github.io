@@ -1,0 +1,40 @@
+---
+blogpost: true
+date: 2019-05-07
+category: project-158981
+---
+
+# CircuitPython Fixes Timer Bugs, Requires Redesign
+Published on 2019-05-07 in {ref}`project-158981`.
+
+It turns out there have been some bugs in CircuitPython's pulseio
+module, related to how it selected what timer/channel to use for PWM
+for each of the pins. Long story short, it would sometimes re-use the
+channels that were already in use, resulting in those pins sharing
+duty cycle — you change it on one of them, it changes on the other as
+well. Obviously that's not good for us. The good news is that the bugs
+have been all fixed now. The bad news is that it's not possible
+anymore to have a PWMOut created for all the pins I'm using for servos
+at once — it was possible only because of that bug...
+
+That means I need to redesign the PCB to use a set of 12 pins for the
+servos that can have PWMOut created for them all at once. To do that,
+I will need to do more testing to determine which pins I can use, and
+there is always a possibility that I don't find such pins — in which
+case I will need to switch to a bigger package, and possibly also a
+SAMD51 chip.
+
+I also need to rethink the battery charging circuit — I want to keep
+the robot off while it's charging. Would also be nice to add that
+flash memory chip, for extra filesystem space for all the files.
+
+I think I will drop the accelerometer in the process, because it turns
+out to not be that useful. I will also give up on the idea of keeping
+the top of the PCB clean and fitting all the components inside the
+hole in the battery holder — that was an interesting, but ultimately
+pointless challenge. I still want to have all SMD parts on one side of
+the board, though, because that makes assembly easier and cheaper, so
+they will probably all go on the top, with only THT parts on the
+bottom.\
+
+

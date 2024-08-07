@@ -1,0 +1,44 @@
+---
+blogpost: true
+date: 2019-11-17
+category: project-167912
+---
+
+# Wouldhavebeens
+Published on 2019-11-17 in {ref}`project-167912`.
+
+The keyboard is now pretty much assembled mechanically, now I "only
+need to program it" (haha). But I have learned a bit with this, and I
+can list things that I would have done differently if I was doing it
+again:
+
+
+ * Standard key spacing. I made the keys denser to make the keyboard
+smaller, but that introduced a number of problems. The space turned
+out to be too big. The switches had to be soldered really carefully,
+to avoid the keys colliding. And also there is something in the muscle
+memory that expects the standard distances between keys — they
+keyboard takes a bit to get used to.
+ * Tighter holes. I left generous tolerances both in the sizes of the
+soldering holes, and the holes that take the body of the switch — to
+be safe with varying manufacturing processes and my own inaccuracies.
+Turns out that makes it hard to solder all the switches straight.
+ * Plated holes for the stabilizers. I didn't expect I will have to make
+my own stabilizers out of paperclips, but if I knew that, the holes
+for mounting the stabilizers would look completely different — the
+hooks would be soldered into the PCB.
+ * Pads for USB cable shield. So that I can solder it to the PCB for more
+robust mechanical connection.
+ * Maybe use a standard 32u4 chip, so that I don't have to write the
+firmware myself.
+
+All in all, this might have gone much worse, so I'm quite happy about
+how it came out.
+
+
+
+:::{image} images/5201601573981448832.JPG
+
+:::
+
+

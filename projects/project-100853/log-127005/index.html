@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Not Again! - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="not-again">
+<h1>Not Again!<a class="headerlink" href="#not-again" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2018-03-23 in <a class="reference internal" href="../#project-100853"><span class="std std-ref">CircuitPython Badge</span></a>.</p>
+<p>Recently a bunch of people on the hack chat (including me) decided to
+start a <a class="reference internal" href="../../project-92210/#project-92210"><span class="std std-ref">Display Module Survey</span></a> project. That led me to order a couple of interesting display modules,
+and when they arrived, I started to have ideas for projects using
+them. One module that interested me in particular is based on the  <a class="reference external" href="https://github.com/deshipu/displays/wiki/UC1701">UC1701</a>  controller chip, and sports a nice ~1.5” LCD display, with optional
+backlight. The display only requires two capacitors and a resistor for
+the LED, so it should be easy to use in my own project.</p>
+<p>At first I thought about using it to replace <span class="xref std std-ref">project-26823</span> ‘s display, but since it has the backlight built-in, I would need to
+also remove lameboy’s color backlight, and that would make me sad. So
+instead I decided to build yet another device.</p>
+<p>I have also been recently asked in a non-committal manner about some
+conference badges that would run (Micro)Python. From the conversation
+I learned that people really don’t want to have LiPo batteries on them
+— which pretty much rules out using ESP8266 or ESP32 chips, as they
+are pretty power-hungry. The next cheapest chip you can get that has a
+flavor of MicroPython ported to it is the SAMD21, and that also only
+needs two capacitors and a voltage regulator.</p>
+<p>So, throw six buttons, a switch, a USB connector and a battery holder
+into the mix, and you have a minimal handheld game console. I quickly
+made a PCB design in Fritzing to see how feasible it is:</p>
+<img alt="projects/project-100853/images/3772281521804324357.png" src="projects/project-100853/images/3772281521804324357.png" />
+<p>And it’s not bad at all. It even fits in the 50×50mm limit. All
+components are on one side, except for the battery holder. I got rid
+of the diode protecting the USB from battery by using the switch —
+instead of on/off, it switches between battery and USB power. To save
+power, the backlight is only on when on USB power. There is no extra
+flash memory for the files — a 32kB filesystem is created in the
+chip’s internal flash instead. Since the 128×64 black-and-white
+display doesn’t need much memory for graphics, this should work. There
+are six free pins (actually there are more, but they were too hard to
+route) broken out on the header at the top, so you can connect
+additional things, like a speaker or an IR sensor.</p>
+<p>I also added a large pad on the back to which you can solder a pin or
+a clip  — so that you can actually wear this as a badge.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

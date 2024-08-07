@@ -1,0 +1,43 @@
+---
+blogpost: true
+date: 2019-06-08
+category: project-165983
+---
+
+# The PCB Design
+Published on 2019-06-08 in {ref}`project-165983`.
+
+This project actually started a looong time ago, back when I was still
+playing with {ref}`project-20941` , {ref}`project-21578` was starting to take shape in my head, and nobody even dreamed about {ref}`project-27629` . I was inspired by the D1 Mini OLED shield, but I wanted some buttons
+on it, and I wanted them to be arranged in a d-pad. Then other
+projects happened, and I forgot about it, until recently, when I
+started to play with those OLED displays again, and found my old
+designs. Having learned a lot in that time, and having found some new
+really tiny buttons, I decided to revive this project and e-design it.
+I came up with this PCB design:
+
+
+
+:::{image} images/960901559991526014.png
+
+:::
+
+
+As mentioned in the description, it's basically the {ref}`project-19371` compressed to a smaller size (and with two of the buttons removed),
+and with a display added on top. I used one of the free pins for the
+display's reset (it has to be reset after powering on, and I didn't
+want to waste the ESP8266 pin for that), but otherwise it's the same.
+
+I had a moment of doubt when choosing how to connect the display: it
+supports both I2C and SPI modes. In the end I decided to use SPI, even
+though the buttons already use I2C. That is because SPI is faster and
+supported in hardware by the ESP8266 (I2C is bit-banged).
+
+Another challenge was fitting the 0.96" display and buttons on top of
+the shield, without them conflicting with the pins. In the end, I
+decided to use the same technique I used in the {ref}`project-165011` — angled pin headers soldered as SMD to the PCB, only this time I made
+them a bit shorter too.
+
+In the end I had some free space in the middle, so I decided to put a
+buzzer in there, so you can even have sounds.
+

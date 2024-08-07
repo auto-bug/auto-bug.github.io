@@ -1,0 +1,31 @@
+---
+blogpost: true
+date: 2019-03-01
+category: project-159733
+---
+
+# CircuitPython 4.0
+Published on 2019-03-01 in {ref}`project-159733`.
+
+It's been quiet here for a while, but that is not because nothing was
+happening — on the contrary, it's because I have been busy with non-
+technical parts of this project. I spoke with several organizations
+and individuals who are interested in teaching using this device, and
+I had a talk at FOSDEM about it:
+
+
+<iframe width="500" height="281" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/E2ZXs2-8HWQ"></iframe>
+
+Right now I'm working on a secret project related to it — I will let
+you know as soon as I am allowed to.
+
+In other news, I was putting off getting all the code cleaned up and
+organized, and finally yesterday evening I have bitten the bullet, so
+to speak, and upgraded the code to the current master of
+CircuitPython, and submitted a pull request upstream:  [https://github.com/adafruit/circuitpython/pull/1607](https://github.com/adafruit/circuitpython/pull/1607)  — hopefully it will get included in the 4.0 release that is coming
+soon.
+
+I still plan to split the current repository into small individual
+subrepositories, so that it's easier to find the code you need, and
+easier to contribute.
+

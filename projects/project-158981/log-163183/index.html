@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>It’s Full of Pins! - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="it-s-full-of-pins">
+<h1>It’s Full of Pins!<a class="headerlink" href="#it-s-full-of-pins" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2019-05-10 in <a class="reference internal" href="../#project-158981"><span class="std std-ref">Kubik M0</span></a>.</p>
+<p>So I started to work on the new PCB, using a QFN48 foorprint for the
+SAMD51G. Of course the footprint I made earlier for the IS31FL3733
+chip was inexplicably broken — as soon as I started editing the pin
+descriptions it started doing really weird stuff. So I re-did it,
+together with a proper schematic image and all that. Then I started
+with the PCB I re-did recently for the <a class="reference internal" href="../../project-19603/#project-19603"><span class="std std-ref">D1 Mini Tote</span></a> , only replaced the PCA9685 with the SAMD51G:</p>
+<img alt="projects/project-158981/images/2028041557442059235.png" src="projects/project-158981/images/2028041557442059235.png" />
+<p>Yes, it’s a mess for now. Ideally, I will use the same headers as for
+the D1 Mini, so that I will be able to use all the D1 Mini shields
+with this robot — including the <a class="reference internal" href="../../project-164561/#project-164561"><span class="std std-ref">Accelerometer Shield for D1 Mini</span></a> I made recently (that’s one reason why I removed the accelerometer
+from the PCB, actually). However, I still don’t know which combination
+of pins will have the correct set of timers for making all those PWM
+outputs. But I’m confident that such a set of pins exists, because of
+an experiment I made with an ItsyBitsy M4:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">board</span>
+<span class="kn">import</span> <span class="nn">pulseio</span>
+
+<span class="n">pins</span> <span class="o">=</span> <span class="p">[</span>
+ <span class="s1">&#39;D7&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;A1&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;D0&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;D1&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;D2&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;D4&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;D5&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;D9&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;SCL&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;D10&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;D11&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;D12&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;D13&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="n">pwms</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">pins</span><span class="p">:</span>
+    <span class="n">pin</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+    <span class="n">pwms</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pulseio</span><span class="o">.</span><span class="n">PWMOut</span><span class="p">(</span><span class="n">pin</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="mi">50</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>So yeah, I can have at least 13 PWM outputs — I’m sure I can find a
+set of pins that will work. Whether they will be easy to route is
+another question, but I have a lot of space and as many vias, as I
+need. Also note, that on the current PCB I actually have 16 servo
+sockets, not 12 — ultimately there will be 4 fewer.</p>
+<p>I will probably also add a flash chip and that speaker with an amp —
+this way I can put all the turret voices from Portal on it.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

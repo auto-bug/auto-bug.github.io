@@ -1,0 +1,22 @@
+---
+blogpost: true
+date: 2019-08-07
+category: project-165032
+---
+
+# Pew Library for TFT
+Published on 2019-08-07 in {ref}`project-165032`.
+
+I also finally tested how the displayio-based Pew library works on the
+SAMD51, and it's much better than on the SAMD21, though you can still
+see a lot of tearing. I still need to try with direct SPI writes, and
+if that doesn't work better, a C module. But it might as well be
+unnecessary, because there is going to be a change to how display is
+refreshed in CircuitPython 5.x, and that might as well resolve this
+problem.
+
+I also tested connecting a small piezo speaker to the DAC pin and
+playing some sounds, and while it is relatively quiet, as expected,
+it's unexpectedly good, even without an amplifier. I might add that to
+the next version, or make an audio shield for it.
+

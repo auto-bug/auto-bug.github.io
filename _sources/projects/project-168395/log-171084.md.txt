@@ -1,0 +1,37 @@
+---
+blogpost: true
+date: 2019-11-18
+category: project-168395
+---
+
+# More Keys
+Published on 2019-11-18 in {ref}`project-168395`.
+
+Just three keys may be useful, but seems like a very simple thing, so
+I decided to try and also make a more advanced version. This time it's
+a full keyboard, using the smallest switches I have in my drawer.
+
+
+
+:::{image} images/6315591574075908041.png
+
+:::
+
+
+I'm not sure if I will have the stamina to actually assemble it, but
+since I was ordering the PCB for the 3-key version anyways, and the
+main cost is shipping, I decided to throw this design in.
+
+
+
+:::{image} images/212241574076007104.png
+
+:::
+
+
+On the back there is a single atmega to do the scanning of the matrix.
+Since there is no way I could fit diodes for every key in there, they
+keyboard will have ghosting effects. I added a separate column just
+for the special keys, like shift, function and so on, to mitigate that
+a bit. It's going to talk to the parent board over serial.
+

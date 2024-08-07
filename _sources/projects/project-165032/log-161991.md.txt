@@ -1,0 +1,59 @@
+---
+blogpost: true
+date: 2019-04-18
+category: project-165032
+---
+
+# Buttons and Layout
+Published on 2019-04-18 in {ref}`project-165032`.
+
+With the display tentatively chosen (we will see how well that one
+works, and if it doesn't, there are many other possibilities) I have
+started to look into adding all the rest of components and arranging
+them. The second biggest part, and one with which the user will have
+intimate contact, are buttons.
+
+Of course for the price, going for simple capacitive touch pads, or
+cheap rubber dome buttons would be the best. But we do want to have at
+least a modicum of tactile feedback and comfort. So tact switches it
+is. I looked through what is available from the usual Chinese sellers,
+and mocked up a couple of layouts:
+
+
+
+:::{image} images/591831555539625614.png
+
+:::
+
+
+You never before noticed how huge those buttons are, did you? Well,
+turns out the smallest you can get are about the size of a 1206 SMD
+resistor. I used similar buttons in the nGame before ( [https://hackaday.io/project/27629-game/log/87435-ngame-revisited](https://hackaday.io/project/27629-game/log/87435-ngame-revisited) ) but they were horrible — designed as reset buttons for development
+boards, they require a lot of force to be pushed. This time I decided
+to try something more similar to the C&K PTS815 switches — they have a
+bigger cap and hopefully require less force. We will see. They do have
+4 pins, though, which is a bit of an annoyance.
+
+But this would be too easy. I also want compatibility with PewPew
+Standalone boards in terms of the connector for the extra pins. That
+is 12 pins with 2.54mm pitch, so a bit difficult to fit, especially
+since the top edge is going to be taken up by the flex ribbon of the
+display. So I came up with something like this:
+
+
+
+:::{image} images/1376611555541121625.png
+
+:::
+
+
+It's a bit bigger than initially anticipated, with some margins around
+the display — that should make it a little bit easier to fit
+everything. And it has the connector, and some free PCB real estate on
+the opposing margin, which can be useful for actually getting that
+thing mounted in a case, if it comes to that.
+
+I'm sure the design will still change — I might decide to not put
+components under the display, for example — but this is at least some
+starting point.
+

@@ -1,0 +1,200 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Taking a Step Back - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="taking-a-step-back">
+<h1>Taking a Step Back<a class="headerlink" href="#taking-a-step-back" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2018-04-12 in <a class="reference internal" href="../#project-100853"><span class="std std-ref">CircuitPython Badge</span></a>.</p>
+<p>After indulging myself with trying out different hardware and
+prototypes, I realized that I really don’t have enough information to
+design a good badge. You know, all those displays and chips and
+sensors and buttons and batteries are cool, but at the end of the day
+you have to <em>design</em> something that serves a <em>purpose</em>, and if you
+don’t make that the center of your design, there is a big chance it
+will suck. So let’s take a step back and think what we need.</p>
+<section id="core-functionalities">
+<h2>Core Functionalities<a class="headerlink" href="#core-functionalities" title="Permalink to this heading">¶</a></h2>
+<p>Things without which a badge is not a badge. These are non-negotiable
+requirements.</p>
+<section id="identification">
+<h3>Identification<a class="headerlink" href="#identification" title="Permalink to this heading">¶</a></h3>
+<p>This is so basic, that it’s easy to forget about it, and go designing
+watches or belt buckles. First and foremost a conference badge has to
+identify its wearer to all other conference participants that they
+might meet. That usually means that it has to have the owner’s name
+(or nickname) displayed prominently somewhere at all times in a way
+that makes it visible and easy to read from a relatively large
+distance.</p>
+<p>In practice, this means that the badge has to be worn in a visible
+place (traditionally on your neck, but clipped to your breast pocket
+or bag strap would also work). It also sets the minimum size of the
+badge — it can’t be the 5×5cm tiny little device that I initially
+planned — that will simply not work.</p>
+<p>The simplest, most fault-proof, long-lasting, convenient and obvious
+way of achieving this is to simply have a white area on the badge
+where you can write your name with a sharpie. It always works, even if
+you run out of battery or release the blue smoke, you can fix it if
+you made a mistake, and you don’t need to know the names of all
+participants up front — you can even have some spare badges. It also
+makes it obvious which badge is yours, in case you mix them up while
+hacking on them.</p>
+<p>I really have no idea what I was thinking with the e-ink display.</p>
+</section>
+<section id="contact">
+<h3>Contact<a class="headerlink" href="#contact" title="Permalink to this heading">¶</a></h3>
+<p>The second function of a badge like this is to provide your contact
+information to anyone you choose. Whether it’s a vendor at a booth
+asking to scan your badge, another participant that you have just
+chatted with and want to continue it online, or a group of people that
+you want to go to lunch with next day — the idea is pretty much the
+same.</p>
+<p>The simplest, “analog” way of solving this is of course to have your
+e-mail address (or twitter handle, or whatever) written then on your
+badge, in letters small enough to not be visible from afar, so that
+the people wanting to copy it (or take a photo) have to come close and
+possibly ask you. But there is a lot of room for technology here.</p>
+<p>Bar and QR codes, NFC tags, IR beaming, BLE and other wireless
+communication methods can be helpful here. Being compatible with
+existing devices, such as phones, is a big plus here, of course, but
+we shouldn’t require people to have a phone to use it. Ideally, there
+would be several methods available, with the analog fallback in case
+of a dead battery.</p>
+</section>
+</section>
+<section id="extras">
+<h2>Extras<a class="headerlink" href="#extras" title="Permalink to this heading">¶</a></h2>
+<p>Those are the thing that make the electronic badge more useful than
+the piece of paper that you normally get. They should be good enough
+to justify the extra expense and hassle.</p>
+<section id="self-expression">
+<h3>Self-expression<a class="headerlink" href="#self-expression" title="Permalink to this heading">¶</a></h3>
+<p>This is a Python-based badge for Python conferences, so it’s
+fundamental that you should be able to (easily) program it with
+Python. That’s the whole point of using MicroPython/CircuitPython
+here. But it’s not enough to just be able to run your program on it —
+you should be able to show off the programs you have written!</p>
+<p>That means that the badge must be able to run the program while you
+are wearing it (and not just when connected to your computer), which
+implies a battery. It also means that the results of running that
+program should be visible and unique.</p>
+<p>RGB LEDs are nice for that, because they are flashy, colorful, and
+visible from far away, especially when blinking or cycling colors.
+Unfortunately, a lot of LEDs can run down your battery pretty fast,
+and also there is only so many ways you can make them blink — so the
+uniqueness aspect suffers a bit.</p>
+<p>A LED matrix provides much more freedom of expression. Even if it’s
+monochromatic, you can display images, scroll text, play animations,
+visualize data, etc. — the possibilities are very rich and can be very
+unique.</p>
+<p>A display can be even better, even though cheap displays are rather
+small, so it wouldn’t be so visible from afar.</p>
+<p>Sound could also be used for self-expression, but it can get very
+messy when a lot of people do it all at once. There would also have to
+be a fool-proof way of muting it (preferably a physical switch) for
+the talks.</p>
+</section>
+<section id="entertainment">
+<h3>Entertainment<a class="headerlink" href="#entertainment" title="Permalink to this heading">¶</a></h3>
+<p>It would be nice if it was possible to play games on the badge —
+either provided, or — even better — written by the participants
+themselves. This can be great for the boring talks or waiting in queue
+for lunch, but it could be even better to have multi-player games, or
+other kinds of games requiring interactions between the participants.</p>
+<p>Of course, for this you need some kind of a display (or the LED
+matrix), some kind of controls (buttons, accelerometer) and for the
+multiplayer things — some means of communication. All this should come
+with simple to use libraries and pre-packaged graphics, so that people
+can make something nice fast.</p>
+<p>The display for games should’t have too big of a resolution, so that
+you won’t need to push a lot of pixels to update it, and it should be
+fast, so that you can do animations and so on. Of course there are
+games like 2048 or sudoku that will work on slow displays too.</p>
+</section>
+<section id="schedule">
+<h3>Schedule<a class="headerlink" href="#schedule" title="Permalink to this heading">¶</a></h3>
+<p>This is my initial idea for this project, but as you can see, it got
+relegated to quite a low priority by now. If you are giving the
+participants badges, you may as well include the talk schedules on
+them. With the ability to mark which talks they want to go to. And
+possibly with a real time clock and notification functions. The
+ability to update the schedule when there are changes in it would be
+nice too.</p>
+<p>This requires some means of displaying text, preferably a monochrome
+display with relatively large resolution. It doesn’t have to be fast,
+but should be able to do partial updates in less than 1 second. It
+doesn’t have to be bright or large — you will use it while staring at
+it up close.</p>
+<p>This really conflicts with the other goals, so I’m really not sure
+about it anymore. I guess it explains why no other badge does it.</p>
+</section>
+<section id="appearance">
+<h3>Appearance<a class="headerlink" href="#appearance" title="Permalink to this heading">¶</a></h3>
+<p>We still want it to look nice and be appealing to non-technical
+audience, of course, but I can see to way to make you wear it outside
+of the conference, considering the size requirements and the big place
+for your name on it. So no accessories, no watches, no hair ornaments,
+jewelry, etc. — it’s going to be a badge and it’s going to look like a
+badge.</p>
+</section>
+<section id="hardware-hacking">
+<h3>Hardware Hacking<a class="headerlink" href="#hardware-hacking" title="Permalink to this heading">¶</a></h3>
+<p>The number of people who are going to actually connect anything to
+their badges is going to be small probably — there are so many other
+things you can do at a conference. But adding a breadboard-friendly
+pin header somewhere should be easy, so why not do it. This is also a
+way to provide extension modules with additional sensors and devices
+that didn’t fit in the budget for everyone, but are interesting to
+more advanced users.</p>
+</section>
+</section>
+</section>
+
+
+</div>
+  </body>
+</html>

@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Reevaluating the Feasibility - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="reevaluating-the-feasibility">
+<h1>Reevaluating the Feasibility<a class="headerlink" href="#reevaluating-the-feasibility" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2019-05-09 in <a class="reference internal" href="../#project-158981"><span class="std std-ref">Kubik M0</span></a>.</p>
+<p>I compiled a custom CircuitPython firmware with all the pins exposed,
+and ran a simple program looking for any combination of pins that
+would give me 12 PWM outputs:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">permutation</span> <span class="ow">in</span> <span class="n">permutations</span><span class="p">(</span><span class="n">pins</span><span class="p">):</span>
+    <span class="n">pwms</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">pin</span> <span class="ow">in</span> <span class="n">permutation</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">pwms</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pulseio</span><span class="o">.</span><span class="n">PWMOut</span><span class="p">(</span><span class="n">pin</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="mi">50</span><span class="p">))</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">RuntimeError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">):</span>
+            <span class="k">pass</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pwms</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">pwms</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">pwm</span> <span class="ow">in</span> <span class="n">pwms</span><span class="p">:</span>
+        <span class="n">pwm</span><span class="o">.</span><span class="n">deinit</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Yes, I know, I could have checked the datasheet for timers instead,
+but this is easier and makes more more certain.</p>
+<p>That’s a lot of permutations to check, so it took some time, but
+ultimately it came up empty. There is no permutation that would give
+me more than 10 PWM outputs on the  SAMD21E18A chip. So what other
+options do I have now?\</p>
+<p>I could use a SAMD21G18A that has 38 GPIO pins — I’m sure they come
+with some extra timers that would enable a few extra PWMs. But
+the SAMD21E18A costs $2.38 in singles, while SAMD21G18A costs $3.47.
+That increase in price wouldn’t be that bad by itself, however, for
+$4.01 I can have a SAMD51G19A instead, and a PCA9685 costs a dollar.</p>
+<p>So now I have several options:</p>
+<ul class="simple">
+<li><p>SAMD21E18A + PCA9685 — $3.38</p></li>
+<li><p>SAMD21G18A — $3.47</p></li>
+<li><p>SAMD51G19A — $4.01</p></li>
+</ul>
+<p>But it’s not just about the price, is it? The SAMD51 is a massively
+more powerful microcontroller, with <em>much</em> more RAM, faster clock and
+more flash. Also hardware floating point operations and a bunch of
+other stuff. And that is for just $2 more. I really think that it’s
+the best option. Besides, I’ve been wanting to make a board with that
+microcontroller for a while, but since <span class="xref std std-ref">project-86818</span> is on hold, I didn’t really have a chance. On top of that, I have one
+already in my drawer, so no need to wait for parts (though I will
+still need to wait for the PCB).</p>
+</section>
+
+
+</div>
+  </body>
+</html>

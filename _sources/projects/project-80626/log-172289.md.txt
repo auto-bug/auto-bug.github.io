@@ -1,0 +1,38 @@
+---
+blogpost: true
+date: 2019-12-26
+category: project-80626
+---
+
+# Dynamically Loadable Module
+Published on 2019-12-26 in {ref}`project-80626`.
+
+MicroPython 1.12 is released, and the new release includes an
+interesting feature: the .mpy modules can now contain native code
+compiled with C or any other language that produces standard object
+files. Of course such .mpy files are then architecture-specific. This
+is great news for the stage library, because it means that you won't
+need to compile it into the firmware anymore — you should be able to
+just copy the .mpy file to the filesystem and import it as any other
+Python module.
+
+But how to actually do this? There is very brief documentation at  [http://docs.micropython.org/en/latest/develop/natmod.html](http://docs.micropython.org/en/latest/develop/natmod.html)  and there are some examples at [https://github.com/micropython/micropython/tree/master/examples/natmod](https://github.com/micropython/micropython/tree/master/examples/natmod)  — not much to go by, but I will try anyways.
+
+The first, naive, try failed badly. Just removing the module
+initialization code and replacing it with mpy_init with equivalent
+functions is maybe enough for the factorial example, but not for my
+library — in particular, the dicts that act as namespaces for the two
+classes that I defined fail to compile, because they would normally go
+to fixed code, and that is not supported with dynamic loading. So I
+started to dig through the examples, and figured out from the framebuf
+and regexp modules how to dynamically declare those classes. So far so
+good. Now the mpy_ld.py script crashes. Great. After naively fixing
+the script, the compilation still fails, because it can't locate
+the mp_obj_get_array function. Which is super-weird, because it has no
+problem locating other functions from the py/obj.c file.
+
+My code is available  [https://github.com/python-ugame/micropython-stage/tree/master/mpy](https://github.com/python-ugame/micropython-stage/tree/master/mpy)  if anybody wants to give it their try.
+
+At this point I've given up. I might try it again after the next
+release, maybe this feature will be more ready for actual use.
+

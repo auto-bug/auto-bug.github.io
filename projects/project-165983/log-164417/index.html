@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Assembly - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="assembly">
+<h1>Assembly<a class="headerlink" href="#assembly" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2019-06-08 in <a class="reference internal" href="../#project-165983"><span class="std std-ref">D1 Mini UI Shield</span></a>.</p>
+<p>A few weeks later, and the PCBs have arrived. Unfortunately they
+weren’t matte-black, as I originally ordered from <a class="reference external" href="https://hackaday.io/hacker/147848">&#64;Elecrow</a> , because I have panelized them, and apparently that is not allowed
+with matter-black — but they had no problems when I asked to change
+the color to red.</p>
+<p>I tested how the angled headers as SMD pin headers work, and that was
+reasonably good:</p>
+<img alt="projects/project-165983/images/8678791559992238381.jpg" src="projects/project-165983/images/8678791559992238381.jpg" />
+<p>(I included a module with a 0.96” display that I’m going to use here,
+for scale.)</p>
+<p>The second attempt actually went much smoother, and I have a good
+technique of soldering them without too much work now, so I consider
+that experiment a success.</p>
+<p>Next, I programmed an attiny24, soldered it in place, soldered all the
+passives, and added a display that, for now, I just desoldered from
+some module (I have proper, white, displays on order). A quick
+MicroPython script to test the display:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">machine</span>
+
+<span class="n">spi</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">SPI</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">baudrate</span><span class="o">=</span><span class="mi">1000000</span><span class="p">)</span>
+<span class="n">cs</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">dc</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="n">cs</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">dc</span><span class="p">(</span><span class="ow">not</span> <span class="n">command</span><span class="p">)</span>
+    <span class="n">spi</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">cs</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+
+<span class="n">write</span><span class="p">(</span>
+    <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\xAE</span><span class="s1">&#39;</span> <span class="c1"># display enable = off</span>
+    <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x8D\x14</span><span class="s1">&#39;</span> <span class="c1"># charge pump = enable</span>
+    <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\xAF</span><span class="s1">&#39;</span> <span class="c1"># display enable = on</span>
+    <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x20\x02</span><span class="s1">&#39;</span> <span class="c1"># address mode = page</span>
+    <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\xB7</span><span class="s1">&#39;</span> <span class="c1"># page = 7</span>
+    <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x00</span><span class="s1">x</span><span class="se">\x12</span><span class="s1">&#39;</span> <span class="c1"># column = 32</span>
+<span class="p">)</span>
+
+<span class="n">write</span><span class="p">(</span>
+    <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\xFF\x0F\xFF\x0F\xff\x0f\xff</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="kc">False</span>
+<span class="p">)</span>
+
+</pre></div>
+</div>
+<p>and several hours to fiddling with the passives and connections, until
+I figured out that the flex cable in the display I have is broken and
+only works in a certain position:</p>
+<img alt="projects/project-165983/images/1223401559992713532.jpg" src="projects/project-165983/images/1223401559992713532.jpg" />
+<p>But at least I confirmed that the display is working.</p>
+<p>I’m still waiting for the buttons to arrive — it’s been two months
+already, since I ordered them for <a class="reference internal" href="../../project-165032/#project-165032"><span class="std std-ref">PewPew M4</span></a> — but I hope they will arrive Really Soon Now™.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

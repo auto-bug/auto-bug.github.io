@@ -1,0 +1,25 @@
+---
+blogpost: true
+date: 2018-07-17
+category: project-159787
+---
+
+# Why?
+Published on 2018-07-17 in {ref}`project-159787`.
+
+Every time I looked at a development board that had USB A plug
+integrated into its PCB, I saw the teeth of a skull. So one night when
+I couldn't sleep, I fired up Inkscape, drew a rectangle and three
+ellipses, and made this.
+
+Once I had it imported into Fritzing, I had to decide what components
+to put on it. I could simply make it an USB light, with two LEDs in
+the eyes. Or I could make it play a melody, like the {ref}`project-7860` . In the end, I decided to just put a SAMD21 chip on it, and make it
+equivalent to an Adafruit Gema M0.
+
+ [You can get the boards](https://oshpark.com/shared_projects/xNvQYFxd)  at [@oshpark ](https://hackaday.io/hacker/131216) if you want to make your own. It only has four components, but one of
+them is a QFN package, so a hot air gun is recommended.
+
+Once the PCBs arrive, I will make a board definition for CircuitPython
+for it.
+

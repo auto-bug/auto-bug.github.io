@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Dynamically Loadable Module - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="dynamically-loadable-module">
+<h1>Dynamically Loadable Module<a class="headerlink" href="#dynamically-loadable-module" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2019-12-26 in <a class="reference internal" href="../#project-80626"><span class="std std-ref">Stage, a Tile and Sprite Engine</span></a>.</p>
+<p>MicroPython 1.12 is released, and the new release includes an
+interesting feature: the .mpy modules can now contain native code
+compiled with C or any other language that produces standard object
+files. Of course such .mpy files are then architecture-specific. This
+is great news for the stage library, because it means that you won’t
+need to compile it into the firmware anymore — you should be able to
+just copy the .mpy file to the filesystem and import it as any other
+Python module.</p>
+<p>But how to actually do this? There is very brief documentation at  <a class="reference external" href="http://docs.micropython.org/en/latest/develop/natmod.html">http://docs.micropython.org/en/latest/develop/natmod.html</a>  and there are some examples at <a class="reference external" href="https://github.com/micropython/micropython/tree/master/examples/natmod">https://github.com/micropython/micropython/tree/master/examples/natmod</a>  — not much to go by, but I will try anyways.</p>
+<p>The first, naive, try failed badly. Just removing the module
+initialization code and replacing it with mpy_init with equivalent
+functions is maybe enough for the factorial example, but not for my
+library — in particular, the dicts that act as namespaces for the two
+classes that I defined fail to compile, because they would normally go
+to fixed code, and that is not supported with dynamic loading. So I
+started to dig through the examples, and figured out from the framebuf
+and regexp modules how to dynamically declare those classes. So far so
+good. Now the mpy_ld.py script crashes. Great. After naively fixing
+the script, the compilation still fails, because it can’t locate
+the mp_obj_get_array function. Which is super-weird, because it has no
+problem locating other functions from the py/obj.c file.</p>
+<p>My code is available  <a class="reference external" href="https://github.com/python-ugame/micropython-stage/tree/master/mpy">https://github.com/python-ugame/micropython-stage/tree/master/mpy</a>  if anybody wants to give it their try.</p>
+<p>At this point I’ve given up. I might try it again after the next
+release, maybe this feature will be more ready for actual use.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

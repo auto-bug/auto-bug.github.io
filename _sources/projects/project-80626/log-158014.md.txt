@@ -1,0 +1,19 @@
+---
+blogpost: true
+date: 2019-01-08
+category: project-80626
+---
+
+# MicroPython Branch
+Published on 2019-01-08 in {ref}`project-80626`.
+
+I just realized that while this project page links to the repository
+with the plain python portion of the library, the portion that is
+written in C is harder to find. So here it is: [https://github.com/deshipu/micropython/tree/stage](https://github.com/deshipu/micropython/tree/stage) 
+
+The branch is a little bit dated, since I didn't upgrade it in a
+while, but if you look at the three last commits, you will see all the
+required code. It's not much, just enough to make the plain python
+version fast enough. Enjoy!\
+
+

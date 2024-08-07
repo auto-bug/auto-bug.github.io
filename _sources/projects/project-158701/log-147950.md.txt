@@ -1,0 +1,39 @@
+---
+blogpost: true
+date: 2018-06-14
+category: project-158701
+---
+
+# Ready for More Prototypes
+Published on 2018-06-14 in {ref}`project-158701`.
+
+More displays just arrived:
+
+
+
+:::{image} images/6609991528967077297.jpg
+
+:::
+
+
+I now have three goals:
+
+
+ * write a GIF decoder in C and include it in the firmware, so that
+animated GIFs can be displayed,
+ * redesign the PCB with a QFN package of the chip, and try to make it
+all thinner,
+ * figure a way to get rid of the physical switch, so the whole thing can
+be cast in resin or something similar.
+
+For the second point, I'm considering making a hole for the battery in
+the PCB, and moving the microusb port and the charger electronics to a
+charging station.
+
+For the third point, I guess I would need to add a mosfet on the
+backlight, figure out the sleep modes of the MCU, and make it wake up
+on touch or add an accelerometer for waking up (and also for some
+interactive animations).
+
+However, for now the first point has priority.
+

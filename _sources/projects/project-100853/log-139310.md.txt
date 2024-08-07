@@ -1,0 +1,25 @@
+---
+blogpost: true
+date: 2018-04-05
+category: project-100853
+---
+
+# The Look-up Table Holds the Secret
+Published on 2018-04-05 in {ref}`project-100853`.
+
+I spent half of the last night poring over the datasheets and wading
+through horrible C code examples, but finally I managed to find the
+code that was used to make this example:
+
+
+<iframe style="width: 500px; height: 281px;" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/nJuNz2a9qcQ"></iframe>
+
+Inside I found a lot of scrambled code, unused files, copy-pasted
+fragments, but also the thing I was looking for: the LUT tables for
+the refresh sequence! After adding them to my driver code, the full
+refresh suddenly takes less than 2 seconds, and the "quick" refresh is
+practically instant (but of course leaves some mess from the previous
+image). That is so much better!
+
+I have published my driver code here:  [https://bitbucket.org/thesheep/circuitpython-epaper/src/](https://bitbucket.org/thesheep/circuitpython-epaper/src/) 
+

@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Testing Cheap E-paper Displays - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="testing-cheap-e-paper-displays">
+<h1>Testing Cheap E-paper Displays<a class="headerlink" href="#testing-cheap-e-paper-displays" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2018-04-04 in <a class="reference internal" href="../#project-100853"><span class="std std-ref">CircuitPython Badge</span></a>.</p>
+<p>The e-paper displays that I mentioned earlier arrived today, and I was
+able to do some testing with one of them:</p>
+<img alt="projects/project-100853/images/6628171522867428067.jpg" src="projects/project-100853/images/6628171522867428067.jpg" />
+<p>The datasheet has a very handy flow diagram, which tells us exactly
+what SPI commands need to be sent. Using that, I wrote a simple
+driver:</p>
+<p>———- more ———-</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Display</span><span class="p">:</span>
+    <span class="n">width</span> <span class="o">=</span> <span class="mi">152</span>
+    <span class="n">height</span> <span class="o">=</span> <span class="mi">152</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spi</span><span class="p">,</span> <span class="n">dc</span><span class="p">,</span> <span class="n">cs</span><span class="p">,</span> <span class="n">busy</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_spi</span> <span class="o">=</span> <span class="n">spi</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cs</span> <span class="o">=</span> <span class="n">cs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dc</span> <span class="o">=</span> <span class="n">dc</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_busy</span> <span class="o">=</span> <span class="n">busy</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">buffer</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">(</span><span class="mi">152</span> <span class="o">*</span> <span class="mi">19</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_wait</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">while</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_busy</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
+            <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">_command</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dc</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cs</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_spi</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dc</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">data</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_spi</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cs</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_command</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x06</span><span class="s1">&#39;</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x17\x17\x17</span><span class="s1">&#39;</span><span class="p">)</span>  <span class="c1"># booster soft start</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_command</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x04</span><span class="s1">&#39;</span><span class="p">)</span>  <span class="c1"># power on</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_wait</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_command</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x00</span><span class="s1">&#39;</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x1f</span><span class="s1">&#39;</span><span class="p">)</span>  <span class="c1"># panel setting</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_command</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x61</span><span class="s1">&#39;</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x98\x00\x98</span><span class="s1">&#39;</span><span class="p">)</span>  <span class="c1"># resolution 152x152</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_command</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x50</span><span class="s1">&#39;</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x87</span><span class="s1">&#39;</span><span class="p">)</span>  <span class="c1"># VCOM and data interval</span>
+
+    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cs</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_command</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x10</span><span class="s1">&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">buffer</span><span class="p">)</span>  <span class="c1"># data start 1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_command</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x11</span><span class="s1">&#39;</span><span class="p">)</span>  <span class="c1"># stop data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_command</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x12</span><span class="s1">&#39;</span><span class="p">)</span>  <span class="c1"># display refresh</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cs</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_wait</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">pixel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">152</span> <span class="ow">or</span> <span class="ow">not</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="mi">152</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="n">page</span> <span class="o">=</span> <span class="n">y</span> <span class="o">//</span> <span class="mi">8</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">y</span> <span class="o">%</span> <span class="mi">8</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">color</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">buffer</span><span class="p">[</span><span class="n">page</span> <span class="o">*</span> <span class="mi">152</span> <span class="o">+</span> <span class="n">x</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">mask</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">color</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">buffer</span><span class="p">[</span><span class="n">page</span> <span class="o">*</span> <span class="mi">152</span> <span class="o">+</span> <span class="n">x</span><span class="p">]</span> <span class="o">|=</span> <span class="n">mask</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">buffer</span><span class="p">[</span><span class="n">page</span> <span class="o">*</span> <span class="mi">152</span> <span class="o">+</span> <span class="n">x</span><span class="p">]</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="n">mask</span>
+
+</pre></div>
+</div>
+<p>Now, they weren’t joking when they wrote that a full update takes 6
+seconds — that is true, and during that time the display keeps
+blinking, so you can’t use it. I was hoping that partial updates would
+be faster and without the flickering, but turns out that they are not
+— the display goes through exactly the same procedure, blinking
+everything, but only updates the small window that was specified. I’m
+not entirely sure what this is useful for.</p>
+<p>But not all hope is lost. I might be able to tweak the chip’s settings
+a little bit, to force an update without flickering — of course you
+can make a few small ones like that, before you have to discharge the
+whole thing and do a full update — but I hope to be able to at least
+make it smooth enough to be able to move a cursor in a menu. Without
+that, there isn’t really any chance for interactivity.</p>
+<p>UPDATE: After some meditation, reading the datasheets, experimenting,
+and — most of all — looking at code that handles that for other
+displays, I have figured out what needs to be done for quick partial
+refreshes. Unfortunately, that will involve a bit of work. Basically,
+the sequence the chip goes through on update is programmed into it as
+a lookup table. There is, however, an option to use an externally
+specified lookup table instead — where I can specify a much shorter
+cycle. However, that involves a little bit of work in figuring out
+first the format of that lookup table, and then the set of values that
+will work for this particular display. The first is fortunately
+described, albeit briefly, in the datasheet. The second will require a
+bit of experimentation.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

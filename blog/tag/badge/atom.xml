@@ -1,0 +1,154 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>http://deshipu.art/</id>
+  <title>deshipu.art - Posts tagged badge</title>
+  <updated>2024-08-07T20:33:05.784555+00:00</updated>
+  <link href="http://deshipu.art/"/>
+  <link href="http://deshipu.art/blog/tag/badge/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-100853/</id>
+    <title>CircuitPython Badge</title>
+    <updated>2018-03-23T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="circuitpython-badge"&gt;
+
+&lt;p&gt;A handheld running CircuitPython and cheap enough for a badge.&lt;/p&gt;
+&lt;div class="project-thumb"&gt;
+&lt;a class="reference external image-reference" href="/_images/7835931522668595523.jpg"&gt;&lt;img alt="projects/project-100853/images/7835931522668595523.jpg" src="projects/project-100853/images/7835931522668595523.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/3747271522786446593.jpg"&gt;&lt;img alt="projects/project-100853/images/3747271522786446593.jpg" src="projects/project-100853/images/3747271522786446593.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/6241551523715650875.jpg"&gt;&lt;img alt="projects/project-100853/images/6241551523715650875.jpg" src="projects/project-100853/images/6241551523715650875.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/8157221525092901236.jpg"&gt;&lt;img alt="projects/project-100853/images/8157221525092901236.jpg" src="projects/project-100853/images/8157221525092901236.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/9008771527764049628.jpg"&gt;&lt;img alt="projects/project-100853/images/9008771527764049628.jpg" src="projects/project-100853/images/9008771527764049628.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/7917991527791169949.jpg"&gt;&lt;img alt="projects/project-100853/images/7917991527791169949.jpg" src="projects/project-100853/images/7917991527791169949.jpg" /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;More and more conferences want to have a cool badge. But most badges
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;are not really that interesting or useful. Sure, you can learn
+soldering if you have to assemble it yourself — but then most people
+never do. You can play tetris during boring talks, or, if you really
+don’t want to attend any talks, you can spend time programming it in
+some exotic assembly to play snake. And as soon as you get home, it
+goes into a drawer to never see the light of day again.&lt;/p&gt;
+&lt;p&gt;But we can do better than that!&lt;/p&gt;
+&lt;p&gt;We can make a badge that is useful during the conference — that has
+USB disk storage where you can put conference materials, slides of all
+talks, etc. It can display the schedule, and maybe even have reminders
+for the talks you wanted to see. It can have some simple games for the
+boring talks, but also perhaps some social games, to make you talk to
+other people. But most importantly of all, it can be super-easy to
+program, without having to install anything on your computer or learn
+some esoteric language — by simply copying Python files on it. And
+finally, when you get home from the conference, you can incorporate it
+into other projects.&lt;/p&gt;
+&lt;p&gt;This project is not about a badge for any particular conference. It’s
+about making a baseline project, that can be then taken and
+extended/modified for a particular conference. The idea is that it
+should be easier to make something actually useful, instead of a
+gadget with blinking LEDs.&lt;/p&gt;
+&lt;section id="logs"&gt;
+&lt;h2&gt;Logs&lt;/h2&gt;
+&lt;ul class="postlist-style-none postlist simple"&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-10-02 - &lt;a class="reference internal" href="../../../projects/project-100853/log-153701/"&gt;Sketching the Next Version&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-10-01 - &lt;a class="reference internal" href="../../../projects/project-100853/log-153620/"&gt;Prototypes in Good Hands&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-07-16 - &lt;a class="reference internal" href="../../../projects/project-100853/log-149596/"&gt;Testing Prototypes and Possible Optimizations&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-05-31 - &lt;a class="reference internal" href="../../../projects/project-100853/log-147120/"&gt;Full Badge Assembled and Working&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-05-25 - &lt;a class="reference internal" href="../../../projects/project-100853/log-146732/"&gt;Full PCB&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-05-07 - &lt;a class="reference internal" href="../../../projects/project-100853/log-145926/"&gt;Full Size&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-05-06 - &lt;a class="reference internal" href="../../../projects/project-100853/log-145884/"&gt;Repository and Schematic&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-05-06 - &lt;a class="reference internal" href="../../../projects/project-100853/log-145867/"&gt;Accelerometer&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-05-05 - &lt;a class="reference internal" href="../../../projects/project-100853/log-145825/"&gt;Battery Life&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-05-01 - &lt;a class="reference internal" href="../../../projects/project-100853/log-145578/"&gt;QFN48: Welcome to Hell&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-04-30 - &lt;a class="reference internal" href="../../../projects/project-100853/log-145467/"&gt;The PCBs are Here!&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-04-30 - &lt;a class="reference internal" href="../../../projects/project-100853/log-145488/"&gt;Got Pixel?&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-04-23 - &lt;a class="reference internal" href="../../../projects/project-100853/log-145068/"&gt;PCBs on the Way&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-04-20 - &lt;a class="reference internal" href="../../../projects/project-100853/log-144706/"&gt;A Short Video&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-04-14 - &lt;a class="reference internal" href="../../../projects/project-100853/log-143913/"&gt;The Matrix&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-04-14 - &lt;a class="reference internal" href="../../../projects/project-100853/log-143994/"&gt;Redesigned PCB&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-04-14 - &lt;a class="reference internal" href="../../../projects/project-100853/log-143997/"&gt;Mockup&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-04-12 - &lt;a class="reference internal" href="../../../projects/project-100853/log-143742/"&gt;Taking a Step Back&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-04-10 - &lt;a class="reference internal" href="../../../projects/project-100853/log-142479/"&gt;The Shape&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-04-10 - &lt;a class="reference internal" href="../../../projects/project-100853/log-142400/"&gt;Mark II&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-04-05 - &lt;a class="reference internal" href="../../../projects/project-100853/log-139310/"&gt;The Look-up Table Holds the Secret&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-04-04 - &lt;a class="reference internal" href="../../../projects/project-100853/log-138440/"&gt;Testing Cheap E-paper Displays&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-04-03 - &lt;a class="reference internal" href="../../../projects/project-100853/log-138121/"&gt;Mark I&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-04-02 - &lt;a class="reference internal" href="../../../projects/project-100853/log-137234/"&gt;Text&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-03-27 - &lt;a class="reference internal" href="../../../projects/project-100853/log-132552/"&gt;Is E-ink Ready Yet?&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-03-26 - &lt;a class="reference internal" href="../../../projects/project-100853/log-131090/"&gt;Breaking: Liquid Crystals are Slow!&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-03-25 - &lt;a class="reference internal" href="../../../projects/project-100853/log-129921/"&gt;We Get Signal&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-03-23 - &lt;a class="reference internal" href="../../../projects/project-100853/log-127005/"&gt;Not Again!&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section id="instructions"&gt;
+&lt;h2&gt;Instructions&lt;/h2&gt;
+&lt;/section&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-100853/" rel="alternate"/>
+    <summary>A handheld running CircuitPython and cheap enough for a badge.</summary>
+    <category term="2018hackadayprize" label="2018hackadayprize"/>
+    <category term="badge" label="badge"/>
+    <category term="circuitpython" label="circuitpython"/>
+    <category term="hardware" label="hardware"/>
+    <category term="micropython" label="micropython"/>
+    <category term="ongoingproject" label="ongoing project"/>
+    <category term="python" label="python"/>
+    <published>2018-03-23T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-164929/</id>
+    <title>PyBadge Hacking</title>
+    <updated>2019-04-11T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="pybadge-hacking"&gt;
+
+&lt;p&gt;Hacking on Adafruit’s PyBadge&lt;/p&gt;
+&lt;div class="project-thumb"&gt;
+&lt;a class="reference external image-reference" href="/_images/4208061554992232926.jpg"&gt;&lt;img alt="projects/project-164929/images/4208061554992232926.jpg" src="projects/project-164929/images/4208061554992232926.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/5699241554979302535.jpg"&gt;&lt;img alt="projects/project-164929/images/5699241554979302535.jpg" src="projects/project-164929/images/5699241554979302535.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/2592411555151890169.jpg"&gt;&lt;img alt="projects/project-164929/images/2592411555151890169.jpg" src="projects/project-164929/images/2592411555151890169.jpg" /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Adafruit&amp;#39;s PyBadge is coming soon, and I got my hands on a prototype.
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Now I will do science to it.&lt;/p&gt;
+&lt;p&gt;What is PyBadge? It’s a handheld device the size of a credit card with
+a display, a bunch of buttons, a microcontroller running CircuitPython
+and a bunch of extras (neopixels, accelerometer, speaker, flash
+storage, battery charging, light sensor). It is also a secretly a
+Feather, as you can connect FeatherWings to it.&lt;/p&gt;
+&lt;p&gt;It is similar to, but much more powerful than my earlier project &lt;a class="reference internal" href="../../../projects/project-27629/#project-27629"&gt;&lt;span class="std std-ref"&gt;µGame&lt;/span&gt;&lt;/a&gt; (and the reason why I paused work on &lt;span class="xref std std-ref"&gt;project-86818&lt;/span&gt; ). I should be able to get my libraries and games from µGame to run on
+it, but I hope that I can also do some other fun things with it.&lt;/p&gt;
+&lt;iframe style="width: 500px; height: 281px;" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/HT4XKfFpWoo"&gt;&lt;/iframe&gt;
+&lt;section id="logs"&gt;
+&lt;h2&gt;Logs&lt;/h2&gt;
+&lt;ul class="postlist-style-none postlist simple"&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-06-30 - &lt;a class="reference internal" href="../../../projects/project-164929/log-165222/"&gt;Adafruit Learn Guide&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-06-24 - &lt;a class="reference internal" href="../../../projects/project-164929/log-164989/"&gt;Jumper Wire with displayio for PyGamer&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-06-17 - &lt;a class="reference internal" href="../../../projects/project-164929/log-164760/"&gt;PyGamer&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-05-09 - &lt;a class="reference internal" href="../../../projects/project-164929/log-163168/"&gt;Finish&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-05-08 - &lt;a class="reference internal" href="../../../projects/project-164929/log-163117/"&gt;Bugs Bugs Bugs&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-04-24 - &lt;a class="reference internal" href="../../../projects/project-164929/log-162433/"&gt;On Sale&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-04-13 - &lt;a class="reference internal" href="../../../projects/project-164929/log-161767/"&gt;Stage Library&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-04-11 - &lt;a class="reference internal" href="../../../projects/project-164929/log-161661/"&gt;Buttons&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section id="instructions"&gt;
+&lt;h2&gt;Instructions&lt;/h2&gt;
+&lt;/section&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-164929/" rel="alternate"/>
+    <summary>Hacking on Adafruit’s PyBadge</summary>
+    <category term="CONSole" label="CONSole"/>
+    <category term="Software" label="Software"/>
+    <category term="badge" label="badge"/>
+    <category term="circuitpython" label="circuitpython"/>
+    <category term="completedproject" label="completed project"/>
+    <category term="game" label="game"/>
+    <category term="gaming" label="gaming"/>
+    <category term="handheld" label="handheld"/>
+    <category term="micropython" label="micropython"/>
+    <category term="python" label="python"/>
+    <published>2019-04-11T00:00:00+02:00</published>
+  </entry>
+</feed>

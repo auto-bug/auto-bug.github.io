@@ -1,0 +1,54 @@
+---
+blogpost: true
+date: 2018-03-23
+category: project-100853
+---
+
+# Not Again!
+Published on 2018-03-23 in {ref}`project-100853`.
+
+Recently a bunch of people on the hack chat (including me) decided to
+start a {ref}`project-92210` project. That led me to order a couple of interesting display modules,
+and when they arrived, I started to have ideas for projects using
+them. One module that interested me in particular is based on the  [UC1701](https://github.com/deshipu/displays/wiki/UC1701)  controller chip, and sports a nice ~1.5" LCD display, with optional
+backlight. The display only requires two capacitors and a resistor for
+the LED, so it should be easy to use in my own project.
+
+At first I thought about using it to replace {ref}`project-26823` 's display, but since it has the backlight built-in, I would need to
+also remove lameboy's color backlight, and that would make me sad. So
+instead I decided to build yet another device.
+
+I have also been recently asked in a non-committal manner about some
+conference badges that would run (Micro)Python. From the conversation
+I learned that people really don't want to have LiPo batteries on them
+— which pretty much rules out using ESP8266 or ESP32 chips, as they
+are pretty power-hungry. The next cheapest chip you can get that has a
+flavor of MicroPython ported to it is the SAMD21, and that also only
+needs two capacitors and a voltage regulator.
+
+So, throw six buttons, a switch, a USB connector and a battery holder
+into the mix, and you have a minimal handheld game console. I quickly
+made a PCB design in Fritzing to see how feasible it is:
+
+
+
+:::{image} images/3772281521804324357.png
+
+:::
+
+
+And it's not bad at all. It even fits in the 50×50mm limit. All
+components are on one side, except for the battery holder. I got rid
+of the diode protecting the USB from battery by using the switch —
+instead of on/off, it switches between battery and USB power. To save
+power, the backlight is only on when on USB power. There is no extra
+flash memory for the files — a 32kB filesystem is created in the
+chip's internal flash instead. Since the 128×64 black-and-white
+display doesn't need much memory for graphics, this should work. There
+are six free pins (actually there are more, but they were too hard to
+route) broken out on the header at the top, so you can connect
+additional things, like a speaker or an IR sensor.
+
+I also added a large pad on the back to which you can solder a pin or
+a clip  — so that you can actually wear this as a badge.
+

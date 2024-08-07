@@ -1,0 +1,24 @@
+---
+blogpost: true
+date: 2019-08-11
+category: project-165032
+---
+
+# Bootloader
+Published on 2019-08-11 in {ref}`project-165032`.
+
+As I wrote before, first tests have been done with the ItsyBitsy M4
+bootloader, but eventually I want to have my own. Especially since
+that is required for the [Make Code Arcade](https://arcade.makecode.com/)  compatibility. Fortunately there are some [very detailed instructions on how to configure and compile your own](https://arcade.makecode.com/hardware/adding) . There is a [pretty ingenious configuration system](https://github.com/Microsoft/uf2/blob/master/cf2.md)  embedded into the bootloader itself, which lets the code figure out
+automatically which pins to use for the display, buttons, etc.
+
+So I have a rudimentary bootloader working, but I need to play with
+the different options a little bit more:
+
+
+
+:::{image} images/4255531565477013245.jpg
+
+:::
+
+

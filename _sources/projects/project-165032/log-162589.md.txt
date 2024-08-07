@@ -1,0 +1,36 @@
+---
+blogpost: true
+date: 2019-04-27
+category: project-165032
+---
+
+# Looking at Other Displays
+Published on 2019-04-27 in {ref}`project-165032`.
+
+This week I'm paritcipating in [Ludum Dare](https://ldjam.com/) , trying to write a game from scratch in 48 hours, so not much time
+for hacking, but an interesting display arrived in the mail, so of
+course I had to give it a try:
+
+
+
+:::{image} images/1445661556399653652.jpg
+
+:::
+
+
+It's a STN 9664 LCD display, with an ST7585 controller chip, 96×64
+resolution and a bonus row of icons along the top edge. The
+documentation is sparse, as usual, and I didn't yet get it to work yet
+with a quick attempt at it.
+
+---------- more ----------What makes it interesting for PewPew, apart from the friendly price
+point of $1.35 in singles? While it certainly takes more power with
+the backlight enabled, it can also work without the light, and then I
+would expect it to be super power efficient, which matters if I want
+to power it from a coin cell battery.
+
+I'm also considering a number of other cheap displays on the market,
+but the main problem with them is that they are mostly out of
+production already, and hence it might be tricky to get a larger
+quantity of the device produced.
+

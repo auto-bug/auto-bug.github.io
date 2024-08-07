@@ -1,0 +1,63 @@
+---
+blogpost: true
+date: 2020-07-17
+category: project-171381
+---
+
+# Micro-USB
+Published on 2020-07-17 in {ref}`project-171381`.
+
+The last version is all correct — it has all the pins in the right
+places, the USB-C socket works well with the pull-down resistors in
+place, there is a large prototyping area and the staggered pin holes.
+Not much left to improve. However, if I think about the original goal
+of being a cheap replacement for the Feather M0 Basic to be left in
+projects or used for workshop, there is still some room for
+improvement, so I decided to try one more time.
+
+First of all, black silkscreen with yellow soldermask is uncommon
+combination (which is a damn shame, it looks much better than white
+silkscreen, and they use black silkscreen for white soldermask already
+anyways), so to get the cheesy looks I would need to pay extra for the
+uncommon color combination. So if I used a decoration that works well
+with other colors, I could save here.
+
+Second, USB-C cables are expensive, and USB-C ports are usually only
+on new and expensive devices. If I organize a workshop, I want it to
+be available for everyone, and not just the rich kids — so I would
+have to provide USB-C to USB-A cables (expensive). However, the same
+technique as used for the USB-C socket can be also used for the Micro-
+USB socket — you won't get the satisfying click when the plug is
+inserted, but otherwise it should work the same. And I can ditch the
+two resistors then!
+
+Third, the prototyping area on the Feather M0 Basic has some
+additional rails for power — that would be useful and help avoid some
+cable mess.
+
+So I designed this:
+
+
+
+:::{image} images/9382171594990082794.png
+
+:::
+
+
+
+
+:::{image} images/277211594990091459.png
+
+:::
+
+
+This version is a little bit more obviously Swiss, uses micro-USB
+socket, and has a prototyping area with power rails and some extra
+pads in it for squeezing SMD components in there. It also has the LED
+in a position a little bit more similar to where original Feathers
+have it, and a second prototyping area where the battery socket
+normally goes. Otherwise it's all the same stuff as previously.
+
+The PCBs are ordered and I will be testing the prototypes as soon as
+they arrive. I will publish the designs if they test fine.
+

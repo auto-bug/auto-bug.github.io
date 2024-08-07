@@ -1,0 +1,56 @@
+---
+blogpost: true
+date: 2020-05-03
+category: project-171381
+---
+
+# Beginning
+Published on 2020-05-03 in {ref}`project-171381`.
+
+I was working on a version  {ref}`project-158981` that would be compatible with FeatherWings, and I started to wonder
+whether I could do it with the QFN-32 version of the SAMD21 chip. I
+knew that the original Feather M0 switched to a bigger package,
+because there weren't enough pins, but I wanted to cheat anyways — I
+didn't want an external flash, and I would use the internal
+oscillator, which saves me a bunch of pins already. I would also use
+the SWD and SWC pins as regular pins — who needs debugging. So I
+looked at the original schematics, and started to create my own
+version.
+
+I wanted to re-use the same pins as much as possible, and I mostly
+succeeded. Of course some of the pins are simply not there on the
+QFN-32 package, so I had to find substitutes for those. That includes
+most of the analog pins, the SPI pins, and a few of the digital pins —
+not very bad. In the end, I even added an extra A6 pin to the board,
+and had two pins unused (I choose PA27 and PA28, since they can pretty
+much only do GPIO and nothing else).
+
+
+
+:::{image} images/3550681588528621991.png
+
+:::
+
+
+Then I started working on the actual PCB layout. It turns out that
+it's not very easy, because the pins are distributed pretty much
+randomly — they probably made sense on the bigger package, but with
+the smaller one I had to use a lot of vias. My first attempt was
+pretty bad, I had more vias than pins. So I deleted it and started
+from scratch, planning a little better this time. I came up with this:
+
+
+
+:::{image} images/9910021588528758392.png
+
+:::
+
+
+The big black circles are holes — I figured out that since the PCB is
+empty anyways, I can at least make it a little bit lighter. I could
+have used that space for a prototyping area, but it's kinda bad shape
+for that.
+
+I'm going to order this with my next batch of PCBs and then make a
+custom CircuitPython firmware for it.
+

@@ -1,0 +1,80 @@
+---
+blogpost: true
+date: 2018-03-23
+category: project
+tags:  badge, 2018hackadayprize, python, circuitpython, hardware, ongoing project, micropython
+image: 1
+---
+
+# CircuitPython Badge
+
+A handheld running CircuitPython and cheap enough for a badge.
+
+<div class="project-thumb">
+
+:::{image} images/7835931522668595523.jpg
+:target: /_images/7835931522668595523.jpg
+:::
+
+:::{image} images/3747271522786446593.jpg
+:target: /_images/3747271522786446593.jpg
+:::
+
+:::{image} images/6241551523715650875.jpg
+:target: /_images/6241551523715650875.jpg
+:::
+
+:::{image} images/8157221525092901236.jpg
+:target: /_images/8157221525092901236.jpg
+:::
+
+:::{image} images/9008771527764049628.jpg
+:target: /_images/9008771527764049628.jpg
+:::
+
+:::{image} images/7917991527791169949.jpg
+:target: /_images/7917991527791169949.jpg
+:::
+
+</div>
+
+
+    More and more conferences want to have a cool badge. But most badges
+are not really that interesting or useful. Sure, you can learn
+soldering if you have to assemble it yourself — but then most people
+never do. You can play tetris during boring talks, or, if you really
+don't want to attend any talks, you can spend time programming it in
+some exotic assembly to play snake. And as soon as you get home, it
+goes into a drawer to never see the light of day again.
+
+But we can do better than that!
+
+We can make a badge that is useful during the conference — that has
+USB disk storage where you can put conference materials, slides of all
+talks, etc. It can display the schedule, and maybe even have reminders
+for the talks you wanted to see. It can have some simple games for the
+boring talks, but also perhaps some social games, to make you talk to
+other people. But most importantly of all, it can be super-easy to
+program, without having to install anything on your computer or learn
+some esoteric language — by simply copying Python files on it. And
+finally, when you get home from the conference, you can incorporate it
+into other projects.
+
+This project is not about a badge for any particular conference. It's
+about making a baseline project, that can be then taken and
+extended/modified for a particular conference. The idea is that it
+should be easier to make something actually useful, instead of a
+gadget with blinking LEDs.
+
+
+
+
+
+## Logs
+
+:::{postlist}
+:category: project-100853
+:::
+
+## Instructions
+

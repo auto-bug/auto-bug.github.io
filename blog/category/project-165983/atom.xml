@@ -1,0 +1,189 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>http://deshipu.art/</id>
+  <title>deshipu.art - Posts in project-165983</title>
+  <updated>2024-08-07T20:33:02.349046+00:00</updated>
+  <link href="http://deshipu.art/"/>
+  <link href="http://deshipu.art/blog/category/project-165983/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-165983/log-164416/</id>
+    <title>The PCB Design</title>
+    <updated>2019-06-08T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="the-pcb-design"&gt;
+
+&lt;p&gt;Published on 2019-06-08 in &lt;a class="reference internal" href="../../../projects/project-165983/#project-165983"&gt;&lt;span class="std std-ref"&gt;D1 Mini UI Shield&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This project actually started a looong time ago, back when I was still
+playing with &lt;a class="reference internal" href="../../../projects/project-20941/#project-20941"&gt;&lt;span class="std std-ref"&gt;D1 Mini Matrix Deluxe Shields&lt;/span&gt;&lt;/a&gt; , &lt;a class="reference internal" href="../../../projects/project-21578/#project-21578"&gt;&lt;span class="std std-ref"&gt;PewPew FeatherWing&lt;/span&gt;&lt;/a&gt; was starting to take shape in my head, and nobody even dreamed about &lt;a class="reference internal" href="../../../projects/project-27629/#project-27629"&gt;&lt;span class="std std-ref"&gt;µGame&lt;/span&gt;&lt;/a&gt; . I was inspired by the D1 Mini OLED shield, but I wanted some buttons
+on it, and I wanted them to be arranged in a d-pad. Then other
+projects happened, and I forgot about it, until recently, when I
+started to play with those OLED displays again, and found my old
+designs. Having learned a lot in that time, and having found some new
+really tiny buttons, I decided to revive this project and e-design it.
+I came up with this PCB design:&lt;/p&gt;
+&lt;img alt="projects/project-165983/images/960901559991526014.png" src="projects/project-165983/images/960901559991526014.png" /&gt;
+&lt;p&gt;As mentioned in the description, it’s basically the &lt;a class="reference internal" href="../../../projects/project-19371/#project-19371"&gt;&lt;span class="std std-ref"&gt;D1 Mini X-Pad Shield&lt;/span&gt;&lt;/a&gt; compressed to a smaller size (and with two of the buttons removed),
+and with a display added on top. I used one of the free pins for the
+display’s reset (it has to be reset after powering on, and I didn’t
+want to waste the ESP8266 pin for that), but otherwise it’s the same.&lt;/p&gt;
+&lt;p&gt;I had a moment of doubt when choosing how to connect the display: it
+supports both I2C and SPI modes. In the end I decided to use SPI, even
+though the buttons already use I2C. That is because SPI is faster and
+supported in hardware by the ESP8266 (I2C is bit-banged).&lt;/p&gt;
+&lt;p&gt;Another challenge was fitting the 0.96” display and buttons on top of
+the shield, without them conflicting with the pins. In the end, I
+decided to use the same technique I used in the &lt;a class="reference internal" href="../../../projects/project-165011/#project-165011"&gt;&lt;span class="std std-ref"&gt;Gesture FeatherWing&lt;/span&gt;&lt;/a&gt; — angled pin headers soldered as SMD to the PCB, only this time I made
+them a bit shorter too.&lt;/p&gt;
+&lt;p&gt;In the end I had some free space in the middle, so I decided to put a
+buzzer in there, so you can even have sounds.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-165983/log-164416/" rel="alternate"/>
+    <summary>Published on 2019-06-08 in project-165983.</summary>
+    <published>2019-06-08T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-165983/log-164455/</id>
+    <title>More Details</title>
+    <updated>2019-06-09T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="more-details"&gt;
+
+&lt;p&gt;Published on 2019-06-09 in &lt;a class="reference internal" href="../../../projects/project-165983/#project-165983"&gt;&lt;span class="std std-ref"&gt;D1 Mini UI Shield&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I think I have perfected the technique of soldering those angled
+headers now — after assembling a few more.&lt;/p&gt;
+&lt;img alt="projects/project-165983/images/4657931560103917462.jpg" src="projects/project-165983/images/4657931560103917462.jpg" /&gt;
+&lt;p&gt;The speaker on GPIO02 makes some cool sounds on boot — because that’s
+the debug serial output pin.&lt;/p&gt;
+&lt;p&gt;For completeness, here is the firmware for the attiny24:&lt;/p&gt;
+&lt;div class="highlight-cpp notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;#include&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="cpf"&gt;&amp;quot;USI_TWI_Slave/USI_TWI_Slave.c&amp;quot;&lt;/span&gt;&lt;span class="cp"&gt;&lt;/span&gt;
+
+
+&lt;span class="cp"&gt;#define PINS_COUNT 6&lt;/span&gt;
+&lt;span class="cp"&gt;#define RST_PIN 10&lt;/span&gt;
+&lt;span class="cp"&gt;#define I2C_ADDRESS 0x10&lt;/span&gt;
+
+&lt;span class="k"&gt;const&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kt"&gt;uint8_t&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;pins&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;PINS_COUNT&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;};&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="k"&gt;volatile&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kt"&gt;bool&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;clear&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;false&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="k"&gt;volatile&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kt"&gt;uint8_t&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;buttons&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+
+
+&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;request&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;USI_TWI_Transmit_Byte&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;buttons&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;clear&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;true&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+
+&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;setup&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;pinMode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;RST_PIN&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;OUTPUT&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;digitalWrite&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;RST_PIN&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;HIGH&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;uint8_t&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;PINS_COUNT&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;pinMode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pins&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;INPUT_PULLUP&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;USI_TWI_Slave_Initialise&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;I2C_ADDRESS&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;USI_TWI_On_Slave_Transmit&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;delay&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;digitalWrite&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;RST_PIN&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;LOW&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;delay&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;digitalWrite&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;RST_PIN&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;HIGH&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+
+&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;loop&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="k"&gt;static&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kt"&gt;uint8_t&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;last_buttons&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="kt"&gt;uint8_t&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;current_buttons&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;uint8_t&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;PINS_COUNT&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;current_buttons&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&amp;lt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;current_buttons&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;|=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="n"&gt;digitalRead&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pins&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;]);&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;clear&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;clear&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;false&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;buttons&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;buttons&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;|=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;last_buttons&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;current_buttons&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;last_buttons&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;current_buttons&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;delay&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;16&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Nothing complicated, really — I’m using the USI example from the Atmel
+application note here, keeping everything in the main loop, so as to
+not block or delay the interrupts.&lt;/p&gt;
+&lt;p&gt;Lastly, I wonder if I should work on the thickness of the whole thing,
+or just stuff a lipo in there:&lt;/p&gt;
+&lt;img alt="projects/project-165983/images/1181991560104136176.jpg" src="projects/project-165983/images/1181991560104136176.jpg" /&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-165983/log-164455/" rel="alternate"/>
+    <summary>Published on 2019-06-09 in project-165983.</summary>
+    <published>2019-06-09T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-165983/log-164812/</id>
+    <title>Buttons!</title>
+    <updated>2019-06-19T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="buttons"&gt;
+
+&lt;p&gt;Published on 2019-06-19 in &lt;a class="reference internal" href="../../../projects/project-165983/#project-165983"&gt;&lt;span class="std std-ref"&gt;D1 Mini UI Shield&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;After re-ordering and choosing a faster shipping method, I finally
+have those tiny buttons:&lt;/p&gt;
+&lt;img alt="projects/project-165983/images/5259761560949728465.jpg" src="projects/project-165983/images/5259761560949728465.jpg" /&gt;
+&lt;p&gt;They are definitely better than those “reset” buttons I used on &lt;a class="reference external" href="https://hackaday.io/project/27629-game/log/87435-ngame-revisited"&gt;nGame&lt;/a&gt; , but still a bit on the hard side.  Also very clicky and with
+reasonable travel. The larger surface of the button itself makes a lot
+of difference.&lt;/p&gt;
+&lt;p&gt;Soldering them is a bit hard — the contact pads are not large enough
+to hold the buttons down with surface tension, so the hot air gun just
+blows them away. So far the most efficient way is to just solder them
+by hand, with the soldering iron, going from left to right and adding
+the buttons as you go.&lt;/p&gt;
+&lt;p&gt;Unfortunately, the 20 displays that I ordered (2x10pcs order) turned
+out to be 2 displays when they arrived (the seller admitted to a
+packaging error and refunded the difference), so I only have one
+prototype to play with and one unit for sale. More displays are on the
+way, though, so expect it on Tindie near you soon-ish.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-165983/log-164812/" rel="alternate"/>
+    <summary>Published on 2019-06-19 in project-165983.</summary>
+    <published>2019-06-19T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-165983/log-164827/</id>
+    <title>Tindie</title>
+    <updated>2019-06-19T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="tindie"&gt;
+
+&lt;p&gt;Published on 2019-06-19 in &lt;a class="reference internal" href="../../../projects/project-165983/#project-165983"&gt;&lt;span class="std std-ref"&gt;D1 Mini UI Shield&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This shield is now available on Tindie. Unfortunately, for now I only
+had one complete unit (because I only had two displays, and I need one
+prototype for, uh, prototyping), and it’s already sold. But as soon as
+I get more displays (should take a week or two), I will put up more
+for sale. You can add it to a wishlist to get a notification.&lt;/p&gt;
+&lt;p&gt;The price is a bit more than what I would like, but it’s really a lot
+of work soldering, and I had to re-order many parts with faster
+shipping (because the ones I ordered with free shipping still didn’t
+arrive after two months).&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-165983/log-164827/" rel="alternate"/>
+    <summary>Published on 2019-06-19 in project-165983.</summary>
+    <published>2019-06-19T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-165983/log-165349/</id>
+    <title>Battery</title>
+    <updated>2019-07-04T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="battery"&gt;
+
+&lt;p&gt;Published on 2019-07-04 in &lt;a class="reference internal" href="../../../projects/project-165983/#project-165983"&gt;&lt;span class="std std-ref"&gt;D1 Mini UI Shield&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The UI shield and the D1 Mini Lite make together a very nice small
+device, but they lack power. That is why I revived my &lt;a class="reference internal" href="../../../projects/project-28104/#project-28104"&gt;&lt;span class="std std-ref"&gt;Coin Battery Shield for D1 Mini&lt;/span&gt;&lt;/a&gt; project, and made a shield that fits on the back of the whole
+assembly, creating a pretty neat sandwich:&lt;/p&gt;
+&lt;img alt="projects/project-165983/images/5755391562239964768.jpg" src="projects/project-165983/images/5755391562239964768.jpg" /&gt;
+&lt;p&gt;And all together:&lt;/p&gt;
+&lt;img alt="projects/project-165983/images/5820041562240050527.jpg" src="projects/project-165983/images/5820041562240050527.jpg" /&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-165983/log-165349/" rel="alternate"/>
+    <summary>Published on 2019-07-04 in project-165983.</summary>
+    <published>2019-07-04T00:00:00+02:00</published>
+  </entry>
+</feed>

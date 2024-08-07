@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Proper Prototype - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="proper-prototype">
+<h1>Proper Prototype<a class="headerlink" href="#proper-prototype" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2018-10-22 in <a class="reference internal" href="../#project-160167"><span class="std std-ref">Electronic Barrette Hub</span></a>.</p>
+<p>The PCBs just arrived from <a class="reference external" href="https://hackaday.io/hacker/131216">&#64;oshpark </a> and I finally assembled a proper prototype. I’m quite happy with how
+it looks, even without the face plate or any ornaments on the PCB:</p>
+<img alt="projects/project-160167/images/1804971540204588238.jpg" src="projects/project-160167/images/1804971540204588238.jpg" />
+<p>In particular, I like how the holes covered with the soldermask look
+like: inconspicious. I used staggered holes for the connectors, which
+means that you can simply insert male pin headers into them — you can
+see one inserted in the top right corner. That really lets me hide
+them from view.</p>
+<p>There are five connectors:</p>
+<img alt="projects/project-160167/images/7089001540204735865.jpg" src="projects/project-160167/images/7089001540204735865.jpg" />
+<p>Four for general purpose GPIO pins, with two pins on each, also
+doubling for UART and I2C communication, and one for USB, for those
+devices (like the <a class="reference internal" href="../../project-158701/#project-158701"><span class="std std-ref">Video Pendant</span></a> ) which are too small to fit an USB port, but still need USB
+communication. The power on the USB port is stabilized 3.3V, while the
+remaining ports are connected to the battery directly, because they
+are likely to need all the power they can get.</p>
+<p>I will do some more testing with those connectors, and if they don’t
+work well enough, I will solder either female pin headers, or grove
+sockets in there.</p>
+<p>More importantly, the build instructions and parts list are now
+updated, and there is a bunch of new photos. Unfortunately I won’t
+have time to update the video, but the basic functionality shown there
+remains the same (well, except for the battery charging, but that’s a
+boring thing to watch).</p>
+<p>The next step will be working on the ornaments and the face plate.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

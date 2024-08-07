@@ -1,0 +1,40 @@
+---
+blogpost: true
+date: 2018-10-02
+category: project-100853
+---
+
+# Sketching the Next Version
+Published on 2018-10-02 in {ref}`project-100853`.
+
+Together with the volunteers we already started working on the next
+version of the prototype. I started to slowly lay out the components
+for it:
+
+
+
+:::{image} images/8415261538488477681.png
+
+:::
+
+
+Several things are happening there:
+
+
+ * switched to a SAMD51 microcontroller, in place of the smaller SAMD21 —
+that gives us more memory, better speed and more pins,
+ * moved the electronics under the display, to make more room on the
+sides,
+ * switched to non-clicky buttons, same as I used in {ref}`project-27629` ,
+ * got rid of the snake heads at the top, to make more room,
+ * added a pin header for connecting extra stuff to GPIO pins,
+ * considering using a different USB port, though I don't have a
+footprint for it yet,
+ * considering using IR communication in place of the NRF24, but that
+requires some experiments,
+ * considering moving the batteries from the back to the front, to make
+the whole thing more flat.
+
+This is all just playing for now, to see how it fits together. We will
+probably still make a lot of changes.
+

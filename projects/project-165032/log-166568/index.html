@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Firmware - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="firmware">
+<h1>Firmware<a class="headerlink" href="#firmware" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2019-08-04 in <a class="reference internal" href="../#project-165032"><span class="std std-ref">PewPew M4</span></a>.</p>
+<p>I’m still waiting for the PCBs (they should arrive Tuesday, if DHL is
+right), so I decided to work on the firmware a little bit. I expect a
+bit more work than just defining the pins to be used in <code class="docutils literal notranslate"><span class="pre">pins.c</span></code>,
+because all of the CircuitPython boards that use SAMD51 seem to also
+be using an external flash chip, and I skipped it for this design. But
+turns out that the initial versions of CircuitPython for SAMD51 used
+the internal flash for the filesystem, and the code is still in there
+an working fine, all I had to do is to use a different linker script
+and set INTERNAL_FLASH=1. And of course disable all the modules that
+didn’t fit in the now smaller flash space for the firmware, but I’ve
+been through that already.</p>
+<p>I also copied the display initialization code from PyGamer, so it
+should hopefully all work. I tested it on an Itsybitsy M4 Express, and
+it seems to run fine, though I didn’t connect the display or buttons.</p>
+<p>The board definition is at  <a class="reference external" href="https://github.com/pewpew-game/circuitpython/tree/pewpew_m4/ports/atmel-samd/boards/pewpew_m4">https://github.com/pewpew-
+game/circuitpython/tree/pewpew_m4/ports/atmel-samd/boards/pewpew_m4</a>  — if it works, I will submit it for inclusion in CircuitPython.</p>
+<p>I will still need to work on that port of the pew library, possibly
+with a small C module for the slow parts, but I will wait for the
+working device to do that.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

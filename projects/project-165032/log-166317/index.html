@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Footprint - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="footprint">
+<h1>Footprint<a class="headerlink" href="#footprint" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2019-07-30 in <a class="reference internal" href="../#project-165032"><span class="std std-ref">PewPew M4</span></a>.</p>
+<p>The chips have arrived today, as predicted. And guess what! The
+footprint is wrong!</p>
+<p>Turns out that the fact that it’s called QFN48 doesn’t mean that the
+pins will be spaced 0.4mm, like in the case of the ISSI chips I made a
+footprint for before (and re-used here), and not, say, 0.5mm like in
+the case of the SAMD51. Of course I should have checked the datasheet,
+but who does that?\</p>
+<img alt="projects/project-165032/images/48141564442057262.png" src="projects/project-165032/images/48141564442057262.png" />
+<p>In any case, ten minutes of Inkscape and I have a new footprint,
+hopefully better fitting. I also made the pads much longer, to make
+soldering by hand easier. Of course it’s different size, so I had to
+re-arrange all the traces — but it’s now much better centered, and the
+capacitors are aligned with the buttons, so I’m happy with it.</p>
+<img alt="projects/project-165032/images/8194211564442172586.png" src="projects/project-165032/images/8194211564442172586.png" />
+<p>I was ordering a PCB for a different project already, with fast
+shipping, so I threw this into the order — hopefully I will have it
+next week.</p>
+<p>In the mean time I can test firmware without the extra flash on the
+ItsyBitsy M4, simply ignoring the fact that it has the extra flash.
+And if I add a display module, I can also test the display speed. But
+that’s not today.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

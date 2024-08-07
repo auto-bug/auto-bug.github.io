@@ -1,0 +1,45 @@
+---
+blogpost: true
+date: 2019-04-16
+category: project-165032
+---
+
+# Display
+Published on 2019-04-16 in {ref}`project-165032`.
+
+The LED matrices I'm using in all the other PewPew are great for
+several reasons: they have large pixels and small resolution, perfect
+for the kind of games I want to teach, where you don't have to worry
+about graphics. They are made of plastic, so are robust, scratch-
+resistant and light. And they only have 16 pins for soldering, and can
+be easily soldered by hand. But can there be anything cheaper?
+
+How about individual LEDs, like on the MicroBit? They are cheap,
+right? Well, the components themselves are cheap, but the soldering of
+128 pads is not. And forget about doing it by hand. Plus, they don't
+look very good.
+
+Hmm, what else has a lot of LEDs in it, but only a few connectors, and
+can be had for cheap?
+
+How about those tiny little OLED displays? They only require a few
+pins to control, they are cheap, low-power, and they have more LEDs on
+them than we need. Sure, they are also usually monochrome, but because
+they have much higher resolution than we need, we can use dithering to
+get our required 44 shades:
+
+
+
+:::{image} images/8023961555448637756.png
+
+:::
+
+
+We even have some room left on the sides for some indicators!
+
+Plus, if we added support for them to displayio, we could even have
+proper error messages displayed on them when something happens. That's
+an improvement in functionality.
+
+(As an added bonus, it will probably be able to run arduboy games...)
+

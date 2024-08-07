@@ -1,0 +1,31 @@
+---
+blogpost: true
+date: 2018-04-02
+category: project-100853
+---
+
+# Text
+Published on 2018-04-02 in {ref}`project-100853`.
+
+Whatever display I end up using, I'm going to need to display text on
+it. So I went to work on that. I drew a 6×8 font, which gives me 21
+columns and 8 rows on the 128×64 display:
+
+
+
+:::{image} images/1368531522669102346.jpg
+
+:::
+
+
+I went with bold characters, because I want good readability, and I
+used height of 8 pixels, because that's the display's page height, and
+it makes it super-easy to draw the characters. Since I only use the
+128 ASCII characters (minus the 32 control characters, actually), I
+used the highest bit to reverse the text — that will be useful for
+cursors/menus.
+
+I still need to figure out double-width and double-size characters
+somehow (if it's a badge, it'd better show your name in a font
+readable from afar).
+

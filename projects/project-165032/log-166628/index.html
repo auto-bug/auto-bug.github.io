@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Prototype v2 - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="prototype-v2">
+<h1>Prototype v2<a class="headerlink" href="#prototype-v2" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2019-08-05 in <a class="reference internal" href="../#project-165032"><span class="std std-ref">PewPew M4</span></a>.</p>
+<p>So the PCBs arrived again (a day earlier than expected, yay DHL), and
+this time with a correct footprint. So you know the drill. Disassemble
+the old one, move all the components to the new one. Connect to the
+programmer and… oh no, the dreaded “memory erase” message! But wait,
+after a few of those it says “connected”, so maybe it works after all?
+Well, only one way to find out. I flash the bootloader from itsybitsy
+M4 express, and it showed as a USB drive! Great. So now flash the
+firmware and it should work! Hmm… it doesn’t.</p>
+<img alt="projects/project-165032/images/4001711565019040774.jpg" src="projects/project-165032/images/4001711565019040774.jpg" />
+<p>That’s weird. A few experiments later I determined that it works
+perfectly fine when connected to the JLink, but not on its own. A
+quick test revealed the problem: I need a pull-up resistor on the
+reset pin. For now a quick bodge wire solved that, but I will need
+another version of the PCB. Oh well. I will need to move the display
+connector even further towards the center of the board, because the
+display is still sicking out a bit.</p>
+<p>I will also experiment a bit with the capacitors, to see if I can have
+fewer of them and still have the device work reliably.</p>
+<img alt="projects/project-165032/images/9518641565020583903.jpg" src="projects/project-165032/images/9518641565020583903.jpg" />
+</section>
+
+
+</div>
+  </body>
+</html>

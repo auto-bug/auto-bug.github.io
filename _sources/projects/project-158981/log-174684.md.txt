@@ -1,0 +1,46 @@
+---
+blogpost: true
+date: 2020-03-12
+category: project-158981
+---
+
+# Katka M0
+Published on 2020-03-12 in {ref}`project-158981`.
+
+It's been a while since I worked on this — I've been busy with {ref}`project-165032` , though I did update the {ref}`project-19921` and test the battery protection circuit there. But I never finished
+the SAMD51 version of the PCB for Kubik M4, and it has been on the
+back burner.
+
+Most recently, however, I realized something: the Kubik M0 PCB doesn't
+have to be a failure after all. Well, of course, if I wasn't terribly
+lazy I could write a servo library for the CircuitPython that handles
+12 servos with a timer interrupt and use that — the microcontroller is
+easily fast enough to do it — but that would require effort. But I
+thought about something else: I have a version of the walking
+quadruped that doesn't need 12 servos — {ref}`project-6321` only needs 8. Sure, turning is a bit of a challenge, but I could
+totally re-use the Kubik M0 PCB to build a Katka M0. So I went ahead
+and did it:
+
+
+
+:::{image} images/9951801584036061794.jpg
+
+:::
+
+
+The four hip servos went away, and I instead attached the knee servos
+directly to the PCB, making them the new hips. I think I will try to
+program it to walk in the configuration shown on the photo, even
+though it could also easily walk in a more mammal-like posture, with
+the knees below the hips. But I want it too still look a bit like a
+spider or insect, so I will go with this.
+
+Of course I can't re-use the code I had for Kubik anymore, so I will
+also get to re-write the whole walking thing in a cleaner way,
+possibly using async functions. The inverse kinematics should now be
+much simplified, and also the cost of the whole device dropped by
+roughly 1/4 with the removal of the servos. If I can find a reasonable
+way of turning, then I'm going to go forward with this (re-designing
+the PCB for easier attaching the servos in this configuration, and
+adding the battery protection I tested with the Spiderwing).
+

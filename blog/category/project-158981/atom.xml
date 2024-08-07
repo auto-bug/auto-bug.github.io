@@ -1,0 +1,190 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>http://deshipu.art/</id>
+  <title>deshipu.art - Posts in project-158981</title>
+  <updated>2024-08-07T20:33:02.244277+00:00</updated>
+  <link href="http://deshipu.art/"/>
+  <link href="http://deshipu.art/blog/category/project-158981/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-158981/log-176934/</id>
+    <title>Progress</title>
+    <updated>2020-05-04T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="progress"&gt;
+
+&lt;p&gt;Published on 2020-05-04 in &lt;a class="reference internal" href="../../../projects/project-158981/#project-158981"&gt;&lt;span class="std std-ref"&gt;Kubik M0&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I have spent the whole Sunday re-doing the PCB design, and then adding
+battery protection, charging and a speaker with amplifier. It looks
+like this now:&lt;/p&gt;
+&lt;img alt="projects/project-158981/images/5208901588592973283.png" src="projects/project-158981/images/5208901588592973283.png" /&gt;
+&lt;p&gt;And then I realized that the puny SAMD21 is not going to have enough
+memory to make use of this — at the very least I will need external
+flash. And I might as well switch to the SAMD51 at this point, since
+it’s not that much more expensive. That also gives me more pins, so I
+can have a proper feather pinout plus all the servos and plus some
+extra stuff. However, I will need to completely re-do the design for
+that, so it will probably wait until the next weekend.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-158981/log-176934/" rel="alternate"/>
+    <summary>Published on 2020-05-04 in project-158981.</summary>
+    <published>2020-05-04T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-158981/log-177009/</id>
+    <title>Actual Work</title>
+    <updated>2020-05-05T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="actual-work"&gt;
+
+&lt;p&gt;Published on 2020-05-05 in &lt;a class="reference internal" href="../../../projects/project-158981/#project-158981"&gt;&lt;span class="std std-ref"&gt;Kubik M0&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;So I spent the weeked mucking about designing PCBs and throwing new
+features at them, but if I am supposed to ever finish this project, I
+need to do some actual work on it. So today I tried to stay focused
+and do the actual steps that need doing. First, a feather-compatible
+robot would be great, but it’s also complex. At first the only thing I
+will need is I2C, so let’s just make a minimal PCB with just that
+broken out.&lt;/p&gt;
+&lt;img alt="projects/project-158981/images/1570701588706365870.png" src="projects/project-158981/images/1570701588706365870.png" /&gt;
+&lt;p&gt;Second, all this is pointless if I can’t control the servos. So I need
+to make sure the pins I connected to servo signals actually can do PWM
+all at once. The easiest way to do it is to just quickly compile a
+custom CircuitPython firmware with those pins made available, and try
+it on a Trinket M0. That’s exactly what I did, and of course it didn’t
+work. I had to swap two of the eight pins to make them use different
+timers, so that they can be used all at once. Of course that made the
+layout a bit less pretty but that’s fine.&lt;/p&gt;
+&lt;p&gt;Once I have figured out which pins will work, I also fixed the
+feather-compatible schematic. That took considerably more work, since
+I didn’t have any free pins I could switch to, and there were certain
+requirements for functions available on certain pins. In the end I
+think I got it, though, so that PCB is fixed as well.&lt;/p&gt;
+&lt;p&gt;Finally, I need designs for the leg pieces for that small board.
+Laser-cutting is considerably cheaper than PCBs, and now that I can
+order it from Elecrow alongside the PCBs, it doesn’t make it much more
+complex. So I had to re-do the legs, but since I want to use the same
+code, I wanted to keep the same dimensions. So some reverse-
+engineering of the PCB designs was necessary:&lt;/p&gt;
+&lt;img alt="projects/project-158981/images/2667451588707036414.png" src="projects/project-158981/images/2667451588707036414.png" /&gt;
+&lt;p&gt;Once I had all the dimensions and shapes figured out, I just had to
+arrange all the parts on a 10x10cm sheet:&lt;/p&gt;
+&lt;img alt="projects/project-158981/images/6735411588707150902.png" src="projects/project-158981/images/6735411588707150902.png" /&gt;
+&lt;p&gt;Now both versions of the robot PCB, the Fluff M0 board and the laser-
+cut parts are on order — the work will continue in a few weeks when
+they arrive, and in the mean time maybe I can focus long enough to
+program the walking code.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-158981/log-177009/" rel="alternate"/>
+    <summary>Published on 2020-05-05 in project-158981.</summary>
+    <published>2020-05-05T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-158981/log-177675/</id>
+    <title>Delays</title>
+    <updated>2020-05-18T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="delays"&gt;
+
+&lt;p&gt;Published on 2020-05-18 in &lt;a class="reference internal" href="../../../projects/project-158981/#project-158981"&gt;&lt;span class="std std-ref"&gt;Kubik M0&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Elecrow has made both the PCBs and the laser-cut parts, and they have
+sent it Monday last week. Unfortunately, it seems that DHL has stopped
+its operations for some reason, because the package is still in
+“shipment information received” state after 7 days. Because of that I
+still have nothing to show, maybe except the photo I got from Elecrow
+when they sent it:&lt;/p&gt;
+&lt;img alt="projects/project-158981/images/8314871589823091914.jpg" src="projects/project-158981/images/8314871589823091914.jpg" /&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-158981/log-177675/" rel="alternate"/>
+    <summary>Published on 2020-05-18 in project-158981.</summary>
+    <published>2020-05-18T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-158981/log-180416/</id>
+    <title>Safe Mode Problems</title>
+    <updated>2020-07-08T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="safe-mode-problems"&gt;
+
+&lt;p&gt;Published on 2020-07-08 in &lt;a class="reference internal" href="../../../projects/project-158981/#project-158981"&gt;&lt;span class="std std-ref"&gt;Kubik M0&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I haven’t written an update in a while, even though a second version
+of the PCBs already arrived, and the laser-cut parts work very well.
+The reason for that is: I was struggling with power problems.&lt;/p&gt;
+&lt;p&gt;For some reason on the new boards CircuitPython goes into a safe mode
+due to a power dip, and has to be physically reset to continue
+operation. This is caused by a “twitch” of servos when they get
+powered up initially, before they get any signal. This is very
+surprising to me, because previously I have built robots with exactly
+the same power distribution and with even more servos, and there was
+never such a problem. Oh well, so I got to figuring it out.&lt;/p&gt;
+&lt;p&gt;First, the 3.3V line voltage on switching on looks like this:&lt;/p&gt;
+&lt;img alt="projects/project-158981/images/9566461594195189632.png" src="projects/project-158981/images/9566461594195189632.png" /&gt;
+&lt;p&gt;You can tell it’s not great — it goes up to around 3V, then drops to
+2.5V and slowly ramps up to 3.3V. This is probably the twitch of the
+servo motors overwhelming momentarily the battery. The usual solution
+to that is a beefy capacitor in parallel to the servos, so let’s try
+that. I think 1000µF will be enough?&lt;/p&gt;
+&lt;img alt="projects/project-158981/images/6443151594195327285.jpg" src="projects/project-158981/images/6443151594195327285.jpg" /&gt;
+&lt;p&gt;This makes the voltage curve look much smoother, but there is this
+capacitor charging now:&lt;/p&gt;
+&lt;img alt="projects/project-158981/images/1307801594195409111.png" src="projects/project-158981/images/1307801594195409111.png" /&gt;
+&lt;p&gt;Unfortunately, CircuitPython is still going into safe mode, and I have
+no idea why — there is code in it that is supposed to wait for the
+voltage to stabilize before proceeding with booting. So I played a
+little bit more, tried to swap the LDO with the other, working robot,
+tried to add more capacitors, tried resistors on the servo signal
+lines, etc. — all for nothing. I noticed that with just 6 servos it
+works:&lt;/p&gt;
+&lt;img alt="projects/project-158981/images/3700341594195534259.png" src="projects/project-158981/images/3700341594195534259.png" /&gt;
+&lt;p&gt;But that’s just because the voltage drop is a little bit smaller, so I
+suppose it goes over the safe mode threshold.&lt;/p&gt;
+&lt;p&gt;I’m beginning to suspect that there was actually a change in the
+CircuitPython code handling the safe mode, and that the older robots
+work just because they use an older version of CircuitPython. That
+should be easy to verify, actually — let’s try older version. The
+working robot uses 5.0.0, so let’s try that…&lt;/p&gt;
+&lt;p&gt;An nope, still goes into safe mode. So what makes the good robot good?
+Maybe we can look at its voltage curve? Let’s see:&lt;/p&gt;
+&lt;img alt="projects/project-158981/images/4092251594196245713.png" src="projects/project-158981/images/4092251594196245713.png" /&gt;
+&lt;p&gt;Hmm, so it’s the same bad curve from the start, only the voltage
+doesn’t quite dip as low. Probably just better quality servos, I
+suppose?&lt;/p&gt;
+&lt;p&gt;I will keep working on it and keep you updated.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-158981/log-180416/" rel="alternate"/>
+    <summary>Published on 2020-07-08 in project-158981.</summary>
+    <published>2020-07-08T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-158981/log-180777/</id>
+    <title>Fix it in Software</title>
+    <updated>2020-07-13T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="fix-it-in-software"&gt;
+
+&lt;p&gt;Published on 2020-07-13 in &lt;a class="reference internal" href="../../../projects/project-158981/#project-158981"&gt;&lt;span class="std std-ref"&gt;Kubik M0&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I’ve been struggling a little bit more with the safe mode problems.
+Even with the capacitors, the battery simply can’t give enough current
+at startup to handle at the same time the servos twitching, the
+capacitors charging and the microcontroller requiring that minimum
+2.7V. The previous robots worked, because I just happened to use
+better quality servos that twitched less at startup, but I want this
+design to work with the crappiest and cheapest servos you can find.&lt;/p&gt;
+&lt;p&gt;Turns out there have been similar problems with CircuitPython on the
+SAMD51, and now the bootloader for SAMD51 has a loop that pauses
+execution until the voltage stabilizes over the required threshold. I
+could port that to SAMD21 as well, but I found an easier solution, and
+one that will also improve the life of robot on a single battery —
+simply lower that threshold. SAMD21 can work with voltage as low as
+1.6V. CircuitPython defaults to 2.7V because the boards that use an
+external flash chip require that voltage for the flash to work
+properly — but I don’t have external flash chip on my robots! So  &lt;a class="reference external" href="https://github.com/adafruit/circuitpython/pull/3130"&gt;I submitted a pull request that allows to change this threshold in the
+board definition&lt;/a&gt; , and I also lowered it for the &lt;a class="reference internal" href="../../../projects/project-159733/#project-159733"&gt;&lt;span class="std std-ref"&gt;PewPew Standalone&lt;/span&gt;&lt;/a&gt; and &lt;a class="reference internal" href="../../../projects/project-165032/#project-165032"&gt;&lt;span class="std std-ref"&gt;PewPew M4&lt;/span&gt;&lt;/a&gt; boards — they will live longer on battery now!&lt;/p&gt;
+&lt;p&gt;Testing shows that this solves the problem, so now I have to find
+another excuse to keep avoiding programming those robots.&lt;/p&gt;
+&lt;img alt="projects/project-158981/images/7063291594675931357.jpg" src="projects/project-158981/images/7063291594675931357.jpg" /&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-158981/log-180777/" rel="alternate"/>
+    <summary>Published on 2020-07-13 in project-158981.</summary>
+    <published>2020-07-13T00:00:00+02:00</published>
+  </entry>
+</feed>

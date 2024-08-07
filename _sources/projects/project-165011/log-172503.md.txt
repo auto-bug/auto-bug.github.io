@@ -1,0 +1,59 @@
+---
+blogpost: true
+date: 2019-12-31
+category: project-165011
+---
+
+# Library
+Published on 2019-12-31 in {ref}`project-165011`.
+
+Today I decided to try and write a CircuitPython library for this
+sensor. So with a datasheet in hand I started with this simple code
+that is supposed to give me the raw data frames:
+
+
+```python
+import board
+import digitalio
+import time
+
+
+class MGC3030:
+    def __init__(self, i2c, addr=0x43, ts_pin=None):
+        self.i2c = i2c
+        self.addr = addr
+        self.ts_pin = ts_pin
+        self.buffer = bytearray([0] * 26)
+
+    def read(self):
+        self.i2c.try_lock()
+        try:
+            self.i2c.readfrom_into(self.addr, self.buffer)
+        finally:
+            self.i2c.unlock()
+        return self.buffer
+
+
+i2c = board.I2C()
+ts_pin = digitalio.DigitalInOut(board.D5)
+irq1_pin = digitalio.DigitalInOut(board.D6)
+irq0_pin = digitalio.DigitalInOut(board.A3)
+
+sensor = MGC3030(i2c)
+
+while True:
+    print(repr(sensor.read()))
+    time.sleep(0.5)
+
+```
+
+The code works, except it shows me all 0s. What's wrong?
+
+Some more careful reading of the datasheet reveals that the chip is
+sold without firmware on it. You have to program it yourself, using
+attached software. The software is of course WIndows-only, so no way I
+can use it.
+
+Way to go Microchip! \
+
+

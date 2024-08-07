@@ -1,0 +1,84 @@
+---
+blogpost: true
+date: 2018-09-20
+category: project-158981
+---
+
+# Build Instructions
+Published on 2018-09-20 in {ref}`project-158981`.
+
+Since there is now at least one person trying to build this robot, I'd
+better post some build instructions. I don't have a full-blown
+material with photos yet, but I will try to make it workable.
+
+So, first, what you will need:
+
+
+ * the assembled robot PCB, with the battery holder
+ * 12 SG90 microservos
+ * 24 tiny screws (I forgot to attach them to the PCB, sorry)
+ * 4 larger screws (you can use the ones that come with the servos)
+
+To assemble the legs, first hot-glue four pairs of servos together to
+form the hips. You will need two "left" and two "right" pairs. The
+whole leg goes something like this:
+
+
+
+:::{image} images/1055641537426436102.png
+
+:::
+
+
+And two of them will be a mirror image of that. Don't put in the
+screws that hold the servo horns, you will need to adjust the servo
+positions first.
+
+Connect the servos to the PCB. There are helpful markings on it, such
+as "FR1" (front right 1) and "HL3" (hind left 3). The number goes 1
+for ankle, 2 for knee and 3 for hip. The ground pin is marked, the
+middle pin is power, and the last pin is signal. You can use male pin
+headers and plug the servos in, or cut the cables and solder them
+directly. I prefer the latter, because then you can adjust the wire
+length and have better cable management. Make sure to leave some extra
+cable length for the leg to be able to move freely.
+
+Once you have that, you can connect the robot to USB and create a [main.py](http://main.py)  file with the following contents:
+
+
+```python
+import board
+import pulseio
+import time
+
+
+_PINS = (
+        board.SERVO_HL1, board.SERVO_HL2, board.SERVO_HL3,
+        board.SERVO_FR1, board.SERVO_FR2, board.SERVO_FR3,
+        board.SERVO_FL1, board.SERVO_FL2, board.SERVO_FL3,
+        board.SERVO_HR1, board.SERVO_HR2, board.SERVO_HR3,
+)
+servos = tuple(
+    pulseio.PWMOut(pin, frequency=75)
+    for pin in _PINS
+)
+for servo in servos:
+    time.sleep(0.25)
+    servo.duty_cycle = 6300
+
+while True:
+    time.sleep(1)
+
+```
+
+That will set all the servos to their middle positions. Disconnect the
+robot, insert the battery (mind the polarization) and switch the robot
+on. Now remove each servo from its horn and insert it back, making
+sure it's at a right angle to the horn. Secure the horns with the
+screws.
+
+That gives you a finished physical robot.
+
+I still didn't write the programs and libraries for it — I will be
+writing updates here when I do. 
+

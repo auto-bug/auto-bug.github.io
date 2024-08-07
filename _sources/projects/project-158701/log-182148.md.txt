@@ -1,0 +1,37 @@
+---
+blogpost: true
+date: 2020-08-12
+category: project-158701
+---
+
+# Ressurected
+Published on 2020-08-12 in {ref}`project-158701`.
+
+I'm bringing this project back from the dead, now that I have learned
+a bit and got new ideas for it. I already wrote about a solution for
+the battery problem — have the battery on the other side of the wires,
+on your neck. I'm going to go with that, but since the {ref}`project-160167` is not ready yet, I will use a regular battery holder.
+
+The other innovation is using a thin PCB, and a PCB USB socket — that
+lets me make it really thin.
+
+I slapped together a PCB design with those ideas incorporated, and it
+arrived today, so I assembled it:
+
+
+
+:::{image} images/5419571597262907247.jpg
+
+:::
+
+
+It's flashed an ready to be programmed. Next step is to compile a
+version of CircuitPython prepared for it.
+
+The last innovation I have is software: I no longer need to use BMP
+files, as I wrote a Python library for reading GIF files. It's
+probably not fast enough, but there is one more possibility — perhaps
+I could include a C library that was recently created for SAMD21 for
+playing animated GIFs as a CircuitPython C module — then they should
+play at native speed.
+

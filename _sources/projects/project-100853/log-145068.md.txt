@@ -1,0 +1,29 @@
+---
+blogpost: true
+date: 2018-04-23
+category: project-100853
+---
+
+# PCBs on the Way
+Published on 2018-04-23 in {ref}`project-100853`.
+
+It's the first time I'm ordering the PCBs at [jlcpcb.com](http://jlcpcb.com) , so I'm not entirely sure how this will go. Looking at the order
+status page, they have already shipped them, so I hope to have them
+here in a couple of days.
+
+In the mean time, I found a mistake — of course! The SDB pin on the
+IS31FL3733 should be pulled up, while I am pulling it down. This is a
+third time I'm making this mistake, because on the schematic on the
+datasheet that pin is pulled down and connected to a microcontroller
+pin, so that the chip is disabled by default and can be enabled on
+demand. But in this case I want the chip to be always on, and I don't
+want to waste a pin for this. Fortunately, I can simply solder the
+resistor only by one of its pads, and use bodge wire to connect it to
+a nearby via.
+
+I am also considering upping the display resolution to luxurious 16×16
+by using an IS31FL3741 and four 8x8 matrices. That would of course
+require a redesign, and I don't have any IS31FL3741 at hand, so we
+will see. The 14×11 I have right now should be good enough, and four
+matrices instead of two would push the price a bit.
+

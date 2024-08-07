@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Mechanical Construction - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="mechanical-construction">
+<h1>Mechanical Construction<a class="headerlink" href="#mechanical-construction" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2019-10-06 in <a class="reference internal" href="../#project-167912"><span class="std std-ref">Flounder Keyboard</span></a>.</p>
+<p>This time I want it to be just a PCB with the low-profile Kailh
+cholocate switches held just by the soldering. Those switches are
+sunken into the PCB, so I will need to have cutouts, the footprint
+looks like this:</p>
+<img alt="projects/project-167912/images/675441570353724635.png" src="projects/project-167912/images/675441570353724635.png" />
+<p>The top two holes are only for mechanical attachment, the bottom two
+are the actual switch. Since I plan to design the part in Fritzing,
+and Fritzing parts can’t have cutouts as a part of them, I will just
+put this on the silkscreen, then export that to SVG, and create a
+board outline with all the cutouts as a custom board shape:</p>
+<img alt="projects/project-167912/images/6650191570353872327.png" src="projects/project-167912/images/6650191570353872327.png" />
+<p>A SAMD21 microcontroller and a USB socket will be squeezed somewhere
+between the keys. I also have stabilizers for the long keys ordered,
+but I will handle those when they arrive, so I can actually test them.
+I will probably need to mak custom push-rods for them, from paper
+clips.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

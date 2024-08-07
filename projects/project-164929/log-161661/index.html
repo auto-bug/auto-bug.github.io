@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Buttons - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="buttons">
+<h1>Buttons<a class="headerlink" href="#buttons" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2019-04-11 in <a class="reference internal" href="../#project-164929"><span class="std std-ref">PyBadge Hacking</span></a>.</p>
+<p>Handling buttons on a game console requires some special
+consideration, since it is going to affect how responsive the games
+feel. Human touch can discriminate really small timing differences,
+and we definitely don’t want to miss any button presses — human input
+is sacred for computers.</p>
+<p>Since you will usually have quite a few buttons — at least 5, for
+directions nad fire, and possibly more — there is a big temptation to
+save some pins by using trick in how the buttons are connected. You
+may connect them in a matrix, or even charlie-plex them, you can
+connect them to an analog pin with different voltage dividers, you can
+use different capacitors and rely on the signal length, or you can use
+capacitive touch pads to save on components. Whatever you do, there is
+one problem with all those tricks — they require some logic in the
+software to work. Even if you have your buttons connected directly to
+pins, you want them to be either handled by a pin change interrupt, or
+scanned in background in a consistent manner.\</p>
+<p>One way to handle the buttons in the background without imposing too
+much work on the people programming your device is to include all the
+required code in a library, and use interrupts — so that they don’t
+have to follow strict requirements about calling a polling function in
+regular intervals, etc. This lets them write code that blocks, uses
+delays and so on — which is much easier to understand for a beginner.
+That is why I wrote the “gamepad” module for CircuitPython — so that I
+can use it for buttons on the #µGame.</p>
+<p>Another approach is to outsource the task to a dedicated chip, such as
+the HT16K33 on the <a class="reference internal" href="../../project-21578/#project-21578"><span class="std std-ref">PewPew FeatherWing</span></a> or a custom programmed ATtiny24 on the <a class="reference internal" href="../../project-19371/#project-19371"><span class="std std-ref">D1 Mini X-Pad Shield</span></a> — they can do the scanning and the debouncing for your, and you just
+need a small snippet of code to read the currently buffered button
+state from them over I²C. Easy!</p>
+<p>Now, back to the PyBadge. That device uses a 74HC165 shift register
+for the buttons. This is a problem, because it doesn’t buffer the
+button presses — every time you get the data from it, you get the
+state of buttons at the moment the data was latched, when you started
+the communication — and not all the presses since you read it last
+time, which is what you get with the HT16K33 and ATtiny. You can read
+that state in Python easily enough by bit-banging:</p>
+<div class="highlight-cs notranslate"><div class="highlight"><pre><span></span><span class="n">def</span><span class="w"> </span><span class="nf">get_pressed</span><span class="p">():</span><span class="w"></span>
+<span class="w">    </span><span class="n">pressed</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="w"></span>
+<span class="w">    </span><span class="n">latch</span><span class="p">.</span><span class="k">value</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">1</span><span class="w"></span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nf">range</span><span class="p">(</span><span class="m">8</span><span class="p">):</span><span class="w"></span>
+<span class="w">        </span><span class="n">clock</span><span class="p">.</span><span class="k">value</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="k">value</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="n">pressed</span><span class="w"> </span><span class="p">|=</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="w"> </span><span class="n">i</span><span class="w"></span>
+<span class="w">        </span><span class="n">clock</span><span class="p">.</span><span class="k">value</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">1</span><span class="w"></span>
+<span class="w">    </span><span class="n">latch</span><span class="p">.</span><span class="k">value</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">pressed</span><span class="w"></span>
+</pre></div>
+</div>
+<p>But in your game you would have to do it constantly, very fast — and
+at the same time run all the animations and calculations. Not very
+convenient, and if any of your things takes more time than
+anticipated, you are going to miss button presses. That makes the
+experience very frustrating.</p>
+<p>Fortunately, that shift register is very fast — you can get the data
+out of it in no time at all. So I modified the “gamepad” module a bit,
+to make it also work with a shift register. Every 8ms it polls the
+shift register for the current button state, and saves the button
+presses in a buffer, which is emptied when you query it. This way you
+can use the same code on the PyBadge as you would on the µGame, just
+the initialization is different.</p>
+<p>The pull request with the changes is currently in review at  <a class="reference external" href="https://github.com/adafruit/circuitpython/pull/1778">https://github.com/adafruit/circuitpython/pull/1778</a> .</p>
+</section>
+
+
+</div>
+  </body>
+</html>

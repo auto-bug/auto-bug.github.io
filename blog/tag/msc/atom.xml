@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>http://deshipu.art/</id>
+  <title>deshipu.art - Posts tagged msc</title>
+  <updated>2024-08-07T20:33:06.537873+00:00</updated>
+  <link href="http://deshipu.art/"/>
+  <link href="http://deshipu.art/blog/tag/msc/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-58788/</id>
+    <title>ESP8266 with True USB</title>
+    <updated>2018-02-20T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="esp8266-with-true-usb"&gt;
+
+&lt;p&gt;Make it act as a USB disk and just copy files on it.&lt;/p&gt;
+&lt;div class="project-thumb"&gt;
+&lt;a class="reference external image-reference" href="/_images/6948611519591644761.jpg"&gt;&lt;img alt="projects/project-58788/images/6948611519591644761.jpg" src="projects/project-58788/images/6948611519591644761.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/2044731522754346153.jpg"&gt;&lt;img alt="projects/project-58788/images/2044731522754346153.jpg" src="projects/project-58788/images/2044731522754346153.jpg" /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;The ESP8266 (and ESP32) is a great chip: powerful, versatile, cheap,
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;easily obtainable. But it’s a little bit fiddly when it comes to
+programming the development boards and transferring the files onto and
+from them. You have to install the drivers (good luck if you have a
+mac), install the flasher software, get the flash parameters just
+right, get the boot pin low (or make sure the auto-reset circuit
+works), etc. Individually, each of those steps is easy. Together, they
+make it hard to simply just start coding.&lt;/p&gt;
+&lt;p&gt;Wouldn’t it be great if there was a development board that, instead of
+the dumb USB to serial converter, would sport a small and cheap USB-
+capable microcontroller, just like the Arduino UNO or Micro:bit, which
+would let you simply copy files over to a USB drive it would expose?&lt;/p&gt;
+&lt;p&gt;That idea is not mine, of course, I heard it for the first time from &lt;a class="reference external" href="https://hackaday.io/hacker/194126"&gt;&amp;#64;tannewt&lt;/a&gt; . But I really want this to happen.&lt;/p&gt;
+&lt;p&gt;However, I know almost nothing about USB, and this is very much a
+research project. I expect extremely slow progress and possibly
+shelving of this project later on. I believe it is possible to do what
+I want (at least the filesystem and serial access), but I’m not sure I
+have enough experience to pull it off.&lt;/p&gt;
+&lt;p&gt;All help is greatly appreciated!&lt;/p&gt;
+&lt;section id="logs"&gt;
+&lt;h2&gt;Logs&lt;/h2&gt;
+&lt;ul class="postlist-style-none postlist simple"&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-03-23 - &lt;a class="reference internal" href="../../../projects/project-58788/log-127609/"&gt;First PCB&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-03-08 - &lt;a class="reference internal" href="../../../projects/project-58788/log-112037/"&gt;MassStorage Demo with LUFA&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-03-05 - &lt;a class="reference internal" href="../../../projects/project-58788/log-110199/"&gt;USBtoSerial with LUFA&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-02-26 - &lt;a class="reference internal" href="../../../projects/project-58788/log-102598/"&gt;LUFA Demos&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-02-24 - &lt;a class="reference internal" href="../../../projects/project-58788/log-100478/"&gt;Arduino’s ATmega16u2 Firmware&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-02-20 - &lt;a class="reference internal" href="../../../projects/project-58788/log-97752/"&gt;The Plan&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-02-20 - &lt;a class="reference internal" href="../../../projects/project-58788/log-97736/"&gt;Collaboration&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-02-20 - &lt;a class="reference internal" href="../../../projects/project-58788/log-97733/"&gt;Chip Candidates&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section id="instructions"&gt;
+&lt;h2&gt;Instructions&lt;/h2&gt;
+&lt;/section&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-58788/" rel="alternate"/>
+    <summary>Make it act as a USB disk and just copy files on it.</summary>
+    <category term="2018hackadayprize" label="2018hackadayprize"/>
+    <category term="ESP8266" label="ESP8266"/>
+    <category term="MOONSHOT" label="MOONSHOT"/>
+    <category term="hardware" label="hardware"/>
+    <category term="msc" label="msc"/>
+    <category term="researchingproject" label="researching project"/>
+    <category term="usb" label="usb"/>
+    <published>2018-02-20T00:00:00+01:00</published>
+  </entry>
+</feed>

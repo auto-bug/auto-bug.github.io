@@ -1,0 +1,24 @@
+---
+blogpost: true
+date: 2020-05-27
+category: project-171381
+---
+
+# Bootloader, Firmware and Version 1.2
+Published on 2020-05-27 in {ref}`project-171381`.
+
+The bootloader has been added to the Adafruit's fork, so now you can
+compile it yourself:  [https://github.com/adafruit/uf2-samdx1/pull/120](https://github.com/adafruit/uf2-samdx1/pull/120) 
+
+Also, the board definition for CircuitPython has been added here:  [https://github.com/adafruit/circuitpython/pull/2945](https://github.com/adafruit/circuitpython/pull/2945)  — that assumes the correct SCK and MOSI pins, after swapping them.
+
+I ordered the corrected version 1.2 from OSHPark, and it's also
+available for order here:  [https://oshpark.com/shared_projects/SXflbZK4](https://oshpark.com/shared_projects/SXflbZK4)  — it's probably not the most price-efficient way to get it, if you
+panelize it and order from one of the cheap PCB fabs, you could get it
+really cheap, but with a really long wait.
+
+I even checked that JLCPCB has all the parts (except for the USB
+socket) in their library, so you could in theory get them to assemble
+it — except I have no idea how to convert Fritzing's pick-and-place
+file to one of the formats they require.
+

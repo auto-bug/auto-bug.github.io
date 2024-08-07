@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Here We Go Again - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="here-we-go-again">
+<h1>Here We Go Again<a class="headerlink" href="#here-we-go-again" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2018-08-01 in <a class="reference internal" href="../#project-159733"><span class="std std-ref">PewPew Standalone</span></a>.</p>
+<p>In the previous log I mentioned that I need a better solution to dim
+the LEDs — the system tick interrupt doesn’t fire fast enough for me
+to have a good enough refresh rate to do it in software. I decided
+that I will do this by using PWM on the row pins — I can make the PWM
+frequency high enough that it won’t interfere with the column
+scanning, and then I have a really nice 16-bit range of shades.
+However, there is a small problem with this: two of the row pins are
+connected to GPIO ports that don’t support PWM. The culprits are R5
+(PA27) and R7 (PA28). I checked if I could perhaps solder the matrix
+up-side-down to make those pins be connected to columns instead, but
+no, it works for PA28, but PA27 is then connected to R1.</p>
+<img alt="projects/project-159733/images/5114041533154243479.jpg" src="projects/project-159733/images/5114041533154243479.jpg" />
+<p>So I have no choice: a new PCB design is needed. To be honest, that
+was coming anyways, as the spacing of pads in the USB plug wasn’t
+perfect, and I wasn’t proud of the right-angle traces. So I removed
+the connections, rotated the microcontroller by 90°, and re-connected
+everything, paying attention to use PWM-capable pins for the rows. I
+think it came out much cleaner this time:</p>
+<img alt="projects/project-159733/images/1688501533154371536.png" src="projects/project-159733/images/1688501533154371536.png" />
+<p>The “forbidden” pins, PA02, PA03, PA27 and PA28 are all used for
+buttons now. I will mull over the design a little bit more, and order
+it from OSHPark this time.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

@@ -1,0 +1,80 @@
+---
+blogpost: true
+date: 2019-04-11
+category: project-164929
+---
+
+# Buttons
+Published on 2019-04-11 in {ref}`project-164929`.
+
+Handling buttons on a game console requires some special
+consideration, since it is going to affect how responsive the games
+feel. Human touch can discriminate really small timing differences,
+and we definitely don't want to miss any button presses — human input
+is sacred for computers.
+
+Since you will usually have quite a few buttons — at least 5, for
+directions nad fire, and possibly more — there is a big temptation to
+save some pins by using trick in how the buttons are connected. You
+may connect them in a matrix, or even charlie-plex them, you can
+connect them to an analog pin with different voltage dividers, you can
+use different capacitors and rely on the signal length, or you can use
+capacitive touch pads to save on components. Whatever you do, there is
+one problem with all those tricks — they require some logic in the
+software to work. Even if you have your buttons connected directly to
+pins, you want them to be either handled by a pin change interrupt, or
+scanned in background in a consistent manner.\
+
+
+One way to handle the buttons in the background without imposing too
+much work on the people programming your device is to include all the
+required code in a library, and use interrupts — so that they don't
+have to follow strict requirements about calling a polling function in
+regular intervals, etc. This lets them write code that blocks, uses
+delays and so on — which is much easier to understand for a beginner.
+That is why I wrote the "gamepad" module for CircuitPython — so that I
+can use it for buttons on the #µGame.
+
+Another approach is to outsource the task to a dedicated chip, such as
+the HT16K33 on the {ref}`project-21578` or a custom programmed ATtiny24 on the {ref}`project-19371` — they can do the scanning and the debouncing for your, and you just
+need a small snippet of code to read the currently buffered button
+state from them over I²C. Easy!
+
+Now, back to the PyBadge. That device uses a 74HC165 shift register
+for the buttons. This is a problem, because it doesn't buffer the
+button presses — every time you get the data from it, you get the
+state of buttons at the moment the data was latched, when you started
+the communication — and not all the presses since you read it last
+time, which is what you get with the HT16K33 and ATtiny. You can read
+that state in Python easily enough by bit-banging:
+
+
+```cs
+def get_pressed():
+    pressed = 0
+    latch.value = 1
+    for i in range(8):
+        clock.value = 0
+        if data.value:
+            pressed |= 1 << i
+        clock.value = 1
+    latch.value = 0
+    return pressed
+```
+
+But in your game you would have to do it constantly, very fast — and
+at the same time run all the animations and calculations. Not very
+convenient, and if any of your things takes more time than
+anticipated, you are going to miss button presses. That makes the
+experience very frustrating.
+
+Fortunately, that shift register is very fast — you can get the data
+out of it in no time at all. So I modified the "gamepad" module a bit,
+to make it also work with a shift register. Every 8ms it polls the
+shift register for the current button state, and saves the button
+presses in a buffer, which is emptied when you query it. This way you
+can use the same code on the PyBadge as you would on the µGame, just
+the initialization is different.
+
+The pull request with the changes is currently in review at  [https://github.com/adafruit/circuitpython/pull/1778](https://github.com/adafruit/circuitpython/pull/1778) .
+

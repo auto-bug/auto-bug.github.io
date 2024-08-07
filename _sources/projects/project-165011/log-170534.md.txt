@@ -1,0 +1,29 @@
+---
+blogpost: true
+date: 2019-11-02
+category: project-165011
+---
+
+# Discretes and Schematic
+Published on 2019-11-02 in {ref}`project-165011`.
+
+I populated the rest of the shield, and its seems to work — at least
+it shows up on the I2C bus. Further testing will require writing a
+library for it.
+
+I also fixed the schematic view, so that it can actually be
+understood. This is something I like about Fritzing — you can do the
+schematic later.
+
+
+
+:::{image} images/1725401572728148470.png
+
+:::
+
+
+While making the schematic, I also discovered that the version of PCB
+I have misses one connection (for the I2C address selection
+resistors), so I will need to bodge that in the prototype. The final
+version has that fixed.
+

@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>The Look-up Table Holds the Secret - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="the-look-up-table-holds-the-secret">
+<h1>The Look-up Table Holds the Secret<a class="headerlink" href="#the-look-up-table-holds-the-secret" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2018-04-05 in <a class="reference internal" href="../#project-100853"><span class="std std-ref">CircuitPython Badge</span></a>.</p>
+<p>I spent half of the last night poring over the datasheets and wading
+through horrible C code examples, but finally I managed to find the
+code that was used to make this example:</p>
+<iframe style="width: 500px; height: 281px;" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/nJuNz2a9qcQ"></iframe>
+<p>Inside I found a lot of scrambled code, unused files, copy-pasted
+fragments, but also the thing I was looking for: the LUT tables for
+the refresh sequence! After adding them to my driver code, the full
+refresh suddenly takes less than 2 seconds, and the “quick” refresh is
+practically instant (but of course leaves some mess from the previous
+image). That is so much better!</p>
+<p>I have published my driver code here:  <a class="reference external" href="https://bitbucket.org/thesheep/circuitpython-epaper/src/">https://bitbucket.org/thesheep/circuitpython-epaper/src/</a></p>
+</section>
+
+
+</div>
+  </body>
+</html>

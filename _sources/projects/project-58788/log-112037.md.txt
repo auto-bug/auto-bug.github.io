@@ -1,0 +1,21 @@
+---
+blogpost: true
+date: 2018-03-08
+category: project-58788
+---
+
+# MassStorage Demo with LUFA
+Published on 2018-03-08 in {ref}`project-58788`.
+
+Today I experimented a little bit with the mass storage demo. I
+created the Dataflash.h and flash command header files based on the
+modified demo from  [https://github.com/JayconSystems/EPaper-Mass-Storage-Demo-LUFA](https://github.com/JayconSystems/EPaper-Mass-Storage-Demo-LUFA)  and I got it to compile. Then I changed the pins and the flash id to
+fit my project. Flashed it and lo and behold — it enumerates!
+Unfortunately, I was unable to write anything to the flash — I suspect
+I need to provide the commands for this particular model of flash from
+its datasheet. More debugging to come.
+
+\
+I also didn't try to use the USBtoSerial to actually flash the ESP8266
+— I will do that later.
+

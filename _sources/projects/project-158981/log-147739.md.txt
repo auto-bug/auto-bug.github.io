@@ -1,0 +1,56 @@
+---
+blogpost: true
+date: 2018-06-10
+category: project-158981
+---
+
+# Take Over the Wold Already
+Published on 2018-06-10 in {ref}`project-158981`.
+
+I decided to take all that I have learned in the recent years with all
+the versions of  {ref}`project-6050` and other projects, and turn it into a robot kit to sell on Tindie.
+While the previous work focused on making it as simple as possible to
+build it yourself and possibly modify the design, this time I'm going
+to focus on optimizing for a kit. The design will be much more
+integrated, with all that can be done in advance already done. I'm
+going to optimize for the cost, ease of production, shipping, ease of
+assembly, robustness, and fun. Of course I still want to make it easy
+to hack and extend, but that is going to be a secondary concern.
+
+Optimizing for cost and ease of production means that the development
+boards, as used in {ref}`project-19921` and {ref}`project-19603` have to go — not only they add to cost, but also they increase the
+risks, because I don't have any guarantee they will still be available
+in two years in reasonable prices. So it has to be a single integrated
+circuit board, with a minimal amount of through-hole parts, with all
+the parts on one side, and fitting in either the 5x5cm or 10x10cm
+limit.
+
+Optimizing for shipping means that it can't be sold assembled — the
+box would simply be too big. So the kit has to be flat, preferably
+less than 2cm. There is no chance I'm going to ship a battery, so it
+has to use a standard battery that is easy to get. And the servos are
+simply too heavy to ship, so that will need to be sourced separately
+too.
+
+Ease of assembly means that everything has to be pre-soldered.
+Soldering is not hard, but requires specialized tools and people are
+afraid of it. It also means that it has to come pre-programmed, and
+that there needs to be a simple procedure for calibrating the legs. I
+would love to avoid glue if possible, but we will see how that works.
+
+Robustness to mistakes is important, because I have limited time I can
+devote to support — ideally it should just work, and if it doesn't,
+there should be a simple procedure to follow to figure out what is
+wrong. The fear of having to support hundreds of people whose robots
+don't work is what stopped me from selling a Tote kit on Tindie so
+far, but now I decided to try my luck. It doesn't mean I can't try to
+make it as easy as possible for me.
+
+Finally, it has to be fun out of the box, otherwise people will just
+assemble it, see that it works, and put it back into the drawer. If
+it's fun, there is a good chance of someone deciding to hack it.
+Because of that, it will ship programmed as a remote-controlled toy,
+possibly with several modes — walking, dancing, balancing, etc. But of
+course it's not just a toy, and it will be easy to program it and add
+custom behavior.
+

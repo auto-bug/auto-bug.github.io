@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Power and Connectors - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="power-and-connectors">
+<h1>Power and Connectors<a class="headerlink" href="#power-and-connectors" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2018-08-26 in <a class="reference internal" href="../#project-160167"><span class="std std-ref">Electronic Barrette Hub</span></a>.</p>
+<p>Once I decided to use the CircuitPlayground Express board, everything
+else clicked in place. The battery will need to be sandwiched between
+the carrier board and the CPX, because the other side of the carrier
+board is pretty much dominated by the barrette itself. That means I
+need a relatively large battery that will fit in there. Something like
+this:</p>
+<img alt="projects/project-160167/images/6478171535279563850.jpg" src="projects/project-160167/images/6478171535279563850.jpg" />
+<p>There will be a second USB port on the carrier board for charging the
+battery and for programming the addons (this way the addons can have a
+less troublesome connector on them, that you will connect to the
+carrier board for programming).</p>
+<p>There will also be 8 sockets for connecting the individual addons for
+wearing. Those sockets require some thought. On one hand, the plugs
+need to be small and light, because they will be most likely attached
+to almost invisible magnet wires, and we don’t want that to break. On
+the other hand, they need to be easy to connect and disconnect,
+because you will be likely doing it while the barrette is at the back
+of your head already. Finally, they need to be keyed, so that you
+won’t connect anything in reverse and burn it.</p>
+<p>I was looking at various molex, jst, servo and other connectors, but
+they are usually rather expensive, bulky or require large force to
+connect. Finally, I decided to simply use 1.27mm female pin headers on
+the barrette side (female, because they expose power, so you don’t
+want any shorts there), and male pin headers with heat-shrink tube as
+plugs.</p>
+<img alt="projects/project-160167/images/2857281535280083772.jpg" src="projects/project-160167/images/2857281535280083772.jpg" />
+<p>What about keying them? Well, as you can see, the assembly is
+asymmetrical, so all I need is some physical obstacle on the side
+where the cable is not supposed to go. Like a single male 2.54mm pin,
+for example.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

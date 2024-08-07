@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Execution - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="execution">
+<h1>Execution<a class="headerlink" href="#execution" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2019-11-11 in <a class="reference internal" href="../#project-168395"><span class="std std-ref">Keys FeatherWing</span></a>.</p>
+<p>So let’s get this thing done. First, it’s good to start with a mock-
+up, so that we catch any obvious errors:</p>
+<img alt="projects/project-168395/images/7279861573429571872.jpg" src="projects/project-168395/images/7279861573429571872.jpg" />
+<p>I also checked that the APA102 LED fits inside that window in the
+switch. All seems good, so let’s work on the footprint. Kailh has some
+dimensions in their docs:</p>
+<img alt="projects/project-168395/images/253891573429655653.png" src="projects/project-168395/images/253891573429655653.png" />
+<p>That lets me draw the footprint in Inkscape and import it into
+Fritzing. I already had a footprint for the APA102 LED, so all that is
+left is to route it all:</p>
+<img alt="projects/project-168395/images/9896781573429710513.png" src="projects/project-168395/images/9896781573429710513.png" />
+<p>The keys go to their own pins each, and the LEDs are chained together
+and connected to the SPI bus. The DRC check passes, I can’t see any
+obvious errors, but it’s past midnight already, so I won’t be ordering
+this PCB yet. I will wait until morning, to take one more look at it,
+and then order it, like a responsible person that I pretend to be when
+someone is looking.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+---
+blogpost: true
+date: 2019-11-01
+category: project-165011
+---
+
+# PCB Design
+Published on 2019-11-01 in {ref}`project-165011`.
+
+To avoid paying extra for two PCB designs, both layers of the sandwich
+are connected at the corner — they have to be cut manually for
+assembly.
+
+
+
+:::{image} images/4985981572637754949.png
+
+:::
+
+
+The design above has the copper fills removed for clarity. The antenna
+pretty much follows the recommendations from the datasheet. The traces
+going to it are kept as short as possible.
+
+To avoid puncturing the ground layer, the connector for the Feather is
+made out of an angled male header, soldered SMD-style to the board. In
+a final design, a proper SMD header could be used instead.
+

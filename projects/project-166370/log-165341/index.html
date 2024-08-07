@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Why? - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="why">
+<h1>Why?<a class="headerlink" href="#why" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2019-07-04 in <a class="reference internal" href="../#project-166370"><span class="std std-ref">Matrix Sanitizer</span></a>.</p>
+<p>Have you ever used one of those tiny 8x8 LED matrices? Have you
+noticed anything peculiar about their pinout? Here’s something to
+refresh your memory:</p>
+<img alt="projects/project-166370/images/1306331562231254088.png" src="projects/project-166370/images/1306331562231254088.png" />
+<p>Not only it’s totally random, without a rhyme or reason, but also the
+only diagram you have to go by is backwards, giving your pin numbers
+in reference to physical locations of the LEDs, instead of giving your
+physical locations of the pins in reference to row and column numbers.
+Sure, you can work it out on paper, but it’s easy to make a mistake.</p>
+<p>But don’t worry, we have a technological solution to this obvious
+problem! Introducing Matrix Sanitizer, which is basically just a tiny
+little PCB that rearranges the pins for you into a saner
+configuration!</p>
+<img alt="projects/project-166370/images/8230551562231552644.png" src="projects/project-166370/images/8230551562231552644.png" />
+<img alt="projects/project-166370/images/4276261562231562461.png" src="projects/project-166370/images/4276261562231562461.png" />
+<p>Thanks to years of research of our best engineers, it does it without
+any vias, while keeping the same pin spacing, and even lets you insert
+the male pin headers without soldering (the matrix still needs to be
+soldered for good electrical contact).</p>
+<p>The bottom rows are the anodes, and the top row are the cathodes. The
+PCB goes flat against the bottom of the matrix, only making it 1.6mm
+higher. The resulting contraption fits into a prototyping breadboard
+perfectly, and because it uses regular goldpins in place of those
+flimsy thin legs, it provides excellent contact.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

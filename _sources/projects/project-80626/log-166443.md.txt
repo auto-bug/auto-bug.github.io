@@ -1,0 +1,19 @@
+---
+blogpost: true
+date: 2019-08-01
+category: project-80626
+---
+
+# Scaling
+Published on 2019-08-01 in {ref}`project-80626`.
+
+One problem with supporting devices other than {ref}`project-27629` is that they use different displays. The 160×128 version of ST7735 is
+not that bad — there is just a strip of 32 unused pixels — but the
+ILI9341 is almost twice as large, with 320×240 pixels. So you either
+play the game on a tiny postage stamp, or you adapt it to the platform
+— but the 16×16 tiles and sprites are still too small.
+
+That's why I just added a "scale" optional parameter to the Stage
+object in the library, that allows you to scale the display 2× or
+more, giving you back the chunky pixels we so love.
+

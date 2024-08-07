@@ -1,0 +1,64 @@
+---
+blogpost: true
+date: 2019-09-21
+category: project-165032
+---
+
+# All the Buttons
+Published on 2019-09-21 in {ref}`project-165032`.
+
+While [@Elecrow ](https://hackaday.io/hacker/147848) is taking their time with the order (still in production after 10
+days), all the buttons arrived for testing. I really like the idea of
+laser-cut button caps, but if that doesn't work, I want to have some
+other options, so testing continues. The buttons look like this:
+
+
+
+:::{image} images/5837211569063072812.JPG
+
+:::
+
+
+From the left: the original 6x6x6 button I used in PewPew, the silicon
+switch I used in µGame, those horrible 4x4 switches that dig into your
+fingers, low-profile 6x6x5.5 switch, and ALPS SKRAAME010.
+
+In the back you can see one of the cases I experimented with, with two
+layers, bottom 2.5mm and top 1mm.
+
+Some immediate conclusions: the metal one will need keycaps one way or
+the other. The two low-profile buttons might work without (especially
+the ALPS, that has silicone cap), but seem a bit narrow. The ALPS
+button is minimally higher than then 2.5mm required to fit under the
+top layer.
+
+I will need to wait for the prototype to be able to say anything more.
+
+---------- more ----------In other news, I'm also taking a look at the competition: in this
+case, one of the oldest homebrew consoles out there, the Arduboy:
+
+
+
+:::{image} images/1833831569063997568.JPG
+
+:::
+
+
+Some interesting things to note here: they have brass nuts sunken in
+the plastic for the bolts — that probably makes it impossible to crack
+like it did for me. Buttons use plastic caps, but underneath are just
+simple metal domes, glued to the PCB with a sticker, not even
+soldered. The USB port is interesting as well, because it's sunk into
+the PCB's cutout.
+
+
+
+:::{image} images/8662291569064221579.JPG
+
+:::
+
+
+The other side is mostly a super-thin LiPo battery, with horrible
+soldering, and a piezo stuck under it. Kapton tape guards against
+shorts to the metal back.
+

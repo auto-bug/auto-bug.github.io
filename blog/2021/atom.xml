@@ -2,42 +2,65 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posted in 2021</title>
-  <updated>2024-08-07T20:31:59.222370+00:00</updated>
+  <updated>2024-08-07T20:33:03.289999+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/2021/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
   <entry>
-    <id>http://deshipu.art/projects/project-10408/log-189624/</id>
-    <title>Version Two</title>
-    <updated>2021-02-23T00:00:00+01:00</updated>
-    <content type="html">&lt;section id="version-two"&gt;
+    <id>http://deshipu.art/projects/project-80626/log-197278/</id>
+    <title>Meowbit</title>
+    <updated>2021-08-30T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="meowbit"&gt;
 
-&lt;p&gt;Published on 2021-02-23 in &lt;a class="reference internal" href="../../projects/project-10408/#project-10408"&gt;&lt;span class="std std-ref"&gt;Steno Keyboard&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;As you might have guessed from the previous log, I decided to try and
-make another stenotype. This time with a little bit more experience
-from my low-profile keyboard projects. Of course it’s low-profile, and
-of course it runs CircuitPython.&lt;/p&gt;
-&lt;img alt="projects/project-10408/images/7278911614035113792.jpg" src="projects/project-10408/images/7278911614035113792.jpg" /&gt;
-&lt;p&gt;I used blue Kailh Choc switches, because they are very light, with 25g
-springs. That is important, because you are usually pressing a lot of
-keys at once, and the forces add up quickly. The switches are linear,
-not clicky, but I think it’s fine.&lt;/p&gt;
-&lt;p&gt;I used some keycaps I had left over from building other keyboards —
-mostly function keys and some random stuff like Print Screen or
-alternate Alt. I couldn’t use keys with proper legends, because the
-letters repeat here, so I would need several sets. Instead I bought
-several sheets of stickers for “converting” your keyboard to a
-different layout. They look bad, but it works well enough for
-training.&lt;/p&gt;
-&lt;p&gt;Right now I programmed it as a keyboard to be used with Plover, but
-ultimately I want to make it work like real stenotypes, as a serial
-device. CircuitPython just recently had a se]cond USB CDC device
-added, so I can use that.&lt;/p&gt;
+&lt;p&gt;Published on 2021-08-30 in &lt;a class="reference internal" href="../../projects/project-80626/#project-80626"&gt;&lt;span class="std std-ref"&gt;Stage, a Tile and Sprite Engine&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Today I finally sat down and got Stage running on the Meowbit. I had
+this very neat little console in my drawer for years now, and
+CircuitPython has been ported to the STM32 chip that it uses, but
+there was &lt;a class="reference external" href="https://github.com/adafruit/circuitpython/issues/3873"&gt;a bug preventing me from re-initializing the display to the settings
+that Stage expects&lt;/a&gt; . A few days ago I got reminded about Meowbit, and realized that I
+don’t have to re-initialize the display to make it work, I can change
+the default display settings, since I have to recompile CircuitPython
+firmware for it anyways to include the parts of Stage written in C.&lt;/p&gt;
+&lt;p&gt;So here it is:&lt;/p&gt;
+&lt;img alt="projects/project-80626/images/4843771630351947086.jpg" src="projects/project-80626/images/4843771630351947086.jpg" /&gt;
+&lt;p&gt;As an addition, I also modified to Stage library to allow using
+different sound output than the audioio module it defaults to. The
+Meowbit, for example, uses audiopwmio, but you could also use
+audiobusio for a device that uses I2S.&lt;/p&gt;
+&lt;p&gt;If the pull request is accepted, the support should be available in
+CircuitPython 7.0 to be released soonish.&lt;/p&gt;
 &lt;/section&gt;
 </content>
-    <link href="http://deshipu.art/projects/project-10408/log-189624/" rel="alternate"/>
-    <summary>Published on 2021-02-23 in project-10408.</summary>
-    <published>2021-02-23T00:00:00+01:00</published>
+    <link href="http://deshipu.art/projects/project-80626/log-197278/" rel="alternate"/>
+    <summary>Published on 2021-08-30 in project-80626.</summary>
+    <published>2021-08-30T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-80626/log-198670/</id>
+    <title>PicoSystem</title>
+    <updated>2021-10-07T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="picosystem"&gt;
+
+&lt;p&gt;Published on 2021-10-07 in &lt;a class="reference internal" href="../../projects/project-80626/#project-80626"&gt;&lt;span class="std std-ref"&gt;Stage, a Tile and Sprite Engine&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Pimoroni has released their PicoSystem, which is a handheld game
+console with an RP2040 microcontroller — and since it runs
+CircuitPython, of course I had to make it run the Stage library as
+well. I received a beta unit from Pimoroni, and with help from
+Gadgetoid, we got everything working:&lt;/p&gt;
+&lt;img alt="projects/project-80626/images/7357901633616631400.jpg" src="projects/project-80626/images/7357901633616631400.jpg" /&gt;
+&lt;img alt="projects/project-80626/images/9064631633616648503.jpg" src="projects/project-80626/images/9064631633616648503.jpg" /&gt;
+&lt;img alt="projects/project-80626/images/8006731633616664688.jpg" src="projects/project-80626/images/8006731633616664688.jpg" /&gt;
+&lt;p&gt;The changes are getting merged into CircuitPython even as we speak, so
+they should be available in any version greater than 7.0.0 (not in
+7.0.0 itself, though, too late for that).&lt;/p&gt;
+&lt;p&gt;I had to fix screen scaling, because I forgot to implement it in the
+CircuitPython version — I only had it working in MicroPython. I also
+improved the menu program, so that it adjusts to the screen size.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-80626/log-198670/" rel="alternate"/>
+    <summary>Published on 2021-10-07 in project-80626.</summary>
+    <published>2021-10-07T00:00:00+02:00</published>
   </entry>
   <entry>
     <id>http://deshipu.art/projects/project-10408/log-200589/</id>

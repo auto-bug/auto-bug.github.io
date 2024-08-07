@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>The Curse of the OLED Display 3 - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="the-curse-of-the-oled-display-3">
+<h1>The Curse of the OLED Display 3<a class="headerlink" href="#the-curse-of-the-oled-display-3" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2019-04-24 in <a class="reference internal" href="../#project-165032"><span class="std std-ref">PewPew M4</span></a>.</p>
+<p>This is not my first encounter with those small OLED display modules.
+We actually go back a while.</p>
+<p>First I tried to use it for the <a class="reference internal" href="../../project-27757/#project-27757"><span class="std std-ref">Micro:Boy</span></a> project, and I kept failing to get it working so much, that in the
+final version I decided to just use one of the ready modules. And of
+course after I did that and redesigned everything, I came back to the
+initial project and discovered that the <a class="reference external" href="https://hackaday.io/project/27757-microboy/log/71654-after-all-it-works">display itself was physically faulty</a> . But the project moved on, and I discovered other reasons why it
+won’t work (not enough memory and code space on the micro:bit for the
+kind of games I wanted).</p>
+<p>Second attempt was with the <a class="reference internal" href="../../project-100853/#project-100853"><span class="std std-ref">CircuitPython Badge</span></a> , where one of the prototypes I’ve build used that display. I used the
+same display module, but in 4-wire SPI configuration this time. <a class="reference external" href="https://hackaday.io/project/100853-circuitpython-badge/log/142400-mark-ii">I wasn’t able to get it to work</a> , and I’ve moved on to e-ink displays, and later, after rethinking the
+whole thing, to LED matrices, because of the specifics of the project
+(the display needed to be big, not necessarily high-res).</p>
+<p>And here I am again, with the accursed display, in 4-wire SPI mode
+again. And again, I looked at the application notes in the datasheets
+both for SSD1306 and for SH1106, <a class="reference external" href="https://learn.adafruit.com/monochrome-oled-breakouts/downloads">I looked at Adafruit’s schematics for their breakout</a> , and I am none the wiser. The connections are exactly the same as on
+that badge, and there is really nothing wrong with them, at least as
+far as I can see. Sure, all three sources of data use wildly different
+values for the capacitors — from 1µF, through 2.2µF, up to 4.7µF and
+10µF. So which ones are correct? Who knows? Will the display work with
+my new PCB, if it didn’t with the old one? Will I ever be able to get
+those things to work?</p>
+<p>Facing all those questions and doubts, I decided to take arms against
+them, and answer them once and for all. I dug out of my drawers the
+failed badge prototype, and decided to try and get it to work. I
+started by finding the designs files for it, and re-creating the board
+definition for CircuitPython, so that I can use the latest version (it
+includes displayio module, which I will need to get to work with those
+OLED displays later on). Then I flashed it, and dug up some of my old
+libraries for MicroPython for this display, and quickly converted it
+to CircuitPython. A quick test, and of course it doesn’t work. Dead.</p>
+<p>Fine, as a next step, I tried all three combinations of capacitor
+values. No difference. Measured the voltages on those caps — hmm,
+looks like the charge pump is not even starting…</p>
+<p>I de-soldered the display from the prototype, and from a known good
+breakout, and swapped them. Tried the breakout module with an Adafruit
+board I had lying around, using Adafruit’s SSD1306 libraries. Ah-ha!
+The display did start, but it’s an SH1106, not SSD1306. But it’s not
+faulty, so it should be at least showing something, like in this
+breakout. Why doesn’t it?</p>
+<p>Next I tried the display from the known-good breakout in the
+prototype, with the code I had on it. Nope, doesn’t work. And I’m sure
+this one is an SSD1306 and working. So something is wrong with the
+prototype. The charge pump is not switching on, so perhaps something
+with communications?</p>
+<p>I checked the continuity for all the control pins — everything looks
+correct. I re-soldered them, just to be sure. Still nothing. It seems
+that physically everything is fine…</p>
+<p>Wait a minute, what if I used those Adafruit libraries on this
+prototype? I copied them over and lo and behold! The display works! It
+was my crappy code all this time!</p>
+<p>I re-soldered all the displays back to their places, and changed the
+init sequence to a <a class="reference external" href="https://hackaday.io/page/5722-driving-oled-displays-directly">minimal example from my tutorial</a>  — just enabling the charge pump and setting contrast.</p>
+<img alt="projects/project-165032/images/5550971556125546003.jpg" src="projects/project-165032/images/5550971556125546003.jpg" />
+<p>And it works perfectly fine (the pattern on the display is the refresh
+of the OLED interfering with my potato camera).</p>
+<p>That means not only that the PCBs I ordered are going to work, but
+also that I can already start testing code on this prototype.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

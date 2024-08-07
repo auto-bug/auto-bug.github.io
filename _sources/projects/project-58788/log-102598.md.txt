@@ -1,0 +1,38 @@
+---
+blogpost: true
+date: 2018-02-26
+category: project-58788
+---
+
+# LUFA Demos
+Published on 2018-02-26 in {ref}`project-58788`.
+
+Today I tried to actually compile the arduino firmware for the
+atmega16u2, however, without much success. It seems to be written for
+an unspecified version of LUFA different than the current release.
+Rather than try to guess what version it should be, I decided to
+instead try the demos included with LUFA. That turned out to be
+remarkably simple.
+
+All you have to do is unpack the LUFA zip file, open a terminal in the
+directory of one of the demos, edit the Makefile to replace
+"at90usb1287" with "atmega32u4", "8000000" with "16000000", and
+"USBKEY" with "LEONARDO", edit the sources to remove all references to
+joystick and instead make it spew some text constantly, and then do:
+
+
+```vbscript
+make all
+avr-objcopy -j .text -j .data -O ihex VirtualSerial.elf VirtualSerial.hex
+avrdude -c usbtiny -p atmega32u4 -U flash:w:VirtualSerial.hex:i
+```
+
+(I have and USBTiny ISP programmer connected to pins 14, 15 and 16 of
+the Pro Micro.) 
+
+And it works — I get spam from the serial on the /dev/ttyACM0 device.
+Yay.
+
+Sadly, I can't see any demo that would be reading from the serial, but
+I hope I can steal that from the Arduino firmware code.
+

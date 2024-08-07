@@ -1,0 +1,27 @@
+---
+blogpost: true
+date: 2018-07-16
+category: project-100853
+---
+
+# Testing Prototypes and Possible Optimizations
+Published on 2018-07-16 in {ref}`project-100853`.
+
+I have five prototypes assembled and tested, and I'm going to take
+them next week to Europython to Edinburgh and pass them on for
+testing. We decided to skip this year and I'm for next year, which
+will give us more time to develop the libraries and examples for them.
+
+In the mean time, as I'm working on the {ref}`project-159733` , I'm getting ideas about how to reduce the parts count and price of
+those badges. Since I'm using two 7×11 matrices, I can drive them with
+just 18 pins by using a kind of charlieplexing approach — that means
+that a bigger SAMD21 chip should be able drive them all, and still
+have spare pins for breaking out. That could shave off as much as ¼ of
+the cost. Of course the cost of that would be scanning the matrix in
+software, but I already have to write the library for this for the
+PewPew.
+
+I also still need to get the radio going. There are ready NRF24
+libraries, but I think we will want to have something custom more
+similar to Micro:bit's "radio" library.
+

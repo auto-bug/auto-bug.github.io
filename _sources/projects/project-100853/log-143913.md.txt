@@ -1,0 +1,65 @@
+---
+blogpost: true
+date: 2018-04-14
+category: project-100853
+---
+
+# The Matrix
+Published on 2018-04-14 in {ref}`project-100853`.
+
+After yesterday's log, it has become clear to me what shape and size
+the badge should have and what I should use for the display. Behold:
+
+
+
+:::{image} images/5575541523658106909.jpg
+
+:::
+
+
+This is a matrix I made when playing with the ISSI chips for the  {ref}`project-20941` . It's two 7×11 matrices, side by side, driven by the IS31FL3733 chip.
+Each pixel has 256 values of brightness, independent from the 256
+values of global brightness and with gamma correction lookup table. It
+also has 4 kinds of hardware blinking, selected per pixel. And
+everything controlled over an I2C bus. The only problem with this is
+that the matrices have a rather stupid pinout, so there is not even a
+chance for routing it nicely in order. But we can remap rows and
+columns in software, so we should be fine.
+
+As for the shape, I decided to make it a game handheld again, with a
+large empty area below it for conference logos and participant's name.
+This way it can be held comfortably for playing. For now I'm skipping
+the empty half of the PCB — no reason to pay for it in the prototypes,
+when it won't contain any important parts. The final design will be
+exactly 10×10cm.
+
+I made a first stab at the PCB routing:
+
+
+
+:::{image} images/1345041523658744737.png
+
+:::
+
+
+You can see that LED driver chip has some dense traces. There is a
+direction pad and four buttons, also arranged in a direction pad — so
+that you could make a two-player game, or swap the buttons for left-
+handed people. There is also a prototyping area in the corner, where
+you can connect additional parts or modules.
+
+I wanted to include an accelerometer (the small footprint in the
+middle), but I'm having a hard time routing the traces for it. It has
+to be in the center of the board (so that rotations work right), but
+there is quite a bit of things in there. Also, the design generally
+has too many vias to my taste. Plus the USB socket is too thick, so
+the matrix that comes on top of it would stick out a bit — I'm
+thinking about moving it to the side.
+
+There is no battery charging, since at this size I can simply include
+a battery holder for 3 AAA batteries — that should be enough for a day
+of a conference. Some tests are in order, of course.
+
+I'm not ordering the PCB just yet — I'm hoping I can do a better job
+with the design.
+

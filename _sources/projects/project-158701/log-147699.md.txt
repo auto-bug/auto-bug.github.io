@@ -1,0 +1,36 @@
+---
+blogpost: true
+date: 2018-06-09
+category: project-158701
+---
+
+# First Prototype
+Published on 2018-06-09 in {ref}`project-158701`.
+
+The boards from Aisler just arrived, so I could assemble the first
+prototype. Almost all fits, except for the resistor next to the
+battery charger, for which I had to cut a small hole in the plastic of
+the battery holder. Fortunately there is room to move it.
+
+
+
+:::{image} images/7256211528554742396.jpg
+
+:::
+
+
+Next is programming the little thingy. I got the bootloader burned on
+it:
+
+
+
+:::{image} images/7980051528554790087.jpg
+
+:::
+
+
+Now I need to compile some firmware and see how those touch pads work.
+I still don't have the LIR1202 batteries for it, so I can't test if it
+actually runs on the battery — it's possible the battery will be too
+weak for the display. The CR1202 definitely is too weak.
+

@@ -1,0 +1,52 @@
+---
+blogpost: true
+date: 2019-06-24
+category: project-164929
+---
+
+# Jumper Wire with displayio for PyGamer
+Published on 2019-06-24 in {ref}`project-164929`.
+
+Over the weekend I sat down and ported the Jumper Wire platformer game
+to use displayio entirely instead of my stage/ugame libraries.
+
+
+
+:::{image} images/9193121561389367140.jpg
+
+:::
+
+
+Here are some thoughts I have from that exercise:
+
+
+ * Since there is no one common library for handling initialization and
+inputs (like the "ugame" library for stage), there is currently no way
+to write a portable game — you have to target a particular revision of
+a particular device — the PyGamer in this case, which uses
+"gamepadshift" for the buttons, and "analogio" for the joystick. Other
+devices might use "gampad" or "seesaw" for the buttons and/or
+joystick, or even come up with something entirely new.
+ * The refresh rate is fixed and decoupled from the game logic, which
+results in the sprites moving in a jittery fashion and missing
+animation frames. Fixing the game logic to the refresh rate would
+help, but would result on widely varying playing experience depending
+on the device and version of firmware, as performance varies.
+ * The removal of "flip_x" attribute forced me to double the number of
+sprite graphics, and consequently the memory being used up by them, to
+include flipped versions of practically all of them.
+ * While the partial screen updates sped up displayio enough to make such
+a game possible in the first place, the result is still slower on
+SAMD51 than the same game using stage library on the SAMD21. This
+alone makes me thing that it's worth it to keep stage around.
+ * The analog joystick knob on the PyGamer is horrible — maybe a better
+version could be 3D-printed.
+ * Having to pre-commit on a fixed size of the groups is a huge pain —
+especially when your game creates sprites dynamically (missiles,
+explosions, drops). Adding them to the group at the right layer is a
+challenge as well.
+ * Figuring out how to load a BMP file was a bit of a challenge, and
+opening the file in the wrong mode stopped me for quite a while.
+
+And finally, here's the repository with the game: [https://github.com/deshipu/jumper-wire-displayio-pygamer](https://github.com/deshipu/jumper-wire-displayio-pygamer) 
+

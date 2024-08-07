@@ -1,0 +1,33 @@
+---
+blogpost: true
+date: 2018-08-13
+category: project-159733
+---
+
+# My First Charlieplexed Display
+Published on 2018-08-13 in {ref}`project-159733`.
+
+Once I got my matrix-driving code working on the PewPew 8.0, it was
+just a question of hacking a tri-state gpio pin switching function and
+some trivial modifications to get it to work with a charlieplexed
+display. At least it seems so, because it looks like it's working:
+
+
+
+:::{image} images/2427361534112138530.jpg
+
+:::
+
+
+There is a slight problem with brightness — they are way too bright
+now to distinguish individual shades. Of course my phone camera got
+overloaded and did something funny with the colors, to the naked eye
+they are all blindingly red. I will need to tune the PWM somewhat.
+
+I'm powering it with a bench power supply for testing, because the
+poor little coin cell only lasts a few minutes with the display on at
+full power — even though the bench supply claims it's only drawing
+20mA total.
+
+We will see what I can do with it, but it definitely looks promising.
+

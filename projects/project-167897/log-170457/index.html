@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Programming and Layout - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="programming-and-layout">
+<h1>Programming and Layout<a class="headerlink" href="#programming-and-layout" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2019-11-01 in <a class="reference internal" href="../#project-167897"><span class="std std-ref">5plit Keyboard Clone</span></a>.</p>
+<p>The diodes actually arrived the next day, and I soldered up
+everything, but I didn’t have the energy to program it, so I let it
+sit there for a while.</p>
+<img alt="projects/project-167897/images/6385351572563756594.jpg" src="projects/project-167897/images/6385351572563756594.jpg" />
+<p>Today evening I finally decided to look into programming it. It turns
+out that there is actually a repository for this keyboard on github,
+with a ready configuration for the qmk firmware for it (there are also
+the Gerber files for the PCB there):  <a class="reference external" href="https://github.com/larrbo/odd-rocket/tree/master/5plit%20-kailh">https://github.com/larrbo/odd-rocket/tree/master/5plit%20-kailh</a> \</p>
+<p>The way you use it, you first need to get the firmware from <a class="reference external" href="https://github.com/qmk/qmk_firmware">https://github.com/qmk/qmk_firmware</a>  and then copy the keyboard definition file to the
+“keyboards” directory. Then just run “make 5plit:default” to compile
+it, and “make 5plit:default:flash” to flash it — reset the pro micro
+when it tells you to. You have to program both pro micros, and the one
+that has the USB connected is the left one.</p>
+<p>The default layout looks something like this:</p>
+<img alt="projects/project-167897/images/6468971572563789872.png" src="projects/project-167897/images/6468971572563789872.png" />
+<p>The legend and the upper left is what you get by default, the one in
+upper right is what you get with Fn1, middle right with Fn2, and
+bottom right with Fn3. Middle left is what you get when you hold down
+the key instead of just tapping it, and upper center is what you get
+with Fn1 and Shift.</p>
+<p>I will need to actually modify this a bit, to add right Alt key —
+because that is how you do Polish accented characters on the Polish
+keyboard. But I think I can just do it as holding down the Alt key.</p>
+<p>I still need to learn this layout — I’m not normally a touch typist,
+more like a hybrid one, so this requires some getting used to.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

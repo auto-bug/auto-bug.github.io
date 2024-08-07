@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Sketching the Next Version - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="sketching-the-next-version">
+<h1>Sketching the Next Version<a class="headerlink" href="#sketching-the-next-version" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2018-10-02 in <a class="reference internal" href="../#project-100853"><span class="std std-ref">CircuitPython Badge</span></a>.</p>
+<p>Together with the volunteers we already started working on the next
+version of the prototype. I started to slowly lay out the components
+for it:</p>
+<img alt="projects/project-100853/images/8415261538488477681.png" src="projects/project-100853/images/8415261538488477681.png" />
+<p>Several things are happening there:</p>
+<ul class="simple">
+<li><p>switched to a SAMD51 microcontroller, in place of the smaller SAMD21 —
+that gives us more memory, better speed and more pins,</p></li>
+<li><p>moved the electronics under the display, to make more room on the
+sides,</p></li>
+<li><p>switched to non-clicky buttons, same as I used in <a class="reference internal" href="../../project-27629/#project-27629"><span class="std std-ref">µGame</span></a> ,</p></li>
+<li><p>got rid of the snake heads at the top, to make more room,</p></li>
+<li><p>added a pin header for connecting extra stuff to GPIO pins,</p></li>
+<li><p>considering using a different USB port, though I don’t have a
+footprint for it yet,</p></li>
+<li><p>considering using IR communication in place of the NRF24, but that
+requires some experiments,</p></li>
+<li><p>considering moving the batteries from the back to the front, to make
+the whole thing more flat.</p></li>
+</ul>
+<p>This is all just playing for now, to see how it fits together. We will
+probably still make a lot of changes.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

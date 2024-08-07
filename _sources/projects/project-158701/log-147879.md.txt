@@ -1,0 +1,21 @@
+---
+blogpost: true
+date: 2018-06-13
+category: project-158701
+---
+
+# This Never Gets Old
+Published on 2018-06-13 in {ref}`project-158701`.
+
+The batteries arrived, and a quick test revealed why it didn't work
+with the CR battery: of course I swapped the terminals of the battery
+holder. Fortunately the voltage regulator I'm using has reverse
+voltage protection, so nothing burned. A quick desolder, removal of
+the plastic numbs that key the holder in the right position, and re-
+solder in opposite position fixed it.
+
+Though I still need to compile the firmware for it.
+
+I fixed the PCB, but I still want to rework it to use a QFN version of
+the chip — that should free some space on it too.
+

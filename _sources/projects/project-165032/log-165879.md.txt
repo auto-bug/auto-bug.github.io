@@ -1,0 +1,83 @@
+---
+blogpost: true
+date: 2019-07-18
+category: project-165032
+---
+
+# A Little Bigger Please?
+Published on 2019-07-18 in {ref}`project-165032`.
+
+I have just spent a week at the Europython conference, with all
+participants being given PewPews to play with. We also ran two days of
+workshops for programming them, and I got to help a lot of people
+trying to program them in between the talks. So I have some thoughts.
+
+First of all, the serial console is a weak point. People don't know
+about it, don't know how to access it, and as a result don't get to
+see the exception messages. So then they just try to change things
+randomly or stare at their code looking for errors. We can't count on
+serial support being built-in into the editor, as not everyone can
+install Mu or a plugin for their editor, and sometimes they simply are
+not in the dialup group and don't have the admin rights to add
+themselves. The modemmanager thing on Ubuntu is also extremely
+annoying, as are the extra drivers needed for Windows 7 and 8. I
+really need a better way of displaying errors, so the screen is an
+important addition.
+
+Second, colors. People love colors, and are very disappointed that
+they can't change the color of the LED matrix from the code (one can't
+help but wonder about their mental model of the underlying hardware,
+but let's not get into that too much for now). Also, while kids don't
+mind tiny screens, adults often do, even when there is nothing wrong
+with their eyesight. Not to mention the buttons, which were too small
+for some hands even in the large version of PewPew.
+
+So I'm thinking that I really should use that 160x128 1.88" color TFT
+screen. It has colors, it can display the console or menu, and it's
+still relatively cheap. It will never be as bright or visible from
+distance as the large 8x8 LED matrix, but that's not the main use
+case. Of course, the problem is that pushing so many bits to the
+display each frame is not fast enough for smooth animation. So let's
+also upgrade the microcontroller, and use the SAMD51 — sure, it's more
+expensive, but it's only $2. I think we can still fit in the magic
+barrier of $10 with that. And PCBs are getting cheap too recently, so
+let's use a bigger PCB that is easier to hold.
+
+So all in all, a more capable hardware with fewer hacks, for a little
+higher price, but much improved convenience. Of course I started
+mocking it as soon as I came back from the conference:
+
+
+
+:::{image} images/4351671563477481804.JPG
+
+:::
+
+
+And since I couldn't sleep a few nights afterwards, I designed a PCB
+as well:
+
+
+
+:::{image} images/3036191563477531645.png
+
+:::
+
+
+As you can see, I'm using:
+
+
+ * PCB the size of a credit card,
+ * TFT screen,
+ * wider-spaced buttons,
+ * same connector, but now with better descriptions,
+ * same two AAA batteries,
+ * only the minimum necessary parts.
+
+Once it arrives, I will need to experiment with bootloaders, linker
+scripts and so on to get CircuitPython to run on it, and then I will
+write a version of the Pew library that simply displays 8x8 huge color
+blocks on that screen. If it proves fast enough, maybe I will be even
+able to replace those blocks with custom GIF images later on? Who
+knows?
+

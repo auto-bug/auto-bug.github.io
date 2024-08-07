@@ -2,10 +2,94 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posted in 2022</title>
-  <updated>2024-08-07T20:31:59.218430+00:00</updated>
+  <updated>2024-08-07T20:33:03.279203+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/2022/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-80626/log-209169/</id>
+    <title>PNG Support</title>
+    <updated>2022-07-27T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="png-support"&gt;
+
+&lt;p&gt;Published on 2022-07-27 in &lt;a class="reference internal" href="../../projects/project-80626/#project-80626"&gt;&lt;span class="std std-ref"&gt;Stage, a Tile and Sprite Engine&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;img alt="projects/project-80626/images/192731658873601053.jpg" src="projects/project-80626/images/192731658873601053.jpg" /&gt;
+&lt;p&gt;When I just started with the Stage library, I used BMP files for the
+graphics, mostly because they were uncompressed, so it seemed the
+easiest way. And it was good enough for a prototype, to confirm this
+is possible. But there are a lot of problems with BMP files, starting
+with their size, end ending with the fact that there isn’t really any
+official spec of them, and they have a lot of incompatible variants
+and versions. So while my code worked fine with images saved with
+GIMP, it didn’t with those created with other programs. And honestly,
+forcing people to use GIMP is just too cruel.&lt;/p&gt;
+&lt;p&gt;So for easier use, I decided to add GIF support. I took some work, as
+the compression algorithm is pretty tricky, but I got it done in pure
+Python, and with some restrictions, included it in the Stage library.
+GIF files are pretty much the same no matter what saves them, so that
+makes things a little bit easier for everyone. Or so I thought.&lt;/p&gt;
+&lt;p&gt;Unfortunately, when I looked at how people try to use this library at
+the recent EuroPython conference, I had to revise my conclusions. You
+see, for most people GIF is animated format. That means that most
+sprite-making software, when asked to save as GIF, will create an
+animation of your sprite’s frames, instead of an atlas. And that is
+very much not what Stage expects. The fact that you need to have at
+most 16 colors is also a problem, as many programs will happily add
+colors to your palette while handling or converting your GIFs,
+resulting in files that used to work stopping working when you edit
+them.&lt;/p&gt;
+&lt;p&gt;So what format should I be using? PNG is the most popular format for
+static pixel-art in the community, and most tools support exporting
+atlases of frames to that format. It’s also pretty well specified, so
+all the tools generate the same format. But the compression algorithm
+for PNG is even more complicated than for GIF, so what can I do? Turns
+out that the compression algorithm used by PNG, zlib deflate, is
+actually built-in into Python! And CircuitPython has an efficient C
+implementation of it available as a module too! So I don’t have to
+worry about the compression at all, I just need to handle the file
+structure, which is even simpler than in GIF.&lt;/p&gt;
+&lt;p&gt;So today I sat down, read the PNG specification, and wrote the ~50
+lines of code needed to load the images. And it works! I even managed
+to fit the extra code and the zlib module on the PewPew M4 boards (I
+just had to nudge a bit the Japanese translation). Once the pull
+request merges, we will be able to use PNG images, and I will try to
+write a detailed tutorial.&lt;/p&gt;
+&lt;p&gt;Update: I had to remove the GIF support after all, to make room.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-80626/log-209169/" rel="alternate"/>
+    <summary>Published on 2022-07-27 in project-80626.</summary>
+    <published>2022-07-27T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-158701/log-213092/</id>
+    <title>Where Are We?</title>
+    <updated>2022-11-01T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="where-are-we"&gt;
+
+&lt;p&gt;Published on 2022-11-01 in &lt;a class="reference internal" href="../../projects/project-158701/#project-158701"&gt;&lt;span class="std std-ref"&gt;Video Pendant&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Hardware-wise, I think I’m reasonably happy with what I have – at
+least it’s more than sufficient as a prototype for testing. What I
+need now is the software. I have tested the device with CircuitPython
+– I have even written a GIF decoding library in pure Python specially
+for this – and I’m confident this can work, but not with
+CircuitPython. So the next step is to get the the firmware for this
+working.&lt;/p&gt;
+&lt;p&gt;I can use the TinyUSB library to expose the filesystem over USB – it’s
+the same library that CircuitPython is using, in fact. And I can use a
+super-optimized GIF library written by &lt;a class="reference external" href="https://hackaday.io/hacker/269676"&gt;&amp;#64;Larry Bank&lt;/a&gt; . That should get me the minimal functionality. I can then also
+experiment with sleep modes and touch and all that stuff.&lt;/p&gt;
+&lt;p&gt;The problem I am facing right now is setting up an environment for
+development for the SAMD21. I will probably start with Arduino,
+because that is already mostly ready out of the box, but there is
+still some work with that, that I currently just can’t get myself
+started on. So until I get that going, the project is on hold.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-158701/log-213092/" rel="alternate"/>
+    <summary>Published on 2022-11-01 in project-158701.</summary>
+    <published>2022-11-01T00:00:00+01:00</published>
+  </entry>
   <entry>
     <id>http://deshipu.art/projects/project-10408/log-213614/</id>
     <title>Kos v2.0</title>

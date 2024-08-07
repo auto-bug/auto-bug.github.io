@@ -1,0 +1,50 @@
+---
+blogpost: true
+date: 2019-08-16
+category: project-165032
+---
+
+# Screws
+Published on 2019-08-16 in {ref}`project-165032`.
+
+Let's talk about screws. When I made the acrylic back for the {ref}`project-159733` , I made the holes the right size to use M1.8 screws I had left over
+from hobby servos. They look somewhat unusual, as they have something
+that looks like a built-in washer on their heads:
+
+
+
+:::{image} images/8431441565965195232.jpg
+
+:::
+
+
+But then it turned out that they are pretty much impossible to buy
+without the servos, and when I run out of them, I had to find
+something equivalent. So I bought some random M1.8 screws that looked
+small enough. Turns out that there is more to a screw than the
+diameter — there is also the depth of the thread, and the ones I got
+fit into the holes slightly too loosely.
+
+So this time I made the holes 1.4mm in diameter, to ensure a tight
+fit, and I didn't think much about one more parameter — the length of
+the screw. After the parts arrived and I assembled them, it turned out
+that the pointy part of the screw is sticking out a little bit. The
+PCB is 1mm, the inner layer of acrylic is 2.5mm, and the outer is 2mm,
+which gives 5.5mm together, and the screws are 6mm long. So I did what
+every hacker would do in that situation — cut them. But that is not a
+solution if I want to have them produced in bulk, so I need to find
+the right screws.
+
+After a bit of looking around, I found screws that are M1.8 and have a
+flat end — not pointy. Now, the new version will still have 2.5mm
+inner layer, but the top layer will be only 1mm thick. With 1mm thick
+PCB that would give me 4.5mm for the length. The screws come in 4mm
+and 5mm lengths. But wait a minute, they are countersunk, so they will
+probably sink at least 0.5mm into the larger hole in the PCB. But is
+the length measure including the head, or not? Hmmm... I could also
+use thicker PCB, and add that 0.5mm there, if needed. But I need to
+know the exact dimensions of the screws to do that.
+
+For now, I ended up ordering both the 4mm and the 5mm ones, and I will
+see how they work.
+

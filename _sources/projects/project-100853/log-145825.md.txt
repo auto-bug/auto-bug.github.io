@@ -1,0 +1,43 @@
+---
+blogpost: true
+date: 2018-05-05
+category: project-100853
+---
+
+# Battery Life
+Published on 2018-05-05 in {ref}`project-100853`.
+
+One of the most important features of a conference badge is that it
+has to last through the conference. Which is not that easy, if you
+also consider that its display has to be visible from a distance in
+full sun, and that you can't use rechargeable lithium batteries. So I
+put the prototype badge to a test. I'm using 3 alkaline AAA-sized
+batteries, and I'm displaying a simple pattern of light and dark
+pixels, that hopefully somehow reflects what will be displayed on
+those badges, at least on average. It's also set to 50% overall
+brightness, which is currently the default setting, as it is bright
+enough to be visible in daylight.
+
+
+
+:::{image} images/5010191525545209722.jpg
+
+:::
+
+
+I'm using a local brand "no name" batteries, because that's likely
+what a conference will also use, and it's probably the lowest quality
+I can easily get without ordering from China.
+
+At the 9 hour mark I had a small problem: the tablet I used to run the
+stopwatch application ran out of battery itself — I forgot to connect
+it to a charger. But since I made a photo at the beginning of the
+experiment, I easily fished the start time from the EXIF data, and
+still can tell the exact time.
+
+It's been 11 hours now, and the badge is still working. The voltage
+dropped from the initial 4.5V to 3.7V at the 4 hour mark, and to 3.6V
+at the 9 hour mark. At 11 hours it's at 3.5V. In theory, the badge
+should work down to 2.8V, so I'm really hopeful for this breaking the
+12h mark.
+

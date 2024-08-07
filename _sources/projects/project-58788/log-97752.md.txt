@@ -1,0 +1,38 @@
+---
+blogpost: true
+date: 2018-02-20
+category: project-58788
+---
+
+# The Plan
+Published on 2018-02-20 in {ref}`project-58788`.
+
+The plan for now is to create a development board with the ESP12F
+module on it, and one of the USB-enabled microcontrollers. The board
+would have a special "files" button on it. If started without the
+button pressed, the microcontroller will act as a regular USB to
+serial adapter, pretty much like the ATmega8u2 o the UNO, letting you
+program and debug the ESP8266. However, if during the startup the
+button is pressed, the microcontroller will keep the ESP8266 in reset,
+connect to its SPI flash through the pins on the bottom of the module,
+and make it available as an USB disk. This is the minimal plan.
+
+Now, how to get there? I'm thinking about the following steps:
+
+
+ * get the blinky demo to run on the microcontroller,
+ * get the USB serial echo demo to run,
+ * get the USB to serial working,
+ * add AT commands for changing speed etc.
+ * get the reset and programming logic working,
+ * program the ESP8266 with it,
+ * get SPI working,
+ * communicate with the on-board flash chip,
+ * come up with a way to find the beginning of the filesystem on the
+flash (may require manual configuration),
+ * use a FAT library to verify we can read the filesystem correctly,
+ * get the MSC demo to work,
+ * modify the demo to use the flash chip,
+ * make it use the correct offset,
+ * run both the serial and the MSC depending on the button pressed.
+

@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Safe Mode Problems - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="safe-mode-problems">
+<h1>Safe Mode Problems<a class="headerlink" href="#safe-mode-problems" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2020-07-08 in <a class="reference internal" href="../#project-158981"><span class="std std-ref">Kubik M0</span></a>.</p>
+<p>I haven’t written an update in a while, even though a second version
+of the PCBs already arrived, and the laser-cut parts work very well.
+The reason for that is: I was struggling with power problems.</p>
+<p>For some reason on the new boards CircuitPython goes into a safe mode
+due to a power dip, and has to be physically reset to continue
+operation. This is caused by a “twitch” of servos when they get
+powered up initially, before they get any signal. This is very
+surprising to me, because previously I have built robots with exactly
+the same power distribution and with even more servos, and there was
+never such a problem. Oh well, so I got to figuring it out.</p>
+<p>First, the 3.3V line voltage on switching on looks like this:</p>
+<img alt="projects/project-158981/images/9566461594195189632.png" src="projects/project-158981/images/9566461594195189632.png" />
+<p>You can tell it’s not great — it goes up to around 3V, then drops to
+2.5V and slowly ramps up to 3.3V. This is probably the twitch of the
+servo motors overwhelming momentarily the battery. The usual solution
+to that is a beefy capacitor in parallel to the servos, so let’s try
+that. I think 1000µF will be enough?</p>
+<img alt="projects/project-158981/images/6443151594195327285.jpg" src="projects/project-158981/images/6443151594195327285.jpg" />
+<p>This makes the voltage curve look much smoother, but there is this
+capacitor charging now:</p>
+<img alt="projects/project-158981/images/1307801594195409111.png" src="projects/project-158981/images/1307801594195409111.png" />
+<p>Unfortunately, CircuitPython is still going into safe mode, and I have
+no idea why — there is code in it that is supposed to wait for the
+voltage to stabilize before proceeding with booting. So I played a
+little bit more, tried to swap the LDO with the other, working robot,
+tried to add more capacitors, tried resistors on the servo signal
+lines, etc. — all for nothing. I noticed that with just 6 servos it
+works:</p>
+<img alt="projects/project-158981/images/3700341594195534259.png" src="projects/project-158981/images/3700341594195534259.png" />
+<p>But that’s just because the voltage drop is a little bit smaller, so I
+suppose it goes over the safe mode threshold.</p>
+<p>I’m beginning to suspect that there was actually a change in the
+CircuitPython code handling the safe mode, and that the older robots
+work just because they use an older version of CircuitPython. That
+should be easy to verify, actually — let’s try older version. The
+working robot uses 5.0.0, so let’s try that…</p>
+<p>An nope, still goes into safe mode. So what makes the good robot good?
+Maybe we can look at its voltage curve? Let’s see:</p>
+<img alt="projects/project-158981/images/4092251594196245713.png" src="projects/project-158981/images/4092251594196245713.png" />
+<p>Hmm, so it’s the same bad curve from the start, only the voltage
+doesn’t quite dip as low. Probably just better quality servos, I
+suppose?</p>
+<p>I will keep working on it and keep you updated.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

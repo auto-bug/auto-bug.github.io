@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posts tagged game</title>
-  <updated>2024-08-07T20:32:01.172430+00:00</updated>
+  <updated>2024-08-07T20:33:06.261292+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/tag/game/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -471,5 +471,150 @@ the one used on many Arduino-based game consoles.&lt;/p&gt;
     <category term="micropython" label="micropython"/>
     <category term="python" label="python"/>
     <published>2017-10-15T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-159733/</id>
+    <title>PewPew Standalone</title>
+    <updated>2018-07-15T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="pewpew-standalone"&gt;
+
+&lt;p&gt;A Python-based micro game console, optimized for game development workshops.&lt;/p&gt;
+&lt;div class="project-thumb"&gt;
+&lt;a class="reference external image-reference" href="/_images/5267771533379701591.jpg"&gt;&lt;img alt="projects/project-159733/images/5267771533379701591.jpg" src="projects/project-159733/images/5267771533379701591.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/935141533379686290.jpg"&gt;&lt;img alt="projects/project-159733/images/935141533379686290.jpg" src="projects/project-159733/images/935141533379686290.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/9166951534075934916.jpg"&gt;&lt;img alt="projects/project-159733/images/9166951534075934916.jpg" src="projects/project-159733/images/9166951534075934916.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/6174551535027103963.jpg"&gt;&lt;img alt="projects/project-159733/images/6174551535027103963.jpg" src="projects/project-159733/images/6174551535027103963.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/6480971540220805035.jpg"&gt;&lt;img alt="projects/project-159733/images/6480971540220805035.jpg" src="projects/project-159733/images/6480971540220805035.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/7546251540220815821.jpg"&gt;&lt;img alt="projects/project-159733/images/7546251540220815821.jpg" src="projects/project-159733/images/7546251540220815821.jpg" /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;A Python-based micro game console, optimized for game development
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;workshops.\&lt;/p&gt;
+&lt;p&gt;I really like the &lt;a class="reference internal" href="../../../projects/project-21578/#project-21578"&gt;&lt;span class="std std-ref"&gt;PewPew FeatherWing&lt;/span&gt;&lt;/a&gt; as a platform for teaching game development, but the cost of Feather
+boards needed to use it makes it difficult to organize workshops for
+larger groups of people. I have previously tried to work around that
+problem by merging the FeatherWing with the schematic stolen from a
+Trinket M0 (with an additional flash memory), but the resulting design
+was complex, difficult to make and still a bit expensive. Now after
+having designed a few more CircuitPython boards I think I can really
+cut the costs and make a standalone device with all the functionality
+of the original shield, but optimized for workshops.\&lt;/p&gt;
+&lt;section id="logs"&gt;
+&lt;h2&gt;Logs&lt;/h2&gt;
+&lt;ul class="postlist-style-none postlist simple"&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2021-04-08 - &lt;a class="reference internal" href="../../../projects/project-159733/log-191485/"&gt;Better Buttons?&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2020-01-18 - &lt;a class="reference internal" href="../../../projects/project-159733/log-173081/"&gt;PicoPew&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-09-27 - &lt;a class="reference internal" href="../../../projects/project-159733/log-169295/"&gt;Noc Informatyka&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-08-25 - &lt;a class="reference internal" href="../../../projects/project-159733/log-167788/"&gt;Workshops in Zürich&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-08-09 - &lt;a class="reference internal" href="../../../projects/project-159733/log-166847/"&gt;New Source&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-06-22 - &lt;a class="reference internal" href="../../../projects/project-159733/log-164912/"&gt;Hardware Design for EuroPython Version&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-06-15 - &lt;a class="reference internal" href="../../../projects/project-159733/log-164674/"&gt;EuroPython 2019&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-06-07 - &lt;a class="reference internal" href="../../../projects/project-159733/log-164386/"&gt;Laser-cut Backs&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-03-19 - &lt;a class="reference internal" href="../../../projects/project-159733/log-160681/"&gt;Laser Cutting is Tricky&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-03-17 - &lt;a class="reference internal" href="../../../projects/project-159733/log-160614/"&gt;Mailing List&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-03-06 - &lt;a class="reference internal" href="../../../projects/project-159733/log-160221/"&gt;PewPew Pro&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-03-03 - &lt;a class="reference internal" href="../../../projects/project-159733/log-160090/"&gt;Gamepad&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-03-01 - &lt;a class="reference internal" href="../../../projects/project-159733/log-160019/"&gt;CircuitPython 4.0&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-10-21 - &lt;a class="reference internal" href="../../../projects/project-159733/log-154972/"&gt;Small Version Available on Tindie&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-10-18 - &lt;a class="reference internal" href="../../../projects/project-159733/log-154713/"&gt;Big Version Assembled&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-10-11 - &lt;a class="reference internal" href="../../../projects/project-159733/log-154315/"&gt;First Production Unit&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-09-28 - &lt;a class="reference internal" href="../../../projects/project-159733/log-153424/"&gt;Big Version PCB&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-09-17 - &lt;a class="reference internal" href="../../../projects/project-159733/log-152977/"&gt;Extensive User Testing&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-09-13 - &lt;a class="reference internal" href="../../../projects/project-159733/log-152812/"&gt;Controlling a Robot&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-09-05 - &lt;a class="reference internal" href="../../../projects/project-159733/log-152337/"&gt;More Progress&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-08-26 - &lt;a class="reference internal" href="../../../projects/project-159733/log-151769/"&gt;Bigger Matrix&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-08-24 - &lt;a class="reference internal" href="../../../projects/project-159733/log-151592/"&gt;Tutorial&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-08-23 - &lt;a class="reference internal" href="../../../projects/project-159733/log-151552/"&gt;PewPew X Assembled&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-08-16 - &lt;a class="reference internal" href="../../../projects/project-159733/log-151047/"&gt;Version X&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-08-14 - &lt;a class="reference internal" href="../../../projects/project-159733/log-150957/"&gt;Saving Pins&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-08-13 - &lt;a class="reference internal" href="../../../projects/project-159733/log-150884/"&gt;My First Charlieplexed Display&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-08-12 - &lt;a class="reference internal" href="../../../projects/project-159733/log-150848/"&gt;Slowing Down&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-08-12 - &lt;a class="reference internal" href="../../../projects/project-159733/log-150833/"&gt;PWM, Flickering and Timers&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-08-10 - &lt;a class="reference internal" href="../../../projects/project-159733/log-150748/"&gt;What are You Sinking About?&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-08-06 - &lt;a class="reference internal" href="../../../projects/project-159733/log-150536/"&gt;Brainstorming&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-08-04 - &lt;a class="reference internal" href="../../../projects/project-159733/log-150445/"&gt;Complete Prototype&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-08-01 - &lt;a class="reference internal" href="../../../projects/project-159733/log-150302/"&gt;Here We Go Again&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-08-01 - &lt;a class="reference internal" href="../../../projects/project-159733/log-150279/"&gt;Driving the Matrix&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-07-31 - &lt;a class="reference internal" href="../../../projects/project-159733/log-150240/"&gt;A Prototype&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-07-16 - &lt;a class="reference internal" href="../../../projects/project-159733/log-149574/"&gt;Boards Ordered&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-07-15 - &lt;a class="reference internal" href="../../../projects/project-159733/log-149352/"&gt;How Lite can PewPew be?&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-07-15 - &lt;a class="reference internal" href="../../../projects/project-159733/log-149399/"&gt;First Attempt at Routing&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-07-15 - &lt;a class="reference internal" href="../../../projects/project-159733/log-149441/"&gt;A Series of Insights&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section id="instructions"&gt;
+&lt;h2&gt;Instructions&lt;/h2&gt;
+&lt;/section&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-159733/" rel="alternate"/>
+    <summary>A Python-based micro game console, optimized for game development workshops.</summary>
+    <category term="LEDS" label="LEDS"/>
+    <category term="businesscard" label="business card"/>
+    <category term="charlieplexing" label="charlieplexing"/>
+    <category term="circuitpython" label="circuitpython"/>
+    <category term="game" label="game"/>
+    <category term="hardware" label="hardware"/>
+    <category term="pewpew" label="pewpew"/>
+    <category term="python" label="python"/>
+    <category term="researchingproject" label="researching project"/>
+    <published>2018-07-15T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-164929/</id>
+    <title>PyBadge Hacking</title>
+    <updated>2019-04-11T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="pybadge-hacking"&gt;
+
+&lt;p&gt;Hacking on Adafruit’s PyBadge&lt;/p&gt;
+&lt;div class="project-thumb"&gt;
+&lt;a class="reference external image-reference" href="/_images/4208061554992232926.jpg"&gt;&lt;img alt="projects/project-164929/images/4208061554992232926.jpg" src="projects/project-164929/images/4208061554992232926.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/5699241554979302535.jpg"&gt;&lt;img alt="projects/project-164929/images/5699241554979302535.jpg" src="projects/project-164929/images/5699241554979302535.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/2592411555151890169.jpg"&gt;&lt;img alt="projects/project-164929/images/2592411555151890169.jpg" src="projects/project-164929/images/2592411555151890169.jpg" /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Adafruit&amp;#39;s PyBadge is coming soon, and I got my hands on a prototype.
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Now I will do science to it.&lt;/p&gt;
+&lt;p&gt;What is PyBadge? It’s a handheld device the size of a credit card with
+a display, a bunch of buttons, a microcontroller running CircuitPython
+and a bunch of extras (neopixels, accelerometer, speaker, flash
+storage, battery charging, light sensor). It is also a secretly a
+Feather, as you can connect FeatherWings to it.&lt;/p&gt;
+&lt;p&gt;It is similar to, but much more powerful than my earlier project &lt;a class="reference internal" href="../../../projects/project-27629/#project-27629"&gt;&lt;span class="std std-ref"&gt;µGame&lt;/span&gt;&lt;/a&gt; (and the reason why I paused work on &lt;span class="xref std std-ref"&gt;project-86818&lt;/span&gt; ). I should be able to get my libraries and games from µGame to run on
+it, but I hope that I can also do some other fun things with it.&lt;/p&gt;
+&lt;iframe style="width: 500px; height: 281px;" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/HT4XKfFpWoo"&gt;&lt;/iframe&gt;
+&lt;section id="logs"&gt;
+&lt;h2&gt;Logs&lt;/h2&gt;
+&lt;ul class="postlist-style-none postlist simple"&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-06-30 - &lt;a class="reference internal" href="../../../projects/project-164929/log-165222/"&gt;Adafruit Learn Guide&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-06-24 - &lt;a class="reference internal" href="../../../projects/project-164929/log-164989/"&gt;Jumper Wire with displayio for PyGamer&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-06-17 - &lt;a class="reference internal" href="../../../projects/project-164929/log-164760/"&gt;PyGamer&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-05-09 - &lt;a class="reference internal" href="../../../projects/project-164929/log-163168/"&gt;Finish&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-05-08 - &lt;a class="reference internal" href="../../../projects/project-164929/log-163117/"&gt;Bugs Bugs Bugs&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-04-24 - &lt;a class="reference internal" href="../../../projects/project-164929/log-162433/"&gt;On Sale&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-04-13 - &lt;a class="reference internal" href="../../../projects/project-164929/log-161767/"&gt;Stage Library&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-04-11 - &lt;a class="reference internal" href="../../../projects/project-164929/log-161661/"&gt;Buttons&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section id="instructions"&gt;
+&lt;h2&gt;Instructions&lt;/h2&gt;
+&lt;/section&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-164929/" rel="alternate"/>
+    <summary>Hacking on Adafruit’s PyBadge</summary>
+    <category term="CONSole" label="CONSole"/>
+    <category term="Software" label="Software"/>
+    <category term="badge" label="badge"/>
+    <category term="circuitpython" label="circuitpython"/>
+    <category term="completedproject" label="completed project"/>
+    <category term="game" label="game"/>
+    <category term="gaming" label="gaming"/>
+    <category term="handheld" label="handheld"/>
+    <category term="micropython" label="micropython"/>
+    <category term="python" label="python"/>
+    <published>2019-04-11T00:00:00+02:00</published>
   </entry>
 </feed>

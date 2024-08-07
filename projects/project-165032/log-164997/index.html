@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Ugh, Software - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="ugh-software">
+<h1>Ugh, Software<a class="headerlink" href="#ugh-software" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2019-06-24 in <a class="reference internal" href="../#project-165032"><span class="std std-ref">PewPew M4</span></a>.</p>
+<p>I finally found some time today to actually flash the CircuitPython
+firmware on this device, and test it. Long story short, I will need
+another version.</p>
+<p>But let’s start from the beginning. Some week ago a second order for
+the buttons finally arrived (the first one is still “on its way” after
+2 months), so I assembled both the <a class="reference internal" href="../../project-165983/#project-165983"><span class="std std-ref">D1 Mini UI Shield</span></a> and this little device. But testing it requires making a new board
+definition for CircuitPython, and also burning the bootloader, so 
+didn’t bother with that — only updated the photo on the project.</p>
+<img alt="projects/project-165032/images/2798201561405967878.jpg" src="projects/project-165032/images/2798201561405967878.jpg" />
+<p>Today I finally got to it. I had my J-Link out already, because I was
+re-flashing the bootloader on some older projects, so I quickly
+uploaded it to this one as well. That got me the energy to also copy
+and modify the board definition of that OLED board I was prototyping
+with earlier. Flashed it, copied the pew.mpy and the games, inserted
+the battery, switched on, and… InvalidPinError.\</p>
+<p>Turns out the pins PA17 and PA18, despite being marked in the SAMD21
+datasheet as supporting SPI, can’t be used for SPI with CircuitPython.
+I’m not entirely sure why, to be honest, but I suspect it has
+something to do with one of the SERCOM peripherals being used for
+something else. And of course I didn’t think about testing it before.
+Well, technically it’s not a show-stopper, I will just need to pick
+another two pins, and there is a whole bunch of them free in there. In
+fact, I already amended the PCB design to use PA10/PA11, which I also
+tested to make sure they work:</p>
+<img alt="projects/project-165032/images/252261561406268991.png" src="projects/project-165032/images/252261561406268991.png" />
+<p>But that means a new PCB order, and desoldering/re-soldering of all
+the components, and I still don’t even know if the coin cell battery
+is going to be able to power the thing with the display on, and it
+would be awfully nice to know that before I make yet another prototype
+(because then I could switch to a LiPO coin cell, and add a charging
+circuit). So what can be done?</p>
+<p>Bodging the wires doesn’t look like a viable option with the QFN chip
+hiding under the hot-glued display. The pins are just visible at the
+edge, but I don’t think I have such thin wires at hand, and the
+surface is too small to actually support a good attachment.</p>
+<p>I could attach wires only on the display side, and provide the signals
+that switch it on from some other microcontroller. But that is a lot
+of wires and work, and I just remembered about the bitbangio library,
+which lets you have software SPI on any pins. All I have to do is
+enable it to be included in the firmware, and add “import bitbangio as
+busio” to my library file. A bit of fumbling to restore the previous
+pin definition, and I have a ready firmware to flash. And… nothing.
+The device keeps restarting on the battery power. Yay.</p>
+<p>A quick swap of the battery to a rechargeable one, and lo and behold:</p>
+<img alt="projects/project-165032/images/5141161561407406718.jpg" src="projects/project-165032/images/5141161561407406718.jpg" />
+<p>So now I know I will need to squeeze that battery charging circuit in
+there somewhere. But I will leave that for some sleepless night.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

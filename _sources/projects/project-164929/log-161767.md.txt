@@ -1,0 +1,30 @@
+---
+blogpost: true
+date: 2019-04-13
+category: project-164929
+---
+
+# Stage Library
+Published on 2019-04-13 in {ref}`project-164929`.
+
+I have now ported the {ref}`project-80626` to CircuitPython's 4.0 displayio system, so now it runs on any of the
+Adafruit boards. Here is the Jumper Wire example game running on the
+PyBadge:
+
+
+<iframe style="width: 500px; height: 281px;" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/UqalLYcZ10o"></iframe>
+
+The screen on the PyBadge is a bit larger, so you can see a bit of
+trash on the right hand side of the screen. If the game was written
+for a bigger screen, it wouldn't be there.
+
+Unfortunately the Stage library is sensitive to how the MADCTL
+register of the display is set, as it doesn't do rotation in software.
+That means I had to modify the initialization code on the pybadge, to
+make it fit what ugame does. Fortunately displayio doesn't care, as it
+does have software rotation, so the two could be brought in sync.
+
+The sound on the prototype of PyBadge I have is pretty bad, so I have
+sound disabled in this demo. Hopefully the final version will be
+better.
+

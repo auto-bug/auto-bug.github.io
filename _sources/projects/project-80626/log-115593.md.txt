@@ -1,0 +1,27 @@
+---
+blogpost: true
+date: 2018-03-11
+category: project-80626
+---
+
+# Support Larger Resolutions
+Published on 2018-03-11 in {ref}`project-80626`.
+
+After a bit of work, I can now use the whole 320×240 screen of the
+M5Stack — unfortunately I had to change the C sources a bit, to use
+16-bit variables for the coordinates. That was a lack of foresight on
+my side, but it's now fixed and the pull requests for the change are
+up.
+
+I also optimized the sprite drawing routines a little bit, and fixed a
+bug that would sometimes make the library fail to refresh some
+sprites. You can now also use floating point values for the sprite
+positions, and they will be rounded during the rendering.
+
+
+
+:::{image} images/6139531520793890679.jpg
+
+:::
+
+

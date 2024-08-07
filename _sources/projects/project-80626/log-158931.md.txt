@@ -1,0 +1,16 @@
+---
+blogpost: true
+date: 2019-01-31
+category: project-80626
+---
+
+# Build for ESP8266
+Published on 2019-01-31 in {ref}`project-80626`.
+
+If you want to try playing with this, but don't feel like compiling
+your own MicroPython firmware, I prepared a build for the ESP8266 with
+the {ref}`project-19371` and an ST7735 display module:  [https://github.com/deshipu/micropython/releases/download/v1.10-34-
+g711238a95-dirty/firmware-combined.bin](https://github.com/deshipu/micropython/releases/download/v1.10-34-g711238a95-dirty/firmware-combined.bin) 
+
+I also updated and rebased the "stage" branch, here:  [https://github.com/deshipu/micropython/tree/stage](https://github.com/deshipu/micropython/tree/stage) 
+

@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>The Plan - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="the-plan">
+<h1>The Plan<a class="headerlink" href="#the-plan" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2018-02-20 in <a class="reference internal" href="../#project-58788"><span class="std std-ref">ESP8266 with True USB</span></a>.</p>
+<p>The plan for now is to create a development board with the ESP12F
+module on it, and one of the USB-enabled microcontrollers. The board
+would have a special “files” button on it. If started without the
+button pressed, the microcontroller will act as a regular USB to
+serial adapter, pretty much like the ATmega8u2 o the UNO, letting you
+program and debug the ESP8266. However, if during the startup the
+button is pressed, the microcontroller will keep the ESP8266 in reset,
+connect to its SPI flash through the pins on the bottom of the module,
+and make it available as an USB disk. This is the minimal plan.</p>
+<p>Now, how to get there? I’m thinking about the following steps:</p>
+<ul class="simple">
+<li><p>get the blinky demo to run on the microcontroller,</p></li>
+<li><p>get the USB serial echo demo to run,</p></li>
+<li><p>get the USB to serial working,</p></li>
+<li><p>add AT commands for changing speed etc.</p></li>
+<li><p>get the reset and programming logic working,</p></li>
+<li><p>program the ESP8266 with it,</p></li>
+<li><p>get SPI working,</p></li>
+<li><p>communicate with the on-board flash chip,</p></li>
+<li><p>come up with a way to find the beginning of the filesystem on the
+flash (may require manual configuration),</p></li>
+<li><p>use a FAT library to verify we can read the filesystem correctly,</p></li>
+<li><p>get the MSC demo to work,</p></li>
+<li><p>modify the demo to use the flash chip,</p></li>
+<li><p>make it use the correct offset,</p></li>
+<li><p>run both the serial and the MSC depending on the button pressed.</p></li>
+</ul>
+</section>
+
+
+</div>
+  </body>
+</html>

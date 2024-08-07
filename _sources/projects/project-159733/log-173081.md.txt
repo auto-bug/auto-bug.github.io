@@ -1,0 +1,34 @@
+---
+blogpost: true
+date: 2020-01-18
+category: project-159733
+---
+
+# PicoPew
+Published on 2020-01-18 in {ref}`project-159733`.
+
+I don't think I have written about it here yet, but there is one more
+member of the PewPew family of devices, and this time it's not made by
+me, which makes me really happy. I'm talking about the a project by [@Christian Walther ](https://hackaday.io/hacker/94159) called {ref}`project-167369` . You should go there and read the project logs, I think they are
+interesting and very detailed. It's much more powerful device, with a
+bi-color matrix with 256 possible colors, esp32-based with TinyPICO
+wifi board as the brains, and a really small form factor. I have
+obtained a working one by trading both with Christian and with
+Unexpected Maker for a {ref}`project-165032`  (one for the shield, one for the TinyPICO).
+
+Here it is all assembled, and with an enclosure that Christian
+3D-printed for me:
+
+
+
+:::{image} images/6647671579382122629.jpg
+
+:::
+
+
+I still need to get all the software on the device, but so far it
+seems to be functioning as expected. I love how the Pew library has
+worked here as a kind of a base standard, on top of which more
+functionality is built. I didn't anticipate this, but maybe it will
+really become a platform.
+

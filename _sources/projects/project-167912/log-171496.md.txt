@@ -1,0 +1,252 @@
+---
+blogpost: true
+date: 2019-12-03
+category: project-167912
+---
+
+# Firmware
+Published on 2019-12-03 in {ref}`project-167912`.
+
+In its simplest form, keyboard firmware is not rocket science. You
+basically need to do three things: scan the key matrix to see which
+keys are pressed, translate the matrix locations into key codes and
+modifiers, and send USB HID reports with lists of currently pressed
+keys. Easy.
+
+So why is the KMK firmware so large? Well, it's written using an
+"enterprise" approach — everything is a class that has a hierarchy at
+least four levels deep, with abstract interfaces, pre- and post-event
+hooks, handlers, validators, layers of abstraction, flexibility and
+extensibility. Also RGB LEDs and Unicode emoji. Unfortunately,
+removing all the things I didn't need would require quite a bit of
+work, as despite having so many layers of abstraction, the code is
+actually pretty tangled. So instead I decided to just write the most
+naive code I could, and see if that works. I came up with this:
+
+
+```python
+import board
+import digitalio
+import usb_hid
+
+
+COLS = (board._C1, board._C2, board._C3, board._C4, board._C5, board._C6,
+    board._C7, board._C8, board._C9, board._C10, board._C11, board._C12,
+    board._C14, board._C13, board._C15)
+ROWS = (board._R1, board._R2, board._R3, board._R4, board._R5)
+
+
+def run(cols, rows, matrix):
+    report = bytearray(8)
+    report_mod_keys = memoryview(report)[0:1]
+    report_no_mod_keys = memoryview(report)[2:]
+    for device in usb_hid.devices:
+        if device.usage == 0x06 and device.usage_page == 0x01:
+            break
+    else:
+        raise RuntimeError("no HID keyboard device")
+
+    cols = [digitalio.DigitalInOut(pin) for pin in cols]
+    rows = [digitalio.DigitalInOut(pin) for pin in rows]
+    for col in cols:
+        col.switch_to_output(value=0)
+    for row in rows:
+        row.switch_to_input(pull=digitalio.Pull.DOWN)
+    last_state = bytearray(len(cols))
+    layer = 0
+    while True:
+        changed = False
+        for x, col in enumerate(cols):
+            col.value = 1
+            bits = 0
+            for y, row in enumerate(rows):
+                bit = row.value << y
+                bits |= bit
+                if row.value != bool(last_state[x] & (1 << y)):
+                    changed = True
+                    code = matrix[layer][y][x]
+                    if code == 0:
+                        pass
+                    elif code == 135:
+                        layer = int(row.value)
+                    elif code > 127:
+                        modifier = 1 << (code - 128)
+                        if row.value:
+                            report_mod_keys[0] |= modifier
+                        else:
+                            report_mod_keys[0] &= ~modifier
+                    else:
+                        if row.value:
+                            for i, value in enumerate(report_no_mod_keys):
+                                if value == 0x00:
+                                    report_no_mod_keys[i] = code
+                                    break
+                        else:
+                            for i, value in enumerate(report_no_mod_keys):
+                                if value in (matrix[0][y][x], matrix[1][y][x]):
+                                    report_no_mod_keys[i] = 0x00
+            col.value = 0
+            last_state[x] = bits
+        if changed:
+            device.send_report(report)
+
+```
+
+Of course you need a [main.py](http://main.py)  file to run this:
+
+
+```python
+import flounder
+
+
+MATRIX = (
+ (b'\x1e\x1f !"#$%&\'-.\x00*I',
+  b'+\x14\x1a\x08\x15\x17\x1c\x18\x0c\x12\x13/01L',
+  b'5\x04\x16\x07\t\n\x0b\r\x0e\x0f34\x00(K',
+  b')\x81\x1d\x1b\x06\x19\x05\x11\x10678\x85RN',
+  b'\x809\x83\x82\x00,\x00\x00\x00\x86\x87\x84PQO'),
+ (b':;<=>?@ABCDE\x00\x00\x00',
+  b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00',
+  b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00',
+  b'\x81\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x85K\x00',
+  b'\x80\x00\x83\x82\x00\x00\x00\x00\x00\x86\x87\x84JNM')
+)
+
+
+flounder.run(flounder.COLS, flounder.ROWS, MATRIX)
+```
+
+Yes, it's not very human-readable. The MATRIX actually defines the
+codes of all the keys in two layers. Of course I didn't write it like
+that. I generated it with this code:
+
+
+```python
+from micropython import const
+import pprint
+
+_A = const(4)
+_B = const(5)
+_C = const(6)
+_D = const(7)
+_E = const(8)
+_F = const(9)
+_G = const(10)
+_H = const(11)
+_I = const(12)
+_J = const(13)
+_K = const(14)
+_L = const(15)
+_M = const(16)
+_N = const(17)
+_O = const(18)
+_P = const(19)
+_Q = const(20)
+_R = const(21)
+_S = const(22)
+_T = const(23)
+_U = const(24)
+_V = const(25)
+_W = const(26)
+_X = const(27)
+_Y = const(28)
+_Z = const(29)
+
+_1 = const(30)
+_2 = const(31)
+_3 = const(32)
+_4 = const(33)
+_5 = const(34)
+_6 = const(35)
+_7 = const(36)
+_8 = const(37)
+_9 = const(38)
+_0 = const(39)
+
+_ENT = const(40) # Enter
+_ESC = const(41) # Esc
+_BS = const(42)  # Backspace
+_TAB = const(43) # Tab
+_SPC = const(44) # Space
+_MN = const(45) # Minus -/_
+_EQ = const(46) # Equal =/+
+_LB = const(47) # Left bracket [/{
+_RB = const(48) # Right bracket ]/}
+_BSL = const(49) # Backslash \/|
+_SC = const(51) # Semicolon ;/:
+_QT = const(52) # Quote '/"
+_GR = const(53) # Grave `/~
+_CM = const(54) # Comman ,/<
+_DT = const(55) # Dot ./>
+_SL = const(56) # Slash //?
+_CAPS = const(57) # Caps lock
+
+_F1 = const(58)
+_F2 = const(59)
+_F3 = const(60)
+_F4 = const(61)
+_F5 = const(62)
+_F6 = const(63)
+_F7 = const(64)
+_F8 = const(65)
+_F9 = const(66)
+_F10 = const(67)
+_F11 = const(68)
+_F12 = const(69)
+
+_PS = const(70) # Print screen
+_SCL = const(71) # Scroll lock
+_PA = const(72) # Pause
+
+_INS = const(73) # Insert
+_HOME = const(74) # Home
+_PGUP = const(75) # Page up
+_DEL = const(76) # Delete
+_END = const(77) # End
+_PGDN = const(78) # Page down
+_AR = const(79) # Arrow right
+_AL = const(80) # Arrow left
+_AD = const(81) # Arrow down
+_AU = const(82) # Arrow up
+
+_LCT = const(128) # Left control
+_LSH = const(129) # Left shift
+_LAL = const(130) # Left alternate
+_LSP = const(131) # Left super
+_RCT = const(132) # Right control
+_RSH = const(133) # Right shift
+_RAL = const(134) # Right alternate
+_FN = const(135) # Function
+
+MATRIX = (
+    (_1, _2, _3, _4, _5, _6, _7, _8, _9, _0, _MN, _EQ, 0, _BS, _INS),
+    (_TAB, _Q, _W, _E, _R, _T, _Y, _U, _I, _O, _P, _LB, _RB, _BSL, _DEL),
+    (_GR, _A, _S, _D, _F, _G, _H, _J, _K, _L, _SC, _QT, 0, _ENT, _PGUP),
+    (_ESC, _LSH, _Z, _X, _C, _V, _B, _N, _M, _CM, _DT, _SL, _RSH, _AU, _PGDN),
+    (_LCT, _CAPS, _LSP, _LAL, 0, _SPC, 0, 0, 0, _RAL, _FN, _RCT, _AL, _AD, _AR),
+), (
+    (_F1, _F2, _F3, _F4, _F5, _F6, _F7, _F8, _F9, _F10, _F11, _F12, 0, 0, 0),
+    (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+    (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+    (0, _LSH, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, _RSH, _PGUP, 0),
+    (_LCT, _CAPS, _LSP, _LAL, 0, 0, 0, 0, 0, _RAL, _FN, _RCT, _HOME, _PGDN, _END),
+)
+
+matrix = tuple(tuple(bytes(row) for row in layer) for layer in MATRIX)
+pprint.pprint(matrix)
+
+```
+
+Actually initially I used that code directly, but then I decided to
+try and save a little bit more flash space (the code above takes
+almost no RAM, as it's all constants that are replaced in place with
+number literals). 
+
+ In any case, despite a few quirks (the modifier keys have to be
+present in both layers in the same places, for example) and a complete
+lack of software debouncing, it seems to work well.
+
+As a final touch, I compiled a version of CircuitPython with all but
+HID USB devices disabled, so that it's only visible as a keyboard, and
+not a million other devices. 
+

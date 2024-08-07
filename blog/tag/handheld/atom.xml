@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posts tagged handheld</title>
-  <updated>2024-08-07T20:32:01.220225+00:00</updated>
+  <updated>2024-08-07T20:33:06.335822+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/tag/handheld/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -111,5 +111,61 @@ and the software library is getting new features added as needed.&lt;/p&gt;
     <category term="micropython" label="micropython"/>
     <category term="ongoingproject" label="ongoing project"/>
     <published>2017-10-09T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-164929/</id>
+    <title>PyBadge Hacking</title>
+    <updated>2019-04-11T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="pybadge-hacking"&gt;
+
+&lt;p&gt;Hacking on Adafruit’s PyBadge&lt;/p&gt;
+&lt;div class="project-thumb"&gt;
+&lt;a class="reference external image-reference" href="/_images/4208061554992232926.jpg"&gt;&lt;img alt="projects/project-164929/images/4208061554992232926.jpg" src="projects/project-164929/images/4208061554992232926.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/5699241554979302535.jpg"&gt;&lt;img alt="projects/project-164929/images/5699241554979302535.jpg" src="projects/project-164929/images/5699241554979302535.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/2592411555151890169.jpg"&gt;&lt;img alt="projects/project-164929/images/2592411555151890169.jpg" src="projects/project-164929/images/2592411555151890169.jpg" /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Adafruit&amp;#39;s PyBadge is coming soon, and I got my hands on a prototype.
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Now I will do science to it.&lt;/p&gt;
+&lt;p&gt;What is PyBadge? It’s a handheld device the size of a credit card with
+a display, a bunch of buttons, a microcontroller running CircuitPython
+and a bunch of extras (neopixels, accelerometer, speaker, flash
+storage, battery charging, light sensor). It is also a secretly a
+Feather, as you can connect FeatherWings to it.&lt;/p&gt;
+&lt;p&gt;It is similar to, but much more powerful than my earlier project &lt;a class="reference internal" href="../../../projects/project-27629/#project-27629"&gt;&lt;span class="std std-ref"&gt;µGame&lt;/span&gt;&lt;/a&gt; (and the reason why I paused work on &lt;span class="xref std std-ref"&gt;project-86818&lt;/span&gt; ). I should be able to get my libraries and games from µGame to run on
+it, but I hope that I can also do some other fun things with it.&lt;/p&gt;
+&lt;iframe style="width: 500px; height: 281px;" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/HT4XKfFpWoo"&gt;&lt;/iframe&gt;
+&lt;section id="logs"&gt;
+&lt;h2&gt;Logs&lt;/h2&gt;
+&lt;ul class="postlist-style-none postlist simple"&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-06-30 - &lt;a class="reference internal" href="../../../projects/project-164929/log-165222/"&gt;Adafruit Learn Guide&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-06-24 - &lt;a class="reference internal" href="../../../projects/project-164929/log-164989/"&gt;Jumper Wire with displayio for PyGamer&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-06-17 - &lt;a class="reference internal" href="../../../projects/project-164929/log-164760/"&gt;PyGamer&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-05-09 - &lt;a class="reference internal" href="../../../projects/project-164929/log-163168/"&gt;Finish&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-05-08 - &lt;a class="reference internal" href="../../../projects/project-164929/log-163117/"&gt;Bugs Bugs Bugs&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-04-24 - &lt;a class="reference internal" href="../../../projects/project-164929/log-162433/"&gt;On Sale&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-04-13 - &lt;a class="reference internal" href="../../../projects/project-164929/log-161767/"&gt;Stage Library&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-04-11 - &lt;a class="reference internal" href="../../../projects/project-164929/log-161661/"&gt;Buttons&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section id="instructions"&gt;
+&lt;h2&gt;Instructions&lt;/h2&gt;
+&lt;/section&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-164929/" rel="alternate"/>
+    <summary>Hacking on Adafruit’s PyBadge</summary>
+    <category term="CONSole" label="CONSole"/>
+    <category term="Software" label="Software"/>
+    <category term="badge" label="badge"/>
+    <category term="circuitpython" label="circuitpython"/>
+    <category term="completedproject" label="completed project"/>
+    <category term="game" label="game"/>
+    <category term="gaming" label="gaming"/>
+    <category term="handheld" label="handheld"/>
+    <category term="micropython" label="micropython"/>
+    <category term="python" label="python"/>
+    <published>2019-04-11T00:00:00+02:00</published>
   </entry>
 </feed>

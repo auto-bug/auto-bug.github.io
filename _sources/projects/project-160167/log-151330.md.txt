@@ -1,0 +1,39 @@
+---
+blogpost: true
+date: 2018-08-21
+category: project-160167
+---
+
+# Reuse
+Published on 2018-08-21 in {ref}`project-160167`.
+
+It's been a little bit frantic the last few days, and I didn't really
+have much time to work on this project, but I decided to at least
+write about what the plans are.
+
+First of all, the "dumb" blinking barrette has been given to a number
+of people for testing, so that I will know if this general size,
+weight and attachment method are practical. I still have a few left, I
+might put them on Tindie when I find a bit of time to make proper
+photos and write the description.
+
+Second, the "smart" barrette is supposed to run CircuitPython and have
+a bunch of sensors built in — pretty much like the Adafruit's Circuit
+Playground Express, except with a battery, a charger and some standard
+of sockets for all the devices. So... why not just use the Circuit
+Playground Express, and make a base board for it with the battery,
+charger and the sockets, and the barrette, of course? That would save
+me a lot of work and testing, and it would still look pretty
+interesting. So that is the current plan. I found a nice round LiPo
+battery, and I started to design the PCB for the base:
+
+
+
+:::{image} images/2110521534805104475.png
+
+:::
+
+
+I still requires more work, of course — maybe when I have another
+sleepless night.
+

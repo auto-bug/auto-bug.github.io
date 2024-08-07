@@ -1,0 +1,32 @@
+---
+blogpost: true
+date: 2018-02-24
+category: project-58788
+---
+
+# Arduino's ATmega16u2 Firmware
+Published on 2018-02-24 in {ref}`project-58788`.
+
+The first thing I want to make is a USB to serial converter, so why
+not look at something that does it already. The ATmega16u2 chip on
+Arduino UNO is programmed as just such a device. A quick search, [and we have the source code for its firmware](https://github.com/arduino/Arduino/blob/master/hardware/arduino/avr/firmwares/atmegaxxu2/arduino-usbserial/Arduino-usbserial.c) . As I expected, it uses LUFA to do the USB work, and hardware serial
+to do the UART work. Pretty straightforward stuff, two ring buffers
+are used to keep the data before it is sent on its way, one for each
+direction.
+
+What I'm disappointed about, though, is that the baud rate of the
+physical UART is hardwired as 9600 in that code. I was hoping for some
+AT code parsing and setting the speed. This is much more primitive.
+
+Why? Because to program ESP8266 you need to talk several speeds. At
+least I think you do. The default serial speed after boot is some
+weird value like 74880, and then, I think, esptool changes that to
+whatever you have configured. And that means that the operating system
+drivers need to know how to change speeds, and that is usually done
+with AT commands, since USB to serial converters usually emulate a
+modem device.
+
+There is a chance that it will work if I set 74880 hardwired, and tell
+esptool to use that speed for everything. It might just work, who
+knows. More testing required.
+

@@ -2,153 +2,94 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posted in 2018</title>
-  <updated>2024-08-07T20:31:59.269905+00:00</updated>
+  <updated>2024-08-07T20:33:03.359369+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/2018/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
   <entry>
-    <id>http://deshipu.art/projects/project-27257/log-148636/</id>
-    <title>Tented Vias</title>
-    <updated>2018-07-02T00:00:00+02:00</updated>
-    <content type="html">&lt;section id="tented-vias"&gt;
+    <id>http://deshipu.art/projects/project-160167/log-154978/</id>
+    <title>What I Hope to Achieve?</title>
+    <updated>2018-10-21T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="what-i-hope-to-achieve"&gt;
 
-&lt;p&gt;Published on 2018-07-02 in &lt;a class="reference internal" href="../../projects/project-27257/#project-27257"&gt;&lt;span class="std std-ref"&gt;Fritzing Tricks&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;This trick was originally described by &lt;a class="reference external" href="https://hackaday.io/hacker/72667"&gt;&amp;#64;Arduino Enigma &lt;/a&gt; in the &lt;span class="xref std std-ref"&gt;project-91895&lt;/span&gt; . Tented vias are vias that are covered with soldermask. If you think
-about it for a moment, there is really no reason for a via to be
-exposed (unless you re-use it as a test point). Its job is to connect
-the layers, and it does it as well when it is covered. On the other
-hand, when it’s covered, the risk of shorting it is smaller, and the
-board can look much better.&lt;/p&gt;
-&lt;p&gt;Unfortunately Fritzing doesn’t normally give you the option to have
-the vias tented. But there is a simple trick to add the soldermask
-over them when you are generating the gerbers. Start by generating
-your gerber files as usual, and once you do that, select_Routing→Select All Vias_ from the menu, and press the Del key to delete them. It will also
-delete some of the traces, but don’t worry about it. Now generate
-another set of gerber files, in a separate directory, and close
-Fritzing without saving the file.&lt;/p&gt;
-&lt;p&gt;Now all you have to do is to copy the_maskTop, maskBottom, silkTop_ and_silkBottom_ files from the latter directory to the former, and voila, your vias
-are now covered with soldermask. You can also only copy only some of
-those files to only have the vias covered on one side of the board.&lt;/p&gt;
+&lt;p&gt;Published on 2018-10-21 in &lt;a class="reference internal" href="../../projects/project-160167/#project-160167"&gt;&lt;span class="std std-ref"&gt;Electronic Barrette Hub&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;It’s time to talk a little bit about the goals of this project.  On
+the face of it, there is really very little creativity in it: it’s
+basically just a carrier PCB for the Circuit Playground Express board,
+with a battery, charger and some connectors. You can build three
+projects like that before breakfast. There is absolutely nothing novel
+or revolutionary or technically challenging in here.&lt;/p&gt;
+&lt;p&gt;On the other hand, I am not aware of anything like this already
+existing, and I am convinced that and existence of something like this
+would be extremely useful for a lot of people. Not just for beginners,
+who are afraid to try soldering, or designing a PCB like this, but
+also experienced wearable builders and cosplayers, who don’t need to
+reinvent the wheel every time, and can simply build their stuff around
+an already existing design.&lt;/p&gt;
+&lt;p&gt;If you look at, say, Arduino, it wasn’t a “revolutionary” project
+either. Every single thing on it has been done before multiple times
+and was widely available. But Arduino made it easier for everyone by
+bringing those things together in one package, and creating a standard
+platform to build on, sharing and re-mixing your designs.&lt;/p&gt;
+&lt;p&gt;A bare microcontroller board lets you build anything — the
+possibilities are infinite, and mind staggers confronted with a blank
+page. A base like the Barrette Hub limits your freedom and suggests
+what to build — making it much easier to begin, and hopefully bringing
+more people into the wonderful world of interactive wearables. Later
+on, when you are more experienced, you can leave it for other, more
+flexible and universal solutions, but you will probably still come
+back when your particular use case is a good fit, and a ready solution
+can save you time.&lt;/p&gt;
+&lt;p&gt;Will it work? Will the platform become popular? Will the idea catch
+on? Will it become an actual standard? I have no idea, this is very
+much a question of luck and of appearing at just the right time and
+place. I believe the right time for this kind of platform is closing
+in fast, and I am willing to do the work to give it a try. Time will
+tell if it’s a wasted effort or not, but in the worst case I still
+learn a lot in the process.&lt;/p&gt;
 &lt;/section&gt;
 </content>
-    <link href="http://deshipu.art/projects/project-27257/log-148636/" rel="alternate"/>
-    <summary>Published on 2018-07-02 in project-27257.</summary>
-    <published>2018-07-02T00:00:00+02:00</published>
+    <link href="http://deshipu.art/projects/project-160167/log-154978/" rel="alternate"/>
+    <summary>Published on 2018-10-21 in project-160167.</summary>
+    <published>2018-10-21T00:00:00+02:00</published>
   </entry>
   <entry>
-    <id>http://deshipu.art/projects/project-21578/log-149325/</id>
-    <title>Making it Cheaper Again</title>
-    <updated>2018-07-14T00:00:00+02:00</updated>
-    <content type="html">&lt;section id="making-it-cheaper-again"&gt;
+    <id>http://deshipu.art/projects/project-160167/log-155074/</id>
+    <title>Proper Prototype</title>
+    <updated>2018-10-22T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="proper-prototype"&gt;
 
-&lt;p&gt;Published on 2018-07-14 in &lt;a class="reference internal" href="../../projects/project-21578/#project-21578"&gt;&lt;span class="std std-ref"&gt;PewPew FeatherWing&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;The PewPew Lite FeatherWing is one of my favorite designs, and I think
-it’s really great for learning programming games — actually better
-than the &lt;a class="reference internal" href="../../projects/project-27629/#project-27629"&gt;&lt;span class="std std-ref"&gt;µGame&lt;/span&gt;&lt;/a&gt; , because it’s so much simpler. The shield itself is pretty cheap,
-too. Unfortunately, you still need to have a Feather M0 (or, even
-better, M0 Express) to use it, and that’s actually twice as expensive
-as the shield itself. Add the LiPo battery to the mix, and you could
-instead buy an ODROID GO or something similar. This is problematic
-especially if you want to organize a workshop — you either make a
-workshop for the rich, or find a sponsor.&lt;/p&gt;
-&lt;p&gt;I have already tried to lower the price of the whole thing by putting
-the microcontroller directly on the device — basically copying the
-Trinket M0 schematic for that — but the resulting device was pretty
-complex to make, and I was never quite happy with it. Plus, you still
-needed the LiPo battery and its charging circuit and all that.&lt;/p&gt;
-&lt;p&gt;Today I sat down and redesigned the latest version of PewPew
-completely, using the knowledge I gained from µGame and from the &lt;span class="xref std std-ref"&gt;project-100853&lt;/span&gt; to simplify it as much as possible, while still keeping its basic
-functionality. That’s how I came up with PewPew 6.0:&lt;/p&gt;
-&lt;img alt="projects/project-21578/images/9513911531579693448.png" src="projects/project-21578/images/9513911531579693448.png" /&gt;
-&lt;p&gt;It’s exactly the size of two AA batteries, because that’s what it is
-going to be using for power. It uses the good old HT16K33 chip, just
-like the PewPew Lite, which simplifies things a lot. However, the
-buttons are handled directly by the microcontroller now, because to
-have them handled by the HT16K33, I would need six extra resistors,
-and I tried to minimize the parts count. To get rid of Shottky diodes
-or transistors for isolating the USB VBUS, I simply used the power
-switch to switch between the battery power and the USB power. I might
-even skip the voltage regulator and make it always run on battery
-power. Apart from that, there are the six buttons, the bi-color
-matrix, the SAMD21 microcontroller itself, two pull-up resistors for
-the I2C bus and two filter capacitors — that’s it. Everything is
-routed on the top layer of the PCB (the bottom is one big ground
-plane), and all parts (except for the battery holder) are mounted on
-top, to simplify assembly. I’m using the QFN version of SAMD21,
-because it’s slightly cheaper.&lt;/p&gt;
-&lt;p&gt;I considered using other chips than the HT16K33 for driving the
-matrix, in particular, simple shift registers to do all the work in
-the microcontroller, but in the end the HT16K33 is cheap enough and
-does all the work for me. In the future, I might consider switching to
-charlieplexed SMD bi-color LEDs and driving them from the MCU pins
-directly — that would probably shave a few dollars from the BOM at the
-cost of more work with assembling it.&lt;/p&gt;
+&lt;p&gt;Published on 2018-10-22 in &lt;a class="reference internal" href="../../projects/project-160167/#project-160167"&gt;&lt;span class="std std-ref"&gt;Electronic Barrette Hub&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The PCBs just arrived from &lt;a class="reference external" href="https://hackaday.io/hacker/131216"&gt;&amp;#64;oshpark &lt;/a&gt; and I finally assembled a proper prototype. I’m quite happy with how
+it looks, even without the face plate or any ornaments on the PCB:&lt;/p&gt;
+&lt;img alt="projects/project-160167/images/1804971540204588238.jpg" src="projects/project-160167/images/1804971540204588238.jpg" /&gt;
+&lt;p&gt;In particular, I like how the holes covered with the soldermask look
+like: inconspicious. I used staggered holes for the connectors, which
+means that you can simply insert male pin headers into them — you can
+see one inserted in the top right corner. That really lets me hide
+them from view.&lt;/p&gt;
+&lt;p&gt;There are five connectors:&lt;/p&gt;
+&lt;img alt="projects/project-160167/images/7089001540204735865.jpg" src="projects/project-160167/images/7089001540204735865.jpg" /&gt;
+&lt;p&gt;Four for general purpose GPIO pins, with two pins on each, also
+doubling for UART and I2C communication, and one for USB, for those
+devices (like the &lt;a class="reference internal" href="../../projects/project-158701/#project-158701"&gt;&lt;span class="std std-ref"&gt;Video Pendant&lt;/span&gt;&lt;/a&gt; ) which are too small to fit an USB port, but still need USB
+communication. The power on the USB port is stabilized 3.3V, while the
+remaining ports are connected to the battery directly, because they
+are likely to need all the power they can get.&lt;/p&gt;
+&lt;p&gt;I will do some more testing with those connectors, and if they don’t
+work well enough, I will solder either female pin headers, or grove
+sockets in there.&lt;/p&gt;
+&lt;p&gt;More importantly, the build instructions and parts list are now
+updated, and there is a bunch of new photos. Unfortunately I won’t
+have time to update the video, but the basic functionality shown there
+remains the same (well, except for the battery charging, but that’s a
+boring thing to watch).&lt;/p&gt;
+&lt;p&gt;The next step will be working on the ornaments and the face plate.&lt;/p&gt;
 &lt;/section&gt;
 </content>
-    <link href="http://deshipu.art/projects/project-21578/log-149325/" rel="alternate"/>
-    <summary>Published on 2018-07-14 in project-21578.</summary>
-    <published>2018-07-14T00:00:00+02:00</published>
-  </entry>
-  <entry>
-    <id>http://deshipu.art/projects/project-27853/log-152772/</id>
-    <title>Creeping Back to Life</title>
-    <updated>2018-09-12T00:00:00+02:00</updated>
-    <content type="html">&lt;section id="creeping-back-to-life"&gt;
-
-&lt;p&gt;Published on 2018-09-12 in &lt;a class="reference internal" href="../../projects/project-27853/#project-27853"&gt;&lt;span class="std std-ref"&gt;H-Cam&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Yes, this project spent quite a bit of time in a drawer. I got the
-AMG8833 sensor to play with, but I didn’t really have a good idea
-about what I want to do with it. Then I designed this PCB with a
-footprint for that sensor, an atmega and a LED matrix, hoping that
-with enough magic I can make it into a kind of thermal camera. Then
-the PCB arrived together with a bunch of other PCBs, and got put into
-a drawer.&lt;/p&gt;
-&lt;p&gt;Fast forward a few months, and the &lt;span class="xref std std-ref"&gt;project-7813&lt;/span&gt; is back. I looked through my projects, and noticed that hey, this PCB
-is 2cm on a side to fit the LED matrix, and that’s less than an inch,
-so why not. So I submitted it to the contest and promptly forgot about
-it.&lt;/p&gt;
-&lt;p&gt;Now the deadline is looming, and it would be nice to at least start on
-this. So I took the PCB and soldered it up, and also found all the
-components that I will need:&lt;/p&gt;
-&lt;img alt="projects/project-27853/images/1328911536744914663.jpg" src="projects/project-27853/images/1328911536744914663.jpg" /&gt;
-&lt;p&gt;I used the female pin headers in the prototype so that I can remove
-the led matrix. The final version will not have them, and the led
-matrix will be soldered directly – at least that’s the plan.&lt;/p&gt;
-&lt;p&gt;There will also be a lipo battery in there.&lt;/p&gt;
-&lt;p&gt;Now I need to write the code for the atmega to handle the led matrix.&lt;/p&gt;
-&lt;/section&gt;
-</content>
-    <link href="http://deshipu.art/projects/project-27853/log-152772/" rel="alternate"/>
-    <summary>Published on 2018-09-12 in project-27853.</summary>
-    <published>2018-09-12T00:00:00+02:00</published>
-  </entry>
-  <entry>
-    <id>http://deshipu.art/projects/project-27629/log-153524/</id>
-    <title>Updated Firmware with CircuitPython 3.2.0</title>
-    <updated>2018-09-30T00:00:00+02:00</updated>
-    <content type="html">&lt;section id="updated-firmware-with-circuitpython-3-2-0"&gt;
-
-&lt;p&gt;Published on 2018-09-30 in &lt;a class="reference internal" href="../../projects/project-27629/#project-27629"&gt;&lt;span class="std std-ref"&gt;µGame&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;CircuitPython 3.2.0 has been released a while ago, and brings a lot of
-bug fixes and some performance improvements. It would be nice to use
-it for µGame. Unfortunately, it also had some changes in how audio is
-handled, and since that interacted with available memory in ways that
-made the example games not work, it required more work on my part than
-just rebasing the repository.&lt;/p&gt;
-&lt;p&gt;However, I managed to work around the problems, and a new version of
-the firmware is now available at &lt;a class="reference external" href="https://github.com/python-ugame/circuitpython/releases/tag/ugame10-3.2.0"&gt;https://github.com/python-
-ugame/circuitpython/releases/tag/ugame10-3.2.0&lt;/a&gt; . There is also a release of the Vacuum Invaders game specially
-updated for that version of firmware: &lt;a class="reference external" href="https://github.com/python-ugame/vacuum-invaders/releases/tag/3.2.0"&gt;https://github.com/python-ugame/vacuum-invaders/releases/tag/3.2.0&lt;/a&gt; . The other example games, as well as the tutorial, should work
-without any changes.&lt;/p&gt;
-&lt;p&gt;In order to upgrade your device, you need to download the .uf2 file,
-and copy it to the TRINKETBOOT disk that appears when you press the
-“reset” button (located next to the direction buttons) twice. Once the
-file is copied, the device will reboot with the new firmware in place.&lt;/p&gt;
-&lt;/section&gt;
-</content>
-    <link href="http://deshipu.art/projects/project-27629/log-153524/" rel="alternate"/>
-    <summary>Published on 2018-09-30 in project-27629.</summary>
-    <published>2018-09-30T00:00:00+02:00</published>
+    <link href="http://deshipu.art/projects/project-160167/log-155074/" rel="alternate"/>
+    <summary>Published on 2018-10-22 in project-160167.</summary>
+    <published>2018-10-22T00:00:00+02:00</published>
   </entry>
   <entry>
     <id>http://deshipu.art/projects/project-21578/log-155174/</id>
@@ -159,11 +100,52 @@ file is copied, the device will reboot with the new firmware in place.&lt;/p&gt;
 &lt;p&gt;Published on 2018-10-23 in &lt;a class="reference internal" href="../../projects/project-21578/#project-21578"&gt;&lt;span class="std std-ref"&gt;PewPew FeatherWing&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;While this still works and is fully compatible with all other PewPew
 boards, and while I still sell it on Tindie, check out the new devices
-over at &lt;span class="xref std std-ref"&gt;project-159733&lt;/span&gt; — they are bigger and cheaper, though no color display.&lt;/p&gt;
+over at &lt;a class="reference internal" href="../../projects/project-159733/#project-159733"&gt;&lt;span class="std std-ref"&gt;PewPew Standalone&lt;/span&gt;&lt;/a&gt; — they are bigger and cheaper, though no color display.&lt;/p&gt;
 &lt;/section&gt;
 </content>
     <link href="http://deshipu.art/projects/project-21578/log-155174/" rel="alternate"/>
     <summary>Published on 2018-10-23 in project-21578.</summary>
     <published>2018-10-23T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-159022/log-156989/</id>
+    <title>Soon…</title>
+    <updated>2018-12-12T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="soon"&gt;
+
+&lt;p&gt;Published on 2018-12-12 in &lt;a class="reference internal" href="../../projects/project-159022/#project-159022"&gt;&lt;span class="std std-ref"&gt;Rainbow Jellyfish&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;img alt="projects/project-159022/images/9979701544611627927.jpg" src="projects/project-159022/images/9979701544611627927.jpg" /&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-159022/log-156989/" rel="alternate"/>
+    <summary>Published on 2018-12-12 in project-159022.</summary>
+    <published>2018-12-12T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-158981/log-157389/</id>
+    <title>Immediate Plans</title>
+    <updated>2018-12-21T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="immediate-plans"&gt;
+
+&lt;p&gt;Published on 2018-12-21 in &lt;a class="reference internal" href="../../projects/project-158981/#project-158981"&gt;&lt;span class="std std-ref"&gt;Kubik M0&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I had a bit of a break with this project, while I worked on other
+projects and dealt with some life stuff, but I very much still want to
+work on it. Obviously the very next step that needs to be done is to
+program the robot to do actual walking, at least at the level of &lt;a class="reference internal" href="../../projects/project-6050/#project-6050"&gt;&lt;span class="std std-ref"&gt;Tote&lt;/span&gt;&lt;/a&gt; , and then possibly make use of the accelerometer and the leg
+switches. I assume that this will actually take me some time. In the
+mean time, CircuitPython is being developed further and ported to the
+NRF52 chip, growing bluetooth support along the way, so the long-term
+plan is to switch to NRF52 from the SAMD21 chip. That will probably
+involve a redesign of the extension connector as well, so I don’t
+think I will be working on any extensions until that happens.&lt;/p&gt;
+&lt;p&gt;Once the connector design is finalized, it will be time to look at
+possible extensions and the sensors to include on them. I want to have
+an OpenMV adapter, and also a simple “face” with distance sensors on
+it.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-158981/log-157389/" rel="alternate"/>
+    <summary>Published on 2018-12-21 in project-158981.</summary>
+    <published>2018-12-21T00:00:00+01:00</published>
   </entry>
 </feed>

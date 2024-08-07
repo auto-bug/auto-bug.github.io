@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>A Moment of Truth - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="a-moment-of-truth">
+<h1>A Moment of Truth<a class="headerlink" href="#a-moment-of-truth" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2019-12-03 in <a class="reference internal" href="../#project-167912"><span class="std std-ref">Flounder Keyboard</span></a>.</p>
+<p>I finally started working on the firmware for this keyboard, starting
+with writing a board description and compiling CircuitPython for it.
+Unfortunately that enabled me to find a number of problem with the
+PCB.</p>
+<p>First, I needed to figure out which pins go to which rows and columns,
+and let me say that the schematic view of Fritzing is not very helpful
+with that:</p>
+<img alt="projects/project-167912/images/8568871575326633423.png" src="projects/project-167912/images/8568871575326633423.png" />
+<p>It just piled all the switches and diodes on top of each other, and I
+really don’t have the energy to arrange them all properly. But no
+problem, we can use the PCB design view, and simply look where each
+trace goes. If we click the trace, it gets highlighted, together with
+all things that are connected to it, so that’s not too bad. While
+doing that, I noticed a curious thing:</p>
+<img alt="projects/project-167912/images/7394491575326767040.png" src="projects/project-167912/images/7394491575326767040.png" />
+<p>Apparently I wasted one of the pins, by connecting it directly to the
+backslash button, before the diode. This isn’t a problem, since there
+are still enough pins (just barely), and there is another pin properly
+connected to the whole row after that diode, but it shows what my
+mental state was when I was designing it.</p>
+<p>With the CircuitPython compiled and flashed, the next step is to try
+the KMK firmware. Unfortunately, it doesn’t even fit on the 45KB flash
+disk my tiny SAMD21 has — not even compiled to byte-code. So I started
+trimming. Removed all the tap-dancing and leader-key code, all the
+debugging prints, all the RGB LED handling, Unicode keys, and so on.
+Finally I got it to a size that just barely fits, together with a
+layout definition. And of course I get MemoryError. Fine, I will write
+my own keyboard firmware in CircuitPython. With blackjack. And
+hookers.</p>
+<p>The first step was to wite the matrix scanning code, of course. That
+went fast, but I noticed a weid quirk: whenever I pressed a key from
+row 3, the key from row 4 would also get pressed. And the other way
+around, pressing a key from row 4 would also press a key from row 3.
+Seems like there is a short between the two rows. I couldn’t see any
+obvious problems, so I just touched up the QFN package a bit, to make
+sure there is no short underneath, but no dice. Took out my trusty
+ohmmeter, and noticed that the resistance is pretty much that of a
+solid trace — that doesn’t look like some accidental short somewhere.
+To make sure, I took an unpopulated board, and checked there — sure
+enough, there is a short as well. That made me look closer at the
+traces, and sure enough:</p>
+<img alt="projects/project-167912/images/6568521575327403793.png" src="projects/project-167912/images/6568521575327403793.png" />
+<p>The row 4 is dipping under the column traces here, but there is also a
+hard-to-see trace for the row 3 going right through it on the
+underside of the PCB. It’s hard to see, because I rooted it along a
+silkscreen line, genius. Cutting that trace on both sides and
+connecting the two vias with a piece of wire solved this problem.</p>
+<p>Next, Caps Lock and the A key seem to be the same key — no matter
+which one I press, I get the same matrix position. Looking closer,
+yes, of course I connected both to the same row and column.
+Fortunately, soldering the diode for Caps Lock up-side down, and then
+adding a wire leading to Left Ctrl on row 5 fixed the problem. It
+moved the key to row 5, where there is a free spot. Maybe the layout
+definition will look a bit confusing, but who cares.</p>
+<p>Finally, five of the keys had the diodes soldered only on one side —
+re-touching them with the iron fixed it.</p>
+<p>It all works now mechanically, even the Caps Lock led:</p>
+<img alt="projects/project-167912/images/2735891575327892749.jpg" src="projects/project-167912/images/2735891575327892749.jpg" />
+<p>Next time, more about the firmware.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

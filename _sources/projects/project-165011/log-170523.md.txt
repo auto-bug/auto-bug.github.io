@@ -1,0 +1,79 @@
+---
+blogpost: true
+date: 2019-11-02
+category: project-165011
+---
+
+# Redoing It
+Published on 2019-11-02 in {ref}`project-165011`.
+
+I figured that as soon as I start working on it again, I will find the
+old prototype. It didn't work, but I did find the chips I had ordered
+for it, so I can just make a new one.
+
+
+
+:::{image} images/4265071572692270607.JPG
+
+:::
+
+
+ There are two tricky parts to the mechanical assembly, first is the
+FeatherWing header:\
+
+
+
+
+:::{image} images/3694891572692312584.JPG
+
+:::
+
+
+I'm using a feather to get the right spacing and alignment, ad then
+just soldering the angled headers to the pads. Finished, it looks like
+this:
+
+
+
+:::{image} images/7340701572692381428.JPG
+
+:::
+
+
+I had to cut some of them shorter, where the pull-up resistors for the
+I2C go. The current version of the PCB has that fixed, as the
+resistors are moved to the other side of the header.
+
+Next are the pins that connect the antenna to the main board:
+
+
+
+:::{image} images/4346741572692461836.JPG
+
+:::
+
+
+It takes some re-heating and aligning them to fit them in their holes,
+but the end result looks good:
+
+
+
+:::{image} images/8910931572692519606.JPG
+
+:::
+
+
+Next comes the chip itself:
+
+
+
+:::{image} images/2560541572692576782.JPG
+
+:::
+
+
+Now I need to check the values of all the discrete components in the
+datasheet and solder them, and it will be ready for testing. That will
+probably happen in a week from now, because I will be travelling, and
+I can't take it with me.
+

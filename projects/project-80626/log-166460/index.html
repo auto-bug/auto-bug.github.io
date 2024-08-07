@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>M5Stack Support - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="m5stack-support">
+<h1>M5Stack Support<a class="headerlink" href="#m5stack-support" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2019-08-01 in <a class="reference internal" href="../#project-80626"><span class="std std-ref">Stage, a Tile and Sprite Engine</span></a>.</p>
+<p>I added support for the buttons on the game face of M5Stack, (it’s
+very similar to my <a class="reference internal" href="../../project-19371/#project-19371"><span class="std std-ref">D1 Mini X-Pad Shield</span></a> , I basically just had to change the numbers for the button maping,
+the I²C address, and negate the output). Together with the automatic
+2× scaling, it means you can play the µGame games on it now (and, what
+is more important, easily make your own).</p>
+<iframe style="width: 500px; height: 281px;" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/wuYQxf8lj6Q"></iframe>
+<p>What I don’t like is the noise from the speakers — for some reason
+that happens only when the face is connected, and not on USB — perhaps
+grounding issues? There is no sound from the game, because so far
+MicroPython doesn’t support it (though technically it’s possible,
+someone just needs to write the code).</p>
+</section>
+
+
+</div>
+  </body>
+</html>

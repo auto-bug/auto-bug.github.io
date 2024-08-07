@@ -1,0 +1,270 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>http://deshipu.art/</id>
+  <title>deshipu.art - Posts tagged 2018hackadayprize</title>
+  <updated>2024-08-07T20:33:03.510706+00:00</updated>
+  <link href="http://deshipu.art/"/>
+  <link href="http://deshipu.art/blog/tag/2018hackadayprize/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-58788/</id>
+    <title>ESP8266 with True USB</title>
+    <updated>2018-02-20T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="esp8266-with-true-usb"&gt;
+
+&lt;p&gt;Make it act as a USB disk and just copy files on it.&lt;/p&gt;
+&lt;div class="project-thumb"&gt;
+&lt;a class="reference external image-reference" href="/_images/6948611519591644761.jpg"&gt;&lt;img alt="projects/project-58788/images/6948611519591644761.jpg" src="projects/project-58788/images/6948611519591644761.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/2044731522754346153.jpg"&gt;&lt;img alt="projects/project-58788/images/2044731522754346153.jpg" src="projects/project-58788/images/2044731522754346153.jpg" /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;The ESP8266 (and ESP32) is a great chip: powerful, versatile, cheap,
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;easily obtainable. But it’s a little bit fiddly when it comes to
+programming the development boards and transferring the files onto and
+from them. You have to install the drivers (good luck if you have a
+mac), install the flasher software, get the flash parameters just
+right, get the boot pin low (or make sure the auto-reset circuit
+works), etc. Individually, each of those steps is easy. Together, they
+make it hard to simply just start coding.&lt;/p&gt;
+&lt;p&gt;Wouldn’t it be great if there was a development board that, instead of
+the dumb USB to serial converter, would sport a small and cheap USB-
+capable microcontroller, just like the Arduino UNO or Micro:bit, which
+would let you simply copy files over to a USB drive it would expose?&lt;/p&gt;
+&lt;p&gt;That idea is not mine, of course, I heard it for the first time from &lt;a class="reference external" href="https://hackaday.io/hacker/194126"&gt;&amp;#64;tannewt&lt;/a&gt; . But I really want this to happen.&lt;/p&gt;
+&lt;p&gt;However, I know almost nothing about USB, and this is very much a
+research project. I expect extremely slow progress and possibly
+shelving of this project later on. I believe it is possible to do what
+I want (at least the filesystem and serial access), but I’m not sure I
+have enough experience to pull it off.&lt;/p&gt;
+&lt;p&gt;All help is greatly appreciated!&lt;/p&gt;
+&lt;section id="logs"&gt;
+&lt;h2&gt;Logs&lt;/h2&gt;
+&lt;ul class="postlist-style-none postlist simple"&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-03-23 - &lt;a class="reference internal" href="../../../projects/project-58788/log-127609/"&gt;First PCB&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-03-08 - &lt;a class="reference internal" href="../../../projects/project-58788/log-112037/"&gt;MassStorage Demo with LUFA&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-03-05 - &lt;a class="reference internal" href="../../../projects/project-58788/log-110199/"&gt;USBtoSerial with LUFA&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-02-26 - &lt;a class="reference internal" href="../../../projects/project-58788/log-102598/"&gt;LUFA Demos&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-02-24 - &lt;a class="reference internal" href="../../../projects/project-58788/log-100478/"&gt;Arduino’s ATmega16u2 Firmware&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-02-20 - &lt;a class="reference internal" href="../../../projects/project-58788/log-97752/"&gt;The Plan&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-02-20 - &lt;a class="reference internal" href="../../../projects/project-58788/log-97736/"&gt;Collaboration&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-02-20 - &lt;a class="reference internal" href="../../../projects/project-58788/log-97733/"&gt;Chip Candidates&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section id="instructions"&gt;
+&lt;h2&gt;Instructions&lt;/h2&gt;
+&lt;/section&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-58788/" rel="alternate"/>
+    <summary>Make it act as a USB disk and just copy files on it.</summary>
+    <category term="2018hackadayprize" label="2018hackadayprize"/>
+    <category term="ESP8266" label="ESP8266"/>
+    <category term="MOONSHOT" label="MOONSHOT"/>
+    <category term="hardware" label="hardware"/>
+    <category term="msc" label="msc"/>
+    <category term="researchingproject" label="researching project"/>
+    <category term="usb" label="usb"/>
+    <published>2018-02-20T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-100853/</id>
+    <title>CircuitPython Badge</title>
+    <updated>2018-03-23T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="circuitpython-badge"&gt;
+
+&lt;p&gt;A handheld running CircuitPython and cheap enough for a badge.&lt;/p&gt;
+&lt;div class="project-thumb"&gt;
+&lt;a class="reference external image-reference" href="/_images/7835931522668595523.jpg"&gt;&lt;img alt="projects/project-100853/images/7835931522668595523.jpg" src="projects/project-100853/images/7835931522668595523.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/3747271522786446593.jpg"&gt;&lt;img alt="projects/project-100853/images/3747271522786446593.jpg" src="projects/project-100853/images/3747271522786446593.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/6241551523715650875.jpg"&gt;&lt;img alt="projects/project-100853/images/6241551523715650875.jpg" src="projects/project-100853/images/6241551523715650875.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/8157221525092901236.jpg"&gt;&lt;img alt="projects/project-100853/images/8157221525092901236.jpg" src="projects/project-100853/images/8157221525092901236.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/9008771527764049628.jpg"&gt;&lt;img alt="projects/project-100853/images/9008771527764049628.jpg" src="projects/project-100853/images/9008771527764049628.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/7917991527791169949.jpg"&gt;&lt;img alt="projects/project-100853/images/7917991527791169949.jpg" src="projects/project-100853/images/7917991527791169949.jpg" /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;More and more conferences want to have a cool badge. But most badges
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;are not really that interesting or useful. Sure, you can learn
+soldering if you have to assemble it yourself — but then most people
+never do. You can play tetris during boring talks, or, if you really
+don’t want to attend any talks, you can spend time programming it in
+some exotic assembly to play snake. And as soon as you get home, it
+goes into a drawer to never see the light of day again.&lt;/p&gt;
+&lt;p&gt;But we can do better than that!&lt;/p&gt;
+&lt;p&gt;We can make a badge that is useful during the conference — that has
+USB disk storage where you can put conference materials, slides of all
+talks, etc. It can display the schedule, and maybe even have reminders
+for the talks you wanted to see. It can have some simple games for the
+boring talks, but also perhaps some social games, to make you talk to
+other people. But most importantly of all, it can be super-easy to
+program, without having to install anything on your computer or learn
+some esoteric language — by simply copying Python files on it. And
+finally, when you get home from the conference, you can incorporate it
+into other projects.&lt;/p&gt;
+&lt;p&gt;This project is not about a badge for any particular conference. It’s
+about making a baseline project, that can be then taken and
+extended/modified for a particular conference. The idea is that it
+should be easier to make something actually useful, instead of a
+gadget with blinking LEDs.&lt;/p&gt;
+&lt;section id="logs"&gt;
+&lt;h2&gt;Logs&lt;/h2&gt;
+&lt;ul class="postlist-style-none postlist simple"&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-10-02 - &lt;a class="reference internal" href="../../../projects/project-100853/log-153701/"&gt;Sketching the Next Version&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-10-01 - &lt;a class="reference internal" href="../../../projects/project-100853/log-153620/"&gt;Prototypes in Good Hands&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-07-16 - &lt;a class="reference internal" href="../../../projects/project-100853/log-149596/"&gt;Testing Prototypes and Possible Optimizations&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-05-31 - &lt;a class="reference internal" href="../../../projects/project-100853/log-147120/"&gt;Full Badge Assembled and Working&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-05-25 - &lt;a class="reference internal" href="../../../projects/project-100853/log-146732/"&gt;Full PCB&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-05-07 - &lt;a class="reference internal" href="../../../projects/project-100853/log-145926/"&gt;Full Size&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-05-06 - &lt;a class="reference internal" href="../../../projects/project-100853/log-145884/"&gt;Repository and Schematic&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-05-06 - &lt;a class="reference internal" href="../../../projects/project-100853/log-145867/"&gt;Accelerometer&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-05-05 - &lt;a class="reference internal" href="../../../projects/project-100853/log-145825/"&gt;Battery Life&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-05-01 - &lt;a class="reference internal" href="../../../projects/project-100853/log-145578/"&gt;QFN48: Welcome to Hell&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-04-30 - &lt;a class="reference internal" href="../../../projects/project-100853/log-145467/"&gt;The PCBs are Here!&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-04-30 - &lt;a class="reference internal" href="../../../projects/project-100853/log-145488/"&gt;Got Pixel?&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-04-23 - &lt;a class="reference internal" href="../../../projects/project-100853/log-145068/"&gt;PCBs on the Way&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-04-20 - &lt;a class="reference internal" href="../../../projects/project-100853/log-144706/"&gt;A Short Video&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-04-14 - &lt;a class="reference internal" href="../../../projects/project-100853/log-143913/"&gt;The Matrix&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-04-14 - &lt;a class="reference internal" href="../../../projects/project-100853/log-143994/"&gt;Redesigned PCB&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-04-14 - &lt;a class="reference internal" href="../../../projects/project-100853/log-143997/"&gt;Mockup&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-04-12 - &lt;a class="reference internal" href="../../../projects/project-100853/log-143742/"&gt;Taking a Step Back&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-04-10 - &lt;a class="reference internal" href="../../../projects/project-100853/log-142479/"&gt;The Shape&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-04-10 - &lt;a class="reference internal" href="../../../projects/project-100853/log-142400/"&gt;Mark II&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-04-05 - &lt;a class="reference internal" href="../../../projects/project-100853/log-139310/"&gt;The Look-up Table Holds the Secret&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-04-04 - &lt;a class="reference internal" href="../../../projects/project-100853/log-138440/"&gt;Testing Cheap E-paper Displays&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-04-03 - &lt;a class="reference internal" href="../../../projects/project-100853/log-138121/"&gt;Mark I&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-04-02 - &lt;a class="reference internal" href="../../../projects/project-100853/log-137234/"&gt;Text&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-03-27 - &lt;a class="reference internal" href="../../../projects/project-100853/log-132552/"&gt;Is E-ink Ready Yet?&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-03-26 - &lt;a class="reference internal" href="../../../projects/project-100853/log-131090/"&gt;Breaking: Liquid Crystals are Slow!&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-03-25 - &lt;a class="reference internal" href="../../../projects/project-100853/log-129921/"&gt;We Get Signal&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-03-23 - &lt;a class="reference internal" href="../../../projects/project-100853/log-127005/"&gt;Not Again!&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section id="instructions"&gt;
+&lt;h2&gt;Instructions&lt;/h2&gt;
+&lt;/section&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-100853/" rel="alternate"/>
+    <summary>A handheld running CircuitPython and cheap enough for a badge.</summary>
+    <category term="2018hackadayprize" label="2018hackadayprize"/>
+    <category term="badge" label="badge"/>
+    <category term="circuitpython" label="circuitpython"/>
+    <category term="hardware" label="hardware"/>
+    <category term="micropython" label="micropython"/>
+    <category term="ongoingproject" label="ongoing project"/>
+    <category term="python" label="python"/>
+    <published>2018-03-23T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-160167/</id>
+    <title>Electronic Barrette Hub</title>
+    <updated>2018-08-04T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="electronic-barrette-hub"&gt;
+
+&lt;p&gt;A base station of all your blinking lights&lt;/p&gt;
+&lt;div class="project-thumb"&gt;
+&lt;a class="reference external image-reference" href="/_images/3523861540203435549.jpg"&gt;&lt;img alt="projects/project-160167/images/3523861540203435549.jpg" src="projects/project-160167/images/3523861540203435549.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/8318761540203447654.jpg"&gt;&lt;img alt="projects/project-160167/images/8318761540203447654.jpg" src="projects/project-160167/images/8318761540203447654.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/4282781540203459256.jpg"&gt;&lt;img alt="projects/project-160167/images/4282781540203459256.jpg" src="projects/project-160167/images/4282781540203459256.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/3331711540203475695.jpg"&gt;&lt;img alt="projects/project-160167/images/3331711540203475695.jpg" src="projects/project-160167/images/3331711540203475695.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/3248321533672765170.jpg"&gt;&lt;img alt="projects/project-160167/images/3248321533672765170.jpg" src="projects/project-160167/images/3248321533672765170.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/7549701540203421132.jpg"&gt;&lt;img alt="projects/project-160167/images/7549701540203421132.jpg" src="projects/project-160167/images/7549701540203421132.jpg" /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Electronic jewelry is difficult to make, especially when it&amp;#39;s supposed
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;to be worn on your head. Things like earrings, hair clips, studs, and
+even glasses are difficult because of the size and power requirements.
+There is one accessory that doesn’t have such strict requirements: it
+can be large and relatively heavy, it doesn’t touch your skin, and it
+can fit a rechargeable battery: it’s the hair clasp, also known as
+barrette.&lt;/p&gt;
+&lt;p&gt;The idea here is to use a barrette as a sort of a hub providing power
+and control to other accessories on your head. It will contain a
+microcontroller programmable with CircuitPython, an accelerometer, a
+light sensor and a microphone — so that you can make things react to
+movement and sound — and a dozen small sockets, into which you can
+plug thin wires leading to the actual accessories. You can even have
+LED eye lashes or &lt;a class="reference internal" href="../../../projects/project-9769/#project-9769"&gt;&lt;span class="std std-ref"&gt;Mechatronic Ears&lt;/span&gt;&lt;/a&gt; with this!&lt;/p&gt;
+&lt;img alt="projects/project-160167/images/3671251533672797002.jpg" src="projects/project-160167/images/3671251533672797002.jpg" /&gt;
+&lt;section id="logs"&gt;
+&lt;h2&gt;Logs&lt;/h2&gt;
+&lt;ul class="postlist-style-none postlist simple"&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-10-22 - &lt;a class="reference internal" href="../../../projects/project-160167/log-155074/"&gt;Proper Prototype&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-10-21 - &lt;a class="reference internal" href="../../../projects/project-160167/log-154978/"&gt;What I Hope to Achieve?&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-10-21 - &lt;a class="reference internal" href="../../../projects/project-160167/log-154926/"&gt;Video and Repository Update&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-10-20 - &lt;a class="reference internal" href="../../../projects/project-160167/log-154865/"&gt;Working Prototype (kinda)&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-10-18 - &lt;a class="reference internal" href="../../../projects/project-160167/log-154715/"&gt;Making Holes&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-10-16 - &lt;a class="reference internal" href="../../../projects/project-160167/log-154546/"&gt;Replaceable Faceplates&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-10-15 - &lt;a class="reference internal" href="../../../projects/project-160167/log-154510/"&gt;Sent to Fab&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-10-13 - &lt;a class="reference internal" href="../../../projects/project-160167/log-154419/"&gt;Not Dead Yet&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-08-26 - &lt;a class="reference internal" href="../../../projects/project-160167/log-151695/"&gt;Power and Connectors&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-08-21 - &lt;a class="reference internal" href="../../../projects/project-160167/log-151330/"&gt;Reuse&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-08-16 - &lt;a class="reference internal" href="../../../projects/project-160167/log-151085/"&gt;More Blinking Lights&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-08-04 - &lt;a class="reference internal" href="../../../projects/project-160167/log-150429/"&gt;Preliminary Tests&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-08-04 - &lt;a class="reference internal" href="../../../projects/project-160167/log-150430/"&gt;Blinking Lights&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section id="instructions"&gt;
+&lt;h2&gt;Instructions&lt;/h2&gt;
+&lt;section id="attach-the-bolts"&gt;
+&lt;h3&gt;Attach the bolts&lt;/h3&gt;
+&lt;p&gt;We will start with the hardest step: attaching the bolts. For this
+step you will need a second PCB or another kind of template to hold
+the bolts for you. Insert all the bolts into the holes:&lt;/p&gt;
+&lt;img alt="projects/project-160167/images/7390401540203672266.jpg" src="projects/project-160167/images/7390401540203672266.jpg" /&gt;
+&lt;p&gt;Then cover it with your actual PCB, making sure the front is
+downwards. Secure it with rubber bands, and fill the holes with solder
+paste:&lt;/p&gt;
+&lt;img alt="projects/project-160167/images/2287431540203756650.jpg" src="projects/project-160167/images/2287431540203756650.jpg" /&gt;
+&lt;p&gt;Then take your soldering iron, and melt the paste in every hole,
+stirring to make sure it all melts and catches the bolt properly:&lt;/p&gt;
+&lt;img alt="projects/project-160167/images/4765921540203815272.jpg" src="projects/project-160167/images/4765921540203815272.jpg" /&gt;
+&lt;p&gt;Finally remove the rubber bands and template and wash the excess flux
+and paste with acetone:&lt;/p&gt;
+&lt;img alt="projects/project-160167/images/6044261540203855154.jpg" src="projects/project-160167/images/6044261540203855154.jpg" /&gt;
+&lt;/section&gt;
+&lt;hr class="docutils" /&gt;
+&lt;section id="bend-and-solder-the-barrette"&gt;
+&lt;h3&gt;Bend and solder the barrette&lt;/h3&gt;
+&lt;p&gt;Next bend the the barrette’s ends so that they are inline with the
+middle, and tin them, then solder it in place.&lt;/p&gt;
+&lt;img alt="projects/project-160167/images/7429931540203927239.jpg" src="projects/project-160167/images/7429931540203927239.jpg" /&gt;
+&lt;/section&gt;
+&lt;hr class="docutils" /&gt;
+&lt;section id="solder-all-remaining-components"&gt;
+&lt;h3&gt;Solder all remaining components&lt;/h3&gt;
+&lt;img alt="projects/project-160167/images/1738671540203969033.jpg" src="projects/project-160167/images/1738671540203969033.jpg" /&gt;
+&lt;/section&gt;
+&lt;hr class="docutils" /&gt;
+&lt;section id="attach-the-battery"&gt;
+&lt;h3&gt;Attach the battery&lt;/h3&gt;
+&lt;p&gt;You can use either a battery holder, like I did in this case, or just
+a bag-like LiPo battery, depending on what you have available. In
+either case, attach it to the PCB with two-sided tape and solder the
+wires.&lt;/p&gt;
+&lt;img alt="projects/project-160167/images/3102791540204046972.jpg" src="projects/project-160167/images/3102791540204046972.jpg" /&gt;
+&lt;/section&gt;
+&lt;hr class="docutils" /&gt;
+&lt;section id="attach-the-circuit-playground-express"&gt;
+&lt;h3&gt;Attach the Circuit Playground Express&lt;/h3&gt;
+&lt;p&gt;Carefully insert the CPX onto the bolts. Make sure to move all sides
+at the same time, because otherwise it can get stuck — the fit is
+rather tight:&lt;/p&gt;
+&lt;img alt="projects/project-160167/images/6900851540204128542.jpg" src="projects/project-160167/images/6900851540204128542.jpg" /&gt;
+&lt;p&gt;Then secure it in place with nuts:&lt;/p&gt;
+&lt;img alt="projects/project-160167/images/7907571540204159016.jpg" src="projects/project-160167/images/7907571540204159016.jpg" /&gt;
+&lt;/section&gt;
+&lt;/section&gt;
+&lt;hr class="docutils" /&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-160167/" rel="alternate"/>
+    <summary>A base station of all your blinking lights</summary>
+    <category term="2018hackadayprize" label="2018hackadayprize"/>
+    <category term="hardware" label="hardware"/>
+    <category term="ongoingproject" label="ongoing project"/>
+    <published>2018-08-04T00:00:00+02:00</published>
+  </entry>
+</feed>

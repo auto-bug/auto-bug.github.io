@@ -1,0 +1,40 @@
+---
+blogpost: true
+date: 2019-03-26
+category: project
+tags:  accelerometer, Shield, d1mini, hardware, ongoing project, ESP8266
+image: 1
+---
+
+# Accelerometer Shield for D1 Mini
+
+For all your shaky user interface needs.
+
+<div class="project-thumb">
+
+:::{image} images/4889651553610618535.jpg
+:target: /_images/4889651553610618535.jpg
+:::
+
+</div>
+
+
+    I need to do some experiments with accelerometers and robots, so I
+decided to make this shield to make it a little bit easier for myself.
+It uses a LIS3DH accelerometer, which also has some "gesture"
+recognition built in — things like tap, double tap, shake, etc, — so
+the shield could also be potentially useful for ESP8266-based devices
+with a "physical" user interface.
+
+
+
+
+
+## Logs
+
+:::{postlist}
+:category: project-164561
+:::
+
+## Instructions
+

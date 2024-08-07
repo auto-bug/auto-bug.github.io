@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>http://deshipu.art/</id>
+  <title>deshipu.art - Posts in project-166370</title>
+  <updated>2024-08-07T20:33:02.367153+00:00</updated>
+  <link href="http://deshipu.art/"/>
+  <link href="http://deshipu.art/blog/category/project-166370/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-166370/log-165341/</id>
+    <title>Why?</title>
+    <updated>2019-07-04T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="why"&gt;
+
+&lt;p&gt;Published on 2019-07-04 in &lt;a class="reference internal" href="../../../projects/project-166370/#project-166370"&gt;&lt;span class="std std-ref"&gt;Matrix Sanitizer&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Have you ever used one of those tiny 8x8 LED matrices? Have you
+noticed anything peculiar about their pinout? Here’s something to
+refresh your memory:&lt;/p&gt;
+&lt;img alt="projects/project-166370/images/1306331562231254088.png" src="projects/project-166370/images/1306331562231254088.png" /&gt;
+&lt;p&gt;Not only it’s totally random, without a rhyme or reason, but also the
+only diagram you have to go by is backwards, giving your pin numbers
+in reference to physical locations of the LEDs, instead of giving your
+physical locations of the pins in reference to row and column numbers.
+Sure, you can work it out on paper, but it’s easy to make a mistake.&lt;/p&gt;
+&lt;p&gt;But don’t worry, we have a technological solution to this obvious
+problem! Introducing Matrix Sanitizer, which is basically just a tiny
+little PCB that rearranges the pins for you into a saner
+configuration!&lt;/p&gt;
+&lt;img alt="projects/project-166370/images/8230551562231552644.png" src="projects/project-166370/images/8230551562231552644.png" /&gt;
+&lt;img alt="projects/project-166370/images/4276261562231562461.png" src="projects/project-166370/images/4276261562231562461.png" /&gt;
+&lt;p&gt;Thanks to years of research of our best engineers, it does it without
+any vias, while keeping the same pin spacing, and even lets you insert
+the male pin headers without soldering (the matrix still needs to be
+soldered for good electrical contact).&lt;/p&gt;
+&lt;p&gt;The bottom rows are the anodes, and the top row are the cathodes. The
+PCB goes flat against the bottom of the matrix, only making it 1.6mm
+higher. The resulting contraption fits into a prototyping breadboard
+perfectly, and because it uses regular goldpins in place of those
+flimsy thin legs, it provides excellent contact.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-166370/log-165341/" rel="alternate"/>
+    <summary>Published on 2019-07-04 in project-166370.</summary>
+    <published>2019-07-04T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-166370/log-165949/</id>
+    <title>The Wrong Matrix</title>
+    <updated>2019-07-20T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="the-wrong-matrix"&gt;
+
+&lt;p&gt;Published on 2019-07-20 in &lt;a class="reference internal" href="../../../projects/project-166370/#project-166370"&gt;&lt;span class="std std-ref"&gt;Matrix Sanitizer&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Since selling just the PCB would be pretty weird (you can just order
+it from &amp;#64;oshpark yourself, and it would be cheaper, considering the
+shipping), I ordered a whole bunch of those 20mm matrices &lt;a class="reference external" href="https://www.aliexpress.com/item/1511523876.html"&gt;from the usual sources&lt;/a&gt; . Unfortunately, when the package arrived today, I had a bit of a
+surprise:&lt;/p&gt;
+&lt;img alt="projects/project-166370/images/7055011563623103230.JPG" src="projects/project-166370/images/7055011563623103230.JPG" /&gt;
+&lt;p&gt;I’m holding a 20x20mm, 1.9mm per LED, 788AS matrix. In the box is what
+came instead: 32x32mm, 3mm per LED, 1088AS matrices. I’m pretty sure
+that is a mistake on their part, since those matrices are much more
+expensive, but it’s still very annoying.&lt;/p&gt;
+&lt;p&gt;Now I have several options. I can negotiate with the seller, and maybe
+they will replace them — then I’m back to my original plan. I can make
+a bigger version of the matrix sanitizer and sell that — but those
+bigger matrices don’t fit the breadboards as well as the small ones
+do. Or I could come up with some other project that utilizes those
+matrices, possibly a lot of them all at once. For now I let the seller
+know and we will see where that goes.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-166370/log-165949/" rel="alternate"/>
+    <summary>Published on 2019-07-20 in project-166370.</summary>
+    <published>2019-07-20T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-166370/log-168610/</id>
+    <title>Bi-color Breadboard Adapter</title>
+    <updated>2019-09-10T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="bi-color-breadboard-adapter"&gt;
+
+&lt;p&gt;Published on 2019-09-10 in &lt;a class="reference internal" href="../../../projects/project-166370/#project-166370"&gt;&lt;span class="std std-ref"&gt;Matrix Sanitizer&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;In the spirit of the matrix sanitizer, here’s a similar board that
+solves a slightly different problem: those bi-color LED matrices that
+have three rows of pins are impossible to insert into a breadboard. So
+we need something to make it two rows of pins.&lt;/p&gt;
+&lt;img alt="projects/project-166370/images/206861568138961046.png" src="projects/project-166370/images/206861568138961046.png" /&gt;
+&lt;p&gt;This board does that for you. You can order it from &lt;a class="reference external" href="https://hackaday.io/hacker/131216"&gt;&amp;#64;oshpark&lt;/a&gt; :  &lt;a class="reference external" href="https://oshpark.com/shared_projects/iOwHMYcW"&gt;https://oshpark.com/shared_projects/iOwHMYcW&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;I’m particularly happy that I managed to make it one-layer and
+symmetric.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-166370/log-168610/" rel="alternate"/>
+    <summary>Published on 2019-09-10 in project-166370.</summary>
+    <published>2019-09-10T00:00:00+02:00</published>
+  </entry>
+</feed>

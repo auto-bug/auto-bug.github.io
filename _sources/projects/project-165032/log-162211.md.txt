@@ -1,0 +1,25 @@
+---
+blogpost: true
+date: 2019-04-22
+category: project-165032
+---
+
+# PCB Progress
+Published on 2019-04-22 in {ref}`project-165032`.
+
+I had some time over the holidays, so I made some progress on the PCB.
+A new footprint for the buttons and for the screen connector, routed
+everything except for the screen. Next I will need to add a truckload
+of capacitors for the screen, and bunch of vias for the display
+signals. I think I will go with SPI, because it's two resistors less,
+it's faster, and I have the pins for it anyways. The whole PCB is
+32x32mm right now.
+
+
+\
+
+:::{image} images/906471555886952267.png
+
+:::
+
+

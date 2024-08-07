@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Is E-ink Ready Yet? - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="is-e-ink-ready-yet">
+<h1>Is E-ink Ready Yet?<a class="headerlink" href="#is-e-ink-ready-yet" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2018-03-27 in <a class="reference internal" href="../#project-100853"><span class="std std-ref">CircuitPython Badge</span></a>.</p>
+<p>Of course the obvious solution for a display for a conference badge is
+e-paper or e-ink display. It has a number of advantages:</p>
+<ul class="simple">
+<li><p>keeps displaying with the device off, which means that you could even
+do without the battery, or — if you really want to have interactive
+elements there — have the microcontroller sleep most of the time,</p></li>
+<li><p>high contrast, readable from a distance,</p></li>
+<li><p>low resolution and color count — which means low RAM requirements,</p></li>
+<li><p>relatively new and very cool technology,</p></li>
+<li><p>physically robust (at least more so than glass displays) and safe when
+broken (no sharp edges),</p></li>
+</ul>
+<p>It also has a couple of drawbacks:</p>
+<ul class="simple">
+<li><p>slow to update — even more so than the LCDs, partial updates help
+somewhat,</p></li>
+<li><p>expensive, at least until recently,</p></li>
+<li><p>requires additional components for the high-voltage driving — but any
+larger OLED has the same problem,</p></li>
+<li><p>no ready libraries — but I would write my own libraries for the
+display anyways,</p></li>
+<li><p>risky, requires research,</p></li>
+<li><p>no idea how easy to source it is in larger quantities.</p></li>
+</ul>
+<p>But all in all, it is certainly an interesting option to explore. So I
+went to my favorite Chinese shopping website, and had a look around.
+Sure enough, most of those displays cost around 4x more than I would
+like the whole device to cost, but there are some interesting options.
+In particular, the GDEW0154T8 display can be bought for less than $5,
+even cheaper in larger quantities. But is there any documentation for
+it? Yes!</p>
+<p>A bit of googling, and we can find <a class="reference external" href="https://www.smart-prototyping.com/E-ink-E-paper-Display">this page</a> , with links to <a class="reference external" href="https://www.smart-prototyping.com/image/data/9_Modules/EinkDisplay/GDEW0154T8/GDEW0154T8.zip">the datasheet for the display</a>  and for <a class="reference external" href="https://www.smart-prototyping.com/image/data/9_Modules/EinkDisplay/GDEW0154T8/IL0373.pdf">the driving chip</a> .</p>
+<p>Looking at the datasheet, it doesn’t look bad. Resolution 152×152,
+1-bit color, 6s refresh time — sure, not too great, but for that price
+what can you expect. More importantly, there is a typical application
+circuit example there, and it only has 11 capacitors, 3 Schottky
+diodes, a resistor, a mosfet and an inductor. There is also a
+temperature sensor, but looking at the breakout boards, it seems to be
+optional.</p>
+<img alt="projects/project-100853/images/6925001522181955066.jpg" src="projects/project-100853/images/6925001522181955066.jpg" />
+<p>I could live with that. More details when the breakouts and displays
+arrive.\</p>
+</section>
+
+
+</div>
+  </body>
+</html>

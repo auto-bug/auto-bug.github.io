@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Improved Legs - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="improved-legs">
+<h1>Improved Legs<a class="headerlink" href="#improved-legs" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2018-08-03 in <a class="reference internal" href="../#project-158981"><span class="std std-ref">Kubik M0</span></a>.</p>
+<p>One of the advantages of having the legs made out of PCB is that you
+can easily put things on them. Like, for example, switches that detect
+when the leg is touching the ground. I didn’t include that in the
+original design, because I was a bit in a hurry, but that’s not a
+problem, since I can make a separate set of legs easily.</p>
+<p>It’s a bit problematic to find the right kind of switch for this. For
+one, it has to be edge-mounted, but more importantly, it has to
+require very little strength. Regular “tactswitch” buttons are useless
+for that, but if you look around carefully, you will find something
+that is labeled “card detection switch” — those switches are supposed
+to detect when something, such as an SD card, is inserted into a slot.
+As such, they are rather sensitive, requiring very little force to be
+pressed. And they are usually in the correct orientation.</p>
+<p>One such switch is the Panasonic ESE22MH27 that I happen to have in my
+drawer. A quick search for images reveals this footprint image:</p>
+<img alt="projects/project-158981/images/1175331533286601499.png" src="projects/project-158981/images/1175331533286601499.png" />
+<p>So I quickly made a PCB with the footprint, and added some prototyping
+area to the leg, for good measure:</p>
+<img alt="projects/project-158981/images/4255831533286644525.png" src="projects/project-158981/images/4255831533286644525.png" />
+<p>One annoyance is that I need 4 of those, but OSHPark makes them in
+batches of 3, so I need to order 6. At least I will have some extras
+to break.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

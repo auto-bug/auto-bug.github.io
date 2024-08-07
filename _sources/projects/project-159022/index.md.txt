@@ -1,0 +1,68 @@
+---
+blogpost: true
+date: 2018-06-13
+category: project
+tags:  ongoing project, hardware
+image: 1
+---
+
+# Rainbow Jellyfish
+
+Convenient indicator LEDs for your breadboard
+
+<div class="project-thumb">
+
+:::{image} images/2997041530022697128.jpg
+:target: /_images/2997041530022697128.jpg
+:::
+
+:::{image} images/3962961530010000121.jpg
+:target: /_images/3962961530010000121.jpg
+:::
+
+:::{image} images/918871530022459210.jpg
+:target: /_images/918871530022459210.jpg
+:::
+
+:::{image} images/5017921533382206897.jpg
+:target: /_images/5017921533382206897.jpg
+:::
+
+:::{image} images/17611533382200440.jpg
+:target: /_images/17611533382200440.jpg
+:::
+
+</div>
+
+
+    \
+After making {ref}`project-7860` I wanted to explore the rainbow wires theme a bit more, but this time
+with something original, that I could actually get out to people
+without having to worry about copyright infringement. I also wanted to
+make it a little bit more useful.\
+
+
+After playing a bit drawing various dumb unicorns, I remembered that I
+actually like tentacles, and that there are many see creatures that
+are colorful and shiny. So I decided on a jellyfish.
+
+The idea for the device is very simple: you just have a bunch of LEDs
+with matching resistors, colored the same as the wires coming out the
+bottom, except for the ground wire, which is common for all LEDs
+(that's fortunate, since there are no brown or black LEDs). What is is
+good for? You basically connect it to your breadboarded projects to
+see the signals on the pins. You want to test the blink program on a
+new microcontroller? Easy!
+
+
+
+
+
+## Logs
+
+:::{postlist}
+:category: project-159022
+:::
+
+## Instructions
+

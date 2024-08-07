@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Version 1.3 Testing - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="version-1-3-testing">
+<h1>Version 1.3 Testing<a class="headerlink" href="#version-1-3-testing" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2020-07-02 in <a class="reference internal" href="../#project-171381"><span class="std std-ref">Fluff M0</span></a>.</p>
+<img alt="projects/project-171381/images/1574421593703185668.jpg" src="projects/project-171381/images/1574421593703185668.jpg" />
+<p>The PCBs arrived after their 3-week trip around the Europe, and as
+usual I assembled and tested one. The good news is that it works very
+well with any USB-A to USB-C cable. The plug is a bit wobbly, because
+there is no metal sleeve to stabilize it, but it doesn’t disconnect or
+otherwise cause problems. The CNC router was even precise enough to
+mill the small teeth on the sides of the socket, so it goes in with a
+slight click. I’m pretty happy with that.\</p>
+<p>The bad news is that it completely fails to work when connected to an
+actual USB-C socket with a proper USB-C cable. It simply doesn’t
+receive any power. A little bit of research easily explains why: I
+didn’t add pull-downs on the CC1 and CC2 pins, because I thought it’s
+only needed for OTG devices. Turns out that the wording is a bit
+confusing, and it’s required to have those resistors for USB 2.0
+device to receive any power from an USB-C port.</p>
+<p>That means there will be version 1.4 of the board, and it means the
+parts count also raises — I need to squeeze 2 more resistors in there.
+I could probably get away with just one resistor — only one of CC1 or
+CC2 is ever connected — but I will make room for two, and use a bodge
+wire to see if it works also with one — I will need fewer prototypes
+that way.\</p>
+</section>
+
+
+</div>
+  </body>
+</html>

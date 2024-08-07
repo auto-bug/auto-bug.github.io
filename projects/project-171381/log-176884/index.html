@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Beginning - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="beginning">
+<h1>Beginning<a class="headerlink" href="#beginning" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2020-05-03 in <a class="reference internal" href="../#project-171381"><span class="std std-ref">Fluff M0</span></a>.</p>
+<p>I was working on a version  <a class="reference internal" href="../../project-158981/#project-158981"><span class="std std-ref">Kubik M0</span></a> that would be compatible with FeatherWings, and I started to wonder
+whether I could do it with the QFN-32 version of the SAMD21 chip. I
+knew that the original Feather M0 switched to a bigger package,
+because there weren’t enough pins, but I wanted to cheat anyways — I
+didn’t want an external flash, and I would use the internal
+oscillator, which saves me a bunch of pins already. I would also use
+the SWD and SWC pins as regular pins — who needs debugging. So I
+looked at the original schematics, and started to create my own
+version.</p>
+<p>I wanted to re-use the same pins as much as possible, and I mostly
+succeeded. Of course some of the pins are simply not there on the
+QFN-32 package, so I had to find substitutes for those. That includes
+most of the analog pins, the SPI pins, and a few of the digital pins —
+not very bad. In the end, I even added an extra A6 pin to the board,
+and had two pins unused (I choose PA27 and PA28, since they can pretty
+much only do GPIO and nothing else).</p>
+<img alt="projects/project-171381/images/3550681588528621991.png" src="projects/project-171381/images/3550681588528621991.png" />
+<p>Then I started working on the actual PCB layout. It turns out that
+it’s not very easy, because the pins are distributed pretty much
+randomly — they probably made sense on the bigger package, but with
+the smaller one I had to use a lot of vias. My first attempt was
+pretty bad, I had more vias than pins. So I deleted it and started
+from scratch, planning a little better this time. I came up with this:</p>
+<img alt="projects/project-171381/images/9910021588528758392.png" src="projects/project-171381/images/9910021588528758392.png" />
+<p>The big black circles are holes — I figured out that since the PCB is
+empty anyways, I can at least make it a little bit lighter. I could
+have used that space for a prototyping area, but it’s kinda bad shape
+for that.</p>
+<p>I’m going to order this with my next batch of PCBs and then make a
+custom CircuitPython firmware for it.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

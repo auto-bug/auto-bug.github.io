@@ -1,0 +1,161 @@
+---
+blogpost: true
+date: 2019-04-25
+category: project-165032
+---
+
+# Blit Blit Blitty Blit
+Published on 2019-04-25 in {ref}`project-165032`.
+
+With the display working, it's time to have some blitting fun. How
+about the good old classic bouncing ball?
+
+
+
+:::{image} images/4406501556179009498.jpg
+
+:::
+
+
+We have a background of random dots, and a round ball, with black
+outline, bouncing around the screen on top of it, passing outside the
+screen edges. Those details are all important, for example we don't
+want to only be able to handle rectangular sprites, or to crash when a
+sprite is partially outside the screen. So how do we do that?
+
+---------- more ----------We need two functions, which I have called "blit" and "erase". Let's
+start with "erase", because it's simpler: it erases a given area of
+the screen, overwriting it with the background image we have saved.
+It's simple enough:
+
+
+```python
+    def erase(self, x, y, background, size=8):
+        buffer = self.buffer
+        width = self.width
+        if not -size < x < width:
+            return
+        if x < 0:
+            size += x
+            x = 0
+        if x > width - size:
+            size = width - x
+        page = y // 8
+        if 0 <= page <= 7:
+            index = x + width * page
+            buffer[index:index + size] = background[index:index + size]
+        page += 1
+        if 0 <= page <= 7 and y % 8:
+            index = x + width * page
+            buffer[index:index + size] = background[index:index + size]
+
+```
+
+First we save the class attributes to local variables, just to gain a
+little bit of speed and avoid one lookup. Then we check if we should
+even bother displaying anything — if it's out of bounds, just return.
+Then we check the case when it's just at the edge — we simply adjust
+the size and position of the area then, to only handle the part that
+fits on the screen. Finally we copy the relevant portions of the
+background to the two pages of buffer.
+
+Oh, I forgot to mention, we only handle sprites that are 8 pixels
+high, but any number of pixels wide. We can make larger sprites by
+stacking several on top of each other, if we need, and we can have
+smaller ones by manipulating the mask, as I will explain later on.
+
+Great, we have a way of deleting anything we have drawn on the screen
+now, which is important for animation. But we still don't have a way
+of drawing anything. How do we do that? With the blit method!
+
+The blit method takes some data, with an optional mask, and copies
+them to the specified coordinates of the screen. More specifically,
+the bits provided as mask are AND-end with the pixels already in the
+buffer, and then the bits given as data are XOR-ed with it. That lets
+us make some empty space with the mask first, and then put the white
+pixels in there. We could have OR-ed the white pixels instead, but
+with XOR we can have more interesting effects when we don't use the
+mask. The code follows:
+
+
+```perl
+    def blit(self, x, y, data, mask=b''):
+        buffer = self.buffer
+        width = self.width
+        size = max(len(data), len(mask))
+        if not -size < x < width:
+            return
+        if x < 0:
+            data = data[-x:]
+            mask = mask[-x:]
+            size += x
+            x = 0
+        if x > width - size:
+            data = data[:width - size - x]
+            mask = mask[:width - size - x]
+            size = width - x
+        page = y // 8
+        shift = y % 8
+        if 0 <= page <= 7:
+            index = x + width * page
+            for byte in mask:
+                buffer[index] &= ~(byte << shift)
+                index += 1
+            index = x + width * page
+            for byte in data:
+                buffer[index] ^= byte << shift
+                index += 1
+        page += 1
+        if 0 <= page <= 7 and shift:
+            shift = 8 - shift
+            index = x + width * page
+            for byte in mask:
+                buffer[index] &= ~(byte >> shift)
+                index += 1
+            index = x + width * page
+            for byte in data:
+                buffer[index] ^= byte >> shift
+                index += 1
+
+```
+
+First we do the same kind of magic for handling screen edges as
+before. Then we apply the mask and the data to the two possible pages
+that they can touch, bit-rotated appropriately. Unfortunately we can't
+use the slice notation here, which is a great shame, because it would
+be faster.
+
+And here is a simple program that tests this:
+
+
+```python
+for x in range(1280):
+    display.pixel(random.randint(0, 127), random.randint(0, 63), 1)
+box = b'\x00<fZZf<\x00'
+mask = b'~\xff\xff\xff\xff\xff\xff~'
+x = 0
+y = 0
+dx = 1
+dy = 1
+background = bytearray(display.buffer)
+while True:
+    display.blit(x, y, box, mask)
+    display.show()
+    display.erase(x, y, background)
+    x += dx
+    y += dy
+    if not -12 <= x < 128+4:
+        dx = -dx
+    if not -12 <= y <= 64+4:
+        dy = - dy
+```
+
+And the effect:
+
+
+
+:::{image} images/7899871556180452804.gif
+
+:::
+
+

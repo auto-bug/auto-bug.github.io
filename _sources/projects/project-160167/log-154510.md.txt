@@ -1,0 +1,33 @@
+---
+blogpost: true
+date: 2018-10-15
+category: project-160167
+---
+
+# Sent to Fab
+Published on 2018-10-15 in {ref}`project-160167`.
+
+The PCBs are ordered, and should arrive sometime this week. There
+isn't really much fancy stuff going on on them — just a few connectors
+and a battery charging circuit.
+
+
+
+:::{image} images/6926851539625741693.png
+
+:::
+
+
+I played a little bit with a trick that lets you do covered vias in
+Fritzing — you basically remove the vias (or other elements) from your
+design, generate the gerbers on the side, and copy just the mask and
+silk layers. This way I made the holes for the CPX bolts covered with
+soldermask on the bottom side:
+
+
+
+:::{image} images/1329211539625841228.png
+
+:::
+
+

@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>http://deshipu.art/</id>
+  <title>deshipu.art - Posts in project-165032</title>
+  <updated>2024-08-07T20:33:02.338538+00:00</updated>
+  <link href="http://deshipu.art/"/>
+  <link href="http://deshipu.art/blog/category/project-165032/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-165032/log-172326/</id>
+    <title>Microsoft MakeCode Arcade</title>
+    <updated>2019-12-26T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="microsoft-makecode-arcade"&gt;
+
+&lt;p&gt;Published on 2019-12-26 in &lt;a class="reference internal" href="../../../projects/project-165032/#project-165032"&gt;&lt;span class="std std-ref"&gt;PewPew M4&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;While designing this, I kept my eye on the &lt;a class="reference external" href="https://arcade.makecode.com/hardware/adding"&gt;MakeCode Arcade specifications&lt;/a&gt;  to make sure the device could also be used with that platform. But I
+never really took the time to test it. Today I finally decided to see
+if it will work.&lt;/p&gt;
+&lt;p&gt;I updated the bootloader configuration to include information about
+all the buttons on the device, and I picked one of the examples to
+run. And lo and behold, it works:&lt;/p&gt;
+&lt;img alt="projects/project-165032/images/6810381577391459747.jpg" src="projects/project-165032/images/6810381577391459747.jpg" /&gt;
+&lt;p&gt;After such a meticulous and throughout test, I decided it’s time to
+add it officially, so I made a pull request to the uf2-samdx1
+repository to add the bootloader configuration there (and had to sign
+a CLA, thank you Microsoft), and also I dropped the Arcade staff an
+e-mail asking for adding it to the website. We will see what they
+think about it.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-165032/log-172326/" rel="alternate"/>
+    <summary>Published on 2019-12-26 in project-165032.</summary>
+    <published>2019-12-26T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-165032/log-172533/</id>
+    <title>Bootloader, OSHWA and Production</title>
+    <updated>2019-12-31T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="bootloader-oshwa-and-production"&gt;
+
+&lt;p&gt;Published on 2019-12-31 in &lt;a class="reference internal" href="../../../projects/project-165032/#project-165032"&gt;&lt;span class="std std-ref"&gt;PewPew M4&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I decided to do a bit of paperwork around this project.&lt;/p&gt;
+&lt;p&gt;The pull request adding the bootloader configuration to the uf2-samdx1
+repository has just been merged: &lt;a class="reference external" href="https://github.com/microsoft/uf2-samdx1/pull/84"&gt;https://github.com/microsoft/uf2-samdx1/pull/84&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The request for OSHWA certification is being reviewed, I expect they
+have holidays and will come back to me next year.&lt;/p&gt;
+&lt;p&gt;Similarily, the request to Microsoft to add this board to MakeCode
+Arcade website is pending.&lt;/p&gt;
+&lt;p&gt;Finally, the fabrication of the first 20 units has been successful,
+and I received a photo of one of the boards:&lt;/p&gt;
+&lt;img alt="projects/project-165032/images/9427711577830788757.jpg" src="projects/project-165032/images/9427711577830788757.jpg" /&gt;
+&lt;p&gt;I expect they will arrive in the first half of January, just before
+the Spring Festival.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-165032/log-172533/" rel="alternate"/>
+    <summary>Published on 2019-12-31 in project-165032.</summary>
+    <published>2019-12-31T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-165032/log-172616/</id>
+    <title>OSHWA Certification</title>
+    <updated>2020-01-03T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="oshwa-certification"&gt;
+
+&lt;p&gt;Published on 2020-01-03 in &lt;a class="reference internal" href="../../../projects/project-165032/#project-165032"&gt;&lt;span class="std std-ref"&gt;PewPew M4&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;That was easier than I anticipated. I just filled the form, and a few
+days later there it is:&lt;/p&gt;
+&lt;img alt="projects/project-165032/images/812661578087203581.png" src="projects/project-165032/images/812661578087203581.png" /&gt;
+&lt;p&gt;Apparently there are 5 other open source hardware devices in
+Switzerland.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-165032/log-172616/" rel="alternate"/>
+    <summary>Published on 2020-01-03 in project-165032.</summary>
+    <published>2020-01-03T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-165032/log-174614/</id>
+    <title>On Sale</title>
+    <updated>2020-03-10T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="on-sale"&gt;
+
+&lt;p&gt;Published on 2020-03-10 in &lt;a class="reference internal" href="../../../projects/project-165032/#project-165032"&gt;&lt;span class="std std-ref"&gt;PewPew M4&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Due to unexpected circumstances it took longer than anticipated, but
+it’s finally there: you can buy the PewPew M4 from Makerfabs here: &lt;a class="reference external" href="https://makerfabs.com/circuitpython-pewpew-m4.html"&gt;https://makerfabs.com/circuitpython-pewpew-m4.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;It comes all soldered up and programmed, you only need to remove the
+protective foil from the plastic parts and screw together the case.
+And put in two AAA 1.5V batteries, which are not included.\&lt;/p&gt;
+&lt;p&gt;It comes with CircuitPython 5.0.0 pre-programmed, and several example
+games. It will run both µGame and Pew Pew games.&lt;/p&gt;
+&lt;p&gt;From what I can see in the photos (I didn’t get one from this batch
+yet), the only difference from the test units is the black silkscreen
+and v-cut PCBs — so you might need to use a file or sandpaper to get
+rid of some uneven edges on the PCB.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-165032/log-174614/" rel="alternate"/>
+    <summary>Published on 2020-03-10 in project-165032.</summary>
+    <published>2020-03-10T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-165032/log-175729/</id>
+    <title>Video Assembly Instructions</title>
+    <updated>2020-04-09T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="video-assembly-instructions"&gt;
+
+&lt;p&gt;Published on 2020-04-09 in &lt;a class="reference internal" href="../../../projects/project-165032/#project-165032"&gt;&lt;span class="std std-ref"&gt;PewPew M4&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I should have recorded instructions on how to assemble (and also on
+how to use, but that’s a deeper subject) the PewPew M4 a long time
+ago, but I never found the motivation to setup everything properly and
+record it. That’s why I am very happy to see that &lt;a class="reference external" href="https://hackaday.io/hacker/268569"&gt;&amp;#64;Makerfabs &lt;/a&gt; went and did the work for me instead! Not only the video is much
+better quality than I would ever manage to make, but it also features
+an awesome tattoo!&lt;/p&gt;
+&lt;iframe style="width: 500px; height: 281px;" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/m5lZwVgA690"&gt;&lt;/iframe&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-165032/log-175729/" rel="alternate"/>
+    <summary>Published on 2020-04-09 in project-165032.</summary>
+    <published>2020-04-09T00:00:00+02:00</published>
+  </entry>
+</feed>

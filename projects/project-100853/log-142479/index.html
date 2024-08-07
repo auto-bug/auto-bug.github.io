@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>The Shape - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="the-shape">
+<h1>The Shape<a class="headerlink" href="#the-shape" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2018-04-10 in <a class="reference internal" href="../#project-100853"><span class="std std-ref">CircuitPython Badge</span></a>.</p>
+<p>Now that I have the e-ink display drivers written, it’s time to start
+thinking about another prototype, the Mark III. But what shape should
+it have? For the LCD/OLED I just went for the game handheld looks,
+because those displays are suitable for making simple games, that
+layout is also convenient for all sorts of menus and navigation, and
+the shape is generally associated with fun and pleasure. But with an
+e-ink display, that doesn’t make so much sense anymore, so I started
+thinking about other possibilities.</p>
+<p>But before I start with that, let’s review what we need to have in
+there:</p>
+<ul class="simple">
+<li><p>display (38×32mm)</p></li>
+<li><p>USB port</p></li>
+<li><p>power switch (not sure about this anymore)</p></li>
+<li><p>expansion header (either a female 2.54mm pin header, or grove sockets)</p></li>
+<li><p>LIR2505 battery in a holder (25mm diameter)</p></li>
+<li><p>optionally some crocodile clip contacts/touch panels</p></li>
+<li><p>optionally some buttons</p></li>
+<li><p>all the components</p></li>
+</ul>
+<p>Ideally we want all the components on one side, though that is not a
+hard requirement. We probably also won’t fit it in 50×50mm, so
+100×100mm is the new limit. With that in mind, what can we do?</p>
+<p>Well, it’s a Python badge, so there is a good chance it’s going to be
+used on a Python conference, so why not play with the motifs from the
+Python logo? For example, something like this:</p>
+<img alt="projects/project-100853/images/5808871523395709684.png" src="projects/project-100853/images/5808871523395709684.png" />
+<p>At the top we could have the pin header connector, so that expansions
+would come in forms of various hats for the snake — a crown with
+crocodile clip contacts, a paper hat with prototyping holes, and a
+number of different hats with various sensors or LEDs. The USB socket
+would go on the bottom, so that we can easily power the thing with a
+USB cable and still wear it on the neck. Edge-mounted buttons could go
+on both sides, the battery goes on the other side, as well as all the
+components. The power switch can go next to the USB, but if we want
+this to also work as a watch (the SAMD21 chip has a built-in RTC),
+then we probably don’t even want a power switch, just some sleep
+modes.</p>
+<p>Then I thought a bit more about the RTC and the Pebble watch, and I
+though: why not make it in a shape that could be both worn as a badge
+and as a (large) wristwatch? That would be pretty cool, people could
+make wearable things with it. So I started thinking about how this
+would be laid out. Unfortunately, I don’t see a way of packing it all
+on a small-enough PCB and still making it thin enough to fit on your
+wrist. So I guess that is out (but I might revisit it in another
+project).</p>
+<img alt="projects/project-100853/images/3581221523396642062.jpg" src="projects/project-100853/images/3581221523396642062.jpg" />
+<p>And then I went to the Hackaday Unconference, and saw a presentation
+that talked about how electronics are scary and ugly for most girls,
+and how the presenter worked on making them look good, and how that
+made a lot of difference in interest. And I thought, hey, Guido van
+Rossum wears that “Python is for girls” t-shirt on his every keynote,
+maybe I should work on this badge a little bit more and also make it
+look nice. It would be great if I could make it something that you
+would actually <em>want</em> to wear, even after the conference, as an
+accessory. So what can I do?\</p>
+<p>The lazy option is to re-use my <a class="reference internal" href="../../project-27579/#project-27579"><span class="std std-ref">Blinka</span></a> designs and use the CircuitPython mascot on the badge:</p>
+<img alt="projects/project-100853/images/4498581523396408460.png" src="projects/project-100853/images/4498581523396408460.png" />
+<p>This is shiny, but it’s still not something I would like to wear,
+especially with that display that seems to be tucked on. Also, while
+the cute snake might attract the less technical part of the
+population, it might at the same time scare the more technically-
+inclined one. It wouldn’t be such a tragedy, but maybe we can do
+better. So now I’m thinking about original designs. I think I want to
+put there some kind of a cartoon monster, that would be both cute and
+cool at the same time, and I want to incorporate the display into the
+design more. This is one of the sketches I have:</p>
+<img alt="projects/project-100853/images/8505931523396682497.jpg" src="projects/project-100853/images/8505931523396682497.jpg" />
+<p>I’m really not sure what it is going to be in the end — I will give
+myself some time for this. In the worst case, I can just use a floral
+pattern around the display.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

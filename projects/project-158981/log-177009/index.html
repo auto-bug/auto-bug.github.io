@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Actual Work - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="actual-work">
+<h1>Actual Work<a class="headerlink" href="#actual-work" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2020-05-05 in <a class="reference internal" href="../#project-158981"><span class="std std-ref">Kubik M0</span></a>.</p>
+<p>So I spent the weeked mucking about designing PCBs and throwing new
+features at them, but if I am supposed to ever finish this project, I
+need to do some actual work on it. So today I tried to stay focused
+and do the actual steps that need doing. First, a feather-compatible
+robot would be great, but it’s also complex. At first the only thing I
+will need is I2C, so let’s just make a minimal PCB with just that
+broken out.</p>
+<img alt="projects/project-158981/images/1570701588706365870.png" src="projects/project-158981/images/1570701588706365870.png" />
+<p>Second, all this is pointless if I can’t control the servos. So I need
+to make sure the pins I connected to servo signals actually can do PWM
+all at once. The easiest way to do it is to just quickly compile a
+custom CircuitPython firmware with those pins made available, and try
+it on a Trinket M0. That’s exactly what I did, and of course it didn’t
+work. I had to swap two of the eight pins to make them use different
+timers, so that they can be used all at once. Of course that made the
+layout a bit less pretty but that’s fine.</p>
+<p>Once I have figured out which pins will work, I also fixed the
+feather-compatible schematic. That took considerably more work, since
+I didn’t have any free pins I could switch to, and there were certain
+requirements for functions available on certain pins. In the end I
+think I got it, though, so that PCB is fixed as well.</p>
+<p>Finally, I need designs for the leg pieces for that small board.
+Laser-cutting is considerably cheaper than PCBs, and now that I can
+order it from Elecrow alongside the PCBs, it doesn’t make it much more
+complex. So I had to re-do the legs, but since I want to use the same
+code, I wanted to keep the same dimensions. So some reverse-
+engineering of the PCB designs was necessary:</p>
+<img alt="projects/project-158981/images/2667451588707036414.png" src="projects/project-158981/images/2667451588707036414.png" />
+<p>Once I had all the dimensions and shapes figured out, I just had to
+arrange all the parts on a 10x10cm sheet:</p>
+<img alt="projects/project-158981/images/6735411588707150902.png" src="projects/project-158981/images/6735411588707150902.png" />
+<p>Now both versions of the robot PCB, the Fluff M0 board and the laser-
+cut parts are on order — the work will continue in a few weeks when
+they arrive, and in the mean time maybe I can focus long enough to
+program the walking code.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

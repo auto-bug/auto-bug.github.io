@@ -1,0 +1,56 @@
+---
+blogpost: true
+date: 2019-08-31
+category: project-165032
+---
+
+# Prototype Version 4
+Published on 2019-08-31 in {ref}`project-165032`.
+
+This time the assembly took me longer than usual, for two reasons.
+
+First of all, I couldn't get the QFN chip soldered properly, somehow
+getting shorts or bad connections, despite having nice long pads and
+using a hot air gun and lots of flux. Took me some hours.
+
+
+
+:::{image} images/1995141567207520971.jpg
+
+:::
+
+
+Second, I somehow managed to delete the two holes next to the display
+in the inner layer of acrylic, which are needed to fit the pins of the
+battery holder, when it's soldered on that side. I'm using new batch
+of battery holders, that have actual pins, and not wires, and they
+have the pins reversed compared to the previous batch, so they have to
+be soldered on that side.\
+
+
+In any case, it all fits together and holds nicely, and this time the
+buttons seem to be high enough. The cut-out for the USB plug doesn't
+look too bad, but the hanger part is quite fragile in the 1mm outer
+acrylic layer — I might modify the design to remove it from that
+layer, and only have it in the PCB and inner acrylic.
+
+
+
+:::{image} images/931041567208058397.jpg
+
+:::
+
+
+I'm still considering using a different piezo speaker — an SMD part,
+HYG7525 (aka XNQG 7525). It would go somewhere near the edge of the
+PCB, and it would have its own cout-out in the inner acrylic layer.
+It's exactly 2.5mm high, and the hole is on the side, so no cut-out in
+the outer layer would be necessary. It would make the assembly a
+little bit easier.\
+
+
+After the weekend, I'm going to publish the design files for version
+4, because I think it's good enough to use. I'm going to build a few
+of those, and we will see how they work in the longer run — there
+might still be version 5.
+

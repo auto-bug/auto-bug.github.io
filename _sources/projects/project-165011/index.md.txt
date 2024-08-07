@@ -1,0 +1,52 @@
+---
+blogpost: true
+date: 2019-04-15
+category: project
+tags:  shelved project, hardware
+image: 1
+---
+
+# Gesture FeatherWing
+
+A daughterboard with a capacitive gesture sensor for the Adafruit Feather boards.
+
+<div class="project-thumb">
+
+:::{image} images/2259721572692700940.JPG
+:target: /_images/2259721572692700940.JPG
+:::
+
+:::{image} images/3079311555354603684.jpg
+:target: /_images/3079311555354603684.jpg
+:::
+
+:::{image} images/3886381577757098770.jpg
+:target: /_images/3886381577757098770.jpg
+:::
+
+</div>
+
+
+    The [MGC3030](https://www.microchip.com/wwwproducts/en/MGC3030)  is an integrated capacitive gesture sensor that could be used in a
+lot of projects, but unfortunately it has pretty strict requirements
+for how the capacitive surface needs to look like. This is an attempt
+at providing a ready solution, the sensor with the minimal viable
+surface, all as a single FeatherWing suitable for use with Adafruit's
+Feather boards.
+
+Because of the requirements for at least four layers that are spaced
+pretty far apart, this is actually a sandwich of two PCBs, connected
+with pin headers.
+
+
+
+
+
+## Logs
+
+:::{postlist}
+:category: project-165011
+:::
+
+## Instructions
+

@@ -1,0 +1,30 @@
+---
+blogpost: true
+date: 2018-02-20
+category: project-58788
+---
+
+# Chip Candidates
+Published on 2018-02-20 in {ref}`project-58788`.
+
+I have been looking through the cheap microcontrollers with USB
+support, and I have narrowed my list to two, with maybe possible
+third.
+
+The first candidate is the venerable ATmega32u4. It has been around
+for a long time, there is a LUFA library for handling USB with some
+examples for the MSC device, and I have a whole bunch of cheap Pro
+Micro development boards I can experiment with. It also has a lot of
+GPIO pins, so it could also be useful for projects like {ref}`project-26823`  for handling extra functions, like the buttons and backlight.
+
+The second candidate is the SAMD11. Much more modern, cheap and comes
+in an easy to solder package. It also requires fewer passives — I
+think it can even work without the crystal. There is also a MSC device
+example for in the ASF3 library. It is however more of an unknown for
+me, as I have never before programmed any. I got a {ref}`project-10210`  board to experiment with it.
+
+Finally, a distant third is the good old STM32F103 chip. It comes on
+the "blue pill" dev boards, and it also has some MSC examples. I have
+some limited experience programming it, too, so maybe it will turn out
+to be easier than the other two.
+

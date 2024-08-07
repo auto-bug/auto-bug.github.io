@@ -1,0 +1,57 @@
+---
+blogpost: true
+date: 2020-06-03
+category: project-171381
+---
+
+# Version 1.3 and USB Type-C
+Published on 2020-06-03 in {ref}`project-171381`.
+
+I'm still waiting for the PCB for the fixed version 1.2 from [@oshpark](https://hackaday.io/hacker/131216) , but in the meanwhile I had some ideas, both for improving the
+design, and for more use cases for this little board.
+
+The biggest part, apart from the microcontroller itself, and the only
+part I couldn't find in the [@JLCPCB](https://hackaday.io/hacker/367545) 's parts library, is the USB socket. It sticks out of the PCB, it
+requires special handling, and it's the weakest spot from the
+mechanical point of view. It can also vary wildly in price, adding
+uncertainty to the pricing. So what are the alternatives?
+
+I remembered the experiments of [@juan jesus ](https://hackaday.io/hacker/30717) with his PCB-based USB socket for his {ref}`project-28516` , and the tiny development boards sold by [@bobricius ](https://hackaday.io/hacker/13133) that were inspired with it, and I had two realizations. First, I can
+do the PCB USB Type-C socket easily, especially since I already use
+the 0.6mm thick PCB.
+
+
+
+:::{image} images/3215131591199964237.png
+
+:::
+
+
+Second realization is about another use case for this. My main use
+case so far has been for personal use, because I need a board that
+breaks out all the pins of the QFN32 version of the SAMD21 chip, so
+that I can experiment with which pins can be used for what purposes in
+my projects. Plus I wanted something I could leave in finished
+projects without too much regret, and without coming back to them
+later to scavenge them for parts. Both those goals should be served
+well with the version 1.2, which breaks out three additional pins
+(AREF, A6 and D14), and only leaves one pin unused, but connected to a
+via, so I can still access it if I must (and it's a boring, GPIO-only
+pin). But now I have one more use case, that the new, flatter design
+should accommodate nicely: a business card.
+
+You see, with the whole back of the board free (and the holes
+plugged), I can put all my contact details on it. And then I can give
+those boards out to people who are interested in trying CircuitPython.
+I connected that last, usused, pin to a LED, so that the board can has
+something visible going on for it. I will probably write some kind of
+blinking program, that also uses the touch on analog pins for
+something (and maybe also the internal temperature sensor), so that
+the board is not boring with just power connected to it. And I can put
+a VCARD file with my contact details on its disk as well. And maybe
+some kind of text file with a CircuitPython primer and some links to
+the resources.
+
+I could also imagine a branded version of this board being a great
+giveaway on conferences and such.
+

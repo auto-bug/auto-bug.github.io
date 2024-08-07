@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Driving the Matrix - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="driving-the-matrix">
+<h1>Driving the Matrix<a class="headerlink" href="#driving-the-matrix" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2018-08-01 in <a class="reference internal" href="../#project-159733"><span class="std std-ref">PewPew Standalone</span></a>.</p>
+<p>The whole point of building this device is cutting the costs, and the
+two main tricks for it are using a single-color matrix and simulate
+the 4 colors with 4 shades, and driving the matrix in software
+directly from the microcontroller. Obviously, for this to work I need
+to write the code that would drive the matrix and that would let me
+display 4 recognizable shades.</p>
+<p>Turns out this is more difficult than anticipated.</p>
+<p>Initially I thought that I will simply plug the matrix-driving
+function into the system tick interrupt of CircuitPython. Something
+like this:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">pew_tick</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">digitalio_digitalinout_obj_t</span><span class="w"> </span><span class="o">*</span><span class="n">pin</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">pew_obj_t</span><span class="o">*</span><span class="w"> </span><span class="n">pew</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MP_STATE_VM</span><span class="p">(</span><span class="n">pew_singleton</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">pew</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">pin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MP_OBJ_TO_PTR</span><span class="p">(</span><span class="n">pew</span><span class="o">-&gt;</span><span class="n">cols</span><span class="p">[</span><span class="n">pew</span><span class="o">-&gt;</span><span class="n">col</span><span class="p">]);</span><span class="w"></span>
+<span class="w">    </span><span class="n">common_hal_digitalio_digitalinout_set_value</span><span class="p">(</span><span class="n">pin</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">pew</span><span class="o">-&gt;</span><span class="n">col</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pew</span><span class="o">-&gt;</span><span class="n">col</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">pew</span><span class="o">-&gt;</span><span class="n">cols_size</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">pew</span><span class="o">-&gt;</span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">pew</span><span class="o">-&gt;</span><span class="n">turn</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pew</span><span class="o">-&gt;</span><span class="n">turn</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">pew</span><span class="o">-&gt;</span><span class="n">turn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">pew</span><span class="o">-&gt;</span><span class="n">rows_size</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">pin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MP_OBJ_TO_PTR</span><span class="p">(</span><span class="n">pew</span><span class="o">-&gt;</span><span class="n">rows</span><span class="p">[</span><span class="n">x</span><span class="p">]);</span><span class="w"></span>
+<span class="w">        </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pew</span><span class="o">-&gt;</span><span class="n">buffer</span><span class="p">[(</span><span class="n">pew</span><span class="o">-&gt;</span><span class="n">col</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">pew</span><span class="o">-&gt;</span><span class="n">rows_size</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x</span><span class="p">];</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<span class="w">            </span><span class="p">((</span><span class="n">color</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0x03</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">0x03</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"></span>
+<span class="w">            </span><span class="p">(</span><span class="n">color</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0x01</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">pew</span><span class="o">-&gt;</span><span class="n">turn</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"></span>
+<span class="w">            </span><span class="p">(</span><span class="n">color</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0x02</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">pew</span><span class="o">-&gt;</span><span class="n">turn</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">font</span><span class="w"> </span><span class="n">color</span><span class="o">=</span><span class="s">&quot;#ff73fd&quot;</span><span class="o">&gt;</span><span class="mi">0</span><span class="o">&lt;/</span><span class="n">font</span><span class="o">&gt;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">common_hal_digitalio_digitalinout_set_value</span><span class="p">(</span><span class="n">pin</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">common_hal_digitalio_digitalinout_set_value</span><span class="p">(</span><span class="n">pin</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">pin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MP_OBJ_TO_PTR</span><span class="p">(</span><span class="n">pew</span><span class="o">-&gt;</span><span class="n">cols</span><span class="p">[</span><span class="n">pew</span><span class="o">-&gt;</span><span class="n">col</span><span class="p">]);</span><span class="w"></span>
+<span class="w">    </span><span class="n">common_hal_digitalio_digitalinout_set_value</span><span class="p">(</span><span class="n">pin</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>This works reasonably well. There are two problems, though. The
+system tick happens once every millisecond, so the least bright pixel
+is getting 41Hz refresh rate (it’s only one once every 3 frames, and
+there are 8 columns to scan). That’s slow enough that some blinking is
+visible. The other problem is that the two brightest shades are really
+difficult to tell apart — that is because human eye is logarithmic in
+its sensitivity, so to get good shades, I would need to put them on a
+logarithmic scale. That means that I need more than just 3 frames, and
+that makes the least bright shade blink even more.</p>
+<p>I can think of three ways of fixing this problem.</p>
+<p>The easiest and most hacky way, that I actually tested already, is to
+simply increase the speed of the system tick timer. Of course that has
+a side effect of all time-keeping functions also increasing in speed,
+but we could adjust for that. I’m not sure how much I can increase it
+before other side effects kick in, though, and I don’t like how hacky
+that is.</p>
+<p>The second easiest solution would be to use PWM on the row pins to
+control the brightness. I can set it to a pretty high frequency, and
+then refreshing the 8 columns could be done at 125Hz, which is enough
+for not seeing them blink. I would also get a really smooth scale of
+shades then. The problem is that my choice of pins for the rows was
+somewhat random, and not all of them support PWM — so I would need to
+design a new PCB. I might be able to work around this by rotating the
+matrix 180° — I need to check if then all the row pins support PWM.</p>
+<p>Finally, the most “correct” solution would be to leave the system tick
+timer alone, and use a dedicated timer with a separate interrupt for
+doing this. Unfortunately that requires a little more skill than I
+have at the moment, but perhaps I could learn.</p>
+<img alt="projects/project-159733/images/8379161533144814918.jpg" src="projects/project-159733/images/8379161533144814918.jpg" />
+</section>
+
+
+</div>
+  </body>
+</html>

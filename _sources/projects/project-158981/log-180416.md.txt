@@ -1,0 +1,93 @@
+---
+blogpost: true
+date: 2020-07-08
+category: project-158981
+---
+
+# Safe Mode Problems
+Published on 2020-07-08 in {ref}`project-158981`.
+
+I haven't written an update in a while, even though a second version
+of the PCBs already arrived, and the laser-cut parts work very well.
+The reason for that is: I was struggling with power problems.
+
+For some reason on the new boards CircuitPython goes into a safe mode
+due to a power dip, and has to be physically reset to continue
+operation. This is caused by a "twitch" of servos when they get
+powered up initially, before they get any signal. This is very
+surprising to me, because previously I have built robots with exactly
+the same power distribution and with even more servos, and there was
+never such a problem. Oh well, so I got to figuring it out.
+
+First, the 3.3V line voltage on switching on looks like this:
+
+
+
+:::{image} images/9566461594195189632.png
+
+:::
+
+
+You can tell it's not great — it goes up to around 3V, then drops to
+2.5V and slowly ramps up to 3.3V. This is probably the twitch of the
+servo motors overwhelming momentarily the battery. The usual solution
+to that is a beefy capacitor in parallel to the servos, so let's try
+that. I think 1000µF will be enough?
+
+
+
+:::{image} images/6443151594195327285.jpg
+
+:::
+
+
+This makes the voltage curve look much smoother, but there is this
+capacitor charging now:
+
+
+
+:::{image} images/1307801594195409111.png
+
+:::
+
+
+Unfortunately, CircuitPython is still going into safe mode, and I have
+no idea why — there is code in it that is supposed to wait for the
+voltage to stabilize before proceeding with booting. So I played a
+little bit more, tried to swap the LDO with the other, working robot,
+tried to add more capacitors, tried resistors on the servo signal
+lines, etc. — all for nothing. I noticed that with just 6 servos it
+works:
+
+
+
+:::{image} images/3700341594195534259.png
+
+:::
+
+
+But that's just because the voltage drop is a little bit smaller, so I
+suppose it goes over the safe mode threshold.
+
+I'm beginning to suspect that there was actually a change in the
+CircuitPython code handling the safe mode, and that the older robots
+work just because they use an older version of CircuitPython. That
+should be easy to verify, actually — let's try older version. The
+working robot uses 5.0.0, so let's try that...
+
+An nope, still goes into safe mode. So what makes the good robot good?
+Maybe we can look at its voltage curve? Let's see:
+
+
+
+:::{image} images/4092251594196245713.png
+
+:::
+
+
+Hmm, so it's the same bad curve from the start, only the voltage
+doesn't quite dip as low. Probably just better quality servos, I
+suppose?
+
+I will keep working on it and keep you updated.
+

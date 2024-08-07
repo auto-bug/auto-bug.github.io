@@ -1,0 +1,41 @@
+---
+blogpost: true
+date: 2018-03-05
+category: project-58788
+---
+
+# USBtoSerial with LUFA
+Published on 2018-03-05 in {ref}`project-58788`.
+
+I didn't have much time this week, since I was travelling (and got
+stuck in Dublin due to cancelled flights), but I did take a Pro Micro
+with me for experimenting, and after some poking around the LUFA
+project's directories, I found a ready to use USBtoSerial demo. It is
+in fact very similar to the Arduino code I was trying to get to run
+earlier, but this one comes with a specific version of the library
+that it works with.
+
+The project is in the Projects/USBtoSerial directory, and all you need
+to change to make it work on the Pro Micro is the makefile — the usual
+MCU, BOARD and F_CPU changes. Then make, objcopy to make a hex file,
+and avrdude to flash it. And it seems to be working!
+
+
+
+:::{image} images/3054091520214688244.jpg
+
+:::
+
+
+I didn't actually have a USB serial dongle to test it properly, but I
+shorted TX and RX pins to get to test the echo, and that seems fine.
+When I get back home I will try to program the ESP8266 with this, but
+I don't expect any problems.
+
+Next step is getting the mass storage demo to work with my own flash
+chip — since the Leonardo board definition misses the header files for
+flash, I will need to write those — hopefully I will be able to figure
+them out from the files for other boards. When that works, I will need
+to figure out how to make it look for the filesystem at an offset, and
+what the offset is for MicroPython (or even better, how to find it).
+

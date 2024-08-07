@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Display - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="display">
+<h1>Display<a class="headerlink" href="#display" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2019-04-16 in <a class="reference internal" href="../#project-165032"><span class="std std-ref">PewPew M4</span></a>.</p>
+<p>The LED matrices I’m using in all the other PewPew are great for
+several reasons: they have large pixels and small resolution, perfect
+for the kind of games I want to teach, where you don’t have to worry
+about graphics. They are made of plastic, so are robust, scratch-
+resistant and light. And they only have 16 pins for soldering, and can
+be easily soldered by hand. But can there be anything cheaper?</p>
+<p>How about individual LEDs, like on the MicroBit? They are cheap,
+right? Well, the components themselves are cheap, but the soldering of
+128 pads is not. And forget about doing it by hand. Plus, they don’t
+look very good.</p>
+<p>Hmm, what else has a lot of LEDs in it, but only a few connectors, and
+can be had for cheap?</p>
+<p>How about those tiny little OLED displays? They only require a few
+pins to control, they are cheap, low-power, and they have more LEDs on
+them than we need. Sure, they are also usually monochrome, but because
+they have much higher resolution than we need, we can use dithering to
+get our required 44 shades:</p>
+<img alt="projects/project-165032/images/8023961555448637756.png" src="projects/project-165032/images/8023961555448637756.png" />
+<p>We even have some room left on the sides for some indicators!</p>
+<p>Plus, if we added support for them to displayio, we could even have
+proper error messages displayed on them when something happens. That’s
+an improvement in functionality.</p>
+<p>(As an added bonus, it will probably be able to run arduboy games…)</p>
+</section>
+
+
+</div>
+  </body>
+</html>

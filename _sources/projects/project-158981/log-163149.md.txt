@@ -1,0 +1,59 @@
+---
+blogpost: true
+date: 2019-05-09
+category: project-158981
+---
+
+# Reevaluating the Feasibility
+Published on 2019-05-09 in {ref}`project-158981`.
+
+I compiled a custom CircuitPython firmware with all the pins exposed,
+and ran a simple program looking for any combination of pins that
+would give me 12 PWM outputs:
+
+
+```python
+for permutation in permutations(pins):
+    pwms = []
+    for pin in permutation:
+        try:
+            pwms.append(pulseio.PWMOut(pin, frequency=50))
+        except (RuntimeError, ValueError):
+            pass
+    if len(pwms) > 10:
+        print(pwms)
+    for pwm in pwms:
+        pwm.deinit()
+```
+
+Yes, I know, I could have checked the datasheet for timers instead,
+but this is easier and makes more more certain.
+
+That's a lot of permutations to check, so it took some time, but
+ultimately it came up empty. There is no permutation that would give
+me more than 10 PWM outputs on the  SAMD21E18A chip. So what other
+options do I have now?\
+
+
+I could use a SAMD21G18A that has 38 GPIO pins — I'm sure they come
+with some extra timers that would enable a few extra PWMs. But
+the SAMD21E18A costs $2.38 in singles, while SAMD21G18A costs $3.47.
+That increase in price wouldn't be that bad by itself, however, for
+$4.01 I can have a SAMD51G19A instead, and a PCA9685 costs a dollar.
+
+So now I have several options:
+
+
+ * SAMD21E18A + PCA9685 — $3.38
+ * SAMD21G18A — $3.47
+ * SAMD51G19A — $4.01
+
+But it's not just about the price, is it? The SAMD51 is a massively
+more powerful microcontroller, with *much* more RAM, faster clock and
+more flash. Also hardware floating point operations and a bunch of
+other stuff. And that is for just $2 more. I really think that it's
+the best option. Besides, I've been wanting to make a board with that
+microcontroller for a while, but since {ref}`project-86818` is on hold, I didn't really have a chance. On top of that, I have one
+already in my drawer, so no need to wait for parts (though I will
+still need to wait for the PCB).
+

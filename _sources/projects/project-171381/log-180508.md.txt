@@ -1,0 +1,46 @@
+---
+blogpost: true
+date: 2020-07-09
+category: project-171381
+---
+
+# Version 1.4
+Published on 2020-07-09 in {ref}`project-171381`.
+
+After the fail with missing pulld-downs on CC pins for USB-C, I re-
+designed the board a little bit:
+
+
+
+:::{image} images/9170771594311980013.png
+
+:::
+
+
+There are now contacts and pull-downs for the CC pins, and I also
+added a large prototyping area in the empty part of the board. The
+holes are now just on the silkscreen. This time the boards arrived in
+a few days:
+
+
+
+:::{image} images/2936651594312097316.jpg
+
+:::
+
+
+I put the address of my website on the other side, so that I can use
+the very flat board as a kind of business card:
+
+
+
+:::{image} images/8593701594312139405.jpg
+
+:::
+
+
+That's pretty much it. The new version works perfectly fine both with
+USB 2.0 and actual USB-C ports. I'm publishing the fritzing design
+file, the gerbers and the BOM, so that anyone can make their own — you
+can find them in the downloads section of this page.
+

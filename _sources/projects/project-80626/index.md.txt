@@ -1,0 +1,68 @@
+---
+blogpost: true
+date: 2018-03-09
+category: project
+tags:  ongoing project, Software
+image: 1
+---
+
+# Stage, a Tile and Sprite Engine
+
+A library for MicroPython for drawing tiles and sprites on a RGB SPI screen.
+
+<div class="project-thumb">
+
+:::{image} images/314061546889662725.jpg
+:target: /_images/314061546889662725.jpg
+:::
+
+:::{image} images/8424561520631872842.jpg
+:target: /_images/8424561520631872842.jpg
+:::
+
+:::{image} images/2099951546889606915.jpg
+:target: /_images/2099951546889606915.jpg
+:::
+
+:::{image} images/4900141546889610404.jpg
+:target: /_images/4900141546889610404.jpg
+:::
+
+:::{image} images/6527501546889631960.jpg
+:target: /_images/6527501546889631960.jpg
+:::
+
+:::{image} images/9027181633616903750.jpg
+:target: /_images/9027181633616903750.jpg
+:::
+
+</div>
+
+
+    This is a MicroPython library that provides the means for drawing
+sprites with tiled background on 16-bit SPI-based displays. It
+consists of a small part written in C that needs to be compiled into
+the firmware, and the rest written in Python, usually also included in
+the firmware as frozen modules.
+
+This library was originally created in CircuitPython for {ref}`project-27629` , but has since been ported onto other platforms.
+
+
+
+:::{image} images/8989641564692013055.gif
+
+:::
+
+
+
+
+
+
+## Logs
+
+:::{postlist}
+:category: project-80626
+:::
+
+## Instructions
+

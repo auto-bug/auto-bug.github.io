@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Not Dead Yet - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="not-dead-yet">
+<h1>Not Dead Yet<a class="headerlink" href="#not-dead-yet" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2018-10-13 in <a class="reference internal" href="../#project-160167"><span class="std std-ref">Electronic Barrette Hub</span></a>.</p>
+<p>There has been no update for a long time here, and that’s because
+there hasn’t been much work. Why not? Because I was out of ideas. You
+see, I really want this to look good — to not be a horrible mess of
+tangled wires and electronic components, even though that is sometimes
+nice too, if you are into that kind of aesthetics. But that is
+surprisingly hard to do. And now, that the project has qualified to
+semifinals of the Hackaday Prize, there is even more pressure to get
+this right. I’ve been avoiding this project, focusing on my day job
+and other projects, because it was simply stressful.</p>
+<p>But now that there is a little over one week left for the deadline, I
+remembered (again) that the secret to getting something right is not
+in getting it right at the first try, but in trying a lot of times and
+improving with every iteration. So yeah, the prototype doesn’t have to
+look good, even though I will make it with that goal in mind. I just
+need to get back to trying out things.</p>
+<p>So I went and finished the PCB design. Based on the feedback from the
+non-smart barrette users, I went back to the same size and shape. I
+also decided to make it as flat as possible, and use a standard shaped
+LiPo battery after all (even though the round one arrived some time
+ago) — that will make the build easier to reproduce. So here is the
+carrier board:</p>
+<img alt="projects/project-160167/images/8957721539466659432.png" src="projects/project-160167/images/8957721539466659432.png" />
+<p>There is a battery connector, power switch, charging electronics and
+USB port (for charging and for interfacing with the <a class="reference internal" href="../../project-158701/#project-158701"><span class="std std-ref">Video Pendant</span></a> ). Instead of eight connector, each with one signal pin, I switched to
+four with two pins each — and they are arranged according to the Grove
+connector standard from Seeedstudio. Using standards where possible
+will make it more versatile in the future. Maybe I will even switch to
+the JST connectors, then it will be fully Grove-compatible.</p>
+<p>I left the holes for the CPX, but I will probably cover them by
+soldering bolts onto them — so that the back is flat, because
+otherwise they would interfere with the hair clasp, and possibly also
+tangle into the hair.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

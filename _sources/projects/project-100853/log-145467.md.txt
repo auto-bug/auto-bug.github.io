@@ -1,0 +1,60 @@
+---
+blogpost: true
+date: 2018-04-30
+category: project-100853
+---
+
+# The PCBs are Here!
+Published on 2018-04-30 in {ref}`project-100853`.
+
+After being held a few days in customs (no idea why, since the package
+was clearly never opened), the PCBs finally arrived, and as I promised
+to JLCPCB, I'm going to review them. On the first sight, they look
+great:
+
+
+
+:::{image} images/8143521525081875066.jpg
+
+:::
+
+
+---------- more ----------And I expect them to work very well, even given some really tight
+tolerances around the matrix controller chip. The outline is good,
+except for a tiny little notch near the top left corner, where the CNC
+machine probably started. Generally, I have nothing I could complain
+about.
+
+However, just out of curiosity, I did a test that the people from
+Aisler taught me when we were comparing their boards with ones I had
+fabricated in other fabs. You have to hold the PCB against light and
+then you can see where they removed the soldermask completely, leaving
+naked FR4 underneath, to avoid covering the chip pads. It's a little
+bit hard to take the photo of it, but it looks something like this:
+
+
+
+:::{image} images/4188531525082102932.jpg
+
+:::
+
+
+You can see four lighter rectangles around the pads of the chip.
+That's where there is naked FR4 on the top side. There is no such a
+thing in the original gerbers I sent them, they modified them to avoid
+problems. Maybe you can see it better with a magnification:
+
+
+
+:::{image} images/4867261525082215511.jpg
+
+:::
+
+
+Of course this has no impact on how the PCB will work — it's just
+interesting to compare their process with that of Aisler.
+
+All in all, I'm very happy with the PCBs, and you certainly can't beat
+them on price (though the shipping cost kinda offsets that). I will
+certainly order PCBs from [jlcpcb.com](http://jlcpcb.com)  again.
+

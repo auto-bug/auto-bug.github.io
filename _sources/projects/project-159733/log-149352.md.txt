@@ -1,0 +1,57 @@
+---
+blogpost: true
+date: 2018-07-15
+category: project-159733
+---
+
+# How Lite can PewPew be?
+Published on 2018-07-15 in {ref}`project-159733`.
+
+After designing a cheaper version of the {ref}`project-21578` recently, I started thinking: what if instead of using a separate chip
+for driving the LED matrix, I used the free pins on the MCU? And
+instead of buttons use touch pads? And instead of a USB port use the
+shape of the PCB? I could get the BOM literally to a few parts!
+
+One problem with that: I would need 24 pins to drive the bi-color
+matrix. Sure, I could add shift registers and decades and whatnot, but
+then I'm back to using additional chips, and with the price of the
+HT16K33, I may just as well use that. But what if I could use fewer
+pins? Are there tricks for that?
+
+With charlieplexing I could drive a 16×8 matrix with as few as 12 pins
+(the formula is n²-n, which for 12 gives me 132 LEDs, four more than
+my required 128). But you can't charlieplex matrices with common
+cathodes. [Well, you can](https://wealoneonearth.blogspot.com/2013/03/design-note-charlieplexing-led-matrices.html) , but that's not useful for square matrices. But what if I made my own
+bi-color matrix on the PCB? You can get 0603 bi-color LEDs cheaply —
+in fact cheaper than the equivalent matrix. Soldering them is a lot of
+work by hand, but if I got it fabricated the pick-and-place machine
+does all the work anyways. And it would then be flat. Like a business
+card.
+
+Wait a minute...
+
+With so few parts it could actually be cheap enough to use as a
+business card!
+
+So I made this mockup:
+
+
+
+:::{image} images/7516981531610386604.png
+
+:::
+
+
+The big black hole is for a CR2032 battery — it will be sunken into
+the PCB, to keep the thickness at a minimum.
+
+I even started routing the matrix — for now I have routed 8×8 LEDs
+with 9 pins used, and 7 pins free. Now I have two options: route the
+other half the same way, using the remaining 7 free pins, and the two
+debugging pins (possibly with some jumpers to disconnect them for
+debugging), or redo the whole thing as a 12×11 matrix using only 12
+pins, and then rearrange the LEDs back to 16×8. Of course the second
+option would be much better, but I'm not sure I have the stamina for
+that. If I go for the 2×8×8 approach, I might also separate the two
+colors — we will see how it goes.
+

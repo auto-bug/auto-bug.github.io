@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Oops! - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="oops">
+<h1>Oops!<a class="headerlink" href="#oops" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2020-05-26 in <a class="reference internal" href="../#project-171381"><span class="std std-ref">Fluff M0</span></a>.</p>
+<p>Would you believe me if I told you that I made a pretty stupid (and
+easily avoided) mistake in this design? If you have followed any of my
+previous projects, this should be an obvious thing to you. Of course I
+made a stupid mistake, that’s how I work after all! And you would be
+completely right! Here is a fragment of the schematic that I posted
+earlier, with one little detail marked in red. Does it strike it as
+somewhat odd, perhaps?</p>
+<img alt="projects/project-171381/images/7563971590454102343.png" src="projects/project-171381/images/7563971590454102343.png" />
+<p>Yes, I swapped MISO and SCK pins. No, any FeatherWing that uses SPI
+will not work with Fluff M0 v1.0 because of that. Sorry to anyone who
+used my gerbers. What can be done about it? Well, those are the tracks
+in real life:</p>
+<img alt="projects/project-171381/images/5636161590454212036.jpg" src="projects/project-171381/images/5636161590454212036.jpg" />
+<p>What can you do when your project has a mistake like that? There is
+only one thing left to do: scrape it. With a sharp knife. Like this:</p>
+<img alt="projects/project-171381/images/6503381590455284545.jpg" src="projects/project-171381/images/6503381590455284545.jpg" />
+<p>(Sorry for potatocam.) And then you solder some thin wires to it, like
+this:</p>
+<img alt="projects/project-171381/images/4636261590455315015.jpg" src="projects/project-171381/images/4636261590455315015.jpg" />
+<p>And then you fix the firmware and the gerbers:</p>
+<img alt="projects/project-171381/images/5174031590455394627.png" src="projects/project-171381/images/5174031590455394627.png" />
+<p>It’s a bit sad, because it’s actually easier to route the correct
+pins. Oh well. In any case, version 1.1 is here:</p>
+<img alt="projects/project-171381/images/2292041590455679798.png" src="projects/project-171381/images/2292041590455679798.png" />
+</section>
+
+
+</div>
+  </body>
+</html>

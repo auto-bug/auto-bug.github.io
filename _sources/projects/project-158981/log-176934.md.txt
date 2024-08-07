@@ -1,0 +1,28 @@
+---
+blogpost: true
+date: 2020-05-04
+category: project-158981
+---
+
+# Progress
+Published on 2020-05-04 in {ref}`project-158981`.
+
+I have spent the whole Sunday re-doing the PCB design, and then adding
+battery protection, charging and a speaker with amplifier. It looks
+like this now:
+
+
+
+:::{image} images/5208901588592973283.png
+
+:::
+
+
+And then I realized that the puny SAMD21 is not going to have enough
+memory to make use of this — at the very least I will need external
+flash. And I might as well switch to the SAMD51 at this point, since
+it's not that much more expensive. That also gives me more pins, so I
+can have a proper feather pinout plus all the servos and plus some
+extra stuff. However, I will need to completely re-do the design for
+that, so it will probably wait until the next weekend.
+

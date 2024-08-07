@@ -2,69 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posts tagged quadruped</title>
-  <updated>2024-08-07T20:32:01.610762+00:00</updated>
+  <updated>2024-08-07T20:33:07.433366+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/tag/quadruped/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
-  <entry>
-    <id>http://deshipu.art/projects/project-6321/</id>
-    <title>Katka, a mammalian robot</title>
-    <updated>2015-06-15T00:00:00+02:00</updated>
-    <content type="html">&lt;section id="katka-a-mammalian-robot"&gt;
-
-&lt;p&gt;A small walking robot with a mammal-like configuration of legs.&lt;/p&gt;
-&lt;div class="project-thumb"&gt;
-&lt;a class="reference external image-reference" href="/_images/226891435314260622.jpg"&gt;&lt;img alt="projects/project-6321/images/226891435314260622.jpg" src="projects/project-6321/images/226891435314260622.jpg" /&gt;&lt;/a&gt;
-&lt;a class="reference external image-reference" href="/_images/8326261434400096795.jpg"&gt;&lt;img alt="projects/project-6321/images/8326261434400096795.jpg" src="projects/project-6321/images/8326261434400096795.jpg" /&gt;&lt;/a&gt;
-&lt;a class="reference external image-reference" href="/_images/6178521435314253175.jpg"&gt;&lt;img alt="projects/project-6321/images/6178521435314253175.jpg" src="projects/project-6321/images/6178521435314253175.jpg" /&gt;&lt;/a&gt;
-&lt;/div&gt;
-&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;This is one of my early experiments at building a cheap quadruped.
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;Since there are a lot of servomechanisms in such a robot, even when
-they are relatively cheap, they comprise a large part of the total
-price. So reducing the number of servos is an obvious way of reducing
-the price.&lt;/p&gt;
-&lt;p&gt;However, it’s almost impossible to have proper inverse kinematics with
-a robot in a spider/lizard configuration with only two degrees of
-freedom per leg. Fortunately, in the mammal configuration, when both
-degrees of freedom move the leg in the same plane, it’s possible to
-have two-dimensional inverse kinematics, and that’s what this robot
-does.&lt;/p&gt;
-&lt;p&gt;It can move its center of mass, and it can move its legs backwards in
-a straight line, and then raise them and move them forward. That is
-enough for implementing a proper statically stable “creep” gait.
-Unfortunately, it’s not enough for implementing proper turning. In
-order to turn, this robot works like a tank, by making the steps on
-one side shorter than on the other (or even reversing the direction).
-This is sub-optimal, as it leads to slippage and unpredictability, but
-that’s the best I could do without adding at least one servo and
-rebuilding the robot completely.&lt;/p&gt;
-&lt;iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="" src="https://www.youtube.com/embed/MJjPAcgxrWs"&gt;&lt;/iframe&gt;
-&lt;section id="logs"&gt;
-&lt;h2&gt;Logs&lt;/h2&gt;
-&lt;ul class="postlist-style-none postlist simple"&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-07-01 - &lt;a class="reference internal" href="../../../projects/project-6321/log-20293/"&gt;Spider Mode&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-06-26 - &lt;a class="reference internal" href="../../../projects/project-6321/log-20012/"&gt;Reworked Electronics&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-06-24 - &lt;a class="reference internal" href="../../../projects/project-6321/log-19942/"&gt;Walking Details&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/section&gt;
-&lt;section id="instructions"&gt;
-&lt;h2&gt;Instructions&lt;/h2&gt;
-&lt;/section&gt;
-&lt;/section&gt;
-</content>
-    <link href="http://deshipu.art/projects/project-6321/" rel="alternate"/>
-    <summary>A small walking robot with a mammal-like configuration of legs.</summary>
-    <category term="ROBOT" label="ROBOT"/>
-    <category term="WALKING" label="WALKING"/>
-    <category term="arduino" label="arduino"/>
-    <category term="completedproject" label="completed project"/>
-    <category term="hardware" label="hardware"/>
-    <category term="quadruped" label="quadruped"/>
-    <category term="robots" label="robots"/>
-    <published>2015-06-15T00:00:00+02:00</published>
-  </entry>
   <entry>
     <id>http://deshipu.art/projects/project-9065/</id>
     <title>Tote Zero</title>
@@ -370,5 +311,59 @@ board.&lt;/p&gt;
     <category term="quadruped" label="quadruped"/>
     <category term="spider" label="spider"/>
     <published>2017-02-18T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-158981/</id>
+    <title>Kubik M0</title>
+    <updated>2018-06-10T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="kubik-m0"&gt;
+
+&lt;p&gt;An easy to build spider robot kit.&lt;/p&gt;
+&lt;div class="project-thumb"&gt;
+&lt;a class="reference external image-reference" href="/_images/8742791529673352245.jpg"&gt;&lt;img alt="projects/project-158981/images/8742791529673352245.jpg" src="projects/project-158981/images/8742791529673352245.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/2465621529702456110.jpg"&gt;&lt;img alt="projects/project-158981/images/2465621529702456110.jpg" src="projects/project-158981/images/2465621529702456110.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/5325901529762571235.jpg"&gt;&lt;img alt="projects/project-158981/images/5325901529762571235.jpg" src="projects/project-158981/images/5325901529762571235.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/4868981529767029437.jpg"&gt;&lt;img alt="projects/project-158981/images/4868981529767029437.jpg" src="projects/project-158981/images/4868981529767029437.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/5318431529767207122.jpg"&gt;&lt;img alt="projects/project-158981/images/5318431529767207122.jpg" src="projects/project-158981/images/5318431529767207122.jpg" /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;section id="logs"&gt;
+&lt;h2&gt;Logs&lt;/h2&gt;
+&lt;ul class="postlist-style-none postlist simple"&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2020-07-13 - &lt;a class="reference internal" href="../../../projects/project-158981/log-180777/"&gt;Fix it in Software&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2020-07-08 - &lt;a class="reference internal" href="../../../projects/project-158981/log-180416/"&gt;Safe Mode Problems&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2020-05-18 - &lt;a class="reference internal" href="../../../projects/project-158981/log-177675/"&gt;Delays&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2020-05-05 - &lt;a class="reference internal" href="../../../projects/project-158981/log-177009/"&gt;Actual Work&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2020-05-04 - &lt;a class="reference internal" href="../../../projects/project-158981/log-176934/"&gt;Progress&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2020-05-03 - &lt;a class="reference internal" href="../../../projects/project-158981/log-176865/"&gt;Maybe Feather?&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2020-05-01 - &lt;a class="reference internal" href="../../../projects/project-158981/log-176790/"&gt;Katka M0 Upright&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2020-03-12 - &lt;a class="reference internal" href="../../../projects/project-158981/log-174684/"&gt;Katka M0&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-05-10 - &lt;a class="reference internal" href="../../../projects/project-158981/log-163183/"&gt;It’s Full of Pins!&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-05-09 - &lt;a class="reference internal" href="../../../projects/project-158981/log-163149/"&gt;Reevaluating the Feasibility&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-05-07 - &lt;a class="reference internal" href="../../../projects/project-158981/log-163008/"&gt;CircuitPython Fixes Timer Bugs, Requires Redesign&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-12-21 - &lt;a class="reference internal" href="../../../projects/project-158981/log-157389/"&gt;Immediate Plans&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-09-20 - &lt;a class="reference internal" href="../../../projects/project-158981/log-153090/"&gt;Build Instructions&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-08-10 - &lt;a class="reference internal" href="../../../projects/project-158981/log-150749/"&gt;New Legs Assembled&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-08-03 - &lt;a class="reference internal" href="../../../projects/project-158981/log-150372/"&gt;Improved Legs&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-06-26 - &lt;a class="reference internal" href="../../../projects/project-158981/log-148389/"&gt;Assembled PCB&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-06-23 - &lt;a class="reference internal" href="../../../projects/project-158981/log-148270/"&gt;First Prototype&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-06-12 - &lt;a class="reference internal" href="../../../projects/project-158981/log-147852/"&gt;Penalized Panelizing&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-06-10 - &lt;a class="reference internal" href="../../../projects/project-158981/log-147739/"&gt;Take Over the Wold Already&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section id="instructions"&gt;
+&lt;h2&gt;Instructions&lt;/h2&gt;
+&lt;/section&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-158981/" rel="alternate"/>
+    <summary>An easy to build spider robot kit.</summary>
+    <category term="ROBOT" label="ROBOT"/>
+    <category term="WALKING" label="WALKING"/>
+    <category term="hardware" label="hardware"/>
+    <category term="ongoingproject" label="ongoing project"/>
+    <category term="python" label="python"/>
+    <category term="quadruped" label="quadruped"/>
+    <category term="spider" label="spider"/>
+    <published>2018-06-10T00:00:00+02:00</published>
   </entry>
 </feed>

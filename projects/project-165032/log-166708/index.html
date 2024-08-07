@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Buttons and More Prototypes - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="buttons-and-more-prototypes">
+<h1>Buttons and More Prototypes<a class="headerlink" href="#buttons-and-more-prototypes" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2019-08-07 in <a class="reference internal" href="../#project-165032"><span class="std std-ref">PewPew M4</span></a>.</p>
+<p>I have build a few more prototypes, to test different kinds of buttons
+and see what could be done for the display attachment:</p>
+<img alt="projects/project-165032/images/7162101565175034427.jpg" src="projects/project-165032/images/7162101565175034427.jpg" />
+<p>The displays are a bit of a problem: they don’t stay perfectly flat on
+the PCB, and there is light leaking from underneath. The two-sided
+tape that is supposed to hold them in place is attached to the white
+plastic foil on the bottom, which comes off easily, and the the
+display no longer stays where it should. It all feels very flimsy and
+unreliable. As you can see, I have tried hot glue, and that does the
+job if done carefully, but looks awful and is a lot of manual work. So
+the next plan to try is to make a laser-cut case, consisting of two
+layers of transparent acrylic, to hold the display in place and also
+give the PCB some bulk for more comfortable holding.</p>
+<p>But that brings us back to the problem of buttons. The white silicone
+buttons on the right side of the photo worked pretty well with the
+case-less design: they are as flat as the display, so the device has
+consistent thickness. They are clicky, but not too much, and they have
+a nice feel. But they wouldn’t stick out of the case if I added 2mm of
+acrylic on top.</p>
+<p>So next are the standard “6x6mm tactile switch” buttons that I have
+used in all the PewPew consoles to date. They come in a variety of
+heights, so I can always find one that sticks out enough, and there
+are also plastic caps available that come on top of the buttons, that
+further make them stick out more. But the base of the button is higher
+than the display, so I would need some extra padding under the
+display, or it wouldn’t be held in place securely anymore.</p>
+<p>The third ones are some buttons I found on Mouser. They are very nice,
+soft-click, silicone buttons, with the legs wrapped under them, so I
+wouldn’t even have exposed solder joints visible, and with a pretty
+orange color. The main body s the same height as the display, not
+counting the flange. The problem is, they are rather expensive, and I
+haven’t found another source of them.</p>
+<p>So for the next prototype I decided to try to get back to the silicone
+buttons I used in <a class="reference internal" href="../../project-27629/#project-27629"><span class="std std-ref">µGame</span></a> . They are not clicky at all, but feel good enough. Their bodies are
+4.5mm high, which is perfect for the 2.5mm height of the display plus
+2mm of a cover. They only have two legs, so I save a little bit on
+soldering. And they are black, so they look good with any color.</p>
+<p>So I switched for the new buttons, moved things around a bit to make
+it easier to laser-cut a sturdy inner layer, and ordered both the PCB
+and the laser-cutting at <a class="reference external" href="https://hackaday.io/hacker/147848">&#64;Elecrow</a> . The PCB looks something like this:</p>
+<img alt="projects/project-165032/images/5199421565175877598.png" src="projects/project-165032/images/5199421565175877598.png" />
+</section>
+
+
+</div>
+  </body>
+</html>

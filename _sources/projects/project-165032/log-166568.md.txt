@@ -1,0 +1,32 @@
+---
+blogpost: true
+date: 2019-08-04
+category: project-165032
+---
+
+# Firmware
+Published on 2019-08-04 in {ref}`project-165032`.
+
+I'm still waiting for the PCBs (they should arrive Tuesday, if DHL is
+right), so I decided to work on the firmware a little bit. I expect a
+bit more work than just defining the pins to be used in ``pins.c``,
+because all of the CircuitPython boards that use SAMD51 seem to also
+be using an external flash chip, and I skipped it for this design. But
+turns out that the initial versions of CircuitPython for SAMD51 used
+the internal flash for the filesystem, and the code is still in there
+an working fine, all I had to do is to use a different linker script
+and set INTERNAL_FLASH=1. And of course disable all the modules that
+didn't fit in the now smaller flash space for the firmware, but I've
+been through that already.
+
+I also copied the display initialization code from PyGamer, so it
+should hopefully all work. I tested it on an Itsybitsy M4 Express, and
+it seems to run fine, though I didn't connect the display or buttons.
+
+The board definition is at  [https://github.com/pewpew-
+game/circuitpython/tree/pewpew_m4/ports/atmel-samd/boards/pewpew_m4](https://github.com/pewpew-game/circuitpython/tree/pewpew_m4/ports/atmel-samd/boards/pewpew_m4)  — if it works, I will submit it for inclusion in CircuitPython.
+
+I will still need to work on that port of the pew library, possibly
+with a small C module for the slow parts, but I will wait for the
+working device to do that.
+

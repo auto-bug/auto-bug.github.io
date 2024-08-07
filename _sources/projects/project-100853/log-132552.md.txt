@@ -1,0 +1,64 @@
+---
+blogpost: true
+date: 2018-03-27
+category: project-100853
+---
+
+# Is E-ink Ready Yet?
+Published on 2018-03-27 in {ref}`project-100853`.
+
+Of course the obvious solution for a display for a conference badge is
+e-paper or e-ink display. It has a number of advantages:
+
+
+ * keeps displaying with the device off, which means that you could even
+do without the battery, or — if you really want to have interactive
+elements there — have the microcontroller sleep most of the time,
+ * high contrast, readable from a distance,
+ * low resolution and color count — which means low RAM requirements,
+ * relatively new and very cool technology,
+ * physically robust (at least more so than glass displays) and safe when
+broken (no sharp edges),
+
+It also has a couple of drawbacks:
+
+
+ * slow to update — even more so than the LCDs, partial updates help
+somewhat,
+ * expensive, at least until recently,
+ * requires additional components for the high-voltage driving — but any
+larger OLED has the same problem,
+ * no ready libraries — but I would write my own libraries for the
+display anyways,
+ * risky, requires research,
+ * no idea how easy to source it is in larger quantities.
+
+But all in all, it is certainly an interesting option to explore. So I
+went to my favorite Chinese shopping website, and had a look around.
+Sure enough, most of those displays cost around 4x more than I would
+like the whole device to cost, but there are some interesting options.
+In particular, the GDEW0154T8 display can be bought for less than $5,
+even cheaper in larger quantities. But is there any documentation for
+it? Yes!
+
+A bit of googling, and we can find [this page](https://www.smart-prototyping.com/E-ink-E-paper-Display) , with links to [the datasheet for the display](https://www.smart-prototyping.com/image/data/9_Modules/EinkDisplay/GDEW0154T8/GDEW0154T8.zip)  and for [the driving chip](https://www.smart-prototyping.com/image/data/9_Modules/EinkDisplay/GDEW0154T8/IL0373.pdf) .
+
+Looking at the datasheet, it doesn't look bad. Resolution 152×152,
+1-bit color, 6s refresh time — sure, not too great, but for that price
+what can you expect. More importantly, there is a typical application
+circuit example there, and it only has 11 capacitors, 3 Schottky
+diodes, a resistor, a mosfet and an inductor. There is also a
+temperature sensor, but looking at the breakout boards, it seems to be
+optional.
+
+
+
+:::{image} images/6925001522181955066.jpg
+
+:::
+
+
+I could live with that. More details when the breakouts and displays
+arrive.\
+
+

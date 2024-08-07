@@ -1,0 +1,97 @@
+---
+blogpost: true
+date: 2018-08-01
+category: project-159733
+---
+
+# Driving the Matrix
+Published on 2018-08-01 in {ref}`project-159733`.
+
+The whole point of building this device is cutting the costs, and the
+two main tricks for it are using a single-color matrix and simulate
+the 4 colors with 4 shades, and driving the matrix in software
+directly from the microcontroller. Obviously, for this to work I need
+to write the code that would drive the matrix and that would let me
+display 4 recognizable shades.
+
+Turns out this is more difficult than anticipated.
+
+Initially I thought that I will simply plug the matrix-driving
+function into the system tick interrupt of CircuitPython. Something
+like this:
+
+
+```cpp
+void pew_tick(void) {
+    digitalio_digitalinout_obj_t *pin;
+    pew_obj_t* pew = MP_STATE_VM(pew_singleton);
+    if (!pew) { return; }
+
+    pin = MP_OBJ_TO_PTR(pew->cols[pew->col]);
+    common_hal_digitalio_digitalinout_set_value(pin, true);
+    pew->col += 1;
+    if (pew->col >= pew->cols_size) {
+        pew->col = 0;
+        pew->turn += 1;
+        if (pew->turn >= 3) {
+            pew->turn = 0;
+        }
+    }
+    for (size_t x = 0; x < pew->rows_size; ++x) {
+        pin = MP_OBJ_TO_PTR(pew->rows[x]);
+        uint8_t color = pew->buffer[(pew->col) * (pew->rows_size) + x];
+        if (
+            ((color & 0x03) == 0x03) ||
+            (color & 0x01 && pew->turn == 0) ||
+            (color & 0x02 && pew->turn > <font color="#ff73fd">0</font>)) {
+            common_hal_digitalio_digitalinout_set_value(pin, true);
+        } else {
+            common_hal_digitalio_digitalinout_set_value(pin, false);
+        }
+    }
+    pin = MP_OBJ_TO_PTR(pew->cols[pew->col]);
+    common_hal_digitalio_digitalinout_set_value(pin, false);
+}
+
+```
+
+ This works reasonably well. There are two problems, though. The
+system tick happens once every millisecond, so the least bright pixel
+is getting 41Hz refresh rate (it's only one once every 3 frames, and
+there are 8 columns to scan). That's slow enough that some blinking is
+visible. The other problem is that the two brightest shades are really
+difficult to tell apart — that is because human eye is logarithmic in
+its sensitivity, so to get good shades, I would need to put them on a
+logarithmic scale. That means that I need more than just 3 frames, and
+that makes the least bright shade blink even more.
+
+I can think of three ways of fixing this problem.
+
+The easiest and most hacky way, that I actually tested already, is to
+simply increase the speed of the system tick timer. Of course that has
+a side effect of all time-keeping functions also increasing in speed,
+but we could adjust for that. I'm not sure how much I can increase it
+before other side effects kick in, though, and I don't like how hacky
+that is.
+
+The second easiest solution would be to use PWM on the row pins to
+control the brightness. I can set it to a pretty high frequency, and
+then refreshing the 8 columns could be done at 125Hz, which is enough
+for not seeing them blink. I would also get a really smooth scale of
+shades then. The problem is that my choice of pins for the rows was
+somewhat random, and not all of them support PWM — so I would need to
+design a new PCB. I might be able to work around this by rotating the
+matrix 180° — I need to check if then all the row pins support PWM.
+
+Finally, the most "correct" solution would be to leave the system tick
+timer alone, and use a dedicated timer with a separate interrupt for
+doing this. Unfortunately that requires a little more skill than I
+have at the moment, but perhaps I could learn.
+
+
+
+:::{image} images/8379161533144814918.jpg
+
+:::
+
+

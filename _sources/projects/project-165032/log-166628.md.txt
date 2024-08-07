@@ -1,0 +1,43 @@
+---
+blogpost: true
+date: 2019-08-05
+category: project-165032
+---
+
+# Prototype v2
+Published on 2019-08-05 in {ref}`project-165032`.
+
+So the PCBs arrived again (a day earlier than expected, yay DHL), and
+this time with a correct footprint. So you know the drill. Disassemble
+the old one, move all the components to the new one. Connect to the
+programmer and... oh no, the dreaded "memory erase" message! But wait,
+after a few of those it says "connected", so maybe it works after all?
+Well, only one way to find out. I flash the bootloader from itsybitsy
+M4 express, and it showed as a USB drive! Great. So now flash the
+firmware and it should work! Hmm... it doesn't.
+
+
+
+:::{image} images/4001711565019040774.jpg
+
+:::
+
+
+That's weird. A few experiments later I determined that it works
+perfectly fine when connected to the JLink, but not on its own. A
+quick test revealed the problem: I need a pull-up resistor on the
+reset pin. For now a quick bodge wire solved that, but I will need
+another version of the PCB. Oh well. I will need to move the display
+connector even further towards the center of the board, because the
+display is still sicking out a bit.
+
+I will also experiment a bit with the capacitors, to see if I can have
+fewer of them and still have the device work reliably.
+
+
+
+:::{image} images/9518641565020583903.jpg
+
+:::
+
+
