@@ -4,15 +4,19 @@ Recent Updates:
 ***************
 The most recent new content:
 
-.. postlist:: 5
-   :format: {title}
-   :excerpts:
+.. container::
+   :class: updates-list
+    .. postlist:: 5
+       :format: {title}
+       :excerpts:
 
 Projects
 ********
 The list of all projects.  You can also check the `archive <blog>`_ to see the full list of articles, or the `tags <blog/tag>`_ for particular topics.
 
-.. postlist::
-   :format: {title}
-   :category: project
-   :excerpts:
+.. container::
+   :class: project-list
+    .. postlist::
+       :format: {title}
+       :category: project
+       :excerpts:
