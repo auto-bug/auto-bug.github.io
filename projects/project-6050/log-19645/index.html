@@ -49,7 +49,7 @@
 <div role="main">
   <section id="remote-control-with-esp8266-and-micropython">
 <h1>Remote control with ESP8266 and Micropython<a class="headerlink" href="#remote-control-with-esp8266-and-micropython" title="Permalink to this heading">¶</a></h1>
-<p>Published on 2015-06-17 in <span class="xref std std-ref">project-6050</span>.</p>
+<p>Published on 2015-06-17 in <a class="reference internal" href="../#project-6050"><span class="std std-ref">Tote</span></a>.</p>
 <section id="since-some-time-i-was-planning-to-write-a-log-about-how-to-extend-tote-with-additional-boards-i-was-planning-to-show-examples-of-connecting-the-raspberry-pi-teensy-3-1-esp8266-and-anything-else-i-could-find-all-running-different-kinds-of-python-that-would-also-let-me-score-more-points-in-the-mountain-of-prizes-as-those-boards-use-chips-from-all-kinds-of-manufacturers-and-i-could-claim-then-that-tote-uses-them-but-reality-as-always-interferes">
 <h2>Since some time I was planning to write a log about how to extend Tote
 with additional boards. I was planning to show examples of connecting
@@ -86,7 +86,7 @@ following way:</p>
 you can print stuff to the serial console and verify that the program
 does what you think it should. Anyways, you will need some extra code
 on your Pro Mini too. There are two ways to go about this.</p>
-<p>You can just have a very simple <a class="reference external" href="https://bitbucket.org/thesheep/ukubik/src/tip/ukubik/">servo controller</a>  on the Arduino side, and feed it servo positions every frame from the <a class="reference external" href="https://bitbucket.org/thesheep/ukubik/src/tip/creep.py">Python code for the gaits</a> . That’s exactly what the <span class="xref std std-ref">project-3300</span>  does, except instead of a serial cable it uses serial over Bluetooth.
+<p>You can just have a very simple <a class="reference external" href="https://bitbucket.org/thesheep/ukubik/src/tip/ukubik/">servo controller</a>  on the Arduino side, and feed it servo positions every frame from the <a class="reference external" href="https://bitbucket.org/thesheep/ukubik/src/tip/creep.py">Python code for the gaits</a> . That’s exactly what the <a class="reference internal" href="../../project-3300/#project-3300"><span class="std std-ref">µKubik quadruped robot</span></a>  does, except instead of a serial cable it uses serial over Bluetooth.
 But the code is the same. This gives you a lot of control on the
 Python side.</p>
 <p>The other way is to leave all the <a class="reference external" href="https://bitbucket.org/thesheep/tote/src/tip/start/">Arduino code from original Tote</a> , but replace the TV remote part with <a class="reference external" href="https://bitbucket.org/thesheep/tote/src/460f15fa2da489125bb3ade9d76b81fb3b1b60ad/start/serial.ino?at=serial-control">code that simply reads the key presses from the serial</a> . That’s the route we are going to take, and it looks like this:</p>

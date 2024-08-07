@@ -49,7 +49,7 @@
 <div role="main">
   <section id="it-s-alive-alive">
 <h1>It’s Alive, ALIVE!<a class="headerlink" href="#it-s-alive-alive" title="Permalink to this heading">¶</a></h1>
-<p>Published on 2017-08-01 in <span class="xref std std-ref">project-10408</span>.</p>
+<p>Published on 2017-08-01 in <a class="reference internal" href="../#project-10408"><span class="std std-ref">Steno Keyboard</span></a>.</p>
 <p>Having cleaned the switches overnight, in the morning I started to
 work on the wiring. I used a two-sided tape to glue a Pro Micro to the
 base, added a USB cable (I had to file the plug a little to make it
@@ -58,7 +58,7 @@ fit inside the keyboard), and started to add the wires and diodes.</p>
 <p>I decided to use 3 rows and 8 columns, with the two large keys in the
 same row as the vowels on the bottom. This lets me return the row
 status as a single byte and makes the scanning quite fast.</p>
-<p>For software, I used the same TMK keyboard firmware as in <span class="xref std std-ref">project-8282</span> , with just two changes, one to the key map:</p>
+<p>For software, I used the same TMK keyboard firmware as in <a class="reference internal" href="../../project-8282/#project-8282"><span class="std std-ref">Alpen Clack</span></a> , with just two changes, one to the key map:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">PROGMEM</span><span class="w"> </span><span class="n">keymaps</span><span class="p">[][</span><span class="n">MATRIX_ROWS</span><span class="p">][</span><span class="n">MATRIX_COLS</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="p">{</span><span class="n">KC_W</span><span class="p">,</span><span class="w">    </span><span class="n">KC_E</span><span class="p">,</span><span class="w">    </span><span class="n">KC_R</span><span class="p">,</span><span class="w">    </span><span class="n">KC_U</span><span class="p">,</span><span class="w">    </span><span class="n">KC_I</span><span class="p">,</span><span class="w">   </span><span class="n">KC_O</span><span class="p">,</span><span class="w">   </span><span class="n">KC_P</span><span class="p">,</span><span class="w">    </span><span class="n">KC_LBRC</span><span class="p">},</span><span class="w"></span>
