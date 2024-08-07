@@ -3,11 +3,9 @@ This is a website documenting projects of [Radomir Dopieralski](http://dopierals
 # Recent Updates:
 The most recent new content:
 
-::::{container}
-:class: updates-list
+::::{container} updates-list
 
 :::{postlist} 5
-:format: \{title\}
 :excerpts:
 :::
 
@@ -15,13 +13,11 @@ The most recent new content:
 
 # Projects
 
-The list of all projects.  You can also check the [archive](blog) to see the full list of articles, or the [tags](blog/tag) for particular topics.
+The list of all projects.  You can also check the [archive](/blog) to see the full list of articles, or the [tags](/blog/tag) for particular topics.
 
-::::{container:
-:class: project-list
+::::{container} project-list
 
 :::{postlist}
-:format: \{title\}
 :category: project
 :excerpts:
 :::
