@@ -205,7 +205,8 @@ section p.ablog-post-title {
 }
 div.project-list li {
     display: inline-block;
-    width: 30%;
+    width: 280px;
+    height: 60px;
     margin: 0.125ex;
     text-align: center;
     position: relative;
@@ -214,5 +215,6 @@ div.project-list img {
     max-width: 100%;
     position: absolute;
     top: 0;
-
+    left: 0;
+    z-index: -1;
 }
