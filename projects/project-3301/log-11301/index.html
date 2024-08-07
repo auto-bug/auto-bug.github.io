@@ -49,7 +49,7 @@
 <div role="main">
   <section id="walking-controlled-from-pc">
 <h1>Walking Controlled from PC<a class="headerlink" href="#walking-controlled-from-pc" title="Permalink to this heading">¶</a></h1>
-<p>Published on 2014-11-24 in <a class="reference internal" href="../#project-3301"><span class="std std-ref">Pico-Kubik quadruped robot</span></a>.</p>
+<p>Published on 2014-11-24 in <span class="xref std std-ref">project-3301</span>.</p>
 <p>With very little progress with the camera (I can make shots with_fswebcam_, but when streaming with_mjpg-stream_, all frames are empty), I decided to go back to the mechanical part
 and see if it actually walks. I measured the legs, put it all into the <a class="reference external" href="https://bitbucket.org/thesheep/pkubik/src/f0c05b8506bea5cfca37cf0ce62996a7dcb6a0cf/robot.py">inverse kinematics</a>  and copied the code for the creep gait from <a class="reference external" href="https://bitbucket.org/thesheep/pkubik/src/f0c05b8506bea5cfca37cf0ce62996a7dcb6a0cf/creep.py">µKubik</a> . Turned out I need to do some more fine-tuning of the trim and
 reverse settings in my servo controller, but it finally walked:</p>

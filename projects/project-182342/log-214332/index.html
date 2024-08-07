@@ -49,12 +49,12 @@
 <div role="main">
   <section id="next-steps">
 <h1>Next Steps<a class="headerlink" href="#next-steps" title="Permalink to this heading">¶</a></h1>
-<p>Published on 2022-12-15 in <a class="reference internal" href="../#project-182342"><span class="std std-ref">Camera Shield for S2 Mini</span></a>.</p>
+<p>Published on 2022-12-15 in <span class="xref std std-ref">project-182342</span>.</p>
 <p>Now that I have it working, what is the next step? Well, right now the
 shield requires the microcontroller to provide the main clock signal
 for the camera chip. That means that the camera needs at least one PWM
 channel to work, and with only 8 channels available on the esp32-s2,
-and with 8 servo needed on my <a class="reference internal" href="../../project-180025/#project-180025"><span class="std std-ref">Fluffbug</span></a> robot, that doesn’t work very well. But I also have an off-the-shelf
+and with 8 servo needed on my <span class="xref std std-ref">project-180025</span> robot, that doesn’t work very well. But I also have an off-the-shelf
 camera module that doesn’t even have the main clock pin broken out,
 because it has an oscillator that takes care of that. Could I add an
 oscillator to my shield, and make the PWM channel unnecessary?
