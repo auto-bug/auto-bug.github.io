@@ -86,78 +86,27 @@ following way:</p>
 you can print stuff to the serial console and verify that the program
 does what you think it should. Anyways, you will need some extra code
 on your Pro Mini too. There are two ways to go about this.</p>
-<p>You can just have a very simple <a class="reference external" href="https://bitbucket.org/thesheep/ukubik/src/tip/ukubik/">servo controller</a>  on the Arduino side, and feed it servo positions every frame from the <a class="reference external" href="https://bitbucket.org/thesheep/ukubik/src/tip/creep.py">Python code for the gaits</a> . That’s exactly what the <span class="xref myst">#µKubik quadruped robot</span>  does, except instead of a serial cable it uses serial over Bluetooth.
-But the code is the same. This gives you a lot of control on the
-Python side.</p>
-<p>The other way is to leave all the <a class="reference external" href="https://bitbucket.org/thesheep/tote/src/tip/start/">Arduino code from original Tote</a> , but replace the TV remote part with <a class="reference external" href="https://bitbucket.org/thesheep/tote/src/460f15fa2da489125bb3ade9d76b81fb3b1b60ad/start/serial.ino?at=serial-control">code that simply reads the key presses from the serial</a> . That’s the route we are going to take, and it looks like this:</p>
+<p>You can just have a very simple <a class="reference external" href="https://bitbucket.org/thesheep/ukubik/src/tip/ukubik/">servo controller</a>  on the Arduino side, and feed it servo positions every frame from the <a class="reference external" href="https://bitbucket.org/thesheep/ukubik/src/tip/creep.py">Python code for the gaits</a> . That’s exactly what the <span class="xref std std-ref">project-3300</span></p>
+<p><a class="reference external" href="https://bitbucket.org/thesheep/tote/src/tip/start/"></a>  <a class="reference external" href="https://bitbucket.org/thesheep/tote/src/460f15fa2da489125bb3ade9d76b81fb3b1b60ad/start/serial.ino?at=serial-control"></a></p>
 <iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/Da69xJNugLQ"></iframe>
-<p>Now, let’s replace that cable with something a little bit more modern.
-ESP8266 is all the rage these days, and there is a highly experimental
-port of Micropython for it, so why not? Those ESP-01 boards are not
-too useful anyways, because they have hardly any pins broken out, but
-they are enough for our purpose, as the RX and TX pins are there. I
-began by making a simple rig for programming them:</p>
 <img alt="https://cdn.hackaday.io/images/9500271434528311364.jpg" src="https://cdn.hackaday.io/images/9500271434528311364.jpg" />
-<p>Then I followed the excellent <a class="reference external" href="https://learn.adafruit.com/building-and-running-micropython-on-the-esp8266">Adafruit tutorial on flashing Micropython to ESP8266</a>  and got a working console. Yay! Now, diving into <a class="reference external" href="https://github.com/micropython/micropython/tree/master/docs/library">recently added documentation</a> , I figured out how to write a simple “repeater” server:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">esp</span>
-<span class="kn">import</span> <span class="nn">sys</span>
-
-<span class="k">def</span> <span class="nf">recv</span><span class="p">(</span><span class="n">socket</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
-    <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-
-<span class="n">socket</span> <span class="o">=</span> <span class="n">esp</span><span class="o">.</span><span class="n">socket</span><span class="p">()</span>
-<span class="n">socket</span><span class="o">.</span><span class="n">onconnect</span><span class="p">(</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">onrecv</span><span class="p">(</span><span class="n">recv</span><span class="p">))</span>
-<span class="n">socket</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="s1">&#39;0.0.0.0&#39;</span><span class="p">,</span> <span class="mi">2323</span><span class="p">))</span>
-<span class="n">socket</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<p><a class="reference external" href="https://learn.adafruit.com/building-and-running-micropython-on-the-esp8266"></a>  <a class="reference external" href="https://github.com/micropython/micropython/tree/master/docs/library"></a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
-<p>It just prints on the console anything it gets on port 2323. I saved
-that as_esp8266/scripts/main_.<em>py</em> and recompiled – the ESP9266 port of Micropython doesn’t yet have
-filesystem support, so you have to add all files to the firmware
-itself. Then restart, get to the console with_USB2TTL_, and make it connect to the WiFi:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">network</span>
-<span class="n">network</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;your ssid&#39;</span><span class="p">,</span> <span class="s1">&#39;your password&#39;</span><span class="p">)</span>
+<hr class="docutils" />
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
-<p>That gets remembered, so you don’t have to do it every time. Quick
-test of the server using_netcat_:</p>
-<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span>$ nc 192.168.0.13 2323
-xxx
-h
-ddddd
-x
-
+<p>__</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
-<p>And we are finished on this side. Or so I thought. But we will get to
-that. Now, for the robot side, I flashed that “serial control” version of
-the Tote code to the Pro Mini, and made a simple connector for the
-ESP8266 using some female headers, two-sided tape and a bunch of
-wires:</p>
 <img alt="https://cdn.hackaday.io/images/6642121434528945481.jpg" src="https://cdn.hackaday.io/images/6642121434528945481.jpg" />
-<p>It fits nicely on the_FTDI_ connector on top of the robot:</p>
+<p>__</p>
 <img alt="https://cdn.hackaday.io/images/2532981434529049651.jpg" src="https://cdn.hackaday.io/images/2532981434529049651.jpg" />
-<p>Now let’s test it. I made it so that after powering on, the robot does
-nothing and waits for “xx” on the serial – that’s because many boards
-will print random stuff to serial while booting, and you don’t want
-that to be interpreted as commands. So I switch the robot on, send
-“xx” and… nothing. What?</p>
-<p>Fast forward four hours. I’m up to my ears in debugging. Tried 3
-different ESP8266 boards and 3 different Pro Minis, debugged it using_SoftwareSerial_ and by connecting the RX pin to the ESP and the TX one to the_USB2TTL_, one exceptionally helpful fellow on the_#arduino_ IRC channel even wrote a serial-forwarding code for me in low-level
-AVR C. The outcome? Both the Pro Mini and ESP8266 work perfectly fine
-when connected to the computer through_USB2TTL_. But as soon as you connect them to each other and try to transmit
-serial data at 115200 baud rate, half the data gets corrupted. That’s
-over a 4mm long wire. Adding pullups, pulldowns, capacitors, etc.
-doesn’t help. I sat over this until the small hours of the night, but
-didn’t figure out a solution. I guess I will need to start saving for
-an osciloscpe.</p>
-<p>After a night’s sleep, I went back to that Micropython code, grepped
-for “115200”, and changed it to “9600”, recompiled, flashed, changed
-the speed on the Arduino side and what do you know, it works!</p>
+<hr class="docutils" />
 <iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/4HnUbrXEJcQ"></iframe>
-<p>Next I will try to get that SD card for the RPI and show you the more
-low-level control. Who knows, maybe by this time the picam also
-arrives, and we can have some OpenCV fun.</p>
 </section>
 </section>
 

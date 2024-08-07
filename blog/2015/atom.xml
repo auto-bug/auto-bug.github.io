@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posted in 2015</title>
-  <updated>2024-08-07T19:16:55.873430+00:00</updated>
+  <updated>2024-08-07T19:22:48.814019+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/2015/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -265,17 +265,11 @@ better than on this photo. We will see how that works.&lt;/p&gt;
     <content type="html">&lt;section id="pyboard"&gt;
 
 &lt;p&gt;Published on 2015-12-20 in &lt;a class="reference internal" href="../../projects/project-6050/#project-6050"&gt;&lt;span class="std std-ref"&gt;Tote&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;There is a version of Tote using PyBoard as its brains: &lt;span class="xref myst"&gt;#Micropython Quadruped Robot&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;But the code for that was translated from Tote’s Arduino code, and
-didn’t work too well for some reason. I promised to try and fix that
-some time ago, but somehow I never got the time for it. Last night I
-finally got myself to remove the PyBoard from &lt;span class="xref myst"&gt;#Henk hexapod robot&lt;/span&gt; , put it on Tote and program.&lt;/p&gt;
-&lt;p&gt;As the base, I used the micro:bit version of Tote’s code, since it’s
-MicroPython too. I just added the servo-handling code that &lt;span class="xref myst"&gt;&amp;#64;wagner&lt;/span&gt;  wrote for his robot. I also used the same pins, timers and channels.
-Since I didn’t want to make a custom PCB, I just used the old trick
-and connected the PyBoard using dupont cables:&lt;/p&gt;
+&lt;p&gt;There is a version of Tote using PyBoard as its brains: &lt;span class="xref std std-ref"&gt;project-6877&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class="xref std std-ref"&gt;project-3694&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class="xref myst"&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;img alt="https://cdn.hackaday.io/images/8629801450613484223.jpg" src="https://cdn.hackaday.io/images/8629801450613484223.jpg" /&gt;
-&lt;p&gt;The resulting code is available at &lt;a class="reference external" href="https://bitbucket.org/thesheep/pyb_tote/src"&gt;https://bitbucket.org/thesheep/pyb_tote/src&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://bitbucket.org/thesheep/pyb_tote/src"&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;/section&gt;
 </content>
     <link href="http://deshipu.art/projects/log-6050-29288/" rel="alternate"/>
