@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posted in 2015</title>
-  <updated>2024-08-07T15:41:28.562469+00:00</updated>
+  <updated>2024-08-07T15:49:43.150425+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/2015/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -19,23 +19,29 @@
 &lt;a class="reference external image-reference" href="https://cdn.hackaday.io/images/6897111441364634311.jpg"&gt;&lt;img alt="https://cdn.hackaday.io/images/6897111441364634311.jpg" class="project-thumb" src="https://cdn.hackaday.io/images/6897111441364634311.jpg" /&gt;&lt;/a&gt;
 &lt;a class="reference external image-reference" href="https://cdn.hackaday.io/images/3394331478778433037.jpg"&gt;&lt;img alt="https://cdn.hackaday.io/images/3394331478778433037.jpg" class="project-thumb" src="https://cdn.hackaday.io/images/3394331478778433037.jpg" /&gt;&lt;/a&gt;
 &lt;a class="reference external image-reference" href="https://cdn.hackaday.io/images/1163581449089331686.jpg"&gt;&lt;img alt="https://cdn.hackaday.io/images/1163581449089331686.jpg" class="project-thumb" src="https://cdn.hackaday.io/images/1163581449089331686.jpg" /&gt;&lt;/a&gt;
-&lt;p&gt;&lt;a class="reference external" href="https://www.youtube.com/embed/XXotn-8DPQo"&gt;https://www.youtube.com/embed/XXotn-8DPQo&lt;/a&gt;
-Where are my robots? It’s already 15 years into the twenty-first
-century, and we still don’t have robots everywhere. Sure, there are
+&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;:::{iframe} https://www.youtube.com/embed/XXotn-8DPQo
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;:width:100%&lt;/p&gt;
+&lt;div class="highlight-default notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;
+Where are my robots? It&amp;#39;s already 15 years into the twenty-first
+century, and we still don&amp;#39;t have robots everywhere. Sure, there are
 some simple vacuum cleaners and some robo-pets for the ultimate geeks,
-but that is not enough! Especially since the vacuum cleaners don’t
-even walk. We need more walking robots everywhere!&lt;/p&gt;
-&lt;p&gt;I think that one of the reasons why we don’t have robots creeping and
+but that is not enough! Especially since the vacuum cleaners don&amp;#39;t
+even walk. We need more walking robots everywhere!
+
+I think that one of the reasons why we don&amp;#39;t have robots creeping and
 crawling all around us is that researching walking robots is a time-
 consuming, hard, and very expensive activity, traditionally confined
 to the secret military laboratories. You need a big room with a crane
 to hang your robot on, in case it falls, you need lots of hydraulic
 actuators and a pump to power them, you need sophisticated sensors and
 complex algorithms crunched on powerful computers, etc. At least
-that’s how it has been so far. Even building a simple hexapod from a
+that&amp;#39;s how it has been so far. Even building a simple hexapod from a
 kit, which, is not much more than a simple toy, can set you back
-hundreds of dollars. No wonder we make no progress.&lt;/p&gt;
-&lt;p&gt;That has to change. If we put a walking robot on the desk of every
+hundreds of dollars. No wonder we make no progress.
+
+That has to change. If we put a walking robot on the desk of every
 high school student out there, and let them try hack on them and try
 the craziest ideas, sooner or later someone will come up with a bunch
 of cool tricks that let you solve that leg trajectory optimization
@@ -43,38 +49,58 @@ problem on an Arduino at 50Hz a second, instead of a supercomputer
 crunching on a single frame whole day. We have a lot of corners we can
 cut there. Plus, those same high school students are likely going to
 continue their experiments and research and graduate in robotics and
-build us that robot butler that we always wanted. Or something.&lt;/p&gt;
-&lt;p&gt;So that’s my plan with Tote. To solve the humanity’s burning problem
-of glaring lack of robots, I’m working on a robot that is suitable as
-a base for experimenting with robot gaits and related problems.&lt;/p&gt;
-&lt;section id="logs"&gt;
-&lt;h2&gt;Logs&lt;/h2&gt;
-&lt;section id="reviving-the-skull-tote"&gt;
-&lt;h3&gt;Reviving the Skull Tote&lt;/h3&gt;
-&lt;p&gt;Created 2018-06-07.&lt;/p&gt;
-&lt;p&gt;I have a number of prototypes of Tote that I have built over the
-years, but the most presentable one is the one I pimped up in &lt;a class="reference external" href="https://hackaday.io/project/6050-tote/log/48853-pimp-your-bot"&gt;https://hackaday.io/project/6050-tote/log/48853-pimp-your-bot&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Unfortunately, that robot had a number of problems. Unlike all other
+build us that robot butler that we always wanted. Or something.
+
+So that&amp;#39;s my plan with Tote. To solve the humanity&amp;#39;s burning problem
+of glaring lack of robots, I&amp;#39;m working on a robot that is suitable as
+a base for experimenting with robot gaits and related problems.
+
+
+
+
+
+## Logs
+
+
+
+### Reviving the Skull Tote
+Created 2018-06-07.
+
+I have a number of prototypes of Tote that I have built over the
+years, but the most presentable one is the one I pimped up in [https://hackaday.io/project/6050-tote/log/48853-pimp-your-bot](https://hackaday.io/project/6050-tote/log/48853-pimp-your-bot)
+
+Unfortunately, that robot had a number of problems. Unlike all other
 Totes, it was powered with a 2S lipo battery, with a buck converter
 bringing to voltage down to 5V. That tiny buck converter would only
 work for a few minutes, and then starting to shut down when the
 current drawn by the servos made it too hot. Which would result in the
 robot having a seizure. I also discovered that the motor in one of the
 servos got stuck — rather common with the cheap SG90 servos — and
-would need to be replaced.&lt;/p&gt;
-&lt;p&gt;So I decided to open up this robot, replace the power with a more
+would need to be replaced.
+
+So I decided to open up this robot, replace the power with a more
 standard setup (a 1S lipo connected directly without any voltage
-stabilization), add a battery charging circuit, and replace the servo.&lt;/p&gt;
-&lt;p&gt;Here’s the USB port for the battery charging circuit:&lt;/p&gt;
-&lt;img alt="https://cdn.hackaday.io/images/9036641528398127759.jpg" src="https://cdn.hackaday.io/images/9036641528398127759.jpg" /&gt;
+stabilization), add a battery charging circuit, and replace the servo.
+
+Here&amp;#39;s the USB port for the battery charging circuit:
+
+
+
+:::{image} https://cdn.hackaday.io/images/9036641528398127759.jpg
+
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
 &lt;p&gt;And the replaced servo, primed with black paint, waiting to dry for a
 dry-brushing:&lt;/p&gt;
 &lt;img alt="https://cdn.hackaday.io/images/2825991528398180978.jpg" src="https://cdn.hackaday.io/images/2825991528398180978.jpg" /&gt;
 &lt;p&gt;And finally the whole robot, it all its robot glory:&lt;/p&gt;
 &lt;img alt="https://cdn.hackaday.io/images/7540951528398222731.jpg" src="https://cdn.hackaday.io/images/7540951528398222731.jpg" /&gt;
-&lt;/section&gt;
+&lt;aside class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: WARNING/2 (&lt;span class="docutils literal"&gt;/home/sheep/dev/ablog/deshipu.art/projects/project-6050.md&lt;/span&gt;, line 140)&lt;/p&gt;
+&lt;p&gt;Non-consecutive header level increase; H1 to H3 [myst.header]&lt;/p&gt;
+&lt;/aside&gt;
 &lt;section id="gangsta"&gt;
-&lt;h3&gt;Gangsta&lt;/h3&gt;
+&lt;h2&gt;Gangsta&lt;/h2&gt;
 &lt;p&gt;Created 2017-01-15.&lt;/p&gt;
 &lt;p&gt;As I wrote in the previous logs, I’m going to be upgrading Tote to use
 some more expensive, but more powerful and easier to use components.
@@ -98,9 +124,13 @@ sucks for making schematics:&lt;/p&gt;
 &lt;p&gt;I wonder if I should fork this version off the main Tote, and keep a
 repository with the Arduino code for it, with remapped pins and so
 on…&lt;/p&gt;
+&lt;aside class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: WARNING/2 (&lt;span class="docutils literal"&gt;/home/sheep/dev/ablog/deshipu.art/projects/project-6050.md&lt;/span&gt;, line 190)&lt;/p&gt;
+&lt;p&gt;Non-consecutive header level increase; H1 to H3 [myst.header]&lt;/p&gt;
+&lt;/aside&gt;
 &lt;/section&gt;
 &lt;section id="programming-the-spinal-cord"&gt;
-&lt;h3&gt;Programming the Spinal Cord&lt;/h3&gt;
+&lt;h2&gt;Programming the Spinal Cord&lt;/h2&gt;
 &lt;p&gt;Created 2017-01-14.&lt;/p&gt;
 &lt;p&gt;n the previous log I made a decision to use an Adafruit Feather board
 for the robot’s brains, and a bare ATmega chip in a DIP package for
@@ -147,9 +177,13 @@ blinking lights on your Feather, and then your chip is programmed.&lt;/p&gt;
 &lt;p&gt;In the end, I will probably make a Makefile that does the equivalent
 of the above procedure automatically, to streamline the experience a
 bit.&lt;/p&gt;
+&lt;aside class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: WARNING/2 (&lt;span class="docutils literal"&gt;/home/sheep/dev/ablog/deshipu.art/projects/project-6050.md&lt;/span&gt;, line 254)&lt;/p&gt;
+&lt;p&gt;Non-consecutive header level increase; H1 to H3 [myst.header]&lt;/p&gt;
+&lt;/aside&gt;
 &lt;/section&gt;
 &lt;section id="choosing-the-brains"&gt;
-&lt;h3&gt;Choosing the Brains&lt;/h3&gt;
+&lt;h2&gt;Choosing the Brains&lt;/h2&gt;
 &lt;p&gt;Created 2017-01-11.&lt;/p&gt;
 &lt;p&gt;In the previous post I shared some of my thoughts about this project,
 and decided to pick a different development board than the Pro Mini
@@ -297,11 +331,14 @@ right direction for Tote to go in. The next step is code and
 documentation for it. If the prototype works well enough, I’m going to
 make it the default version in the documentation and only focus on
 this. Can’t wait for the boards to arrive.&lt;/p&gt;
+&lt;aside class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: WARNING/2 (&lt;span class="docutils literal"&gt;/home/sheep/dev/ablog/deshipu.art/projects/project-6050.md&lt;/span&gt;, line 448)&lt;/p&gt;
+&lt;p&gt;Non-consecutive header level increase; H1 to H3 [myst.header]&lt;/p&gt;
+&lt;/aside&gt;
 &lt;/section&gt;
 &lt;section id="new-year-reflections"&gt;
-&lt;h3&gt;New Year Reflections&lt;/h3&gt;
+&lt;h2&gt;New Year Reflections&lt;/h2&gt;
 &lt;p&gt;Created 2017-01-11.&lt;/p&gt;
-&lt;/section&gt;
 &lt;/section&gt;
 &lt;section id="year-s-summary"&gt;
 &lt;h2&gt;Year’s Summary&lt;/h2&gt;
@@ -634,7 +671,16 @@ makes sounds, and painted some red highlights on the legs. The end
 result:&lt;/p&gt;
 &lt;img alt="https://cdn.hackaday.io/images/4791001478776115934.jpg" src="https://cdn.hackaday.io/images/4791001478776115934.jpg" /&gt;
 &lt;p&gt;And here’s a short video:&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="https://www.youtube.com/embed/sBmQx8Rb05I"&gt;https://www.youtube.com/embed/sBmQx8Rb05I&lt;/a&gt;&lt;/p&gt;
+&lt;aside class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;span class="docutils literal"&gt;/home/sheep/dev/ablog/deshipu.art/projects/project-6050.md&lt;/span&gt;, line 846)&lt;/p&gt;
+&lt;p&gt;Unknown directive type “iframe”.
+&lt;/p&gt;
+&lt;/aside&gt;
+&lt;aside class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: INFO/1 (&lt;span class="docutils literal"&gt;/home/sheep/dev/ablog/deshipu.art/projects/project-6050.md&lt;/span&gt;, line 846)&lt;/p&gt;
+&lt;p&gt;No directive entry for “iframe” in module “docutils.parsers.rst.languages.en”.
+Trying “iframe” as canonical directive name.&lt;/p&gt;
+&lt;/aside&gt;
 &lt;/section&gt;
 &lt;section id="pimp-your-bot"&gt;
 &lt;h3&gt;Pimp Your Bot&lt;/h3&gt;
@@ -860,16 +906,34 @@ inverse kinematics to Micropython.&lt;/p&gt;
 it’s an equally frustrating process of figuring out why the leg is
 moving in the direction opposite to expected. It took me several
 hours, but I finally did it.&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="https://www.youtube.com/embed/VZ7vxIEno0o"&gt;https://www.youtube.com/embed/VZ7vxIEno0o&lt;/a&gt;
-Then some more frustration while I tried to make the walking code
+&lt;aside class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;span class="docutils literal"&gt;/home/sheep/dev/ablog/deshipu.art/projects/project-6050.md&lt;/span&gt;, line 1186)&lt;/p&gt;
+&lt;p&gt;Unknown directive type “iframe”.
+&lt;/p&gt;
+&lt;/aside&gt;
+&lt;aside class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: INFO/1 (&lt;span class="docutils literal"&gt;/home/sheep/dev/ablog/deshipu.art/projects/project-6050.md&lt;/span&gt;, line 1186)&lt;/p&gt;
+&lt;p&gt;No directive entry for “iframe” in module “docutils.parsers.rst.languages.en”.
+Trying “iframe” as canonical directive name.&lt;/p&gt;
+&lt;/aside&gt;
+&lt;p&gt;Then some more frustration while I tried to make the walking code
 work. Here the challenge was not so much the code itself, because once
 you know what the robot has to do, it’s quite simple, but the fact
 that I ran out of memory and stack space. I had to do a few unpythonic
 things to my code to make it fit on this small board, but finally I
 got a (very bad) gait working. So I strapped the micro:bit on top of
 Tote, and let it walk:&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="https://www.youtube.com/embed/SMqX_yPnfVI"&gt;https://www.youtube.com/embed/SMqX_yPnfVI&lt;/a&gt;
-I know there is a lot that could be improved here. In fact, this is
+&lt;aside class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;span class="docutils literal"&gt;/home/sheep/dev/ablog/deshipu.art/projects/project-6050.md&lt;/span&gt;, line 1198)&lt;/p&gt;
+&lt;p&gt;Unknown directive type “iframe”.
+&lt;/p&gt;
+&lt;/aside&gt;
+&lt;aside class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: INFO/1 (&lt;span class="docutils literal"&gt;/home/sheep/dev/ablog/deshipu.art/projects/project-6050.md&lt;/span&gt;, line 1198)&lt;/p&gt;
+&lt;p&gt;No directive entry for “iframe” in module “docutils.parsers.rst.languages.en”.
+Trying “iframe” as canonical directive name.&lt;/p&gt;
+&lt;/aside&gt;
+&lt;p&gt;I know there is a lot that could be improved here. In fact, this is
 quite horrible, compared to how Tote walks normally. This is not the
 fault of micro:bit, but rather my sloppy programming and the fact that
 I was in hurry.&lt;/p&gt;
@@ -1055,12 +1119,30 @@ into rubber from a balloon, then tied that to each leg.&lt;/p&gt;
 &lt;p&gt;Since the magnets seemed to be small and weak, I used two of them on
 every foot initially. The effect wasn’t very good – they turned out
 to be too strong, and Tote couldn’t lift any of its feet:&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="https://www.youtube.com/embed/4jt5LtwM7lM"&gt;https://www.youtube.com/embed/4jt5LtwM7lM&lt;/a&gt;
-Fine, let’s try with fewer magnets then. That turned out to be just
+&lt;aside class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;span class="docutils literal"&gt;/home/sheep/dev/ablog/deshipu.art/projects/project-6050.md&lt;/span&gt;, line 1450)&lt;/p&gt;
+&lt;p&gt;Unknown directive type “iframe”.
+&lt;/p&gt;
+&lt;/aside&gt;
+&lt;aside class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: INFO/1 (&lt;span class="docutils literal"&gt;/home/sheep/dev/ablog/deshipu.art/projects/project-6050.md&lt;/span&gt;, line 1450)&lt;/p&gt;
+&lt;p&gt;No directive entry for “iframe” in module “docutils.parsers.rst.languages.en”.
+Trying “iframe” as canonical directive name.&lt;/p&gt;
+&lt;/aside&gt;
+&lt;p&gt;Fine, let’s try with fewer magnets then. That turned out to be just
 strong enough to hold the robot when all four feet are touching the
 metal surface, but not strong enough when on of the feet is raised:&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="https://www.youtube.com/embed/ECNVdPBbJJM"&gt;https://www.youtube.com/embed/ECNVdPBbJJM&lt;/a&gt;
-Oh well, nobody said it will be easy. Back to the drawing board now.
+&lt;aside class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;span class="docutils literal"&gt;/home/sheep/dev/ablog/deshipu.art/projects/project-6050.md&lt;/span&gt;, line 1458)&lt;/p&gt;
+&lt;p&gt;Unknown directive type “iframe”.
+&lt;/p&gt;
+&lt;/aside&gt;
+&lt;aside class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: INFO/1 (&lt;span class="docutils literal"&gt;/home/sheep/dev/ablog/deshipu.art/projects/project-6050.md&lt;/span&gt;, line 1458)&lt;/p&gt;
+&lt;p&gt;No directive entry for “iframe” in module “docutils.parsers.rst.languages.en”.
+Trying “iframe” as canonical directive name.&lt;/p&gt;
+&lt;/aside&gt;
+&lt;p&gt;Oh well, nobody said it will be easy. Back to the drawing board now.
 Maybe I will try to climb a net next time?&lt;/p&gt;
 &lt;/section&gt;
 &lt;section id="weight-lifting"&gt;
@@ -1237,8 +1319,17 @@ robot with a sense of touch:&lt;/p&gt;
 &lt;p&gt;Of course we also need software to make use of those sensors. For now
 I went with something really simple – just keep lowering the leg
 slowly until it touches the ground. You can see the code in&lt;a class="reference external" href="https://bitbucket.org/thesheep/tote/src/80f55d5a512f389c991f28f3e281c279de9f15d6/start/creep.ino?at=switches#creep.ino-102"&gt;the “switches” branch&lt;/a&gt;. And the effect? See for yourself:&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="https://www.youtube.com/embed/-KoazMHrplg"&gt;https://www.youtube.com/embed/-KoazMHrplg&lt;/a&gt;
-If you look closely you will notice, that even after the robot extends
+&lt;aside class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;span class="docutils literal"&gt;/home/sheep/dev/ablog/deshipu.art/projects/project-6050.md&lt;/span&gt;, line 1722)&lt;/p&gt;
+&lt;p&gt;Unknown directive type “iframe”.
+&lt;/p&gt;
+&lt;/aside&gt;
+&lt;aside class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: INFO/1 (&lt;span class="docutils literal"&gt;/home/sheep/dev/ablog/deshipu.art/projects/project-6050.md&lt;/span&gt;, line 1722)&lt;/p&gt;
+&lt;p&gt;No directive entry for “iframe” in module “docutils.parsers.rst.languages.en”.
+Trying “iframe” as canonical directive name.&lt;/p&gt;
+&lt;/aside&gt;
+&lt;p&gt;If you look closely you will notice, that even after the robot extends
 the leg far down because it didn’t find the floor, it moves it back to
 its default position anyways – that’s why the robot’s body stays at
 the same height even several steps, despite the imprecision of the
@@ -1250,8 +1341,17 @@ the reader, though (or a future experiment log).&lt;/p&gt;
 &lt;section id="hackaday-prize-quaterfinals-video"&gt;
 &lt;h3&gt;Hackaday Prize Quaterfinals Video&lt;/h3&gt;
 &lt;p&gt;Created 2015-08-15.&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="https://www.youtube.com/embed/_RqtMg66i5g"&gt;https://www.youtube.com/embed/_RqtMg66i5g&lt;/a&gt;
-I decided to make it a bloopers video, showing the stages of
+&lt;aside class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;span class="docutils literal"&gt;/home/sheep/dev/ablog/deshipu.art/projects/project-6050.md&lt;/span&gt;, line 1742)&lt;/p&gt;
+&lt;p&gt;Unknown directive type “iframe”.
+&lt;/p&gt;
+&lt;/aside&gt;
+&lt;aside class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: INFO/1 (&lt;span class="docutils literal"&gt;/home/sheep/dev/ablog/deshipu.art/projects/project-6050.md&lt;/span&gt;, line 1742)&lt;/p&gt;
+&lt;p&gt;No directive entry for “iframe” in module “docutils.parsers.rst.languages.en”.
+Trying “iframe” as canonical directive name.&lt;/p&gt;
+&lt;/aside&gt;
+&lt;p&gt;I decided to make it a bloopers video, showing the stages of
 development of this robot and how it reached the current form. Enjoy!&lt;/p&gt;
 &lt;/section&gt;
 &lt;section id="version-4-of-pcb-documented"&gt;
@@ -1412,61 +1512,77 @@ the readings:&lt;/p&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;p&gt;And here we go:
-&lt;a class="reference external" href="https://www.youtube.com/embed/1I-EeEPEjx8"&gt;https://www.youtube.com/embed/1I-EeEPEjx8&lt;/a&gt;
+&lt;p&gt;And here we go::::{iframe} &lt;a class="reference external" href="https://www.youtube.com/embed/1I-EeEPEjx8"&gt;https://www.youtube.com/embed/1I-EeEPEjx8&lt;/a&gt;
+:width:100%&lt;/p&gt;
+&lt;div class="highlight-default notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;
 There still can be a lot of improvements. Instead of rotating in one
 direction, the robot could first just rotate its body left and right
 to see if the target is still there. I could use some timeouts between
-switching into the “search” mode, so that it doesn’t switch back and
+switching into the &amp;quot;search&amp;quot; mode, so that it doesn&amp;#39;t switch back and
 forth constantly. The speed could be adjusted depending on the actual
-distance, etc. I will leave those as homework, though.&lt;/p&gt;
-&lt;/section&gt;
-&lt;section id="follow-me"&gt;
-&lt;h3&gt;Follow Me!&lt;/h3&gt;
-&lt;p&gt;Created 2015-07-24.&lt;/p&gt;
-&lt;p&gt;Some time ago I got the&lt;a class="reference external" href="https://hackaday.io/project/6050-tote-affordable-spider-robot/log/20790-distance-sensor-second-try"&gt;Sharp distance sensor to work with Tote&lt;/a&gt; (somewhat), and I promised we will do something interesting with it.
-Obstacle avoidance is old, so let’s try to make the robot follow us
+distance, etc. I will leave those as homework, though.
+
+
+
+
+
+### Follow Me!
+Created 2015-07-24.
+
+Some time ago I got the[Sharp distance sensor to work with Tote](https://hackaday.io/project/6050-tote-affordable-spider-robot/log/20790-distance-sensor-second-try) (somewhat), and I promised we will do something interesting with it.
+Obstacle avoidance is old, so let&amp;#39;s try to make the robot follow us
 instead. The idea is actually very similar to obstacle avoidance,
-except that instead of avoiding obstacles, you go toward them.&lt;/p&gt;
-&lt;p&gt;So what’s the plan? We want our robot to behave differently depending
-on what the distance sensor is telling it:&lt;/p&gt;
-&lt;ul class="simple"&gt;
-&lt;li&gt;&lt;p&gt;If the obstacle is very close, go backwards;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;if the obstacle is close, stay in place and do nothing;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;if the obstacle is far, go forward;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;finally, if there is no obstacle in sight, rotate in place to find it.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;This translates pretty easily into code:&lt;/p&gt;
-&lt;div class="highlight-cpp notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;sharp_loop&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;distance&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;analogRead&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;A4&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;distance&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;660&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;creep_dx&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;creep_dy&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;-1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;creep_rotation&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;beep&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;352&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;distance&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;480&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;creep_dx&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;creep_dy&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;creep_rotation&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;distance&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;420&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;creep_dx&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;creep_dy&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;creep_rotation&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;beep&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;704&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;creep_dx&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;creep_dy&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;creep_rotation&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;PI&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;45&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;beep&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1408&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+except that instead of avoiding obstacles, you go toward them.
+
+So what&amp;#39;s the plan? We want our robot to behave differently depending
+on what the distance sensor is telling it:
+
+
+ * If the obstacle is very close, go backwards;
+ * if the obstacle is close, stay in place and do nothing;
+ * if the obstacle is far, go forward;
+ * finally, if there is no obstacle in sight, rotate in place to find it.
+
+This translates pretty easily into code:
+
+
+```cpp
+void sharp_loop() {
+    int distance = analogRead(A4);
+    if (distance &amp;gt; 660) {
+        creep_dx = 0;
+        creep_dy = -1;
+        creep_rotation = 0;
+        beep(352, 100);
+    } else if (distance &amp;gt; 480) {
+        creep_dx = 0;
+        creep_dy = 0;
+        creep_rotation = 0;
+    } else if (distance &amp;gt; 420) {
+        creep_dx = 0;
+        creep_dy = 1;
+        creep_rotation = 0;
+        beep(704, 100);
+    } else {
+        creep_dx = 0;
+        creep_dy = 0;
+        creep_rotation = PI/45;
+        beep(1408, 100);
+    }
+}
+```
+
+
+---
+I also added some beeps in there, that will tell us what the current
+state is. Since the new PCB has a place for a piezo buzzer on pin 13,
+I also added it to the previous robots:
+
+
+:::{image} https://cdn.hackaday.io/images/9149541437741274409.jpg
+
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;hr class="docutils" /&gt;
-&lt;p&gt;I also added some beeps in there, that will tell us what the current
-state is. Since the new PCB has a place for a piezo buzzer on pin 13,
-I also added it to the previous robots:&lt;/p&gt;
-&lt;img alt="https://cdn.hackaday.io/images/9149541437741274409.jpg" src="https://cdn.hackaday.io/images/9149541437741274409.jpg" /&gt;
 &lt;p&gt;But how does our code work? Turns out, that it doesn’t work very well.
 The problem comes from how our 5V sensor works when it’s under-powered
 with 3.3V. Remember the plot of values from last time?&lt;/p&gt;
@@ -1483,7 +1599,16 @@ lesson: don’t try to use parts outside of their specified parameters.
 Now I ordered some distance sensors that work between 2.7 and 5.5V, so
 that should be better. I will try again when they arrive.&lt;/p&gt;
 &lt;p&gt;Finally, a video of Tote failing to follow my hand:&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="https://www.youtube.com/embed/u7CzJw-UeYg"&gt;https://www.youtube.com/embed/u7CzJw-UeYg&lt;/a&gt;&lt;/p&gt;
+&lt;aside class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;span class="docutils literal"&gt;/home/sheep/dev/ablog/deshipu.art/projects/project-6050.md&lt;/span&gt;, line 2081)&lt;/p&gt;
+&lt;p&gt;Unknown directive type “iframe”.
+&lt;/p&gt;
+&lt;/aside&gt;
+&lt;aside class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: INFO/1 (&lt;span class="docutils literal"&gt;/home/sheep/dev/ablog/deshipu.art/projects/project-6050.md&lt;/span&gt;, line 2081)&lt;/p&gt;
+&lt;p&gt;No directive entry for “iframe” in module “docutils.parsers.rst.languages.en”.
+Trying “iframe” as canonical directive name.&lt;/p&gt;
+&lt;/aside&gt;
 &lt;/section&gt;
 &lt;section id="testing-the-new-printed-circuit-board"&gt;
 &lt;h3&gt;Testing The New Printed Circuit Board&lt;/h3&gt;
@@ -1533,8 +1658,17 @@ right pins.&lt;/p&gt;
 for cross-compiling to ARM and a complicated GDB configuration? Turns
 out that I don’t, because there is the&lt;a class="reference external" href="http://www.stm32duino.com/"&gt;stm32duino&lt;/a&gt; project! And they even have a step-by-step YouTube video on how to
 program that board:&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="https://www.youtube.com/embed/Ze6q6NidS5w"&gt;https://www.youtube.com/embed/Ze6q6NidS5w&lt;/a&gt;
-Turns out it’s very simple and works like a charm. They also have the
+&lt;aside class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;span class="docutils literal"&gt;/home/sheep/dev/ablog/deshipu.art/projects/project-6050.md&lt;/span&gt;, line 2168)&lt;/p&gt;
+&lt;p&gt;Unknown directive type “iframe”.
+&lt;/p&gt;
+&lt;/aside&gt;
+&lt;aside class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: INFO/1 (&lt;span class="docutils literal"&gt;/home/sheep/dev/ablog/deshipu.art/projects/project-6050.md&lt;/span&gt;, line 2168)&lt;/p&gt;
+&lt;p&gt;No directive entry for “iframe” in module “docutils.parsers.rst.languages.en”.
+Trying “iframe” as canonical directive name.&lt;/p&gt;
+&lt;/aside&gt;
+&lt;p&gt;Turns out it’s very simple and works like a charm. They also have the
 pinout of that board&lt;a class="reference external" href="http://www.stm32duino.com/viewtopic.php?f=28&amp;amp;t=117"&gt;on their forum&lt;/a&gt;:&lt;/p&gt;
 &lt;img alt="https://cdn.hackaday.io/images/1925191437063394286.png" src="https://cdn.hackaday.io/images/1925191437063394286.png" /&gt;
 &lt;p&gt;That should make it all much easier. Unfortunately, that pinout
@@ -1622,7 +1756,16 @@ in a box:&lt;/p&gt;
 &lt;img alt="https://cdn.hackaday.io/images/1091771436629637404.jpg" src="https://cdn.hackaday.io/images/1091771436629637404.jpg" /&gt;
 &lt;p&gt;Some stickers taken from LiPo cells complete the look. Here’s the
 controller in action:&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="https://www.youtube.com/embed/uX7K6_ChTmM"&gt;https://www.youtube.com/embed/uX7K6_ChTmM&lt;/a&gt;&lt;/p&gt;
+&lt;aside class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;span class="docutils literal"&gt;/home/sheep/dev/ablog/deshipu.art/projects/project-6050.md&lt;/span&gt;, line 2296)&lt;/p&gt;
+&lt;p&gt;Unknown directive type “iframe”.
+&lt;/p&gt;
+&lt;/aside&gt;
+&lt;aside class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: INFO/1 (&lt;span class="docutils literal"&gt;/home/sheep/dev/ablog/deshipu.art/projects/project-6050.md&lt;/span&gt;, line 2296)&lt;/p&gt;
+&lt;p&gt;No directive entry for “iframe” in module “docutils.parsers.rst.languages.en”.
+Trying “iframe” as canonical directive name.&lt;/p&gt;
+&lt;/aside&gt;
 &lt;/section&gt;
 &lt;section id="distance-sensor-second-try"&gt;
 &lt;h3&gt;Distance Sensor, Second Try&lt;/h3&gt;
@@ -1689,28 +1832,39 @@ it hits an obstacle.&lt;/p&gt;
 &lt;p&gt;I used adhesive tape to attach the sensor to the front of the robot. I
 might come up with a better way of doing it in the future, but this is
 good enough for now. Now let’s add some code that does the stopping.
-We just add a&lt;a class="reference external" href="https://bitbucket.org/thesheep/tote/src/52697d7f12c87825ac4579f371ccd22bdd2151bc/start/sharp.ino?at=sharp"&gt;&lt;em&gt;sharp.ino&lt;/em&gt;&lt;/a&gt; file, with corresponding_sharp.h_, and call it all from&lt;a class="reference external" href="https://bitbucket.org/thesheep/tote/src/9aa456eb0395f03c488d6ef61da6a31f7e39ff4d/start/start.ino?at=sharp"&gt;&lt;em&gt;start.ino&lt;/em&gt;&lt;/a&gt;. And let’s see the results:
-&lt;a class="reference external" href="https://www.youtube.com/embed/WR_0yxW_Ba0"&gt;https://www.youtube.com/embed/WR_0yxW_Ba0&lt;/a&gt;
-It works as expected, the robot consistently stops at about 15cm from
-the obstacle. That’s it for today, in the future I will show how to
-code a simple obstacle-avoiding algorithm, and then how to make the
-robot follow you around.&lt;/p&gt;
-&lt;/section&gt;
-&lt;section id="logicoma-kun"&gt;
-&lt;h3&gt;Logicoma-kun&lt;/h3&gt;
-&lt;p&gt;Created 2015-07-07.&lt;/p&gt;
-&lt;p&gt;The continuous-rotation servos arrived, and I got to finish another of
-my experiments,&lt;a class="reference external" href="https://hackaday.io/project/6321-katka-a-mammalian-robot/log/20293-spider-mode"&gt;which I mentioned previously&lt;/a&gt; over at the&lt;span class="xref myst"&gt;#Katka, a mammalian robot&lt;/span&gt; project. Since I’m re-using parts and experience between all those
-projects, it becomes harder to separate them. This one might even grow
-out into its own project, but for now I will publish it here, as it’s
-basically Tote with a slightly different leg configuration and
-software.&lt;/p&gt;
-&lt;p&gt;Remember the cute tank-robots from Masamune Shirow’s mangas? First
-Fuchikomas, then Tachikomas. Now, in the newest TV series, there is a
-new addition to the family called Logicoma. And it’s much more, hmm,
-shall I say “realistically”, designed than the others – in fact, I
-thought that I might be able to build a model of it out of Tote.&lt;/p&gt;
-&lt;img alt="https://cdn.hackaday.io/images/3053521436274374167.jpg" src="https://cdn.hackaday.io/images/3053521436274374167.jpg" /&gt;
+We just add a&lt;a class="reference external" href="https://bitbucket.org/thesheep/tote/src/52697d7f12c87825ac4579f371ccd22bdd2151bc/start/sharp.ino?at=sharp"&gt;&lt;em&gt;sharp.ino&lt;/em&gt;&lt;/a&gt; file, with corresponding_sharp.h_, and call it all from&lt;a class="reference external" href="https://bitbucket.org/thesheep/tote/src/9aa456eb0395f03c488d6ef61da6a31f7e39ff4d/start/start.ino?at=sharp"&gt;&lt;em&gt;start.ino&lt;/em&gt;&lt;/a&gt;. And let’s see the results::::{iframe} &lt;a class="reference external" href="https://www.youtube.com/embed/WR_0yxW_Ba0"&gt;https://www.youtube.com/embed/WR_0yxW_Ba0&lt;/a&gt;
+:width:100%&lt;/p&gt;
+&lt;div class="highlight-default notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;
+&lt;span class="n"&gt;It&lt;/span&gt; &lt;span class="n"&gt;works&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;expected&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;robot&lt;/span&gt; &lt;span class="n"&gt;consistently&lt;/span&gt; &lt;span class="n"&gt;stops&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;about&lt;/span&gt; &lt;span class="mi"&gt;15&lt;/span&gt;&lt;span class="n"&gt;cm&lt;/span&gt; &lt;span class="kn"&gt;from&lt;/span&gt;
+&lt;span class="nn"&gt;the&lt;/span&gt; &lt;span class="n"&gt;obstacle&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="n"&gt;That&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;s it for today, in the future I will show how to&lt;/span&gt;
+&lt;span class="n"&gt;code&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;simple&lt;/span&gt; &lt;span class="n"&gt;obstacle&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;avoiding&lt;/span&gt; &lt;span class="n"&gt;algorithm&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="n"&gt;then&lt;/span&gt; &lt;span class="n"&gt;how&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;make&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt;
+&lt;span class="n"&gt;robot&lt;/span&gt; &lt;span class="n"&gt;follow&lt;/span&gt; &lt;span class="n"&gt;you&lt;/span&gt; &lt;span class="n"&gt;around&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+
+
+
+
+
+&lt;span class="c1"&gt;### Logicoma-kun&lt;/span&gt;
+&lt;span class="n"&gt;Created&lt;/span&gt; &lt;span class="mi"&gt;2015&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;07&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;07.&lt;/span&gt;
+
+&lt;span class="n"&gt;The&lt;/span&gt; &lt;span class="n"&gt;continuous&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;rotation&lt;/span&gt; &lt;span class="n"&gt;servos&lt;/span&gt; &lt;span class="n"&gt;arrived&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="n"&gt;I&lt;/span&gt; &lt;span class="n"&gt;got&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;finish&lt;/span&gt; &lt;span class="n"&gt;another&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt;
+&lt;span class="n"&gt;my&lt;/span&gt; &lt;span class="n"&gt;experiments&lt;/span&gt;&lt;span class="p"&gt;,[&lt;/span&gt;&lt;span class="n"&gt;which&lt;/span&gt; &lt;span class="n"&gt;I&lt;/span&gt; &lt;span class="n"&gt;mentioned&lt;/span&gt; &lt;span class="n"&gt;previously&lt;/span&gt;&lt;span class="p"&gt;](&lt;/span&gt;&lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;hackaday&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;io&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;project&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;6321&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;katka&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;mammalian&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;robot&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;log&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;20293&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;spider&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;mode&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;over&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="c1"&gt;#Katka, a mammalian robot](/project/6321) project. Since I&amp;#39;m re-using parts and experience between all those&lt;/span&gt;
+&lt;span class="n"&gt;projects&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt; &lt;span class="n"&gt;becomes&lt;/span&gt; &lt;span class="n"&gt;harder&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;separate&lt;/span&gt; &lt;span class="n"&gt;them&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="n"&gt;This&lt;/span&gt; &lt;span class="n"&gt;one&lt;/span&gt; &lt;span class="n"&gt;might&lt;/span&gt; &lt;span class="n"&gt;even&lt;/span&gt; &lt;span class="n"&gt;grow&lt;/span&gt;
+&lt;span class="n"&gt;out&lt;/span&gt; &lt;span class="n"&gt;into&lt;/span&gt; &lt;span class="n"&gt;its&lt;/span&gt; &lt;span class="n"&gt;own&lt;/span&gt; &lt;span class="n"&gt;project&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;but&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;now&lt;/span&gt; &lt;span class="n"&gt;I&lt;/span&gt; &lt;span class="n"&gt;will&lt;/span&gt; &lt;span class="n"&gt;publish&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt; &lt;span class="n"&gt;here&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;s&lt;/span&gt;
+&lt;span class="n"&gt;basically&lt;/span&gt; &lt;span class="n"&gt;Tote&lt;/span&gt; &lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;slightly&lt;/span&gt; &lt;span class="n"&gt;different&lt;/span&gt; &lt;span class="n"&gt;leg&lt;/span&gt; &lt;span class="n"&gt;configuration&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt;
+&lt;span class="n"&gt;software&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+
+&lt;span class="n"&gt;Remember&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;cute&lt;/span&gt; &lt;span class="n"&gt;tank&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;robots&lt;/span&gt; &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;Masamune&lt;/span&gt; &lt;span class="n"&gt;Shirow&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;s mangas? First&lt;/span&gt;
+&lt;span class="n"&gt;Fuchikomas&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;then&lt;/span&gt; &lt;span class="n"&gt;Tachikomas&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="n"&gt;Now&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;newest&lt;/span&gt; &lt;span class="n"&gt;TV&lt;/span&gt; &lt;span class="n"&gt;series&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;there&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;
+&lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="n"&gt;addition&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;family&lt;/span&gt; &lt;span class="n"&gt;called&lt;/span&gt; &lt;span class="n"&gt;Logicoma&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="n"&gt;And&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;s much more, hmm,&lt;/span&gt;
+&lt;span class="n"&gt;shall&lt;/span&gt; &lt;span class="n"&gt;I&lt;/span&gt; &lt;span class="n"&gt;say&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;realistically&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;designed&lt;/span&gt; &lt;span class="n"&gt;than&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;others&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;fact&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;I&lt;/span&gt;
+&lt;span class="n"&gt;thought&lt;/span&gt; &lt;span class="n"&gt;that&lt;/span&gt; &lt;span class="n"&gt;I&lt;/span&gt; &lt;span class="n"&gt;might&lt;/span&gt; &lt;span class="n"&gt;be&lt;/span&gt; &lt;span class="n"&gt;able&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;build&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;model&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt; &lt;span class="n"&gt;out&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="n"&gt;Tote&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+
+
+&lt;span class="p"&gt;:::{&lt;/span&gt;&lt;span class="n"&gt;image&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;cdn&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;hackaday&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;io&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;images&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mf"&gt;3053521436274374167.&lt;/span&gt;&lt;span class="n"&gt;jpg&lt;/span&gt;
+
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
 &lt;hr class="docutils" /&gt;
 &lt;p&gt;Since with the Arduino Pro Mini I’m limited to 12 servos, I had to
 find a way to reduce the number of servos and still get proper
@@ -1719,10 +1873,28 @@ continuous-rotation servos placed at the ends of the legs.&lt;a class="reference
 to just order ready servos.&lt;/p&gt;
 &lt;p&gt;For now, just for testing, I have two separate programs, one for just
 driving forward:&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="https://www.youtube.com/embed/WvPRhwA7Aa0"&gt;https://www.youtube.com/embed/WvPRhwA7Aa0&lt;/a&gt;
-And one for walking forward:&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="https://www.youtube.com/embed/2LjSKvdbtPk"&gt;https://www.youtube.com/embed/2LjSKvdbtPk&lt;/a&gt;
-I’m sure I will be able to add a lot more, and also add all the props
+&lt;aside class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;span class="docutils literal"&gt;/home/sheep/dev/ablog/deshipu.art/projects/project-6050.md&lt;/span&gt;, line 2448)&lt;/p&gt;
+&lt;p&gt;Unknown directive type “iframe”.
+&lt;/p&gt;
+&lt;/aside&gt;
+&lt;aside class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: INFO/1 (&lt;span class="docutils literal"&gt;/home/sheep/dev/ablog/deshipu.art/projects/project-6050.md&lt;/span&gt;, line 2448)&lt;/p&gt;
+&lt;p&gt;No directive entry for “iframe” in module “docutils.parsers.rst.languages.en”.
+Trying “iframe” as canonical directive name.&lt;/p&gt;
+&lt;/aside&gt;
+&lt;p&gt;And one for walking forward:&lt;/p&gt;
+&lt;aside class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;span class="docutils literal"&gt;/home/sheep/dev/ablog/deshipu.art/projects/project-6050.md&lt;/span&gt;, line 2454)&lt;/p&gt;
+&lt;p&gt;Unknown directive type “iframe”.
+&lt;/p&gt;
+&lt;/aside&gt;
+&lt;aside class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: INFO/1 (&lt;span class="docutils literal"&gt;/home/sheep/dev/ablog/deshipu.art/projects/project-6050.md&lt;/span&gt;, line 2454)&lt;/p&gt;
+&lt;p&gt;No directive entry for “iframe” in module “docutils.parsers.rst.languages.en”.
+Trying “iframe” as canonical directive name.&lt;/p&gt;
+&lt;/aside&gt;
+&lt;p&gt;I’m sure I will be able to add a lot more, and also add all the props
 that will make it look like a real Logicoma, but that’s it for a
 start.&lt;/p&gt;
 &lt;p&gt;I actually think that there is a lot of promise for this kind of
@@ -1785,8 +1957,17 @@ various parameters. And of course all those -1s have become 255s, and
 the robot went crazy.&lt;/p&gt;
 &lt;p&gt;After replacing the chars with ints, everything went more or less
 smoothly:&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="https://www.youtube.com/embed/7N34Yd2vMS0"&gt;https://www.youtube.com/embed/7N34Yd2vMS0&lt;/a&gt;
-Remember kids, don’t write “char” when you mean “int8”!&lt;/p&gt;
+&lt;aside class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;span class="docutils literal"&gt;/home/sheep/dev/ablog/deshipu.art/projects/project-6050.md&lt;/span&gt;, line 2550)&lt;/p&gt;
+&lt;p&gt;Unknown directive type “iframe”.
+&lt;/p&gt;
+&lt;/aside&gt;
+&lt;aside class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: INFO/1 (&lt;span class="docutils literal"&gt;/home/sheep/dev/ablog/deshipu.art/projects/project-6050.md&lt;/span&gt;, line 2550)&lt;/p&gt;
+&lt;p&gt;No directive entry for “iframe” in module “docutils.parsers.rst.languages.en”.
+Trying “iframe” as canonical directive name.&lt;/p&gt;
+&lt;/aside&gt;
+&lt;p&gt;Remember kids, don’t write “char” when you mean “int8”!&lt;/p&gt;
 &lt;/section&gt;
 &lt;section id="schematics"&gt;
 &lt;h3&gt;Schematics&lt;/h3&gt;
@@ -1851,8 +2032,17 @@ following capabilities to Tote, just like its older brother µKubik
 has.&lt;/p&gt;
 &lt;hr class="docutils" /&gt;
 &lt;p&gt;\&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="https://www.youtube.com/embed/qmuZv3mmvRI"&gt;https://www.youtube.com/embed/qmuZv3mmvRI&lt;/a&gt;
-So let’s do it. The trigger pin is connected to pin 3 on the Arduino,
+&lt;aside class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;span class="docutils literal"&gt;/home/sheep/dev/ablog/deshipu.art/projects/project-6050.md&lt;/span&gt;, line 2658)&lt;/p&gt;
+&lt;p&gt;Unknown directive type “iframe”.
+&lt;/p&gt;
+&lt;/aside&gt;
+&lt;aside class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: INFO/1 (&lt;span class="docutils literal"&gt;/home/sheep/dev/ablog/deshipu.art/projects/project-6050.md&lt;/span&gt;, line 2658)&lt;/p&gt;
+&lt;p&gt;No directive entry for “iframe” in module “docutils.parsers.rst.languages.en”.
+Trying “iframe” as canonical directive name.&lt;/p&gt;
+&lt;/aside&gt;
+&lt;p&gt;So let’s do it. The trigger pin is connected to pin 3 on the Arduino,
 and the echo is on pin 13 – yes, I ran out of pins and had to reuse
 the LED pin for this. As a side effect, the LED blinks every time we
 read the distance. A quick sketch to test the sensor:&lt;/p&gt;
@@ -1883,32 +2073,42 @@ read the distance. A quick sketch to test the sensor:&lt;/p&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;p&gt;And lo and behold, proper readings:
-&lt;a class="reference external" href="https://www.youtube.com/embed/_Bw_2RLY4qY"&gt;https://www.youtube.com/embed/_Bw_2RLY4qY&lt;/a&gt;
-Yay, so that’s it, right? Now just add&lt;a class="reference external" href="https://bitbucket.org/thesheep/tote/src/eda3cc49cbb6e0774d22d0e6b12d5ccc45cfd3c9/start/ping.ino?at=ping"&gt;some basic logic to the code&lt;/a&gt; to make the robot stop when there is an obstacle in front, and we are
-ready to go, right? Wrong.&lt;/p&gt;
-&lt;p&gt;For some reason, the robot stop immediately after the first step.
-What’s happening?&lt;/p&gt;
-&lt;p&gt;OK, let’s connect the serial and see. The distance readings are all 0.
+&lt;p&gt;And lo and behold, proper readings::::{iframe} &lt;a class="reference external" href="https://www.youtube.com/embed/_Bw_2RLY4qY"&gt;https://www.youtube.com/embed/_Bw_2RLY4qY&lt;/a&gt;
+:width:100%&lt;/p&gt;
+&lt;div class="highlight-default notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;
+Yay, so that&amp;#39;s it, right? Now just add[some basic logic to the code](https://bitbucket.org/thesheep/tote/src/eda3cc49cbb6e0774d22d0e6b12d5ccc45cfd3c9/start/ping.ino?at=ping) to make the robot stop when there is an obstacle in front, and we are
+ready to go, right? Wrong.
+
+For some reason, the robot stop immediately after the first step.
+What&amp;#39;s happening?
+
+OK, let&amp;#39;s connect the serial and see. The distance readings are all 0.
 Why? Disconnect the battery, connect the Pro Mini to the USB and look
 again. Readings are all connect. Disconnect the USB power and run it
-from battery – 0 again. Argh.&lt;/p&gt;
-&lt;p&gt;Wait a minute. The Pro Mini actually has VCC at 5V while it’s being
-powered from the USB cable, and 3.3V when it runs from the battery…
+from battery -- 0 again. Argh.
+
+Wait a minute. The Pro Mini actually has VCC at 5V while it&amp;#39;s being
+powered from the USB cable, and 3.3V when it runs from the battery...
 What were the power requirements of that HC-SR04 sensor again? Where
-is the&lt;a class="reference external" href="http://www.elecfreaks.com/store/download/HC-SR04.pdf"&gt;datasheet&lt;/a&gt;…&lt;/p&gt;
-&lt;p&gt;Right, working voltage 5V. Sigh. Of curse I did check that before when
+is the[datasheet](http://www.elecfreaks.com/store/download/HC-SR04.pdf)...
+
+Right, working voltage 5V. Sigh. Of curse I did check that before when
 I was designing the board, but back then I still wanted to use a 5V
 Pro Mini, and a voltage regulator. I later switched to 3.3V and
-completely forgot about the sensor. So what can be done?&lt;/p&gt;
-&lt;p&gt;Well, looking at what I have lying around I took a 5V Pro Mini, a 2S
-LiPo battery and a 5V voltage regulator, and quickly replaced Tote’s
-guts.&lt;strong&gt;Warning&lt;/strong&gt;: the 5V Pro Mini doesn’t have the RAW pin separated from the VCC pin
-like the 3.3V version does, so don’t connect it to the USB2TTL while
-it’s in the robot – the power draw will quickly fry the power
-regulator in Pro Mini. You have to remove it for programming.&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="https://www.youtube.com/embed/QjZ5rQOpvEw"&gt;https://www.youtube.com/embed/QjZ5rQOpvEw&lt;/a&gt;
-You can see that now it kinda works, except for random times when the
+completely forgot about the sensor. So what can be done?
+
+Well, looking at what I have lying around I took a 5V Pro Mini, a 2S
+LiPo battery and a 5V voltage regulator, and quickly replaced Tote&amp;#39;s
+guts.**Warning**: the 5V Pro Mini doesn&amp;#39;t have the RAW pin separated from the VCC pin
+like the 3.3V version does, so don&amp;#39;t connect it to the USB2TTL while
+it&amp;#39;s in the robot -- the power draw will quickly fry the power
+regulator in Pro Mini. You have to remove it for programming.
+
+:::{iframe} https://www.youtube.com/embed/QjZ5rQOpvEw
+:width:100%
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;You can see that now it kinda works, except for random times when the
 sensor returns completely weird values. Maybe the sensor is broken?
 Replacing the sensor didn’t help much. Taking three readings in a
 quick succession and taking maximum of them didn’t help either – it
@@ -1968,8 +2168,17 @@ on your Pro Mini too. There are two ways to go about this.&lt;/p&gt;
 But the code is the same. This gives you a lot of control on the
 Python side.&lt;/p&gt;
 &lt;p&gt;The other way is to leave all the&lt;a class="reference external" href="https://bitbucket.org/thesheep/tote/src/tip/start/"&gt;Arduino code from original Tote&lt;/a&gt;, but replace the TV remote part with&lt;a class="reference external" href="https://bitbucket.org/thesheep/tote/src/460f15fa2da489125bb3ade9d76b81fb3b1b60ad/start/serial.ino?at=serial-control"&gt;code that simply reads the key presses from the serial&lt;/a&gt;. That’s the route we are going to take, and it looks like this:&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="https://www.youtube.com/embed/Da69xJNugLQ"&gt;https://www.youtube.com/embed/Da69xJNugLQ&lt;/a&gt;
-Now, let’s replace that cable with something a little bit more modern.
+&lt;aside class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;span class="docutils literal"&gt;/home/sheep/dev/ablog/deshipu.art/projects/project-6050.md&lt;/span&gt;, line 2806)&lt;/p&gt;
+&lt;p&gt;Unknown directive type “iframe”.
+&lt;/p&gt;
+&lt;/aside&gt;
+&lt;aside class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: INFO/1 (&lt;span class="docutils literal"&gt;/home/sheep/dev/ablog/deshipu.art/projects/project-6050.md&lt;/span&gt;, line 2806)&lt;/p&gt;
+&lt;p&gt;No directive entry for “iframe” in module “docutils.parsers.rst.languages.en”.
+Trying “iframe” as canonical directive name.&lt;/p&gt;
+&lt;/aside&gt;
+&lt;p&gt;Now, let’s replace that cable with something a little bit more modern.
 ESP8266 is all the rage these days, and there is a highly experimental
 port of Micropython for it, so why not? Those ESP-01 boards are not
 too useful anyways, because they have hardly any pins broken out, but
@@ -2032,8 +2241,17 @@ an osciloscpe.&lt;/p&gt;
 &lt;p&gt;After a night’s sleep, I went back to that Micropython code, grepped
 for “115200”, and changed it to “9600”, recompiled, flashed, changed
 the speed on the Arduino side and what do you know, it works!&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="https://www.youtube.com/embed/4HnUbrXEJcQ"&gt;https://www.youtube.com/embed/4HnUbrXEJcQ&lt;/a&gt;
-Next I will try to get that SD card for the RPI and show you the more
+&lt;aside class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;span class="docutils literal"&gt;/home/sheep/dev/ablog/deshipu.art/projects/project-6050.md&lt;/span&gt;, line 2901)&lt;/p&gt;
+&lt;p&gt;Unknown directive type “iframe”.
+&lt;/p&gt;
+&lt;/aside&gt;
+&lt;aside class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: INFO/1 (&lt;span class="docutils literal"&gt;/home/sheep/dev/ablog/deshipu.art/projects/project-6050.md&lt;/span&gt;, line 2901)&lt;/p&gt;
+&lt;p&gt;No directive entry for “iframe” in module “docutils.parsers.rst.languages.en”.
+Trying “iframe” as canonical directive name.&lt;/p&gt;
+&lt;/aside&gt;
+&lt;p&gt;Next I will try to get that SD card for the RPI and show you the more
 low-level control. Who knows, maybe by this time the picam also
 arrives, and we can have some OpenCV fun.&lt;/p&gt;
 &lt;section id="using-arduino-pro-micro"&gt;
@@ -2093,8 +2311,17 @@ its way around, knowing if a leg is standing on the floor or floating
 in the air, knowing if there is something blocking its movement. If we
 got smart with programming, we could even make it “obedient” and go in
 the direction you push it, just like this robot:&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="https://www.youtube.com/embed/AMVO6rI5mL4"&gt;https://www.youtube.com/embed/AMVO6rI5mL4&lt;/a&gt;
-OK, well, maybe not as well. After all, we have limited budget and
+&lt;aside class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;span class="docutils literal"&gt;/home/sheep/dev/ablog/deshipu.art/projects/project-6050.md&lt;/span&gt;, line 2996)&lt;/p&gt;
+&lt;p&gt;Unknown directive type “iframe”.
+&lt;/p&gt;
+&lt;/aside&gt;
+&lt;aside class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: INFO/1 (&lt;span class="docutils literal"&gt;/home/sheep/dev/ablog/deshipu.art/projects/project-6050.md&lt;/span&gt;, line 2996)&lt;/p&gt;
+&lt;p&gt;No directive entry for “iframe” in module “docutils.parsers.rst.languages.en”.
+Trying “iframe” as canonical directive name.&lt;/p&gt;
+&lt;/aside&gt;
+&lt;p&gt;OK, well, maybe not as well. After all, we have limited budget and
 time. Plus programming the algorithm that calculates the overall force
 from the feedback from all the joint could be a challenge…&lt;/p&gt;
 &lt;p&gt;But at the minimum we could make our robot stop when it arrives at the
@@ -2120,8 +2347,17 @@ read the voltage that the servo is applying to its motor? Turns out
 that this works quite well, at least with the SG90 servos that I have.
 Here’s an experiment that I performed to test a “compliant motion”
 servo:&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="https://www.youtube.com/embed/Ms8yTKYebaI"&gt;https://www.youtube.com/embed/Ms8yTKYebaI&lt;/a&gt;
-I soldered an additional wire to the servo’s motor, like this:\&lt;/p&gt;
+&lt;aside class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;span class="docutils literal"&gt;/home/sheep/dev/ablog/deshipu.art/projects/project-6050.md&lt;/span&gt;, line 3031)&lt;/p&gt;
+&lt;p&gt;Unknown directive type “iframe”.
+&lt;/p&gt;
+&lt;/aside&gt;
+&lt;aside class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: INFO/1 (&lt;span class="docutils literal"&gt;/home/sheep/dev/ablog/deshipu.art/projects/project-6050.md&lt;/span&gt;, line 3031)&lt;/p&gt;
+&lt;p&gt;No directive entry for “iframe” in module “docutils.parsers.rst.languages.en”.
+Trying “iframe” as canonical directive name.&lt;/p&gt;
+&lt;/aside&gt;
+&lt;p&gt;I soldered an additional wire to the servo’s motor, like this:\&lt;/p&gt;
 &lt;img alt="https://cdn.hackaday.io/images/2507231433409447350.jpg" src="https://cdn.hackaday.io/images/2507231433409447350.jpg" /&gt;
 &lt;p&gt;I also had to make the hole in the cover a little bit larger, to fit
 the extra wire:&lt;/p&gt;
@@ -2137,8 +2373,17 @@ force from it. If the force is too small, stop. I also made all the
 other legs move up slightly just before the reading, to shift the
 weight more to the leg that we are interested in. The result is not
 very pretty yet, but I’m sure I can tweak it to look better:&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="https://www.youtube.com/embed/Q08YaEeYNSg"&gt;https://www.youtube.com/embed/Q08YaEeYNSg&lt;/a&gt;
-With some tricks, I might even be able to make it walk on uneven
+&lt;aside class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;span class="docutils literal"&gt;/home/sheep/dev/ablog/deshipu.art/projects/project-6050.md&lt;/span&gt;, line 3067)&lt;/p&gt;
+&lt;p&gt;Unknown directive type “iframe”.
+&lt;/p&gt;
+&lt;/aside&gt;
+&lt;aside class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: INFO/1 (&lt;span class="docutils literal"&gt;/home/sheep/dev/ablog/deshipu.art/projects/project-6050.md&lt;/span&gt;, line 3067)&lt;/p&gt;
+&lt;p&gt;No directive entry for “iframe” in module “docutils.parsers.rst.languages.en”.
+Trying “iframe” as canonical directive name.&lt;/p&gt;
+&lt;/aside&gt;
+&lt;p&gt;With some tricks, I might even be able to make it walk on uneven
 terrain without additional endstop switches at the ends of the legs.&lt;/p&gt;
 &lt;/section&gt;
 &lt;/section&gt;
@@ -2178,18 +2423,45 @@ batteries you could use for your robot. Not only they are heavy, but
 also the current you can draw from them is almost nothing, and they
 will discharge pretty quickly, after which you can simply throw them
 away. So can Tote be powered with alkaline batteries? Let’s find out!&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="https://www.youtube.com/embed/SZiQHDCJas0"&gt;https://www.youtube.com/embed/SZiQHDCJas0&lt;/a&gt;
-As you can see, you can, but not for very long. But it’s nice to see
+&lt;aside class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;span class="docutils literal"&gt;/home/sheep/dev/ablog/deshipu.art/projects/project-6050.md&lt;/span&gt;, line 3137)&lt;/p&gt;
+&lt;p&gt;Unknown directive type “iframe”.
+&lt;/p&gt;
+&lt;/aside&gt;
+&lt;aside class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: INFO/1 (&lt;span class="docutils literal"&gt;/home/sheep/dev/ablog/deshipu.art/projects/project-6050.md&lt;/span&gt;, line 3137)&lt;/p&gt;
+&lt;p&gt;No directive entry for “iframe” in module “docutils.parsers.rst.languages.en”.
+Trying “iframe” as canonical directive name.&lt;/p&gt;
+&lt;/aside&gt;
+&lt;p&gt;As you can see, you can, but not for very long. But it’s nice to see
 that Tote can actually lift them. That means that I could probably
 swap them for some&lt;strong&gt;NiMH&lt;/strong&gt; or&lt;strong&gt;NiCd&lt;/strong&gt; rechargeable batteries, and it would be all good. Let’s see!&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="https://www.youtube.com/embed/7EXs-lPbF28"&gt;https://www.youtube.com/embed/7EXs-lPbF28&lt;/a&gt;
-That actually went pretty well! Apart from some weight-shifting
+&lt;aside class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;span class="docutils literal"&gt;/home/sheep/dev/ablog/deshipu.art/projects/project-6050.md&lt;/span&gt;, line 3145)&lt;/p&gt;
+&lt;p&gt;Unknown directive type “iframe”.
+&lt;/p&gt;
+&lt;/aside&gt;
+&lt;aside class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: INFO/1 (&lt;span class="docutils literal"&gt;/home/sheep/dev/ablog/deshipu.art/projects/project-6050.md&lt;/span&gt;, line 3145)&lt;/p&gt;
+&lt;p&gt;No directive entry for “iframe” in module “docutils.parsers.rst.languages.en”.
+Trying “iframe” as canonical directive name.&lt;/p&gt;
+&lt;/aside&gt;
+&lt;p&gt;That actually went pretty well! Apart from some weight-shifting
 problems, I would probably need to find a better way of attaching
 them. Also, using AAA cells instead of AA would improve the weight,
 but unfortunately I don’t have any AAA rechargeable batteries on me at
 the moment. Finally, a&lt;strong&gt;LiPo&lt;/strong&gt; battery salvaged from a broken power bank, for comparison.&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="https://www.youtube.com/embed/2oY1tgPdmVQ"&gt;https://www.youtube.com/embed/2oY1tgPdmVQ&lt;/a&gt;
-That huge battery should keep it going whole day.&lt;/p&gt;
+&lt;aside class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;span class="docutils literal"&gt;/home/sheep/dev/ablog/deshipu.art/projects/project-6050.md&lt;/span&gt;, line 3155)&lt;/p&gt;
+&lt;p&gt;Unknown directive type “iframe”.
+&lt;/p&gt;
+&lt;/aside&gt;
+&lt;aside class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: INFO/1 (&lt;span class="docutils literal"&gt;/home/sheep/dev/ablog/deshipu.art/projects/project-6050.md&lt;/span&gt;, line 3155)&lt;/p&gt;
+&lt;p&gt;No directive entry for “iframe” in module “docutils.parsers.rst.languages.en”.
+Trying “iframe” as canonical directive name.&lt;/p&gt;
+&lt;/aside&gt;
+&lt;p&gt;That huge battery should keep it going whole day.&lt;/p&gt;
 &lt;p&gt;Now, let’s look at some more advanced hack. For an experiment with
 force-sensing servos, that I will describe separately at some point, I
 needed the voltage given to the servos to be constant, so that I would
