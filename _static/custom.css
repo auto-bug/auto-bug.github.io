@@ -206,10 +206,18 @@ section p.ablog-post-title {
 div.project-list li {
     display: inline-block;
     width: 280px;
-    height: 60px;
+    height: 210px;
     margin: 0.125ex;
-    text-align: center;
     position: relative;
+}
+div.project-list li p {
+    text-align: center;
+}
+div.project-list li p.ablog-post-excerpt {
+    background: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    bottom: 0;
+    left: 0;
 }
 div.project-list img {
     max-width: 100%;
