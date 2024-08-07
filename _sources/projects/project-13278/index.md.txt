@@ -1,0 +1,114 @@
+---
+blogpost: true
+date: 2016-08-23
+category: project
+tags:  ESP8266, servo, hardware, wemos, ongoing project
+image: 1
+---
+
+# Servo Breakout for WeMos D1 Mini
+
+Connect servos to your ESP8266 dev board.
+
+<div class="project-thumb">
+
+:::{image} images/7209701473855689500.jpg
+:target: /_images/7209701473855689500.jpg
+:::
+
+:::{image} images/8422601484959160525.jpg
+:target: /_images/8422601484959160525.jpg
+:::
+
+:::{image} images/4760411471956285087.jpg
+:target: /_images/4760411471956285087.jpg
+:::
+
+:::{image} images/699801484959150101.jpg
+:target: /_images/699801484959150101.jpg
+:::
+
+:::{image} images/3952961484907213251.jpg
+:target: /_images/3952961484907213251.jpg
+:::
+
+:::{image} images/4649091501603589305.jpg
+:target: /_images/4649091501603589305.jpg
+:::
+
+</div>
+
+
+    I thought I will try to make some shields for the WeMos D1 Mini,
+because it's one of my favorite ESP8266 boards.  There is already an
+official motor controller shield (though I can't get it to work
+reliably), so I decided I will make some servo shields.
+
+
+
+
+
+
+
+## Logs
+
+:::{postlist}
+:category: project-13278
+:::
+
+## Instructions
+
+
+
+Get the PCB from [https://oshpark.com/shared_projects/QrjTnDg1](https://oshpark.com/shared_projects/QrjTnDg1) 
+
+
+---
+
+
+Populate the PCB -- solder the ATmega328p, the reset resistor (10kΩ),
+the I2C pullup resistors (10kΩ, optional), capacitor (10-1000µF,
+optional). Solder the pin headers for the servos and power, and an
+extra pin or wire for the reset.
+
+
+:::{image} images/2862981473855334998.jpg
+
+:::
+
+
+
+---
+
+
+Connect your ISP programmer to the 3v3, GND, MISO, MOSI, SCK and Reset
+pins as follows:
+
+
+:::{image} images/263181473966842720.jpg
+
+:::
+If you are making the 2ch version, the pin names are printed on the
+PCB. Get the source code from [https://bitbucket.org/thesheep/d1mini-18ch-servo/src](https://bitbucket.org/thesheep/d1mini-18ch-servo/src)  for the 18-channel version or [https://bitbucket.org/thesheep/d1-mini-20ch-servo/src](https://bitbucket.org/thesheep/d1-mini-20ch-servo/src/8d9c46e74e9ff078b915a0b127f7eef331cb53b3/firmware/?at=default)  for the 20-channel version. To flash the 18-channel version, use
+Arduino IDE. To flash the 20-channel version, run "make flash" in the
+firmware directory.
+
+
+---
+
+
+After flashing, set the fuses with:
+
+
+```
+avrdude -c usbasp -p m328p -U lfuse:w:0xE2:m -U hfuse:w:0xDF:m
+```
+
+
+---
+
+
+Your shield is ready to be used!
+
+
+---

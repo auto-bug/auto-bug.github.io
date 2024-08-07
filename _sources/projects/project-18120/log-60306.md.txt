@@ -1,0 +1,63 @@
+---
+blogpost: true
+date: 2017-05-28
+category: project-18120
+---
+
+# Competition
+Published on 2017-05-28 in {ref}`project-18120`.
+
+As they say, be careful what you are wishing for, you might get it. My
+main motivation for making all those D1 Mini shields and selling them
+is to make this functionality available -- first from my [@Tindie](https://hackaday.iohttps://hackaday.io/hacker/130335)  shop, and then, hopefully, from Aliexpress and eBay, as it gets
+cloned and manufactured cheaply.
+
+Recently WeMos, the very company that makes the D1 Mini boards, has
+introduced a new product -- a 8x8 LED matrix shield similar to what I
+have been making here. Here's a link: [https://www.aliexpress.com/store/product/Matrix-LED-Shield-V1-0-0-for-
+WEMOS-D1-mini/1331105_32812932291.html](https://www.aliexpress.com/store/product/Matrix-LED-Shield-V1-0-0-for-WEMOS-D1-mini/1331105_32812932291.html)  -- thanks to [@davedarko](https://hackaday.iohttps://hackaday.io/hacker/3459)  for the tip!
+
+However, this is not a clone of my shields. It's a complete re-make of
+the idea, with a different chip on board, using different pins and
+protocol for communication, and not software compatible. As far as I
+can tell there are not libraries or code examples for it.
+
+I ordered one out of curiosity and will experiment with it, but for
+now let's see what I we can infer from the photos. The chip used is
+AIP1640, which seems to be a cheap clone of the TM1640 LED driver,
+produced by [http://titanmec.com/](http://titanmec.com/) . There seem to be no English datasheets for it, but there is one in
+Chinese available from [http://titanmec.com/index.php/product/view/id/305/typeid/59.html](http://titanmec.com/index.php/product/view/id/305/typeid/59.html) 
+
+This chip can drive up to 8x16 LEDs, so only half the outputs are used
+for driving the 8x8 matrix -- you could drive a double or bi-color
+matrix with it (like this one: [https://www.aliexpress.com/item/8x8-LED-Red-Green-Dual-Color-Dot-
+Matrix-Display-Module-TM1640-for-Arduino/32476051733.html](https://www.aliexpress.com/item/8x8-LED-Red-Green-Dual-Color-Dot-Matrix-Display-Module-TM1640-for-Arduino/32476051733.html) ). The inputs are connected to D1 Mini's MOSI and SCK pins through
+transistors, because it's a 5V device. The protocol it uses for
+communication is a weird mix of SPI and I²C: you send serial data, but
+because there is no chip-select pin, you denote start of transmission
+with I2Ć-like start condition. There are no addresses, though -- the
+device basically owns the pins it is connected to all the time. The
+driver does support PWM, but you can only change the brightness of the
+whole matrix, and not individual pixels.
+
+There seems to be an Arduino library for the TM1638, that also
+supports TM1640, but it seems to be only for 7-segment displays. The
+library can be found here: [https://github.com/rjbatista/tm1638-library](https://github.com/rjbatista/tm1638-library) 
+
+Speaking of the TM1638, I can't understand why they didn't use that
+chip, or one of the other LED driver chips manufactured by Titanmec
+(they have quite an interesting offer, see [http://titanmec.com/index.php/product/lists/typeid/59.html](http://titanmec.com/index.php/product/lists/typeid/59.html) ). For instance the TM1629 or TM1638 ( [http://titanmec.com/index.php/product/view/id/303/typeid/59.html](http://titanmec.com/index.php/product/view/id/303/typeid/59.html) , English datasheet at [https://retrocip.cz/files/tm1638.pdf](https://retrocip.cz/files/tm1638.pdf) ) -- it's smaller, supports 8x8 LEDs and uses a proper SPI protocol
+that plays nice with other devices. Or use the venerable HT16K33,
+which is well tested, has proper I2C and already has a lot of existing
+libraries. I suspect they got a really good deal on those clones...
+
+Perosnally, I find the TM1680 particularly interesting, as it should
+be capable of driving an RGB matrix with I2C: [http://titanmec.com/index.php/product/view/id/393.html](http://titanmec.com/index.php/product/view/id/393.html) 
+
+In the mean time, I will keep selling my own matrix shields on Tindie
+-- they can't compete with these price-wise, but I think they are much
+easier to use, at least for now.\
+
+
+
+

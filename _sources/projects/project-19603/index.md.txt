@@ -1,0 +1,98 @@
+---
+blogpost: true
+date: 2017-01-26
+category: project
+tags:  quadruped, d1 mini, ROBOT, ongoing project, hardware, 2017HackadayPrize, ESP8266, tote, WALKING, spider
+image: 1
+---
+
+# D1 Mini Tote
+
+A version of Tote with the D1 Mini ESP8266 board as a brain.
+
+<div class="project-thumb">
+
+:::{image} images/2666111485449727353.jpg
+:target: /_images/2666111485449727353.jpg
+:::
+
+:::{image} images/2334121500903935343.jpg
+:target: /_images/2334121500903935343.jpg
+:::
+
+</div>
+
+
+    This is the next step of evolution of {ref}`project-6050`  and {ref}`project-9927` , the spider robots that were designed to be as simple and easy to
+build as possible, without sacrificing the proper walking algorithms.
+This time the focus is on making it easier to program and to modify by
+attaching additional hardware.
+
+While Tote was focusing on building a proper quadruped robot without
+special materials and tools and as cheaply as possible, the subsequent
+projects focus on making the robot more reliable and easier to
+experiment with. The {ref}`project-19921` project loosens the budget constraints, aiming to make a sturdier,
+stronger and more consistently reproducible robot. This project works
+in parallel to that, trying to incorporate the same improvements, but
+without rising the price too much. The two projects are meant to cover
+the conflicting needs of hobby robot developers.
+
+Of course, the overarching goal for both of them is to stimulate
+research in affordable and reliable legged robots, so that we can have
+devices like this at our homes one day.
+
+
+
+
+
+## Logs
+
+:::{postlist}
+:category: project-19603
+:::
+
+## Instructions
+
+
+
+
+### Mechanical Assembly
+
+
+For mechanical assembly, follow the instructions at [http://tote.readthedocs.io/en/latest/assembly_v5.html#legs](http://tote.readthedocs.io/en/latest/assembly_v5.html#legs) 
+
+
+---
+
+
+
+### Electronics
+
+
+Solder the headers, PWM chip and resistors onto the board. Add the
+power switch and battery holder. Connect the servo plugs.
+
+
+---
+
+
+
+### Programming
+
+
+Copy the python code from project's repository onto your D1 Mini using
+Adafruit's Ampy utility. Plug the D1 Mini into the PCB.
+
+
+---
+
+
+
+### Extending
+
+
+Use the D1 Mini's headers to add shields with sensors and other
+components to the robot. Modify the code to take advantage of them.
+
+
+---

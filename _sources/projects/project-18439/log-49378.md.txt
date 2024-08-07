@@ -1,0 +1,68 @@
+---
+blogpost: true
+date: 2016-11-22
+category: project-18439
+---
+
+# SWD Programming
+Published on 2016-11-22 in {ref}`project-18439`.
+
+Second approach to this is using the SWD protocol with my Chinese ST-
+Link V2 clone. That requires getting at the SWD pins. Fortunately,
+they are near the edge of the chip:
+
+
+:::{image} images/9683431479845007181.jpg
+
+:::
+
+
+Then I connected it according to the pinout of my programmer (the
+second one):
+
+
+:::{image} http://wiki.sgmk-ssam.ch/images/d/dc/ST-LinkV2_pinout_01.jpg
+
+:::
+
+
+Now just "make program" in that template, and...
+
+
+```
+openocd -f /usr/share/openocd/scripts/board/stm32f0discovery.cfg -f extra/stm32f0-openocd.cfg -c "stm_flash `pwd`/main.bin" -c shutdown
+Open On-Chip Debugger 0.9.0 (2015-09-02-10:42)
+Licensed under GNU GPL v2
+For bug reports, read
+	http://openocd.org/doc/doxygen/bugs.html
+Info : The selected transport took over low-level target control. The results might differ compared to plain JTAG/SWD
+adapter speed: 1000 kHz
+adapter_nsrst_delay: 100
+none separate
+srst_only separate srst_nogate srst_open_drain connect_deassert_srst
+Info : Unable to match requested speed 1000 kHz, using 950 kHz
+Info : Unable to match requested speed 1000 kHz, using 950 kHz
+Info : clock speed 950 kHz
+Info : STLINK v2 JTAG v17 API v2 SWIM v4 VID 0x0483 PID 0x3748
+Info : using stlink api v2
+Info : Target voltage: 3.497322
+Info : stm32f0x.cpu: hardware has 4 breakpoints, 2 watchpoints
+stm_erase
+Error: timed out while waiting for target halted
+TARGET: stm32f0x.cpu - Not halted
+in procedure 'stm_flash' 
+in procedure 'reset' called at file "extra/stm32f0-openocd.cfg", line 8
+in procedure 'ocd_bouncer'
+
+
+Makefile:72: recipe for target 'program' failed
+make: *** [program] Error 1
+
+```
+
+Failure.
+
+I suspect that I shouldn't be using the configuration for the
+discovery board, but somehow write my own, however, I can't seem to be
+able to find any examples...
+

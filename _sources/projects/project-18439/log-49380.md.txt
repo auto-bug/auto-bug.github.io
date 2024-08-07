@@ -1,0 +1,92 @@
+---
+blogpost: true
+date: 2016-11-22
+category: project-18439
+---
+
+# SWD Programming Continued
+Published on 2016-11-22 in {ref}`project-18439`.
+
+On a quest to configure OpenOCD properly. First of all, the error I'm
+getting [was described in an issue](https://github.com/vsergeev/arm-bmw-sw/issues/1)  and seems like adding "reset_config none separate" fixes that. I got
+a new error with this:
+
+
+```
+openocd -f extra/fff.cfg -f extra/stm32f0-openocd.cfg -c "stm_flash `pwd`/main.bin" -c shutdown
+Open On-Chip Debugger 0.9.0 (2015-09-02-10:42)
+Licensed under GNU GPL v2
+For bug reports, read
+	http://openocd.org/doc/doxygen/bugs.html
+Info : The selected transport took over low-level target control. The results might differ compared to plain JTAG/SWD
+adapter speed: 1000 kHz
+adapter_nsrst_delay: 100
+none separate
+srst_only separate srst_nogate srst_open_drain connect_deassert_srst
+Info : Unable to match requested speed 1000 kHz, using 950 kHz
+Info : Unable to match requested speed 1000 kHz, using 950 kHz
+Info : clock speed 950 kHz
+Info : STLINK v2 JTAG v17 API v2 SWIM v4 VID 0x0483 PID 0x3748
+Info : using stlink api v2
+Info : Target voltage: 3.504912
+Info : stm32f0x.cpu: hardware has 4 breakpoints, 2 watchpoints
+none separate
+stm_erase
+target state: halted
+target halted due to debug-request, current mode: Handler HardFault
+xPSR: 0xc1000003 pc: 0xfffffffe msp: 0xfffffffc
+auto erase enabled
+Info : device id = 0x10006444
+Info : flash size = 16kbytes
+Error: stm32x device protected
+Error: failed erasing sectors 0 to 0
+```
+
+OK, so apparently the chip is write-protected. No problem, we can
+unlock it with "stm32x unlock 0". After running that, and resetting
+the chip, I finally got:
+```
+openocd -f extra/fff.cfg -f extra/stm32f0-openocd.cfg -c "stm_flash `pwd`/main.bin" -c shutdown
+Open On-Chip Debugger 0.9.0 (2015-09-02-10:42)
+Licensed under GNU GPL v2
+For bug reports, read
+	http://openocd.org/doc/doxygen/bugs.html
+Info : The selected transport took over low-level target control. The results might differ compared to plain JTAG/SWD
+adapter speed: 1000 kHz
+adapter_nsrst_delay: 100
+none separate
+srst_only separate srst_nogate srst_open_drain connect_deassert_srst
+Info : Unable to match requested speed 1000 kHz, using 950 kHz
+Info : Unable to match requested speed 1000 kHz, using 950 kHz
+Info : clock speed 950 kHz
+Info : STLINK v2 JTAG v17 API v2 SWIM v4 VID 0x0483 PID 0x3748
+Info : using stlink api v2
+Info : Target voltage: 3.506483
+Info : stm32f0x.cpu: hardware has 4 breakpoints, 2 watchpoints
+none separate
+stm_erase
+target state: halted
+target halted due to debug-request, current mode: Thread 
+xPSR: 0xc1000000 pc: 0xfffffffe msp: 0xfffffffc
+auto erase enabled
+Info : device id = 0x10006444
+Info : flash size = 16kbytes
+target state: halted
+target halted due to breakpoint, current mode: Thread 
+xPSR: 0x61000000 pc: 0x2000003a msp: 0xfffffffc
+wrote 1024 bytes from file /home/sheep/dev/3rdparty/stm32f0-discovery-basic-template/main.bin in 0.104813s (9.541 KiB/s)
+target state: halted
+target halted due to breakpoint, current mode: Thread 
+xPSR: 0x61000000 pc: 0x2000002e msp: 0xfffffffc
+verified 980 bytes in 0.030723s (31.150 KiB/s)
+shutdown command invoked
+
+```
+
+Which seems to be a correct flashing.
+
+All this thanks to advice from [@jaromir.sukuba](https://hackaday.iohttps://hackaday.io/hacker/2648) , great thanks!
+
+Now let's see if I can get a blink example to work...\
+
+

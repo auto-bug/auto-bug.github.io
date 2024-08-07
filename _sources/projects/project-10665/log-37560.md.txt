@@ -1,0 +1,42 @@
+---
+blogpost: true
+date: 2016-05-06
+category: project-10665
+---
+
+# Brains
+Published on 2016-05-06 in {ref}`project-10665`.
+
+The PCBs finally arrived, of course while I was travelling. I'm
+finally back, and I assembled the PCB. Of course, since they were
+designed in a hurry, there is a number of mistakes.
+
+
+ * somehow I managed to swap the RST and ADC pins with TX and RX,
+ * there is a short circuit right next to the battery connector,
+ * I didn't leave any room for I²C pullup resistors,
+ * I forgot to add room for the power switch.
+
+The short circuit was fixed with an x-acto knife. I'm not really using
+the RST and ADC pins, so I left them unconnected. For the serial
+connection, I also left the pins unconnected and soldered wires
+directly to the pads on the module. The power switch for now is on the
+battery cable, and I will see about the pullup resistors later. So I
+got the board working.
+
+
+:::{image} images/6674311462485586802.jpg
+
+:::
+Next, I flashed Micropython on the ESP8266 and did a quick test to see
+if the PWM signal for the servos works on all the pins -- including
+the ones that are pulled up or down for the board to boot in the right
+mode. For once it all worked great -- so that's one stone off my
+heart.\
+
+
+Next, I'm going to make a nice servo library for the Micropython on
+ESP8266 (using the available PWM class, just wrapping it a bit for
+convenience) and see if I can get the gesture/distance sensors to
+work.
+

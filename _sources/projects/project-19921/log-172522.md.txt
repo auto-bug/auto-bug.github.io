@@ -1,0 +1,44 @@
+---
+blogpost: true
+date: 2019-12-31
+category: project-19921
+---
+
+# It's Alive (Again)
+Published on 2019-12-31 in {ref}`project-19921`.
+
+It took me a while to re-assemble, re-connect and re-calibrate all the
+legs with the new PCB, but today the robot is again standing on its
+own. I was a bit worried that the battery protection circuit would
+interfere with the servos drawing their share of the current, but it
+seems to be perfectly fine. I was putting off connecting the servos
+for a bit, because I didn't have the male pin headers soldered, and I
+was thinking that perhaps I should cut the servo wires and solder them
+directly to the underside of the PCB. But then I decided to leave them
+long for now, for easier hacking. I can always make a "tidy" version
+of this robot later.
+
+
+
+:::{image} images/8232111577816509284.JPG
+
+:::
+
+
+I have replaced the old HUZZAH feather with the new NRF52840 feather,
+because the CircuitPython is no longer supported on the ESP8266, and
+there is some very exciting progresss on bluetooth support on the NRF,
+and that would be perfect for controlling this robot. For now I just
+use the REPL over the USB cable, though, still using the old gait code
+— that's one of the parts that still needs work.
+
+There are also still no switches at the ends of the legs — they are
+ordered, but Christmas is not the time of fast packages. At the very
+least they should let the robot avoid falling off the table.
+
+As you can see, since I'm using stacking headers with all my feathers,
+there is room for adding modules on top of the robot. It could be a
+prototyping board with some sensors, or one of the other featherwings
+with displays, LEDs, speakers, etc. — it would even work very well
+with the {ref}`project-165011` , controlled by gestures — if I ever get that to work.
+

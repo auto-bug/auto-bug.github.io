@@ -1,0 +1,376 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>http://deshipu.art/</id>
+  <title>deshipu.art - Posts in project-18439</title>
+  <updated>2024-08-07T20:31:01.949108+00:00</updated>
+  <link href="http://deshipu.art/"/>
+  <link href="http://deshipu.art/blog/category/project-18439/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-18439/log-49378/</id>
+    <title>SWD Programming</title>
+    <updated>2016-11-22T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="swd-programming"&gt;
+
+&lt;p&gt;Published on 2016-11-22 in &lt;a class="reference internal" href="../../../projects/project-18439/#project-18439"&gt;&lt;span class="std std-ref"&gt;Motor Shield Reprogramming&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Second approach to this is using the SWD protocol with my Chinese ST-
+Link V2 clone. That requires getting at the SWD pins. Fortunately,
+they are near the edge of the chip:&lt;/p&gt;
+&lt;img alt="projects/project-18439/images/9683431479845007181.jpg" src="projects/project-18439/images/9683431479845007181.jpg" /&gt;
+&lt;p&gt;Then I connected it according to the pinout of my programmer (the
+second one):&lt;/p&gt;
+&lt;img alt="http://wiki.sgmk-ssam.ch/images/d/dc/ST-LinkV2_pinout_01.jpg" src="http://wiki.sgmk-ssam.ch/images/d/dc/ST-LinkV2_pinout_01.jpg" /&gt;
+&lt;p&gt;Now just “make program” in that template, and…&lt;/p&gt;
+&lt;div class="highlight-default notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;openocd&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;usr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;share&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;openocd&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;scripts&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;stm32f0discovery&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cfg&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt; &lt;span class="n"&gt;extra&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;stm32f0&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;openocd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cfg&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;stm_flash `pwd`/main.bin&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="n"&gt;shutdown&lt;/span&gt;
+&lt;span class="n"&gt;Open&lt;/span&gt; &lt;span class="n"&gt;On&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Chip&lt;/span&gt; &lt;span class="n"&gt;Debugger&lt;/span&gt; &lt;span class="mf"&gt;0.9.0&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2015&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;09&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;02&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;42&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;Licensed&lt;/span&gt; &lt;span class="n"&gt;under&lt;/span&gt; &lt;span class="n"&gt;GNU&lt;/span&gt; &lt;span class="n"&gt;GPL&lt;/span&gt; &lt;span class="n"&gt;v2&lt;/span&gt;
+&lt;span class="n"&gt;For&lt;/span&gt; &lt;span class="n"&gt;bug&lt;/span&gt; &lt;span class="n"&gt;reports&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;read&lt;/span&gt;
+	&lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;openocd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;doc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;doxygen&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;bugs&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;html&lt;/span&gt;
+&lt;span class="n"&gt;Info&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;The&lt;/span&gt; &lt;span class="n"&gt;selected&lt;/span&gt; &lt;span class="n"&gt;transport&lt;/span&gt; &lt;span class="n"&gt;took&lt;/span&gt; &lt;span class="n"&gt;over&lt;/span&gt; &lt;span class="n"&gt;low&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;level&lt;/span&gt; &lt;span class="n"&gt;target&lt;/span&gt; &lt;span class="n"&gt;control&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="n"&gt;The&lt;/span&gt; &lt;span class="n"&gt;results&lt;/span&gt; &lt;span class="n"&gt;might&lt;/span&gt; &lt;span class="n"&gt;differ&lt;/span&gt; &lt;span class="n"&gt;compared&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;plain&lt;/span&gt; &lt;span class="n"&gt;JTAG&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;SWD&lt;/span&gt;
+&lt;span class="n"&gt;adapter&lt;/span&gt; &lt;span class="n"&gt;speed&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1000&lt;/span&gt; &lt;span class="n"&gt;kHz&lt;/span&gt;
+&lt;span class="n"&gt;adapter_nsrst_delay&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt;
+&lt;span class="n"&gt;none&lt;/span&gt; &lt;span class="n"&gt;separate&lt;/span&gt;
+&lt;span class="n"&gt;srst_only&lt;/span&gt; &lt;span class="n"&gt;separate&lt;/span&gt; &lt;span class="n"&gt;srst_nogate&lt;/span&gt; &lt;span class="n"&gt;srst_open_drain&lt;/span&gt; &lt;span class="n"&gt;connect_deassert_srst&lt;/span&gt;
+&lt;span class="n"&gt;Info&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Unable&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;match&lt;/span&gt; &lt;span class="n"&gt;requested&lt;/span&gt; &lt;span class="n"&gt;speed&lt;/span&gt; &lt;span class="mi"&gt;1000&lt;/span&gt; &lt;span class="n"&gt;kHz&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;using&lt;/span&gt; &lt;span class="mi"&gt;950&lt;/span&gt; &lt;span class="n"&gt;kHz&lt;/span&gt;
+&lt;span class="n"&gt;Info&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Unable&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;match&lt;/span&gt; &lt;span class="n"&gt;requested&lt;/span&gt; &lt;span class="n"&gt;speed&lt;/span&gt; &lt;span class="mi"&gt;1000&lt;/span&gt; &lt;span class="n"&gt;kHz&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;using&lt;/span&gt; &lt;span class="mi"&gt;950&lt;/span&gt; &lt;span class="n"&gt;kHz&lt;/span&gt;
+&lt;span class="n"&gt;Info&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;clock&lt;/span&gt; &lt;span class="n"&gt;speed&lt;/span&gt; &lt;span class="mi"&gt;950&lt;/span&gt; &lt;span class="n"&gt;kHz&lt;/span&gt;
+&lt;span class="n"&gt;Info&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;STLINK&lt;/span&gt; &lt;span class="n"&gt;v2&lt;/span&gt; &lt;span class="n"&gt;JTAG&lt;/span&gt; &lt;span class="n"&gt;v17&lt;/span&gt; &lt;span class="n"&gt;API&lt;/span&gt; &lt;span class="n"&gt;v2&lt;/span&gt; &lt;span class="n"&gt;SWIM&lt;/span&gt; &lt;span class="n"&gt;v4&lt;/span&gt; &lt;span class="n"&gt;VID&lt;/span&gt; &lt;span class="mh"&gt;0x0483&lt;/span&gt; &lt;span class="n"&gt;PID&lt;/span&gt; &lt;span class="mh"&gt;0x3748&lt;/span&gt;
+&lt;span class="n"&gt;Info&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;using&lt;/span&gt; &lt;span class="n"&gt;stlink&lt;/span&gt; &lt;span class="n"&gt;api&lt;/span&gt; &lt;span class="n"&gt;v2&lt;/span&gt;
+&lt;span class="n"&gt;Info&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Target&lt;/span&gt; &lt;span class="n"&gt;voltage&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;3.497322&lt;/span&gt;
+&lt;span class="n"&gt;Info&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;stm32f0x&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cpu&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;hardware&lt;/span&gt; &lt;span class="n"&gt;has&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt; &lt;span class="n"&gt;breakpoints&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="n"&gt;watchpoints&lt;/span&gt;
+&lt;span class="n"&gt;stm_erase&lt;/span&gt;
+&lt;span class="n"&gt;Error&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;timed&lt;/span&gt; &lt;span class="n"&gt;out&lt;/span&gt; &lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="n"&gt;waiting&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;target&lt;/span&gt; &lt;span class="n"&gt;halted&lt;/span&gt;
+&lt;span class="n"&gt;TARGET&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;stm32f0x&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cpu&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;Not&lt;/span&gt; &lt;span class="n"&gt;halted&lt;/span&gt;
+&lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;procedure&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;stm_flash&amp;#39;&lt;/span&gt; 
+&lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;procedure&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;reset&amp;#39;&lt;/span&gt; &lt;span class="n"&gt;called&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;file&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;extra/stm32f0-openocd.cfg&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt; &lt;span class="mi"&gt;8&lt;/span&gt;
+&lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;procedure&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;ocd_bouncer&amp;#39;&lt;/span&gt;
+
+
+&lt;span class="n"&gt;Makefile&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;72&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;recipe&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;target&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;program&amp;#39;&lt;/span&gt; &lt;span class="n"&gt;failed&lt;/span&gt;
+&lt;span class="n"&gt;make&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="o"&gt;***&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;program&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;Error&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Failure.&lt;/p&gt;
+&lt;p&gt;I suspect that I shouldn’t be using the configuration for the
+discovery board, but somehow write my own, however, I can’t seem to be
+able to find any examples…&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-18439/log-49378/" rel="alternate"/>
+    <summary>Published on 2016-11-22 in project-18439.</summary>
+    <published>2016-11-22T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-18439/log-49380/</id>
+    <title>SWD Programming Continued</title>
+    <updated>2016-11-22T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="swd-programming-continued"&gt;
+
+&lt;p&gt;Published on 2016-11-22 in &lt;a class="reference internal" href="../../../projects/project-18439/#project-18439"&gt;&lt;span class="std std-ref"&gt;Motor Shield Reprogramming&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;On a quest to configure OpenOCD properly. First of all, the error I’m
+getting &lt;a class="reference external" href="https://github.com/vsergeev/arm-bmw-sw/issues/1"&gt;was described in an issue&lt;/a&gt;  and seems like adding “reset_config none separate” fixes that. I got
+a new error with this:&lt;/p&gt;
+&lt;div class="highlight-default notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;openocd&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt; &lt;span class="n"&gt;extra&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;fff&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cfg&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt; &lt;span class="n"&gt;extra&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;stm32f0&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;openocd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cfg&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;stm_flash `pwd`/main.bin&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="n"&gt;shutdown&lt;/span&gt;
+&lt;span class="n"&gt;Open&lt;/span&gt; &lt;span class="n"&gt;On&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Chip&lt;/span&gt; &lt;span class="n"&gt;Debugger&lt;/span&gt; &lt;span class="mf"&gt;0.9.0&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2015&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;09&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;02&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;42&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;Licensed&lt;/span&gt; &lt;span class="n"&gt;under&lt;/span&gt; &lt;span class="n"&gt;GNU&lt;/span&gt; &lt;span class="n"&gt;GPL&lt;/span&gt; &lt;span class="n"&gt;v2&lt;/span&gt;
+&lt;span class="n"&gt;For&lt;/span&gt; &lt;span class="n"&gt;bug&lt;/span&gt; &lt;span class="n"&gt;reports&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;read&lt;/span&gt;
+	&lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;openocd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;doc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;doxygen&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;bugs&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;html&lt;/span&gt;
+&lt;span class="n"&gt;Info&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;The&lt;/span&gt; &lt;span class="n"&gt;selected&lt;/span&gt; &lt;span class="n"&gt;transport&lt;/span&gt; &lt;span class="n"&gt;took&lt;/span&gt; &lt;span class="n"&gt;over&lt;/span&gt; &lt;span class="n"&gt;low&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;level&lt;/span&gt; &lt;span class="n"&gt;target&lt;/span&gt; &lt;span class="n"&gt;control&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="n"&gt;The&lt;/span&gt; &lt;span class="n"&gt;results&lt;/span&gt; &lt;span class="n"&gt;might&lt;/span&gt; &lt;span class="n"&gt;differ&lt;/span&gt; &lt;span class="n"&gt;compared&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;plain&lt;/span&gt; &lt;span class="n"&gt;JTAG&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;SWD&lt;/span&gt;
+&lt;span class="n"&gt;adapter&lt;/span&gt; &lt;span class="n"&gt;speed&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1000&lt;/span&gt; &lt;span class="n"&gt;kHz&lt;/span&gt;
+&lt;span class="n"&gt;adapter_nsrst_delay&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt;
+&lt;span class="n"&gt;none&lt;/span&gt; &lt;span class="n"&gt;separate&lt;/span&gt;
+&lt;span class="n"&gt;srst_only&lt;/span&gt; &lt;span class="n"&gt;separate&lt;/span&gt; &lt;span class="n"&gt;srst_nogate&lt;/span&gt; &lt;span class="n"&gt;srst_open_drain&lt;/span&gt; &lt;span class="n"&gt;connect_deassert_srst&lt;/span&gt;
+&lt;span class="n"&gt;Info&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Unable&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;match&lt;/span&gt; &lt;span class="n"&gt;requested&lt;/span&gt; &lt;span class="n"&gt;speed&lt;/span&gt; &lt;span class="mi"&gt;1000&lt;/span&gt; &lt;span class="n"&gt;kHz&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;using&lt;/span&gt; &lt;span class="mi"&gt;950&lt;/span&gt; &lt;span class="n"&gt;kHz&lt;/span&gt;
+&lt;span class="n"&gt;Info&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Unable&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;match&lt;/span&gt; &lt;span class="n"&gt;requested&lt;/span&gt; &lt;span class="n"&gt;speed&lt;/span&gt; &lt;span class="mi"&gt;1000&lt;/span&gt; &lt;span class="n"&gt;kHz&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;using&lt;/span&gt; &lt;span class="mi"&gt;950&lt;/span&gt; &lt;span class="n"&gt;kHz&lt;/span&gt;
+&lt;span class="n"&gt;Info&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;clock&lt;/span&gt; &lt;span class="n"&gt;speed&lt;/span&gt; &lt;span class="mi"&gt;950&lt;/span&gt; &lt;span class="n"&gt;kHz&lt;/span&gt;
+&lt;span class="n"&gt;Info&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;STLINK&lt;/span&gt; &lt;span class="n"&gt;v2&lt;/span&gt; &lt;span class="n"&gt;JTAG&lt;/span&gt; &lt;span class="n"&gt;v17&lt;/span&gt; &lt;span class="n"&gt;API&lt;/span&gt; &lt;span class="n"&gt;v2&lt;/span&gt; &lt;span class="n"&gt;SWIM&lt;/span&gt; &lt;span class="n"&gt;v4&lt;/span&gt; &lt;span class="n"&gt;VID&lt;/span&gt; &lt;span class="mh"&gt;0x0483&lt;/span&gt; &lt;span class="n"&gt;PID&lt;/span&gt; &lt;span class="mh"&gt;0x3748&lt;/span&gt;
+&lt;span class="n"&gt;Info&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;using&lt;/span&gt; &lt;span class="n"&gt;stlink&lt;/span&gt; &lt;span class="n"&gt;api&lt;/span&gt; &lt;span class="n"&gt;v2&lt;/span&gt;
+&lt;span class="n"&gt;Info&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Target&lt;/span&gt; &lt;span class="n"&gt;voltage&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;3.504912&lt;/span&gt;
+&lt;span class="n"&gt;Info&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;stm32f0x&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cpu&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;hardware&lt;/span&gt; &lt;span class="n"&gt;has&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt; &lt;span class="n"&gt;breakpoints&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="n"&gt;watchpoints&lt;/span&gt;
+&lt;span class="n"&gt;none&lt;/span&gt; &lt;span class="n"&gt;separate&lt;/span&gt;
+&lt;span class="n"&gt;stm_erase&lt;/span&gt;
+&lt;span class="n"&gt;target&lt;/span&gt; &lt;span class="n"&gt;state&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;halted&lt;/span&gt;
+&lt;span class="n"&gt;target&lt;/span&gt; &lt;span class="n"&gt;halted&lt;/span&gt; &lt;span class="n"&gt;due&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;debug&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;current&lt;/span&gt; &lt;span class="n"&gt;mode&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Handler&lt;/span&gt; &lt;span class="n"&gt;HardFault&lt;/span&gt;
+&lt;span class="n"&gt;xPSR&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;0xc1000003&lt;/span&gt; &lt;span class="n"&gt;pc&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;0xfffffffe&lt;/span&gt; &lt;span class="n"&gt;msp&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;0xfffffffc&lt;/span&gt;
+&lt;span class="n"&gt;auto&lt;/span&gt; &lt;span class="n"&gt;erase&lt;/span&gt; &lt;span class="n"&gt;enabled&lt;/span&gt;
+&lt;span class="n"&gt;Info&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;device&lt;/span&gt; &lt;span class="nb"&gt;id&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mh"&gt;0x10006444&lt;/span&gt;
+&lt;span class="n"&gt;Info&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;flash&lt;/span&gt; &lt;span class="n"&gt;size&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;16&lt;/span&gt;&lt;span class="n"&gt;kbytes&lt;/span&gt;
+&lt;span class="n"&gt;Error&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;stm32x&lt;/span&gt; &lt;span class="n"&gt;device&lt;/span&gt; &lt;span class="n"&gt;protected&lt;/span&gt;
+&lt;span class="n"&gt;Error&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;failed&lt;/span&gt; &lt;span class="n"&gt;erasing&lt;/span&gt; &lt;span class="n"&gt;sectors&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;OK, so apparently the chip is write-protected. No problem, we can
+unlock it with “stm32x unlock 0”. After running that, and resetting
+the chip, I finally got:&lt;/p&gt;
+&lt;div class="highlight-default notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;openocd&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt; &lt;span class="n"&gt;extra&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;fff&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cfg&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt; &lt;span class="n"&gt;extra&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;stm32f0&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;openocd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cfg&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;stm_flash `pwd`/main.bin&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="n"&gt;shutdown&lt;/span&gt;
+&lt;span class="n"&gt;Open&lt;/span&gt; &lt;span class="n"&gt;On&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Chip&lt;/span&gt; &lt;span class="n"&gt;Debugger&lt;/span&gt; &lt;span class="mf"&gt;0.9.0&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2015&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;09&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;02&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;42&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;Licensed&lt;/span&gt; &lt;span class="n"&gt;under&lt;/span&gt; &lt;span class="n"&gt;GNU&lt;/span&gt; &lt;span class="n"&gt;GPL&lt;/span&gt; &lt;span class="n"&gt;v2&lt;/span&gt;
+&lt;span class="n"&gt;For&lt;/span&gt; &lt;span class="n"&gt;bug&lt;/span&gt; &lt;span class="n"&gt;reports&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;read&lt;/span&gt;
+	&lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;openocd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;doc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;doxygen&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;bugs&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;html&lt;/span&gt;
+&lt;span class="n"&gt;Info&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;The&lt;/span&gt; &lt;span class="n"&gt;selected&lt;/span&gt; &lt;span class="n"&gt;transport&lt;/span&gt; &lt;span class="n"&gt;took&lt;/span&gt; &lt;span class="n"&gt;over&lt;/span&gt; &lt;span class="n"&gt;low&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;level&lt;/span&gt; &lt;span class="n"&gt;target&lt;/span&gt; &lt;span class="n"&gt;control&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="n"&gt;The&lt;/span&gt; &lt;span class="n"&gt;results&lt;/span&gt; &lt;span class="n"&gt;might&lt;/span&gt; &lt;span class="n"&gt;differ&lt;/span&gt; &lt;span class="n"&gt;compared&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;plain&lt;/span&gt; &lt;span class="n"&gt;JTAG&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;SWD&lt;/span&gt;
+&lt;span class="n"&gt;adapter&lt;/span&gt; &lt;span class="n"&gt;speed&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1000&lt;/span&gt; &lt;span class="n"&gt;kHz&lt;/span&gt;
+&lt;span class="n"&gt;adapter_nsrst_delay&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt;
+&lt;span class="n"&gt;none&lt;/span&gt; &lt;span class="n"&gt;separate&lt;/span&gt;
+&lt;span class="n"&gt;srst_only&lt;/span&gt; &lt;span class="n"&gt;separate&lt;/span&gt; &lt;span class="n"&gt;srst_nogate&lt;/span&gt; &lt;span class="n"&gt;srst_open_drain&lt;/span&gt; &lt;span class="n"&gt;connect_deassert_srst&lt;/span&gt;
+&lt;span class="n"&gt;Info&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Unable&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;match&lt;/span&gt; &lt;span class="n"&gt;requested&lt;/span&gt; &lt;span class="n"&gt;speed&lt;/span&gt; &lt;span class="mi"&gt;1000&lt;/span&gt; &lt;span class="n"&gt;kHz&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;using&lt;/span&gt; &lt;span class="mi"&gt;950&lt;/span&gt; &lt;span class="n"&gt;kHz&lt;/span&gt;
+&lt;span class="n"&gt;Info&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Unable&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;match&lt;/span&gt; &lt;span class="n"&gt;requested&lt;/span&gt; &lt;span class="n"&gt;speed&lt;/span&gt; &lt;span class="mi"&gt;1000&lt;/span&gt; &lt;span class="n"&gt;kHz&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;using&lt;/span&gt; &lt;span class="mi"&gt;950&lt;/span&gt; &lt;span class="n"&gt;kHz&lt;/span&gt;
+&lt;span class="n"&gt;Info&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;clock&lt;/span&gt; &lt;span class="n"&gt;speed&lt;/span&gt; &lt;span class="mi"&gt;950&lt;/span&gt; &lt;span class="n"&gt;kHz&lt;/span&gt;
+&lt;span class="n"&gt;Info&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;STLINK&lt;/span&gt; &lt;span class="n"&gt;v2&lt;/span&gt; &lt;span class="n"&gt;JTAG&lt;/span&gt; &lt;span class="n"&gt;v17&lt;/span&gt; &lt;span class="n"&gt;API&lt;/span&gt; &lt;span class="n"&gt;v2&lt;/span&gt; &lt;span class="n"&gt;SWIM&lt;/span&gt; &lt;span class="n"&gt;v4&lt;/span&gt; &lt;span class="n"&gt;VID&lt;/span&gt; &lt;span class="mh"&gt;0x0483&lt;/span&gt; &lt;span class="n"&gt;PID&lt;/span&gt; &lt;span class="mh"&gt;0x3748&lt;/span&gt;
+&lt;span class="n"&gt;Info&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;using&lt;/span&gt; &lt;span class="n"&gt;stlink&lt;/span&gt; &lt;span class="n"&gt;api&lt;/span&gt; &lt;span class="n"&gt;v2&lt;/span&gt;
+&lt;span class="n"&gt;Info&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Target&lt;/span&gt; &lt;span class="n"&gt;voltage&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;3.506483&lt;/span&gt;
+&lt;span class="n"&gt;Info&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;stm32f0x&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cpu&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;hardware&lt;/span&gt; &lt;span class="n"&gt;has&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt; &lt;span class="n"&gt;breakpoints&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="n"&gt;watchpoints&lt;/span&gt;
+&lt;span class="n"&gt;none&lt;/span&gt; &lt;span class="n"&gt;separate&lt;/span&gt;
+&lt;span class="n"&gt;stm_erase&lt;/span&gt;
+&lt;span class="n"&gt;target&lt;/span&gt; &lt;span class="n"&gt;state&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;halted&lt;/span&gt;
+&lt;span class="n"&gt;target&lt;/span&gt; &lt;span class="n"&gt;halted&lt;/span&gt; &lt;span class="n"&gt;due&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;debug&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;current&lt;/span&gt; &lt;span class="n"&gt;mode&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Thread&lt;/span&gt; 
+&lt;span class="n"&gt;xPSR&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;0xc1000000&lt;/span&gt; &lt;span class="n"&gt;pc&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;0xfffffffe&lt;/span&gt; &lt;span class="n"&gt;msp&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;0xfffffffc&lt;/span&gt;
+&lt;span class="n"&gt;auto&lt;/span&gt; &lt;span class="n"&gt;erase&lt;/span&gt; &lt;span class="n"&gt;enabled&lt;/span&gt;
+&lt;span class="n"&gt;Info&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;device&lt;/span&gt; &lt;span class="nb"&gt;id&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mh"&gt;0x10006444&lt;/span&gt;
+&lt;span class="n"&gt;Info&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;flash&lt;/span&gt; &lt;span class="n"&gt;size&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;16&lt;/span&gt;&lt;span class="n"&gt;kbytes&lt;/span&gt;
+&lt;span class="n"&gt;target&lt;/span&gt; &lt;span class="n"&gt;state&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;halted&lt;/span&gt;
+&lt;span class="n"&gt;target&lt;/span&gt; &lt;span class="n"&gt;halted&lt;/span&gt; &lt;span class="n"&gt;due&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="nb"&gt;breakpoint&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;current&lt;/span&gt; &lt;span class="n"&gt;mode&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Thread&lt;/span&gt; 
+&lt;span class="n"&gt;xPSR&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;0x61000000&lt;/span&gt; &lt;span class="n"&gt;pc&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;0x2000003a&lt;/span&gt; &lt;span class="n"&gt;msp&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;0xfffffffc&lt;/span&gt;
+&lt;span class="n"&gt;wrote&lt;/span&gt; &lt;span class="mi"&gt;1024&lt;/span&gt; &lt;span class="nb"&gt;bytes&lt;/span&gt; &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;file&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;home&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;sheep&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="n"&gt;rdparty&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;stm32f0&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;discovery&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;basic&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;template&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;bin&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="mf"&gt;0.104813&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;9.541&lt;/span&gt; &lt;span class="n"&gt;KiB&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;target&lt;/span&gt; &lt;span class="n"&gt;state&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;halted&lt;/span&gt;
+&lt;span class="n"&gt;target&lt;/span&gt; &lt;span class="n"&gt;halted&lt;/span&gt; &lt;span class="n"&gt;due&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="nb"&gt;breakpoint&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;current&lt;/span&gt; &lt;span class="n"&gt;mode&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Thread&lt;/span&gt; 
+&lt;span class="n"&gt;xPSR&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;0x61000000&lt;/span&gt; &lt;span class="n"&gt;pc&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;0x2000002e&lt;/span&gt; &lt;span class="n"&gt;msp&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;0xfffffffc&lt;/span&gt;
+&lt;span class="n"&gt;verified&lt;/span&gt; &lt;span class="mi"&gt;980&lt;/span&gt; &lt;span class="nb"&gt;bytes&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="mf"&gt;0.030723&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;31.150&lt;/span&gt; &lt;span class="n"&gt;KiB&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;shutdown&lt;/span&gt; &lt;span class="n"&gt;command&lt;/span&gt; &lt;span class="n"&gt;invoked&lt;/span&gt;
+
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Which seems to be a correct flashing.&lt;/p&gt;
+&lt;p&gt;All this thanks to advice from &lt;a class="reference external" href="https://hackaday.iohttps://hackaday.io/hacker/2648"&gt;&amp;#64;jaromir.sukuba&lt;/a&gt; , great thanks!&lt;/p&gt;
+&lt;p&gt;Now let’s see if I can get a blink example to work…\&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-18439/log-49380/" rel="alternate"/>
+    <summary>Published on 2016-11-22 in project-18439.</summary>
+    <published>2016-11-22T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-18439/log-57855/</id>
+    <title>Reprogramming Without Soldering</title>
+    <updated>2017-04-21T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="reprogramming-without-soldering"&gt;
+
+&lt;p&gt;Published on 2017-04-21 in &lt;a class="reference internal" href="../../../projects/project-18439/#project-18439"&gt;&lt;span class="std std-ref"&gt;Motor Shield Reprogramming&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Turns out that the procedure in the previous log can be greatly
+simplified. You don’t need an ST-Link programmer, and you don’t need
+to solder anything. Even if your shield is locked, you can unlock and
+program it with a simple serial adapter. Here is how.&lt;/p&gt;
+&lt;p&gt;First, clone the repository:&lt;/p&gt;
+&lt;div class="highlight-default notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git clone https://github.com/pbugalski/wemos_motor_shield
+$ cd wemos_motor_shield
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Make sure you have arm-none-eabi-gcc installed, and compile it:&lt;/p&gt;
+&lt;div class="highlight-default notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ make
+arm-none-eabi-gcc -Wall -g -std=c99 -Os -mlittle-endian -mcpu=cortex-m0 -march=armv6-m -mthumb -ffunction-sections -fdata-sections -Wl,--gc-sections -Wl,-Map=motor_shield.map -Iinc src/startup_stm32.s src/main.c src/user_i2c.c src/tb6612.c -o motor_shield.elf -Tstm32f030.ld
+arm-none-eabi-objcopy -O binary motor_shield.elf motor_shield.bin
+arm-none-eabi-size motor_shield.elf
+   text	   data	    bss	    dec	    hex	filename
+   2032	   1084	   1056	   4172	   104c	motor_shield.elf
+
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Now, make sure you have stm32flash utility installed. Short the RTS
+and the 3V pins on the shield together, like this:&lt;/p&gt;
+&lt;img alt="projects/project-18439/images/3123331492797505129.jpg" src="projects/project-18439/images/3123331492797505129.jpg" /&gt;
+&lt;p&gt;And the connect the main pins of the shield to your USB2TTL as
+follows:GND ↔ GND&lt;/p&gt;
+&lt;p&gt;3V3 ↔ 3V3 (or VCC or whatever it is called on your USB2TTL)&lt;/p&gt;
+&lt;p&gt;D2 ↔ TX&lt;/p&gt;
+&lt;p&gt;D1 ↔ RX&lt;/p&gt;
+&lt;p&gt;and connect it to your computer. Now, see if you can communicate with
+the device:&lt;/p&gt;
+&lt;div class="highlight-default notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ stm32flash /dev/ttyUSB0
+stm32flash 0.5
+
+http://stm32flash.sourceforge.net/
+
+Interface serial_posix: 57600 8E1
+Version      : 0x31
+Option 1     : 0x00
+Option 2     : 0x00
+Device ID    : 0x0444 (STM32F03xx4/6)
+- RAM        : 4KiB  (2048b reserved by bootloader)
+- Flash      : 32KiB (size first sector: 4x1024)
+- Option RAM : 16b
+- System RAM : 3KiB
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Now, you can unlock your shield:&lt;/p&gt;
+&lt;div class="highlight-default notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ stm32flash /dev/ttyUSB0 -k
+stm32flash 0.5
+
+http://stm32flash.sourceforge.net/
+
+Interface serial_posix: 57600 8E1
+Version      : 0x31
+Option 1     : 0x00
+Option 2     : 0x00
+Device ID    : 0x0444 (STM32F03xx4/6)
+- RAM        : 4KiB  (2048b reserved by bootloader)
+- Flash      : 32KiB (size first sector: 4x1024)
+- Option RAM : 16b
+- System RAM : 3KiB
+Read-UnProtecting flash
+Done.
+
+$ stm32flash /dev/ttyUSB0 -u
+stm32flash 0.5
+
+http://stm32flash.sourceforge.net/
+
+Interface serial_posix: 57600 8E1
+Version      : 0x31
+Option 1     : 0x00
+Option 2     : 0x00
+Device ID    : 0x0444 (STM32F03xx4/6)
+- RAM        : 4KiB  (2048b reserved by bootloader)
+- Flash      : 32KiB (size first sector: 4x1024)
+- Option RAM : 16b
+- System RAM : 3KiB
+Write-unprotecting flash
+Done.
+
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;And now you can flash it:&lt;/p&gt;
+&lt;div class="highlight-default notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ stm32flash /dev/ttyUSB0 -v -w motor_shield.bin
+stm32flash 0.5
+
+http://stm32flash.sourceforge.net/
+
+Using Parser : Raw BINARY
+Interface serial_posix: 57600 8E1
+Version      : 0x31
+Option 1     : 0x00
+Option 2     : 0x00
+Device ID    : 0x0444 (STM32F03xx4/6)
+- RAM        : 4KiB  (2048b reserved by bootloader)
+- Flash      : 32KiB (size first sector: 4x1024)
+- Option RAM : 16b
+- System RAM : 3KiB
+Write to memory
+Erasing memory
+Wrote and verified address 0x08000c2c (100.00%) Done.
+
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Then disconnect all the wires (including the RTS pin), connect the
+shield to your WeMos D1 Mini, and it should work.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-18439/log-57855/" rel="alternate"/>
+    <summary>Published on 2017-04-21 in project-18439.</summary>
+    <published>2017-04-21T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-18439/log-57852/</id>
+    <title>We Have a Fixed Firmware!</title>
+    <updated>2017-04-21T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="we-have-a-fixed-firmware"&gt;
+
+&lt;p&gt;Published on 2017-04-21 in &lt;a class="reference internal" href="../../../projects/project-18439/#project-18439"&gt;&lt;span class="std std-ref"&gt;Motor Shield Reprogramming&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://hackaday.iohttps://hackaday.io/hacker/214712"&gt;&amp;#64;Piotr Bugalski&lt;/a&gt;  has recently re-written the firmware for this motor shield, and
+published it at &lt;a class="reference external" href="https://github.com/pbugalski/wemos_motor_shield"&gt;https://github.com/pbugalski/wemos_motor_shield&lt;/a&gt; . From what I can tell, the new firmware is compatible with the old
+one, minus the hanging and crashing, so it should be perfect for a
+drop-in replacement.&lt;/p&gt;
+&lt;p&gt;Here is how you can flash it to your shield:&lt;/p&gt;
+&lt;p&gt;Solder two wires to the first two legs of the microcontroller,
+counting from the top, like this:&lt;/p&gt;
+&lt;img alt="projects/project-18439/images/9683431479845007181.jpg" src="projects/project-18439/images/9683431479845007181.jpg" /&gt;
+&lt;p&gt;Be careful to not short them with the legs next to them. This is
+probably the hardest part.&lt;/p&gt;
+&lt;p&gt;Next, connect you ST-Link programmer as follows:&lt;/p&gt;
+&lt;p&gt;SWCLK ↔ first wire&lt;/p&gt;
+&lt;p&gt;SWDIO ↔ second wire&lt;/p&gt;
+&lt;p&gt;GND ↔ GND&lt;/p&gt;
+&lt;p&gt;3V3 ↔ 3V3&lt;/p&gt;
+&lt;p&gt;T_JRST ↔ RST&lt;/p&gt;
+&lt;p&gt;Note that, this is with the shiled &lt;em&gt;not&lt;/em&gt; connected to the D1 Mini.&lt;/p&gt;
+&lt;p&gt;Now, clone the repository:&lt;/p&gt;
+&lt;div class="highlight-default notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git clone https://github.com/pbugalski/wemos_motor_shield
+$ cd wemos_motor_shield
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Make sure you have installed openocd and arm-none-eabi-gcc. Compile
+the firmware:&lt;/p&gt;
+&lt;div class="highlight-default notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ make
+arm-none-eabi-gcc -Wall -g -std=c99 -Os -mlittle-endian -mcpu=cortex-m0 -march=armv6-m -mthumb -ffunction-sections -fdata-sections -Wl,--gc-sections -Wl,-Map=motor_shield.map -Iinc src/startup_stm32.s src/main.c src/user_i2c.c src/tb6612.c -o motor_shield.elf -Tstm32f030.ld
+arm-none-eabi-objcopy -O binary motor_shield.elf motor_shield.bin
+arm-none-eabi-size motor_shield.elf
+   text	   data	    bss	    dec	    hex	filename
+   2032	   1084	   1056	   4172	   104c	motor_shield.elf
+
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;And flash it onto the shield:&lt;/p&gt;
+&lt;div class="highlight-default notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ make program
+openocd -f stm32f0motor.cfg -f stm32f0-openocd.cfg -c &amp;quot;stm_flash motor_shield.bin&amp;quot; -c shutdown
+Open On-Chip Debugger 0.9.0 (2015-09-02-10:42)
+Licensed under GNU GPL v2
+For bug reports, read
+	http://openocd.org/doc/doxygen/bugs.html
+Info : The selected transport took over low-level target control. The results might differ compared to plain JTAG/SWD
+adapter speed: 1000 kHz
+adapter_nsrst_delay: 100
+none separate
+srst_only separate srst_nogate srst_open_drain connect_deassert_srst
+Info : Unable to match requested speed 1000 kHz, using 950 kHz
+Info : Unable to match requested speed 1000 kHz, using 950 kHz
+Info : clock speed 950 kHz
+Info : STLINK v2 JTAG v17 API v2 SWIM v4 VID 0x0483 PID 0x3748
+Info : using stlink api v2
+Info : Target voltage: 3.490340
+Info : stm32f0x.cpu: hardware has 4 breakpoints, 2 watchpoints
+stm_erase
+target state: halted
+target halted due to debug-request, current mode: Thread 
+xPSR: 0xc1000000 pc: 0xfffffffe msp: 0xfffffffc
+auto erase enabled
+Info : device id = 0x10006444
+Info : flash size = 16kbytes
+target state: halted
+target halted due to breakpoint, current mode: Thread 
+xPSR: 0x61000000 pc: 0x2000003a msp: 0xfffffffc
+wrote 4096 bytes from file motor_shield.bin in 0.287988s (13.889 KiB/s)
+target state: halted
+target halted due to breakpoint, current mode: Thread 
+xPSR: 0x61000000 pc: 0x2000002e msp: 0xfffffffc
+verified 3116 bytes in 0.057512s (52.910 KiB/s)
+shutdown command invoked
+
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Now, disconnect everything. Your board has the new firmware on it.
+You can test it, and then desolder the two wires – you won’t be
+needing them anymore.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-18439/log-57852/" rel="alternate"/>
+    <summary>Published on 2017-04-21 in project-18439.</summary>
+    <published>2017-04-21T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-18439/log-70239/</id>
+    <title>Multiple I²C Addresses</title>
+    <updated>2017-11-08T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="multiple-i2c-addresses"&gt;
+
+&lt;p&gt;Published on 2017-11-08 in &lt;a class="reference internal" href="../../../projects/project-18439/#project-18439"&gt;&lt;span class="std std-ref"&gt;Motor Shield Reprogramming&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;As mentioned by &lt;a class="reference external" href="https://hackaday.io/hacker/252214"&gt;&amp;#64;Matrix User &lt;/a&gt; in the comments, the new firmware doesn’t support selecting of the I²C
+address with the jumper pads on the bottom of the board — instead the
+address is fixed in the firmware. There is an issue reported about
+this at &lt;a class="reference external" href="https://github.com/pbugalski/wemos_motor_shield/issues/3"&gt;https://github.com/pbugalski/wemos_motor_shield/issues/3&lt;/a&gt;  and some workarounds, including alternate builds of the firmware with
+different hard-coded addresses.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-18439/log-70239/" rel="alternate"/>
+    <summary>Published on 2017-11-08 in project-18439.</summary>
+    <published>2017-11-08T00:00:00+01:00</published>
+  </entry>
+</feed>

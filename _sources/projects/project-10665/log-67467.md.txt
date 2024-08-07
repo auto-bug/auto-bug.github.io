@@ -1,0 +1,27 @@
+---
+blogpost: true
+date: 2017-09-19
+category: project-10665
+---
+
+# Trinket M0
+Published on 2017-09-19 in {ref}`project-10665`.
+
+I recently dug out this robot for the maker faire (after seeing
+similar laser-cut ponies on the first day), and when I made the pwm
+shield for the Trinket M0, I decided that it would be the perfect
+brains. Using the ESP8266 alone with its 8 free pins all used for
+servos, with its software PWM kinda felt too hacky. I might still go
+back to an ESP87266 with a PCA9685 chip, we will see. For now, I'm
+using a Trinket M0 with a shield:
+
+
+:::{image} images/389871505857431124.jpg
+
+:::
+I will also need to think a bit about cable management:
+
+
+:::{image} images/5175501505857461648.jpg
+
+:::

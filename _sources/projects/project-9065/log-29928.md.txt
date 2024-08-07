@@ -1,0 +1,43 @@
+---
+blogpost: true
+date: 2016-01-05
+category: project-9065
+---
+
+# Off By One Servo Plug
+Published on 2016-01-05 in {ref}`project-9065`.
+
+Mistakes in PCB design happen, and usually hurt when you receive your
+fabricated PCB. I was in a hurry to send the Tote Zero's PCB to
+fabrication before Christmas, so that I can receive it when I come
+back from the holidays. And as you can guess, I made a mistake.
+Instead of making the servo headers GVSGVSGVSGVS... (that's ground-
+voltage-signal), I made them VSGVSGVSGVSG...
+
+What now? Of course, I will eventually order another PCB (especially
+since this one doesn't have all the extra pins of Pi Zero broken out,
+and they may come in handy later for sensors or extra servos), but for
+now I would like to be able to test other aspects of my robot, so that
+the next design includes any fixes and ideas I come with. So I really
+want to use this board as it is.
+
+I could "fix" this by disassembling the plugs of the servos, and
+changing the order of wires in them. In fact, it's not a lot of work,
+even for a dozen servos. But from my experience, sooner or later I
+will forget about this, and either connect an un-modified servo, or
+use those modified servos for something else and release the magic
+blue smoke. I'd prefer to avoid this.
+
+So instead I plugged the servos offset by one pin, and glued
+additional pins in front for the one plug that sticks out and misses
+its ground pins (the additional pins are red):
+
+
+:::{image} images/7625531452013104903.jpg
+
+:::
+
+
+It's not pretty, but it will do for now. I also fixed my PCB design
+files already, so that I don't forget about it.
+

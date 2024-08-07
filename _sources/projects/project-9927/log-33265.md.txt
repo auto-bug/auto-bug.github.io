@@ -1,0 +1,34 @@
+---
+blogpost: true
+date: 2016-03-06
+category: project-9927
+---
+
+# Prototyping and Controller Code
+Published on 2016-03-06 in {ref}`project-9927`.
+
+With the addition of ESP8266, Tote will now have two processors on
+board, and it makes sense to split the responsibilities for them a
+little bit. The ATmega328p on the Pro Mini is relatively slow (8Mhz)
+and weak, but has a lot of inputs and outputs, which makes it perfect
+as the servo controller, and generally as the spinal cord of the
+robot, controlling low-level reflexes. The ESP8266 is much stronger
+and faster (it has to be to handle WiFi), and so it could handle
+higher-level functions.
+
+Because the time is precious, I started to work on the code for the
+Pro Mini already. I made a prototype using one of the older boards,
+but with the new leg configuration, and with some cables for
+connecting the ESP8266 to it:
+
+
+:::{image} images/71361457293170558.jpg
+
+:::
+
+
+Now I'm copy-pasting bits and pieces of the original Tote code, and
+adding some I²C communication on top of that. Basically, the ESP8266
+will be sending coordinates for the legs to the Pro Mini, and it will
+handle leg inverse kinematics.
+

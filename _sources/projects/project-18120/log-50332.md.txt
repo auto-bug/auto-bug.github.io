@@ -1,0 +1,37 @@
+---
+blogpost: true
+date: 2016-12-13
+category: project-18120
+---
+
+# Boards #4
+Published on 2016-12-13 in {ref}`project-18120`.
+
+My recent trouble with code for {ref}`project-13278`  made me think whether I actually didn't jump to conclusions too fast
+with those HT16K33 chips. You know what they teach you: before you
+blame the hardware, the compiler, the operating system or the
+libraries, make sure that everything on your side is absolutely
+spotless and correct. I thought I did. I was wrong.
+
+Today I took the Adafruit HUZZAH Feather board, connected one of the
+non-working matrix shields to its GPIO0 and GPIO2 pins (the ones that
+have built-in pullups), uploaded my ht16k33_matrix module and tried
+it, and... it worked. Just like that.
+
+Of course the shields connect to pins GPIO4 and GPIO5 of the D1 Mini,
+which do not have their own external pullups, so I have no choice but
+to re-design the PCB again, this time to include footprints for a two
+additional resistors:
+
+
+:::{image} images/3322781481662594398.png
+
+:::
+
+
+I will of course "fix" the shields i already have, by simply soldering
+the resistors straight to the pins -- so the good news is that I will
+have a bunch of working shields. The bad news is I will have to wait a
+couple of weeks more to test the new PCBs before I can officially
+announce this project as working.
+

@@ -1,0 +1,47 @@
+---
+blogpost: true
+date: 2016-02-20
+category: project-9769
+---
+
+# First Prototype Working
+Published on 2016-02-20 in {ref}`project-9769`.
+
+I got the first version to work. Here's the demo video:
+
+
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="" src="https://www.youtube.com/embed/hDExwmWhYX8"></iframe>
+
+There are several things there. I have the control board with the
+battery and accelerometer sitting at the top of my head -- this is
+obviously suboptimal, especially during rain. I suppose I can hide
+most of the electronics and the battery inside the ears themselves --
+there is enough room for that. But the accelerometer has to stay. Or I
+could move the whole thing to the side, making it look like a
+bluetooth headset or something -- I would just need to switch the
+accelerometer axes then. I need to sleep on that.
+
+Second thing, the range of movement is really limited. Those tiny
+servos don't really have enough strength to squash the material of the
+ears enough to flatten or perk them completely. I used those little
+guys, because I was afraid about space, but turns out that there is a
+lot of room inside those ears, so I might try with 9g servos next.
+
+Third, they make noise. Since constant buzzing would be annoying and
+would drain the battery fast, I'm actually switching the servos off
+(by disabling PWM signal) when they are not changing the ears
+position. I only enable them for 600 milliseconds when they need to
+move. It would be much cooler to have them move fluently all the time,
+but not with those servos.
+
+Fourth, I guess I could attach them to a hat -- then there would be no
+problem with hiding the electronics, and I could even have a larger
+battery.
+
+Fifth, right now they only react to the head position. I need to
+experiment with tracking how fast I'm moving, and make them move based
+on that too -- make them droop when I'm not moving, and perk up when I
+make a sudden move with my head. Also, twitch them randomly when they
+are perked up.\
+
+

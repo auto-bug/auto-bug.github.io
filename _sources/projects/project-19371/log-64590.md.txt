@@ -1,0 +1,23 @@
+---
+blogpost: true
+date: 2017-08-03
+category: project-19371
+---
+
+# Upgrade
+Published on 2017-08-03 in {ref}`project-19371`.
+
+I went ahead and upgraded the design of this shield a little bit. It
+now uses all SMD components (including the PCA8574 chip), has all
+parts on one side, and uses buttons in place of that tiny joystick
+thing. Oh, and I dropped the address selection jumpers, since you are
+not going to have more than one of this on a single dev board anyways.
+
+
+:::{image} images/8903771501756707802.png
+
+:::
+The pin headers now are staggered for a pressure fit, so that you
+should be able to put this between your dev board and a display shield
+without additional headers increasing the height.
+

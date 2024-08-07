@@ -1,0 +1,173 @@
+---
+blogpost: true
+date: 2016-04-10
+category: project-9927
+---
+
+# Command Line
+Published on 2016-04-10 in {ref}`project-9927`.
+
+The robots are built, but due to a bug in the communication code, they
+didn't walk "straight out of the box". The bug makes them wait for a
+connection before they start walking, and I will be fixing this soon,
+and I will provide new firmware to flash soon.
+
+In the mean time, you can play with your robots by using a serial
+connection. In fact, you will have access to the Python console on
+them. All you need is a 3.3V USB2TTL converter (I gave out a couple at
+the workshop, it's that red thing with USB plug on it). If you don't
+have one, I highly recommend you get it anyways, because they are
+extremely useful in debugging all sorts of projects anyways, and you
+will also need to to flash the new firmware, both for the Arduino and
+the ESP8266 parts of the robot.
+
+
+## Connecting
+
+To connect the serial interface of the ESP8266  on your robot to your
+computer, you will need to use the three pins on the left side of the
+robots. If you look at the bottom side of the board, you will see they
+are labeled, from front to back, "gnd", "tx" and "rx". Use three
+female-female dupont cables, and connect the "gnd" pin on the robot
+with the "gnd" pin on the USB2TTL, the "rx" pin of the robot with the
+"tx" pin on the USB2TTL, and the "tx" pin on the robot with the "rx"
+pin on the USB2TTL.
+
+
+ * gnd ↔ gnd
+ * rx ↔ tx
+ * tx ↔ rx
+
+Next, plug the USB2TTL into your computer (or even better, a USB hub
+connected to your computer), and open a serial terminal with speed
+115200 on the serial port that appears. On Linux, I use the_screen_ program for that, with the command:
+
+
+```bash
+$ screen /dev/ttyUSB0 115200
+```
+
+On Windows you can use PuTTY for that (you might need to have the
+drivers for the USB2TTL installed first). I have no idea how to do
+that on macs, but there must be some way. Once you do that, you should
+see black screen... Then switch on the robot, and you should see
+something like this:
+
+
+```
+rll��|�l�|�l�b|����r�b�b��nn�lnn���bplblrlp�n��lbn�|쌌��b��nn�l��l`�nnl`nr���nr�`p�n�r�����bn�|lb��nn�l`�nnl`nr���nrrl`p�n�r�����쌜bn�|쌎b��nn�l`�nnl`nr���nl`r��nl`�l��|��rrnb��l��b�lb쌜���l��b�lrldon't use rtc mem data
+ll��|��rrnb��ll�p�b�b쌜���l��b��lrl�l��|��rrnb��ll�|�b�b쌜����b�lblrl��rl���bl�br|�bll���lb��n�nn��l�|�l�l��l������l`�n��
+```
+
+That's the booting messages of the ESP8266 received at a wrong baud
+rate. Don't worry about that. Now, if you press Ctrl+C, the program
+that is executing on the robot will be interrupted, and you will see
+this:
+
+
+```
+MicroPython v1.6-374-g2c407bc-dirty on 2016-04-07; ESP module with ESP8266
+Type "help()" for more information.
+>>>
+```
+
+ That's the Python console prompt, also known as the REPL console. You
+can type Python code in there, and it will get executed on the robot.
+
+
+## Walking
+
+ So how do you make it walk? Type in this code:
+
+
+```hljs
+from robot import Robot
+from gait import Creep
+robot = Robot()
+gait = Creep(robot)
+for frame in gait.run():
+    pass
+
+```
+
+That should get the robot creeping forward. To change the directions
+you can set the_dx_,_dy_ and_rotation_ attributes on the_gait_ object, and repeat the_for_ loop.
+## Network
+
+By default the robot will create its own network, and act as an access
+point -- that's because I didn't know what networks will be available
+at the conference, and of course I wanted the robots to still work
+after you have taken them home. Unfortunately, when I tested the code,
+I did it with the robot connected to my home network, for convenience.
+That's how the bug crept in -- I didn't test it in the access point
+mode, just assumed it would work the same way.
+
+But that means that you should be able to work around the bug by
+connecting the robot to your home network. Here is how to do it.
+First, disable the "access point" interface:
+
+
+```python
+import network
+network.WLAN(network.AP_IF).active(False)
+```
+
+Then enable the "station" interface:
+```
+wlan = network.WLAN(network.STA_IF)
+wlan.active(True)
+```
+
+And then make it connect to your network:
+```
+wlan.connect("ssid", "password")
+```
+
+The robot will remember this, and will re-connect to that network
+automatically on every boot from now on.
+## Remote Control
+
+The robot has very simple remote control through WiFi for now. Once
+you restart it, you should be able to connect to it on port 1010 with
+Telnet or Netcat, and send it "wasd" letters for arrows, and space for
+"stop". Depending on the program you use, you might need to press
+enter after each of the letters. To simplify that, there is a [client.py](https://bitbucket.org/thesheep/tote-had/src/3b9ed9cd63ef32b42fe25f71586ff048a9bacf60/client.py)  program in the repository, which uses PyGame to read the arrow
+keypresses, and sends them to the robot. You run it with the IP
+address of the robot as the first argument.
+
+
+## Moving Individual Legs
+
+There isn't much other functionality implemented yet, but if you want,
+you can make the robot move its legs however you want from Python, and
+even make it dance or do something else... You can do it using the
+"robot" object above. For instance, to make the front left leg move
+20mm forward and 10mm up, you would do:
+
+
+```python
+robot.legs[0].move_to(0, 20, -10)
+robot.update()
+```
+
+The "update" step is where the command is actually sent to the servos.
+The coordinate system for the legs is simple: X axis is left-right,
+with negative numbers being closer to the body, and positive numbers
+further from it. The Y axis is front-back, with positive numbers being
+forward, and negative -- backward. The Z axis is up-down, with
+positive being down, and negative -- up. The (0, 0, 0) position is the
+robot's starting position, with all servos centered.
+
+
+## Updates
+
+I will definitely fix the bug, and maybe even figure a better way to
+control the robot remotely. When I do, the new firmware and
+instructions for flashing it will be available here on this project
+page. I will also make updates as the amazing developers of
+Micropython add more features to it. At the moment they are working on
+a web-based interactive Python console, including file upload, which
+should make hacking on this robot super-convenient. However, this is
+all still in the alpha stage of development at the moment, so we will
+have to make do with what we have now.
+

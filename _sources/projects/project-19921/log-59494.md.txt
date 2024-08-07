@@ -1,0 +1,57 @@
+---
+blogpost: true
+date: 2017-05-13
+category: project-19921
+---
+
+# The Good, The Bad and the Adorable
+Published on 2017-05-13 in {ref}`project-19921`.
+
+I'm slowly moving along with this robot, despite the long silence. A
+few iterations of the PCBs, a few changes of direction, a hour of
+coding here and there, a lot of frustration -- but I finally have the
+first, very shaky and suboptimal, gait.
+
+You can see in the video that I'm experimenting with different leg
+proportions -- basically trying to make this robot faster. The SG92R
+servos seem to be handling the longer legs without problems, even at
+the standard 50Hz signal. I can always increase the frequency to get
+some more power from them, since they are underpowered anyways.
+
+
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/EAlbmQ_CaLk"></iframe>
+
+Of course a lot remains to be done there, most importantly I want to
+update the servo positions all the time, controlling their speed and
+exact path -- and not just give the end position and wait for them to
+get there, like I'm doing now. This way it should be much less shaky
+and also able to respond to any sensors faster.
+
+However, I realized there is a fatal flaw in my world domination
+plans. Those robots are much too unreliable to actually enslave the
+humanity properly, so I need something to give them an edge over puny
+humans. My original plan of making them wear hats seemed to be a move
+in the right direction, so I decided to expand on that and make at
+least some of the robots as cute as possible -- this way the humans
+should be less likely to fight back, even if they get a chance due to
+some miscalculation.
+
+I recently received a pack of new type of servos, SG50. They are not
+actually new, but I never used them before, so they are new to me.
+They are in the category of sub-micro servos, smaller than the popular
+SG90 and other 9g servos. They make nice stubby legs:
+
+
+:::{image} images/4092601494627175602.jpg
+
+:::
+
+
+Apart from the childish proportions, I also added a pair of RGB LEDs
+as "eyes". Of course they will change color according to the status of
+the robot. I am also using a smaller Feather board here, the M0 Basic,
+which means it runs on CircuitPython, and not MicroPython.
+
+The plan is to finish it within a week, so that I can take it with me
+to [PyCon.US](http://PyCon.US)  and show it off there.
+

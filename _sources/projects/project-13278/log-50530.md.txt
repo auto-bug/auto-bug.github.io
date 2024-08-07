@@ -1,0 +1,39 @@
+---
+blogpost: true
+date: 2016-12-18
+category: project-13278
+---
+
+# Smaller PWM Code
+Published on 2016-12-18 in {ref}`project-13278`.
+
+I have been thinking about rewriting the PWM code in order to drop the
+inconvenient license, and possibly also bring the code under the 1kB
+mark, to enter it into the contest. Those are some notes from my
+ideas.
+
+There are three tricks that I think could let me get this to work:
+
+The first trick is that the servo signals don't need to agree in phase
+-- each of the signals is independent, so I'm completely free to
+decide when to start each of them. The only things that matter is the
+pulse width and the period of the whole signal. That means that I can
+generate the signals for the pins on each of the 3 ports separately --
+first handle the B pins, then the C pins, and then the D pins. I would
+still have more than enough time for two more ports, if I needed them.
+
+The second trick is to use a timer interrupt, but set the trigger to
+point to the next moment in time when one or more pins need to be set
+low, and then move that trigger to the next such moment.
+
+The third trick is to do most of the processing outside of the
+interrupt, when a servo's position is changed -- calculate the port
+states and delays. The interrupt should only set the registers to
+values it takes from arrays.
+
+I think that this approach is simple enough to have small code (for
+instance it has no sorting), but fast enough to be rather accurate
+(the delays will probably need an adjustment for the interrupt
+execution time). Together with a no-interrupt i2c slave, I hope to get
+some pretty stable signals.
+

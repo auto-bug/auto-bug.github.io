@@ -1,0 +1,15 @@
+---
+blogpost: true
+date: 2017-11-08
+category: project-18439
+---
+
+# Multiple I²C Addresses
+Published on 2017-11-08 in {ref}`project-18439`.
+
+As mentioned by [@Matrix User ](https://hackaday.io/hacker/252214) in the comments, the new firmware doesn't support selecting of the I²C
+address with the jumper pads on the bottom of the board — instead the
+address is fixed in the firmware. There is an issue reported about
+this at [https://github.com/pbugalski/wemos_motor_shield/issues/3](https://github.com/pbugalski/wemos_motor_shield/issues/3)  and some workarounds, including alternate builds of the firmware with
+different hard-coded addresses.
+

@@ -1,0 +1,71 @@
+---
+blogpost: true
+date: 2016-04-11
+category: project-10491
+---
+
+# Soldering
+Published on 2016-04-11 in {ref}`project-10491`.
+
+So I'm back from the conference, and I finally got to try the
+solderpaste that arrived before I left. I just quickly went to a local
+pharmacy to buy the thickest needle they had, I cut that needle with a
+dremel, and I was ready to go:
+
+
+:::{image} images/823631460365066651.jpg
+
+:::
+
+
+First, I applied a small drop of the solderpaste on each of the pads:
+
+
+:::{image} images/459041460365140333.jpg
+
+:::
+
+
+Then I carefully placed all the diodes, making sure they are all
+aligned properly:
+
+
+:::{image} images/108771460365234379.jpg
+
+:::
+
+
+Next, I went to the kitchen and switched the stove on:
+
+
+:::{image} images/2083401460365304220.jpg
+
+:::
+
+
+I waited a bit until the plate got hot, and pushed the board onto it.
+Then waited until the solderpaste was properly melting, and pushed the
+board off the plate.
+
+
+:::{image} images/378551460365424498.jpg
+
+:::
+
+
+The final effect looks good:
+
+
+:::{image} images/5705621460365534164.jpg
+
+:::
+
+
+However, it doesn't work. Only one LED ever blinks, and that is only
+for a short moment.
+
+I think I must have applied too much soldering paste, and there are
+some internal shorts of the signal pins. Now I'm thinking about some
+way to recover the LEDs -- I think I will put the board on the hot
+plate again, and pick the LEDs from it?
+

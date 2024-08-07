@@ -1,0 +1,24 @@
+---
+blogpost: true
+date: 2016-01-25
+category: project-9065
+---
+
+# Single-port USB Hub
+Published on 2016-01-25 in {ref}`project-9065`.
+
+In order to make working on the robot a little bit easier, I added a
+small USB hub that I had lying around, with a cheap WiFi card soldered
+to it. This way I have access to the board and still can use a single
+USB port for, say, a webcam.
+
+
+:::{image} images/1946031453757679083.jpg
+
+:::
+
+
+Otherwise the progress has been slow. I adjusted and trimmed the
+servos, so that the robot can stand in the "zero" position, but I
+still haven't tested the inverse kinematics or walking code.
+

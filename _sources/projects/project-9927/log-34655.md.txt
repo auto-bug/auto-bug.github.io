@@ -1,0 +1,33 @@
+---
+blogpost: true
+date: 2016-03-27
+category: project-9927
+---
+
+# Walking with Python
+Published on 2016-03-27 in {ref}`project-9927`.
+
+Today I finally sat down and wrote the Python part of the code for
+walking. Just the basic creep gait for now. I works, but there seems
+to be a problem with the I²C communication -- as I mentioned
+previously already, I'm getting OSError sometimes when sending the
+coordinates to the controller. It turns out that sometimes when that
+happens, the slave ends up stuck in a state where it won't listen to
+commands anymore, and has to be restarted.
+
+
+:::{image} images/7316251459110688251.jpg
+
+:::
+
+
+I looked at the signals with a scope, and I'm pretty sure this is not
+due to noise on the line or inadequate pull-up resistors. I tried
+halving the resistors just to make sure, but of course no improvement.
+I suspect it's a race condition in the software I2C implementation on
+the ESP8266. Hopefully that will be fixed before the conference.
+
+In the worst case, I will put all the gait code back on the Arduino
+and just use ESP8266 for remote control, but it would be so much
+better if you could program it with Python directly.
+

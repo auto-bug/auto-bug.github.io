@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>http://deshipu.art/</id>
+  <title>deshipu.art - Posts tagged featherwing</title>
+  <updated>2024-08-07T20:31:03.237240+00:00</updated>
+  <link href="http://deshipu.art/"/>
+  <link href="http://deshipu.art/blog/tag/featherwing/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-19921/</id>
+    <title>SpiderWing</title>
+    <updated>2017-02-18T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="spiderwing"&gt;
+
+&lt;p&gt;Spider robot powered by Adafruit Feather boards and CircuitPython.&lt;/p&gt;
+&lt;div class="project-thumb"&gt;
+&lt;a class="reference external image-reference" href="/_images/4253281487438198842.jpg"&gt;&lt;img alt="projects/project-19921/images/4253281487438198842.jpg" src="projects/project-19921/images/4253281487438198842.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/5950241497285635699.jpg"&gt;&lt;img alt="projects/project-19921/images/5950241497285635699.jpg" src="projects/project-19921/images/5950241497285635699.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/3137951500460500978.jpg"&gt;&lt;img alt="projects/project-19921/images/3137951500460500978.jpg" src="projects/project-19921/images/3137951500460500978.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/9842911577816167234.JPG"&gt;&lt;img alt="projects/project-19921/images/9842911577816167234.JPG" src="projects/project-19921/images/9842911577816167234.JPG" /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;This is the successor of the {ref}`project-6050`  robot, and its small family ( {ref}`project-9065` , {ref}`project-9927` , {ref}`project-19603` ). Tote itself was focused mostly on affordability, ease of assembly
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;and extensibility — and I think that it achieved those goals
+relatively well. However, it turns out that physically building the
+robot and programming the first gait is just the tip of the iceberg.
+We need something a little more powerful than a simple Arduino, and
+something much easier to program and test. The SpiderWing builds on
+top of Tote, but focuses more on the ease of programming and
+reliability. It uses slightly more expensive parts (Adafruit Feather
+boards, SG92R servos) to be more reliable and easier to reproduce
+exactly (whereas every Tote is slightly different from all the
+others). It will also use advanced sensors, such as the time-of-flight
+distance sensors or the IMU sensors with built-in fusion algorithms,
+in order to get better and more consistent results.&lt;/p&gt;
+&lt;p&gt;Of course the ultimate goal remains the same — to bring walking robots
+into our homes and hopefully crowd-source their development, so that
+they become reliable and cheap enough to be generally useful.&lt;/p&gt;
+&lt;iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/Y69_nhqh28M"&gt;&lt;/iframe&gt;
+&lt;iframe style="width: 500px; height: 281px;" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/4QuXRsifHEk"&gt;&lt;/iframe&gt;
+&lt;section id="logs"&gt;
+&lt;h2&gt;Logs&lt;/h2&gt;
+&lt;ul class="postlist-style-none postlist simple"&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-12-31 - &lt;a class="reference internal" href="../../../projects/project-19921/log-172522/"&gt;It’s Alive (Again)&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-12-16 - &lt;a class="reference internal" href="../../../projects/project-19921/log-171982/"&gt;Bodgetty Bodge&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-12-08 - &lt;a class="reference internal" href="../../../projects/project-19921/log-171687/"&gt;Batteries! Why Doesn’t Anybody Think About the Batteries?&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-11-03 - &lt;a class="reference internal" href="../../../projects/project-19921/log-170560/"&gt;New PCB Design&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-11-02 - &lt;a class="reference internal" href="../../../projects/project-19921/log-170536/"&gt;Time for a Refresh&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-07-23 - &lt;a class="reference internal" href="../../../projects/project-19921/log-63890/"&gt;Repository and License&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-07-23 - &lt;a class="reference internal" href="../../../projects/project-19921/log-63888/"&gt;Proper Crawl&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-07-19 - &lt;a class="reference internal" href="../../../projects/project-19921/log-63408/"&gt;Status Update&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-05-15 - &lt;a class="reference internal" href="../../../projects/project-19921/log-59618/"&gt;Smartening Up&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-05-14 - &lt;a class="reference internal" href="../../../projects/project-19921/log-59586/"&gt;Sensor and Cable Management&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-05-13 - &lt;a class="reference internal" href="../../../projects/project-19921/log-59494/"&gt;The Good, The Bad and the Adorable&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section id="instructions"&gt;
+&lt;h2&gt;Instructions&lt;/h2&gt;
+&lt;section id="mechanical-assembly"&gt;
+&lt;h3&gt;Mechanical Assembly&lt;/h3&gt;
+&lt;p&gt;For mechanical assembly, follow the instructions at &lt;a class="reference external" href="http://tote.readthedocs.io/en/latest/assembly_v5.html#legs"&gt;http://tote.readthedocs.io/en/latest/assembly_v5.html#legs&lt;/a&gt;&lt;/p&gt;
+&lt;/section&gt;
+&lt;hr class="docutils" /&gt;
+&lt;section id="electronics"&gt;
+&lt;h3&gt;Electronics&lt;/h3&gt;
+&lt;p&gt;Solder the headers, the PWM chip and the two resistors onto the PCB.
+Add the power switch and the battery holder.&lt;/p&gt;
+&lt;/section&gt;
+&lt;hr class="docutils" /&gt;
+&lt;section id="programming"&gt;
+&lt;h3&gt;Programming&lt;/h3&gt;
+&lt;p&gt;Copy the python files from the project’s repository onto your feather
+board.&lt;/p&gt;
+&lt;/section&gt;
+&lt;hr class="docutils" /&gt;
+&lt;section id="profit"&gt;
+&lt;h3&gt;PROFIT!&lt;/h3&gt;
+&lt;p&gt;Modify the code, add sensors, experiment.&lt;/p&gt;
+&lt;/section&gt;
+&lt;/section&gt;
+&lt;hr class="docutils" /&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-19921/" rel="alternate"/>
+    <summary>Spider robot powered by Adafruit Feather boards and CircuitPython.</summary>
+    <category term="2017HackadayPrize" label="2017HackadayPrize"/>
+    <category term="ESP8266" label="ESP8266"/>
+    <category term="Feather" label="Feather"/>
+    <category term="Huzzah" label="Huzzah"/>
+    <category term="ROBOT" label="ROBOT"/>
+    <category term="WALKING" label="WALKING"/>
+    <category term="adafruit" label="adafruit"/>
+    <category term="featherwing" label="featherwing"/>
+    <category term="hardware" label="hardware"/>
+    <category term="ongoingproject" label="ongoing project"/>
+    <category term="quadruped" label="quadruped"/>
+    <category term="spider" label="spider"/>
+    <published>2017-02-18T00:00:00+01:00</published>
+  </entry>
+</feed>

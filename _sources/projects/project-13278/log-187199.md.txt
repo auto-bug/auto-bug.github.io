@@ -1,0 +1,49 @@
+---
+blogpost: true
+date: 2020-12-19
+category: project-13278
+---
+
+# Maybe SX1509?
+Published on 2020-12-19 in {ref}`project-13278`.
+
+It's been a long while since I made this shield, and the PCA9685 chip
+that it uses has been in service for driving servos even longer.
+Meanwhile, I have been on a lookout for a more modern and smaller chip
+that could provide a similar function. The PCA9685 is not perfect,
+because it is actually a LED driver, which just happens to have
+adjustable PWM frequency allowing us to abuse it to generate a 50Hz
+servo signal. Still, it contains constant-current drivers that we
+don't need, and we only use a small part of its duty cycle range.
+
+So what could be other chips that we could possibly use? If you look
+around a little for "PWM chips", it seems that chip manufacturers only
+recognize two use cases for PWM signal: buck/boost converters and LED
+drivers, and in both cases they prefer relatively high frequencies, at
+least 29kHz, if not 33Mhz. That is useless for us, sadly, so we need
+to look in other places.
+
+Recently I have stumbled upon a really weird chip, SX1509. It's I²C-
+controlled GPIO multiplexer, but with some extra features, that
+include voltage level shifters, a keyboard matrix scanner and, last
+but not least, a PWM LED driver. So maybe we could use it for our
+servos?
+
+I ordered a breakout board with this chip somewhere at the beginning
+of this year, and I have been putting away working on it for a looong
+time. But now with the holiday break, I decided to finally sit down
+and try it. So I downloaded the datasheet, got a Trinket M0 running
+CircuitPython out of one drawer, and a pocket oscilloscope out of
+another, and I started to poke at the registers.
+
+Sadly, this is another failure, for two reasons: first, the slowest
+frequency I managed to get for the PWM signal is 121Hz, over twice as
+much as the required 50Hz; second, it only has 8 bits of resolution
+for the duty cycle length, and that's over the whole range, of which
+we only need a small part, so it would be even worse than the 12 bits
+we get with the PCA9685.
+
+But I guess I will keep it in my drawer if I ever need to multiplex
+GPIO pins while level-shifting to two different voltages, scanning a
+keyboard matrix and blinking LEDs.
+

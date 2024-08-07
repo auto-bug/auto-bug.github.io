@@ -1,0 +1,164 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Reprogramming Without Soldering - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="reprogramming-without-soldering">
+<h1>Reprogramming Without Soldering<a class="headerlink" href="#reprogramming-without-soldering" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2017-04-21 in <a class="reference internal" href="../#project-18439"><span class="std std-ref">Motor Shield Reprogramming</span></a>.</p>
+<p>Turns out that the procedure in the previous log can be greatly
+simplified. You don’t need an ST-Link programmer, and you don’t need
+to solder anything. Even if your shield is locked, you can unlock and
+program it with a simple serial adapter. Here is how.</p>
+<p>First, clone the repository:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/pbugalski/wemos_motor_shield
+$ cd wemos_motor_shield
+</pre></div>
+</div>
+<p>Make sure you have arm-none-eabi-gcc installed, and compile it:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ make
+arm-none-eabi-gcc -Wall -g -std=c99 -Os -mlittle-endian -mcpu=cortex-m0 -march=armv6-m -mthumb -ffunction-sections -fdata-sections -Wl,--gc-sections -Wl,-Map=motor_shield.map -Iinc src/startup_stm32.s src/main.c src/user_i2c.c src/tb6612.c -o motor_shield.elf -Tstm32f030.ld
+arm-none-eabi-objcopy -O binary motor_shield.elf motor_shield.bin
+arm-none-eabi-size motor_shield.elf
+   text	   data	    bss	    dec	    hex	filename
+   2032	   1084	   1056	   4172	   104c	motor_shield.elf
+
+</pre></div>
+</div>
+<p>Now, make sure you have stm32flash utility installed. Short the RTS
+and the 3V pins on the shield together, like this:</p>
+<img alt="projects/project-18439/images/3123331492797505129.jpg" src="projects/project-18439/images/3123331492797505129.jpg" />
+<p>And the connect the main pins of the shield to your USB2TTL as
+follows:GND ↔ GND</p>
+<p>3V3 ↔ 3V3 (or VCC or whatever it is called on your USB2TTL)</p>
+<p>D2 ↔ TX</p>
+<p>D1 ↔ RX</p>
+<p>and connect it to your computer. Now, see if you can communicate with
+the device:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ stm32flash /dev/ttyUSB0
+stm32flash 0.5
+
+http://stm32flash.sourceforge.net/
+
+Interface serial_posix: 57600 8E1
+Version      : 0x31
+Option 1     : 0x00
+Option 2     : 0x00
+Device ID    : 0x0444 (STM32F03xx4/6)
+- RAM        : 4KiB  (2048b reserved by bootloader)
+- Flash      : 32KiB (size first sector: 4x1024)
+- Option RAM : 16b
+- System RAM : 3KiB
+</pre></div>
+</div>
+<p>Now, you can unlock your shield:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ stm32flash /dev/ttyUSB0 -k
+stm32flash 0.5
+
+http://stm32flash.sourceforge.net/
+
+Interface serial_posix: 57600 8E1
+Version      : 0x31
+Option 1     : 0x00
+Option 2     : 0x00
+Device ID    : 0x0444 (STM32F03xx4/6)
+- RAM        : 4KiB  (2048b reserved by bootloader)
+- Flash      : 32KiB (size first sector: 4x1024)
+- Option RAM : 16b
+- System RAM : 3KiB
+Read-UnProtecting flash
+Done.
+
+$ stm32flash /dev/ttyUSB0 -u
+stm32flash 0.5
+
+http://stm32flash.sourceforge.net/
+
+Interface serial_posix: 57600 8E1
+Version      : 0x31
+Option 1     : 0x00
+Option 2     : 0x00
+Device ID    : 0x0444 (STM32F03xx4/6)
+- RAM        : 4KiB  (2048b reserved by bootloader)
+- Flash      : 32KiB (size first sector: 4x1024)
+- Option RAM : 16b
+- System RAM : 3KiB
+Write-unprotecting flash
+Done.
+
+</pre></div>
+</div>
+<p>And now you can flash it:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ stm32flash /dev/ttyUSB0 -v -w motor_shield.bin
+stm32flash 0.5
+
+http://stm32flash.sourceforge.net/
+
+Using Parser : Raw BINARY
+Interface serial_posix: 57600 8E1
+Version      : 0x31
+Option 1     : 0x00
+Option 2     : 0x00
+Device ID    : 0x0444 (STM32F03xx4/6)
+- RAM        : 4KiB  (2048b reserved by bootloader)
+- Flash      : 32KiB (size first sector: 4x1024)
+- Option RAM : 16b
+- System RAM : 3KiB
+Write to memory
+Erasing memory
+Wrote and verified address 0x08000c2c (100.00%) Done.
+
+</pre></div>
+</div>
+<p>Then disconnect all the wires (including the RTS pin), connect the
+shield to your WeMos D1 Mini, and it should work.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

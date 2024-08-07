@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>20-channel Servo Shield - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="channel-servo-shield">
+<h1>20-channel Servo Shield<a class="headerlink" href="#channel-servo-shield" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2016-11-30 in <a class="reference internal" href="../#project-13278"><span class="std std-ref">Servo Breakout for WeMos D1 Mini</span></a>.</p>
+<p>Yes, I keep refining the design. No, I don’t actually need all those
+servo shields. But it’s a fun challenge. So I made another one, this
+time controlling up to 20 servos at once.</p>
+<img alt="projects/project-13278/images/1623221480510802870.png" src="projects/project-13278/images/1623221480510802870.png" />
+<p>Note how all the servo sockets are on the edges. That means that if
+you use angled 3×10 male headers, you can actually stack those. And
+with the address selection on the analog pins, you can have up to 4
+shields at once. That’s 80 servos. Of course, if you just reprogram
+them to use a different address, you could have hundreds of them.</p>
+<p>So where are the two extra servo channels coming from? Turns out that
+if your ATmega328p uses an internal oscilator and you don’t have an
+external oscilator connected, you can use those pins as gpios.</p>
+<p>I’m still conflicted about whether to actually order this board or
+not. One idea is to order it, rewrite the firmware in plain C, and
+submit this to the 1kB contest…</p>
+</section>
+
+
+</div>
+  </body>
+</html>

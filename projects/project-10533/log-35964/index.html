@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Encoders - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="encoders">
+<h1>Encoders<a class="headerlink" href="#encoders" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2016-04-15 in <a class="reference internal" href="../#project-10533"><span class="std std-ref">Nano TTY</span></a>.</p>
+<p>The encoders arrived today, and I actually had to take a moment to
+read about them to understand how they work. Those are EVQWKA
+quadrature encoders, with an additional button activated by pressing
+on the wheel – which makes them perfect as an interface for all sorts
+of menus or scrolling:</p>
+<img alt="projects/project-10533/images/3519771460728529357.jpg" src="projects/project-10533/images/3519771460728529357.jpg" />
+<p>You can easily google for a datasheet for these, which will give you
+all the dimensions and the pinout. But it doesn’t say anything about
+the protocol used. Turns out that the protocol is so standard, that
+nobody even mentions it anymore in the datasheets.Inside of them there is a star-shaped contact, and two contacts that
+touch the prongs of the star. When you rotate the wheel, the star
+rotates too, and touches the two contacts. The order in which the
+contacts are touched tells you the direction of rotation. That’s it.
+This particular model has one pring per “click”, so you will get 10,
+00, 01, 11 on rotation one way, and 01, 00, 10, 11 on rotation the
+other way. You can easily detect those with the pin interrupts in
+Arduino, but I choose to use a library from <a class="reference external" href="http://www.pjrc.com/teensy/td_libs_Encoder.html">http://www.pjrc.com/teensy/td_libs_Encoder.html</a></p>
+<img alt="projects/project-10533/images/8173371460728851096.jpg" src="projects/project-10533/images/8173371460728851096.jpg" />
+<p>It works flawlessly. Now to program and assemble the whole thing…</p>
+</section>
+
+
+</div>
+  </body>
+</html>

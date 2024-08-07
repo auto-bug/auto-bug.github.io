@@ -1,0 +1,32 @@
+---
+blogpost: true
+date: 2017-07-23
+category: project-19921
+---
+
+# Proper Crawl
+Published on 2017-07-23 in {ref}`project-19921`.
+
+I went over the large SpiderWing and shortened its legs back to what {ref}`project-6050` has. The idea to make coxas much longer sounded great — you get longer
+steps and thus higher speed, without actually increasing the load on
+the servos (since coxas only move in the horizontal plane anyways).
+However, doing that also changes the reachable area of the leg from a
+shape similar to a pizza slice, to one that looks more like a slice of
+a pineapple — with the center removed. Do it too much, and you can no
+longer draw a nice long straight line inside it — meaning the robot's
+step has to be small.
+
+So I shortened the coxas, but left the tibias long — that actually
+increases the load, but the servos can handle it. Once the changes
+were done, I had to replace a few faulty servos, that were catching
+for some reason. After that, finding the set of parameters that would
+let the robot move at a decent speed was much easier:
+
+
+<iframe style="width: 500px; height: 281px;" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/4QuXRsifHEk"></iframe>
+
+Next on the list is smoothing all those movements. Right now they are
+very jerky, so much so that the legs tend to slip on the floor.
+Unfortunately, I will probably need to rewrite most of the gait code
+to do that.
+

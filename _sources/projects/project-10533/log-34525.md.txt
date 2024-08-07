@@ -1,0 +1,100 @@
+---
+blogpost: true
+date: 2016-03-25
+category: project-10533
+---
+
+# Smooth Scrolling on a SSD1306
+Published on 2016-03-25 in {ref}`project-10533`.
+
+The OLED display that I'm using doesn't have much room in it -- only 4
+lines with 21 characters in each. That means that to be useful and
+convenient, it has to have good scrolling. For the scrolling to be
+fast and smooth, it's best to implement it in hardware.\
+
+
+Luckily, the SSD1306 supports vertical scrolling by using the
+SSD1306_SETSTARTLINEcommand, which basically tells it where it should start reading its
+image buffer. Since the buffer wraps around, that lets us scroll it
+pixel-by-pixel. Neat.
+
+The second piece of the puzzle is that the display I have is 128×32
+pixels, and that chip was made for 128×64 pixels display -- so I have
+twice the amount of buffer space than the screen. I can do double
+buffering and other tricks!
+
+First I tried to use the display with the [Adafruit SSD1306 library](https://github.com/adafruit/Adafruit_SSD1306)  [ library](https://github.com/adafruit/Adafruit_SSD1306)  in I²C mode, but I couldn't quite get it to work. Turns out that the
+breakout I have uses SPI not I²C, even though the pins are labeled SCL
+and SDA... Turns out that SCL is simply just SPI SCK, and SDA is MOSI.
+There are also DC and RST pins, which actually gave me a hint that
+this is not I²C. Madness.
+
+Anyways, after playing with that library a little bit, I started to
+look for something more efficient, and found the [SSD1306Ascii](https://github.com/greiman/SSD1306Ascii)  library, which only does text output, but allows you to use custom
+fonts. Exactly what I need. It also has relatively small memory
+footprint, which leaves more room for my serial buffer.
+
+I only needed one small hack. In order to get access to the whole
+image buffer, I needed to trick the library into thinking that I
+actually have 64 rows of pixels, not 32. Fortunately, you pass a
+screen definition to it at initialization time, so that was trivial.
+Several hours of playing with the commands gave me this simple
+scrolling demo:
+
+
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="" src="https://www.youtube.com/embed/Iuvk_n8xXnw"></iframe>
+
+With this simple code:
+
+
+```cpp
+#define OLED_RST 8
+#define OLED_DC 9
+#define OLED_CS -1
+
+#include <SPI.h>
+#include "SSD1306Ascii.h"
+#include "SSD1306AsciiSpi.h"
+
+SSD1306AsciiSpi oled;
+
+// A version of the Adafruit128x32 display with 64 lines of buffer.
+static const DevType MEM_TYPE Adafruit128x32x64 = {
+    Adafruit128x32init, sizeof(Adafruit128x32init), 128, 64, 0
+};
+
+
+void setup() {
+    int scroll = 0;
+    oled.begin(&Adafruit128x32x64, OLED_CS, OLED_DC, OLED_RST);
+    oled.setFont(Stang5x7);
+
+    for (int line = 0; line < 20; ++line) {
+        oled.clearToEOL();
+        oled.print("Line ");
+        oled.println(line);
+        if (line >= 4) {
+            for (int i = 0; i < 8; ++i) {
+                delay(50);
+                oled.ssd1306WriteCmd(SSD1306_SETSTARTLINE | scroll % 64);
+                ++scroll;
+            }
+        } else {
+            delay(400);
+        }
+        if (oled.row() >= 7 && scroll >= 32) {
+            oled.home();
+        }
+        if (scroll >= 64) {
+            scroll = 0;
+        }
+    }
+}
+
+
+void loop() {}
+```
+
+Next, I will try to get the encoder to work, so that I can do the
+scrolling with a convenient scroll wheel. Unfortunately, I'm still
+waiting for the encoder to arrive, so that will be some time later.\

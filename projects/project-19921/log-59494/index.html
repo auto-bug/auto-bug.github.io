@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>The Good, The Bad and the Adorable - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="the-good-the-bad-and-the-adorable">
+<h1>The Good, The Bad and the Adorable<a class="headerlink" href="#the-good-the-bad-and-the-adorable" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2017-05-13 in <a class="reference internal" href="../#project-19921"><span class="std std-ref">SpiderWing</span></a>.</p>
+<p>I’m slowly moving along with this robot, despite the long silence. A
+few iterations of the PCBs, a few changes of direction, a hour of
+coding here and there, a lot of frustration – but I finally have the
+first, very shaky and suboptimal, gait.</p>
+<p>You can see in the video that I’m experimenting with different leg
+proportions – basically trying to make this robot faster. The SG92R
+servos seem to be handling the longer legs without problems, even at
+the standard 50Hz signal. I can always increase the frequency to get
+some more power from them, since they are underpowered anyways.</p>
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/EAlbmQ_CaLk"></iframe>
+<p>Of course a lot remains to be done there, most importantly I want to
+update the servo positions all the time, controlling their speed and
+exact path – and not just give the end position and wait for them to
+get there, like I’m doing now. This way it should be much less shaky
+and also able to respond to any sensors faster.</p>
+<p>However, I realized there is a fatal flaw in my world domination
+plans. Those robots are much too unreliable to actually enslave the
+humanity properly, so I need something to give them an edge over puny
+humans. My original plan of making them wear hats seemed to be a move
+in the right direction, so I decided to expand on that and make at
+least some of the robots as cute as possible – this way the humans
+should be less likely to fight back, even if they get a chance due to
+some miscalculation.</p>
+<p>I recently received a pack of new type of servos, SG50. They are not
+actually new, but I never used them before, so they are new to me.
+They are in the category of sub-micro servos, smaller than the popular
+SG90 and other 9g servos. They make nice stubby legs:</p>
+<img alt="projects/project-19921/images/4092601494627175602.jpg" src="projects/project-19921/images/4092601494627175602.jpg" />
+<p>Apart from the childish proportions, I also added a pair of RGB LEDs
+as “eyes”. Of course they will change color according to the status of
+the robot. I am also using a smaller Feather board here, the M0 Basic,
+which means it runs on CircuitPython, and not MicroPython.</p>
+<p>The plan is to finish it within a week, so that I can take it with me
+to <a class="reference external" href="http://PyCon.US">PyCon.US</a>  and show it off there.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>http://deshipu.art/</id>
+  <title>deshipu.art - Posts tagged tote</title>
+  <updated>2024-08-07T20:31:03.629848+00:00</updated>
+  <link href="http://deshipu.art/"/>
+  <link href="http://deshipu.art/blog/tag/tote/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-19603/</id>
+    <title>D1 Mini Tote</title>
+    <updated>2017-01-26T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="d1-mini-tote"&gt;
+
+&lt;p&gt;A version of Tote with the D1 Mini ESP8266 board as a brain.&lt;/p&gt;
+&lt;div class="project-thumb"&gt;
+&lt;a class="reference external image-reference" href="/_images/2666111485449727353.jpg"&gt;&lt;img alt="projects/project-19603/images/2666111485449727353.jpg" src="projects/project-19603/images/2666111485449727353.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/2334121500903935343.jpg"&gt;&lt;img alt="projects/project-19603/images/2334121500903935343.jpg" src="projects/project-19603/images/2334121500903935343.jpg" /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;This is the next step of evolution of {ref}`project-6050`  and {ref}`project-9927` , the spider robots that were designed to be as simple and easy to
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;build as possible, without sacrificing the proper walking algorithms.
+This time the focus is on making it easier to program and to modify by
+attaching additional hardware.&lt;/p&gt;
+&lt;p&gt;While Tote was focusing on building a proper quadruped robot without
+special materials and tools and as cheaply as possible, the subsequent
+projects focus on making the robot more reliable and easier to
+experiment with. The &lt;a class="reference internal" href="../../../projects/project-19921/#project-19921"&gt;&lt;span class="std std-ref"&gt;SpiderWing&lt;/span&gt;&lt;/a&gt; project loosens the budget constraints, aiming to make a sturdier,
+stronger and more consistently reproducible robot. This project works
+in parallel to that, trying to incorporate the same improvements, but
+without rising the price too much. The two projects are meant to cover
+the conflicting needs of hobby robot developers.&lt;/p&gt;
+&lt;p&gt;Of course, the overarching goal for both of them is to stimulate
+research in affordable and reliable legged robots, so that we can have
+devices like this at our homes one day.&lt;/p&gt;
+&lt;section id="logs"&gt;
+&lt;h2&gt;Logs&lt;/h2&gt;
+&lt;ul class="postlist-style-none postlist simple"&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-05-08 - &lt;a class="reference internal" href="../../../projects/project-19603/log-163051/"&gt;One More Version&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-06-15 - &lt;a class="reference internal" href="../../../projects/project-19603/log-61660/"&gt;Sturdier Legs&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-06-14 - &lt;a class="reference internal" href="../../../projects/project-19603/log-61585/"&gt;More Brain Power&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-02-20 - &lt;a class="reference internal" href="../../../projects/project-19603/log-53577/"&gt;Battery Protection&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-02-18 - &lt;a class="reference internal" href="../../../projects/project-19603/log-53501/"&gt;Smaller ATmega&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-01-29 - &lt;a class="reference internal" href="../../../projects/project-19603/log-52602/"&gt;Debugging&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-01-26 - &lt;a class="reference internal" href="../../../projects/project-19603/log-52462/"&gt;Surprise PCBs&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section id="instructions"&gt;
+&lt;h2&gt;Instructions&lt;/h2&gt;
+&lt;section id="mechanical-assembly"&gt;
+&lt;h3&gt;Mechanical Assembly&lt;/h3&gt;
+&lt;p&gt;For mechanical assembly, follow the instructions at &lt;a class="reference external" href="http://tote.readthedocs.io/en/latest/assembly_v5.html#legs"&gt;http://tote.readthedocs.io/en/latest/assembly_v5.html#legs&lt;/a&gt;&lt;/p&gt;
+&lt;/section&gt;
+&lt;hr class="docutils" /&gt;
+&lt;section id="electronics"&gt;
+&lt;h3&gt;Electronics&lt;/h3&gt;
+&lt;p&gt;Solder the headers, PWM chip and resistors onto the board. Add the
+power switch and battery holder. Connect the servo plugs.&lt;/p&gt;
+&lt;/section&gt;
+&lt;hr class="docutils" /&gt;
+&lt;section id="programming"&gt;
+&lt;h3&gt;Programming&lt;/h3&gt;
+&lt;p&gt;Copy the python code from project’s repository onto your D1 Mini using
+Adafruit’s Ampy utility. Plug the D1 Mini into the PCB.&lt;/p&gt;
+&lt;/section&gt;
+&lt;hr class="docutils" /&gt;
+&lt;section id="extending"&gt;
+&lt;h3&gt;Extending&lt;/h3&gt;
+&lt;p&gt;Use the D1 Mini’s headers to add shields with sensors and other
+components to the robot. Modify the code to take advantage of them.&lt;/p&gt;
+&lt;/section&gt;
+&lt;/section&gt;
+&lt;hr class="docutils" /&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-19603/" rel="alternate"/>
+    <summary>A version of Tote with the D1 Mini ESP8266 board as a brain.</summary>
+    <category term="2017HackadayPrize" label="2017HackadayPrize"/>
+    <category term="ESP8266" label="ESP8266"/>
+    <category term="ROBOT" label="ROBOT"/>
+    <category term="WALKING" label="WALKING"/>
+    <category term="d1mini" label="d1 mini"/>
+    <category term="hardware" label="hardware"/>
+    <category term="ongoingproject" label="ongoing project"/>
+    <category term="quadruped" label="quadruped"/>
+    <category term="spider" label="spider"/>
+    <category term="tote" label="tote"/>
+    <published>2017-01-26T00:00:00+01:00</published>
+  </entry>
+</feed>

@@ -1,0 +1,60 @@
+---
+blogpost: true
+date: 2016-03-25
+category: project
+tags:  oled, tty, avr, 2016HackadayPrize, hardware, ongoing project, serial
+image: 1
+---
+
+# Nano TTY
+
+Small serial terminal for debugging your robots
+
+<div class="project-thumb">
+
+:::{image} images/7772871460731788576.jpg
+:target: /_images/7772871460731788576.jpg
+:::
+
+:::{image} images/9481741458912065926.jpg
+:target: /_images/9481741458912065926.jpg
+:::
+
+:::{image} images/9411211460731782215.jpg
+:target: /_images/9411211460731782215.jpg
+:::
+
+</div>
+
+
+    Once upon a time I found a Nokia display in my drawer, and figured out
+I need to try to use it in a project. So I went and built the simplest
+thing -- a small serial display, that I can connect to my robots for
+debugging. That's how {ref}`project-7111`  was born. It is actually very useful, but a little bit cumbersome to
+use. So I decided to try and improve the design a little bit.
+
+Nano TTY is following the same idea -- a small screen that lets you
+see the serial traffic from your project. However, there are some
+improvements:
+
+
+ * much smaller and lighter
+ * high-contrast OLED display
+ * fast, smooth scrolling, using a scroll wheel
+ * large scroll buffer
+
+There may be further improvements, depending on how well this goes,
+but this is the minimum plan.
+
+
+
+
+
+## Logs
+
+:::{postlist}
+:category: project-10533
+:::
+
+## Instructions
+

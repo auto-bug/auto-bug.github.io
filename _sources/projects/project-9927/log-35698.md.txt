@@ -1,0 +1,53 @@
+---
+blogpost: true
+date: 2016-04-11
+category: project-9927
+---
+
+# Fixed Firmware
+Published on 2016-04-11 in {ref}`project-9927`.
+
+As promised, I fixed the firmware for the robot -- now it will start
+walking immediately after being switched on, and after connecting you
+can control it. Below are flashing instructions.
+
+
+ 1. Download the [firmware-combined.bin](https://cdn.hackaday.io/files/9927424716768/firmware-combined.bin)  file, and save in the current directory.
+ 1. Download the [esptool.py](https://raw.githubusercontent.com/themadinventor/esptool/master/esptool.py)  file, and save in the current directory.
+ 1. Connect the USB2TTL to the pins on the side of the robot:
+  * gnd ↔ gnd
+  * rx ↔ tx
+  * tx ↔ rx
+
+
+ 1. Connect together two pin holes (or pins, if you soldered pins in
+there) on the other side of the robot (leave the third pin alone):
+  * gnd ↔ sda
+
+
+ 1. Connect the USB2TTL to your computer.
+ 1. Switch on the robot.
+ 1. Run the flashing command:
+```bash
+$ python esptool.py --port /dev/ttyUSB0 --baud 460800 write_flash --flash_size=8m 0 firmware-combined.bin
+```
+
+
+ On Windows/Mac change the path to the USB2TTL port accordingly.
+
+ 1. Wait for the firmware to flash. If you get an error, try again.
+ 1. Switch the robot off.
+ 1. Remove the connector from the pin holes.
+ 1. Switch the robot on and see it walk. Congratulations, you have the new
+firmware.
+
+Note, that flashing new firmware will not delete the network
+information from the board, if you had the robot connect to some
+network. If you want to do that, you can with this command (before
+flashing the firmware):
+
+
+```sql
+$ python esptool.py --port /dev/ttyUSB0 erase_flash
+```
+

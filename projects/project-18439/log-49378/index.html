@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>SWD Programming - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="swd-programming">
+<h1>SWD Programming<a class="headerlink" href="#swd-programming" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2016-11-22 in <a class="reference internal" href="../#project-18439"><span class="std std-ref">Motor Shield Reprogramming</span></a>.</p>
+<p>Second approach to this is using the SWD protocol with my Chinese ST-
+Link V2 clone. That requires getting at the SWD pins. Fortunately,
+they are near the edge of the chip:</p>
+<img alt="projects/project-18439/images/9683431479845007181.jpg" src="projects/project-18439/images/9683431479845007181.jpg" />
+<p>Then I connected it according to the pinout of my programmer (the
+second one):</p>
+<img alt="http://wiki.sgmk-ssam.ch/images/d/dc/ST-LinkV2_pinout_01.jpg" src="http://wiki.sgmk-ssam.ch/images/d/dc/ST-LinkV2_pinout_01.jpg" />
+<p>Now just “make program” in that template, and…</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">openocd</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">openocd</span><span class="o">/</span><span class="n">scripts</span><span class="o">/</span><span class="n">board</span><span class="o">/</span><span class="n">stm32f0discovery</span><span class="o">.</span><span class="n">cfg</span> <span class="o">-</span><span class="n">f</span> <span class="n">extra</span><span class="o">/</span><span class="n">stm32f0</span><span class="o">-</span><span class="n">openocd</span><span class="o">.</span><span class="n">cfg</span> <span class="o">-</span><span class="n">c</span> <span class="s2">&quot;stm_flash `pwd`/main.bin&quot;</span> <span class="o">-</span><span class="n">c</span> <span class="n">shutdown</span>
+<span class="n">Open</span> <span class="n">On</span><span class="o">-</span><span class="n">Chip</span> <span class="n">Debugger</span> <span class="mf">0.9.0</span> <span class="p">(</span><span class="mi">2015</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">02</span><span class="o">-</span><span class="mi">10</span><span class="p">:</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">Licensed</span> <span class="n">under</span> <span class="n">GNU</span> <span class="n">GPL</span> <span class="n">v2</span>
+<span class="n">For</span> <span class="n">bug</span> <span class="n">reports</span><span class="p">,</span> <span class="n">read</span>
+	<span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">openocd</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">doc</span><span class="o">/</span><span class="n">doxygen</span><span class="o">/</span><span class="n">bugs</span><span class="o">.</span><span class="n">html</span>
+<span class="n">Info</span> <span class="p">:</span> <span class="n">The</span> <span class="n">selected</span> <span class="n">transport</span> <span class="n">took</span> <span class="n">over</span> <span class="n">low</span><span class="o">-</span><span class="n">level</span> <span class="n">target</span> <span class="n">control</span><span class="o">.</span> <span class="n">The</span> <span class="n">results</span> <span class="n">might</span> <span class="n">differ</span> <span class="n">compared</span> <span class="n">to</span> <span class="n">plain</span> <span class="n">JTAG</span><span class="o">/</span><span class="n">SWD</span>
+<span class="n">adapter</span> <span class="n">speed</span><span class="p">:</span> <span class="mi">1000</span> <span class="n">kHz</span>
+<span class="n">adapter_nsrst_delay</span><span class="p">:</span> <span class="mi">100</span>
+<span class="n">none</span> <span class="n">separate</span>
+<span class="n">srst_only</span> <span class="n">separate</span> <span class="n">srst_nogate</span> <span class="n">srst_open_drain</span> <span class="n">connect_deassert_srst</span>
+<span class="n">Info</span> <span class="p">:</span> <span class="n">Unable</span> <span class="n">to</span> <span class="n">match</span> <span class="n">requested</span> <span class="n">speed</span> <span class="mi">1000</span> <span class="n">kHz</span><span class="p">,</span> <span class="n">using</span> <span class="mi">950</span> <span class="n">kHz</span>
+<span class="n">Info</span> <span class="p">:</span> <span class="n">Unable</span> <span class="n">to</span> <span class="n">match</span> <span class="n">requested</span> <span class="n">speed</span> <span class="mi">1000</span> <span class="n">kHz</span><span class="p">,</span> <span class="n">using</span> <span class="mi">950</span> <span class="n">kHz</span>
+<span class="n">Info</span> <span class="p">:</span> <span class="n">clock</span> <span class="n">speed</span> <span class="mi">950</span> <span class="n">kHz</span>
+<span class="n">Info</span> <span class="p">:</span> <span class="n">STLINK</span> <span class="n">v2</span> <span class="n">JTAG</span> <span class="n">v17</span> <span class="n">API</span> <span class="n">v2</span> <span class="n">SWIM</span> <span class="n">v4</span> <span class="n">VID</span> <span class="mh">0x0483</span> <span class="n">PID</span> <span class="mh">0x3748</span>
+<span class="n">Info</span> <span class="p">:</span> <span class="n">using</span> <span class="n">stlink</span> <span class="n">api</span> <span class="n">v2</span>
+<span class="n">Info</span> <span class="p">:</span> <span class="n">Target</span> <span class="n">voltage</span><span class="p">:</span> <span class="mf">3.497322</span>
+<span class="n">Info</span> <span class="p">:</span> <span class="n">stm32f0x</span><span class="o">.</span><span class="n">cpu</span><span class="p">:</span> <span class="n">hardware</span> <span class="n">has</span> <span class="mi">4</span> <span class="n">breakpoints</span><span class="p">,</span> <span class="mi">2</span> <span class="n">watchpoints</span>
+<span class="n">stm_erase</span>
+<span class="n">Error</span><span class="p">:</span> <span class="n">timed</span> <span class="n">out</span> <span class="k">while</span> <span class="n">waiting</span> <span class="k">for</span> <span class="n">target</span> <span class="n">halted</span>
+<span class="n">TARGET</span><span class="p">:</span> <span class="n">stm32f0x</span><span class="o">.</span><span class="n">cpu</span> <span class="o">-</span> <span class="n">Not</span> <span class="n">halted</span>
+<span class="ow">in</span> <span class="n">procedure</span> <span class="s1">&#39;stm_flash&#39;</span> 
+<span class="ow">in</span> <span class="n">procedure</span> <span class="s1">&#39;reset&#39;</span> <span class="n">called</span> <span class="n">at</span> <span class="n">file</span> <span class="s2">&quot;extra/stm32f0-openocd.cfg&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">8</span>
+<span class="ow">in</span> <span class="n">procedure</span> <span class="s1">&#39;ocd_bouncer&#39;</span>
+
+
+<span class="n">Makefile</span><span class="p">:</span><span class="mi">72</span><span class="p">:</span> <span class="n">recipe</span> <span class="k">for</span> <span class="n">target</span> <span class="s1">&#39;program&#39;</span> <span class="n">failed</span>
+<span class="n">make</span><span class="p">:</span> <span class="o">***</span> <span class="p">[</span><span class="n">program</span><span class="p">]</span> <span class="n">Error</span> <span class="mi">1</span>
+
+</pre></div>
+</div>
+<p>Failure.</p>
+<p>I suspect that I shouldn’t be using the configuration for the
+discovery board, but somehow write my own, however, I can’t seem to be
+able to find any examples…</p>
+</section>
+
+
+</div>
+  </body>
+</html>

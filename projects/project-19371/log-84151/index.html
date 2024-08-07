@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Version 3.0 - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="version-3-0">
+<h1>Version 3.0<a class="headerlink" href="#version-3-0" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2018-01-25 in <a class="reference internal" href="../#project-19371"><span class="std std-ref">D1 Mini X-Pad Shield</span></a>.</p>
+<p>I have been working a little on this project in the recent months,
+designing a new PCB using different parts and so on, but I didn’t
+really have time to assemble and test it properly. Recently I found
+the PCBs in a drawer, found the matching parts, and decided to give it
+a go. Behold, version 3.0:</p>
+<img alt="projects/project-19371/images/6528201516912435919.jpg" src="projects/project-19371/images/6528201516912435919.jpg" />
+<p>and the back side:</p>
+<p>———- more ———-</p>
+<img alt="projects/project-19371/images/3290671516912471580.jpg" src="projects/project-19371/images/3290671516912471580.jpg" />
+<p>I’m using a much smaller PCA9554 here, which has pretty much the same
+I²C interface. I also put all the parts on the back, so that you can
+stack this board with the display more tightly.</p>
+<p>Just like version 2.0, it has friction-fit pin headers, so you don’t
+even need to solder anything. As a bonus, I added a header for a
+SSD1331 display module, which you can simply plug in there. Only one
+problem, the module is too wide and covers some of the buttons.</p>
+<p>I also used different buttons — initially I wanted to use the same
+kind that is on the Pro Mini boards for reset, but then realized that
+the “quiet” ALPS buttons fit that footprint too. Well, they almost fit
+— they are a bit too wide, and stick a little bit out on the D-pad
+side. Oh well.</p>
+<p>Overall, I don’t think the improvements are worth rolling a new
+version on Tindie — and I still have a bunch of version 2.0 ones to
+sell. However, I’m already thinking about version 4.0, which will be
+bigger, have footprints for multiple different display modules, and
+will use an ATtiny24 to do de-bouncing and buffering, just like on <span class="xref std std-ref">project-27757</span> . It can take a while to finalize that one, though.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

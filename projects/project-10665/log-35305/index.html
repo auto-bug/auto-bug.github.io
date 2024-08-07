@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Controller PCB - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="controller-pcb">
+<h1>Controller PCB<a class="headerlink" href="#controller-pcb" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2016-04-06 in <a class="reference internal" href="../#project-10665"><span class="std std-ref">Pony Bot</span></a>.</p>
+<p>While I wait to cut the new legs, I also prepared a new PCB for the
+controller. I plan to use an ESP-12 module with Micropython on it to
+control the eight servos, but I can’t use the same board I had in <span class="xref std std-ref">project-8521</span> , because Micropython allows PWM on different pins. So I went and made
+a quick breakout board again, this time with plenty pull-up and pull-
+down resistors, so that I can also use those pins that normally select
+the boot mode:</p>
+<img alt="projects/project-10665/images/2398511459932623618.png" src="projects/project-10665/images/2398511459932623618.png" />
+<p>As you can probably guess from the color, the PCB is ordered from
+OSHPark – I prefer it for the boards smaller than 5×5cm, even though
+the shipping from US takes ages. The connections are nothing special
+– all the servos are connected to all the PWM-capable pins, serial
+and ground are available at the top, and power is at the bottom. I
+used holes instead of pads for attaching the ESP-12 module, because
+that is easier to solder. The antenna will stick out at the top. The
+four SMD resistors provide pull-ups for CH_EN, GPIO0 and GPIO2, and a
+pull-down for GPIO15. I will need to pick the values of the resistors
+such that they work well with the servos connected to those pins
+(well, except for CH_PD). I have the ADC and the serial pins
+available, so I will probably use them for some sensors – not sure
+what exactly yet.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

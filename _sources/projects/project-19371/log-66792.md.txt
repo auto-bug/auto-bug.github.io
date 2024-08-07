@@ -1,0 +1,28 @@
+---
+blogpost: true
+date: 2017-09-07
+category: project-19371
+---
+
+# New Version Assembled
+Published on 2017-09-07 in {ref}`project-19371`.
+
+It took me a while to assemble this, because by mistake I used 4x4mm
+button footprints instead of the 5x5mm, so I had to order matching
+switches. But it's there, and it's working. Here's a comparison photo
+with the old version:
+
+
+:::{image} images/8712011504784346256.jpg
+
+:::
+\
+
+
+The friction-fit alternating pins work really well, and make the whole
+thing much smaller. The chip, even though SMD, is still pretty huge —
+I'd love to find a small, preferably QFN, chip that can handle buttons
+over I²C, but I'm too lazy to look for it specially. The buttons are
+much more convenient than the old "joystick", even though they are
+still not very friendly to your fingertips.
+

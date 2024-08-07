@@ -1,0 +1,171 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Firmware in Plain C - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="firmware-in-plain-c">
+<h1>Firmware in Plain C<a class="headerlink" href="#firmware-in-plain-c" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2016-12-13 in <a class="reference internal" href="../#project-13278"><span class="std std-ref">Servo Breakout for WeMos D1 Mini</span></a>.</p>
+<p>I thought that maybe I would be able to get the servo controller code
+below 1kB, and enter this project into the contest. And even if I
+don’t, hey, it’s a great opportunity to learn about AVR’s TWI
+peripheral, so why not. Thus, for the last week I had the datasheet
+for ATmega328p and the application notes for TWI open on one of my
+workspaces all the time – but apart from an occasional glance, I
+didn’t do much with it. Finally, Sunday came and I felt motivated
+enough to begin.</p>
+<p>The PWM code, which I stole from the <span class="xref std std-ref">project-770</span>  project initially, is written in C and assembly, so no changes were
+needed there. I just needed the I²C slave code. In addition, since the
+PWM is interrupt-driven, it would be best to_not_use interrupts in the communication code – this way it won’t
+interfere with PWM timings.</p>
+<p>Turns out you can do that quite easily. You just keep checking the
+TWINT flag in a tight loop, and when it gets set, you do what you
+would do in an interrupt normally, then just clear the flag and
+resume. The theory is quite simple, and the slave code is actually
+much simpler than the master code (especially since I’m only handling
+writes, and don’t care about reads). It still took me two days to get
+it working – somehow I couldn’t get the ATmega to even ACK its own
+slave address…</p>
+<p>Frustrated, I swapped the D1 Mini board that I was using to test the
+I²C communication (MicroPython is super-convenient for that, as you
+can just type stuff at the console and have it execute live), for a
+Adafruit HUZZAH Feather, changed the pins from GPIO4 and GPIO5 to
+GPIO0 and GPIO2 (because they have pullups already), and… it still
+didn’t work.</p>
+<p>When I shared my frustration at the hacker channel, <a class="reference external" href="https://hackaday.io/christoph">Christoph</a>  suggested I try with a slower clock. So I lowered the clock frequency
+from 400kHz to 100kHz, and it magically worked. That gave me an idea
+– maybe the pullups are too weak for the faster speed? So I tried
+enabling the internal pullups on the ATmega (I know, I know), and it
+works at 400kHz now too.</p>
+<p>Here’s the code, if you are interested:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#define PWM_MAX_PINS 12</span>
+<span class="cp">#define PWM_PERIOD 20000L</span>
+<span class="c1">// 50Hz</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;pwm.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;avr/io.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#define I2C_ADDRESS 0x10</span>
+<span class="cp">#define I2C_BUFFER_SIZE 32</span>
+
+
+<span class="k">volatile</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">ports</span><span class="p">[</span><span class="n">PWM_MAX_PINS</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w"> </span><span class="o">&amp;</span><span class="n">PORTD</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">PORTD</span><span class="p">,</span><span class="w"></span>
+<span class="w"> </span><span class="o">&amp;</span><span class="n">PORTD</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">PORTD</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">PORTD</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">PORTD</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">PORTD</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">PORTD</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">PORTB</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">PORTB</span><span class="p">,</span><span class="w"></span>
+<span class="w"> </span><span class="o">&amp;</span><span class="n">PORTB</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">PORTB</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">PORTB</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">PORTB</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">PORTC</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">PORTC</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">PORTC</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">PORTC</span><span class="p">,</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+<span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">pins</span><span class="p">[</span><span class="n">PWM_MAX_PINS</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">i2c_buffer</span><span class="p">[</span><span class="n">I2C_BUFFER_SIZE</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">i2c_cursor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">servo</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">union</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">bytes</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span><span class="w"></span>
+<span class="w">        </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="n">bytes2int</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">pwm_init</span><span class="p">(</span><span class="n">ports</span><span class="p">,</span><span class="w"> </span><span class="n">pins</span><span class="p">,</span><span class="w"> </span><span class="n">PWM_MAX_PINS</span><span class="p">,</span><span class="w"> </span><span class="n">PWM_PERIOD</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">PWM_MAX_PINS</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">pwm_set_phase_batch</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">pwm_apply_batch</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">PORTC</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="n">PC4</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="n">PC5</span><span class="p">;</span><span class="w"> </span><span class="c1">// enable pullups</span>
+<span class="w">    </span><span class="n">TWAR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">I2C_ADDRESS</span><span class="o">&lt;&lt;</span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">TWCR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="n">TWEN</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="n">TWINT</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="n">TWEA</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">TWCR</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="n">TWINT</span><span class="p">)))</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+<span class="w">        </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">TWSR</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0xF8</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="mh">0x60</span><span class="p">:</span><span class="w"> </span><span class="c1">// received address for write and acked</span>
+<span class="w">                </span><span class="n">i2c_cursor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">                </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="mh">0x80</span><span class="p">:</span><span class="w"> </span><span class="c1">// received data and acked</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="mh">0x88</span><span class="p">:</span><span class="w"> </span><span class="c1">// received data and nacked</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i2c_cursor</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">I2C_BUFFER_SIZE</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="n">i2c_buffer</span><span class="p">[</span><span class="n">i2c_cursor</span><span class="o">++</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TWDR</span><span class="p">;</span><span class="w"></span>
+<span class="w">                </span><span class="p">}</span><span class="w"></span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="mh">0xa0</span><span class="p">:</span><span class="w"> </span><span class="c1">// stop or repeated start received</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i2c_cursor</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="n">servo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i2c_buffer</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span><span class="w"></span>
+<span class="w">                    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">i2c_cursor</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                        </span><span class="n">bytes2int</span><span class="p">.</span><span class="n">bytes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i2c_buffer</span><span class="p">[</span><span class="n">i</span><span class="p">];</span><span class="w"></span>
+<span class="w">                        </span><span class="n">bytes2int</span><span class="p">.</span><span class="n">bytes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i2c_buffer</span><span class="p">[</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">];</span><span class="w"></span>
+<span class="w">                        </span><span class="n">pwm_set_phase_batch</span><span class="p">(</span><span class="n">servo</span><span class="p">,</span><span class="w"> </span><span class="n">bytes2int</span><span class="p">.</span><span class="n">value</span><span class="p">);</span><span class="w"></span>
+<span class="w">                        </span><span class="o">++</span><span class="n">servo</span><span class="p">;</span><span class="w"></span>
+<span class="w">                        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">servo</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">PWM_MAX_PINS</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                            </span><span class="n">servo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">                        </span><span class="p">}</span><span class="w"></span>
+<span class="w">                    </span><span class="p">}</span><span class="w"></span>
+<span class="w">                    </span><span class="n">pwm_apply_batch</span><span class="p">();</span><span class="w"></span>
+<span class="w">                </span><span class="p">}</span><span class="w"></span>
+<span class="w">                </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>However, it turned out that all my effort is for nothing. While my I²C
+code is only about 250 bytes (already a quarter of the limit, if you
+think about it), the PWM code I’m using totals almost 3kB. I should
+have checked that before I started.So no contest for this particular project, at least for now – unless
+I manage to write my own servo PWM code that is more optimized for
+size, which is always an option – I could then even drop the non-
+commercial license, and let the China churn out some cheap servo
+controllers… We will see, for now I switched my attention to other
+projects.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

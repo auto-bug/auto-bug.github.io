@@ -1,0 +1,36 @@
+---
+blogpost: true
+date: 2016-11-25
+category: project-9769
+---
+
+# Make it Fit in 1kB
+Published on 2016-11-25 in {ref}`project-9769`.
+
+I just submitted this project to the 1kB challenge too, because I
+realized that if I only replace the pinMode calls with a suitable DDRB
+command, I can get it small enough!
+
+
+```sql
+Sketch uses 888 bytes (10%) of program storage space. Maximum is 8,192 bytes.
+Global variables use 119 bytes (23%) of dynamic memory, leaving 393 bytes for local variables. Maximum is 512 bytes.
+
+```
+
+You only need to change the setup() function:
+
+
+```cpp
+void setup() {
+    DDRB = 1<<0 | 1<<1;
+
+    // Setup the PWM clock to ~62.5Hz for the servos.
+    TCCR0A = 2<<COM0A0 | 2<<COM0B0 | 3<<WGM00;
+    TCCR0B = 0<<WGM02 | 1<<CS00 | 1<<CS01 | 0<<CS02;
+
+    OCR0A = 0;
+    OCR0B = 0;
+} 
+```
+

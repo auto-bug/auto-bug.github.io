@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Matrix - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="matrix">
+<h1>Matrix<a class="headerlink" href="#matrix" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2015-10-31 in <a class="reference internal" href="../#project-8282"><span class="std std-ref">Alpen Clack</span></a>.</p>
+<p>The favorite microcontroller for all things USB, such as keyboards,
+joysticks or mice, is the good old ATMega 32U4, well known from the
+Arduino Leonardo. Of course I don’t plan to stuff an Arduino-footprint
+board inside my keyboard, I need a smaller board. There are two
+popular small boards with that chip. One is the Pro Micro, the other
+is Teensy 2.0. I have some Pro Micros, which I purchased for around
+$4, in my drawer just for the occasions like that. The keyboard
+modding community seems to prefer the Teensy for some reason, even
+though it’s around $15. Oh well, I suspected it was because it had a
+GUI uploader.</p>
+<p>I was wrong.</p>
+<p>It turns out that Pro Micro doesn’t break out all the pins. In fact,
+it only breaks out 18 GPIO pins, and uses 2 more for build-in LEDs,
+leaving the remaining 5 pins unconnected. Just take a look at the
+schematic:</p>
+<img alt="projects/project-8282/images/2759961446313119316.png" src="projects/project-8282/images/2759961446313119316.png" />
+<hr class="docutils" />
+<p>OK, with some delicate soldering I can reclaim the two LED pins –
+just remove the LEDs and solder wires in that place. That gives me 20
+pins to work with. My keyboard has 88 keys. That means, that if I make
+a matrix 8×11, I can support them all with 19 pins, and even have one
+pin left for a LED or something. Yay. But 8×11 is not exactly how the
+keyboard looks physically – it’s more like 5.5×16 (some columns have
+5 rows, some have 6). So, to get 8×11, I will have to transpose it and
+merge every two neighboring columns together. That’s doable, it just
+means I will have fun time converting the layouts.</p>
+<p>Now, let’s look for some ready-to-use firmware, so that I don’t have
+to do all this coding myself (not that it’s very complicated, but I’m
+lazy). For that chip, this seems to be pretty popular: <a class="reference external" href="https://github.com/tmk/tmk_keyboard">https://github.com/tmk/tmk_keyboard</a></p>
+<p>First, I burned one of the example keyboards to the board with
+avrdude:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>avrdude -p atmega32u4 -P /dev/ttyACM0  -c avr109  -U flash:w:gh60.hex
+</pre></div>
+</div>
+<p>(you have to get it into the boot mode first by pressing reset right
+when it boots).</p>
+<p>Then I connected some of the switches to some of the column/row pins,
+and pressed them – and voila, it typed some letters! So the firmware
+works great.</p>
+<p>Next, I will have to modify it to support my particular keyboard
+layout, with this almost square matrix. Looking at the_matrix.c_ file in the examples, you can see code like:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/* Row pin configuration</span>
+<span class="cm"> * row: 0   1   2   3   4</span>
+<span class="cm"> * pin: D0  D1  D2  D3  D5</span>
+<span class="cm"> */</span><span class="w"></span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">unselect_rows</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Hi-Z(DDR:0, PORT:0) to unselect</span>
+<span class="w">    </span><span class="n">DDRD</span><span class="w">  </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="mb">0b00101111</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">PORTD</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="mb">0b00101111</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Hmmm…. Does that mean I need to have all row pins on the same port?
+I need 8 rows, so that would be doable… Let’s see… Nope. Whoever
+designed the Pro Micro, he or she left out a single pin from each
+port, so that no port has a complete set of pins broken out. Splendid.
+Let’s look at the other examples…</p>
+<p>OK, I can pretty much write anything I want in those functions, all I
+need is to initialize the pins I want  and read them all into a single
+number with something like:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="nf">read_rows</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">PIND</span><span class="o">&amp;</span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"></span>
+<span class="w">           </span><span class="p">(</span><span class="n">PIND</span><span class="o">&amp;</span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"></span>
+<span class="w">           </span><span class="p">(</span><span class="n">PIND</span><span class="o">&amp;</span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"></span>
+<span class="w">           </span><span class="p">(</span><span class="n">PIND</span><span class="o">&amp;</span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"></span>
+<span class="w">           </span><span class="p">(</span><span class="n">PIND</span><span class="o">&amp;</span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"></span>
+<span class="w">           </span><span class="p">(</span><span class="n">PINB</span><span class="o">&amp;</span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">7</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Not very pretty, I bet I could write it nicer, but that should work.OK, writing it all and writing the layout definition is going to take
+some time, but at least I know how to proceed. See you at the other
+end.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

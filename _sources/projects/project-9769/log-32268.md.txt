@@ -1,0 +1,22 @@
+---
+blogpost: true
+date: 2016-02-20
+category: project-9769
+---
+
+# Movement Test
+Published on 2016-02-20 in {ref}`project-9769`.
+
+I have the mechanical part ready, and I did a small test of the ears
+movement. They move so slow because that's what the test does, not
+because they are so slow -- in fact, they can move into a new position
+quite fast.
+
+
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="" src="https://www.youtube.com/embed/771hgGW72jg"></iframe>
+
+On the control side, I gave up on the Pololu IMU, and instead went
+with a simple GY-61 analog accelerometer. This should be more than
+enough, since I only need to react to movements, and this is much
+simpler to interface.
+

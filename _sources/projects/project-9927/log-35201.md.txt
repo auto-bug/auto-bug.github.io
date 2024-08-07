@@ -1,0 +1,35 @@
+---
+blogpost: true
+date: 2016-04-04
+category: project-9927
+---
+
+# First Steps
+Published on 2016-04-04 in {ref}`project-9927`.
+
+With the kits all soldered and ready, I'm focusing on the software
+development. As usual, I won't have everything I wanted there at
+first, so expect software updates after the workshop. However, the
+basic walking is a must, so I'm focusing on that. The Micropython for
+ESP8266 is actually usable enough now, and I only needed a small patch
+to slow down the I²C communication, so that the Arduino can keep up
+without clock stretching. After doing that, and adding the Python code
+to the scripts directory, I compiled a working version of the
+firmware. Here are the first steps of the robot:
+
+
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="" src="https://www.youtube.com/embed/E3FFcJhqiT0"></iframe>
+
+Of course for now the walking is slowed down (with long pauses between
+movements) and the leg reach is small -- it should be much faster and
+smoother when I tune it. I will also need to add a way to control it
+over WiFi, and to read any sensors connected to the Arduino. By
+default, there is going to be only one telemetry value you can read,
+the battery voltage, but of course you can connect pretty much any
+sensor you can think of.
+
+Also note that the front left hip servo is broken and only moves into
+two positions -- that's because I had to use recycled servos for the
+prototype. On the workshop we will use the new servos that just
+arrived, and they should all be fine.
+

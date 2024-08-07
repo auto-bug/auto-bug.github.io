@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Designing a Keyboard - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="designing-a-keyboard">
+<h1>Designing a Keyboard<a class="headerlink" href="#designing-a-keyboard" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2016-03-26 in <a class="reference internal" href="../#project-10408"><span class="std std-ref">Steno Keyboard</span></a>.</p>
+<p>I’ve been through building a keyboard <a class="reference internal" href="../../project-8282/#project-8282"><span class="std std-ref">Alpen Clack</span></a> , so this time I knew exactly what to do. First I went to <a class="reference external" href="http://www.keyboard-layout-editor.com/">http://www.keyboard-layout-editor.com/</a>  and made a keyboard with the steno layout, which, for English at
+least, looks like this:</p>
+<img alt="projects/project-10408/images/7202511459021280392.png" src="projects/project-10408/images/7202511459021280392.png" />
+<p>Then I clicked on the “raw data” tab, and copied the keyboard
+definition, which looks like this:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>[{a:7,h:2},&quot;S&quot;,&quot;T&quot;,&quot;P&quot;,&quot;H&quot;,{h:2},&quot;&lt;i class=&#39;fa fa-asterisk&#39;&gt;&lt;/i&gt;&quot;,&quot;F&quot;,&quot;P&quot;,&quot;L&quot;,&quot;T&quot;,&quot;D&quot;],
+[{x:1},&quot;K&quot;,&quot;W&quot;,&quot;R&quot;,{x:1},&quot;R&quot;,&quot;B&quot;,&quot;G&quot;,&quot;S&quot;,&quot;Z&quot;],
+[{x:2.5},&quot;A&quot;,&quot;O&quot;,&quot;E&quot;,&quot;U&quot;
+
+</pre></div>
+</div>
+<p>Then I went to <a class="reference external" href="http://builder.swillkb.com/">http://builder.swillkb.com/</a>  and pasted that code in there. After selecting some options, it
+generated me an SVG file that looks like this:</p>
+<img alt="projects/project-10408/images/4123361459021403493.png" src="projects/project-10408/images/4123361459021403493.png" />
+<p>I opened that in Libre Office (Inkscape has problem with exporting
+PDFs with very thin lines), changed the line width to 0.01mm, saved
+that as PDF and went to the nearby FabLab to have it laser-cut. I
+actually choose too weak laser power, so the cuts were not whole way
+through, and then I moved it, so I couldn’t repeat the cutting, but
+nothing that can’t be fixed with a bit of demeling. Final plate looks
+like this:</p>
+<img alt="projects/project-10408/images/6088341459021776197.jpg" src="projects/project-10408/images/6088341459021776197.jpg" />
+<p>I still have some Gateron Brown switches left from my previous
+keyboard, so I will be using those. They just snap into those holes –
+easy enough. Keycaps are a bigger problem – as you can see, I will
+need several with the same letter, and also for different rows than
+normally. The keys on your keyboard usually have different height
+depending on which row they are.So I went to <a class="reference external" href="http://pimpmykeyboard.com/">http://pimpmykeyboard.com/</a>  and ordered myself some blank keycaps. I also picked the low-profile
+ones, which are all the same height. This is actually the most
+expensive part of this project. Now I’m waiting for the keycaps to
+arrive.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

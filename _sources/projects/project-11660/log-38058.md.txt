@@ -1,0 +1,37 @@
+---
+blogpost: true
+date: 2016-05-15
+category: project-11660
+---
+
+# HT16K33 7-seg And 14-seg Displays
+Published on 2016-05-15 in {ref}`project-11660`.
+
+Not just the Adafruit matrices use the HT16K33 chip. Their 7- and
+14-segment displays use it as well, and here's a library that supports
+those: [https://bitbucket.org/thesheep/micropython-ht16k33/tip/ht16k33_seg.py](https://bitbucket.org/thesheep/micropython-ht16k33/tip/ht16k33_seg.py) 
+
+It requires the matrix library to work, as it reuses some of the code.
+I decided to put it in a separate file, because it comes with some
+data defining all the letters and digits, and that would waste memory
+if you only wanted to use the matrix part of the code.
+
+Some example code:
+
+
+```python
+import time
+from machine import I2C, Pin
+from ht16k33_seg import Seg14x4
+
+i2c = I2C(sda=Pin(4), scl=Pin(5))
+display = Seg14x4(i2c)
+
+display.brightness(8)
+for c in "Hello world!":
+    display.push(c)
+    display.show()
+    time.sleep(0.25)
+```
+
+\

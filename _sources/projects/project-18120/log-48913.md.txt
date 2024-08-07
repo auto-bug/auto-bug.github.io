@@ -1,0 +1,51 @@
+---
+blogpost: true
+date: 2016-11-10
+category: project-18120
+---
+
+# Initial Prototype
+Published on 2016-11-10 in {ref}`project-18120`.
+
+So, [Adafruit has those nice 8x8 LED matrix backpacks](https://www.adafruit.com/categories/325) , which use I²C for communication and are generally very cool to play
+with. They even have shields (FeatherWings) for their boards with
+them. However, in my workshops I'm using D1 Mini boards (mostly
+because they are cheaper). I decided that it would be very nice to
+have such a shield for the D1 Mini, so I decided to try to make one.
+
+I started by ordering a HT16K33 breakout board, some loose chips in
+the 20-pin packages, and a handful of those LED matrices. Once they
+arrived, I assembled a prototype on the breadboard, to make sure I got
+all the connections right:
+
+
+:::{image} images/5447921478804807112.jpg
+
+:::
+
+
+Then I tested it with my [HT16K33 MicroPython library](https://github.com/adafruit/micropython-adafruit-ht16k33) . Turns out that the original backpacks are shifted by one column for
+some reason, so that they start at column 1 and end at column 0
+(instead of starting at 0 and ending at 7). Oh well, a quick fix, and
+my shield is compatible.
+
+Next, I need to design the actual PCB. To the Fritzing!
+
+
+:::{image} images/5026381478804975150.png
+
+:::
+
+
+Maybe it's not the simplest thing to route, but it's not too horrible
+either. I kept all parts on the same side (the chip goes under the
+matrix), for ease of assembly. Unfortunately the board has to be
+duble-layer -- there are just too many crossing traces. I wonder why
+they didn't design those chips to match the matrix pinout better.
+
+The board is exactly one inch by one inch, by the way -- would have
+been a nice candidate for the one square inch contest.
+
+Next, [to OSHPark to order the boards](https://oshpark.com/shared_projects/AJvcKWub) , and now I'm just waiting for them to arrive. Should be here before
+Christmas.
+

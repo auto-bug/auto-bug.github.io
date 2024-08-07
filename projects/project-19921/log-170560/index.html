@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>New PCB Design - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="new-pcb-design">
+<h1>New PCB Design<a class="headerlink" href="#new-pcb-design" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2019-11-03 in <a class="reference internal" href="../#project-19921"><span class="std std-ref">SpiderWing</span></a>.</p>
+<p>As mentioned, it’s time to modernize this design a little bit. So
+first of all, I added the PCB legs from <a class="reference internal" href="../../project-19603/#project-19603"><span class="std std-ref">D1 Mini Tote</span></a> , and also added footprints for contact switches at the ends of those
+legs. Then I switched all parts (except for headers) to SMD, because
+that’s usually cheaper and easier to fabricate. Finally, we have some
+additional headers for connecting those foot switches to the Feather’s
+pins.</p>
+<img alt="projects/project-19921/images/1281951572805166234.png" src="projects/project-19921/images/1281951572805166234.png" />
+<p>The shield remains relatively simple — just a PCA9685 for servo
+control, and a battery holder with a power switch, and a couple of
+extra capacitors. The whole thing fits in 10x10cm, so you should be
+able to order it easily, though some fabs might complain about
+“multiple projects” in the design.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+---
+blogpost: true
+date: 2017-06-14
+category: project-19603
+---
+
+# More Brain Power
+Published on 2017-06-14 in {ref}`project-19603`.
+
+It has been a while since the last update, and there have been some
+developments. I will write about them in detail in separate logs when
+I get more time to do it properly. But today I just wanted to share a
+new part that I'm excited bout.
+
+There is a new development board, based on the ESP32 chip, but pin-
+compatible with the D1 Mini. It's called MH-ET LIVE D1 apparently (I
+know), and looks like this:
+
+
+:::{image} images/7453941497466458163.jpg
+
+:::
+
+
+The pins marked in white are compatible with the D1 Mini, and all the
+other pins are extra. Apart from the ESP-WROOM-32 module, there is the
+usual voltage regulator, CP2104 serial USB chip and a pair of mosfets
+for the reset circuit -- nothing special. All parts are on the same
+side of the PCB, the bottom is flat -- which is nice. I didn't lay my
+hand on that board yet, I'm waiting for it to arrive, but from I can
+tell it should fit the D1 Mini Tote PCBs. I might need to add a shield
+on the bottom, to make the extra pins stick out over the servo
+sockets, or use angled headers for the servo sockets -- we will see
+about that.
+
+So why so excited? Well, initially I couldn't decide whether to go
+with the D1 Mini or the Feather boards. I like the form factor (and
+price) of the D1 Mini better, but Feather has more options for me to
+choose from (I even got an ESP32 Feather recently, but didn't have a
+chance to do anything with it yet). So I started both this project and
+the {ref}`project-19921` . Now seeing that the D1 Mini footprint becomes a kind of a standard,
+I'm hoping that both versions will become equally viable.
+

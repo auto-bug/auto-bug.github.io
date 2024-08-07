@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Fixed Firmware - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="fixed-firmware">
+<h1>Fixed Firmware<a class="headerlink" href="#fixed-firmware" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2016-04-11 in <a class="reference internal" href="../#project-9927"><span class="std std-ref">Tote HaD</span></a>.</p>
+<p>As promised, I fixed the firmware for the robot – now it will start
+walking immediately after being switched on, and after connecting you
+can control it. Below are flashing instructions.</p>
+<ol class="arabic simple">
+<li><p>Download the <a class="reference external" href="https://cdn.hackaday.io/files/9927424716768/firmware-combined.bin">firmware-combined.bin</a>  file, and save in the current directory.</p></li>
+<li><p>Download the <a class="reference external" href="https://raw.githubusercontent.com/themadinventor/esptool/master/esptool.py">esptool.py</a>  file, and save in the current directory.</p></li>
+<li><p>Connect the USB2TTL to the pins on the side of the robot:</p></li>
+</ol>
+<ul class="simple">
+<li><p>gnd ↔ gnd</p></li>
+<li><p>rx ↔ tx</p></li>
+<li><p>tx ↔ rx</p></li>
+</ul>
+<ol class="arabic simple">
+<li><p>Connect together two pin holes (or pins, if you soldered pins in
+there) on the other side of the robot (leave the third pin alone):</p></li>
+</ol>
+<ul class="simple">
+<li><p>gnd ↔ sda</p></li>
+</ul>
+<ol class="arabic simple">
+<li><p>Connect the USB2TTL to your computer.</p></li>
+<li><p>Switch on the robot.</p></li>
+<li><p>Run the flashing command:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ python esptool.py --port /dev/ttyUSB0 --baud <span class="m">460800</span> write_flash --flash_size<span class="o">=</span>8m <span class="m">0</span> firmware-combined.bin
+</pre></div>
+</div>
+<p>On Windows/Mac change the path to the USB2TTL port accordingly.</p>
+<ol class="arabic simple">
+<li><p>Wait for the firmware to flash. If you get an error, try again.</p></li>
+<li><p>Switch the robot off.</p></li>
+<li><p>Remove the connector from the pin holes.</p></li>
+<li><p>Switch the robot on and see it walk. Congratulations, you have the new
+firmware.</p></li>
+</ol>
+<p>Note, that flashing new firmware will not delete the network
+information from the board, if you had the robot connect to some
+network. If you want to do that, you can with this command (before
+flashing the firmware):</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span>$ python esptool.py --port /dev/ttyUSB0 erase_flash
+</pre></div>
+</div>
+</section>
+
+
+</div>
+  </body>
+</html>

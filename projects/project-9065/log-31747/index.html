@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Everything in One? - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="everything-in-one">
+<h1>Everything in One?<a class="headerlink" href="#everything-in-one" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2016-02-11 in <a class="reference internal" href="../#project-9065"><span class="std std-ref">Tote Zero</span></a>.</p>
+<p>o I haven’t done much work on this during the week, but I did do some
+thinking, and the results of that are pretty scary. First, I realized
+that using Servo Blaster and all those pins is not really that
+convenient, when I can simply have a <span class="xref std std-ref">project-9131</span>  from a Pro Mini. Second, while Pi Zero is cheap, a WiFi dongle and SD
+Card for them are not. ESP8266 is cheap, though, and you can do <span class="xref std std-ref">project-8678</span>  with it. Can’t really do much about the SD Card, apart from using a
+cheap, small one.</p>
+<p>Anyways, putting it all together, I got something like this:</p>
+<img alt="projects/project-9065/images/6451941455199997495.png" src="projects/project-9065/images/6451941455199997495.png" />
+<p>It has room for ESP8266, Pro Mini and Pi Zero, 12 servo sockets, IR
+sensor socket, and a voltage regulator module. I had to use both sides
+of the PCB with surface pads, and the RPi header doesn’t quite fit on
+the 5cm board, but that’s details.</p>
+<p>How would you use this? There are three options. Only put a Pro Mini
+there, and you have the simple version of <a class="reference internal" href="../../project-6050/#project-6050"><span class="std std-ref">Tote</span></a>  with remote control. Add a ESP8266 with the right firmware, talking
+to the Pro Mini over I²C, and you have a Micropython or Lua-based
+robot with WiFi. Finally, add a voltage regulator and Pi Zero, and you
+have a perambulating computer, with WiFi over ESP8266 and possibly a
+USB camera.</p>
+<p>Will this work? I honestly have no idea. I cobbled this PCB together
+over several evenings, stealing ideas that I don’t fully understand
+all over Hackaday. It does, however, sound like the right way forward.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

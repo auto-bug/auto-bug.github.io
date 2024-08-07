@@ -1,0 +1,52 @@
+---
+blogpost: true
+date: 2016-05-07
+category: project-10665
+---
+
+# Schematic
+Published on 2016-05-07 in {ref}`project-10665`.
+
+I did some more assembling and programming, and I have a full control
+of all the eight servos now. With Python. Over w web-based console.
+How cool is that?
+
+Anyways, I realized that I never talked about the actual connections
+needed to get this to work, so let's talk about this for a moment. The
+ESP-12 module that I'm using has 11 GPIO pins available for use, not
+counting the pins broken out at the bottom of the module, which are
+used to communicate with the flash memory chip and shouldn't be
+touched. Micropython lets me do PWM output on 8 of those pins, because
+it assumes GPIO1 and GPIO3 are used for the serial, and GPIO16 is
+kinda special case in the code. That is quite lucky, because I need
+exactly 8 servos to make the pony walk.
+
+However, there is a small problem. Pins GPIO0, GPIO2 and GPIO15 are
+used to select the boot mode of the board. Connecting a servo to them
+makes them effectively pulled down -- which is fine for GPIO15, which
+I want pulled down, but not for GPIO0 and GPIO2, which I want pulled
+up. Fortunately, the servo will work quite fine with a signal that
+doesn't quite go all the way to 0, as long as it passes a certain
+threshold. So I determined experimentally, that pulling those two pins
+up with 10kΩ resistors makes them pulled up at boot, but still lets
+them drive the servos.
+
+The resulting schematic below:
+
+
+:::{image} images/2943221462624852620.png
+
+:::
+
+
+That still leaves the three GPIO pins and one ADC pin for my use.
+Since Micropython now has web-based REPL console, I can use the serial
+pins for other things. I would be most happy to use them for driving
+two of the servos, thus leaving the pulled-up GPIO0 and GPIO2 for I²C
+communication (they need to be pulled up for that anyways), alas,
+Micropython doesn't support PWM on those two pins. I also didn't find
+a way to disable the serial output on the TX pin, so for now the plan
+is to use the RX and GPIO16 pins for I²C communication with the
+sensors, and leave the TX pin for debugging. The ADC pin will probably
+be connected to a voltage divider to monitor the battery voltage.
+

@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Assembling and Testing - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="assembling-and-testing">
+<h1>Assembling and Testing<a class="headerlink" href="#assembling-and-testing" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2017-04-04 in <a class="reference internal" href="../#project-13278"><span class="std std-ref">Servo Breakout for WeMos D1 Mini</span></a>.</p>
+<p>The package with the chips finally arrived, so I can assemble the
+remaining boards. Soldering the TSSOP packages by hand is not terribly
+difficult, but it can still be tricky. So I’m not trusting myself, and
+apart from visual inspection I decided to also do at least basic
+testing of the shields. On the other hand, I have to ship them with
+the headers unsoldered, so I can’t simply plug them in and see if they
+work. Fortunately, I have some of those testing probes lying around:</p>
+<img alt="projects/project-13278/images/6889111491305431425.jpg" src="projects/project-13278/images/6889111491305431425.jpg" />
+<p>With that, I can easily check that the devices show up in an i2c scan,
+and that they can wiggle the servo. It’’s not a full test – that
+would have taken way too much time – but it does cover the most
+common failure modes. Since I’m only making a few dozens of them, and
+I can assemble them as they are being ordered, I don’t think I need to
+make a more sophisticated testing rig just yet.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

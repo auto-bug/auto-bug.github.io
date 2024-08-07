@@ -1,0 +1,106 @@
+---
+blogpost: true
+date: 2017-04-21
+category: project-18439
+---
+
+# We Have a Fixed Firmware!
+Published on 2017-04-21 in {ref}`project-18439`.
+
+ [@Piotr Bugalski](https://hackaday.iohttps://hackaday.io/hacker/214712)  has recently re-written the firmware for this motor shield, and
+published it at [https://github.com/pbugalski/wemos_motor_shield](https://github.com/pbugalski/wemos_motor_shield) . From what I can tell, the new firmware is compatible with the old
+one, minus the hanging and crashing, so it should be perfect for a
+drop-in replacement.
+
+Here is how you can flash it to your shield:
+
+Solder two wires to the first two legs of the microcontroller,
+counting from the top, like this:
+
+
+:::{image} images/9683431479845007181.jpg
+
+:::
+Be careful to not short them with the legs next to them. This is
+probably the hardest part.
+
+Next, connect you ST-Link programmer as follows:
+
+SWCLK ↔ first wire
+
+SWDIO ↔ second wire
+
+GND ↔ GND
+
+3V3 ↔ 3V3
+
+T_JRST ↔ RST
+
+Note that, this is with the shiled *not* connected to the D1 Mini.
+
+Now, clone the repository:
+
+
+```
+$ git clone https://github.com/pbugalski/wemos_motor_shield
+$ cd wemos_motor_shield
+```
+
+Make sure you have installed openocd and arm-none-eabi-gcc. Compile
+the firmware:
+
+
+```
+$ make
+arm-none-eabi-gcc -Wall -g -std=c99 -Os -mlittle-endian -mcpu=cortex-m0 -march=armv6-m -mthumb -ffunction-sections -fdata-sections -Wl,--gc-sections -Wl,-Map=motor_shield.map -Iinc src/startup_stm32.s src/main.c src/user_i2c.c src/tb6612.c -o motor_shield.elf -Tstm32f030.ld
+arm-none-eabi-objcopy -O binary motor_shield.elf motor_shield.bin
+arm-none-eabi-size motor_shield.elf
+   text	   data	    bss	    dec	    hex	filename
+   2032	   1084	   1056	   4172	   104c	motor_shield.elf
+
+```
+
+And flash it onto the shield:
+
+
+```
+$ make program
+openocd -f stm32f0motor.cfg -f stm32f0-openocd.cfg -c "stm_flash motor_shield.bin" -c shutdown
+Open On-Chip Debugger 0.9.0 (2015-09-02-10:42)
+Licensed under GNU GPL v2
+For bug reports, read
+	http://openocd.org/doc/doxygen/bugs.html
+Info : The selected transport took over low-level target control. The results might differ compared to plain JTAG/SWD
+adapter speed: 1000 kHz
+adapter_nsrst_delay: 100
+none separate
+srst_only separate srst_nogate srst_open_drain connect_deassert_srst
+Info : Unable to match requested speed 1000 kHz, using 950 kHz
+Info : Unable to match requested speed 1000 kHz, using 950 kHz
+Info : clock speed 950 kHz
+Info : STLINK v2 JTAG v17 API v2 SWIM v4 VID 0x0483 PID 0x3748
+Info : using stlink api v2
+Info : Target voltage: 3.490340
+Info : stm32f0x.cpu: hardware has 4 breakpoints, 2 watchpoints
+stm_erase
+target state: halted
+target halted due to debug-request, current mode: Thread 
+xPSR: 0xc1000000 pc: 0xfffffffe msp: 0xfffffffc
+auto erase enabled
+Info : device id = 0x10006444
+Info : flash size = 16kbytes
+target state: halted
+target halted due to breakpoint, current mode: Thread 
+xPSR: 0x61000000 pc: 0x2000003a msp: 0xfffffffc
+wrote 4096 bytes from file motor_shield.bin in 0.287988s (13.889 KiB/s)
+target state: halted
+target halted due to breakpoint, current mode: Thread 
+xPSR: 0x61000000 pc: 0x2000002e msp: 0xfffffffc
+verified 3116 bytes in 0.057512s (52.910 KiB/s)
+shutdown command invoked
+
+```
+
+ Now, disconnect everything. Your board has the new firmware on it.
+You can test it, and then desolder the two wires -- you won't be
+needing them anymore.

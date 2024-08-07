@@ -1,0 +1,218 @@
+---
+blogpost: true
+date: 2016-02-29
+category: project
+tags:  ongoing project, hardware
+image: 1
+---
+
+# Tote HaD
+
+Special edition of Tote for the Belgrade workshop.
+
+<div class="project-thumb">
+
+:::{image} images/1804831457642612959.jpg
+:target: /_images/1804831457642612959.jpg
+:::
+
+:::{image} images/9926601460377580561.jpg
+:target: /_images/9926601460377580561.jpg
+:::
+
+:::{image} images/5699201460377603823.jpg
+:target: /_images/5699201460377603823.jpg
+:::
+
+:::{image} images/9749511457642619753.jpg
+:target: /_images/9749511457642619753.jpg
+:::
+
+:::{image} images/8112371460377556113.png
+:target: /_images/8112371460377556113.png
+:::
+
+</div>
+
+
+     {ref}`project-6050`  is a spider-like quadruped robot. While its small size and plastic
+parts make it look like a toy, it was in fact designed as a platform
+for experimenting with walking robots. Unlike many toys that have
+their gaits hard-wired, Tote has individual control over each of its
+legs, with three degrees of freedom, using inverse kinematics
+calculations. This gives it great flexibility, and makes it possible
+to implement gaits that let it walk on uneven terrain, and even climb
+obstacles! Of course it can also dance.
+
+
+:::{image} images/3673261457719299138.jpg
+
+:::
+
+
+There are also a lot of options for extending it. While initially Tote
+doesn't have any sensors, it's possible to give it touch, sight, force
+sensing, hearing and sense of balance, by simply adding appropriate
+sensors, connecting them to the free pins, and -- of course --
+programming new behaviors based on their reports.
+
+Even without the extra sensors, Tote can be quite useful. It's small
+and portable, so it can be conveniently transported. It's sturdy,
+flexible and relatively weak -- which makes it quite safe to handle.
+And it's complex enough to explore the problems of robot walking and
+test new algorithms.
+
+
+
+
+
+## Logs
+
+:::{postlist}
+:category: project-9927
+:::
+
+## Instructions
+
+
+
+Connect the tibia to the femur and coxa. Be careful to not rotate the
+servos -- if you do, switch the robot on for a moment so that they
+center again. Make sure the tibia is horizontal and the femur is
+vertical. Make sure to use the horn screws that came with the servos.
+
+
+:::{image} images/3409481460377041336.png
+
+:::
+
+
+
+---
+
+
+Screw a servo horn to the robot's body. Since the size of the outside
+of the servo horn has large range, the holes in the board may be too
+small for it -- if that's the case, file the plastic horn to make it
+fit.
+
+
+:::{image} images/8605061460377067422.png
+
+:::
+
+
+
+---
+
+
+Attach the leg to the body. Again, make sure you don't move the servo
+from its center position, and that the leg sticks out at 45° angle.
+
+
+:::{image} images/4169701460377239023.png
+
+:::
+
+
+Make sure the femur is facing towards the side of the robot, not
+forward or backward.
+
+
+
+
+---
+
+
+Repeat for all the legs. Switch the robot on again and make sure all
+the legs are in their default positions, with femurs vertical, tibias
+horizontal, and coxas sticking out at 45°.
+
+
+:::{image} images/5502761460377094641.png
+
+:::
+
+
+
+---
+
+
+Start by assembling the legs. You will need two "left" legs, and two
+"right" ones, which are mirror images of the "left" legs. Instructions
+below are for just one "left" leg.
+
+
+---
+
+
+Glue together the two servos making up the coxa. Make sure to apply
+glue on all surfaces that touch, including the "ears".
+
+
+:::{image} images/3968691460378992272.png
+
+:::
+
+
+
+---
+
+
+Cut off the shorter side of the "cross" horn, as shown below:
+
+
+:::{image} images/433251460376877180.png
+
+:::
+
+
+And then attach it with one of the servo mounting screws to the tibia
+servo:
+
+
+:::{image} images/5090761460376910911.png
+
+:::
+
+
+
+---
+
+
+Screw together the horns that form the tibia. You may need to cut the
+tips of the horns, if they are too long.
+
+
+:::{image} images/3190891458491956979.png
+
+:::
+
+
+Alternatively, if you don't have the right size of screws, you can
+glue the horns together, or use thin wire instead of screws.
+
+
+---
+
+
+Connect all the servo plugs to the body. Make sure that the yellow
+wire is towards the center of the board, and the brown wire towards
+the edge.
+
+
+:::{image} images/1801551460378442047.png
+
+:::
+
+
+
+---
+
+
+Connect the battery (pay attention to the + and -), and switch the
+robot on for a moment, so that all the servos go into their center
+positions. Switch it off.
+
+
+---

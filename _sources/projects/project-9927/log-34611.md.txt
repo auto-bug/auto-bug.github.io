@@ -1,0 +1,35 @@
+---
+blogpost: true
+date: 2016-03-26
+category: project-9927
+---
+
+# LiPo Chargers
+Published on 2016-03-26 in {ref}`project-9927`.
+
+The conference is nearing, and I'm still waiting for the parts. I
+really hope that they will arrive on time. I'm not quite panicking
+yet, but soon I will probably start.
+
+While waiting for the parts, I still need to write the remaining code
+for the ESP8266 (and possibly improve the code for the Arduino). Today
+I didn't even have enough concentration to do that, so instead I
+started soldering things. I still don't have all the parts to solder
+the PCBs, but I started with the LiPo chargers. The batteries I got
+have JST plugs on them, which easily plug into standard 2.54mm
+headers. But sooner or later someone will plug them in reverse, and if
+you do that with a cheap LiPo charger, you could have a fire. So I
+soldered proper JST sockets to all ten chargers (that's how many I
+have, as that was the initial count for the workshop, you will have to
+share).
+
+
+:::{image} images/5078941459026160174.jpg
+
+:::
+
+
+I can already tell that soldering the remainder of the kits is going
+to be a full-time job. Hopefully the parts will arrive next week, so I
+have a weekend to do that.
+

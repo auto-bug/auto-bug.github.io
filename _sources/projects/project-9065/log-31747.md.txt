@@ -1,0 +1,40 @@
+---
+blogpost: true
+date: 2016-02-11
+category: project-9065
+---
+
+# Everything in One?
+Published on 2016-02-11 in {ref}`project-9065`.
+
+o I haven't done much work on this during the week, but I did do some
+thinking, and the results of that are pretty scary. First, I realized
+that using Servo Blaster and all those pins is not really that
+convenient, when I can simply have a {ref}`project-9131`  from a Pro Mini. Second, while Pi Zero is cheap, a WiFi dongle and SD
+Card for them are not. ESP8266 is cheap, though, and you can do {ref}`project-8678`  with it. Can't really do much about the SD Card, apart from using a
+cheap, small one.
+
+Anyways, putting it all together, I got something like this:
+
+
+:::{image} images/6451941455199997495.png
+
+:::
+
+
+It has room for ESP8266, Pro Mini and Pi Zero, 12 servo sockets, IR
+sensor socket, and a voltage regulator module. I had to use both sides
+of the PCB with surface pads, and the RPi header doesn't quite fit on
+the 5cm board, but that's details.
+
+How would you use this? There are three options. Only put a Pro Mini
+there, and you have the simple version of {ref}`project-6050`  with remote control. Add a ESP8266 with the right firmware, talking
+to the Pro Mini over I²C, and you have a Micropython or Lua-based
+robot with WiFi. Finally, add a voltage regulator and Pi Zero, and you
+have a perambulating computer, with WiFi over ESP8266 and possibly a
+USB camera.
+
+Will this work? I honestly have no idea. I cobbled this PCB together
+over several evenings, stealing ideas that I don't fully understand
+all over Hackaday. It does, however, sound like the right way forward.
+

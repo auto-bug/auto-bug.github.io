@@ -1,0 +1,37 @@
+---
+blogpost: true
+date: 2017-01-29
+category: project-19603
+---
+
+# Debugging
+Published on 2017-01-29 in {ref}`project-19603`.
+
+I have the little guy assembled (I stole the legs from my first Tote
+prototype), and it works quite well. However, software is the hard
+part.
+
+First I had to remap the servos in my servo controller firmware to
+make them agree with what's written on the PCB -- that should make it
+much easier to debug everything in the future. I also wrote the Python
+side of the communication with the servos, and there I had my first
+problem -- when sending the servo positions too fast one after the
+other, I get bus errors. For now I just catch them and retry, but I
+suspect I will need to increase the clock stretching timeout.\
+
+
+Second, the Python code for Inverse kinematics -- I used the original
+code that I have written years ago for {ref}`project-3300` , and it seems to work without problems. Yay. Except for some stupid
+mistakes I made, like multiplying everything by 0, which of course
+took me hours to find. Oh well.
+
+The gait code is more problematic though. I used the code I wrote for {ref}`project-9927` , but it doesn't seem to be behaving exactly as I wanted. I'm still
+figuring out what is wrong -- it's probably something trivial like a
+reversed angle somewhere or a leg going out of range -- but no success
+yet.
+
+You can see the current status on the movie:
+
+
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="" src="https://www.youtube.com/embed/3PMRmQR0pRI"></iframe>
+

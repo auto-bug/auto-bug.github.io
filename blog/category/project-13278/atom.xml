@@ -1,0 +1,172 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>http://deshipu.art/</id>
+  <title>deshipu.art - Posts in project-13278</title>
+  <updated>2024-08-07T20:31:01.917006+00:00</updated>
+  <link href="http://deshipu.art/"/>
+  <link href="http://deshipu.art/blog/category/project-13278/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-13278/log-64512/</id>
+    <title>Faster Assembly</title>
+    <updated>2017-08-01T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="faster-assembly"&gt;
+
+&lt;p&gt;Published on 2017-08-01 in &lt;a class="reference internal" href="../../../projects/project-13278/#project-13278"&gt;&lt;span class="std std-ref"&gt;Servo Breakout for WeMos D1 Mini&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I recently got myself a cheap hot air gun, and as a test for it, I
+assembled one panel of the servo controller boards.&lt;/p&gt;
+&lt;img alt="projects/project-13278/images/7105381501618261239.jpg" src="projects/project-13278/images/7105381501618261239.jpg" /&gt;
+&lt;p&gt;I must say that it really changes everything. While applying the
+solder paste is still a little slow without a template, soldering all
+the parts is a moment, and they magically snap into their correct
+positions. I had a few solder bridges due to too much solder paste in
+some places, but a solder suction tool took care of those easily.&lt;/p&gt;
+&lt;p&gt;You can see on the photo the testing probes that I’m using to test all
+the shields. The result this time was 100% working.&lt;/p&gt;
+&lt;p&gt;Soldering the pin headers was even faster, at least compared to the
+manual process I used before. How come I didn’t get one of those hot
+air things earlier?&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-13278/log-64512/" rel="alternate"/>
+    <summary>Published on 2017-08-01 in project-13278.</summary>
+    <published>2017-08-01T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-13278/log-71202/</id>
+    <title>Fabrication and Version 2.0</title>
+    <updated>2017-12-04T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="fabrication-and-version-2-0"&gt;
+
+&lt;p&gt;Published on 2017-12-04 in &lt;a class="reference internal" href="../../../projects/project-13278/#project-13278"&gt;&lt;span class="std std-ref"&gt;Servo Breakout for WeMos D1 Mini&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;There is a relatively high demand for this board on Tindie, so when I
+sold the last of the 75 hand-assembled modules, I stated looking at
+fabrication options. Unfortunately, for a board with so many soldering
+points (the servo socket headers), it was relatively expensive. I
+didn’t realize that the work I was doing by hand is worth so much. In
+any case, I asked several fabrication services for quotes, and since I
+didn’t want to increase the price too much, went with the cheapest
+one, which turned out to be PCBWay.&lt;/p&gt;
+&lt;p&gt;They were very helpful all along the way. The bill of materials CSV
+file I sent them didn’t parse quite well for them (probably because I
+wrote it by hand in Vim), but they had no problem with me just
+including an ASCII-art table in the e-mail instead. On every step of
+the process they sent me photos, asking if it looks correct. They also
+tried to catch possible errors themselves: for example, my BOM didn’t
+include the stacking headers that I add to every module — they saw
+them in the photo and asked if they need to be added. (I send them
+unsoldered, so I add them later myself). There was also one small
+glitch when they initially wanted to use straight pin headers instead
+of angled ones, but because they sent me the photo I could point out
+the mistake, and there was no problem switching to the correct
+headers.&lt;/p&gt;
+&lt;p&gt;I choose the cheapest shipping (again to keep the price low), but it
+still arrived without problems in 2 weeks. Here’s a photo of the
+package I got:&lt;/p&gt;
+&lt;img alt="projects/project-13278/images/7901051512382432339.jpg" src="projects/project-13278/images/7901051512382432339.jpg" /&gt;
+&lt;p&gt;The anti-static bags on the bottom contain the soldered panels (I
+choose to depanelize them myself, again to save costs). The rest of
+the bags are all the left-over parts, including one unsoldered PCB
+panel of 5 modules.&lt;/p&gt;
+&lt;p&gt;A quick test shows that the modules work very well.&lt;/p&gt;
+&lt;p&gt;All in all, I’m very happy with them. You can buy the new modules on
+Tindie here:  &lt;a class="reference external" href="https://www.tindie.com/products/deshipu/16-channel-servo-shield-for-d1-mini-version-20/"&gt;https://www.tindie.com/products/deshipu/16-channel-servo-shield-
+for-d1-mini-version-20&lt;/a&gt;&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-13278/log-71202/" rel="alternate"/>
+    <summary>Published on 2017-12-04 in project-13278.</summary>
+    <published>2017-12-04T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-13278/log-159680/</id>
+    <title>New Batch</title>
+    <updated>2019-02-21T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="new-batch"&gt;
+
+&lt;p&gt;Published on 2019-02-21 in &lt;a class="reference internal" href="../../../projects/project-13278/#project-13278"&gt;&lt;span class="std std-ref"&gt;Servo Breakout for WeMos D1 Mini&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I have sold the last of those servo controllers on Tindie a while ago,
+coming up to the total of 128 units sold, but people keep adding it to
+their wish list, so I decided to go and make another batch. This time
+I’m not going to go to a fabricator — I discovered that I actually
+enjoy the process of assembling them myself, and with just a few
+orders a month I have more than enough time for that. So I just
+ordered the PCBs. However, the times have changed — back then you
+could only order cheap PCBs up to 5x5 cm in size, while today 10x10 cm
+is the standard. So I panelized the latest version of the design, to
+optimize the yield:&lt;/p&gt;
+&lt;img alt="projects/project-13278/images/8088351550752554490.png" src="projects/project-13278/images/8088351550752554490.png" /&gt;
+&lt;p&gt;It’s a bit of a pain to do in Fritzing, and I made several mistakes on
+the way (sorry for the people at the PCB fab who already started
+reviewing it when I cancelled the order), but after the third try
+everything seems to be correct.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-13278/log-159680/" rel="alternate"/>
+    <summary>Published on 2019-02-21 in project-13278.</summary>
+    <published>2019-02-21T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-13278/log-182469/</id>
+    <title>New Seller</title>
+    <updated>2020-08-20T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="new-seller"&gt;
+
+&lt;p&gt;Published on 2020-08-20 in &lt;a class="reference internal" href="../../../projects/project-13278/#project-13278"&gt;&lt;span class="std std-ref"&gt;Servo Breakout for WeMos D1 Mini&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Since there was a large demand for those shields, they can now be
+bought again at Tindie from &lt;a class="reference external" href="https://hackaday.io/hacker/61401"&gt;&amp;#64;Arsenijs&lt;/a&gt; : &lt;a class="reference external" href="https://www.tindie.com/products/crimier/16-channel-servo-shield-for-d1-mini-v2-by-deshipu/"&gt;https://www.tindie.com/products/crimier/16-channel-servo-shield-
+for-d1-mini-v2-by-deshipu/&lt;/a&gt;&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-13278/log-182469/" rel="alternate"/>
+    <summary>Published on 2020-08-20 in project-13278.</summary>
+    <published>2020-08-20T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-13278/log-187199/</id>
+    <title>Maybe SX1509?</title>
+    <updated>2020-12-19T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="maybe-sx1509"&gt;
+
+&lt;p&gt;Published on 2020-12-19 in &lt;a class="reference internal" href="../../../projects/project-13278/#project-13278"&gt;&lt;span class="std std-ref"&gt;Servo Breakout for WeMos D1 Mini&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;It’s been a long while since I made this shield, and the PCA9685 chip
+that it uses has been in service for driving servos even longer.
+Meanwhile, I have been on a lookout for a more modern and smaller chip
+that could provide a similar function. The PCA9685 is not perfect,
+because it is actually a LED driver, which just happens to have
+adjustable PWM frequency allowing us to abuse it to generate a 50Hz
+servo signal. Still, it contains constant-current drivers that we
+don’t need, and we only use a small part of its duty cycle range.&lt;/p&gt;
+&lt;p&gt;So what could be other chips that we could possibly use? If you look
+around a little for “PWM chips”, it seems that chip manufacturers only
+recognize two use cases for PWM signal: buck/boost converters and LED
+drivers, and in both cases they prefer relatively high frequencies, at
+least 29kHz, if not 33Mhz. That is useless for us, sadly, so we need
+to look in other places.&lt;/p&gt;
+&lt;p&gt;Recently I have stumbled upon a really weird chip, SX1509. It’s I²C-
+controlled GPIO multiplexer, but with some extra features, that
+include voltage level shifters, a keyboard matrix scanner and, last
+but not least, a PWM LED driver. So maybe we could use it for our
+servos?&lt;/p&gt;
+&lt;p&gt;I ordered a breakout board with this chip somewhere at the beginning
+of this year, and I have been putting away working on it for a looong
+time. But now with the holiday break, I decided to finally sit down
+and try it. So I downloaded the datasheet, got a Trinket M0 running
+CircuitPython out of one drawer, and a pocket oscilloscope out of
+another, and I started to poke at the registers.&lt;/p&gt;
+&lt;p&gt;Sadly, this is another failure, for two reasons: first, the slowest
+frequency I managed to get for the PWM signal is 121Hz, over twice as
+much as the required 50Hz; second, it only has 8 bits of resolution
+for the duty cycle length, and that’s over the whole range, of which
+we only need a small part, so it would be even worse than the 12 bits
+we get with the PCA9685.&lt;/p&gt;
+&lt;p&gt;But I guess I will keep it in my drawer if I ever need to multiplex
+GPIO pins while level-shifting to two different voltages, scanning a
+keyboard matrix and blinking LEDs.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-13278/log-187199/" rel="alternate"/>
+    <summary>Published on 2020-12-19 in project-13278.</summary>
+    <published>2020-12-19T00:00:00+01:00</published>
+  </entry>
+</feed>

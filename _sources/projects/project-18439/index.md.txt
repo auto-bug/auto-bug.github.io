@@ -1,0 +1,50 @@
+---
+blogpost: true
+date: 2016-11-21
+category: project
+tags:  STM32, motor shield, firmware, wemos d1 mini, hardware, ongoing project, ESP8266
+image: 1
+---
+
+# Motor Shield Reprogramming
+
+Create and flash new firmware for the WeMos D1 Mini Motor Shield.
+
+<div class="project-thumb">
+
+:::{image} images/2343041479721475132.jpg
+:target: /_images/2343041479721475132.jpg
+:::
+
+</div>
+
+
+    We have pretty good information about the motor shield:
+
+
+ * The H-bridge is TB6612.
+ * The microcontroller is STM32F030.
+ * We have a schematic: [https://www.wemos.cc/sites/default/files/2016-09/mini_motor.pdf](https://www.wemos.cc/sites/default/files/2016-09/mini_motor.pdf) 
+ * We have the Arduino library for talking to it: [https://github.com/wemos/WEMOS_Motor_Shield_Arduino_Library](https://github.com/wemos/WEMOS_Motor_Shield_Arduino_Library) 
+ * And, last but not least, we finally have the source code of the
+original firmware: [https://github.com/wemos/Motor_Shield_Firmware](https://github.com/wemos/Motor_Shield_Firmware) 
+
+The shield has a serial interface for programming broken out, and that
+chip is supposed to have a bootloader built-in, so hopefully we will
+be able to just use stm32flash and an USB2TTL adapter to program it.
+
+There is a nice dev environment template for this family of
+microcontrollers: [https://github.com/szczys/stm32f0-discovery-basic-template](https://github.com/szczys/stm32f0-discovery-basic-template) 
+
+
+
+
+
+## Logs
+
+:::{postlist}
+:category: project-18439
+:::
+
+## Instructions
+

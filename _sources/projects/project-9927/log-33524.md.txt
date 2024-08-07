@@ -1,0 +1,53 @@
+---
+blogpost: true
+date: 2016-03-11
+category: project-9927
+---
+
+# First Prototype
+Published on 2016-03-11 in {ref}`project-9927`.
+
+The prototype unit is more or less ready. In the end I took the legs
+from one of my other Totes, so I have no step-by-step drawings. I will
+do rendered images instead -- they should be much cleaner and easier
+to follow then too.
+
+
+:::{image} images/5574061457719408697.jpg
+
+:::
+
+
+On the software side, I have the Arduino code that does leg inverse
+kinematics pretty much ready (just need some trimming for the servos
+positions), and a basic Python code for the ESP8266:
+
+
+```python
+from machine import I2C, Pin
+import ustruct
+
+
+class Robot:
+    I2C_ADDRESS = 0x09
+
+    def __init__(self):
+        self.i2c = I2C(sda=Pin(0), scl=Pin(2))
+
+    def leg_move_to(self, leg, x, y, z):
+        data = ustruct.pack("Bbbbb", 4 * leg, 1, x, y, z)
+        while True:
+            try:
+                self.i2c.writeto(self.I2C_ADDRESS, data)
+            except OSError:
+                pass
+            else:
+                break
+
+```
+
+This lets you move each of the legs to any position. So far so good.
+Next I will try to actually make it walk, but I doubt I will have any
+time for that in the following week, which is full of travelling for
+me.
+

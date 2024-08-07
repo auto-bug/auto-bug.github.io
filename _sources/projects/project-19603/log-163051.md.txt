@@ -1,0 +1,53 @@
+---
+blogpost: true
+date: 2019-05-08
+category: project-19603
+---
+
+# One More Version
+Published on 2019-05-08 in {ref}`project-19603`.
+
+An advantage of having several similar projects, some long-term and
+some faster, is that the research and innovation you test in the fast
+projects can trickle back into the slower ones. This is one such
+example. When I started with this, I was mostly using ready modules
+for most things, and the PCB was just a way to hold things together.
+After some intensive development of {ref}`project-27629` , {ref}`project-159733` and {ref}`project-158981` , however, I figured out some ways of doing some of those things
+better with discrete components and with better mechanical design. So
+it's time to make a new version that will include all those
+improvements.
+
+Here it is:
+
+
+
+:::{image} images/3201671557267311761.png
+
+:::
+
+
+There has been changes. The D1 Mini footprint and the servo sockets
+have been rotated 90° degrees, so that the front of the robot is now
+to the left. That means that the battery is now sideways, and there is
+more room under the robot to fit the servos when the legs are in
+extreme positions (it will still require cutting off those "ears" from
+the servos). The body is still 5×5cm, but there are all those leg
+parts around it, so now the whole PCB is 10×10cm — which reflects the
+current reality of ordering cheap PCBs. It's the same idea as in {ref}`project-158981` , however, the feet now have footprints for switches, so we can detect
+ground easily.
+
+There is no room for the battery protection and charging module
+anymore, instead there is a charging and a protection circuit directly
+on the PCB. I'm using a double switch for power, because when it
+switches off the power from battery, it also switches on the charging
+— this way I can use one USB port for both programming and charging.
+The servo sockets are rotated now, and stretched along the battery
+holder, so that they can go on the bottom of the robot and still leave
+enough room for the servos to rotate. I also added back some small
+prototyping area at the front of the robot, for mounting sensors, and
+also on the legs.
+
+Otherwise it's all standard stuff: a PCA9685 chip for PWM, a LiPo
+battery for power, and a socket for a D1 Mini to control it all.\
+
+

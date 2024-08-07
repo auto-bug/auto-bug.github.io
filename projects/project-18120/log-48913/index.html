@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Initial Prototype - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="initial-prototype">
+<h1>Initial Prototype<a class="headerlink" href="#initial-prototype" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2016-11-10 in <a class="reference internal" href="../#project-18120"><span class="std std-ref">D1 Mini Matrix Shield</span></a>.</p>
+<p>So, <a class="reference external" href="https://www.adafruit.com/categories/325">Adafruit has those nice 8x8 LED matrix backpacks</a> , which use I²C for communication and are generally very cool to play
+with. They even have shields (FeatherWings) for their boards with
+them. However, in my workshops I’m using D1 Mini boards (mostly
+because they are cheaper). I decided that it would be very nice to
+have such a shield for the D1 Mini, so I decided to try to make one.</p>
+<p>I started by ordering a HT16K33 breakout board, some loose chips in
+the 20-pin packages, and a handful of those LED matrices. Once they
+arrived, I assembled a prototype on the breadboard, to make sure I got
+all the connections right:</p>
+<img alt="projects/project-18120/images/5447921478804807112.jpg" src="projects/project-18120/images/5447921478804807112.jpg" />
+<p>Then I tested it with my <a class="reference external" href="https://github.com/adafruit/micropython-adafruit-ht16k33">HT16K33 MicroPython library</a> . Turns out that the original backpacks are shifted by one column for
+some reason, so that they start at column 1 and end at column 0
+(instead of starting at 0 and ending at 7). Oh well, a quick fix, and
+my shield is compatible.</p>
+<p>Next, I need to design the actual PCB. To the Fritzing!</p>
+<img alt="projects/project-18120/images/5026381478804975150.png" src="projects/project-18120/images/5026381478804975150.png" />
+<p>Maybe it’s not the simplest thing to route, but it’s not too horrible
+either. I kept all parts on the same side (the chip goes under the
+matrix), for ease of assembly. Unfortunately the board has to be
+duble-layer – there are just too many crossing traces. I wonder why
+they didn’t design those chips to match the matrix pinout better.</p>
+<p>The board is exactly one inch by one inch, by the way – would have
+been a nice candidate for the one square inch contest.</p>
+<p>Next, <a class="reference external" href="https://oshpark.com/shared_projects/AJvcKWub">to OSHPark to order the boards</a> , and now I’m just waiting for them to arrive. Should be here before
+Christmas.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

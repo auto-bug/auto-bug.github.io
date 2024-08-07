@@ -1,0 +1,73 @@
+---
+blogpost: true
+date: 2018-05-17
+category: project-19371
+---
+
+# Version 6.0
+Published on 2018-05-17 in {ref}`project-19371`.
+
+After using an ATtiny24 for handling buttons in {ref}`project-27757` I decided that this is also the way to go with the X-Pad shield. I
+designed version 5.0 which used the same buttons and layout as 4.0,
+but a different chip, and I tested the firmware with it. Turns out
+that it works very well, and does de-bouncing and buffering for you,
+so that you don't have to poll the chip frantically for presses,
+afraid that you miss any. All button presses now wait nicely in the
+buffer until you read them. The shield looked like this:
+
+
+
+:::{image} images/5465841526548313697.png
+
+:::
+
+
+But then I have some problems with the shields I sold on Tindie (due
+to poor solder joints on the buttons), and I removed the shield from
+my store. I decided to work on the design a little bit more and make a
+version that will really be the best I can make. Behold, version 6.0:
+
+
+
+:::{image} images/1599921526548559905.jpg
+
+:::
+
+
+It's bigger than the original X-Pad shield, and has mounting holes. It
+also has all the components, except buttons, on the back, and away
+from the middle part of the board — so it can lie flat against the D1
+Mini and other shields. It also has friction-fit headers, so no
+soldering is necessary and you can add it to another shield easily,
+like this:
+
+
+
+:::{image} images/7862921526548698640.jpg
+
+:::
+
+
+There are also two headers for popular display modules. One for the
+128×128 ST7735R module (you might need to trim that corner):
+
+
+
+:::{image} images/3627931526548781441.jpg
+
+:::
+
+
+And one for the popular SPI-based OLED modules, such as SSD1331 or
+SSD1306:
+
+
+
+:::{image} images/8869361526548913513.jpg
+
+:::
+
+
+I still need to add some last finishing touches to the firmware and
+test it all properly, and it's going into my Tindie store.
+

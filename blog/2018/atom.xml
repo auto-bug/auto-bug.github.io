@@ -2,10 +2,90 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posted in 2018</title>
-  <updated>2024-08-07T20:27:29.043263+00:00</updated>
+  <updated>2024-08-07T20:31:02.474690+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/2018/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-19371/log-84151/</id>
+    <title>Version 3.0</title>
+    <updated>2018-01-25T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="version-3-0"&gt;
+
+&lt;p&gt;Published on 2018-01-25 in &lt;a class="reference internal" href="../../projects/project-19371/#project-19371"&gt;&lt;span class="std std-ref"&gt;D1 Mini X-Pad Shield&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I have been working a little on this project in the recent months,
+designing a new PCB using different parts and so on, but I didn’t
+really have time to assemble and test it properly. Recently I found
+the PCBs in a drawer, found the matching parts, and decided to give it
+a go. Behold, version 3.0:&lt;/p&gt;
+&lt;img alt="projects/project-19371/images/6528201516912435919.jpg" src="projects/project-19371/images/6528201516912435919.jpg" /&gt;
+&lt;p&gt;and the back side:&lt;/p&gt;
+&lt;p&gt;———- more ———-&lt;/p&gt;
+&lt;img alt="projects/project-19371/images/3290671516912471580.jpg" src="projects/project-19371/images/3290671516912471580.jpg" /&gt;
+&lt;p&gt;I’m using a much smaller PCA9554 here, which has pretty much the same
+I²C interface. I also put all the parts on the back, so that you can
+stack this board with the display more tightly.&lt;/p&gt;
+&lt;p&gt;Just like version 2.0, it has friction-fit pin headers, so you don’t
+even need to solder anything. As a bonus, I added a header for a
+SSD1331 display module, which you can simply plug in there. Only one
+problem, the module is too wide and covers some of the buttons.&lt;/p&gt;
+&lt;p&gt;I also used different buttons — initially I wanted to use the same
+kind that is on the Pro Mini boards for reset, but then realized that
+the “quiet” ALPS buttons fit that footprint too. Well, they almost fit
+— they are a bit too wide, and stick a little bit out on the D-pad
+side. Oh well.&lt;/p&gt;
+&lt;p&gt;Overall, I don’t think the improvements are worth rolling a new
+version on Tindie — and I still have a bunch of version 2.0 ones to
+sell. However, I’m already thinking about version 4.0, which will be
+bigger, have footprints for multiple different display modules, and
+will use an ATtiny24 to do de-bouncing and buffering, just like on &lt;span class="xref std std-ref"&gt;project-27757&lt;/span&gt; . It can take a while to finalize that one, though.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-19371/log-84151/" rel="alternate"/>
+    <summary>Published on 2018-01-25 in project-19371.</summary>
+    <published>2018-01-25T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-19371/log-146342/</id>
+    <title>Version 6.0</title>
+    <updated>2018-05-17T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="version-6-0"&gt;
+
+&lt;p&gt;Published on 2018-05-17 in &lt;a class="reference internal" href="../../projects/project-19371/#project-19371"&gt;&lt;span class="std std-ref"&gt;D1 Mini X-Pad Shield&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;After using an ATtiny24 for handling buttons in &lt;span class="xref std std-ref"&gt;project-27757&lt;/span&gt; I decided that this is also the way to go with the X-Pad shield. I
+designed version 5.0 which used the same buttons and layout as 4.0,
+but a different chip, and I tested the firmware with it. Turns out
+that it works very well, and does de-bouncing and buffering for you,
+so that you don’t have to poll the chip frantically for presses,
+afraid that you miss any. All button presses now wait nicely in the
+buffer until you read them. The shield looked like this:&lt;/p&gt;
+&lt;img alt="projects/project-19371/images/5465841526548313697.png" src="projects/project-19371/images/5465841526548313697.png" /&gt;
+&lt;p&gt;But then I have some problems with the shields I sold on Tindie (due
+to poor solder joints on the buttons), and I removed the shield from
+my store. I decided to work on the design a little bit more and make a
+version that will really be the best I can make. Behold, version 6.0:&lt;/p&gt;
+&lt;img alt="projects/project-19371/images/1599921526548559905.jpg" src="projects/project-19371/images/1599921526548559905.jpg" /&gt;
+&lt;p&gt;It’s bigger than the original X-Pad shield, and has mounting holes. It
+also has all the components, except buttons, on the back, and away
+from the middle part of the board — so it can lie flat against the D1
+Mini and other shields. It also has friction-fit headers, so no
+soldering is necessary and you can add it to another shield easily,
+like this:&lt;/p&gt;
+&lt;img alt="projects/project-19371/images/7862921526548698640.jpg" src="projects/project-19371/images/7862921526548698640.jpg" /&gt;
+&lt;p&gt;There are also two headers for popular display modules. One for the
+128×128 ST7735R module (you might need to trim that corner):&lt;/p&gt;
+&lt;img alt="projects/project-19371/images/3627931526548781441.jpg" src="projects/project-19371/images/3627931526548781441.jpg" /&gt;
+&lt;p&gt;And one for the popular SPI-based OLED modules, such as SSD1331 or
+SSD1306:&lt;/p&gt;
+&lt;img alt="projects/project-19371/images/8869361526548913513.jpg" src="projects/project-19371/images/8869361526548913513.jpg" /&gt;
+&lt;p&gt;I still need to add some last finishing touches to the firmware and
+test it all properly, and it’s going into my Tindie store.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-19371/log-146342/" rel="alternate"/>
+    <summary>Published on 2018-05-17 in project-19371.</summary>
+    <published>2018-05-17T00:00:00+02:00</published>
+  </entry>
   <entry>
     <id>http://deshipu.art/projects/project-6050/log-147636/</id>
     <title>Reviving the Skull Tote</title>

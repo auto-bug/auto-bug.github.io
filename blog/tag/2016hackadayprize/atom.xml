@@ -1,0 +1,159 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>http://deshipu.art/</id>
+  <title>deshipu.art - Posts tagged 2016HackadayPrize</title>
+  <updated>2024-08-07T20:31:02.571090+00:00</updated>
+  <link href="http://deshipu.art/"/>
+  <link href="http://deshipu.art/blog/tag/2016hackadayprize/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-10491/</id>
+    <title>Lodestar</title>
+    <updated>2016-03-23T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="lodestar"&gt;
+
+&lt;p&gt;A cube that shows you the way&lt;/p&gt;
+&lt;div class="project-thumb"&gt;
+&lt;a class="reference external image-reference" href="/_images/7001791458737299605.jpg"&gt;&lt;img alt="projects/project-10491/images/7001791458737299605.jpg" src="projects/project-10491/images/7001791458737299605.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/3991491458736147589.jpg"&gt;&lt;img alt="projects/project-10491/images/3991491458736147589.jpg" src="projects/project-10491/images/3991491458736147589.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/8253121458736156150.jpg"&gt;&lt;img alt="projects/project-10491/images/8253121458736156150.jpg" src="projects/project-10491/images/8253121458736156150.jpg" /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;section id="logs"&gt;
+&lt;h2&gt;Logs&lt;/h2&gt;
+&lt;ul class="postlist-style-none postlist simple"&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-04-11 - &lt;a class="reference internal" href="../../../projects/project-10491/log-35671/"&gt;Soldering&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-04-11 - &lt;a class="reference internal" href="../../../projects/project-10491/log-35673/"&gt;Desoldering&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-04-08 - &lt;a class="reference internal" href="../../../projects/project-10491/log-35451/"&gt;Solderpaste&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-03-23 - &lt;a class="reference internal" href="../../../projects/project-10491/log-34454/"&gt;New Project, New Plans&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section id="instructions"&gt;
+&lt;h2&gt;Instructions&lt;/h2&gt;
+&lt;/section&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-10491/" rel="alternate"/>
+    <summary>A cube that shows you the way</summary>
+    <category term="2016HackadayPrize" label="2016HackadayPrize"/>
+    <category term="bling" label="bling"/>
+    <category term="hardware" label="hardware"/>
+    <category term="lights" label="lights"/>
+    <category term="navigation" label="navigation"/>
+    <category term="ongoingproject" label="ongoing project"/>
+    <published>2016-03-23T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-10533/</id>
+    <title>Nano TTY</title>
+    <updated>2016-03-25T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="nano-tty"&gt;
+
+&lt;p&gt;Small serial terminal for debugging your robots&lt;/p&gt;
+&lt;div class="project-thumb"&gt;
+&lt;a class="reference external image-reference" href="/_images/7772871460731788576.jpg"&gt;&lt;img alt="projects/project-10533/images/7772871460731788576.jpg" src="projects/project-10533/images/7772871460731788576.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/9481741458912065926.jpg"&gt;&lt;img alt="projects/project-10533/images/9481741458912065926.jpg" src="projects/project-10533/images/9481741458912065926.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/9411211460731782215.jpg"&gt;&lt;img alt="projects/project-10533/images/9411211460731782215.jpg" src="projects/project-10533/images/9411211460731782215.jpg" /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Once upon a time I found a Nokia display in my drawer, and figured out
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;I need to try to use it in a project. So I went and built the simplest
+thing – a small serial display, that I can connect to my robots for
+debugging. That’s how &lt;a class="reference internal" href="../../../projects/project-7111/#project-7111"&gt;&lt;span class="std std-ref"&gt;µtty&lt;/span&gt;&lt;/a&gt;  was born. It is actually very useful, but a little bit cumbersome to
+use. So I decided to try and improve the design a little bit.&lt;/p&gt;
+&lt;p&gt;Nano TTY is following the same idea – a small screen that lets you
+see the serial traffic from your project. However, there are some
+improvements:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;much smaller and lighter&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;high-contrast OLED display&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;fast, smooth scrolling, using a scroll wheel&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;large scroll buffer&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;There may be further improvements, depending on how well this goes,
+but this is the minimum plan.&lt;/p&gt;
+&lt;section id="logs"&gt;
+&lt;h2&gt;Logs&lt;/h2&gt;
+&lt;ul class="postlist-style-none postlist simple"&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-04-15 - &lt;a class="reference internal" href="../../../projects/project-10533/log-35970/"&gt;First Mock of the Interface&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-04-15 - &lt;a class="reference internal" href="../../../projects/project-10533/log-35964/"&gt;Encoders&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-03-25 - &lt;a class="reference internal" href="../../../projects/project-10533/log-34525/"&gt;Smooth Scrolling on a SSD1306&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section id="instructions"&gt;
+&lt;h2&gt;Instructions&lt;/h2&gt;
+&lt;/section&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-10533/" rel="alternate"/>
+    <summary>Small serial terminal for debugging your robots</summary>
+    <category term="2016HackadayPrize" label="2016HackadayPrize"/>
+    <category term="avr" label="avr"/>
+    <category term="hardware" label="hardware"/>
+    <category term="oled" label="oled"/>
+    <category term="ongoingproject" label="ongoing project"/>
+    <category term="serial" label="serial"/>
+    <category term="tty" label="tty"/>
+    <published>2016-03-25T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-10665/</id>
+    <title>Pony Bot</title>
+    <updated>2016-03-31T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="pony-bot"&gt;
+
+&lt;p&gt;A robo-pet&lt;/p&gt;
+&lt;div class="project-thumb"&gt;
+&lt;a class="reference external image-reference" href="/_images/545571460052755967.jpg"&gt;&lt;img alt="projects/project-10665/images/545571460052755967.jpg" src="projects/project-10665/images/545571460052755967.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/1182321459443040787.jpg"&gt;&lt;img alt="projects/project-10665/images/1182321459443040787.jpg" src="projects/project-10665/images/1182321459443040787.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/1641971459443030083.jpg"&gt;&lt;img alt="projects/project-10665/images/1641971459443030083.jpg" src="projects/project-10665/images/1641971459443030083.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/7796781460658379406.jpg"&gt;&lt;img alt="projects/project-10665/images/7796781460658379406.jpg" src="projects/project-10665/images/7796781460658379406.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/6895731474292178584.jpg"&gt;&lt;img alt="projects/project-10665/images/6895731474292178584.jpg" src="projects/project-10665/images/6895731474292178584.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/5602221462630824844.jpg"&gt;&lt;img alt="projects/project-10665/images/5602221462630824844.jpg" src="projects/project-10665/images/5602221462630824844.jpg" /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;This is yet another attempt at a 8-servo walking robot, similar to {ref}`project-6321`  and {ref}`project-8521` . Except this time I want it to be a cute robot pet, so I had to
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;choose a cute shape for it. I will need to make yet another breakout
+board for the servos (the one I used on µKatka has some flaws) and
+this time I will need some sensors – not sure what yet.&lt;/p&gt;
+&lt;section id="logs"&gt;
+&lt;h2&gt;Logs&lt;/h2&gt;
+&lt;ul class="postlist-style-none postlist simple"&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-09-19 - &lt;a class="reference internal" href="../../../projects/project-10665/log-67467/"&gt;Trinket M0&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-09-19 - &lt;a class="reference internal" href="../../../projects/project-10665/log-45764/"&gt;Better Servo Mounts&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-09-12 - &lt;a class="reference internal" href="../../../projects/project-10665/log-45486/"&gt;New Brain&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-09-10 - &lt;a class="reference internal" href="../../../projects/project-10665/log-45384/"&gt;Some Code&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-05-07 - &lt;a class="reference internal" href="../../../projects/project-10665/log-37620/"&gt;Schematic&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-05-06 - &lt;a class="reference internal" href="../../../projects/project-10665/log-37560/"&gt;Brains&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-04-14 - &lt;a class="reference internal" href="../../../projects/project-10665/log-35926/"&gt;Servos, Horns and Screws&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-04-14 - &lt;a class="reference internal" href="../../../projects/project-10665/log-35887/"&gt;Attaching Servos to the Body&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-04-07 - &lt;a class="reference internal" href="../../../projects/project-10665/log-35405/"&gt;New Legs&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-04-06 - &lt;a class="reference internal" href="../../../projects/project-10665/log-35305/"&gt;Controller PCB&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-03-31 - &lt;a class="reference internal" href="../../../projects/project-10665/log-34972/"&gt;Servo Mounting Holes&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-03-31 - &lt;a class="reference internal" href="../../../projects/project-10665/log-34968/"&gt;Leg Mechanism&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section id="instructions"&gt;
+&lt;h2&gt;Instructions&lt;/h2&gt;
+&lt;/section&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-10665/" rel="alternate"/>
+    <summary>A robo-pet</summary>
+    <category term="2016HackadayPrize" label="2016HackadayPrize"/>
+    <category term="ESP8266" label="ESP8266"/>
+    <category term="MLP" label="MLP"/>
+    <category term="Pet" label="Pet"/>
+    <category term="ROBOT" label="ROBOT"/>
+    <category term="Robotics" label="Robotics"/>
+    <category term="WALKING" label="WALKING"/>
+    <category term="hardware" label="hardware"/>
+    <category term="mylittlepony" label="my little pony"/>
+    <category term="ongoingproject" label="ongoing project"/>
+    <category term="pony" label="pony"/>
+    <category term="quadruped" label="quadruped"/>
+    <category term="robots" label="robots"/>
+    <published>2016-03-31T00:00:00+02:00</published>
+  </entry>
+</feed>

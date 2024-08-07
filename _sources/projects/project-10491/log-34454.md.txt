@@ -1,0 +1,57 @@
+---
+blogpost: true
+date: 2016-03-23
+category: project-10491
+---
+
+# New Project, New Plans
+Published on 2016-03-23 in {ref}`project-10491`.
+
+So this is what was born from the {ref}`project-7663`  experiments. Back then, I assembled a 5×5×5 RGB LED cube by soldering
+the NeoPixels directly together, and managed to get some very nice
+lightning effects with that. But the soldering job wasn't very good,
+the device was brittle, the LEDs would flicker off at a touch, and the
+walls of the cube became somewhat rounded.
+
+
+:::{image} images/108021458761550860.jpg
+
+:::
+
+
+So I decided to do a second approach. This time I'm going to solder
+the LEDs onto 6 PCBs. [I ordered them from DirtyPCBs](http://dirtypcbs.com/view.php?share=17614&accesskey=f1f730c997b8961c9ada95dd2be1916b)  some time ago, and I was lucky, because the proto-pack contains 12
+boards -- enough to make two cubes! Anyways, I only have enough
+NeoPixels to make one for now, but it's nice to know that I have a
+spare. The connections on the board follow what I came up back when I
+worked on {ref}`project-7663` :
+
+
+:::{image} images/2992871458761711305.png
+
+:::
+
+
+I already tried to solder one board by hand, and I must say it's hard.
+There is so little room between the LEDs, and it's so hard to keep
+them straight... The result is not very pretty:
+
+
+:::{image} images/2670031458762084874.jpg
+
+:::
+
+
+It would probably look fine if I encased it in a laser-cut box made of
+matte acrylic, but still, I think I can do better. So I paused with
+the other boards for now, and ordered a solder paste. I will try to
+use that together with a hot plate to get better results.
+
+That's it about the outside.
+
+On the inside, I plan to install an ESP8266 module, together with 3D
+compass and GPS modules. And a small LiPo battery, of course. The hope
+is that this will let me figure out where in the world the cube is and
+how it is oriented, and then animate the lights to point to the next
+way-point. We will see how that works out.
+

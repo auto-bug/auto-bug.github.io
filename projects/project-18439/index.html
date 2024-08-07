@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Motor Shield Reprogramming - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="motor-shield-reprogramming">
+<h1>Motor Shield Reprogramming<a class="headerlink" href="#motor-shield-reprogramming" title="Permalink to this heading">¶</a></h1>
+<p>Create and flash new firmware for the WeMos D1 Mini Motor Shield.</p>
+<div class="project-thumb">
+<a class="reference external image-reference" href="/_images/2343041479721475132.jpg"><img alt="projects/project-18439/images/2343041479721475132.jpg" src="projects/project-18439/images/2343041479721475132.jpg" /></a>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>We have pretty good information about the motor shield:
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>The H-bridge is TB6612.</p></li>
+<li><p>The microcontroller is STM32F030.</p></li>
+<li><p>We have a schematic: <a class="reference external" href="https://www.wemos.cc/sites/default/files/2016-09/mini_motor.pdf">https://www.wemos.cc/sites/default/files/2016-09/mini_motor.pdf</a></p></li>
+<li><p>We have the Arduino library for talking to it: <a class="reference external" href="https://github.com/wemos/WEMOS_Motor_Shield_Arduino_Library">https://github.com/wemos/WEMOS_Motor_Shield_Arduino_Library</a></p></li>
+<li><p>And, last but not least, we finally have the source code of the
+original firmware: <a class="reference external" href="https://github.com/wemos/Motor_Shield_Firmware">https://github.com/wemos/Motor_Shield_Firmware</a></p></li>
+</ul>
+<p>The shield has a serial interface for programming broken out, and that
+chip is supposed to have a bootloader built-in, so hopefully we will
+be able to just use stm32flash and an USB2TTL adapter to program it.</p>
+<p>There is a nice dev environment template for this family of
+microcontrollers: <a class="reference external" href="https://github.com/szczys/stm32f0-discovery-basic-template">https://github.com/szczys/stm32f0-discovery-basic-template</a></p>
+<section id="logs">
+<h2>Logs<a class="headerlink" href="#logs" title="Permalink to this heading">¶</a></h2>
+<ul class="postlist-style-none postlist simple">
+<li class="ablog-post"><p class="ablog-post-title">2017-11-08 - <a class="reference internal" href="log-70239/">Multiple I²C Addresses</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-04-21 - <a class="reference internal" href="log-57852/">We Have a Fixed Firmware!</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-04-21 - <a class="reference internal" href="log-57855/">Reprogramming Without Soldering</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2016-11-22 - <a class="reference internal" href="log-49380/">SWD Programming Continued</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2016-11-22 - <a class="reference internal" href="log-49378/">SWD Programming</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2016-11-21 - <a class="reference internal" href="log-49300/">Serial Programming</a></p></li>
+</ul>
+</section>
+<section id="instructions">
+<h2>Instructions<a class="headerlink" href="#instructions" title="Permalink to this heading">¶</a></h2>
+</section>
+</section>
+
+
+</div>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+---
+blogpost: true
+date: 2015-12-22
+category: project-8282
+---
+
+# Connections and Software
+Published on 2015-12-22 in {ref}`project-8282`.
+
+So today I finished the second version of Alpen Clack -- this one
+built from scratch. As always, the most work-intensive part was
+soldering everything together. This time I used non-insulated wire,
+and added some kapton tape where it might touch anything -- this was
+much faster than removing the insulation from wires for soldering. The
+finished connections, before closing the keyboard:
+
+
+:::{image} images/8888401450821121594.jpg
+
+:::
+
+
+Next comes the programming. I used the same firmware as for version
+one, except this time I had 6 columns and 17 rows (I kept the layout
+rotated 90°, as this is much easier to fit in 80 columns of source
+code). I also drilled a small hole for the reset button, to be able to
+press it with a pin.
+
+Defining the layout was much easier this time, because of the saner
+matrix -- the Pololu A* Mini has enough pins broken out for me to not
+care so much about saving them. Still, I miscalculated a little bit
+and had to use one of the LED pins. That still left me two LEDs for
+CapsLock and ScrollLock (no NumLock), so it's fine.
+
+Once everything was ready, I spent the customary 4 hours tearing my
+hair off and staring at the code, trying to debug a problem with it.
+In the end, it turned out that the compiler was caching a little more
+than it should, and recompiling everything from scratch solved it.
+

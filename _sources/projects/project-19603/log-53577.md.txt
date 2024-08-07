@@ -1,0 +1,78 @@
+---
+blogpost: true
+date: 2017-02-20
+category: project-19603
+---
+
+# Battery Protection
+Published on 2017-02-20 in {ref}`project-19603`.
+
+I did some more work both on this project and on the {ref}`project-19921` . I debugged the leg IK code finally -- it was all about reversed
+servo directions. I also tested different parameters for the creep
+gait, and I can tell it will take some time to tune this properly.
+
+However, in the process of doing that, I ran the LiPo batteries on
+those robots to dangerously low voltage levels. Fortunately I noticed
+and re-charged them quickly, so hopefully the damage is not that big,
+but this made me actually go looking at the schematics and reading
+datasheets.
+
+It turns out that neither the Adafruit Feather not the D1 Mini Battery
+Shield have a built-in overdischarge protection, as I assumed they
+would. They only have a charger and a voltage regulator (a boost
+converter in the case of the D1 Mini). They assume, apparently, that
+the battery has the protection circuit built-in. Of course the 16340
+batteries that I'm using have no such thing. So it's back to the
+drawing board.
+
+I considered various options:
+
+
+ * add the battery protection circuitry on the board (in form of a ready
+chip)
+ * add the battery protection as a ready module
+ * add a battery charger module with the protection circuit included
+ * add a voltage divider and connect it to an analog pin of the board,
+and monitor voltage in software in Python
+ * add a voltage divider and connect it to an analog pin on the ATmega,
+and monitor voltage in software in C on the servo controller
+
+All of those have their advantages and disadvantages, and I think I'm
+going to choose different options for the two different designs.
+
+For the D1 Mini Tote, I don't care much about how complex the board
+will become -- it requires soldering of SMD chips anyways, so if I
+ever make this available, that will probably be with the board pre-
+soldered. In that situation, a hardware battery protection is a better
+thing -- it works even if there is a bug in your software, or when
+that crashes. I also don't like the battery shield very much. So I
+decided to go with a battery charger module with a built-in voltage
+protection on it. I had a few of those on hand already, and I tested
+them briefly -- they seem to work just fine. So I reworked the PCB to
+include the pins for the charging module, and to not require the
+battery shield anymore. There will still be a separate USB socket for
+charging -- there is no way I can access the data pins on the D1 Mini
+to connect the sockets together, and the robot will still have to be
+switched on for charging -- I have bad experiences with leaving
+anything connected to the battery with the switch in the off position:
+I want the switch to cut the battery completely.
+
+For the {ref}`project-19921` , I went with a voltage divider initially. It would be perfect to just
+connect it to A6 or A7 -- the analog-only pins that I'm not using
+anyways -- of the ATmega, however, they are not broken out in the DIP
+package. So now I have a choice between using one of the servo pins
+(which I really could, since I have 8 more than I really need), or
+using the Feather's analog pin and run the check in Python. I made
+some PCB designs for both approaches, but just now, while I was
+writing all this, I had another idea. The ATmega includes internal
+reference voltage that I can measure against the voltage the chip is
+powered from. That means, that if I power the ATmega directly from the
+battery, I can check the battery voltage without the need for any
+extra components or pins. Well, OK, I will need a filtering capacitor
+then, because the servos make a lot of noise, but it should work.
+Unfortunately, right now I'm powering the ATmega from the 3.3V pin of
+the Feather -- because it's nice, stabilized and filtered. In any
+case, I would really prefer to have the check in the ATmega, and not
+on the Feather -- it's more robust that way against users uploading
+their own programs.
+

@@ -1,0 +1,29 @@
+---
+blogpost: true
+date: 2016-07-09
+category: project-11660
+---
+
+# IS31FL3731 Charlie-Plexed LED Matrix
+Published on 2016-07-09 in {ref}`project-11660`.
+
+This driver is for a monochromatic matrix of up to 144 LEDs, with
+hardware PWM and blinking. It also has 8 frames of memory, and can
+fade between them, or play animations with them -- optionally
+synchronized to music! The code is at [https://bitbucket.org/thesheep/micropython-
+is31fl3731/src/tip/is31fl3731.py](https://bitbucket.org/thesheep/micropython-is31fl3731/src/tip/is31fl3731.py) 
+
+Example use:
+
+
+```python
+import is31fl3731
+from machine import I2C, Pin
+i2c = I2C(Pin(5), Pin(4))
+display = is31fl3731.CharlieWing(i2c)
+display.fill(127)
+display.pixel(0, 0, 2, True)
+display.blink(540)
+```
+
+\

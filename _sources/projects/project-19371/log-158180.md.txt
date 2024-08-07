@@ -1,0 +1,47 @@
+---
+blogpost: true
+date: 2019-01-13
+category: project-19371
+---
+
+# Analog Joysticks
+Published on 2019-01-13 in {ref}`project-19371`.
+
+I'm very happy with the version 6.0 and don't plan to make any further
+changes, at least for now. It's perfect both for user interfaces and
+for games. However, there is one more use case I have in mind, and
+that is controlling mobile robots. For that analog joysticks would be
+much better. So I sat down and designed another version, this time
+with two thumb joysticks, two shoulder buttons, and two buttons on the
+side for switching modes:
+
+
+
+:::{image} images/7366381547333833488.png
+
+:::
+
+
+I kept the size the same, but this time I centered the board (the
+d-pad version is a bit shifted to make room for the four fire
+buttons). Also, since the thumb sticks are so big, I had to put the
+shoulder buttons on the back of the board, where the microcontroller
+is:
+
+
+
+:::{image} images/4411911547333924390.png
+
+:::
+
+
+Four analog pins of the AtTiny24 are enough to handle the joystick,
+and the remaining four are for the buttons — again I didn't do
+anything fancy. I kept the interrupt pin and the two footprints for
+displays — a robot controller could use this for telemetry, menus, or
+even camera image (but that would probably require an esp32 board).
+
+Of course the final version will have rounded corners. I should have
+the boards in a few weeks, then I will adapt the code to send not only
+the button status, but also the four analog measurements.
+

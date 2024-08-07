@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Just Starting - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="just-starting">
+<h1>Just Starting<a class="headerlink" href="#just-starting" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2016-12-04 in <a class="reference internal" href="../#project-18758"><span class="std std-ref">Mechatronic Ears on the Micro:bit</span></a>.</p>
+<p>When I was thinking what could kids make with the micro:bit, I
+remembered my <a class="reference internal" href="../../project-9769/#project-9769"><span class="std std-ref">Mechatronic Ears</span></a>  project. The micro:bit has a built-in accelerometer, can easily
+control up to three servos (because that’s how many pins are easy to
+access without an edge connector), and can be programmed in Python. So
+I decided to give it a try.</p>
+<p>I started by collecting the materials: a hat, ears with hair clips
+(you can find them in any costume shop, or order from China), two
+9-gram servos (the cheap SG90 would work just fine, but I didn’t have
+any at hand, so I used some random beaten up servos left from my first
+robot experiments), a battery, some wires and a piece of steel wire.</p>
+<img alt="projects/project-18758/images/189921480804987540.jpg" src="projects/project-18758/images/189921480804987540.jpg" />
+<hr class="docutils" />
+<p>I started by opening the ears – just cutting the thread on the pink
+inside. Be careful to only cut the thread and not the material – we
+will need to sew it back together at the end.</p>
+<img alt="projects/project-18758/images/9381541480805058008.jpg" src="projects/project-18758/images/9381541480805058008.jpg" />
+<p>Next, I put the servo arms on the servos, and cut them to only have an
+arm on one side (I lost the original one-sided arms for them, you can
+use those for your servos, of course).</p>
+<img alt="projects/project-18758/images/1208811480805179354.jpg" src="projects/project-18758/images/1208811480805179354.jpg" />
+<p>Next, I bent the steel wire, and put it through the holes in the servo
+arm:</p>
+<img alt="projects/project-18758/images/7722661480805220561.jpg" src="projects/project-18758/images/7722661480805220561.jpg" />
+<p>Then I bent both ends again (using pliers), so that it sits tight.</p>
+<img alt="projects/project-18758/images/94781480805278457.jpg" src="projects/project-18758/images/94781480805278457.jpg" />
+<p>I cut the wire to the length of the ears.</p>
+<img alt="projects/project-18758/images/6838121480805316041.jpg" src="projects/project-18758/images/6838121480805316041.jpg" />
+<p>And I bent the wire into an arc, so that it can go along the edge of
+the ear (the wire is bent at the tip, so that it doesn’t poke out).
+Then I put the servo with the wire inside the ear.</p>
+<img alt="projects/project-18758/images/9229531480805366998.jpg" src="projects/project-18758/images/9229531480805366998.jpg" />
+<p>I initially wanted to sew both the serwo and the wire in place, but in
+the end decided to simply glue the servo to the bottom of the ear
+(where the hair clip is) with instant glue. Be careful to not get fur
+glued to your fingers. Then I fastened the steel wire to the edge of
+the ear, but only from the tip to about halfway towards the servo –
+the rest has to stay loose, so that the servo can easily move.</p>
+<img alt="projects/project-18758/images/1310961480805556383.jpg" src="projects/project-18758/images/1310961480805556383.jpg" />
+<p>Next, I connected wires to the micro:bit.</p>
+<img alt="projects/project-18758/images/4080741480805681892.jpg" src="projects/project-18758/images/4080741480805681892.jpg" />
+<p>Yellow goes to the pins, red goes to 3V, and brown goes to GND. One of
+the servos had its original wires broken, so I had to replace them
+with some randomly colored ones… Look at the other one for
+reference.Next, a quick test using the servo code from <a class="reference internal" href="../../project-8643/#project-8643"><span class="std std-ref">Micro:Bob</span></a> .</p>
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/aSmmwRwKM5Y"></iframe>
+<p>You can see the servo “buzzing” when it’s outside of its allowed
+range. I experimented a bit to find the optimal range for this
+particular ear, when it’s not buzzing – it was 120-180. Bending the
+wire a bit helped with the range. The second ear had range 0-90.</p>
+<p>Finally, when everything was read, I sewed the ears up.</p>
+<img alt="projects/project-18758/images/1947031480806062300.jpg" src="projects/project-18758/images/1947031480806062300.jpg" />
+<p>The second ear was made exactly the same way, except you have to
+remember to make it a mirror image of the first one – so everything
+has to be reversed.Once I had both ears, I attached them to the hat. In my case, I just
+used the hair clips, since the hat had holes in the right places
+already. You might need to sew them, or to make the holes for the
+clips, or to attach them in some other way.</p>
+<p>The micro:bit and the battery go inside – I will need to secure them
+there somehow, I will probably just use black thread.</p>
+<img alt="projects/project-18758/images/4701661480806206012.jpg" src="projects/project-18758/images/4701661480806206012.jpg" />
+<p>That’s it for now. Next up, programming them.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

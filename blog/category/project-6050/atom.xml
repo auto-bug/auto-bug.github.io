@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posts in project-6050</title>
-  <updated>2024-08-07T20:27:28.912775+00:00</updated>
+  <updated>2024-08-07T20:31:02.139598+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/category/project-6050/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -43,7 +43,7 @@ console to program and debug it very conveniently. There is also a
 LiPo shield, which makes it possible to recharge the battery from the
 USB. So I spent some hours making this:&lt;/p&gt;
 &lt;img alt="projects/project-6050/images/5545441484170063244.png" src="projects/project-6050/images/5545441484170063244.png" /&gt;
-&lt;p&gt;The base is just the &lt;span class="xref std std-ref"&gt;project-13278&lt;/span&gt;  with 20 channels for the servos. I tried to make it easier to
+&lt;p&gt;The base is just the &lt;a class="reference internal" href="../../../projects/project-13278/#project-13278"&gt;&lt;span class="std std-ref"&gt;Servo Breakout for WeMos D1 Mini&lt;/span&gt;&lt;/a&gt;  with 20 channels for the servos. I tried to make it easier to
 reprogram by including the ISP header. There are no Tote-specific
 markings about leg servos and so on there – just channel numbers, so
 it makes it easier to see which servo is which inside your program,
@@ -179,7 +179,7 @@ the most total work into so far. With the year’s end, I decided to
 reflect a bit about the progress made so far and the way forward.\&lt;/p&gt;
 &lt;p&gt;There wasn’t a lot of activity, but some interesting things did happen
 last year.&lt;/p&gt;
-&lt;p&gt;We had a workshop in Belgrade, where we built 20 &lt;span class="xref std std-ref"&gt;project-9927&lt;/span&gt; s. I have learned a lot about how (not) to source parts for such an
+&lt;p&gt;We had a workshop in Belgrade, where we built 20 &lt;a class="reference internal" href="../../../projects/project-9927/#project-9927"&gt;&lt;span class="std std-ref"&gt;Tote HaD&lt;/span&gt;&lt;/a&gt; s. I have learned a lot about how (not) to source parts for such an
 event, how to run it, what parts are actually hard for people, etc.
 There were also some improvements to the construction itself
 contributed by the participants – but only during the workshop. I’m a
@@ -190,7 +190,7 @@ think this is an important point to consider.\&lt;/p&gt;
 build at least two of them. There are even more unfinished projects,
 but I guess that’s normal.&lt;/p&gt;
 &lt;p&gt;On my side, I released another version of the PCB, experimented with
-some alternate brains (including the &lt;span class="xref std std-ref"&gt;project-9065&lt;/span&gt;  with a Raspberry Pi), and made one of my prototypes look much better
+some alternate brains (including the &lt;a class="reference internal" href="../../../projects/project-9065/#project-9065"&gt;&lt;span class="std std-ref"&gt;Tote Zero&lt;/span&gt;&lt;/a&gt;  with a Raspberry Pi), and made one of my prototypes look much better
 by giving it a chassis and some LED eyes, and a coat of paint. There
 has been practically no progress on the software side, despite some
 research on the CORDIC algorithms and servo PWM code. I also didn’t

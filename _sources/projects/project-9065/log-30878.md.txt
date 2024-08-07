@@ -1,0 +1,34 @@
+---
+blogpost: true
+date: 2016-01-26
+category: project-9065
+---
+
+# One Step Forward, Two Steps Back
+Published on 2016-01-26 in {ref}`project-9065`.
+
+Today I finally adapted all the code for IK and walking, and realized
+that practically everything I did yesterday is wrong.
+
+First, the cheap WiFi dongle that I soldered to the mini-hub is really
+bad. It gets hot and eats enough current to make the Pi Zero restart
+when the servos move. I had to switch to console over serial.
+
+Second, before you laboriously trim all the servos to the right
+positions, make sure the new servo library that you wrote takes the
+same range of angles as the old one. In this case, the old one took
+-90° to 90°, and the new one takes 0° to 180°. The result is that all
+the servos are wrong by 90° and I have to redo the trimming.\
+
+
+Of course the board has a tendency to restart when all the servos are
+switched on simultaneously anyways, so I had to add some code that
+switches them one by one, with some delays. Nothing new here, old {ref}`project-6050`  had the same thing, and it's a good idea anyways.
+
+I still have to figure out which pins are for servos on which legs --
+I didn't keep track of that when connecting them, and I figured it
+would be easier to just go one by one in software and see which leg
+moves.
+
+Hopefully I can get the first walk by the end of the month.
+

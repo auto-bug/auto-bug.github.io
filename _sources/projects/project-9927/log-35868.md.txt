@@ -1,0 +1,42 @@
+---
+blogpost: true
+date: 2016-04-14
+category: project-9927
+---
+
+# Compiling Your Own Firmware
+Published on 2016-04-14 in {ref}`project-9927`.
+
+For anyone who wants to build their own version of firmware, here's a
+really quick howto:
+
+
+ * Clone the Tote-HAD repository from [https://bitbucket.org/thesheep/tote-had](https://bitbucket.org/thesheep/tote-had) 
+```bash
+hg clone https://bitbucket.org/thesheep/tote-had
+```
+
+
+ * Clone the Micropython repository from [https://github.com/micropython/micropython/
+```bash
+git clone https://github.com/micropython/micropython.git
+```
+
+](https://github.com/micropython/micropython/) 
+ * Follow the [README.md](https://github.com/micropython/micropython/blob/master/esp8266/README.md)  for the ESP8266 port to setup the build environment. You can also
+follow one of the guides at [http://forum.micropython.org/viewforum.php?f=16](http://forum.micropython.org/viewforum.php?f=16) 
+ * Before compiling, copy or link the files from the [python](https://bitbucket.org/thesheep/tote-had/src/tip/python/?at=default)  directory of Tote-HAD to [esp8266/scripts](https://github.com/micropython/micropython/tree/master/esp8266/scripts) 
+ * Compile and flash normally, as the README says.
+
+You can also skip the main.py file (it's the file that gets executed
+on the board start), and instead create it after flashing -- this way
+you will be able to modify it without recompiling the firmware:
+
+
+```python
+with open("main.py", "w") as f:
+    f.write("import server; server.main()")
+```
+
+There are some tools that make it easier to upload files to the
+ESP8266, like here: [https://github.com/wendlers/mpfshell](https://github.com/wendlers/mpfshell) 

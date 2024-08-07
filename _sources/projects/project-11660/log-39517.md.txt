@@ -1,0 +1,18 @@
+---
+blogpost: true
+date: 2016-06-05
+category: project-11660
+---
+
+# ILI9340/ILI9341 TFT Display
+Published on 2016-06-05 in {ref}`project-11660`.
+
+Those displays are quite popular and common, so I made a driver for
+them. Right now the driver is very basic, only gives the ability to
+draw individual pixels or filled rectangles. It's also pretty slow, at
+least with the bit-banged SPI on the ESP8266. The code is at [https://bitbucket.org/thesheep/micropython-ili9341/src/](https://bitbucket.org/thesheep/micropython-ili9341/src/) 
+
+Update: now also added text and vertical scrolling.
+
+Update: implemented HSPI on the ESP8266 and it's now blazing fast.
+

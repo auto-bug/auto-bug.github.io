@@ -1,0 +1,66 @@
+---
+blogpost: true
+date: 2016-02-23
+category: project-9769
+---
+
+# PWM on ATtiny85
+Published on 2016-02-23 in {ref}`project-9769`.
+
+So I decided to go for this miniaturized version, and ordered the PCB
+at OSHPark. Since it was so small, it's quite cheap. But that means
+that now I need to port my code to ATtiny85. I can use an Arduino
+core, but I still need to come up with a way to control the hobby
+servos. The obvious way is to use Fast PWM mode.
+
+The usual way to do it is to set a timer with two triggers -- one that
+switches the pin low, and one that resets the counter and switches the
+pin back to high. This gives you precise control over the exact
+frequency and duty cycle of the signal. ATtiny85 has two such timers,
+so I should be all set.
+
+There is a small problem, however. I will also need 3 ADC pins, and
+one of those is the same as the Timer1 PWM pin. There is an ADC on the
+reset pin too, but I don't have a high voltage programmer to make use
+of that. So I can't use the second timer.
+
+What I can do, is to use Timer0 but don't reset it on the second
+trigger, but let it overflow. Then use the second trigger for the
+second PWM pin. That however removes the precise control over the
+frequency -- now I can only use the frequencies that are available
+with the given prescalers and CPU speeds. Turns out I can do 62.5Hz
+with the ATtiny85 at 1Mhz. This is close enough for most servos.
+
+With some diving into the datasheet and a bit of experimenting, I came
+up with this code:
+
+
+```cpp
+void setup() {
+    pinMode(0, OUTPUT);
+    pinMode(1, OUTPUT);
+
+    // Setup the PWM clock to ~62.5Hz for the servos.
+    TCCR0A = 2<<COM0A0 | 2<<COM0B0 | 3<<WGM00;
+    TCCR0B = 0<<WGM02 | 1<<CS00 | 1<<CS01 | 0<<CS02;
+
+    OCR0A = 0;
+    OCR0B = 0;
+}
+
+void loop() {
+    for (int i=10; i<30; ++i) {
+        OCR0A = i;
+        OCR0B = i;
+        delay(100);
+    }
+}
+```
+
+Note that since I'm messing with Timer0, which is also used by the
+Arduino core to keep track of millis(), the delay() is no longer
+accurate. But I can live with that.Here's the servo in action:
+
+
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="" src="https://www.youtube.com/embed/E2TrhVOG524"></iframe>
+

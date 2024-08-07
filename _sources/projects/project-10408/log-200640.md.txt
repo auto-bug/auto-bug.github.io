@@ -1,0 +1,52 @@
+---
+blogpost: true
+date: 2021-11-24
+category: project-10408
+---
+
+# Stenotyping in Polish
+Published on 2021-11-24 in {ref}`project-10408`.
+
+Stenotyping somehow never caught up in Poland, and while there are
+several systems of stenography, there is none for stenotypy. But that
+just means there is an opportunity!
+
+ [Krzysztof Smirnow](https://www.stenografia.pl/)  describes his quest to bring Polish to Plover, the open source
+stenography engine. However, because Slavic languages tend to have a
+lot of sounds, a regular stenotype, like the one I made, is not up to
+the task. More keys are required.
+
+So after a short exchange of e-mails, I sat down and tried to design a
+PCB for a stenotype that would be suitable for Polish, and at the same
+time not too expensive and easy to assemble at home. I came up with
+this:
+
+
+
+:::{image} images/4517251637791568911.png
+
+:::
+
+
+
+
+:::{image} images/2639531637791578153.png
+
+:::
+
+
+The idea is that, since you have to order multiple PCBs anyways, I can
+save on the PCB size by only designing half of it, and then designing
+the other half on the back side. Then you take two of the, join
+together, solder a Pro Micro on top, add the diodes and switches, and
+you are ready to go!
+
+Unfortunately, a back-of-the-envelope calculation shows that even if
+you make two of them at once (which saves you some money, because the
+keycaps come in packs of 60, enough for two), they still cost about
+$45. Sure, that's not the $3000 you would pay for a commercial
+stenotype, but still more han you'd spend on something you try and
+discard.
+
+I'm still going to make one, just to see if I made any mistakes.
+

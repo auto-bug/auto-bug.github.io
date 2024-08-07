@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>First Prototype Working - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="first-prototype-working">
+<h1>First Prototype Working<a class="headerlink" href="#first-prototype-working" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2016-02-20 in <a class="reference internal" href="../#project-9769"><span class="std std-ref">Mechatronic Ears</span></a>.</p>
+<p>I got the first version to work. Here’s the demo video:</p>
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="" src="https://www.youtube.com/embed/hDExwmWhYX8"></iframe>
+<p>There are several things there. I have the control board with the
+battery and accelerometer sitting at the top of my head – this is
+obviously suboptimal, especially during rain. I suppose I can hide
+most of the electronics and the battery inside the ears themselves –
+there is enough room for that. But the accelerometer has to stay. Or I
+could move the whole thing to the side, making it look like a
+bluetooth headset or something – I would just need to switch the
+accelerometer axes then. I need to sleep on that.</p>
+<p>Second thing, the range of movement is really limited. Those tiny
+servos don’t really have enough strength to squash the material of the
+ears enough to flatten or perk them completely. I used those little
+guys, because I was afraid about space, but turns out that there is a
+lot of room inside those ears, so I might try with 9g servos next.</p>
+<p>Third, they make noise. Since constant buzzing would be annoying and
+would drain the battery fast, I’m actually switching the servos off
+(by disabling PWM signal) when they are not changing the ears
+position. I only enable them for 600 milliseconds when they need to
+move. It would be much cooler to have them move fluently all the time,
+but not with those servos.</p>
+<p>Fourth, I guess I could attach them to a hat – then there would be no
+problem with hiding the electronics, and I could even have a larger
+battery.</p>
+<p>Fifth, right now they only react to the head position. I need to
+experiment with tracking how fast I’m moving, and make them move based
+on that too – make them droop when I’m not moving, and perk up when I
+make a sudden move with my head. Also, twitch them randomly when they
+are perked up.\</p>
+</section>
+
+
+</div>
+  </body>
+</html>

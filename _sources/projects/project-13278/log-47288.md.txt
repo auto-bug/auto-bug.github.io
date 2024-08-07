@@ -1,0 +1,29 @@
+---
+blogpost: true
+date: 2016-10-09
+category: project-13278
+---
+
+# Released
+Published on 2016-10-09 in {ref}`project-13278`.
+
+I decided to make a formal release of the 18-channel servo shield.
+
+I fixed all the problems I could find (including the short between
+power and ground), updated the firmware to have the servo sockets
+numbered in a sane order, and added jumpers on the bottom for changing
+the I²C address (so that up to 4 shields can be used at once without
+having to modify the firmware).
+
+I also wrote simple libraries for MicroPython, NodeMCU and Arduino,
+with some examples.
+
+I'm releasing the whole thing under a Creative Commons non-commercial
+license, because that's the license used by the PWM library that is
+included in there. I would love to release it under a license that
+allows commercial use (and to be able to order ready shields from
+China), however, that would require me to rewrite the firmware to not
+use that library (or get the original authors to change the license).
+Too bad I'm too lazy to do that.\
+
+

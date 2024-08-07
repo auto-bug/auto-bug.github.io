@@ -1,0 +1,17 @@
+---
+blogpost: true
+date: 2016-08-28
+category: project-11660
+---
+
+# µDisplay -- Drivers for 6 Different RGB Displays
+Published on 2016-08-28 in {ref}`project-11660`.
+
+This is a collection of 6 different displays drivers for TFT and OLED
+RGB displays. I finally took the time to refactor all my drivers, pull
+out the common parts, and put them all in a single library. Don't
+worry, each driver is in a separate file, so you can copy only the
+parts that you are actually using onto your board.
+
+The source is at [https://bitbucket.org/thesheep/micropython-display](https://bitbucket.org/thesheep/micropython-display) 
+

@@ -1,0 +1,76 @@
+---
+blogpost: true
+date: 2016-01-07
+category: project-9065
+---
+
+# Servo Blaster
+Published on 2016-01-07 in {ref}`project-9065`.
+
+So I have the robot assembled pretty much the way I wanted -- the PCB
+as the body, a XM1584-based voltage regulator for steady 5V to the Pi
+and to servos, capacitor, power switch, 2S LiPo battery. Nothing
+fancy, really. I have no voltage monitoring this time, because the Pi
+doesn't have an ADC that I could use (I might add one in the future
+versions), so I have to be careful about the battery use.
+
+I also have the [Servo Blaster](https://github.com/richardghirst/PiBits/tree/master/ServoBlaster) , the daemon I'm using to generate PWM signal for the servos, all
+installed and configured, and I have a simple Python class to use it:
+
+
+```python
+import math
+
+
+class Servo(object):
+    def __init__(self, servos, index, reverse=False, trim=0):
+        self.servos = servos
+        self.index = index
+        self.reverse = reverse
+        self.trim = trim
+
+    def move(self, radians=None, degrees=None):
+        self.servos.move(self.index, radians, degrees, self.reverse, self.trim)
+
+
+class Servos(object):
+    min_pos = 600
+    max_pos = 2400
+    unit = 4 # us
+    max_servos = 12
+    pos_range = 180
+
+    def __init__(self):
+        self.device = open('/dev/servoblaster', 'w')
+
+    def __getitem__(self, index):
+        return Servo(self, index)
+
+    def move(self, servo, radians=None, degrees=None, reverse=False, trim=0):
+        if degrees is None:
+            degrees = math.degrees(radians)
+        degrees += trim
+        if reverse:
+            degrees = self.pos_range - degrees
+        position = self.min_pos + (degrees * self.pos_range /
+                                   (self.max_pos - self.min_pos))
+        position = min(self.max_pos, max(self.min_pos, position))
+        output = position / self.unit
+        self.device.write("{}={}\n".format(servo, output))
+
+    def update(self):
+        pass
+```
+
+Now it's time for my favorite pastime (not): figuring out the order,
+orientation and trims for all the servos. Once I have that, I expect
+my code for the PyBoard to basically work -- which means that I should
+have the basic creep gait. For now, I can move each of the servos
+individually, while the robot lies on its back, with a wifi dongle
+connected for control:
+:::{image} images/88761452199581035.jpg
+
+:::
+
+
+\

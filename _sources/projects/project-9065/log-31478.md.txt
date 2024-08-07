@@ -1,0 +1,131 @@
+---
+blogpost: true
+date: 2016-02-07
+category: project-9065
+---
+
+# Camera
+Published on 2016-02-07 in {ref}`project-9065`.
+
+Today I worked a little bit on adding a camera to Tote Zero. Most of
+this I have already done for {ref}`project-3301` , but I thought I will do a more detailed write-up. I started by
+digging up from my junk pile an old camera module from a laptop. You
+can usually find those in electronic junk, or, failing that, buy them
+as spare parts for a dollar or two. Mine looked something like this:
+
+
+:::{image} images/1913191454851172345.jpg
+
+:::
+
+
+
+---
+Next I opened it and extracted the actual sensor:
+
+
+:::{image} images/987571454851220600.jpg
+
+:::
+
+
+The cable has a plug, for convenience. I took my ohm-meter, and
+checked which cables are connected to the ground. In this case it was
+the green one, and, of course, the shielding -- the first two pins.
+The rest is easy: orange and red are D+ and D-, and black is VCC. In
+this cable, black and brown cables are connected to the same pin. Once
+I knew which cable is which, I used a piece of 1.27mm pin header to
+connect that to a normal USB cable:
+
+
+:::{image} images/5640771454851485860.jpg
+
+:::
+
+
+Then I needed a way to test it. I didn't feel like risking frying my
+laptop, so instead I took a raspberry pi and some cheap USB hub, and
+used that:
+
+
+:::{image} images/677751454851581296.jpg
+
+:::
+
+
+The camera enumerated nicely. Here's an excerpt from_dmesg_:
+
+
+```
+[ 3875.068666] usb 1-1.4: new high-speed USB device number 45 using dwc_otg
+[ 3875.176718] usb 1-1.4: New USB device found, idVendor=174f, idProduct=5a31
+[ 3875.176759] usb 1-1.4: New USB device strings: Mfr=2, Product=1, SerialNumber=3
+[ 3875.176779] usb 1-1.4: Product: USB 2.0 Camera
+[ 3875.176798] usb 1-1.4: Manufacturer: Sonix Technology Co., Ltd.
+[ 3875.176815] usb 1-1.4: SerialNumber: SN0001
+[ 3875.190376] uvcvideo: Found UVC 1.00 device USB 2.0 Camera (174f:5a31)
+[ 3875.205832] input: USB 2.0 Camera as /devices/platform/soc/20980000.usb/usb1/1-1/1-1.4/1-1.4:1.0/input/input17
+
+```
+
+And here is_lsusb_:
+
+
+```
+Bus 001 Device 045: ID 174f:5a31 Syntek Sonix USB 2.0 Camera
+Bus 001 Device 003: ID 148f:7601 Ralink Technology, Corp. 
+Bus 001 Device 002: ID 1a40:0101 Terminus Technology Inc. 4-Port HUB
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+
+```
+
+Then I installed_motion_ and tried the camera with it. I had to modify the configuration to
+make the stream available outside of localhost. Otherwise, it just
+worked:
+
+
+:::{image} images/3232061454851798928.jpg
+
+:::
+
+
+Unfortunately,_motion_ has quite a bit of a lag, and if I wanted to use the streaming for
+controlling the robot remotely, that would be unacceptable. So I
+decided to try_mjpegstreamer._ There is a simple [tutorial on installing mjpegstreamer on Raspberry Pi](http://blog.miguelgrinberg.com/post/how-to-build-and-run-mjpg-streamer-on-the-raspberry-pi) . Of course instead of using files as input, I used_input_uvs.so_ plugin:
+
+
+
+
+```bash
+./mjpg_streamer -i 'plugins/input_uvc/input_uvc.so -r 160x100 -fps 20 -y -q 40' -o 'plugins/output_http/output_http.so -w www'
+```
+
+With such a low resolution and quality, the streaming is quite fluent!
+
+I noticed, that the camera module is getting quite warm while working. [@Arsenijs](https://hackaday.io/hacker/61401)  suggested, that those laptop modules, while pretty much normal USB
+devices, expect lower voltage than the usual 5V. I will have to try
+and power it from Pi's 3.3V power and see how it works then.
+
+I also made a plug for the Pi Zero, to save some space:
+
+
+:::{image} images/4184981454852278897.jpg
+
+:::
+
+
+That should work, but then I can't have the WiFi dongle. I guess I
+will need to look into making Tote Zero compatible with the {ref}`project-8678`  pants (or even add the ESP8266 to Tote's PCB).
+
+Update: I made a smaller cable for the Pi Zero:
+
+
+:::{image} images/5400171454853702270.jpg
+
+:::
+
+
+While that makes it impossible to use the WiFi dongle, I can still use
+OpenCV with this camera to make the robot analyze what it sees and
+actually do something fun.
+

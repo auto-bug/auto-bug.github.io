@@ -1,0 +1,148 @@
+---
+blogpost: true
+date: 2016-04-17
+category: project-9769
+---
+
+# Finished
+Published on 2016-04-17 in {ref}`project-9769`.
+
+So today I sat down and wrote all the code for the ears. This time I'm
+using a running average filter to smooth the signal from the
+accelerometer (because there wasn't any room for capacitors). I also
+tried to have a drip integrator to measure "excitement" -- just
+general speed of changes of acceleration -- but that didn't work too
+well and I went back to the original logic of the ears.
+
+Here's the size comparison of the current model and the initial
+prototype:
+
+
+:::{image} images/5652901460911444891.jpg
+
+:::
+
+
+ I guess I could make it smaller if I cut the servo plugs and solder
+the servos directly, but meh. The battery hides nicely under one of
+the ears. I should probably wrap the headband with some black tape, to
+hide the device and the wires, but for now I still want to have access
+to it.
+
+Here's the code I'm using (the commented out parts are for debugging
+serial on the servo pins):
+
+
+```cpp
+//#include <SoftwareSerial.h>
+
+
+//SoftwareSerial serial(1, 0);
+
+
+void setup() {
+    servo_setup();
+    //serial.begin(9600);
+}
+
+void servo_setup() {
+    pinMode(0, OUTPUT);
+    pinMode(1, OUTPUT);
+
+    // Setup the PWM clock to ~62.5Hz for the servos.
+    TCCR0A = 2<<COM0A0 | 2<<COM0B0 | 3<<WGM00;
+    TCCR0B = 0<<WGM02 | 1<<CS00 | 1<<CS01 | 0<<CS02;
+
+    OCR0A = 0;
+    OCR0B = 0;
+}
+
+void update_servos(uint8_t left_position, uint8_t right_position) {
+    static uint8_t current_left = 0;
+    static uint8_t current_right = 0;
+
+    uint8_t left = 17 + min(left_position, 15);
+    if (current_left < left) {
+        ++current_left;
+        OCR0A = current_left;
+    } else if (current_left > left) {
+        --current_left;
+        OCR0A = current_left;
+    } else {
+        OCR0A = 255;
+    }
+    uint8_t right = 33 - min(right_position, 15);
+    if (current_right < right) {
+        ++current_right;
+        OCR0B = current_right;
+    } else if (current_right > right) {
+        --current_right;
+        OCR0B = current_right;
+    } else {
+        OCR0B = 255;
+    }
+}
+
+int running_average(int *buffer, uint8_t *cursor, int *total, int value) {
+    *total -= buffer[*cursor];
+    buffer[*cursor] = value;
+    *total += value;
+    *cursor = (*cursor + 1) & 0x0F;
+    return *total >> 4;
+}
+
+void loop() {
+    static uint8_t left = 7;
+    static uint8_t right = 7;
+    static int x_buffer[16] = {};
+    static int y_buffer[16] = {};
+    static int z_buffer[16] = {};
+    static uint8_t x_cursor = 0;
+    static uint8_t y_cursor = 0;
+    static uint8_t z_cursor = 0;
+    static int x_total = 0;
+    static int y_total = 0;
+    static int z_total = 0;
+    static int excitement = 0;
+
+    int z = running_average(x_buffer, &x_cursor, &x_total, analogRead(1) - 512 -16);
+    int y = running_average(y_buffer, &y_cursor, &y_total, analogRead(2) - 512);
+    int x = running_average(z_buffer, &z_cursor, &z_total, analogRead(3) - 512);
+
+/*
+    serial.print(x);
+    serial.print(", ");
+    serial.print(y);
+    serial.print(", ");
+    serial.print(z);
+    serial.println();
+*/
+
+    if (x > 20) {
+        left = 15;
+        right = 15;
+    } else if (x < - 20) {
+        left = 0;
+        right = 0;
+    } else if (y > 20) {
+        left = 15;
+        right = 0;
+    } else if (y < -20) {
+        left = 0;
+        right = 15;
+    } else {
+        left = 7;
+        right = 7;
+    }
+
+
+    update_servos(left, right);
+    delay(60);
+}
+```
+
+And that's it for this project. Works as intended.
+
+In the future, I might try and make a hat with ears, using larger
+servos and putting everything inside the hat.
+

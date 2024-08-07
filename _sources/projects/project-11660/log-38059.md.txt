@@ -1,0 +1,32 @@
+---
+blogpost: true
+date: 2016-05-15
+category: project-11660
+---
+
+# VL6180 Optical Time-o-Flight Distance Sensor
+Published on 2016-05-15 in {ref}`project-11660`.
+
+The VL6180 is a very small, pretty accurate, I²C-based distance
+sensor. And it can also measure ambient light. I wrote a simple
+library for Micropython for talking with it, mostly based on the
+Sparkfun's Arduino library. The code is at: [https://bitbucket.org/thesheep/micropython-vl6180/src/tip/vl6180.py](https://bitbucket.org/thesheep/micropython-vl6180/src/81f6e7a5b2b231ba5bbd8d56156c1e2fc1bcb834/vl6180.py) 
+
+Note that this library uses the new I2C interface, which is currently
+available on Micropython for the ESP8266. It should eventually be
+available on all Micropython ports, though.
+
+Example:
+
+
+```python
+import time
+from machine import I2C, Pin
+from vl6180 import Sensor
+
+i2c = I2C(sda=Pin(4), scl=Pin(5))
+sensor = Sensor(i2c)
+
+print(sensor.range())
+```
+

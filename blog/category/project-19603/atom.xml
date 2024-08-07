@@ -1,0 +1,228 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>http://deshipu.art/</id>
+  <title>deshipu.art - Posts in project-19603</title>
+  <updated>2024-08-07T20:31:02.018022+00:00</updated>
+  <link href="http://deshipu.art/"/>
+  <link href="http://deshipu.art/blog/category/project-19603/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-19603/log-53501/</id>
+    <title>Smaller ATmega</title>
+    <updated>2017-02-18T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="smaller-atmega"&gt;
+
+&lt;p&gt;Published on 2017-02-18 in &lt;a class="reference internal" href="../../../projects/project-19603/#project-19603"&gt;&lt;span class="std std-ref"&gt;D1 Mini Tote&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The ATmega8 chips arrived, and I decided to try and see if my servo
+controller code will run on it equally well as on the ATmega328p that
+I used previously. After soldering it to the PCB (I’m getting better
+at it) I edited the Makefile to change the target, ran it and… got
+errors. Looks like a couple of registers got renamed, so I took the
+datasheets, compared them and made the appropriate changes. This time
+it compiled, so I flashed it to the chip, and… it doesn’t work. I
+looked again, and realized that the fuses are completely different for
+this chip! To the avr fuse calculator. I changed the fuses in the
+makefile, flashed again and… it works!&lt;/p&gt;
+&lt;img alt="projects/project-19603/images/962601487441915702.jpg" src="projects/project-19603/images/962601487441915702.jpg" /&gt;
+&lt;p&gt;I still need to properly debug and finish the Python code for walking
+– the last weeks were a bit too busy to setup the testing and focus
+on this properly, but I hope I will get it done soon.&lt;/p&gt;
+&lt;p&gt;By the way, I also received the PCB for the &lt;a class="reference internal" href="../../../projects/project-19921/#project-19921"&gt;&lt;span class="std std-ref"&gt;SpiderWing&lt;/span&gt;&lt;/a&gt;  – the Feather version of this. I’m going to be developing them both
+in parallel for now.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-19603/log-53501/" rel="alternate"/>
+    <summary>Published on 2017-02-18 in project-19603.</summary>
+    <published>2017-02-18T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-19603/log-53577/</id>
+    <title>Battery Protection</title>
+    <updated>2017-02-20T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="battery-protection"&gt;
+
+&lt;p&gt;Published on 2017-02-20 in &lt;a class="reference internal" href="../../../projects/project-19603/#project-19603"&gt;&lt;span class="std std-ref"&gt;D1 Mini Tote&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I did some more work both on this project and on the &lt;a class="reference internal" href="../../../projects/project-19921/#project-19921"&gt;&lt;span class="std std-ref"&gt;SpiderWing&lt;/span&gt;&lt;/a&gt; . I debugged the leg IK code finally – it was all about reversed
+servo directions. I also tested different parameters for the creep
+gait, and I can tell it will take some time to tune this properly.&lt;/p&gt;
+&lt;p&gt;However, in the process of doing that, I ran the LiPo batteries on
+those robots to dangerously low voltage levels. Fortunately I noticed
+and re-charged them quickly, so hopefully the damage is not that big,
+but this made me actually go looking at the schematics and reading
+datasheets.&lt;/p&gt;
+&lt;p&gt;It turns out that neither the Adafruit Feather not the D1 Mini Battery
+Shield have a built-in overdischarge protection, as I assumed they
+would. They only have a charger and a voltage regulator (a boost
+converter in the case of the D1 Mini). They assume, apparently, that
+the battery has the protection circuit built-in. Of course the 16340
+batteries that I’m using have no such thing. So it’s back to the
+drawing board.&lt;/p&gt;
+&lt;p&gt;I considered various options:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;add the battery protection circuitry on the board (in form of a ready
+chip)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;add the battery protection as a ready module&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;add a battery charger module with the protection circuit included&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;add a voltage divider and connect it to an analog pin of the board,
+and monitor voltage in software in Python&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;add a voltage divider and connect it to an analog pin on the ATmega,
+and monitor voltage in software in C on the servo controller&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;All of those have their advantages and disadvantages, and I think I’m
+going to choose different options for the two different designs.&lt;/p&gt;
+&lt;p&gt;For the D1 Mini Tote, I don’t care much about how complex the board
+will become – it requires soldering of SMD chips anyways, so if I
+ever make this available, that will probably be with the board pre-
+soldered. In that situation, a hardware battery protection is a better
+thing – it works even if there is a bug in your software, or when
+that crashes. I also don’t like the battery shield very much. So I
+decided to go with a battery charger module with a built-in voltage
+protection on it. I had a few of those on hand already, and I tested
+them briefly – they seem to work just fine. So I reworked the PCB to
+include the pins for the charging module, and to not require the
+battery shield anymore. There will still be a separate USB socket for
+charging – there is no way I can access the data pins on the D1 Mini
+to connect the sockets together, and the robot will still have to be
+switched on for charging – I have bad experiences with leaving
+anything connected to the battery with the switch in the off position:
+I want the switch to cut the battery completely.&lt;/p&gt;
+&lt;p&gt;For the &lt;a class="reference internal" href="../../../projects/project-19921/#project-19921"&gt;&lt;span class="std std-ref"&gt;SpiderWing&lt;/span&gt;&lt;/a&gt; , I went with a voltage divider initially. It would be perfect to just
+connect it to A6 or A7 – the analog-only pins that I’m not using
+anyways – of the ATmega, however, they are not broken out in the DIP
+package. So now I have a choice between using one of the servo pins
+(which I really could, since I have 8 more than I really need), or
+using the Feather’s analog pin and run the check in Python. I made
+some PCB designs for both approaches, but just now, while I was
+writing all this, I had another idea. The ATmega includes internal
+reference voltage that I can measure against the voltage the chip is
+powered from. That means, that if I power the ATmega directly from the
+battery, I can check the battery voltage without the need for any
+extra components or pins. Well, OK, I will need a filtering capacitor
+then, because the servos make a lot of noise, but it should work.
+Unfortunately, right now I’m powering the ATmega from the 3.3V pin of
+the Feather – because it’s nice, stabilized and filtered. In any
+case, I would really prefer to have the check in the ATmega, and not
+on the Feather – it’s more robust that way against users uploading
+their own programs.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-19603/log-53577/" rel="alternate"/>
+    <summary>Published on 2017-02-20 in project-19603.</summary>
+    <published>2017-02-20T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-19603/log-61585/</id>
+    <title>More Brain Power</title>
+    <updated>2017-06-14T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="more-brain-power"&gt;
+
+&lt;p&gt;Published on 2017-06-14 in &lt;a class="reference internal" href="../../../projects/project-19603/#project-19603"&gt;&lt;span class="std std-ref"&gt;D1 Mini Tote&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;It has been a while since the last update, and there have been some
+developments. I will write about them in detail in separate logs when
+I get more time to do it properly. But today I just wanted to share a
+new part that I’m excited bout.&lt;/p&gt;
+&lt;p&gt;There is a new development board, based on the ESP32 chip, but pin-
+compatible with the D1 Mini. It’s called MH-ET LIVE D1 apparently (I
+know), and looks like this:&lt;/p&gt;
+&lt;img alt="projects/project-19603/images/7453941497466458163.jpg" src="projects/project-19603/images/7453941497466458163.jpg" /&gt;
+&lt;p&gt;The pins marked in white are compatible with the D1 Mini, and all the
+other pins are extra. Apart from the ESP-WROOM-32 module, there is the
+usual voltage regulator, CP2104 serial USB chip and a pair of mosfets
+for the reset circuit – nothing special. All parts are on the same
+side of the PCB, the bottom is flat – which is nice. I didn’t lay my
+hand on that board yet, I’m waiting for it to arrive, but from I can
+tell it should fit the D1 Mini Tote PCBs. I might need to add a shield
+on the bottom, to make the extra pins stick out over the servo
+sockets, or use angled headers for the servo sockets – we will see
+about that.&lt;/p&gt;
+&lt;p&gt;So why so excited? Well, initially I couldn’t decide whether to go
+with the D1 Mini or the Feather boards. I like the form factor (and
+price) of the D1 Mini better, but Feather has more options for me to
+choose from (I even got an ESP32 Feather recently, but didn’t have a
+chance to do anything with it yet). So I started both this project and
+the &lt;a class="reference internal" href="../../../projects/project-19921/#project-19921"&gt;&lt;span class="std std-ref"&gt;SpiderWing&lt;/span&gt;&lt;/a&gt; . Now seeing that the D1 Mini footprint becomes a kind of a standard,
+I’m hoping that both versions will become equally viable.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-19603/log-61585/" rel="alternate"/>
+    <summary>Published on 2017-06-14 in project-19603.</summary>
+    <published>2017-06-14T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-19603/log-61660/</id>
+    <title>Sturdier Legs</title>
+    <updated>2017-06-15T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="sturdier-legs"&gt;
+
+&lt;p&gt;Published on 2017-06-15 in &lt;a class="reference internal" href="../../../projects/project-19603/#project-19603"&gt;&lt;span class="std std-ref"&gt;D1 Mini Tote&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;One of the common complaints I’ve heard about the mechanical design of
+Tote is that the legs are really too flimsy. I must have been lucky
+with the quality of plastic for the servo horns I got, because I
+didn’t have a problem with that, but I came up with a solution
+anyways. And it’s also a good use of the extra PCBs that you had to
+order (usually you have to order at least 3 PCBs).&lt;/p&gt;
+&lt;p&gt;Here’s how it looks like:&lt;/p&gt;
+&lt;img alt="projects/project-19603/images/5502631497554268583.jpg" src="projects/project-19603/images/5502631497554268583.jpg" /&gt;
+&lt;p&gt;I simply cut off the sides of the PCBs (using an older prototype in
+this case), and screwed the servo horns to those. If this is still to
+flimsy, you can even add a drop of glue under each of the horns, to
+make them really rigid.&lt;/p&gt;
+&lt;p&gt;And what of the remaining PCB leftovers? Well, they are servo shields
+for the D1 Mini, and you can use them in your other projects! Nothing
+is wasted.&lt;/p&gt;
+&lt;p&gt;I updated the design on the PCB to include holes, to make the sides
+easier to break off. You will still need to do it carefully, though,
+because I can’t make it too brittle – it’s the body of the robot,
+after all.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-19603/log-61660/" rel="alternate"/>
+    <summary>Published on 2017-06-15 in project-19603.</summary>
+    <published>2017-06-15T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-19603/log-163051/</id>
+    <title>One More Version</title>
+    <updated>2019-05-08T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="one-more-version"&gt;
+
+&lt;p&gt;Published on 2019-05-08 in &lt;a class="reference internal" href="../../../projects/project-19603/#project-19603"&gt;&lt;span class="std std-ref"&gt;D1 Mini Tote&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;An advantage of having several similar projects, some long-term and
+some faster, is that the research and innovation you test in the fast
+projects can trickle back into the slower ones. This is one such
+example. When I started with this, I was mostly using ready modules
+for most things, and the PCB was just a way to hold things together.
+After some intensive development of &lt;span class="xref std std-ref"&gt;project-27629&lt;/span&gt; , &lt;span class="xref std std-ref"&gt;project-159733&lt;/span&gt; and &lt;span class="xref std std-ref"&gt;project-158981&lt;/span&gt; , however, I figured out some ways of doing some of those things
+better with discrete components and with better mechanical design. So
+it’s time to make a new version that will include all those
+improvements.&lt;/p&gt;
+&lt;p&gt;Here it is:&lt;/p&gt;
+&lt;img alt="projects/project-19603/images/3201671557267311761.png" src="projects/project-19603/images/3201671557267311761.png" /&gt;
+&lt;p&gt;There has been changes. The D1 Mini footprint and the servo sockets
+have been rotated 90° degrees, so that the front of the robot is now
+to the left. That means that the battery is now sideways, and there is
+more room under the robot to fit the servos when the legs are in
+extreme positions (it will still require cutting off those “ears” from
+the servos). The body is still 5×5cm, but there are all those leg
+parts around it, so now the whole PCB is 10×10cm — which reflects the
+current reality of ordering cheap PCBs. It’s the same idea as in &lt;span class="xref std std-ref"&gt;project-158981&lt;/span&gt; , however, the feet now have footprints for switches, so we can detect
+ground easily.&lt;/p&gt;
+&lt;p&gt;There is no room for the battery protection and charging module
+anymore, instead there is a charging and a protection circuit directly
+on the PCB. I’m using a double switch for power, because when it
+switches off the power from battery, it also switches on the charging
+— this way I can use one USB port for both programming and charging.
+The servo sockets are rotated now, and stretched along the battery
+holder, so that they can go on the bottom of the robot and still leave
+enough room for the servos to rotate. I also added back some small
+prototyping area at the front of the robot, for mounting sensors, and
+also on the legs.&lt;/p&gt;
+&lt;p&gt;Otherwise it’s all standard stuff: a PCA9685 chip for PWM, a LiPo
+battery for power, and a socket for a D1 Mini to control it all.\&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-19603/log-163051/" rel="alternate"/>
+    <summary>Published on 2019-05-08 in project-19603.</summary>
+    <published>2019-05-08T00:00:00+02:00</published>
+  </entry>
+</feed>

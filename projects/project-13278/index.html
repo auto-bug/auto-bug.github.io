@@ -1,0 +1,126 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Servo Breakout for WeMos D1 Mini - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="servo-breakout-for-wemos-d1-mini">
+<h1>Servo Breakout for WeMos D1 Mini<a class="headerlink" href="#servo-breakout-for-wemos-d1-mini" title="Permalink to this heading">¶</a></h1>
+<p>Connect servos to your ESP8266 dev board.</p>
+<div class="project-thumb">
+<a class="reference external image-reference" href="/_images/7209701473855689500.jpg"><img alt="projects/project-13278/images/7209701473855689500.jpg" src="projects/project-13278/images/7209701473855689500.jpg" /></a>
+<a class="reference external image-reference" href="/_images/8422601484959160525.jpg"><img alt="projects/project-13278/images/8422601484959160525.jpg" src="projects/project-13278/images/8422601484959160525.jpg" /></a>
+<a class="reference external image-reference" href="/_images/4760411471956285087.jpg"><img alt="projects/project-13278/images/4760411471956285087.jpg" src="projects/project-13278/images/4760411471956285087.jpg" /></a>
+<a class="reference external image-reference" href="/_images/699801484959150101.jpg"><img alt="projects/project-13278/images/699801484959150101.jpg" src="projects/project-13278/images/699801484959150101.jpg" /></a>
+<a class="reference external image-reference" href="/_images/3952961484907213251.jpg"><img alt="projects/project-13278/images/3952961484907213251.jpg" src="projects/project-13278/images/3952961484907213251.jpg" /></a>
+<a class="reference external image-reference" href="/_images/4649091501603589305.jpg"><img alt="projects/project-13278/images/4649091501603589305.jpg" src="projects/project-13278/images/4649091501603589305.jpg" /></a>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>I thought I will try to make some shields for the WeMos D1 Mini,
+</pre></div>
+</div>
+<p>because it’s one of my favorite ESP8266 boards.  There is already an
+official motor controller shield (though I can’t get it to work
+reliably), so I decided I will make some servo shields.</p>
+<section id="logs">
+<h2>Logs<a class="headerlink" href="#logs" title="Permalink to this heading">¶</a></h2>
+<ul class="postlist-style-none postlist simple">
+<li class="ablog-post"><p class="ablog-post-title">2020-12-19 - <a class="reference internal" href="log-187199/">Maybe SX1509?</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2020-08-20 - <a class="reference internal" href="log-182469/">New Seller</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2019-02-21 - <a class="reference internal" href="log-159680/">New Batch</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-12-04 - <a class="reference internal" href="log-71202/">Fabrication and Version 2.0</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-08-01 - <a class="reference internal" href="log-64512/">Faster Assembly</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-04-04 - <a class="reference internal" href="log-56500/">Assembling and Testing</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-03-24 - <a class="reference internal" href="log-55592/">Version 1.0 of the 16-channel Shield on Sale</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-03-01 - <a class="reference internal" href="log-54146/">Usage Examples</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-02-25 - <a class="reference internal" href="log-53864/">Selling Prototypes on Tindie</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-02-23 - <a class="reference internal" href="log-53779/">PCA9685</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-01-20 - <a class="reference internal" href="log-52161/">20ch Servo Shield Assembled</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-01-20 - <a class="reference internal" href="log-52194/">20ch Firmware Improvements</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2016-12-19 - <a class="reference internal" href="log-50560/">Firmware for the 20-servo Shield</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2016-12-18 - <a class="reference internal" href="log-50530/">Smaller PWM Code</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2016-12-13 - <a class="reference internal" href="log-50331/">Firmware in Plain C</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2016-11-30 - <a class="reference internal" href="log-49721/">Pimped 20-channel PCB</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2016-11-30 - <a class="reference internal" href="log-49709/">One-sided PCB</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2016-11-30 - <a class="reference internal" href="log-49706/">20-channel Servo Shield</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2016-11-11 - <a class="reference internal" href="log-48945/">Another Short</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2016-10-09 - <a class="reference internal" href="log-47288/">Released</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2016-09-15 - <a class="reference internal" href="log-45635/">Shield Anatomy</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2016-09-14 - <a class="reference internal" href="log-45572/">Dumb 8-channel Servo Breakout</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2016-09-14 - <a class="reference internal" href="log-45573/">18-channel Servo Shield</a></p></li>
+</ul>
+</section>
+<section id="instructions">
+<h2>Instructions<a class="headerlink" href="#instructions" title="Permalink to this heading">¶</a></h2>
+<p>Get the PCB from <a class="reference external" href="https://oshpark.com/shared_projects/QrjTnDg1">https://oshpark.com/shared_projects/QrjTnDg1</a></p>
+<hr class="docutils" />
+<p>Populate the PCB – solder the ATmega328p, the reset resistor (10kΩ),
+the I2C pullup resistors (10kΩ, optional), capacitor (10-1000µF,
+optional). Solder the pin headers for the servos and power, and an
+extra pin or wire for the reset.</p>
+<img alt="projects/project-13278/images/2862981473855334998.jpg" src="projects/project-13278/images/2862981473855334998.jpg" />
+<hr class="docutils" />
+<p>Connect your ISP programmer to the 3v3, GND, MISO, MOSI, SCK and Reset
+pins as follows:</p>
+<img alt="projects/project-13278/images/263181473966842720.jpg" src="projects/project-13278/images/263181473966842720.jpg" />
+<p>If you are making the 2ch version, the pin names are printed on the
+PCB. Get the source code from <a class="reference external" href="https://bitbucket.org/thesheep/d1mini-18ch-servo/src">https://bitbucket.org/thesheep/d1mini-18ch-servo/src</a>  for the 18-channel version or <a class="reference external" href="https://bitbucket.org/thesheep/d1-mini-20ch-servo/src/8d9c46e74e9ff078b915a0b127f7eef331cb53b3/firmware/?at=default">https://bitbucket.org/thesheep/d1-mini-20ch-servo/src</a>  for the 20-channel version. To flash the 18-channel version, use
+Arduino IDE. To flash the 20-channel version, run “make flash” in the
+firmware directory.</p>
+<hr class="docutils" />
+<p>After flashing, set the fuses with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">avrdude</span> <span class="o">-</span><span class="n">c</span> <span class="n">usbasp</span> <span class="o">-</span><span class="n">p</span> <span class="n">m328p</span> <span class="o">-</span><span class="n">U</span> <span class="n">lfuse</span><span class="p">:</span><span class="n">w</span><span class="p">:</span><span class="mh">0xE2</span><span class="p">:</span><span class="n">m</span> <span class="o">-</span><span class="n">U</span> <span class="n">hfuse</span><span class="p">:</span><span class="n">w</span><span class="p">:</span><span class="mh">0xDF</span><span class="p">:</span><span class="n">m</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p>Your shield is ready to be used!</p>
+</section>
+<hr class="docutils" />
+</section>
+
+
+</div>
+  </body>
+</html>

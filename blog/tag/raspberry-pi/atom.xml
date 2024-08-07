@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>http://deshipu.art/</id>
+  <title>deshipu.art - Posts tagged raspberry pi</title>
+  <updated>2024-08-07T20:31:03.559495+00:00</updated>
+  <link href="http://deshipu.art/"/>
+  <link href="http://deshipu.art/blog/tag/raspberry-pi/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-9065/</id>
+    <title>Tote Zero</title>
+    <updated>2016-01-04T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="tote-zero"&gt;
+
+&lt;p&gt;Affordable quadruped robot powered by a Pi Zero&lt;/p&gt;
+&lt;div class="project-thumb"&gt;
+&lt;a class="reference external image-reference" href="/_images/3233411451932323412.jpg"&gt;&lt;img alt="projects/project-9065/images/3233411451932323412.jpg" src="projects/project-9065/images/3233411451932323412.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/6491431451932310257.jpg"&gt;&lt;img alt="projects/project-9065/images/6491431451932310257.jpg" src="projects/project-9065/images/6491431451932310257.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/4931971451932291720.jpg"&gt;&lt;img alt="projects/project-9065/images/4931971451932291720.jpg" src="projects/project-9065/images/4931971451932291720.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/3784581452083863472.jpg"&gt;&lt;img alt="projects/project-9065/images/3784581452083863472.jpg" src="projects/project-9065/images/3784581452083863472.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/5564861454878909155.jpg"&gt;&lt;img alt="projects/project-9065/images/5564861454878909155.jpg" src="projects/project-9065/images/5564861454878909155.jpg" /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;The original {ref}`project-6050`  used an Arduino Pro Mini clone for its brains, as this was the most
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;affordable option available at the time, and reasonably easy to use
+and program. But now that there is a $5 single-board computer
+available, why not use it instead?&lt;/p&gt;
+&lt;p&gt;The advantages, as I see them, are three-fold:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;using Python for programming, which makes it much easier to both write
+code and test stuff in the interactive console,&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;possibly integrating this with ROS, OpenCV and other awesome tools,&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;much more computing power, which means that more interesting things
+can happen.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="" src="https://www.youtube.com/embed/jJsWgjJycL8"&gt;&lt;/iframe&gt;
+&lt;section id="logs"&gt;
+&lt;h2&gt;Logs&lt;/h2&gt;
+&lt;ul class="postlist-style-none postlist simple"&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-11-06 - &lt;a class="reference internal" href="../../../projects/project-9065/log-48641/"&gt;Robot Fusion&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-02-11 - &lt;a class="reference internal" href="../../../projects/project-9065/log-31747/"&gt;Everything in One?&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-02-07 - &lt;a class="reference internal" href="../../../projects/project-9065/log-31505/"&gt;Face&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-02-07 - &lt;a class="reference internal" href="../../../projects/project-9065/log-31478/"&gt;Camera&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-01-27 - &lt;a class="reference internal" href="../../../projects/project-9065/log-30909/"&gt;First Walk&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-01-26 - &lt;a class="reference internal" href="../../../projects/project-9065/log-30878/"&gt;One Step Forward, Two Steps Back&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-01-25 - &lt;a class="reference internal" href="../../../projects/project-9065/log-30812/"&gt;Single-port USB Hub&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-01-07 - &lt;a class="reference internal" href="../../../projects/project-9065/log-30039/"&gt;Servo Blaster&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-01-07 - &lt;a class="reference internal" href="../../../projects/project-9065/log-30040/"&gt;Fixed Board&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-01-05 - &lt;a class="reference internal" href="../../../projects/project-9065/log-29928/"&gt;Off By One Servo Plug&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section id="instructions"&gt;
+&lt;h2&gt;Instructions&lt;/h2&gt;
+&lt;p&gt;For mechanical assembly, follow the instructions for &lt;a class="reference internal" href="../../../projects/project-6050/#project-6050"&gt;&lt;span class="std std-ref"&gt;Tote&lt;/span&gt;&lt;/a&gt;  at &lt;a class="reference external" href="http://tote.readthedocs.org"&gt;http://tote.readthedocs.org&lt;/a&gt;&lt;/p&gt;
+&lt;hr class="docutils" /&gt;
+&lt;p&gt;The code repository at &lt;a class="reference external" href="https://bitbucket.org/thesheep/tote0/src"&gt;https://bitbucket.org/thesheep/tote0/src&lt;/a&gt;  contains all the files needed – copy them to the pi&lt;/p&gt;
+&lt;hr class="docutils" /&gt;
+&lt;p&gt;Get ServoBlaster from &lt;a class="reference external" href="https://github.com/richardghirst/PiBits/tree/master/ServoBlaster"&gt;https://github.com/richardghirst/PiBits/tree/master/ServoBlaster&lt;/a&gt;  and compile it and install&lt;/p&gt;
+&lt;hr class="docutils" /&gt;
+&lt;p&gt;Copy the ‘servoblaster’ startup script from the code repository to
+/etc/init.d and make it start at startup&lt;/p&gt;
+&lt;hr class="docutils" /&gt;
+&lt;p&gt;Run the run.py program&lt;/p&gt;
+&lt;hr class="docutils" /&gt;
+&lt;p&gt;PROFIT!!!&lt;/p&gt;
+&lt;/section&gt;
+&lt;hr class="docutils" /&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-9065/" rel="alternate"/>
+    <summary>Affordable quadruped robot powered by a Pi Zero</summary>
+    <category term="ROBOT" label="ROBOT"/>
+    <category term="hardware" label="hardware"/>
+    <category term="ongoingproject" label="ongoing project"/>
+    <category term="pizero" label="pi zero"/>
+    <category term="quadruped" label="quadruped"/>
+    <category term="raspberrypi" label="raspberry pi"/>
+    <published>2016-01-04T00:00:00+01:00</published>
+  </entry>
+</feed>

@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>http://deshipu.art/</id>
+  <title>deshipu.art - Posted in 2020</title>
+  <updated>2024-08-07T20:31:02.448848+00:00</updated>
+  <link href="http://deshipu.art/"/>
+  <link href="http://deshipu.art/blog/2020/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-13278/log-182469/</id>
+    <title>New Seller</title>
+    <updated>2020-08-20T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="new-seller"&gt;
+
+&lt;p&gt;Published on 2020-08-20 in &lt;a class="reference internal" href="../../projects/project-13278/#project-13278"&gt;&lt;span class="std std-ref"&gt;Servo Breakout for WeMos D1 Mini&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Since there was a large demand for those shields, they can now be
+bought again at Tindie from &lt;a class="reference external" href="https://hackaday.io/hacker/61401"&gt;&amp;#64;Arsenijs&lt;/a&gt; : &lt;a class="reference external" href="https://www.tindie.com/products/crimier/16-channel-servo-shield-for-d1-mini-v2-by-deshipu/"&gt;https://www.tindie.com/products/crimier/16-channel-servo-shield-
+for-d1-mini-v2-by-deshipu/&lt;/a&gt;&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-13278/log-182469/" rel="alternate"/>
+    <summary>Published on 2020-08-20 in project-13278.</summary>
+    <published>2020-08-20T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-10408/log-186414/</id>
+    <title>Soon…</title>
+    <updated>2020-11-25T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="soon"&gt;
+
+&lt;p&gt;Published on 2020-11-25 in &lt;a class="reference internal" href="../../projects/project-10408/#project-10408"&gt;&lt;span class="std std-ref"&gt;Steno Keyboard&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;img alt="projects/project-10408/images/1044281606322182314.jpg" src="projects/project-10408/images/1044281606322182314.jpg" /&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-10408/log-186414/" rel="alternate"/>
+    <summary>Published on 2020-11-25 in project-10408.</summary>
+    <published>2020-11-25T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-13278/log-187199/</id>
+    <title>Maybe SX1509?</title>
+    <updated>2020-12-19T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="maybe-sx1509"&gt;
+
+&lt;p&gt;Published on 2020-12-19 in &lt;a class="reference internal" href="../../projects/project-13278/#project-13278"&gt;&lt;span class="std std-ref"&gt;Servo Breakout for WeMos D1 Mini&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;It’s been a long while since I made this shield, and the PCA9685 chip
+that it uses has been in service for driving servos even longer.
+Meanwhile, I have been on a lookout for a more modern and smaller chip
+that could provide a similar function. The PCA9685 is not perfect,
+because it is actually a LED driver, which just happens to have
+adjustable PWM frequency allowing us to abuse it to generate a 50Hz
+servo signal. Still, it contains constant-current drivers that we
+don’t need, and we only use a small part of its duty cycle range.&lt;/p&gt;
+&lt;p&gt;So what could be other chips that we could possibly use? If you look
+around a little for “PWM chips”, it seems that chip manufacturers only
+recognize two use cases for PWM signal: buck/boost converters and LED
+drivers, and in both cases they prefer relatively high frequencies, at
+least 29kHz, if not 33Mhz. That is useless for us, sadly, so we need
+to look in other places.&lt;/p&gt;
+&lt;p&gt;Recently I have stumbled upon a really weird chip, SX1509. It’s I²C-
+controlled GPIO multiplexer, but with some extra features, that
+include voltage level shifters, a keyboard matrix scanner and, last
+but not least, a PWM LED driver. So maybe we could use it for our
+servos?&lt;/p&gt;
+&lt;p&gt;I ordered a breakout board with this chip somewhere at the beginning
+of this year, and I have been putting away working on it for a looong
+time. But now with the holiday break, I decided to finally sit down
+and try it. So I downloaded the datasheet, got a Trinket M0 running
+CircuitPython out of one drawer, and a pocket oscilloscope out of
+another, and I started to poke at the registers.&lt;/p&gt;
+&lt;p&gt;Sadly, this is another failure, for two reasons: first, the slowest
+frequency I managed to get for the PWM signal is 121Hz, over twice as
+much as the required 50Hz; second, it only has 8 bits of resolution
+for the duty cycle length, and that’s over the whole range, of which
+we only need a small part, so it would be even worse than the 12 bits
+we get with the PCA9685.&lt;/p&gt;
+&lt;p&gt;But I guess I will keep it in my drawer if I ever need to multiplex
+GPIO pins while level-shifting to two different voltages, scanning a
+keyboard matrix and blinking LEDs.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-13278/log-187199/" rel="alternate"/>
+    <summary>Published on 2020-12-19 in project-13278.</summary>
+    <published>2020-12-19T00:00:00+01:00</published>
+  </entry>
+</feed>

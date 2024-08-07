@@ -1,0 +1,315 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>http://deshipu.art/</id>
+  <title>deshipu.art - Posts in project-9927</title>
+  <updated>2024-08-07T20:31:02.377975+00:00</updated>
+  <link href="http://deshipu.art/"/>
+  <link href="http://deshipu.art/blog/category/project-9927/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-9927/log-35637/</id>
+    <title>Command Line</title>
+    <updated>2016-04-10T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="command-line"&gt;
+
+&lt;p&gt;Published on 2016-04-10 in &lt;a class="reference internal" href="../../../projects/project-9927/#project-9927"&gt;&lt;span class="std std-ref"&gt;Tote HaD&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The robots are built, but due to a bug in the communication code, they
+didn’t walk “straight out of the box”. The bug makes them wait for a
+connection before they start walking, and I will be fixing this soon,
+and I will provide new firmware to flash soon.&lt;/p&gt;
+&lt;p&gt;In the mean time, you can play with your robots by using a serial
+connection. In fact, you will have access to the Python console on
+them. All you need is a 3.3V USB2TTL converter (I gave out a couple at
+the workshop, it’s that red thing with USB plug on it). If you don’t
+have one, I highly recommend you get it anyways, because they are
+extremely useful in debugging all sorts of projects anyways, and you
+will also need to to flash the new firmware, both for the Arduino and
+the ESP8266 parts of the robot.&lt;/p&gt;
+&lt;section id="connecting"&gt;
+&lt;h2&gt;Connecting&lt;/h2&gt;
+&lt;p&gt;To connect the serial interface of the ESP8266  on your robot to your
+computer, you will need to use the three pins on the left side of the
+robots. If you look at the bottom side of the board, you will see they
+are labeled, from front to back, “gnd”, “tx” and “rx”. Use three
+female-female dupont cables, and connect the “gnd” pin on the robot
+with the “gnd” pin on the USB2TTL, the “rx” pin of the robot with the
+“tx” pin on the USB2TTL, and the “tx” pin on the robot with the “rx”
+pin on the USB2TTL.&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;gnd ↔ gnd&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;rx ↔ tx&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;tx ↔ rx&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Next, plug the USB2TTL into your computer (or even better, a USB hub
+connected to your computer), and open a serial terminal with speed
+115200 on the serial port that appears. On Linux, I use the_screen_ program for that, with the command:&lt;/p&gt;
+&lt;div class="highlight-bash notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ screen /dev/ttyUSB0 &lt;span class="m"&gt;115200&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;On Windows you can use PuTTY for that (you might need to have the
+drivers for the USB2TTL installed first). I have no idea how to do
+that on macs, but there must be some way. Once you do that, you should
+see black screen… Then switch on the robot, and you should see
+something like this:&lt;/p&gt;
+&lt;div class="highlight-default notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;rll��|�l�|�l�b|����r�b�b��nn�lnn���bplblrlp�n��lbn�|쌌��b��nn�l��l`�nnl`nr���nr�`p�n�r�����bn�|lb��nn�l`�nnl`nr���nrrl`p�n�r�����쌜bn�|쌎b��nn�l`�nnl`nr���nl`r��nl`�l��|��rrnb��l��b�lb쌜���l��b�lrldon&amp;#39;t use rtc mem data
+ll��|��rrnb��ll�p�b�b쌜���l��b��lrl�l��|��rrnb��ll�|�b�b쌜����b�lblrl��rl���bl�br|�bll���lb��n�nn��l�|�l�l��l������l`�n��
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;That’s the booting messages of the ESP8266 received at a wrong baud
+rate. Don’t worry about that. Now, if you press Ctrl+C, the program
+that is executing on the robot will be interrupted, and you will see
+this:&lt;/p&gt;
+&lt;div class="highlight-default notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;MicroPython&lt;/span&gt; &lt;span class="n"&gt;v1&lt;/span&gt;&lt;span class="mf"&gt;.6&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;374&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;g2c407bc&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dirty&lt;/span&gt; &lt;span class="n"&gt;on&lt;/span&gt; &lt;span class="mi"&gt;2016&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;04&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;07&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;ESP&lt;/span&gt; &lt;span class="n"&gt;module&lt;/span&gt; &lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="n"&gt;ESP8266&lt;/span&gt;
+&lt;span class="n"&gt;Type&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;help()&amp;quot;&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;more&lt;/span&gt; &lt;span class="n"&gt;information&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;That’s the Python console prompt, also known as the REPL console. You
+can type Python code in there, and it will get executed on the robot.&lt;/p&gt;
+&lt;/section&gt;
+&lt;section id="walking"&gt;
+&lt;h2&gt;Walking&lt;/h2&gt;
+&lt;p&gt;So how do you make it walk? Type in this code:&lt;/p&gt;
+&lt;div class="highlight-hljs notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;from robot import Robot
+from gait import Creep
+robot = Robot()
+gait = Creep(robot)
+for frame in gait.run():
+    pass
+
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;That should get the robot creeping forward. To change the directions
+you can set the_dx_,&lt;em&gt;dy&lt;/em&gt; and_rotation_ attributes on the_gait_ object, and repeat the_for_ loop.&lt;/p&gt;
+&lt;/section&gt;
+&lt;section id="network"&gt;
+&lt;h2&gt;Network&lt;/h2&gt;
+&lt;p&gt;By default the robot will create its own network, and act as an access
+point – that’s because I didn’t know what networks will be available
+at the conference, and of course I wanted the robots to still work
+after you have taken them home. Unfortunately, when I tested the code,
+I did it with the robot connected to my home network, for convenience.
+That’s how the bug crept in – I didn’t test it in the access point
+mode, just assumed it would work the same way.&lt;/p&gt;
+&lt;p&gt;But that means that you should be able to work around the bug by
+connecting the robot to your home network. Here is how to do it.
+First, disable the “access point” interface:&lt;/p&gt;
+&lt;div class="highlight-python notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;network&lt;/span&gt;
+&lt;span class="n"&gt;network&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;WLAN&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;network&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AP_IF&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;active&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kc"&gt;False&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Then enable the “station” interface:&lt;/p&gt;
+&lt;div class="highlight-default notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;wlan&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;network&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;WLAN&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;network&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;STA_IF&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;wlan&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;active&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;And then make it connect to your network:&lt;/p&gt;
+&lt;div class="highlight-default notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;wlan&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;connect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;ssid&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;password&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;The robot will remember this, and will re-connect to that network
+automatically on every boot from now on.&lt;/p&gt;
+&lt;/section&gt;
+&lt;section id="remote-control"&gt;
+&lt;h2&gt;Remote Control&lt;/h2&gt;
+&lt;p&gt;The robot has very simple remote control through WiFi for now. Once
+you restart it, you should be able to connect to it on port 1010 with
+Telnet or Netcat, and send it “wasd” letters for arrows, and space for
+“stop”. Depending on the program you use, you might need to press
+enter after each of the letters. To simplify that, there is a &lt;a class="reference external" href="https://bitbucket.org/thesheep/tote-had/src/3b9ed9cd63ef32b42fe25f71586ff048a9bacf60/client.py"&gt;client.py&lt;/a&gt;  program in the repository, which uses PyGame to read the arrow
+keypresses, and sends them to the robot. You run it with the IP
+address of the robot as the first argument.&lt;/p&gt;
+&lt;/section&gt;
+&lt;section id="moving-individual-legs"&gt;
+&lt;h2&gt;Moving Individual Legs&lt;/h2&gt;
+&lt;p&gt;There isn’t much other functionality implemented yet, but if you want,
+you can make the robot move its legs however you want from Python, and
+even make it dance or do something else… You can do it using the
+“robot” object above. For instance, to make the front left leg move
+20mm forward and 10mm up, you would do:&lt;/p&gt;
+&lt;div class="highlight-python notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;robot&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;legs&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;move_to&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;robot&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;update&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;The “update” step is where the command is actually sent to the servos.
+The coordinate system for the legs is simple: X axis is left-right,
+with negative numbers being closer to the body, and positive numbers
+further from it. The Y axis is front-back, with positive numbers being
+forward, and negative – backward. The Z axis is up-down, with
+positive being down, and negative – up. The (0, 0, 0) position is the
+robot’s starting position, with all servos centered.&lt;/p&gt;
+&lt;/section&gt;
+&lt;section id="updates"&gt;
+&lt;h2&gt;Updates&lt;/h2&gt;
+&lt;p&gt;I will definitely fix the bug, and maybe even figure a better way to
+control the robot remotely. When I do, the new firmware and
+instructions for flashing it will be available here on this project
+page. I will also make updates as the amazing developers of
+Micropython add more features to it. At the moment they are working on
+a web-based interactive Python console, including file upload, which
+should make hacking on this robot super-convenient. However, this is
+all still in the alpha stage of development at the moment, so we will
+have to make do with what we have now.&lt;/p&gt;
+&lt;/section&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-9927/log-35637/" rel="alternate"/>
+    <summary>Published on 2016-04-10 in project-9927.</summary>
+    <published>2016-04-10T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-9927/log-35698/</id>
+    <title>Fixed Firmware</title>
+    <updated>2016-04-11T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="fixed-firmware"&gt;
+
+&lt;p&gt;Published on 2016-04-11 in &lt;a class="reference internal" href="../../../projects/project-9927/#project-9927"&gt;&lt;span class="std std-ref"&gt;Tote HaD&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;As promised, I fixed the firmware for the robot – now it will start
+walking immediately after being switched on, and after connecting you
+can control it. Below are flashing instructions.&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;&lt;p&gt;Download the &lt;a class="reference external" href="https://cdn.hackaday.io/files/9927424716768/firmware-combined.bin"&gt;firmware-combined.bin&lt;/a&gt;  file, and save in the current directory.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Download the &lt;a class="reference external" href="https://raw.githubusercontent.com/themadinventor/esptool/master/esptool.py"&gt;esptool.py&lt;/a&gt;  file, and save in the current directory.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Connect the USB2TTL to the pins on the side of the robot:&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;gnd ↔ gnd&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;rx ↔ tx&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;tx ↔ rx&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;&lt;p&gt;Connect together two pin holes (or pins, if you soldered pins in
+there) on the other side of the robot (leave the third pin alone):&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;gnd ↔ sda&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;&lt;p&gt;Connect the USB2TTL to your computer.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Switch on the robot.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Run the flashing command:&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight-bash notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ python esptool.py --port /dev/ttyUSB0 --baud &lt;span class="m"&gt;460800&lt;/span&gt; write_flash --flash_size&lt;span class="o"&gt;=&lt;/span&gt;8m &lt;span class="m"&gt;0&lt;/span&gt; firmware-combined.bin
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;On Windows/Mac change the path to the USB2TTL port accordingly.&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;&lt;p&gt;Wait for the firmware to flash. If you get an error, try again.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Switch the robot off.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Remove the connector from the pin holes.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Switch the robot on and see it walk. Congratulations, you have the new
+firmware.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Note, that flashing new firmware will not delete the network
+information from the board, if you had the robot connect to some
+network. If you want to do that, you can with this command (before
+flashing the firmware):&lt;/p&gt;
+&lt;div class="highlight-sql notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ python esptool.py --port /dev/ttyUSB0 erase_flash
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-9927/log-35698/" rel="alternate"/>
+    <summary>Published on 2016-04-11 in project-9927.</summary>
+    <published>2016-04-11T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-9927/log-35868/</id>
+    <title>Compiling Your Own Firmware</title>
+    <updated>2016-04-14T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="compiling-your-own-firmware"&gt;
+
+&lt;p&gt;Published on 2016-04-14 in &lt;a class="reference internal" href="../../../projects/project-9927/#project-9927"&gt;&lt;span class="std std-ref"&gt;Tote HaD&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;For anyone who wants to build their own version of firmware, here’s a
+really quick howto:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;Clone the Tote-HAD repository from &lt;a class="reference external" href="https://bitbucket.org/thesheep/tote-had"&gt;https://bitbucket.org/thesheep/tote-had&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight-bash notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;hg clone https://bitbucket.org/thesheep/tote-had
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;Clone the Micropython repository from [&lt;a class="reference external" href="https://github.com/micropython/micropython/"&gt;https://github.com/micropython/micropython/&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight-bash notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone https://github.com/micropython/micropython.git
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;](&lt;a class="reference external" href="https://github.com/micropython/micropython/"&gt;https://github.com/micropython/micropython/&lt;/a&gt;)&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;Follow the &lt;a class="reference external" href="https://github.com/micropython/micropython/blob/master/esp8266/README.md"&gt;README.md&lt;/a&gt;  for the ESP8266 port to setup the build environment. You can also
+follow one of the guides at &lt;a class="reference external" href="http://forum.micropython.org/viewforum.php?f=16"&gt;http://forum.micropython.org/viewforum.php?f=16&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Before compiling, copy or link the files from the &lt;a class="reference external" href="https://bitbucket.org/thesheep/tote-had/src/tip/python/?at=default"&gt;python&lt;/a&gt;  directory of Tote-HAD to &lt;a class="reference external" href="https://github.com/micropython/micropython/tree/master/esp8266/scripts"&gt;esp8266/scripts&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Compile and flash normally, as the README says.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;You can also skip the main.py file (it’s the file that gets executed
+on the board start), and instead create it after flashing – this way
+you will be able to modify it without recompiling the firmware:&lt;/p&gt;
+&lt;div class="highlight-python notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;main.py&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;w&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;write&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;import server; server.main()&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;There are some tools that make it easier to upload files to the
+ESP8266, like here: &lt;a class="reference external" href="https://github.com/wendlers/mpfshell"&gt;https://github.com/wendlers/mpfshell&lt;/a&gt;&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-9927/log-35868/" rel="alternate"/>
+    <summary>Published on 2016-04-14 in project-9927.</summary>
+    <published>2016-04-14T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-9927/log-36031/</id>
+    <title>3D printed body</title>
+    <updated>2016-04-16T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="d-printed-body"&gt;
+
+&lt;p&gt;Published on 2016-04-16 in &lt;a class="reference internal" href="../../../projects/project-9927/#project-9927"&gt;&lt;span class="std std-ref"&gt;Tote HaD&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Hey all, &lt;a class="reference external" href="https://hackaday.io/hacker/3459"&gt;&amp;#64;davedarko&lt;/a&gt;  writing. As you might have seen at the &lt;span class="xref std std-ref"&gt;project-8672&lt;/span&gt;  event - I’ve brought my Tote with 3d printed legs along to the
+workshop. There I was asked for the files and &lt;a class="reference external" href="https://hackaday.io/hacker/35249"&gt;&amp;#64;Radomir Dopieralski&lt;/a&gt;  told me I could share them in a log. It took me a while to chamfer
+some edges and fix the hip orientation of my design, but now I finally
+have all the parts in a presentable state. You can find the STL files
+for printing in the file section. The design files are made with 123D
+Design by Autodesk. That’s the 3rd time I completely disassembled my
+Tote.&lt;/p&gt;
+&lt;img alt="projects/project-9927/images/5137141460815635209.png" src="projects/project-9927/images/5137141460815635209.png" /&gt;
+&lt;hr class="docutils" /&gt;
+&lt;img alt="projects/project-9927/images/2379511460816494083.png" src="projects/project-9927/images/2379511460816494083.png" /&gt;
+&lt;hr &gt;These are the hip parts, that you have to glue together. I've marked
+them with text so it is easier to spot how to glue them together. You
+will need 2 of each displayed parts.
+&lt;img alt="projects/project-9927/images/6215461460814679184.png" src="projects/project-9927/images/6215461460814679184.png" /&gt;
+&lt;hr &gt;You will need to print two of each version of which there are two.
+These are the feet by the way.
+&lt;img alt="projects/project-9927/images/473951460814500400.png" src="projects/project-9927/images/473951460814500400.png" /&gt;
+&lt;hr &gt;Print the legs part 8 times and glue them back to back, so that the
+servo mounts are on the same side.
+&lt;img alt="projects/project-9927/images/8477891460814485217.png" src="projects/project-9927/images/8477891460814485217.png" /&gt;
+&lt;hr &gt;This is the baseplate that sadly doesn't connect to anything. You have
+to hold everything together with one or two zipties wrapped around
+everything, since the holes are blocked by the legs and servo mounts.
+&lt;img alt="projects/project-9927/images/1283301460814236106.png" src="projects/project-9927/images/1283301460814236106.png" /&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-9927/log-36031/" rel="alternate"/>
+    <summary>Published on 2016-04-16 in project-9927.</summary>
+    <published>2016-04-16T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-9927/log-216775/</id>
+    <title>This is not the robot you are looking for</title>
+    <updated>2023-03-16T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="this-is-not-the-robot-you-are-looking-for"&gt;
+
+&lt;p&gt;Published on 2023-03-16 in &lt;a class="reference internal" href="../../../projects/project-9927/#project-9927"&gt;&lt;span class="std std-ref"&gt;Tote HaD&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Apparently there are some rumors that this is a robot we are going to
+be building at a workshop in Berlin during the 2023 Hackaday
+conference. That is not true.&lt;/p&gt;
+&lt;p&gt;This is the robot we were building back in 2016 in Belgrade.&lt;/p&gt;
+&lt;p&gt;Yes, there is going to be a robot-building robot in Berlin, but we are
+going to be building &lt;span class="xref std std-ref"&gt;project-180025&lt;/span&gt; , which is a newer design with many improvements.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-9927/log-216775/" rel="alternate"/>
+    <summary>Published on 2023-03-16 in project-9927.</summary>
+    <published>2023-03-16T00:00:00+01:00</published>
+  </entry>
+</feed>

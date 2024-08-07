@@ -1,0 +1,33 @@
+---
+blogpost: true
+date: 2016-11-30
+category: project-13278
+---
+
+# One-sided PCB
+Published on 2016-11-30 in {ref}`project-13278`.
+
+Looking at the design from the last log, I thought "Hmm, if only I had
+some more room on the sides for the ground and power lines, I could
+make this a single-sided PCB". Turns out I was wrong.
+
+
+:::{image} images/8619541480515218379.png
+
+:::
+
+
+This is my best attempt at this. See that highlighted SDA line? If
+only it wasn't there, or I could fit it somehow next to the SCL line,
+everything would have been just fine. The track next to it would take
+it place, and the power rail could get a connection on top, where that
+track is now. Alas, there is no way to do that without a jumper cable.
+
+Oh well, a jumper can't hurt, can it?
+
+
+:::{image} images/8207191480515919642.png
+
+:::
+
+

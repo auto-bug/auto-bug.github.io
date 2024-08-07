@@ -1,0 +1,143 @@
+---
+blogpost: true
+date: 2016-12-04
+category: project-18758
+---
+
+# Just Starting
+Published on 2016-12-04 in {ref}`project-18758`.
+
+When I was thinking what could kids make with the micro:bit, I
+remembered my {ref}`project-9769`  project. The micro:bit has a built-in accelerometer, can easily
+control up to three servos (because that's how many pins are easy to
+access without an edge connector), and can be programmed in Python. So
+I decided to give it a try.
+
+I started by collecting the materials: a hat, ears with hair clips
+(you can find them in any costume shop, or order from China), two
+9-gram servos (the cheap SG90 would work just fine, but I didn't have
+any at hand, so I used some random beaten up servos left from my first
+robot experiments), a battery, some wires and a piece of steel wire.
+
+
+:::{image} images/189921480804987540.jpg
+
+:::
+
+
+
+---
+I started by opening the ears -- just cutting the thread on the pink
+inside. Be careful to only cut the thread and not the material -- we
+will need to sew it back together at the end.
+
+
+:::{image} images/9381541480805058008.jpg
+
+:::
+
+
+Next, I put the servo arms on the servos, and cut them to only have an
+arm on one side (I lost the original one-sided arms for them, you can
+use those for your servos, of course).
+
+
+:::{image} images/1208811480805179354.jpg
+
+:::
+
+
+Next, I bent the steel wire, and put it through the holes in the servo
+arm:
+
+
+:::{image} images/7722661480805220561.jpg
+
+:::
+
+
+Then I bent both ends again (using pliers), so that it sits tight.
+
+
+:::{image} images/94781480805278457.jpg
+
+:::
+
+
+I cut the wire to the length of the ears.
+
+
+:::{image} images/6838121480805316041.jpg
+
+:::
+
+
+And I bent the wire into an arc, so that it can go along the edge of
+the ear (the wire is bent at the tip, so that it doesn't poke out).
+Then I put the servo with the wire inside the ear.
+
+
+:::{image} images/9229531480805366998.jpg
+
+:::
+
+
+I initially wanted to sew both the serwo and the wire in place, but in
+the end decided to simply glue the servo to the bottom of the ear
+(where the hair clip is) with instant glue. Be careful to not get fur
+glued to your fingers. Then I fastened the steel wire to the edge of
+the ear, but only from the tip to about halfway towards the servo --
+the rest has to stay loose, so that the servo can easily move.
+
+
+:::{image} images/1310961480805556383.jpg
+
+:::
+
+
+Next, I connected wires to the micro:bit.
+
+
+:::{image} images/4080741480805681892.jpg
+
+:::
+
+
+Yellow goes to the pins, red goes to 3V, and brown goes to GND. One of
+the servos had its original wires broken, so I had to replace them
+with some randomly colored ones... Look at the other one for
+reference.Next, a quick test using the servo code from {ref}`project-8643` .
+
+
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/aSmmwRwKM5Y"></iframe>
+
+You can see the servo "buzzing" when it's outside of its allowed
+range. I experimented a bit to find the optimal range for this
+particular ear, when it's not buzzing -- it was 120-180. Bending the
+wire a bit helped with the range. The second ear had range 0-90.
+
+Finally, when everything was read, I sewed the ears up.
+
+
+:::{image} images/1947031480806062300.jpg
+
+:::
+
+
+The second ear was made exactly the same way, except you have to
+remember to make it a mirror image of the first one -- so everything
+has to be reversed.Once I had both ears, I attached them to the hat. In my case, I just
+used the hair clips, since the hat had holes in the right places
+already. You might need to sew them, or to make the holes for the
+clips, or to attach them in some other way.
+
+The micro:bit and the battery go inside -- I will need to secure them
+there somehow, I will probably just use black thread.
+
+
+:::{image} images/4701661480806206012.jpg
+
+:::
+
+
+That's it for now. Next up, programming them.

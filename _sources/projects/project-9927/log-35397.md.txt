@@ -1,0 +1,35 @@
+---
+blogpost: true
+date: 2016-04-07
+category: project-9927
+---
+
+# Software
+Published on 2016-04-07 in {ref}`project-9927`.
+
+I finished the Arduino code and flashed to all the boards, and now I'm
+in the process of flashing the Python code onto all the ESP-01
+modules, and setting their SSIDs.
+
+As usual, the software doesn't do all that I wanted it to do. By
+default it makes the robot walk forward and listen for connections. I
+wrote a small PyGame program that lets you control the robot from your
+computer with the keyboard. That's it.
+
+Things I wanted but didn't have time to do:
+
+
+ * there is only the "creep" gait, no "trot" gait,
+ * the communication with the Arduino controller is one-way, no
+telemetry,
+ * thus, no battery voltage monitoring,
+ * there is no remote Python console, for that you have to connect the
+serial cable.
+
+However, all that can come in the future versions of the software.
+During the workshop I will show you how to modify and flash the
+software for both of the microcontrollers, so hopefully you will be
+able to perform the updates when new versions become available here.
+
+Oh, the code repository is at: [https://bitbucket.org/thesheep/tote-had/src](https://bitbucket.org/thesheep/tote-had/src) 
+

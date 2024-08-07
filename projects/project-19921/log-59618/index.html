@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Smartening Up - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="smartening-up">
+<h1>Smartening Up<a class="headerlink" href="#smartening-up" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2017-05-15 in <a class="reference internal" href="../#project-19921"><span class="std std-ref">SpiderWing</span></a>.</p>
+<p>I got the gait code to work on the small crab robot – actually it
+only needed some adjustments for the smaller legs. I’m a bit
+disappointed about how slow the code runs on the M0 – I didn’t even
+need to add delays for the servos, the calculations take enough time
+for them to move into place. Oh well. That means the gait is still
+jerky (because I couldn’t do the continuous servo updates), but it
+works fine.</p>
+<p>Then I worked a little bit on the robot’s “intelligence”. Right now it
+only has only one sensor, the distance sensor in front. So its
+behavior is as follows:\</p>
+<ul class="simple">
+<li><p>If the distance sensor doesn’t detect anything, or the thing detected
+is too far away, just stand there and scan from left to right and then
+from right to left. Eye color blue.</p></li>
+<li><p>If something is detected far away, walk towards it. Eye color green.</p></li>
+<li><p>If something is detected close, stop. Eye color purple. Wait for one
+second, then check if it moved. If it did, wait again. If it didn’t,
+look right and left, see where you have more room, and turn 60° in
+that direction. Eye color cyan.</p></li>
+<li><p>If something is very close, walk backwards. Eye color red.</p></li>
+</ul>
+<p>And that’s it. I also added exception catching, so when the legs get
+tangled into an impossible position (that happens sometimes), they are
+moved into their home positions, and then the program resumes.</p>
+<p>This procedure gives the robot a nice behavior. It will walk towards
+things to examine them, and follow people, but if the things don’t
+move, it will get bored with them and walk away, looking for other
+interesting things.</p>
+<p>I’m considering adding one more state, for when it gets bored with
+scanning – perhaps it could just shut down and go to sleep then.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

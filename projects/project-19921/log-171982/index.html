@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Bodgetty Bodge - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="bodgetty-bodge">
+<h1>Bodgetty Bodge<a class="headerlink" href="#bodgetty-bodge" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2019-12-16 in <a class="reference internal" href="../#project-19921"><span class="std std-ref">SpiderWing</span></a>.</p>
+<p>The PCBs arrived today, so time for some testing. I didn’t have any
+PCA9685 left, so I had to remove it from one of my old  <a class="reference internal" href="../../project-13278/#project-13278"><span class="std std-ref">Servo Breakout for WeMos D1 Mini</span></a> boards. With all the parts in place, time for some test:</p>
+<img alt="projects/project-19921/images/4958321576536384211.jpg" src="projects/project-19921/images/4958321576536384211.jpg" />
+<p>And nope, the Feather doesn’t get enough power. That’s weird. Let’s
+check the footprint for that battery protection chip again, shall we?
+Ah-ha! Here you go, I switched two pins, of course:</p>
+<img alt="projects/project-19921/images/7309481576536451260.jpg" src="projects/project-19921/images/7309481576536451260.jpg" />
+<p>Fortunately the bodge is quite easy here. Of course I already fixed
+the mistake in the PCB design files. With this small change,
+everything is working as intended.</p>
+<p>It took some time to assemble the legs, but nothing revolutionary
+there. I have all the physical parts assembled, but no time for tuning
+and programming it, so it will probably wait for the holidays.</p>
+<img alt="projects/project-19921/images/4893731576536584771.jpg" src="projects/project-19921/images/4893731576536584771.jpg" />
+</section>
+
+
+</div>
+  </body>
+</html>

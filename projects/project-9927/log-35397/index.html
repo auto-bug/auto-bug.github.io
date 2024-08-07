@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Software - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="software">
+<h1>Software<a class="headerlink" href="#software" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2016-04-07 in <a class="reference internal" href="../#project-9927"><span class="std std-ref">Tote HaD</span></a>.</p>
+<p>I finished the Arduino code and flashed to all the boards, and now I’m
+in the process of flashing the Python code onto all the ESP-01
+modules, and setting their SSIDs.</p>
+<p>As usual, the software doesn’t do all that I wanted it to do. By
+default it makes the robot walk forward and listen for connections. I
+wrote a small PyGame program that lets you control the robot from your
+computer with the keyboard. That’s it.</p>
+<p>Things I wanted but didn’t have time to do:</p>
+<ul class="simple">
+<li><p>there is only the “creep” gait, no “trot” gait,</p></li>
+<li><p>the communication with the Arduino controller is one-way, no
+telemetry,</p></li>
+<li><p>thus, no battery voltage monitoring,</p></li>
+<li><p>there is no remote Python console, for that you have to connect the
+serial cable.</p></li>
+</ul>
+<p>However, all that can come in the future versions of the software.
+During the workshop I will show you how to modify and flash the
+software for both of the microcontrollers, so hopefully you will be
+able to perform the updates when new versions become available here.</p>
+<p>Oh, the code repository is at: <a class="reference external" href="https://bitbucket.org/thesheep/tote-had/src">https://bitbucket.org/thesheep/tote-had/src</a></p>
+</section>
+
+
+</div>
+  </body>
+</html>

@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Different Chips - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="different-chips">
+<h1>Different Chips<a class="headerlink" href="#different-chips" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2017-03-28 in <a class="reference internal" href="../#project-18120"><span class="std std-ref">D1 Mini Matrix Shield</span></a>.</p>
+<p>While ordering the different colors for the mini 8x8 LED matrices, I
+couldn’t help but notice the bi-color and RGB matrices in the same
+size. The RGB one would be a bit difficult to route for me on a two-
+sided PCB, but I decided to give the bi-color one a try and ordered
+it. It should be super-easy to route, because the row pins are
+actually in order on both sides, and in the middle are the common
+column pins. The only problem is that I would need to use the 28-pin
+HT16K33 chip, and it would need to sit across the middle column – but
+with good flat wire cutters that seemed doable.</p>
+<p>Recently the matrices arrived, and also the PCB from OSHPark that I
+ordered to test the bi-color matrix:</p>
+<img alt="projects/project-18120/images/9935751490652126686.png" src="projects/project-18120/images/9935751490652126686.png" />
+<p>As you can see, I didn’t care about the order of rows and columns, and
+just routed them in random order – assuming I can fix that in
+software later on. Unfortunately, the matrix didn’t work. A closer
+inspection revealed that I got the common-anode matrix, whereas the
+HT16K33 can only handle the common cathode ones. Bummer. I ordered the
+correct, common-cathode matrices then.</p>
+<p>But now I have a bunch of matrices I can’t drive easily, and this
+feeling that I should really do something with them. I looked for a
+chip that could handle them, but in vain. <a class="reference external" href="https://hackaday.io/page/2976-alternative-to-ht16k33-for-a-common-anode-bi-color-matrix">I posted a question to the stack</a> , and updated it with what I found. And then, <a class="reference external" href="https://hackaday.iohttps://hackaday.io/hacker/157453">&#64;Jeremy Gilbert</a>  suggested a family of chips that I forgot about.</p>
+<p>You see, there are those charlieplexed LED FeatherWings that Adafruit
+has, with a very cool IS31FL3731 chip. <a class="reference external" href="https://github.com/adafruit/micropython-adafruit-is31fl3731">I even wrote a MicroPython library for driving them once!</a>  But I didn’t realize that <a class="reference external" href="http://www.issi.com/US/product-analog-fxled-driver.shtml">there is a whole family of those chips</a> , and they are not only for charlieplexed displays, also for regular
+matrices. And they are much more modern than the venerable HT16K33,
+and have cool features, like the ability to set the brightness of
+every pixel individually, built-in blinking and animations, and even
+changing the brightness according to audio input!</p>
+<p>So I decided to try and also make a couple of shields with those. We
+will see how well that works, for a start I ordered a board for the
+simplest IS31FL3728 chip:</p>
+<img alt="projects/project-18120/images/4379281490652774440.png" src="projects/project-18120/images/4379281490652774440.png" />
+<p>It will probably be a bit tricky to solder, being in a QFN package,
+but nothing that I didn’t manage before. I will keep you updated.\</p>
+</section>
+
+
+</div>
+  </body>
+</html>

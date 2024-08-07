@@ -1,0 +1,178 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>http://deshipu.art/</id>
+  <title>deshipu.art - Posts in project-10665</title>
+  <updated>2024-08-07T20:31:01.888082+00:00</updated>
+  <link href="http://deshipu.art/"/>
+  <link href="http://deshipu.art/blog/category/project-10665/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-10665/log-37620/</id>
+    <title>Schematic</title>
+    <updated>2016-05-07T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="schematic"&gt;
+
+&lt;p&gt;Published on 2016-05-07 in &lt;a class="reference internal" href="../../../projects/project-10665/#project-10665"&gt;&lt;span class="std std-ref"&gt;Pony Bot&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I did some more assembling and programming, and I have a full control
+of all the eight servos now. With Python. Over w web-based console.
+How cool is that?&lt;/p&gt;
+&lt;p&gt;Anyways, I realized that I never talked about the actual connections
+needed to get this to work, so let’s talk about this for a moment. The
+ESP-12 module that I’m using has 11 GPIO pins available for use, not
+counting the pins broken out at the bottom of the module, which are
+used to communicate with the flash memory chip and shouldn’t be
+touched. Micropython lets me do PWM output on 8 of those pins, because
+it assumes GPIO1 and GPIO3 are used for the serial, and GPIO16 is
+kinda special case in the code. That is quite lucky, because I need
+exactly 8 servos to make the pony walk.&lt;/p&gt;
+&lt;p&gt;However, there is a small problem. Pins GPIO0, GPIO2 and GPIO15 are
+used to select the boot mode of the board. Connecting a servo to them
+makes them effectively pulled down – which is fine for GPIO15, which
+I want pulled down, but not for GPIO0 and GPIO2, which I want pulled
+up. Fortunately, the servo will work quite fine with a signal that
+doesn’t quite go all the way to 0, as long as it passes a certain
+threshold. So I determined experimentally, that pulling those two pins
+up with 10kΩ resistors makes them pulled up at boot, but still lets
+them drive the servos.&lt;/p&gt;
+&lt;p&gt;The resulting schematic below:&lt;/p&gt;
+&lt;img alt="projects/project-10665/images/2943221462624852620.png" src="projects/project-10665/images/2943221462624852620.png" /&gt;
+&lt;p&gt;That still leaves the three GPIO pins and one ADC pin for my use.
+Since Micropython now has web-based REPL console, I can use the serial
+pins for other things. I would be most happy to use them for driving
+two of the servos, thus leaving the pulled-up GPIO0 and GPIO2 for I²C
+communication (they need to be pulled up for that anyways), alas,
+Micropython doesn’t support PWM on those two pins. I also didn’t find
+a way to disable the serial output on the TX pin, so for now the plan
+is to use the RX and GPIO16 pins for I²C communication with the
+sensors, and leave the TX pin for debugging. The ADC pin will probably
+be connected to a voltage divider to monitor the battery voltage.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-10665/log-37620/" rel="alternate"/>
+    <summary>Published on 2016-05-07 in project-10665.</summary>
+    <published>2016-05-07T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-10665/log-45384/</id>
+    <title>Some Code</title>
+    <updated>2016-09-10T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="some-code"&gt;
+
+&lt;p&gt;Published on 2016-09-10 in &lt;a class="reference internal" href="../../../projects/project-10665/#project-10665"&gt;&lt;span class="std std-ref"&gt;Pony Bot&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I worked a little bit more on this robot today. Nothing exciting –
+adjusted the servo angles in the inverse kinematics, upgraded to the
+newest version of MicroPython, recharged the dying battery, mapped the
+servos to the right joints on the right legs, etc. I also published
+the code and design files in a repository – link on the left side,
+under the photos.&lt;/p&gt;
+&lt;p&gt;This is really taking so much time mostly because I had so many other
+things to do in the mean time. Hopefully the robot will walk soon.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-10665/log-45384/" rel="alternate"/>
+    <summary>Published on 2016-09-10 in project-10665.</summary>
+    <published>2016-09-10T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-10665/log-45486/</id>
+    <title>New Brain</title>
+    <updated>2016-09-12T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="new-brain"&gt;
+
+&lt;p&gt;Published on 2016-09-12 in &lt;a class="reference internal" href="../../../projects/project-10665/#project-10665"&gt;&lt;span class="std std-ref"&gt;Pony Bot&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Working on the code for walking, I managed to somehow damage the
+ESP-12 module I was using – it would get in a boot loop, and refuse
+getting into the right boot mode even with the GPIO2 held down. After
+checking everything, I removed the board from the robot, checked
+everything once more, made a couple of measurements with the
+multimeter to make sure there are no shorts or breaks, and, running
+out of ideas, left it there for some time. Then I tried once more
+time, and it worked this time – I could flash it again. However, I
+decided that I’m not going to rely on this module anymore (it’s not an
+original one), and since the PCB I used had a number of mistakes that
+I had to work around, I decided to make a new board (I will still work
+on the program using the old one, while the new one is getting
+fabricated).&lt;/p&gt;
+&lt;p&gt;So here it is:&lt;/p&gt;
+&lt;img alt="projects/project-10665/images/2518641473710265623.png" src="projects/project-10665/images/2518641473710265623.png" /&gt;
+&lt;p&gt;This time the PCB is exactly the same size as the ESP12 module. I
+managed to squeeze all the servo sockets and the resistors in there,
+and then decided to also add a voltage regulator (who knows, maybe the
+old module died because of wrong voltage) and some room for the power
+switch. Since there wasn’t really any room for those, I put them under
+the wifi antenna of the module. Yes, I know that it will lower the
+range of the module and possibly introduce some interference. In the
+worst case I will redesign it again. The challenge was squeezing an
+additional power line in there (the servos still use the un-regulated
+power straight from the battery), but I managed to do it with just a
+couple of vias. The boards are ordered, should arrive in a couple of
+weeks.&lt;/p&gt;
+&lt;p&gt;Once I had that done, I started to think about where it would be best
+to put that board on the pony itself. So far it has been strapped to
+the tail, because that was the largest free area, but it didn’t look
+right. Finally, I decided to put the brain in the head, roughly in the
+same place where the real brain would be in a real pony. So I went to
+the design files, and made a hole in the head to hold that PCB. I also
+made some additional holes for the servo holders, and added the
+holders to the design file (with a hole in the middle for the wires):&lt;/p&gt;
+&lt;img alt="projects/project-10665/images/7216591473710763584.png" src="projects/project-10665/images/7216591473710763584.png" /&gt;
+&lt;p&gt;And I sent that to fabrication too. This time in a nice violet color,
+and in 2mm thick acrylic.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-10665/log-45486/" rel="alternate"/>
+    <summary>Published on 2016-09-12 in project-10665.</summary>
+    <published>2016-09-12T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-10665/log-45764/</id>
+    <title>Better Servo Mounts</title>
+    <updated>2016-09-19T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="better-servo-mounts"&gt;
+
+&lt;p&gt;Published on 2016-09-19 in &lt;a class="reference internal" href="../../../projects/project-10665/#project-10665"&gt;&lt;span class="std std-ref"&gt;Pony Bot&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The new laser-cut body arrived, so I moved the servos to it. Among
+other things, it has the new servo mounting pieces that I came up
+with:&lt;/p&gt;
+&lt;img alt="projects/project-10665/images/370941474293042643.jpg" src="projects/project-10665/images/370941474293042643.jpg" /&gt;
+&lt;p&gt;The screw holes are a little bit hard to drill in the edge of the 2mm
+acrylic, and it’s almost impossible to slide the servos on both sides
+in at once – I will need to extend the slots to make it possible to
+slide them in place. Other than that, the whole thing looks much
+better:&lt;/p&gt;
+&lt;img alt="projects/project-10665/images/6687311474293172450.jpg" src="projects/project-10665/images/6687311474293172450.jpg" /&gt;
+&lt;p&gt;I now kinda regret putting that hole for the brains in the head,
+because it turns out that the board would fit between the servos on
+the body (and then the battery could go on the other side. I guess I
+will need one more prototype at some point. For now I want to get it
+to walk, though.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-10665/log-45764/" rel="alternate"/>
+    <summary>Published on 2016-09-19 in project-10665.</summary>
+    <published>2016-09-19T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-10665/log-67467/</id>
+    <title>Trinket M0</title>
+    <updated>2017-09-19T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="trinket-m0"&gt;
+
+&lt;p&gt;Published on 2017-09-19 in &lt;a class="reference internal" href="../../../projects/project-10665/#project-10665"&gt;&lt;span class="std std-ref"&gt;Pony Bot&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I recently dug out this robot for the maker faire (after seeing
+similar laser-cut ponies on the first day), and when I made the pwm
+shield for the Trinket M0, I decided that it would be the perfect
+brains. Using the ESP8266 alone with its 8 free pins all used for
+servos, with its software PWM kinda felt too hacky. I might still go
+back to an ESP87266 with a PCA9685 chip, we will see. For now, I’m
+using a Trinket M0 with a shield:&lt;/p&gt;
+&lt;img alt="projects/project-10665/images/389871505857431124.jpg" src="projects/project-10665/images/389871505857431124.jpg" /&gt;
+&lt;p&gt;I will also need to think a bit about cable management:&lt;/p&gt;
+&lt;img alt="projects/project-10665/images/5175501505857461648.jpg" src="projects/project-10665/images/5175501505857461648.jpg" /&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-10665/log-67467/" rel="alternate"/>
+    <summary>Published on 2017-09-19 in project-10665.</summary>
+    <published>2017-09-19T00:00:00+02:00</published>
+  </entry>
+</feed>

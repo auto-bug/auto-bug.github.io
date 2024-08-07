@@ -1,0 +1,51 @@
+---
+blogpost: true
+date: 2019-12-08
+category: project-19921
+---
+
+# Batteries! Why Doesn't Anybody Think About the Batteries?
+Published on 2019-12-08 in {ref}`project-19921`.
+
+Today I decided that the new PCB design was lying on the disk long
+enough, and that it's time to order it. But then, when I opened it in
+Fritzing, I decided to work on it a little bit more and add an
+important feature: battery protection.
+
+You see, the batteries that Adafruit sells already come with the
+protection circuit, so the battery handling circuit on the feathers
+doesn't include it, but those batteries are too small for all those
+servos (and also kinda difficult to attach properly), so I'm instead
+using a bare 16340 battery (it's half of a 18650, if you were
+wondering). But that means no protection, and that means you can
+damage your batteries if you are forgetful. On the previous models I
+had software monitoring of the battery status, but that's not as
+reliable.
+
+So I decided to go on and add a battery protection chip. Looking
+through my drawers, I found a HT3062E, which, judging by the Chinese
+datasheet, should allow up to 8A of current — that should be plenty
+for those tiny little servos. It comes in an ESPO8 package, so it was
+easy enough to add it to the PCB design:
+
+
+
+:::{image} images/9019751575830955635.png
+
+:::
+
+
+I had to remove the prototyping area at the front of the robot to make
+room for it (it had to be close to the minus side of the battery), but
+most Feathers have a prototyping area of their own on that side, so
+that shouldn't be too much of a problem.
+
+I also made the pin header holes for the Feather staggered, so you
+should be able to save some height of the robot by plugging the board
+directly, without the need for female pin headers.
+
+I ordered the boards from DirtyPCBs, because they are the only ones
+who don't care how many "designs" there are on a single PCB (most fabs
+will treat all the leg parts as separate designs and demand additional
+fees for them, for some reason).
+

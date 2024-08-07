@@ -1,0 +1,34 @@
+---
+blogpost: true
+date: 2016-04-16
+category: project-9769
+---
+
+# Assembled, Programming
+Published on 2016-04-16 in {ref}`project-9769`.
+
+Since all my "current" projects are either waiting for parts, or being
+punished for not going the way I wanted, I decided to finish this one.
+I started with connecting all the wires to an ATTiny85 I have soldered
+to a breakout board. Turns out that the accelerometer connected to the
+chip's pins doesn't prevent it from being programmed! Yay, that means
+I can just solder the chip in place and re-program it with a clip.
+
+
+:::{image} images/6441971460834990702.jpg
+
+:::
+
+
+Next step, I made some connectors for the servo sockets, so that I can
+use SoftwareSerial on them for debugging. In particular, I needed to
+check what are the rangers on the accelerometer readings. Turns out
+that "0" is smack in the middle of the range, at 512, and 1g is about
+100 units. Good enough.
+
+Next I will need to check the servo's limits (since I'm not using
+exactly 50Hz for PWM, they will be different) and actually write the
+code for the ears-moving logic... I guess for that last part, I will
+still use the Pro Mini-based prototype. It's simply easier to
+reprogram.
+

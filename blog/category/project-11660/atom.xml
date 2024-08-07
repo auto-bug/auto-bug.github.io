@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>http://deshipu.art/</id>
+  <title>deshipu.art - Posts in project-11660</title>
+  <updated>2024-08-07T20:31:01.902701+00:00</updated>
+  <link href="http://deshipu.art/"/>
+  <link href="http://deshipu.art/blog/category/project-11660/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-11660/log-45344/</id>
+    <title>SHARP GP2Y0E03 Distance Sensor</title>
+    <updated>2016-09-09T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="sharp-gp2y0e03-distance-sensor"&gt;
+
+&lt;p&gt;Published on 2016-09-09 in &lt;a class="reference internal" href="../../../projects/project-11660/#project-11660"&gt;&lt;span class="std std-ref"&gt;Various Micropython Libraries and Drivers&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This is a small infra-red distance sensor with I²C interface. It can
+measure distances from 4 to 127cm. The source code is available here: &lt;a class="reference external" href="https://bitbucket.org/thesheep/micropython-gp2y0e03/src"&gt;https://bitbucket.org/thesheep/micropython-gp2y0e03/src&lt;/a&gt;&lt;/p&gt;
+&lt;img alt="projects/project-11660/images/2783731473439616902.jpg" src="projects/project-11660/images/2783731473439616902.jpg" /&gt;
+&lt;p&gt;Example use:&lt;/p&gt;
+&lt;div class="highlight-python notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;machine&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;I2C&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Pin&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;gp2y0e03&lt;/span&gt;
+
+&lt;span class="n"&gt;i2c&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;I2C&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Pin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;Pin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;freq&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;100000&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;gp2y0e03&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;GP2Y0E03&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i2c&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;\&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-11660/log-45344/" rel="alternate"/>
+    <summary>Published on 2016-09-09 in project-11660.</summary>
+    <published>2016-09-09T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-11660/log-53056/</id>
+    <title>Bosch BNO055 IMU sensor</title>
+    <updated>2017-02-09T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="bosch-bno055-imu-sensor"&gt;
+
+&lt;p&gt;Published on 2017-02-09 in &lt;a class="reference internal" href="../../../projects/project-11660/#project-11660"&gt;&lt;span class="std std-ref"&gt;Various Micropython Libraries and Drivers&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The code is at &lt;a class="reference external" href="https://bitbucket.org/thesheep/micropython-bno055"&gt;https://bitbucket.org/thesheep/micropython-bno055&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;See the docstrings for usage example.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-11660/log-53056/" rel="alternate"/>
+    <summary>Published on 2017-02-09 in project-11660.</summary>
+    <published>2017-02-09T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-11660/log-53058/</id>
+    <title>MAX31855 Thermocouple Amplifier</title>
+    <updated>2017-02-09T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="max31855-thermocouple-amplifier"&gt;
+
+&lt;p&gt;Published on 2017-02-09 in &lt;a class="reference internal" href="../../../projects/project-11660/#project-11660"&gt;&lt;span class="std std-ref"&gt;Various Micropython Libraries and Drivers&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The code is at &lt;a class="reference external" href="https://bitbucket.org/thesheep/micropython-max31855"&gt;https://bitbucket.org/thesheep/micropython-max31855&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;See the docstrings for usage.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-11660/log-53058/" rel="alternate"/>
+    <summary>Published on 2017-02-09 in project-11660.</summary>
+    <published>2017-02-09T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-11660/log-53057/</id>
+    <title>SI7021 Temperature and Humidity Sensor</title>
+    <updated>2017-02-09T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="si7021-temperature-and-humidity-sensor"&gt;
+
+&lt;p&gt;Published on 2017-02-09 in &lt;a class="reference internal" href="../../../projects/project-11660/#project-11660"&gt;&lt;span class="std std-ref"&gt;Various Micropython Libraries and Drivers&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The code is at &lt;a class="reference external" href="https://bitbucket.org/thesheep/micropython-si7021"&gt;https://bitbucket.org/thesheep/micropython-si7021&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;See the docstrings for usage.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-11660/log-53057/" rel="alternate"/>
+    <summary>Published on 2017-02-09 in project-11660.</summary>
+    <published>2017-02-09T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-11660/log-69167/</id>
+    <title>OLED Displays</title>
+    <updated>2017-10-17T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="oled-displays"&gt;
+
+&lt;p&gt;Published on 2017-10-17 in &lt;a class="reference internal" href="../../../projects/project-11660/#project-11660"&gt;&lt;span class="std std-ref"&gt;Various Micropython Libraries and Drivers&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The code is at &lt;a class="reference external" href="https://bitbucket.org/thesheep/micropython-oled/overview"&gt;https://bitbucket.org/thesheep/micropython-oled/overview&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;See the README for explanation and examples.&lt;/p&gt;
+&lt;p&gt;This time I wrote drivers for something that mostly already had its
+drivers in MicroPython — the monochrome OLED displays. I did that,
+because I wasn’t happy with the existing drivers — they are a bit
+elaborate in terms of indirection and inheritance. Sure, code reuse
+and so on, but not very nice for constrained platforms. So I did my
+own, trying to optimize them. I also exposed some useful functions,
+like flipping and hardware scrolling.&lt;/p&gt;
+&lt;p&gt;I will hopefully add some more exotic displays there, as I get
+specimen to test on.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-11660/log-69167/" rel="alternate"/>
+    <summary>Published on 2017-10-17 in project-11660.</summary>
+    <published>2017-10-17T00:00:00+02:00</published>
+  </entry>
+</feed>

@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Compiling Your Own Firmware - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="compiling-your-own-firmware">
+<h1>Compiling Your Own Firmware<a class="headerlink" href="#compiling-your-own-firmware" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2016-04-14 in <a class="reference internal" href="../#project-9927"><span class="std std-ref">Tote HaD</span></a>.</p>
+<p>For anyone who wants to build their own version of firmware, here’s a
+really quick howto:</p>
+<ul class="simple">
+<li><p>Clone the Tote-HAD repository from <a class="reference external" href="https://bitbucket.org/thesheep/tote-had">https://bitbucket.org/thesheep/tote-had</a></p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>hg clone https://bitbucket.org/thesheep/tote-had
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Clone the Micropython repository from [<a class="reference external" href="https://github.com/micropython/micropython/">https://github.com/micropython/micropython/</a></p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/micropython/micropython.git
+</pre></div>
+</div>
+<p>](<a class="reference external" href="https://github.com/micropython/micropython/">https://github.com/micropython/micropython/</a>)</p>
+<ul class="simple">
+<li><p>Follow the <a class="reference external" href="https://github.com/micropython/micropython/blob/master/esp8266/README.md">README.md</a>  for the ESP8266 port to setup the build environment. You can also
+follow one of the guides at <a class="reference external" href="http://forum.micropython.org/viewforum.php?f=16">http://forum.micropython.org/viewforum.php?f=16</a></p></li>
+<li><p>Before compiling, copy or link the files from the <a class="reference external" href="https://bitbucket.org/thesheep/tote-had/src/tip/python/?at=default">python</a>  directory of Tote-HAD to <a class="reference external" href="https://github.com/micropython/micropython/tree/master/esp8266/scripts">esp8266/scripts</a></p></li>
+<li><p>Compile and flash normally, as the README says.</p></li>
+</ul>
+<p>You can also skip the main.py file (it’s the file that gets executed
+on the board start), and instead create it after flashing – this way
+you will be able to modify it without recompiling the firmware:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;main.py&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;import server; server.main()&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>There are some tools that make it easier to upload files to the
+ESP8266, like here: <a class="reference external" href="https://github.com/wendlers/mpfshell">https://github.com/wendlers/mpfshell</a></p>
+</section>
+
+
+</div>
+  </body>
+</html>

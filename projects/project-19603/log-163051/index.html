@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>One More Version - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="one-more-version">
+<h1>One More Version<a class="headerlink" href="#one-more-version" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2019-05-08 in <a class="reference internal" href="../#project-19603"><span class="std std-ref">D1 Mini Tote</span></a>.</p>
+<p>An advantage of having several similar projects, some long-term and
+some faster, is that the research and innovation you test in the fast
+projects can trickle back into the slower ones. This is one such
+example. When I started with this, I was mostly using ready modules
+for most things, and the PCB was just a way to hold things together.
+After some intensive development of <span class="xref std std-ref">project-27629</span> , <span class="xref std std-ref">project-159733</span> and <span class="xref std std-ref">project-158981</span> , however, I figured out some ways of doing some of those things
+better with discrete components and with better mechanical design. So
+it’s time to make a new version that will include all those
+improvements.</p>
+<p>Here it is:</p>
+<img alt="projects/project-19603/images/3201671557267311761.png" src="projects/project-19603/images/3201671557267311761.png" />
+<p>There has been changes. The D1 Mini footprint and the servo sockets
+have been rotated 90° degrees, so that the front of the robot is now
+to the left. That means that the battery is now sideways, and there is
+more room under the robot to fit the servos when the legs are in
+extreme positions (it will still require cutting off those “ears” from
+the servos). The body is still 5×5cm, but there are all those leg
+parts around it, so now the whole PCB is 10×10cm — which reflects the
+current reality of ordering cheap PCBs. It’s the same idea as in <span class="xref std std-ref">project-158981</span> , however, the feet now have footprints for switches, so we can detect
+ground easily.</p>
+<p>There is no room for the battery protection and charging module
+anymore, instead there is a charging and a protection circuit directly
+on the PCB. I’m using a double switch for power, because when it
+switches off the power from battery, it also switches on the charging
+— this way I can use one USB port for both programming and charging.
+The servo sockets are rotated now, and stretched along the battery
+holder, so that they can go on the bottom of the robot and still leave
+enough room for the servos to rotate. I also added back some small
+prototyping area at the front of the robot, for mounting sensors, and
+also on the legs.</p>
+<p>Otherwise it’s all standard stuff: a PCA9685 chip for PWM, a LiPo
+battery for power, and a socket for a D1 Mini to control it all.\</p>
+</section>
+
+
+</div>
+  </body>
+</html>

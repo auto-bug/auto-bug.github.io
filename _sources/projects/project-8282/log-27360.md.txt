@@ -1,0 +1,96 @@
+---
+blogpost: true
+date: 2015-10-30
+category: project-8282
+---
+
+# Butchering
+Published on 2015-10-30 in {ref}`project-8282`.
+
+First I need to disassemble the whole keyboard, then I will pick the
+parts I want to keep and modify it, and then put it back together
+again. Sounds simple. Let's start with the switches. They are actually
+just inserted in the holes in that metal plate, and then soldered to
+the printed circuit board on the other side.
+
+I briefly considered reusing the printed circuit board too, but it's a
+single-layer board with insanely complex paths, and I really don't
+feel like reverse engineering this. I will just connect everything
+with wires instead.
+
+So, the keycaps are removed and washed:
+
+
+:::{image} images/6632601446219652306.jpg
+
+:::
+
+
+
+---
+
+
+And then put out to dry:
+
+
+:::{image} images/2078551446219773506.jpg
+
+:::
+The switches need to be unsoldered and removed one by one:
+
+
+:::{image} images/3496091446219727910.jpg
+
+:::
+
+
+Then the PCB can be removed. I will probably also use all the diodes
+that are on it:
+:::{image} images/1022761446219860401.jpg
+
+:::
+
+
+Next, I need to cut the metal plate. First, just cut off the numpad
+part:
+:::{image} images/1556551446219918394.jpg
+
+:::
+
+
+Trying out the desired layout:
+
+
+:::{image} images/8599731446220071294.jpg
+
+:::
+
+
+Then, a bit of a complication. You see, modern keyboards have more
+keys than the old ones had. In particular, they have the "Super" keys
+between the "Ctrl" and "Alt". I want to have those too. Fortunately I
+have some spare switches and keycaps from the numpad, so I will just
+have to make additional holes for them.First, drill around the edge:
+
+
+:::{image} images/3696191446220138033.jpg
+
+:::
+
+
+And then file the remains:
+:::{image} images/5880181446220196650.jpg
+
+:::
+
+
+It's not super-pretty, mostly because that metal plate turns out to be
+surprisingly hard. Steel? Perhaps.Finally, the finished layout:
+
+
+:::{image} images/8818981446220297115.jpg
+
+:::
+
+
+Next, electronics and chassis.

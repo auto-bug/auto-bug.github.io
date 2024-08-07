@@ -1,0 +1,48 @@
+---
+blogpost: true
+date: 2022-11-21
+category: project-10408
+---
+
+# Kos v2.0
+Published on 2022-11-21 in {ref}`project-10408`.
+
+In Kos 1.0 I used a pro mini board for the microcontroller, because
+that was the traditional way at the time, and it had the most
+widespread support. But it's an old microcontroller and the board is
+hard to get and expensive during the chip shortage, when the chip fabs
+are busy churning out chips for the missiles, so I decided to revisit
+this design and this time use something modern – the Raspberry Pi
+Pico, which is both cheap and available, at least until the military
+designs catch up with the new chip technology.
+
+With more pins available on each side, and with the board being mostly
+symmetrical, I could simplify the design greatly. I no longer need to
+connect the rows across the two halves, and I can simply have all
+horizontal traces on one side, and all vertical traces on the other.
+
+
+
+:::{image} images/7478231669027498191.png
+
+:::
+
+
+
+
+:::{image} images/4817741669027510528.png
+
+:::
+
+
+As with the previous versions, you need two of the PCBs to make one
+keyboard, and you connect them by soldering a pro micro in the middle.
+Since QMK now supports RP2040, there shouldn't be any problem with the
+firmware, but I will probably use the CircuitPython code I already
+wrote for the other stenotype, or maybe try and get the USB HID steno
+protocol working. The Pi Pico opens a lot of possibilities, even
+putting a simplified version of Plover together with the dictionary on
+the board itself, and emulating a HID keyboard should be doable.
+
+As usual, the PCBs and parts should arrive within two weeks.
+

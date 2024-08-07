@@ -1,0 +1,229 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Matrix 2 - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="matrix-2">
+<h1>Matrix 2<a class="headerlink" href="#matrix-2" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2015-11-01 in <a class="reference internal" href="../#project-8282"><span class="std std-ref">Alpen Clack</span></a>.</p>
+<p>This was the most laborious step of the work. I had to solder all the
+keys, defined the pins for the rows and columns, and defined the key
+map. I started with soldering the columns:</p>
+<img alt="projects/project-8282/images/5610891446403697605.jpg" src="projects/project-8282/images/5610891446403697605.jpg" />
+<hr class="docutils" />
+<p>Since I need the matrix to be as close to rectangle, as possible, to
+save pins, I merged pairs of columns. This way I have 8 columns with
+11 rows each (except for one, that only has 10 rows).</p>
+<p>Next, I made a hole in the plate for the USB socket, and attached the
+microcontroller board with two-sided tape:</p>
+<img alt="projects/project-8282/images/3490231446403939293.jpg" src="projects/project-8282/images/3490231446403939293.jpg" />
+<p>You can also see the beginnings of rows with the diodes. Then came all
+the remaining connections:</p>
+<img alt="projects/project-8282/images/1766221446404008495.jpg" src="projects/project-8282/images/1766221446404008495.jpg" />
+<p>Now, time for the firmware.\</p>
+<p>I copied the “onekey” example from the tmk_keyboard repository, and
+changed the names in the makefile and settings in config.h:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/* key matrix size */</span><span class="w"></span>
+<span class="cp">#define MATRIX_ROWS 11</span>
+<span class="cp">#define MATRIX_COLS 8</span>
+
+<span class="cm">/* define if matrix has ghost */</span><span class="w"></span>
+<span class="c1">//#define MATRIX_HAS_GHOST</span>
+
+<span class="cm">/* Set 0 if debouncing isn&#39;t needed */</span><span class="w"></span>
+<span class="cp">#define DEBOUNCE    5</span>
+
+<span class="cm">/* key combination for command */</span><span class="w"></span>
+<span class="cp">#define IS_COMMAND() ( \</span>
+<span class="cp">    keyboard_report-&gt;mods == (MOD_BIT(KC_LSHIFT) | MOD_BIT(KC_RSHIFT)) \</span>
+<span class="cp">)</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * Feature disable options</span>
+<span class="cm"> *  These options are also useful to firmware size reduction.</span>
+<span class="cm"> */</span><span class="w"></span>
+
+<span class="cm">/* disable debug print */</span><span class="w"></span>
+<span class="cp">#define NO_DEBUG</span>
+
+<span class="cm">/* disable print */</span><span class="w"></span>
+<span class="cp">#define NO_PRINT</span>
+
+<span class="cm">/* disable action features */</span><span class="w"></span>
+<span class="c1">//#define NO_ACTION_LAYER</span>
+<span class="c1">//#define NO_ACTION_TAPPING</span>
+<span class="cp">#define NO_ACTION_ONESHOT</span>
+<span class="cp">#define NO_ACTION_MACRO</span>
+<span class="cp">#define NO_ACTION_FUNCTION</span>
+</pre></div>
+</div>
+<p>Then I modified the matrix.c file to support a little larger keyboard:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/* Column pin configuration</span>
+<span class="cm"> * col: 8</span>
+<span class="cm"> * pin: F4 F5 F6 F7 B1 B3 B2 B6</span>
+<span class="cm"> */</span><span class="w"></span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w">  </span><span class="nf">init_cols</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Input with pull-up(DDR:0, PORT:1)</span>
+<span class="w">    </span><span class="n">DDRB</span><span class="w">  </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="mb">0b01001110</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">PORTB</span><span class="w"> </span><span class="o">|=</span><span class="w">  </span><span class="mb">0b01001110</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">DDRF</span><span class="w">  </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="mb">0b11110000</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">PORTF</span><span class="w"> </span><span class="o">|=</span><span class="w">  </span><span class="mb">0b11110000</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="k">static</span><span class="w"> </span><span class="n">matrix_row_t</span><span class="w"> </span><span class="nf">read_cols</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">PINF</span><span class="o">&amp;</span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">0</span><span class="o">:</span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">0</span><span class="p">))</span><span class="w"> </span><span class="o">|</span><span class="w"></span>
+<span class="w">           </span><span class="p">(</span><span class="n">PINF</span><span class="o">&amp;</span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">0</span><span class="o">:</span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="o">|</span><span class="w"></span>
+<span class="w">           </span><span class="p">(</span><span class="n">PINF</span><span class="o">&amp;</span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">6</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">0</span><span class="o">:</span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">2</span><span class="p">))</span><span class="w"> </span><span class="o">|</span><span class="w"></span>
+<span class="w">           </span><span class="p">(</span><span class="n">PINF</span><span class="o">&amp;</span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">7</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">0</span><span class="o">:</span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">3</span><span class="p">))</span><span class="w"> </span><span class="o">|</span><span class="w"></span>
+<span class="w">           </span><span class="p">(</span><span class="n">PINB</span><span class="o">&amp;</span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">0</span><span class="o">:</span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">4</span><span class="p">))</span><span class="w"> </span><span class="o">|</span><span class="w"></span>
+<span class="w">           </span><span class="p">(</span><span class="n">PINB</span><span class="o">&amp;</span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">0</span><span class="o">:</span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">5</span><span class="p">))</span><span class="w"> </span><span class="o">|</span><span class="w"></span>
+<span class="w">           </span><span class="p">(</span><span class="n">PINB</span><span class="o">&amp;</span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">0</span><span class="o">:</span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">6</span><span class="p">))</span><span class="w"> </span><span class="o">|</span><span class="w"></span>
+<span class="w">           </span><span class="p">(</span><span class="n">PINB</span><span class="o">&amp;</span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">6</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">0</span><span class="o">:</span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">7</span><span class="p">));</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="cm">/* Row pin configuration</span>
+<span class="cm"> * row: 11</span>
+<span class="cm"> * pin: D3 D2 D1 D0 D4 C6 D7 E6 B4 B5 B0</span>
+<span class="cm"> */</span><span class="w"></span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">unselect_rows</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Hi-Z(DDR:0, PORT:0) to unselect</span>
+<span class="w">    </span><span class="n">DDRD</span><span class="w">  </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="mb">0b10011111</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">PORTD</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="mb">0b10011111</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">DDRC</span><span class="w">  </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="mb">0b01000000</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">PORTC</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="mb">0b01000000</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">DDRE</span><span class="w">  </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="mb">0b01000000</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">PORTE</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="mb">0b01000000</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">DDRB</span><span class="w">  </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="mb">0b00110001</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">PORTB</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="mb">0b00110001</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">select_row</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">row</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Output low(DDR:1, PORT:0) to select</span>
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">row</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="n">DDRD</span><span class="w">  </span><span class="o">|=</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">3</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="n">PORTD</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">3</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="n">DDRD</span><span class="w">  </span><span class="o">|=</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="n">PORTD</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="n">DDRD</span><span class="w">  </span><span class="o">|=</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="n">PORTD</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="mi">3</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="n">DDRD</span><span class="w">  </span><span class="o">|=</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="n">PORTD</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="mi">4</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="n">DDRD</span><span class="w">  </span><span class="o">|=</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">4</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="n">PORTD</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">4</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="mi">5</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="n">DDRC</span><span class="w">  </span><span class="o">|=</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">6</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="n">PORTC</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">6</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="mi">6</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="n">DDRD</span><span class="w">  </span><span class="o">|=</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">7</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="n">PORTD</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">7</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="mi">7</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="n">DDRE</span><span class="w">  </span><span class="o">|=</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">6</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="n">PORTE</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">6</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="mi">8</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="n">DDRB</span><span class="w">  </span><span class="o">|=</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">4</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="n">PORTB</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">4</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="mi">9</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="n">DDRB</span><span class="w">  </span><span class="o">|=</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">5</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="n">PORTB</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">5</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="mi">10</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="n">DDRB</span><span class="w">  </span><span class="o">|=</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="n">PORTB</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Finally, with some mistakes and experimenting, I defined the key map
+in keymap.c:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">PROGMEM</span><span class="w"> </span><span class="n">keymaps</span><span class="p">[][</span><span class="n">MATRIX_ROWS</span><span class="p">][</span><span class="n">MATRIX_COLS</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="n">KC_PGUP</span><span class="p">,</span><span class="w"> </span><span class="n">KC_PSCR</span><span class="p">,</span><span class="w"> </span><span class="n">KC_F10</span><span class="p">,</span><span class="w">  </span><span class="n">KC_F8</span><span class="p">,</span><span class="w">   </span><span class="n">KC_SPC</span><span class="p">,</span><span class="w"> </span><span class="n">KC_NO</span><span class="p">,</span><span class="w">  </span><span class="n">KC_F2</span><span class="p">,</span><span class="w">   </span><span class="n">KC_1</span><span class="w">   </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="n">KC_PGDN</span><span class="p">,</span><span class="w"> </span><span class="n">KC_F12</span><span class="p">,</span><span class="w">  </span><span class="n">KC_MINS</span><span class="p">,</span><span class="w"> </span><span class="n">KC_9</span><span class="p">,</span><span class="w">    </span><span class="n">KC_F6</span><span class="p">,</span><span class="w">  </span><span class="n">KC_F4</span><span class="p">,</span><span class="w">  </span><span class="n">KC_3</span><span class="p">,</span><span class="w">    </span><span class="n">KC_Q</span><span class="w">   </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="n">KC_HOME</span><span class="p">,</span><span class="w"> </span><span class="n">KC_BSPC</span><span class="p">,</span><span class="w"> </span><span class="n">KC_LBRC</span><span class="p">,</span><span class="w"> </span><span class="n">KC_O</span><span class="p">,</span><span class="w">    </span><span class="n">KC_7</span><span class="p">,</span><span class="w">   </span><span class="n">KC_5</span><span class="p">,</span><span class="w">   </span><span class="n">KC_E</span><span class="p">,</span><span class="w">    </span><span class="n">KC_A</span><span class="w">   </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="n">KC_RGHT</span><span class="p">,</span><span class="w"> </span><span class="n">KC_SLCK</span><span class="p">,</span><span class="w"> </span><span class="n">KC_QUOT</span><span class="p">,</span><span class="w"> </span><span class="n">KC_L</span><span class="p">,</span><span class="w">    </span><span class="n">KC_U</span><span class="p">,</span><span class="w">   </span><span class="n">KC_T</span><span class="p">,</span><span class="w">   </span><span class="n">KC_D</span><span class="p">,</span><span class="w">    </span><span class="n">KC_Z</span><span class="w">   </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="n">KC_DEL</span><span class="p">,</span><span class="w">  </span><span class="n">KC_NO</span><span class="p">,</span><span class="w">   </span><span class="n">KC_RSFT</span><span class="p">,</span><span class="w"> </span><span class="n">KC_DOT</span><span class="p">,</span><span class="w">  </span><span class="n">KC_J</span><span class="p">,</span><span class="w">   </span><span class="n">KC_G</span><span class="p">,</span><span class="w">   </span><span class="n">KC_C</span><span class="p">,</span><span class="w">    </span><span class="n">KC_LGUI</span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="n">KC_END</span><span class="p">,</span><span class="w">  </span><span class="n">KC_BSLS</span><span class="p">,</span><span class="w"> </span><span class="n">KC_RGUI</span><span class="p">,</span><span class="w"> </span><span class="n">KC_RALT</span><span class="p">,</span><span class="w"> </span><span class="n">KC_M</span><span class="p">,</span><span class="w">   </span><span class="n">KC_B</span><span class="p">,</span><span class="w">   </span><span class="n">KC_LALT</span><span class="p">,</span><span class="w"> </span><span class="n">KC_LCTL</span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="n">KC_UP</span><span class="p">,</span><span class="w">   </span><span class="n">KC_RCTL</span><span class="p">,</span><span class="w"> </span><span class="n">KC_SLSH</span><span class="p">,</span><span class="w"> </span><span class="n">KC_COMM</span><span class="p">,</span><span class="w"> </span><span class="n">KC_N</span><span class="p">,</span><span class="w">   </span><span class="n">KC_V</span><span class="p">,</span><span class="w">   </span><span class="n">KC_X</span><span class="p">,</span><span class="w">    </span><span class="n">KC_LSFT</span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="n">KC_DOWN</span><span class="p">,</span><span class="w"> </span><span class="n">KC_ENT</span><span class="p">,</span><span class="w">  </span><span class="n">KC_SCLN</span><span class="p">,</span><span class="w"> </span><span class="n">KC_K</span><span class="p">,</span><span class="w">    </span><span class="n">KC_H</span><span class="p">,</span><span class="w">   </span><span class="n">KC_F</span><span class="p">,</span><span class="w">   </span><span class="n">KC_S</span><span class="p">,</span><span class="w">    </span><span class="n">KC_CAPS</span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="n">KC_LEFT</span><span class="p">,</span><span class="w"> </span><span class="n">KC_RBRC</span><span class="p">,</span><span class="w"> </span><span class="n">KC_P</span><span class="p">,</span><span class="w">    </span><span class="n">KC_I</span><span class="p">,</span><span class="w">    </span><span class="n">KC_Y</span><span class="p">,</span><span class="w">   </span><span class="n">KC_R</span><span class="p">,</span><span class="w">   </span><span class="n">KC_W</span><span class="p">,</span><span class="w">    </span><span class="n">KC_TAB</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="n">KC_BRK</span><span class="p">,</span><span class="w">  </span><span class="n">KC_EQL</span><span class="p">,</span><span class="w">  </span><span class="n">KC_0</span><span class="p">,</span><span class="w">    </span><span class="n">KC_8</span><span class="p">,</span><span class="w">    </span><span class="n">KC_6</span><span class="p">,</span><span class="w">   </span><span class="n">KC_4</span><span class="p">,</span><span class="w">   </span><span class="n">KC_2</span><span class="p">,</span><span class="w">    </span><span class="n">KC_GRV</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="n">KC_INS</span><span class="p">,</span><span class="w">  </span><span class="n">KC_F11</span><span class="p">,</span><span class="w">  </span><span class="n">KC_F9</span><span class="p">,</span><span class="w">   </span><span class="n">KC_F7</span><span class="p">,</span><span class="w">   </span><span class="n">KC_F5</span><span class="p">,</span><span class="w">  </span><span class="n">KC_F3</span><span class="p">,</span><span class="w">  </span><span class="n">KC_F1</span><span class="p">,</span><span class="w">   </span><span class="n">KC_ESC</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Nothing fancy for now, just regular keyboard. Since the columns are
+doubled, the layout definition doesn’t look very readable, but it
+works.Next, I will experiment with some action keys and add secondary
+functions to some of the keys, so that I have media keys and whatnot.</p>
+<p>Also, I still need to make the case for this keyboard. I will get some
+cardboard tomorrow and start prototyping.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

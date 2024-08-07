@@ -1,0 +1,31 @@
+---
+blogpost: true
+date: 2016-03-30
+category: project-9927
+---
+
+# Clock Stretching Woes
+Published on 2016-03-30 in {ref}`project-9927`.
+
+The parts are still trickling in, but I'm waiting for the rest of the
+PCBs to start the mass-production of the workshop kits. Hopefully they
+will arrive tomorrow or Friday, so I can do it over the weekend.
+
+Less good news is that the tracking number for the 200 servos that I
+ordered a week ago is not working (the seller gave me 4 different ones
+so far, none working). It's too late to order this from a different
+seller, and there is no brick-and-mortar shop that I know that has
+those. So it's possible that I will have only 10 complete kits, and 15
+kits without legs. I'm still hoping that the servos will arrive on
+time, but there is nothing I can do with this. Frustrating.
+
+Finally, on the software side, I made some progress debugging the I²C
+issues (after two evenings of analyzing the scope). I even found and
+tried a completely [new slave library by Pololu](https://github.com/pololu/pololu-rpi-slave-arduino-library) , but decided to switch back to Wire.h for now (I might use that
+library later, especially since it has a workaround for the I²C bug in
+Raspberry Pi). Anyways, the issue seems to be that the Arduino slave
+is sometimes too slow for the 100kHz I²C, and the ESP8266
+implementation doesn't support clock stretching, so it can't slow down
+when needed. The good part is that I found a way to compile a version
+of the firmware with slower I²C, so this shouldn't be a problem.
+

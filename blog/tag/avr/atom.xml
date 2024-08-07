@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>http://deshipu.art/</id>
+  <title>deshipu.art - Posts tagged avr</title>
+  <updated>2024-08-07T20:31:03.107341+00:00</updated>
+  <link href="http://deshipu.art/"/>
+  <link href="http://deshipu.art/blog/tag/avr/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-10533/</id>
+    <title>Nano TTY</title>
+    <updated>2016-03-25T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="nano-tty"&gt;
+
+&lt;p&gt;Small serial terminal for debugging your robots&lt;/p&gt;
+&lt;div class="project-thumb"&gt;
+&lt;a class="reference external image-reference" href="/_images/7772871460731788576.jpg"&gt;&lt;img alt="projects/project-10533/images/7772871460731788576.jpg" src="projects/project-10533/images/7772871460731788576.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/9481741458912065926.jpg"&gt;&lt;img alt="projects/project-10533/images/9481741458912065926.jpg" src="projects/project-10533/images/9481741458912065926.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/9411211460731782215.jpg"&gt;&lt;img alt="projects/project-10533/images/9411211460731782215.jpg" src="projects/project-10533/images/9411211460731782215.jpg" /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Once upon a time I found a Nokia display in my drawer, and figured out
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;I need to try to use it in a project. So I went and built the simplest
+thing – a small serial display, that I can connect to my robots for
+debugging. That’s how &lt;a class="reference internal" href="../../../projects/project-7111/#project-7111"&gt;&lt;span class="std std-ref"&gt;µtty&lt;/span&gt;&lt;/a&gt;  was born. It is actually very useful, but a little bit cumbersome to
+use. So I decided to try and improve the design a little bit.&lt;/p&gt;
+&lt;p&gt;Nano TTY is following the same idea – a small screen that lets you
+see the serial traffic from your project. However, there are some
+improvements:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;much smaller and lighter&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;high-contrast OLED display&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;fast, smooth scrolling, using a scroll wheel&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;large scroll buffer&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;There may be further improvements, depending on how well this goes,
+but this is the minimum plan.&lt;/p&gt;
+&lt;section id="logs"&gt;
+&lt;h2&gt;Logs&lt;/h2&gt;
+&lt;ul class="postlist-style-none postlist simple"&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-04-15 - &lt;a class="reference internal" href="../../../projects/project-10533/log-35970/"&gt;First Mock of the Interface&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-04-15 - &lt;a class="reference internal" href="../../../projects/project-10533/log-35964/"&gt;Encoders&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-03-25 - &lt;a class="reference internal" href="../../../projects/project-10533/log-34525/"&gt;Smooth Scrolling on a SSD1306&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section id="instructions"&gt;
+&lt;h2&gt;Instructions&lt;/h2&gt;
+&lt;/section&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-10533/" rel="alternate"/>
+    <summary>Small serial terminal for debugging your robots</summary>
+    <category term="2016HackadayPrize" label="2016HackadayPrize"/>
+    <category term="avr" label="avr"/>
+    <category term="hardware" label="hardware"/>
+    <category term="oled" label="oled"/>
+    <category term="ongoingproject" label="ongoing project"/>
+    <category term="serial" label="serial"/>
+    <category term="tty" label="tty"/>
+    <published>2016-03-25T00:00:00+01:00</published>
+  </entry>
+</feed>

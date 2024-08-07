@@ -1,0 +1,40 @@
+---
+blogpost: true
+date: 2016-04-15
+category: project-10533
+---
+
+# Encoders
+Published on 2016-04-15 in {ref}`project-10533`.
+
+The encoders arrived today, and I actually had to take a moment to
+read about them to understand how they work. Those are EVQWKA
+quadrature encoders, with an additional button activated by pressing
+on the wheel -- which makes them perfect as an interface for all sorts
+of menus or scrolling:
+
+
+:::{image} images/3519771460728529357.jpg
+
+:::
+
+
+You can easily google for a datasheet for these, which will give you
+all the dimensions and the pinout. But it doesn't say anything about
+the protocol used. Turns out that the protocol is so standard, that
+nobody even mentions it anymore in the datasheets.Inside of them there is a star-shaped contact, and two contacts that
+touch the prongs of the star. When you rotate the wheel, the star
+rotates too, and touches the two contacts. The order in which the
+contacts are touched tells you the direction of rotation. That's it.
+This particular model has one pring per "click", so you will get 10,
+00, 01, 11 on rotation one way, and 01, 00, 10, 11 on rotation the
+other way. You can easily detect those with the pin interrupts in
+Arduino, but I choose to use a library from [http://www.pjrc.com/teensy/td_libs_Encoder.html](http://www.pjrc.com/teensy/td_libs_Encoder.html) 
+
+
+:::{image} images/8173371460728851096.jpg
+
+:::
+
+
+It works flawlessly. Now to program and assemble the whole thing...

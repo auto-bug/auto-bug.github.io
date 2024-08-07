@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>We Have a Fixed Firmware! - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="we-have-a-fixed-firmware">
+<h1>We Have a Fixed Firmware!<a class="headerlink" href="#we-have-a-fixed-firmware" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2017-04-21 in <a class="reference internal" href="../#project-18439"><span class="std std-ref">Motor Shield Reprogramming</span></a>.</p>
+<p><a class="reference external" href="https://hackaday.iohttps://hackaday.io/hacker/214712">&#64;Piotr Bugalski</a>  has recently re-written the firmware for this motor shield, and
+published it at <a class="reference external" href="https://github.com/pbugalski/wemos_motor_shield">https://github.com/pbugalski/wemos_motor_shield</a> . From what I can tell, the new firmware is compatible with the old
+one, minus the hanging and crashing, so it should be perfect for a
+drop-in replacement.</p>
+<p>Here is how you can flash it to your shield:</p>
+<p>Solder two wires to the first two legs of the microcontroller,
+counting from the top, like this:</p>
+<img alt="projects/project-18439/images/9683431479845007181.jpg" src="projects/project-18439/images/9683431479845007181.jpg" />
+<p>Be careful to not short them with the legs next to them. This is
+probably the hardest part.</p>
+<p>Next, connect you ST-Link programmer as follows:</p>
+<p>SWCLK ↔ first wire</p>
+<p>SWDIO ↔ second wire</p>
+<p>GND ↔ GND</p>
+<p>3V3 ↔ 3V3</p>
+<p>T_JRST ↔ RST</p>
+<p>Note that, this is with the shiled <em>not</em> connected to the D1 Mini.</p>
+<p>Now, clone the repository:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/pbugalski/wemos_motor_shield
+$ cd wemos_motor_shield
+</pre></div>
+</div>
+<p>Make sure you have installed openocd and arm-none-eabi-gcc. Compile
+the firmware:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ make
+arm-none-eabi-gcc -Wall -g -std=c99 -Os -mlittle-endian -mcpu=cortex-m0 -march=armv6-m -mthumb -ffunction-sections -fdata-sections -Wl,--gc-sections -Wl,-Map=motor_shield.map -Iinc src/startup_stm32.s src/main.c src/user_i2c.c src/tb6612.c -o motor_shield.elf -Tstm32f030.ld
+arm-none-eabi-objcopy -O binary motor_shield.elf motor_shield.bin
+arm-none-eabi-size motor_shield.elf
+   text	   data	    bss	    dec	    hex	filename
+   2032	   1084	   1056	   4172	   104c	motor_shield.elf
+
+</pre></div>
+</div>
+<p>And flash it onto the shield:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ make program
+openocd -f stm32f0motor.cfg -f stm32f0-openocd.cfg -c &quot;stm_flash motor_shield.bin&quot; -c shutdown
+Open On-Chip Debugger 0.9.0 (2015-09-02-10:42)
+Licensed under GNU GPL v2
+For bug reports, read
+	http://openocd.org/doc/doxygen/bugs.html
+Info : The selected transport took over low-level target control. The results might differ compared to plain JTAG/SWD
+adapter speed: 1000 kHz
+adapter_nsrst_delay: 100
+none separate
+srst_only separate srst_nogate srst_open_drain connect_deassert_srst
+Info : Unable to match requested speed 1000 kHz, using 950 kHz
+Info : Unable to match requested speed 1000 kHz, using 950 kHz
+Info : clock speed 950 kHz
+Info : STLINK v2 JTAG v17 API v2 SWIM v4 VID 0x0483 PID 0x3748
+Info : using stlink api v2
+Info : Target voltage: 3.490340
+Info : stm32f0x.cpu: hardware has 4 breakpoints, 2 watchpoints
+stm_erase
+target state: halted
+target halted due to debug-request, current mode: Thread 
+xPSR: 0xc1000000 pc: 0xfffffffe msp: 0xfffffffc
+auto erase enabled
+Info : device id = 0x10006444
+Info : flash size = 16kbytes
+target state: halted
+target halted due to breakpoint, current mode: Thread 
+xPSR: 0x61000000 pc: 0x2000003a msp: 0xfffffffc
+wrote 4096 bytes from file motor_shield.bin in 0.287988s (13.889 KiB/s)
+target state: halted
+target halted due to breakpoint, current mode: Thread 
+xPSR: 0x61000000 pc: 0x2000002e msp: 0xfffffffc
+verified 3116 bytes in 0.057512s (52.910 KiB/s)
+shutdown command invoked
+
+</pre></div>
+</div>
+<p>Now, disconnect everything. Your board has the new firmware on it.
+You can test it, and then desolder the two wires – you won’t be
+needing them anymore.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

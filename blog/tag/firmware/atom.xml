@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>http://deshipu.art/</id>
+  <title>deshipu.art - Posts tagged firmware</title>
+  <updated>2024-08-07T20:31:03.246165+00:00</updated>
+  <link href="http://deshipu.art/"/>
+  <link href="http://deshipu.art/blog/tag/firmware/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-18439/</id>
+    <title>Motor Shield Reprogramming</title>
+    <updated>2016-11-21T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="motor-shield-reprogramming"&gt;
+
+&lt;p&gt;Create and flash new firmware for the WeMos D1 Mini Motor Shield.&lt;/p&gt;
+&lt;div class="project-thumb"&gt;
+&lt;a class="reference external image-reference" href="/_images/2343041479721475132.jpg"&gt;&lt;img alt="projects/project-18439/images/2343041479721475132.jpg" src="projects/project-18439/images/2343041479721475132.jpg" /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;We have pretty good information about the motor shield:
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;The H-bridge is TB6612.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The microcontroller is STM32F030.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;We have a schematic: &lt;a class="reference external" href="https://www.wemos.cc/sites/default/files/2016-09/mini_motor.pdf"&gt;https://www.wemos.cc/sites/default/files/2016-09/mini_motor.pdf&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;We have the Arduino library for talking to it: &lt;a class="reference external" href="https://github.com/wemos/WEMOS_Motor_Shield_Arduino_Library"&gt;https://github.com/wemos/WEMOS_Motor_Shield_Arduino_Library&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;And, last but not least, we finally have the source code of the
+original firmware: &lt;a class="reference external" href="https://github.com/wemos/Motor_Shield_Firmware"&gt;https://github.com/wemos/Motor_Shield_Firmware&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The shield has a serial interface for programming broken out, and that
+chip is supposed to have a bootloader built-in, so hopefully we will
+be able to just use stm32flash and an USB2TTL adapter to program it.&lt;/p&gt;
+&lt;p&gt;There is a nice dev environment template for this family of
+microcontrollers: &lt;a class="reference external" href="https://github.com/szczys/stm32f0-discovery-basic-template"&gt;https://github.com/szczys/stm32f0-discovery-basic-template&lt;/a&gt;&lt;/p&gt;
+&lt;section id="logs"&gt;
+&lt;h2&gt;Logs&lt;/h2&gt;
+&lt;ul class="postlist-style-none postlist simple"&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-11-08 - &lt;a class="reference internal" href="../../../projects/project-18439/log-70239/"&gt;Multiple I²C Addresses&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-04-21 - &lt;a class="reference internal" href="../../../projects/project-18439/log-57852/"&gt;We Have a Fixed Firmware!&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-04-21 - &lt;a class="reference internal" href="../../../projects/project-18439/log-57855/"&gt;Reprogramming Without Soldering&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-11-22 - &lt;a class="reference internal" href="../../../projects/project-18439/log-49380/"&gt;SWD Programming Continued&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-11-22 - &lt;a class="reference internal" href="../../../projects/project-18439/log-49378/"&gt;SWD Programming&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-11-21 - &lt;a class="reference internal" href="../../../projects/project-18439/log-49300/"&gt;Serial Programming&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section id="instructions"&gt;
+&lt;h2&gt;Instructions&lt;/h2&gt;
+&lt;/section&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-18439/" rel="alternate"/>
+    <summary>Create and flash new firmware for the WeMos D1 Mini Motor Shield.</summary>
+    <category term="ESP8266" label="ESP8266"/>
+    <category term="STM32" label="STM32"/>
+    <category term="firmware" label="firmware"/>
+    <category term="hardware" label="hardware"/>
+    <category term="motorshield" label="motor shield"/>
+    <category term="ongoingproject" label="ongoing project"/>
+    <category term="wemosd1mini" label="wemos d1 mini"/>
+    <published>2016-11-21T00:00:00+01:00</published>
+  </entry>
+</feed>

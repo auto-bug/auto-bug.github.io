@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>PWM on ATtiny85 - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="pwm-on-attiny85">
+<h1>PWM on ATtiny85<a class="headerlink" href="#pwm-on-attiny85" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2016-02-23 in <a class="reference internal" href="../#project-9769"><span class="std std-ref">Mechatronic Ears</span></a>.</p>
+<p>So I decided to go for this miniaturized version, and ordered the PCB
+at OSHPark. Since it was so small, it’s quite cheap. But that means
+that now I need to port my code to ATtiny85. I can use an Arduino
+core, but I still need to come up with a way to control the hobby
+servos. The obvious way is to use Fast PWM mode.</p>
+<p>The usual way to do it is to set a timer with two triggers – one that
+switches the pin low, and one that resets the counter and switches the
+pin back to high. This gives you precise control over the exact
+frequency and duty cycle of the signal. ATtiny85 has two such timers,
+so I should be all set.</p>
+<p>There is a small problem, however. I will also need 3 ADC pins, and
+one of those is the same as the Timer1 PWM pin. There is an ADC on the
+reset pin too, but I don’t have a high voltage programmer to make use
+of that. So I can’t use the second timer.</p>
+<p>What I can do, is to use Timer0 but don’t reset it on the second
+trigger, but let it overflow. Then use the second trigger for the
+second PWM pin. That however removes the precise control over the
+frequency – now I can only use the frequencies that are available
+with the given prescalers and CPU speeds. Turns out I can do 62.5Hz
+with the ATtiny85 at 1Mhz. This is close enough for most servos.</p>
+<p>With some diving into the datasheet and a bit of experimenting, I came
+up with this code:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">pinMode</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">pinMode</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// Setup the PWM clock to ~62.5Hz for the servos.</span>
+<span class="w">    </span><span class="n">TCCR0A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="o">&lt;&lt;</span><span class="n">COM0A0</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">2</span><span class="o">&lt;&lt;</span><span class="n">COM0B0</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">3</span><span class="o">&lt;&lt;</span><span class="n">WGM00</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">TCCR0B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="o">&lt;&lt;</span><span class="n">WGM02</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="n">CS00</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="n">CS01</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">0</span><span class="o">&lt;&lt;</span><span class="n">CS02</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">OCR0A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">OCR0B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="mi">30</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">OCR0A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">OCR0B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">delay</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Note that since I’m messing with Timer0, which is also used by the
+Arduino core to keep track of millis(), the delay() is no longer
+accurate. But I can live with that.Here’s the servo in action:</p>
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="" src="https://www.youtube.com/embed/E2TrhVOG524"></iframe>
+</section>
+
+
+</div>
+  </body>
+</html>

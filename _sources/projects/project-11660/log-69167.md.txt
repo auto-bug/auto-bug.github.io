@@ -1,0 +1,24 @@
+---
+blogpost: true
+date: 2017-10-17
+category: project-11660
+---
+
+# OLED Displays
+Published on 2017-10-17 in {ref}`project-11660`.
+
+The code is at [https://bitbucket.org/thesheep/micropython-oled/overview](https://bitbucket.org/thesheep/micropython-oled/overview) 
+
+See the README for explanation and examples.
+
+This time I wrote drivers for something that mostly already had its
+drivers in MicroPython — the monochrome OLED displays. I did that,
+because I wasn't happy with the existing drivers — they are a bit
+elaborate in terms of indirection and inheritance. Sure, code reuse
+and so on, but not very nice for constrained platforms. So I did my
+own, trying to optimize them. I also exposed some useful functions,
+like flipping and hardware scrolling.
+
+I will hopefully add some more exotic displays there, as I get
+specimen to test on.
+

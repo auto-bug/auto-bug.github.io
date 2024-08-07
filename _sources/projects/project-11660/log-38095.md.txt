@@ -1,0 +1,18 @@
+---
+blogpost: true
+date: 2016-05-16
+category: project-11660
+---
+
+# RC Hobby Servos
+Published on 2016-05-16 in {ref}`project-11660`.
+
+This is a very simple library for controlling up to eight hobby servos
+with Micropython on ESP8266. The limitation of eight servos comes from
+the fact that only 8 pins have PWM supported currently, and this is
+just a simple wrapper over the PWM functionality. The code is at [https://bitbucket.org/thesheep/micropython-servo/src/tip/servo.py](https://bitbucket.org/thesheep/micropython-servo/src/tip/servo.py) 
+
+Note that to use pins gpio0, gpio2 and gpio15, you need to add
+appropriate pull-up or pull-down resistors, to make the board boot
+into the correct mode despite having the servos connected.
+

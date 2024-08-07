@@ -1,0 +1,38 @@
+---
+blogpost: true
+date: 2017-06-15
+category: project-19603
+---
+
+# Sturdier Legs
+Published on 2017-06-15 in {ref}`project-19603`.
+
+One of the common complaints I've heard about the mechanical design of
+Tote is that the legs are really too flimsy. I must have been lucky
+with the quality of plastic for the servo horns I got, because I
+didn't have a problem with that, but I came up with a solution
+anyways. And it's also a good use of the extra PCBs that you had to
+order (usually you have to order at least 3 PCBs).
+
+Here's how it looks like:
+
+
+:::{image} images/5502631497554268583.jpg
+
+:::
+
+
+I simply cut off the sides of the PCBs (using an older prototype in
+this case), and screwed the servo horns to those. If this is still to
+flimsy, you can even add a drop of glue under each of the horns, to
+make them really rigid.
+
+And what of the remaining PCB leftovers? Well, they are servo shields
+for the D1 Mini, and you can use them in your other projects! Nothing
+is wasted.
+
+I updated the design on the PCB to include holes, to make the sides
+easier to break off. You will still need to do it carefully, though,
+because I can't make it too brittle -- it's the body of the robot,
+after all.
+

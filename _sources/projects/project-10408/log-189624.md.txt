@@ -1,0 +1,39 @@
+---
+blogpost: true
+date: 2021-02-23
+category: project-10408
+---
+
+# Version Two
+Published on 2021-02-23 in {ref}`project-10408`.
+
+As you might have guessed from the previous log, I decided to try and
+make another stenotype. This time with a little bit more experience
+from my low-profile keyboard projects. Of course it's low-profile, and
+of course it runs CircuitPython.
+
+
+
+:::{image} images/7278911614035113792.jpg
+
+:::
+
+
+I used blue Kailh Choc switches, because they are very light, with 25g
+springs. That is important, because you are usually pressing a lot of
+keys at once, and the forces add up quickly. The switches are linear,
+not clicky, but I think it's fine.
+
+I used some keycaps I had left over from building other keyboards —
+mostly function keys and some random stuff like Print Screen or
+alternate Alt. I couldn't use keys with proper legends, because the
+letters repeat here, so I would need several sets. Instead I bought
+several sheets of stickers for "converting" your keyboard to a
+different layout. They look bad, but it works well enough for
+training.
+
+Right now I programmed it as a keyboard to be used with Plover, but
+ultimately I want to make it work like real stenotypes, as a serial
+device. CircuitPython just recently had a se]cond USB CDC device
+added, so I can use that.
+

@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Pull-ups? We need no @#$@$ pull-ups! - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="pull-ups-we-need-no-pull-ups">
+<h1>Pull-ups? We need no &#64;#$&#64;$ pull-ups!<a class="headerlink" href="#pull-ups-we-need-no-pull-ups" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2017-09-28 in <a class="reference internal" href="../#project-19371"><span class="std std-ref">D1 Mini X-Pad Shield</span></a>.</p>
+<p>Turns out that I have over-engineered this shield a little bit — I
+wanted to make sure the pins are pulled up when the buttons are not
+pressed, so I added a pull-up resistor to each button. But looking at
+the <span class="xref std std-ref">project-26823</span> project, I noticed that <a class="reference external" href="https://hackaday.io/hacker/3459">&#64;davedarko </a> didn’t use any pull-ups, and it works reliably for him. We dived into
+the datasheet a bit and did some experiments, and it turns out you
+really don’t need them. So now I’m leaving the pads for the pull-up
+resistors un-populated. Perhaps I will design another version of the
+PCB, with the chip on the bottom side and without any pull-ups
+whatsoever, but for now this simplified second version works well for
+me.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

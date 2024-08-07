@@ -1,0 +1,200 @@
+---
+blogpost: true
+date: 2016-12-19
+category: project-13278
+---
+
+# Firmware for the 20-servo Shield
+Published on 2016-12-19 in {ref}`project-13278`.
+
+It took some work, and it took some compromises. I ended up not using
+the first trick I mentioned, of sending the signals for each port
+separately. I also ended up needing sorting anyways, but did that with
+a horrible O(n²) insertion sort -- anything to save some bytes. But
+it's here and it works. I even managed to squeeze in an array for
+remapping the channel numbers to what is actually written on the
+shield. The whole thing has 990 bytes and you can see it below, or in
+this repository: [https://bitbucket.org/thesheep/d1-mini-20ch-servo/src](https://bitbucket.org/thesheep/d1-mini-20ch-servo/src) 
+
+
+---
+
+
+
+```sql
+#include <avr/io.h>
+#include <avr/interrupt.h>
+#include <inttypes.h>
+
+
+#define I2C_ADDRESS 0x10
+#define I2C_BUFFER_SIZE 32
+
+
+static unsigned char i2c_buffer[I2C_BUFFER_SIZE];
+static unsigned char i2c_cursor;
+static union {
+    unsigned char bytes[2];
+    unsigned int value;
+} bytes2int;
+
+
+#define MAX_SERVO 20
+
+static uint16_t servo_pulse[MAX_SERVO];
+
+volatile static uint16_t servo_delay[MAX_SERVO + 1];
+volatile static uint8_t servo_mask_b[MAX_SERVO];
+volatile static uint8_t servo_mask_c[MAX_SERVO];
+volatile static uint8_t servo_mask_d[MAX_SERVO];
+volatile static uint8_t servo_event;
+
+// Remap servo numbers to pins.
+// 0 = PB0  1 = PB1  2 = PB2  3 = PB3  4 = PB4  5 = PB5  6 = PB6 7 = PB7
+// 8 = PC0  9 = PC1  10 = PC2  11 = PC3  12 = PD0 13 = PD1  14 = PD2  15 = PD3
+// 16 = PD4  17 = PD5  18 = PD6 19 = PD7
+const static uint8_t servo_map[MAX_SERVO] = {
+    13, 10, 11, 12, 14, 15, 16, 6, 7, 17, 9, 8, 5, 4, 3, 2, 1, 0, 19, 18
+};
+
+ISR(TIMER1_COMPA_vect) {
+    servo_event = 0;
+    PORTB = 0b11111111;
+    PORTC = 0b00001111; // leave out RESET, SDA, SCL, PC7
+    PORTD = 0b11111111;
+    TCNT1 = 0;
+    OCR1B = servo_delay[0];
+}
+
+
+ISR(TIMER1_COMPB_vect) {
+    PORTB &= servo_mask_b[servo_event];
+    PORTC &= servo_mask_c[servo_event];
+    PORTD &= servo_mask_d[servo_event];
+    servo_event += 1;
+    OCR1B = servo_delay[servo_event];
+}
+
+
+void servo_update() {
+    uint16_t last_pulse = 0;
+    for (uint8_t event = 0; event < 8; ++event) {
+        uint16_t smallest_pulse = 0xffff;
+        for (uint8_t servo = 0; servo < MAX_SERVO; ++servo) {
+            if (servo_pulse[servo] > last_pulse &&
+                servo_pulse[servo] < smallest_pulse) {
+                    smallest_pulse = servo_pulse[servo];
+            }
+        }
+        servo_delay[event] = smallest_pulse;
+        servo_mask_b[event] = 0xff;
+        for (uint8_t servo = 0; servo < 8; ++servo) {
+            if (servo_pulse[servo] <= smallest_pulse) {
+                servo_mask_b[event] &= ~(1 << servo);
+            }
+        }
+        servo_mask_c[event] = 0xff;
+        for (uint8_t servo = 0; servo < 4; ++servo) {
+            if (servo_pulse[8 + servo] <= smallest_pulse) {
+                servo_mask_c[event] &= ~(1 << servo);
+            }
+        }
+        servo_mask_d[event] = 0xff;
+        for (uint8_t servo = 0; servo < 8; ++servo) {
+            if (servo_pulse[12 + servo] <= smallest_pulse) {
+                servo_mask_d[event] &= ~(1 << servo);
+            }
+        }
+        last_pulse = smallest_pulse;
+    }
+}
+
+
+int main() {
+    // setup i2c slave
+    PORTC |= 1<<PC4 | 1<<PC5; // enable pullups
+    TWAR = I2C_ADDRESS<<1;
+
+    // setup servos
+    TCCR1A = 0x00;
+    TCCR1B &= ~(1<<CS12 | 1<<CS11 | 1<<CS10);
+    TCCR1B = 0x02; // prescaler 8
+    OCR1A = 20000; // period
+    TIMSK1 = 1<<OCIE1A | 1<<OCIE1B;
+    DDRB = 0xff;
+    DDRC = 0x0f;
+    DDRD = 0xff;
+    for (int i = 0; i < MAX_SERVO; ++i) {
+        servo_pulse[i] = 0;
+        servo_delay[i] = 0xffff;
+    }
+    servo_delay[MAX_SERVO] = 0xffff;
+    servo_update();
+    sei();
+    TCCR1C |= 1<<FOC1A; // trigger COMPA
+
+    // run i2c slave
+    while (1) {
+        TWCR = 1<<TWEN | 1<<TWINT | 1<<TWEA;
+        while (!(TWCR & (1<<TWINT))) {}
+        switch (TWSR & 0xF8) {
+            case 0x60: // received address for write and acked
+                i2c_cursor = 0;
+                break;
+            case 0x80: // received data and acked
+            case 0x88: // received data and nacked
+                if (i2c_cursor < I2C_BUFFER_SIZE) {
+                    i2c_buffer[i2c_cursor++] = TWDR;
+                }
+                break;
+            case 0xa0: // stop or repeated start received
+                if (i2c_cursor > 0) {
+                    unsigned char i2c_servo = i2c_buffer[0];
+                    for (unsigned char i = 1; i < i2c_cursor - 1; i += 2) {
+                        if (i2c_servo >= 20) {
+                            i2c_servo = 0;
+                        }
+                        bytes2int.bytes[0] = i2c_buffer[i];
+                        bytes2int.bytes[1] = i2c_buffer[i + 1];
+                        servo_pulse[servo_map[i2c_servo]] = bytes2int.value;
+                        i2c_servo += 1;
+                    }
+                    servo_update();
+                }
+                break;
+        }
+    }
+}
+
+```
+
+And output from avr-size:
+
+
+```
+avr-size --format=avr --mcu=atmega328p main.elf
+AVR Memory Usage
+----------------
+Device: atmega328p
+
+Program:     990 bytes (3.0% Full)
+(.text + .data + .bootloader)
+
+Data:        198 bytes (9.7% Full)
+(.data + .bss + .noinit)
+
+```
+
+(Yes, the Data section doesn't count, I checked that only the Program
+is getting flashed.)Yes, the whole program is in one large file, and only divided into two
+functions. Why? To save the few bytes. I also fixed the prescaler to
+8, so I get one tick per µs, which makes all the computations a bit
+easier. There is no address selection, because that shield does it on
+the analog-only pins, and the ADC-reading code would add much too much
+to the program size. You can change the address by re-flashing new
+firmware, of course.
+
+I'm also wasting the RAM quite liberally whenever that lets me save a
+few bytes of code memory. I don't care, I'm only using 10% of the
+available amount anyways.
+

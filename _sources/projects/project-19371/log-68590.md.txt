@@ -1,0 +1,60 @@
+---
+blogpost: true
+date: 2017-10-11
+category: project-19371
+---
+
+# Example Code
+Published on 2017-10-11 in {ref}`project-19371`.
+
+There has been some questions as to how to actually handle this shield
+in the code, so I'm providing some simple examples:
+
+
+## MicroPython
+
+
+```python
+from machine import I2C, Pin
+import time
+i2c = I2C(sda=Pin(4), scl=Pin(5))
+while True:
+    print(hex(i2c.readfrom(0x20, 1)[0]))
+    time.sleep(1)
+```
+
+
+##  NodeMCU
+
+
+```
+
+i2c.setup(0, 1, 2, i2c.SLOW)
+tmr.alarm(0, 1000, 1, function ()
+    i2c.start(0)
+    i2c.address(0, 30, i2c.RECEIVER)
+    print(string.toHex(i2c.read(0, 1)))
+    i2c.stop(0)
+end)
+```
+
+
+##  Arduino
+
+
+```cpp
+#include <Wire.h>
+void setup() {
+    Wire.begin();
+    Serial.begin();
+}
+void loop() {
+    Wire.requestFrom(0x20, 1);
+    Serial.print(Wire.read(), HEX);
+    delay(1000);
+}
+```
+
+ All of the above examples scan the buttons once a second and print
+their state as a hexadecimal number on the serial console.
+

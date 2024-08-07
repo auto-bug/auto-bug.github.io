@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Smooth Scrolling on a SSD1306 - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="smooth-scrolling-on-a-ssd1306">
+<h1>Smooth Scrolling on a SSD1306<a class="headerlink" href="#smooth-scrolling-on-a-ssd1306" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2016-03-25 in <a class="reference internal" href="../#project-10533"><span class="std std-ref">Nano TTY</span></a>.</p>
+<p>The OLED display that I’m using doesn’t have much room in it – only 4
+lines with 21 characters in each. That means that to be useful and
+convenient, it has to have good scrolling. For the scrolling to be
+fast and smooth, it’s best to implement it in hardware.\</p>
+<p>Luckily, the SSD1306 supports vertical scrolling by using the
+SSD1306_SETSTARTLINEcommand, which basically tells it where it should start reading its
+image buffer. Since the buffer wraps around, that lets us scroll it
+pixel-by-pixel. Neat.</p>
+<p>The second piece of the puzzle is that the display I have is 128×32
+pixels, and that chip was made for 128×64 pixels display – so I have
+twice the amount of buffer space than the screen. I can do double
+buffering and other tricks!</p>
+<p>First I tried to use the display with the <a class="reference external" href="https://github.com/adafruit/Adafruit_SSD1306">Adafruit SSD1306 library</a>  <a class="reference external" href="https://github.com/adafruit/Adafruit_SSD1306"> library</a>  in I²C mode, but I couldn’t quite get it to work. Turns out that the
+breakout I have uses SPI not I²C, even though the pins are labeled SCL
+and SDA… Turns out that SCL is simply just SPI SCK, and SDA is MOSI.
+There are also DC and RST pins, which actually gave me a hint that
+this is not I²C. Madness.</p>
+<p>Anyways, after playing with that library a little bit, I started to
+look for something more efficient, and found the <a class="reference external" href="https://github.com/greiman/SSD1306Ascii">SSD1306Ascii</a>  library, which only does text output, but allows you to use custom
+fonts. Exactly what I need. It also has relatively small memory
+footprint, which leaves more room for my serial buffer.</p>
+<p>I only needed one small hack. In order to get access to the whole
+image buffer, I needed to trick the library into thinking that I
+actually have 64 rows of pixels, not 32. Fortunately, you pass a
+screen definition to it at initialization time, so that was trivial.
+Several hours of playing with the commands gave me this simple
+scrolling demo:</p>
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="" src="https://www.youtube.com/embed/Iuvk_n8xXnw"></iframe>
+<p>With this simple code:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#define OLED_RST 8</span>
+<span class="cp">#define OLED_DC 9</span>
+<span class="cp">#define OLED_CS -1</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;SPI.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;SSD1306Ascii.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;SSD1306AsciiSpi.h&quot;</span><span class="cp"></span>
+
+<span class="n">SSD1306AsciiSpi</span><span class="w"> </span><span class="n">oled</span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">// A version of the Adafruit128x32 display with 64 lines of buffer.</span>
+<span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">DevType</span><span class="w"> </span><span class="n">MEM_TYPE</span><span class="w"> </span><span class="n">Adafruit128x32x64</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">Adafruit128x32init</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">Adafruit128x32init</span><span class="p">),</span><span class="w"> </span><span class="mi">128</span><span class="p">,</span><span class="w"> </span><span class="mi">64</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">scroll</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">oled</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="o">&amp;</span><span class="n">Adafruit128x32x64</span><span class="p">,</span><span class="w"> </span><span class="n">OLED_CS</span><span class="p">,</span><span class="w"> </span><span class="n">OLED_DC</span><span class="p">,</span><span class="w"> </span><span class="n">OLED_RST</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">oled</span><span class="p">.</span><span class="n">setFont</span><span class="p">(</span><span class="n">Stang5x7</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">line</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">oled</span><span class="p">.</span><span class="n">clearToEOL</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="n">oled</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Line &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">oled</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">line</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">line</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="n">delay</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span><span class="w"></span>
+<span class="w">                </span><span class="n">oled</span><span class="p">.</span><span class="n">ssd1306WriteCmd</span><span class="p">(</span><span class="n">SSD1306_SETSTARTLINE</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">scroll</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">64</span><span class="p">);</span><span class="w"></span>
+<span class="w">                </span><span class="o">++</span><span class="n">scroll</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">delay</span><span class="p">(</span><span class="mi">400</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">oled</span><span class="p">.</span><span class="n">row</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">scroll</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">32</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">oled</span><span class="p">.</span><span class="n">home</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">scroll</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">64</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">scroll</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Next, I will try to get the encoder to work, so that I can do the
+scrolling with a convenient scroll wheel. Unfortunately, I’m still
+waiting for the encoder to arrive, so that will be some time later.\</p>
+</section>
+
+
+</div>
+  </body>
+</html>

@@ -1,0 +1,100 @@
+---
+blogpost: true
+date: 2016-02-20
+category: project
+tags:  completed project, cosplay, hardware, cat ears, Furry
+image: 1
+---
+
+# Mechatronic Ears
+
+Wearable cat ears that move
+
+<div class="project-thumb">
+
+:::{image} images/7294501456614340016.png
+:target: /_images/7294501456614340016.png
+:::
+
+:::{image} images/9868981455969343987.jpg
+:target: /_images/9868981455969343987.jpg
+:::
+
+:::{image} images/9041621456000263680.jpg
+:target: /_images/9041621456000263680.jpg
+:::
+
+:::{image} images/9002751460911217512.jpg
+:target: /_images/9002751460911217512.jpg
+:::
+
+</div>
+
+
+    Ears that move as you move your head.
+
+
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="" src="https://www.youtube.com/embed/hDExwmWhYX8"></iframe>
+
+
+
+
+
+## Logs
+
+:::{postlist}
+:category: project-9769
+:::
+
+## Instructions
+
+
+
+Connect the servos and the battery, and tape the PCB at the top of the
+headband.
+
+
+---
+
+
+Solder the servo plugs and the power plug normally.
+
+
+---
+
+
+Attach the horns to the servos using screws and glue, and put them
+inside the ears according to this diagram:
+
+
+:::{image} images/7294501456614340016.png
+
+:::
+
+---
+
+
+Program the ATtiny85 using a programming clip and an ISP programmer.
+The code is at: [https://bitbucket.org/thesheep/ears/src](https://bitbucket.org/thesheep/ears/src)  and you can either use the Arduino IDE to flash ears.ino, or enter
+the "main" directory and run "make flash".
+
+
+---
+
+
+Get the PCB from [https://oshpark.com/shared_projects/JQpvX13E](https://oshpark.com/shared_projects/JQpvX13E) \
+
+
+You can also take the Fritzing file from the repository, generate
+Gerber files and order it somewhere else, or even make the PCB
+yourself.
+
+
+---
+
+
+Apply the solder paste, place the ATtiny85, capacitor and the
+accelerometer, and heat carefully with a heat gun or a reflow oven.
+
+
+---

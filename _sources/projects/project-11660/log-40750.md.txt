@@ -1,0 +1,17 @@
+---
+blogpost: true
+date: 2016-06-27
+category: project-11660
+---
+
+# PCA9685 PWM Driver
+Published on 2016-06-27 in {ref}`project-11660`.
+
+This chip is actually used in two different modules. First it's used
+in the 16-channel I²C servo (and LED) drivers. Second, it's also used
+in Adafruit's motor shield. That's why apart from the main module,
+which lets you control the chip directly, there are also two others,
+specifically for the servos and the DC motors.
+
+The source code is at [https://bitbucket.org/thesheep/micropython-pca9685/src](https://bitbucket.org/thesheep/micropython-pca9685/src) 
+

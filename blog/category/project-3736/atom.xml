@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posts in project-3736</title>
-  <updated>2024-08-07T20:27:28.888702+00:00</updated>
+  <updated>2024-08-07T20:31:02.114605+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/category/project-3736/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -68,7 +68,7 @@ additional options would help sometimes and then break again later. In
 the end it turned out that the wires that I soldered to my programming
 clip came off, and weren’t giving a good connection.&lt;/p&gt;
 &lt;p&gt;Next, I needed some code to drive the servos. Unfortunately, I
-couldn’t use the code from &lt;span class="xref std std-ref"&gt;project-9769&lt;/span&gt; , because this time I needed to drive 3 servos at once (actually 4,
+couldn’t use the code from &lt;a class="reference internal" href="../../../projects/project-9769/#project-9769"&gt;&lt;span class="std std-ref"&gt;Mechatronic Ears&lt;/span&gt;&lt;/a&gt; , because this time I needed to drive 3 servos at once (actually 4,
 but two of them share a common signal). So I looked around and found &lt;a class="reference external" href="http://www.thebox.myzen.co.uk/Tutorial/LEDs.html"&gt;a servo library for the ATtiny85&lt;/a&gt; . It was too big for my purposes, but I used the ideas from it to
 write my own, that’s about 512 bytes (and probably can be further
 optimized).&lt;/p&gt;

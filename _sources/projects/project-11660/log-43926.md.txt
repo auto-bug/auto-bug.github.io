@@ -1,0 +1,19 @@
+---
+blogpost: true
+date: 2016-08-17
+category: project-11660
+---
+
+# DS1307, DS3231, and PCF8523 Real-Time Clocks
+Published on 2016-08-17 in {ref}`project-11660`.
+
+Here's a library for handling a bunch of popular I2C-based real-time
+clock chips: [https://github.com/adafruit/Adafruit-uRTC](https://github.com/adafruit/Adafruit-uRTC) 
+
+And here is the documentation for it: [http://micropython-urtc.readthedocs.io/en/latest/](http://micropython-urtc.readthedocs.io/en/latest/) 
+
+As you can guess from the naming, I was supported by Adafruit
+Industries to write this one (but of course it will work with any
+breakout boards for those chips, not just theirs). I will most likely
+create more libraries for them.
+

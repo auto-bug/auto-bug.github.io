@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>PCA9685 - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="pca9685">
+<h1>PCA9685<a class="headerlink" href="#pca9685" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2017-02-23 in <a class="reference internal" href="../#project-13278"><span class="std std-ref">Servo Breakout for WeMos D1 Mini</span></a>.</p>
+<p><a class="reference external" href="https://hackaday.iohttps://hackaday.io/hacker/32322">&#64;Jonathan Beri</a>  asked in the comments why I didn’t use PCA9685, but instead went with
+an ATmega and my own code. To be honest, this is mostly because this
+project is the continuation of my <span class="xref std std-ref">project-9131</span>  project, in which I used a Pro Mini board.</p>
+<p>But that got me thinking, and I went and checked if I can get some of
+those chips cheaply, and I went ahead and designed a PCB for them:</p>
+<img alt="projects/project-13278/images/8444401487865143436.png" src="projects/project-13278/images/8444401487865143436.png" />
+<p>I was actually so happy with it, that I went ahead and ordered them
+from OSHPark. Today the boards arrived, and I assembled one and tested
+it:</p>
+<img alt="projects/project-13278/images/8408081487865293457.jpg" src="projects/project-13278/images/8408081487865293457.jpg" />
+<p>It works perfectly fine. You only get 16 channels (that’s why I could
+fit it on the standard D1 Mini shield), but you can stack 64 of those
+boards (the address selection jumpers are on the bottom). Pretty neat.\</p>
+</section>
+
+
+</div>
+  </body>
+</html>

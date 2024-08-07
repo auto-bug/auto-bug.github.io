@@ -1,0 +1,16 @@
+---
+blogpost: true
+date: 2016-07-15
+category: project-11660
+---
+
+# SH1106 OLED Display
+Published on 2016-07-15 in {ref}`project-11660`.
+
+Another basic display driver. This one uses the framebuf module, as
+does the SSD1306 driver in Micropython's source tree.
+
+ [https://bitbucket.org/thesheep/micropython-ili9341/src/tip/sh1106.py](https://bitbucket.org/thesheep/micropython-ili9341/src/tip/sh1106.py) 
+
+The use is pretty much the same.
+

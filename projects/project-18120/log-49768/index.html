@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Boards #1 - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="boards-1">
+<h1>Boards #1<a class="headerlink" href="#boards-1" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2016-12-01 in <a class="reference internal" href="../#project-18120"><span class="std std-ref">D1 Mini Matrix Shield</span></a>.</p>
+<p>So the boards finally arrived from OSHPark (but without the stickers).
+I immediately tried the matrices to see if they fit. They don’t. When
+I designed the PCB, I assumed that the pins are along the edge of the
+matrix. Which is stupid, because I had the matrices already, I could
+have just checked. They are 1.27mm towards the middle. So you get
+something like this:</p>
+<img alt="projects/project-18120/images/8129341480612991195.jpg" src="projects/project-18120/images/8129341480612991195.jpg" />
+<p>Which isn’t that bad for a first prototype. And I was so sure of
+myself, that I ordered 6 PCBs, because I had 5 matrices and 5 chips,
+and I wanted to use them all. Sigh.</p>
+<p>Oh well, at least the chip fits into that footprint:</p>
+<img alt="projects/project-18120/images/3404571480613107531.jpg" src="projects/project-18120/images/3404571480613107531.jpg" />
+<p>So I quickly soldered the whole thing, popped it onto my D1 Mini, and
+tried my driver on this thing. First, an I2C scan, and the device
+enumerated as 112 – success! I loaded my library, filled the whole
+screen with 1, and called the “show” command, and… nothing. No
+error, the chip behaves as if it executed the command, but no lights.
+Hmm, maybe I put the matrix the wrong way?</p>
+<p>I replaced the matrix the other way, tried it, and now… I2C scan
+shows all addresses, the chip accepts all commands, but nothing
+happens. Removed the matrix didn’t fix it – the scan still shows all
+addresses. I think I broke it.</p>
+<p>But I have 4 more. So I tried different things, with the matrix and
+without, and now I have 4 broken chips…</p>
+<p>I think I’m going to call it a day, and try with the last chip (really
+carefully this time) when I feel a bit better.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

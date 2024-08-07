@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Shield Anatomy - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="shield-anatomy">
+<h1>Shield Anatomy<a class="headerlink" href="#shield-anatomy" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2016-09-15 in <a class="reference internal" href="../#project-13278"><span class="std std-ref">Servo Breakout for WeMos D1 Mini</span></a>.</p>
+<p>Since this board is so packed (18 servo sockets take a lot of space),
+I couldn’t fit all the labels on it. So a bit of a legend is
+necessary:</p>
+<img alt="projects/project-13278/images/263181473966842720.jpg" src="projects/project-13278/images/263181473966842720.jpg" />
+<p>The MISO, MOSI, SCK, RST, 3V3 and GND pins are needed for programming
+the chip after it’s assembled. I’m just connecting the USBASP
+programmer to them and use the Arduino IDE with the Lilypad board
+selected. Then you also need to set the fuses with Avrdude:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">avrdude</span> <span class="o">-</span><span class="n">c</span> <span class="n">usbasp</span> <span class="o">-</span><span class="n">p</span> <span class="n">m328p</span> <span class="o">-</span><span class="n">U</span> <span class="n">lfuse</span><span class="p">:</span><span class="n">w</span><span class="p">:</span><span class="mh">0xE2</span><span class="p">:</span><span class="n">m</span> <span class="o">-</span><span class="n">U</span> <span class="n">hfuse</span><span class="p">:</span><span class="n">w</span><span class="p">:</span><span class="mh">0xDF</span><span class="p">:</span><span class="n">m</span>
+</pre></div>
+</div>
+<p>to switch it from 1Mhz to 8Mhz. That’s it, you can disconnect the
+programmer and use your new shield. Oh, before you program it,
+remember to add the resistor for the RST pullup on the back of the
+board. 10kΩ should be fine.You have two options for powering the servos. You can either connect
+the servo power pin to the 5V pin next to it, and power them from the
+same source as your D1 Mini, or you can use a separate power.</p>
+<p>The order of the servo sockets on the board is pretty much random –
+whatever was easiest to route. I suppose I could fix it in software,
+but for now I didn’t even figure out yet which socket is which.</p>
+<p>Ah, I also figured out why it didn’t work with larger frequencies of
+i2c bus with esp8266 – the fault is on the side of the esp8266
+micropython, and its lack of support for clock stretching. A pull
+request is submitted to fix it.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

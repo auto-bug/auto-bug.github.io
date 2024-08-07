@@ -1,0 +1,71 @@
+---
+blogpost: true
+date: 2017-03-01
+category: project-13278
+---
+
+# Usage Examples
+Published on 2017-03-01 in {ref}`project-13278`.
+
+So here is example code you can use to communicate with the 18-channel
+and 20-channel servo controllers, for different environments that you
+can run on the ESP8266:
+
+
+## MicroPython\
+
+
+
+```python
+import ustruct
+from machine import I2C, Pin
+i2c = I2C(scl=Pin(5), sda=Pin(4))
+address = 0x10
+servo = 4
+position = 1500
+i2c.writeto_mem(address, servo, ustruct.pack("<H", position))
+
+```
+
+
+## NodeMCU
+
+
+```lua
+address = 0x10
+servo = 4
+position = 1500
+sda = 2
+scl = 1
+i2c.setup(0, sda, scl, i2c.SLOW)
+i2c.start(0)
+i2c.address(0, address, i2c.TRANSMITTER)
+i2c.write(0, servo)
+i2c.write(0, bit.band(position, 0xff))
+i2c.write(0, bit.rshift(position, 8))
+i2c.stop()
+
+```
+
+
+## Arduino
+
+
+```cpp
+#include <Wire.h>
+void setup() {
+    int address = 0x10;
+    int servo = 4;
+    int position = 1500;
+    Wire.begin();
+    Wire.beginTransmission(address);
+    Wire.write(servo);
+    Wire.write(position & 0xff);
+    Wire.write(position >> 8);
+    Wire.endTransmission();
+}
+void loop() {
+}
+
+```
+

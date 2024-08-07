@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>20ch Firmware Improvements - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="ch-firmware-improvements">
+<h1>20ch Firmware Improvements<a class="headerlink" href="#ch-firmware-improvements" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2017-01-20 in <a class="reference internal" href="../#project-13278"><span class="std std-ref">Servo Breakout for WeMos D1 Mini</span></a>.</p>
+<p>Today I spent several hours working on the firmware – adding the
+address selection support and making the whole thing much robust.</p>
+<p>The first thing I added, was to modify place where the servo events
+are updated. Until now, they were updated immediately after the I2C
+transaction finished – as soon as we had the servo pulses. But that
+meant that if you are unlucky, it could happen while the timer
+interrupt fires, and the data seen by the interrupt would be
+inconsistent. We can’t switch off the interrupts while updating the
+events, because it takes very long time, and our timings would be
+completely off then. So what can be done? Well, all the events
+typically happen in the first 2ms of the cycle. We have 18ms left to
+update the events (that’s also why the glitch wasn’t so easily
+visible). So now, when the I2C transaction finishes, a flag is set
+signalling that an update is needed. Then, while waiting for more I2C
+data, the loop checks that flag and whether the last event in the
+cycle has been already processed. As soon as the last even is
+processed (which we can recognize by the fact that it has delay of
+0xffff), we update the events and clear the flag. Sounds easy, but it
+took me some hours to get right.</p>
+<p>Unfortunately, that didn’t eliminate all the glitches. The second
+problem happens when you have two events very close to each other –
+so close, that processing of the first one finishes after the second
+one’s scheduled time. You could expect the second event to be a bit
+late then, but it’s actually much worse – since the interrupts fire
+on equality, and not whenever the counter overflows the trigger, the
+interrupt for the second event is skipped entirely and never fires –
+the pin is only updated in the next event, or never, if that event was
+the last one. Ouch. I spent some time optimizing the interrupt routine
+and moving stuff in it to make it a bit more robust, but it’s never
+processed instantly, and the problem remains. In the end, I’m just
+looking for events that happen too soon after the previous one, and
+when that happens, merge them with that previous event. It introduces
+a few microseconds of a glitch, but that’s better than the
+alternative.</p>
+<p>For the address selection, I had to use the analog-only pins of the
+ATmegaXX8. I was already a bit tired when I started on it, so I
+stupidly copied the code from my <a class="reference internal" href="../../project-9769/#project-9769"><span class="std std-ref">Mechatronic Ears</span></a>  project, forgetting that it’s for an ATtiny85. And it mostly worked
+– the AVR chips are very similar, after all, especially when using
+the correct header files with the right macros – except that I masked
+wrong bits in the mux selection. It took me sever tries to track that
+down, but once I found it the fix was trivial.</p>
+<p>The next bug is related to the internal pullups I’m enabling on the
+I2C lines. Turns out I had the masks for the PWM routines slightly
+wrong, and they were also toggling the pullups. The effects on the I2C
+transmission were… interesting, if not a bit nondeterministic. It
+helped that I got a really nice logic analyzer for Christmas, that
+also has an analog channel, and that I could see the voltage levels on
+the I2C lines acting weird, even when there was no data being
+transmitted. Fixing this while keeping the interrupt routines as fast
+as possible took several tries, but I managed to move all the
+operations into the event update routines in the end.</p>
+<p>The last thing I added is sending a stop condition on the I2C bus
+whenever something unexpected happens on it. That lets me recover from
+errors in communication more easily.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

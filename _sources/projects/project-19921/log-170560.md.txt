@@ -1,0 +1,29 @@
+---
+blogpost: true
+date: 2019-11-03
+category: project-19921
+---
+
+# New PCB Design
+Published on 2019-11-03 in {ref}`project-19921`.
+
+As mentioned, it's time to modernize this design a little bit. So
+first of all, I added the PCB legs from {ref}`project-19603` , and also added footprints for contact switches at the ends of those
+legs. Then I switched all parts (except for headers) to SMD, because
+that's usually cheaper and easier to fabricate. Finally, we have some
+additional headers for connecting those foot switches to the Feather's
+pins.
+
+
+
+:::{image} images/1281951572805166234.png
+
+:::
+
+
+The shield remains relatively simple — just a PCA9685 for servo
+control, and a battery holder with a power switch, and a couple of
+extra capacitors. The whole thing fits in 10x10cm, so you should be
+able to order it easily, though some fabs might complain about
+"multiple projects" in the design.
+

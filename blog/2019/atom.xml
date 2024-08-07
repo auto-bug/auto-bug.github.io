@@ -2,36 +2,156 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posted in 2019</title>
-  <updated>2024-08-07T20:27:29.040284+00:00</updated>
+  <updated>2024-08-07T20:31:02.459157+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/2019/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
   <entry>
-    <id>http://deshipu.art/projects/project-7168/log-157725/</id>
-    <title>Still Alive</title>
-    <updated>2019-01-01T00:00:00+01:00</updated>
-    <content type="html">&lt;section id="still-alive"&gt;
+    <id>http://deshipu.art/projects/project-19921/log-170536/</id>
+    <title>Time for a Refresh</title>
+    <updated>2019-11-02T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="time-for-a-refresh"&gt;
 
-&lt;p&gt;Published on 2019-01-01 in &lt;a class="reference internal" href="../../projects/project-7168/#project-7168"&gt;&lt;span class="std std-ref"&gt;Logicoma-kun&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;I recharged my batteries during the holiday break enough to actually
-work on this project a little bit more. One of the reasons I didn’t
-touch it for over two years is that it’s not really very convenient to
-program. I mean sure, it runs MicroPython, but to program it you
-either have to disconnect from the Internet and connect to its WiFi,
-or connect a USB to serial converter.&lt;/p&gt;
-&lt;p&gt;———- more ———-I realized that I can as well just make use of the progress I have
-made in the mean time, and use the &lt;span class="xref std std-ref"&gt;project-13278&lt;/span&gt; together with a D1 Mini clone:\&lt;/p&gt;
-&lt;img alt="projects/project-7168/images/2164301546298974291.jpg" src="projects/project-7168/images/2164301546298974291.jpg" /&gt;
-&lt;p&gt;In place of the custom ESP-3 with a Pro Micro, that I had in there
-previously.\&lt;/p&gt;
-&lt;img alt="projects/project-7168/images/7620761546298953806.jpg" src="projects/project-7168/images/7620761546298953806.jpg" /&gt;
-&lt;p&gt;I will also need some kind of a controller for it, but that will
-probably be a separate project. In any case, the very next step now is
-to get it to actually walk and ride around.&lt;/p&gt;
+&lt;p&gt;Published on 2019-11-02 in &lt;a class="reference internal" href="../../projects/project-19921/#project-19921"&gt;&lt;span class="std std-ref"&gt;SpiderWing&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I left this project be, and focused more on the &lt;span class="xref std std-ref"&gt;project-158981&lt;/span&gt; and &lt;a class="reference internal" href="../../projects/project-19603/#project-19603"&gt;&lt;span class="std std-ref"&gt;D1 Mini Tote&lt;/span&gt;&lt;/a&gt; projects, but it’s time to revisit it, and bring back the improvements
+from those two projects.&lt;/p&gt;
 &lt;/section&gt;
 </content>
-    <link href="http://deshipu.art/projects/project-7168/log-157725/" rel="alternate"/>
-    <summary>Published on 2019-01-01 in project-7168.</summary>
-    <published>2019-01-01T00:00:00+01:00</published>
+    <link href="http://deshipu.art/projects/project-19921/log-170536/" rel="alternate"/>
+    <summary>Published on 2019-11-02 in project-19921.</summary>
+    <published>2019-11-02T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-19921/log-170560/</id>
+    <title>New PCB Design</title>
+    <updated>2019-11-03T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="new-pcb-design"&gt;
+
+&lt;p&gt;Published on 2019-11-03 in &lt;a class="reference internal" href="../../projects/project-19921/#project-19921"&gt;&lt;span class="std std-ref"&gt;SpiderWing&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;As mentioned, it’s time to modernize this design a little bit. So
+first of all, I added the PCB legs from &lt;a class="reference internal" href="../../projects/project-19603/#project-19603"&gt;&lt;span class="std std-ref"&gt;D1 Mini Tote&lt;/span&gt;&lt;/a&gt; , and also added footprints for contact switches at the ends of those
+legs. Then I switched all parts (except for headers) to SMD, because
+that’s usually cheaper and easier to fabricate. Finally, we have some
+additional headers for connecting those foot switches to the Feather’s
+pins.&lt;/p&gt;
+&lt;img alt="projects/project-19921/images/1281951572805166234.png" src="projects/project-19921/images/1281951572805166234.png" /&gt;
+&lt;p&gt;The shield remains relatively simple — just a PCA9685 for servo
+control, and a battery holder with a power switch, and a couple of
+extra capacitors. The whole thing fits in 10x10cm, so you should be
+able to order it easily, though some fabs might complain about
+“multiple projects” in the design.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-19921/log-170560/" rel="alternate"/>
+    <summary>Published on 2019-11-03 in project-19921.</summary>
+    <published>2019-11-03T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-19921/log-171687/</id>
+    <title>Batteries! Why Doesn’t Anybody Think About the Batteries?</title>
+    <updated>2019-12-08T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="batteries-why-doesn-t-anybody-think-about-the-batteries"&gt;
+
+&lt;p&gt;Published on 2019-12-08 in &lt;a class="reference internal" href="../../projects/project-19921/#project-19921"&gt;&lt;span class="std std-ref"&gt;SpiderWing&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Today I decided that the new PCB design was lying on the disk long
+enough, and that it’s time to order it. But then, when I opened it in
+Fritzing, I decided to work on it a little bit more and add an
+important feature: battery protection.&lt;/p&gt;
+&lt;p&gt;You see, the batteries that Adafruit sells already come with the
+protection circuit, so the battery handling circuit on the feathers
+doesn’t include it, but those batteries are too small for all those
+servos (and also kinda difficult to attach properly), so I’m instead
+using a bare 16340 battery (it’s half of a 18650, if you were
+wondering). But that means no protection, and that means you can
+damage your batteries if you are forgetful. On the previous models I
+had software monitoring of the battery status, but that’s not as
+reliable.&lt;/p&gt;
+&lt;p&gt;So I decided to go on and add a battery protection chip. Looking
+through my drawers, I found a HT3062E, which, judging by the Chinese
+datasheet, should allow up to 8A of current — that should be plenty
+for those tiny little servos. It comes in an ESPO8 package, so it was
+easy enough to add it to the PCB design:&lt;/p&gt;
+&lt;img alt="projects/project-19921/images/9019751575830955635.png" src="projects/project-19921/images/9019751575830955635.png" /&gt;
+&lt;p&gt;I had to remove the prototyping area at the front of the robot to make
+room for it (it had to be close to the minus side of the battery), but
+most Feathers have a prototyping area of their own on that side, so
+that shouldn’t be too much of a problem.&lt;/p&gt;
+&lt;p&gt;I also made the pin header holes for the Feather staggered, so you
+should be able to save some height of the robot by plugging the board
+directly, without the need for female pin headers.&lt;/p&gt;
+&lt;p&gt;I ordered the boards from DirtyPCBs, because they are the only ones
+who don’t care how many “designs” there are on a single PCB (most fabs
+will treat all the leg parts as separate designs and demand additional
+fees for them, for some reason).&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-19921/log-171687/" rel="alternate"/>
+    <summary>Published on 2019-12-08 in project-19921.</summary>
+    <published>2019-12-08T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-19921/log-171982/</id>
+    <title>Bodgetty Bodge</title>
+    <updated>2019-12-16T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="bodgetty-bodge"&gt;
+
+&lt;p&gt;Published on 2019-12-16 in &lt;a class="reference internal" href="../../projects/project-19921/#project-19921"&gt;&lt;span class="std std-ref"&gt;SpiderWing&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The PCBs arrived today, so time for some testing. I didn’t have any
+PCA9685 left, so I had to remove it from one of my old  &lt;a class="reference internal" href="../../projects/project-13278/#project-13278"&gt;&lt;span class="std std-ref"&gt;Servo Breakout for WeMos D1 Mini&lt;/span&gt;&lt;/a&gt; boards. With all the parts in place, time for some test:&lt;/p&gt;
+&lt;img alt="projects/project-19921/images/4958321576536384211.jpg" src="projects/project-19921/images/4958321576536384211.jpg" /&gt;
+&lt;p&gt;And nope, the Feather doesn’t get enough power. That’s weird. Let’s
+check the footprint for that battery protection chip again, shall we?
+Ah-ha! Here you go, I switched two pins, of course:&lt;/p&gt;
+&lt;img alt="projects/project-19921/images/7309481576536451260.jpg" src="projects/project-19921/images/7309481576536451260.jpg" /&gt;
+&lt;p&gt;Fortunately the bodge is quite easy here. Of course I already fixed
+the mistake in the PCB design files. With this small change,
+everything is working as intended.&lt;/p&gt;
+&lt;p&gt;It took some time to assemble the legs, but nothing revolutionary
+there. I have all the physical parts assembled, but no time for tuning
+and programming it, so it will probably wait for the holidays.&lt;/p&gt;
+&lt;img alt="projects/project-19921/images/4893731576536584771.jpg" src="projects/project-19921/images/4893731576536584771.jpg" /&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-19921/log-171982/" rel="alternate"/>
+    <summary>Published on 2019-12-16 in project-19921.</summary>
+    <published>2019-12-16T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-19921/log-172522/</id>
+    <title>It’s Alive (Again)</title>
+    <updated>2019-12-31T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="it-s-alive-again"&gt;
+
+&lt;p&gt;Published on 2019-12-31 in &lt;a class="reference internal" href="../../projects/project-19921/#project-19921"&gt;&lt;span class="std std-ref"&gt;SpiderWing&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;It took me a while to re-assemble, re-connect and re-calibrate all the
+legs with the new PCB, but today the robot is again standing on its
+own. I was a bit worried that the battery protection circuit would
+interfere with the servos drawing their share of the current, but it
+seems to be perfectly fine. I was putting off connecting the servos
+for a bit, because I didn’t have the male pin headers soldered, and I
+was thinking that perhaps I should cut the servo wires and solder them
+directly to the underside of the PCB. But then I decided to leave them
+long for now, for easier hacking. I can always make a “tidy” version
+of this robot later.&lt;/p&gt;
+&lt;img alt="projects/project-19921/images/8232111577816509284.JPG" src="projects/project-19921/images/8232111577816509284.JPG" /&gt;
+&lt;p&gt;I have replaced the old HUZZAH feather with the new NRF52840 feather,
+because the CircuitPython is no longer supported on the ESP8266, and
+there is some very exciting progresss on bluetooth support on the NRF,
+and that would be perfect for controlling this robot. For now I just
+use the REPL over the USB cable, though, still using the old gait code
+— that’s one of the parts that still needs work.&lt;/p&gt;
+&lt;p&gt;There are also still no switches at the ends of the legs — they are
+ordered, but Christmas is not the time of fast packages. At the very
+least they should let the robot avoid falling off the table.&lt;/p&gt;
+&lt;p&gt;As you can see, since I’m using stacking headers with all my feathers,
+there is room for adding modules on top of the robot. It could be a
+prototyping board with some sensors, or one of the other featherwings
+with displays, LEDs, speakers, etc. — it would even work very well
+with the &lt;span class="xref std std-ref"&gt;project-165011&lt;/span&gt; , controlled by gestures — if I ever get that to work.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-19921/log-172522/" rel="alternate"/>
+    <summary>Published on 2019-12-31 in project-19921.</summary>
+    <published>2019-12-31T00:00:00+01:00</published>
   </entry>
 </feed>

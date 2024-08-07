@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Hot Plate Soldering - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="hot-plate-soldering">
+<h1>Hot Plate Soldering<a class="headerlink" href="#hot-plate-soldering" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2016-03-21 in <a class="reference internal" href="../#project-9769"><span class="std std-ref">Mechatronic Ears</span></a>.</p>
+<p>The PCBs that I wrote about last time were not the real PCBs. OSHPark
+has made a mistake in the board thickness (a new option that they
+have), and sent me the boards again, this time thinner. I didn’t
+realize that, so I was quite surprised to see the second shipment, but
+all is good.</p>
+<p>The GY-61 breakout kit also arrived, so I’m ready to try and solder it
+on that board. This is a “LFCSP LQ” surface-mount package, so
+impossible to do with a hand soldering iron. At the hackaday channel
+someone suggested using a kitchen stove, so I have that a try. First,
+I tinned the board:</p>
+<img alt="projects/project-9769/images/7817731458556640836.jpg" src="projects/project-9769/images/7817731458556640836.jpg" />
+<p>Then I covered it in flux, and went to the kitchen. I have an electric
+stove with a glass top, so I put the board directly on it, and heated
+it until the solder melted. Then I carefully placed the chip on the
+right spot, and pressed it gently down. Finally, I removed the whole
+thing from the stove.</p>
+<img alt="projects/project-9769/images/8777821458556759586.jpg" src="projects/project-9769/images/8777821458556759586.jpg" />
+<p>Next, time for a test. I didn’t want to solder an attiny85 on the
+board just yet, because it’s inconvenient to debug with it, so instead
+I connected a 3.3V Pro Mini with some kynar wire:</p>
+<img alt="projects/project-9769/images/482021458556852413.jpg" src="projects/project-9769/images/482021458556852413.jpg" />
+<p>Note that the VCC cable from USB2TTL is connected to the RAW pin, not
+to the VCC pin on the FTDI header, because I don’t want 5V on the VCC
+pin…A quick sketch lets me verify that the thing works!</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">115200</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">analogRead</span><span class="p">(</span><span class="n">A0</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;, &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">analogRead</span><span class="p">(</span><span class="n">A1</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;, &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">analogRead</span><span class="p">(</span><span class="n">A2</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">300</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Now I just need to figure out what are the center values when powered
+with the battery I want, and write the program.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

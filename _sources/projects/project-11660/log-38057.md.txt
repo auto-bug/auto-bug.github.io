@@ -1,0 +1,42 @@
+---
+blogpost: true
+date: 2016-05-15
+category: project-11660
+---
+
+# HT16K33 LED Matrix Backpack
+Published on 2016-05-15 in {ref}`project-11660`.
+
+The Adafruit LED matrix backpacks use the HT16K33 chip for I²C
+communication and driving the LEDs. I wrote a simple library for
+Micropython for handling those. The source code is at [https://bitbucket.org/thesheep/micropython-
+ht16k33/src/tip/ht16k33_matrix.py](https://bitbucket.org/thesheep/micropython-ht16k33/src/tip/ht16k33_matrix.py) 
+
+The library is very basic, it lets you fill the whole matrix, clear
+it, or set individual pixels on it. It should run on any platform that
+runs MicroPython and has I²C communication. Both 8x8 and 16x8 matrices
+are supported.
+
+Example code:
+
+
+```python
+from machine import I2C, Pin
+from ht16k33_matrix import Matrix8x8
+
+i2c = I2C(sda=Pin(4), scl=Pin(5))
+display = Matrix8x8(i2c)
+
+display.brightness(8)
+display.blink_rate(2)
+display.fill(True)
+display.pixel(0, 0, False)
+display.pixel(7, 0, False)
+display.pixel(0, 7, False)
+display.pixel(7, 7, False)
+display.show()
+```
+
+Update: thanks to Adafruit's support I now added the bi-color matrix
+to the library.
+

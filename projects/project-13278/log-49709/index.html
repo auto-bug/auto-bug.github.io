@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>One-sided PCB - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="one-sided-pcb">
+<h1>One-sided PCB<a class="headerlink" href="#one-sided-pcb" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2016-11-30 in <a class="reference internal" href="../#project-13278"><span class="std std-ref">Servo Breakout for WeMos D1 Mini</span></a>.</p>
+<p>Looking at the design from the last log, I thought “Hmm, if only I had
+some more room on the sides for the ground and power lines, I could
+make this a single-sided PCB”. Turns out I was wrong.</p>
+<img alt="projects/project-13278/images/8619541480515218379.png" src="projects/project-13278/images/8619541480515218379.png" />
+<p>This is my best attempt at this. See that highlighted SDA line? If
+only it wasn’t there, or I could fit it somehow next to the SCL line,
+everything would have been just fine. The track next to it would take
+it place, and the power rail could get a connection on top, where that
+track is now. Alas, there is no way to do that without a jumper cable.</p>
+<p>Oh well, a jumper can’t hurt, can it?</p>
+<img alt="projects/project-13278/images/8207191480515919642.png" src="projects/project-13278/images/8207191480515919642.png" />
+</section>
+
+
+</div>
+  </body>
+</html>

@@ -2,112 +2,374 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posts tagged ESP8266</title>
-  <updated>2024-08-07T20:27:29.159887+00:00</updated>
+  <updated>2024-08-07T20:31:02.605298+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/tag/esp8266/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
   <entry>
-    <id>http://deshipu.art/projects/project-3736/</id>
-    <title>µBob biped robot</title>
-    <updated>2015-01-01T00:00:00+01:00</updated>
-    <content type="html">&lt;section id="bob-biped-robot"&gt;
+    <id>http://deshipu.art/projects/project-13278/</id>
+    <title>Servo Breakout for WeMos D1 Mini</title>
+    <updated>2016-08-23T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="servo-breakout-for-wemos-d1-mini"&gt;
 
-&lt;p&gt;Two legs, four servos, ATtiny85 for brains&lt;/p&gt;
+&lt;p&gt;Connect servos to your ESP8266 dev board.&lt;/p&gt;
 &lt;div class="project-thumb"&gt;
-&lt;a class="reference external image-reference" href="/_images/5685391421358370717.jpg"&gt;&lt;img alt="projects/project-3736/images/5685391421358370717.jpg" src="projects/project-3736/images/5685391421358370717.jpg" /&gt;&lt;/a&gt;
-&lt;a class="reference external image-reference" href="/_images/5449001420123675649.jpg"&gt;&lt;img alt="projects/project-3736/images/5449001420123675649.jpg" src="projects/project-3736/images/5449001420123675649.jpg" /&gt;&lt;/a&gt;
-&lt;a class="reference external image-reference" href="/_images/5670041421322416717.jpg"&gt;&lt;img alt="projects/project-3736/images/5670041421322416717.jpg" src="projects/project-3736/images/5670041421322416717.jpg" /&gt;&lt;/a&gt;
-&lt;a class="reference external image-reference" href="/_images/1724701420123661569.jpg"&gt;&lt;img alt="projects/project-3736/images/1724701420123661569.jpg" src="projects/project-3736/images/1724701420123661569.jpg" /&gt;&lt;/a&gt;
-&lt;a class="reference external image-reference" href="/_images/9991401483094820639.jpg"&gt;&lt;img alt="projects/project-3736/images/9991401483094820639.jpg" src="projects/project-3736/images/9991401483094820639.jpg" /&gt;&lt;/a&gt;
-&lt;a class="reference external image-reference" href="/_images/9774881483280152600.jpg"&gt;&lt;img alt="projects/project-3736/images/9774881483280152600.jpg" src="projects/project-3736/images/9774881483280152600.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/7209701473855689500.jpg"&gt;&lt;img alt="projects/project-13278/images/7209701473855689500.jpg" src="projects/project-13278/images/7209701473855689500.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/8422601484959160525.jpg"&gt;&lt;img alt="projects/project-13278/images/8422601484959160525.jpg" src="projects/project-13278/images/8422601484959160525.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/4760411471956285087.jpg"&gt;&lt;img alt="projects/project-13278/images/4760411471956285087.jpg" src="projects/project-13278/images/4760411471956285087.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/699801484959150101.jpg"&gt;&lt;img alt="projects/project-13278/images/699801484959150101.jpg" src="projects/project-13278/images/699801484959150101.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/3952961484907213251.jpg"&gt;&lt;img alt="projects/project-13278/images/3952961484907213251.jpg" src="projects/project-13278/images/3952961484907213251.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/4649091501603589305.jpg"&gt;&lt;img alt="projects/project-13278/images/4649091501603589305.jpg" src="projects/project-13278/images/4649091501603589305.jpg" /&gt;&lt;/a&gt;
 &lt;/div&gt;
-&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;This is a tiny, minimalist version of a popular biped robot design. I
+&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;I thought I will try to make some shields for the WeMos D1 Mini,
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;p&gt;used tiny hobby servos, a very small lipo battery, a SHARP distance
-sensor and an ATtiny85 (previous version used an ESP8266 module).&lt;/p&gt;
-&lt;iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="" src="https://www.youtube.com/embed/S6yyWpflXrM"&gt;&lt;/iframe&gt;
+&lt;p&gt;because it’s one of my favorite ESP8266 boards.  There is already an
+official motor controller shield (though I can’t get it to work
+reliably), so I decided I will make some servo shields.&lt;/p&gt;
 &lt;section id="logs"&gt;
 &lt;h2&gt;Logs&lt;/h2&gt;
 &lt;ul class="postlist-style-none postlist simple"&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-01-01 - &lt;a class="reference internal" href="../../../projects/project-3736/log-51106/"&gt;Obstacle Avoidance&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-12-31 - &lt;a class="reference internal" href="../../../projects/project-3736/log-51068/"&gt;Distance Sensor&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-12-30 - &lt;a class="reference internal" href="../../../projects/project-3736/log-51015/"&gt;The Body&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-12-29 - &lt;a class="reference internal" href="../../../projects/project-3736/log-50993/"&gt;Ressurection&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-08-13 - &lt;a class="reference internal" href="../../../projects/project-3736/log-22677/"&gt;ESP8266 Servo Breakout Board&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-06-25 - &lt;a class="reference internal" href="../../../projects/project-3736/log-19974/"&gt;Second Try on the Sensor&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-06-05 - &lt;a class="reference internal" href="../../../projects/project-3736/log-19069/"&gt;RIP ESP-12&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-06-04 - &lt;a class="reference internal" href="../../../projects/project-3736/log-18996/"&gt;Second Chance&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-06-04 - &lt;a class="reference internal" href="../../../projects/project-3736/log-18989/"&gt;PCB Fun&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-04-17 - &lt;a class="reference internal" href="../../../projects/project-3736/log-16612/"&gt;Not Feeling Well&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-01-21 - &lt;a class="reference internal" href="../../../projects/project-3736/log-13189/"&gt;My First PCB&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-01-18 - &lt;a class="reference internal" href="../../../projects/project-3736/log-13014/"&gt;Schematic&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-01-16 - &lt;a class="reference internal" href="../../../projects/project-3736/log-12970/"&gt;Onward!&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-01-15 - &lt;a class="reference internal" href="../../../projects/project-3736/log-12945/"&gt;Began Coding&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2020-12-19 - &lt;a class="reference internal" href="../../../projects/project-13278/log-187199/"&gt;Maybe SX1509?&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2020-08-20 - &lt;a class="reference internal" href="../../../projects/project-13278/log-182469/"&gt;New Seller&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-02-21 - &lt;a class="reference internal" href="../../../projects/project-13278/log-159680/"&gt;New Batch&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-12-04 - &lt;a class="reference internal" href="../../../projects/project-13278/log-71202/"&gt;Fabrication and Version 2.0&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-08-01 - &lt;a class="reference internal" href="../../../projects/project-13278/log-64512/"&gt;Faster Assembly&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-04-04 - &lt;a class="reference internal" href="../../../projects/project-13278/log-56500/"&gt;Assembling and Testing&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-03-24 - &lt;a class="reference internal" href="../../../projects/project-13278/log-55592/"&gt;Version 1.0 of the 16-channel Shield on Sale&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-03-01 - &lt;a class="reference internal" href="../../../projects/project-13278/log-54146/"&gt;Usage Examples&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-02-25 - &lt;a class="reference internal" href="../../../projects/project-13278/log-53864/"&gt;Selling Prototypes on Tindie&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-02-23 - &lt;a class="reference internal" href="../../../projects/project-13278/log-53779/"&gt;PCA9685&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-01-20 - &lt;a class="reference internal" href="../../../projects/project-13278/log-52161/"&gt;20ch Servo Shield Assembled&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-01-20 - &lt;a class="reference internal" href="../../../projects/project-13278/log-52194/"&gt;20ch Firmware Improvements&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-12-19 - &lt;a class="reference internal" href="../../../projects/project-13278/log-50560/"&gt;Firmware for the 20-servo Shield&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-12-18 - &lt;a class="reference internal" href="../../../projects/project-13278/log-50530/"&gt;Smaller PWM Code&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-12-13 - &lt;a class="reference internal" href="../../../projects/project-13278/log-50331/"&gt;Firmware in Plain C&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-11-30 - &lt;a class="reference internal" href="../../../projects/project-13278/log-49721/"&gt;Pimped 20-channel PCB&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-11-30 - &lt;a class="reference internal" href="../../../projects/project-13278/log-49709/"&gt;One-sided PCB&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-11-30 - &lt;a class="reference internal" href="../../../projects/project-13278/log-49706/"&gt;20-channel Servo Shield&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-11-11 - &lt;a class="reference internal" href="../../../projects/project-13278/log-48945/"&gt;Another Short&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-10-09 - &lt;a class="reference internal" href="../../../projects/project-13278/log-47288/"&gt;Released&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-09-15 - &lt;a class="reference internal" href="../../../projects/project-13278/log-45635/"&gt;Shield Anatomy&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-09-14 - &lt;a class="reference internal" href="../../../projects/project-13278/log-45572/"&gt;Dumb 8-channel Servo Breakout&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-09-14 - &lt;a class="reference internal" href="../../../projects/project-13278/log-45573/"&gt;18-channel Servo Shield&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/section&gt;
 &lt;section id="instructions"&gt;
 &lt;h2&gt;Instructions&lt;/h2&gt;
-&lt;p&gt;You can add a hat, a mustache, some wire hands, perhaps a pipe or a
-monocle, etc. The battery is attached to the frame with some two-sided
-tape.&lt;/p&gt;
+&lt;p&gt;Get the PCB from &lt;a class="reference external" href="https://oshpark.com/shared_projects/QrjTnDg1"&gt;https://oshpark.com/shared_projects/QrjTnDg1&lt;/a&gt;&lt;/p&gt;
 &lt;hr class="docutils" /&gt;
-&lt;p&gt;First, you will need a PCB. There is a Fritzing file in the
-repository, which you can use to generate the gerbers and order it,
-and here is an OSHPark order you can use: &lt;a class="reference external" href="https://oshpark.com/shared_projects/qjZ6fhAS"&gt;https://oshpark.com/shared_projects/qjZ6fhAS&lt;/a&gt;&lt;/p&gt;
-&lt;img alt="projects/project-3736/images/2673271483283190712.png" src="projects/project-3736/images/2673271483283190712.png" /&gt;
+&lt;p&gt;Populate the PCB – solder the ATmega328p, the reset resistor (10kΩ),
+the I2C pullup resistors (10kΩ, optional), capacitor (10-1000µF,
+optional). Solder the pin headers for the servos and power, and an
+extra pin or wire for the reset.&lt;/p&gt;
+&lt;img alt="projects/project-13278/images/2862981473855334998.jpg" src="projects/project-13278/images/2862981473855334998.jpg" /&gt;
 &lt;hr class="docutils" /&gt;
-&lt;p&gt;Once the PCBs arrive, you have to cut all the excess pieces, and
-polish the resulting irregularities. Depending on the servos you have,
-you might also need to file the PCB a bit to make them fit well. My
-servos fit exactly right, with some force, but you never know.&lt;/p&gt;
-&lt;img alt="projects/project-3736/images/3487221483283523271.jpg" src="projects/project-3736/images/3487221483283523271.jpg" /&gt;
+&lt;p&gt;Connect your ISP programmer to the 3v3, GND, MISO, MOSI, SCK and Reset
+pins as follows:&lt;/p&gt;
+&lt;img alt="projects/project-13278/images/263181473966842720.jpg" src="projects/project-13278/images/263181473966842720.jpg" /&gt;
+&lt;p&gt;If you are making the 2ch version, the pin names are printed on the
+PCB. Get the source code from &lt;a class="reference external" href="https://bitbucket.org/thesheep/d1mini-18ch-servo/src"&gt;https://bitbucket.org/thesheep/d1mini-18ch-servo/src&lt;/a&gt;  for the 18-channel version or &lt;a class="reference external" href="https://bitbucket.org/thesheep/d1-mini-20ch-servo/src/8d9c46e74e9ff078b915a0b127f7eef331cb53b3/firmware/?at=default"&gt;https://bitbucket.org/thesheep/d1-mini-20ch-servo/src&lt;/a&gt;  for the 20-channel version. To flash the 18-channel version, use
+Arduino IDE. To flash the 20-channel version, run “make flash” in the
+firmware directory.&lt;/p&gt;
 &lt;hr class="docutils" /&gt;
-&lt;p&gt;Assemble the PCB – solder the switch, the power socket, the servo
-sockets, the chip. Make sure to put two of the servo sockets on one
-side, and two on the other side – so that you don’t have to move
-wires through the PCB.&lt;/p&gt;
-&lt;img alt="projects/project-3736/images/3775531483283668599.jpg" src="projects/project-3736/images/3775531483283668599.jpg" /&gt;
-&lt;p&gt;\&lt;/p&gt;
+&lt;p&gt;After flashing, set the fuses with:&lt;/p&gt;
+&lt;div class="highlight-default notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;avrdude&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="n"&gt;usbasp&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="n"&gt;m328p&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;U&lt;/span&gt; &lt;span class="n"&gt;lfuse&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;w&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mh"&gt;0xE2&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;U&lt;/span&gt; &lt;span class="n"&gt;hfuse&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;w&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mh"&gt;0xDF&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
 &lt;hr class="docutils" /&gt;
-&lt;p&gt;Before you attach the servos, program the chip using a programming
-clip. You will need to remove and disconnect the servos each time you
-are reprogramming it.&lt;/p&gt;
-&lt;hr class="docutils" /&gt;
-&lt;p&gt;Assemble the legs. To make knees, take two servo horns, heat them with
-a lighter, and press them together – they will fuse. Make sure you
-make something like this:&lt;/p&gt;
-&lt;img alt="projects/project-3736/images/2097181483283833852.jpg" src="projects/project-3736/images/2097181483283833852.jpg" /&gt;
-&lt;hr class="docutils" /&gt;
-&lt;p&gt;The feet are cut out from a piece of plastic and simply glued to the
-leg servos.&lt;/p&gt;
-&lt;hr class="docutils" /&gt;
-&lt;p&gt;For the distance sensor, use hot-glue to add a 3-pin header to the
-bottom:&lt;/p&gt;
-&lt;img alt="projects/project-3736/images/9233441483283923534.jpg" src="projects/project-3736/images/9233441483283923534.jpg" /&gt;
-&lt;p&gt;And connect those pins with short wires to the sensor’s contacts.&lt;/p&gt;
-&lt;hr class="docutils" /&gt;
-&lt;p&gt;Then use a stacking header to attach the sensor to the PCB:&lt;/p&gt;
-&lt;img alt="projects/project-3736/images/8898621483283999151.jpg" src="projects/project-3736/images/8898621483283999151.jpg" /&gt;
-&lt;hr class="docutils" /&gt;
-&lt;p&gt;For the body frame, bend some paper clips and solder them into the
-holes in the corners of the PCB:&lt;/p&gt;
-&lt;img alt="projects/project-3736/images/3962861483284053483.jpg" src="projects/project-3736/images/3962861483284053483.jpg" /&gt;
+&lt;p&gt;Your shield is ready to be used!&lt;/p&gt;
 &lt;/section&gt;
 &lt;hr class="docutils" /&gt;
 &lt;/section&gt;
 </content>
-    <link href="http://deshipu.art/projects/project-3736/" rel="alternate"/>
-    <summary>Two legs, four servos, ATtiny85 for brains</summary>
+    <link href="http://deshipu.art/projects/project-13278/" rel="alternate"/>
+    <summary>Connect servos to your ESP8266 dev board.</summary>
     <category term="ESP8266" label="ESP8266"/>
-    <category term="LUA" label="LUA"/>
-    <category term="ROBOT" label="ROBOT"/>
-    <category term="WALKING" label="WALKING"/>
-    <category term="biped" label="biped"/>
-    <category term="bob" label="bob"/>
     <category term="hardware" label="hardware"/>
     <category term="ongoingproject" label="ongoing project"/>
-    <category term="robots" label="robots"/>
-    <published>2015-01-01T00:00:00+01:00</published>
+    <category term="servo" label="servo"/>
+    <category term="wemos" label="wemos"/>
+    <published>2016-08-23T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-18120/</id>
+    <title>D1 Mini Matrix Shield</title>
+    <updated>2016-11-10T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="d1-mini-matrix-shield"&gt;
+
+&lt;p&gt;A shield for the D1 Mini ESP8266 board with HT16K33 chip and 8x8 mini LED matrix.&lt;/p&gt;
+&lt;div class="project-thumb"&gt;
+&lt;a class="reference external image-reference" href="/_images/8964041480612817679.jpg"&gt;&lt;img alt="projects/project-18120/images/8964041480612817679.jpg" src="projects/project-18120/images/8964041480612817679.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/1540741480612742292.jpg"&gt;&lt;img alt="projects/project-18120/images/1540741480612742292.jpg" src="projects/project-18120/images/1540741480612742292.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/1882871481664157542.jpg"&gt;&lt;img alt="projects/project-18120/images/1882871481664157542.jpg" src="projects/project-18120/images/1882871481664157542.jpg" /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;A shield for the D1 Mini ESP8266 board with HT16K33 chip and 8x8 mini
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;LED matrix.&lt;/p&gt;
+&lt;section id="logs"&gt;
+&lt;h2&gt;Logs&lt;/h2&gt;
+&lt;ul class="postlist-style-none postlist simple"&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-05-28 - &lt;a class="reference internal" href="../../../projects/project-18120/log-60306/"&gt;Competition&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-04-07 - &lt;a class="reference internal" href="../../../projects/project-18120/log-56761/"&gt;Some Good News&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-04-06 - &lt;a class="reference internal" href="../../../projects/project-18120/log-56671/"&gt;The Curse Strikes Again&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-04-05 - &lt;a class="reference internal" href="../../../projects/project-18120/log-56595/"&gt;Deluxe Matrix&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-03-28 - &lt;a class="reference internal" href="../../../projects/project-18120/log-55787/"&gt;Different Chips&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-03-15 - &lt;a class="reference internal" href="../../../projects/project-18120/log-54941/"&gt;Great Success&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-02-22 - &lt;a class="reference internal" href="../../../projects/project-18120/log-53709/"&gt;Progress&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-01-25 - &lt;a class="reference internal" href="../../../projects/project-18120/log-52418/"&gt;This Project is Cursed&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-01-10 - &lt;a class="reference internal" href="../../../projects/project-18120/log-51667/"&gt;Boards #5&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-12-14 - &lt;a class="reference internal" href="../../../projects/project-18120/log-50365/"&gt;Pullups&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-12-13 - &lt;a class="reference internal" href="../../../projects/project-18120/log-50332/"&gt;Boards #4&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-12-02 - &lt;a class="reference internal" href="../../../projects/project-18120/log-49836/"&gt;Boards #3&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-12-01 - &lt;a class="reference internal" href="../../../projects/project-18120/log-49769/"&gt;Boards #2&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-12-01 - &lt;a class="reference internal" href="../../../projects/project-18120/log-49768/"&gt;Boards #1&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-11-10 - &lt;a class="reference internal" href="../../../projects/project-18120/log-48913/"&gt;Initial Prototype&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section id="instructions"&gt;
+&lt;h2&gt;Instructions&lt;/h2&gt;
+&lt;/section&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-18120/" rel="alternate"/>
+    <summary>A shield for the D1 Mini ESP8266 board with HT16K33 chip and 8x8 mini LED matrix.</summary>
+    <category term="ESP8266" label="ESP8266"/>
+    <category term="Shield" label="Shield"/>
+    <category term="blinkinglights" label="blinking lights"/>
+    <category term="d1mini" label="d1 mini"/>
+    <category term="hardware" label="hardware"/>
+    <category term="led" label="led"/>
+    <category term="matrix" label="matrix"/>
+    <category term="ongoingproject" label="ongoing project"/>
+    <published>2016-11-10T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-18439/</id>
+    <title>Motor Shield Reprogramming</title>
+    <updated>2016-11-21T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="motor-shield-reprogramming"&gt;
+
+&lt;p&gt;Create and flash new firmware for the WeMos D1 Mini Motor Shield.&lt;/p&gt;
+&lt;div class="project-thumb"&gt;
+&lt;a class="reference external image-reference" href="/_images/2343041479721475132.jpg"&gt;&lt;img alt="projects/project-18439/images/2343041479721475132.jpg" src="projects/project-18439/images/2343041479721475132.jpg" /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;We have pretty good information about the motor shield:
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;The H-bridge is TB6612.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The microcontroller is STM32F030.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;We have a schematic: &lt;a class="reference external" href="https://www.wemos.cc/sites/default/files/2016-09/mini_motor.pdf"&gt;https://www.wemos.cc/sites/default/files/2016-09/mini_motor.pdf&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;We have the Arduino library for talking to it: &lt;a class="reference external" href="https://github.com/wemos/WEMOS_Motor_Shield_Arduino_Library"&gt;https://github.com/wemos/WEMOS_Motor_Shield_Arduino_Library&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;And, last but not least, we finally have the source code of the
+original firmware: &lt;a class="reference external" href="https://github.com/wemos/Motor_Shield_Firmware"&gt;https://github.com/wemos/Motor_Shield_Firmware&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The shield has a serial interface for programming broken out, and that
+chip is supposed to have a bootloader built-in, so hopefully we will
+be able to just use stm32flash and an USB2TTL adapter to program it.&lt;/p&gt;
+&lt;p&gt;There is a nice dev environment template for this family of
+microcontrollers: &lt;a class="reference external" href="https://github.com/szczys/stm32f0-discovery-basic-template"&gt;https://github.com/szczys/stm32f0-discovery-basic-template&lt;/a&gt;&lt;/p&gt;
+&lt;section id="logs"&gt;
+&lt;h2&gt;Logs&lt;/h2&gt;
+&lt;ul class="postlist-style-none postlist simple"&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-11-08 - &lt;a class="reference internal" href="../../../projects/project-18439/log-70239/"&gt;Multiple I²C Addresses&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-04-21 - &lt;a class="reference internal" href="../../../projects/project-18439/log-57852/"&gt;We Have a Fixed Firmware!&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-04-21 - &lt;a class="reference internal" href="../../../projects/project-18439/log-57855/"&gt;Reprogramming Without Soldering&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-11-22 - &lt;a class="reference internal" href="../../../projects/project-18439/log-49380/"&gt;SWD Programming Continued&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-11-22 - &lt;a class="reference internal" href="../../../projects/project-18439/log-49378/"&gt;SWD Programming&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-11-21 - &lt;a class="reference internal" href="../../../projects/project-18439/log-49300/"&gt;Serial Programming&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section id="instructions"&gt;
+&lt;h2&gt;Instructions&lt;/h2&gt;
+&lt;/section&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-18439/" rel="alternate"/>
+    <summary>Create and flash new firmware for the WeMos D1 Mini Motor Shield.</summary>
+    <category term="ESP8266" label="ESP8266"/>
+    <category term="STM32" label="STM32"/>
+    <category term="firmware" label="firmware"/>
+    <category term="hardware" label="hardware"/>
+    <category term="motorshield" label="motor shield"/>
+    <category term="ongoingproject" label="ongoing project"/>
+    <category term="wemosd1mini" label="wemos d1 mini"/>
+    <published>2016-11-21T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-19603/</id>
+    <title>D1 Mini Tote</title>
+    <updated>2017-01-26T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="d1-mini-tote"&gt;
+
+&lt;p&gt;A version of Tote with the D1 Mini ESP8266 board as a brain.&lt;/p&gt;
+&lt;div class="project-thumb"&gt;
+&lt;a class="reference external image-reference" href="/_images/2666111485449727353.jpg"&gt;&lt;img alt="projects/project-19603/images/2666111485449727353.jpg" src="projects/project-19603/images/2666111485449727353.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/2334121500903935343.jpg"&gt;&lt;img alt="projects/project-19603/images/2334121500903935343.jpg" src="projects/project-19603/images/2334121500903935343.jpg" /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;This is the next step of evolution of {ref}`project-6050`  and {ref}`project-9927` , the spider robots that were designed to be as simple and easy to
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;build as possible, without sacrificing the proper walking algorithms.
+This time the focus is on making it easier to program and to modify by
+attaching additional hardware.&lt;/p&gt;
+&lt;p&gt;While Tote was focusing on building a proper quadruped robot without
+special materials and tools and as cheaply as possible, the subsequent
+projects focus on making the robot more reliable and easier to
+experiment with. The &lt;a class="reference internal" href="../../../projects/project-19921/#project-19921"&gt;&lt;span class="std std-ref"&gt;SpiderWing&lt;/span&gt;&lt;/a&gt; project loosens the budget constraints, aiming to make a sturdier,
+stronger and more consistently reproducible robot. This project works
+in parallel to that, trying to incorporate the same improvements, but
+without rising the price too much. The two projects are meant to cover
+the conflicting needs of hobby robot developers.&lt;/p&gt;
+&lt;p&gt;Of course, the overarching goal for both of them is to stimulate
+research in affordable and reliable legged robots, so that we can have
+devices like this at our homes one day.&lt;/p&gt;
+&lt;section id="logs"&gt;
+&lt;h2&gt;Logs&lt;/h2&gt;
+&lt;ul class="postlist-style-none postlist simple"&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-05-08 - &lt;a class="reference internal" href="../../../projects/project-19603/log-163051/"&gt;One More Version&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-06-15 - &lt;a class="reference internal" href="../../../projects/project-19603/log-61660/"&gt;Sturdier Legs&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-06-14 - &lt;a class="reference internal" href="../../../projects/project-19603/log-61585/"&gt;More Brain Power&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-02-20 - &lt;a class="reference internal" href="../../../projects/project-19603/log-53577/"&gt;Battery Protection&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-02-18 - &lt;a class="reference internal" href="../../../projects/project-19603/log-53501/"&gt;Smaller ATmega&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-01-29 - &lt;a class="reference internal" href="../../../projects/project-19603/log-52602/"&gt;Debugging&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-01-26 - &lt;a class="reference internal" href="../../../projects/project-19603/log-52462/"&gt;Surprise PCBs&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section id="instructions"&gt;
+&lt;h2&gt;Instructions&lt;/h2&gt;
+&lt;section id="mechanical-assembly"&gt;
+&lt;h3&gt;Mechanical Assembly&lt;/h3&gt;
+&lt;p&gt;For mechanical assembly, follow the instructions at &lt;a class="reference external" href="http://tote.readthedocs.io/en/latest/assembly_v5.html#legs"&gt;http://tote.readthedocs.io/en/latest/assembly_v5.html#legs&lt;/a&gt;&lt;/p&gt;
+&lt;/section&gt;
+&lt;hr class="docutils" /&gt;
+&lt;section id="electronics"&gt;
+&lt;h3&gt;Electronics&lt;/h3&gt;
+&lt;p&gt;Solder the headers, PWM chip and resistors onto the board. Add the
+power switch and battery holder. Connect the servo plugs.&lt;/p&gt;
+&lt;/section&gt;
+&lt;hr class="docutils" /&gt;
+&lt;section id="programming"&gt;
+&lt;h3&gt;Programming&lt;/h3&gt;
+&lt;p&gt;Copy the python code from project’s repository onto your D1 Mini using
+Adafruit’s Ampy utility. Plug the D1 Mini into the PCB.&lt;/p&gt;
+&lt;/section&gt;
+&lt;hr class="docutils" /&gt;
+&lt;section id="extending"&gt;
+&lt;h3&gt;Extending&lt;/h3&gt;
+&lt;p&gt;Use the D1 Mini’s headers to add shields with sensors and other
+components to the robot. Modify the code to take advantage of them.&lt;/p&gt;
+&lt;/section&gt;
+&lt;/section&gt;
+&lt;hr class="docutils" /&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-19603/" rel="alternate"/>
+    <summary>A version of Tote with the D1 Mini ESP8266 board as a brain.</summary>
+    <category term="2017HackadayPrize" label="2017HackadayPrize"/>
+    <category term="ESP8266" label="ESP8266"/>
+    <category term="ROBOT" label="ROBOT"/>
+    <category term="WALKING" label="WALKING"/>
+    <category term="d1mini" label="d1 mini"/>
+    <category term="hardware" label="hardware"/>
+    <category term="ongoingproject" label="ongoing project"/>
+    <category term="quadruped" label="quadruped"/>
+    <category term="spider" label="spider"/>
+    <category term="tote" label="tote"/>
+    <published>2017-01-26T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-19921/</id>
+    <title>SpiderWing</title>
+    <updated>2017-02-18T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="spiderwing"&gt;
+
+&lt;p&gt;Spider robot powered by Adafruit Feather boards and CircuitPython.&lt;/p&gt;
+&lt;div class="project-thumb"&gt;
+&lt;a class="reference external image-reference" href="/_images/4253281487438198842.jpg"&gt;&lt;img alt="projects/project-19921/images/4253281487438198842.jpg" src="projects/project-19921/images/4253281487438198842.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/5950241497285635699.jpg"&gt;&lt;img alt="projects/project-19921/images/5950241497285635699.jpg" src="projects/project-19921/images/5950241497285635699.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/3137951500460500978.jpg"&gt;&lt;img alt="projects/project-19921/images/3137951500460500978.jpg" src="projects/project-19921/images/3137951500460500978.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/9842911577816167234.JPG"&gt;&lt;img alt="projects/project-19921/images/9842911577816167234.JPG" src="projects/project-19921/images/9842911577816167234.JPG" /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;This is the successor of the {ref}`project-6050`  robot, and its small family ( {ref}`project-9065` , {ref}`project-9927` , {ref}`project-19603` ). Tote itself was focused mostly on affordability, ease of assembly
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;and extensibility — and I think that it achieved those goals
+relatively well. However, it turns out that physically building the
+robot and programming the first gait is just the tip of the iceberg.
+We need something a little more powerful than a simple Arduino, and
+something much easier to program and test. The SpiderWing builds on
+top of Tote, but focuses more on the ease of programming and
+reliability. It uses slightly more expensive parts (Adafruit Feather
+boards, SG92R servos) to be more reliable and easier to reproduce
+exactly (whereas every Tote is slightly different from all the
+others). It will also use advanced sensors, such as the time-of-flight
+distance sensors or the IMU sensors with built-in fusion algorithms,
+in order to get better and more consistent results.&lt;/p&gt;
+&lt;p&gt;Of course the ultimate goal remains the same — to bring walking robots
+into our homes and hopefully crowd-source their development, so that
+they become reliable and cheap enough to be generally useful.&lt;/p&gt;
+&lt;iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/Y69_nhqh28M"&gt;&lt;/iframe&gt;
+&lt;iframe style="width: 500px; height: 281px;" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/4QuXRsifHEk"&gt;&lt;/iframe&gt;
+&lt;section id="logs"&gt;
+&lt;h2&gt;Logs&lt;/h2&gt;
+&lt;ul class="postlist-style-none postlist simple"&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-12-31 - &lt;a class="reference internal" href="../../../projects/project-19921/log-172522/"&gt;It’s Alive (Again)&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-12-16 - &lt;a class="reference internal" href="../../../projects/project-19921/log-171982/"&gt;Bodgetty Bodge&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-12-08 - &lt;a class="reference internal" href="../../../projects/project-19921/log-171687/"&gt;Batteries! Why Doesn’t Anybody Think About the Batteries?&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-11-03 - &lt;a class="reference internal" href="../../../projects/project-19921/log-170560/"&gt;New PCB Design&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-11-02 - &lt;a class="reference internal" href="../../../projects/project-19921/log-170536/"&gt;Time for a Refresh&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-07-23 - &lt;a class="reference internal" href="../../../projects/project-19921/log-63890/"&gt;Repository and License&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-07-23 - &lt;a class="reference internal" href="../../../projects/project-19921/log-63888/"&gt;Proper Crawl&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-07-19 - &lt;a class="reference internal" href="../../../projects/project-19921/log-63408/"&gt;Status Update&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-05-15 - &lt;a class="reference internal" href="../../../projects/project-19921/log-59618/"&gt;Smartening Up&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-05-14 - &lt;a class="reference internal" href="../../../projects/project-19921/log-59586/"&gt;Sensor and Cable Management&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-05-13 - &lt;a class="reference internal" href="../../../projects/project-19921/log-59494/"&gt;The Good, The Bad and the Adorable&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section id="instructions"&gt;
+&lt;h2&gt;Instructions&lt;/h2&gt;
+&lt;section id="mechanical-assembly"&gt;
+&lt;h3&gt;Mechanical Assembly&lt;/h3&gt;
+&lt;p&gt;For mechanical assembly, follow the instructions at &lt;a class="reference external" href="http://tote.readthedocs.io/en/latest/assembly_v5.html#legs"&gt;http://tote.readthedocs.io/en/latest/assembly_v5.html#legs&lt;/a&gt;&lt;/p&gt;
+&lt;/section&gt;
+&lt;hr class="docutils" /&gt;
+&lt;section id="electronics"&gt;
+&lt;h3&gt;Electronics&lt;/h3&gt;
+&lt;p&gt;Solder the headers, the PWM chip and the two resistors onto the PCB.
+Add the power switch and the battery holder.&lt;/p&gt;
+&lt;/section&gt;
+&lt;hr class="docutils" /&gt;
+&lt;section id="programming"&gt;
+&lt;h3&gt;Programming&lt;/h3&gt;
+&lt;p&gt;Copy the python files from the project’s repository onto your feather
+board.&lt;/p&gt;
+&lt;/section&gt;
+&lt;hr class="docutils" /&gt;
+&lt;section id="profit"&gt;
+&lt;h3&gt;PROFIT!&lt;/h3&gt;
+&lt;p&gt;Modify the code, add sensors, experiment.&lt;/p&gt;
+&lt;/section&gt;
+&lt;/section&gt;
+&lt;hr class="docutils" /&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-19921/" rel="alternate"/>
+    <summary>Spider robot powered by Adafruit Feather boards and CircuitPython.</summary>
+    <category term="2017HackadayPrize" label="2017HackadayPrize"/>
+    <category term="ESP8266" label="ESP8266"/>
+    <category term="Feather" label="Feather"/>
+    <category term="Huzzah" label="Huzzah"/>
+    <category term="ROBOT" label="ROBOT"/>
+    <category term="WALKING" label="WALKING"/>
+    <category term="adafruit" label="adafruit"/>
+    <category term="featherwing" label="featherwing"/>
+    <category term="hardware" label="hardware"/>
+    <category term="ongoingproject" label="ongoing project"/>
+    <category term="quadruped" label="quadruped"/>
+    <category term="spider" label="spider"/>
+    <published>2017-02-18T00:00:00+01:00</published>
   </entry>
 </feed>

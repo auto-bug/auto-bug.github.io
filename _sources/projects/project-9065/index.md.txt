@@ -1,0 +1,103 @@
+---
+blogpost: true
+date: 2016-01-04
+category: project
+tags:  ROBOT, raspberry pi, pi zero, hardware, ongoing project, quadruped
+image: 1
+---
+
+# Tote Zero
+
+Affordable quadruped robot powered by a Pi Zero
+
+<div class="project-thumb">
+
+:::{image} images/3233411451932323412.jpg
+:target: /_images/3233411451932323412.jpg
+:::
+
+:::{image} images/6491431451932310257.jpg
+:target: /_images/6491431451932310257.jpg
+:::
+
+:::{image} images/4931971451932291720.jpg
+:target: /_images/4931971451932291720.jpg
+:::
+
+:::{image} images/3784581452083863472.jpg
+:target: /_images/3784581452083863472.jpg
+:::
+
+:::{image} images/5564861454878909155.jpg
+:target: /_images/5564861454878909155.jpg
+:::
+
+</div>
+
+
+    The original {ref}`project-6050`  used an Arduino Pro Mini clone for its brains, as this was the most
+affordable option available at the time, and reasonably easy to use
+and program. But now that there is a $5 single-board computer
+available, why not use it instead?
+
+The advantages, as I see them, are three-fold:
+
+
+ * using Python for programming, which makes it much easier to both write
+code and test stuff in the interactive console,
+ * possibly integrating this with ROS, OpenCV and other awesome tools,
+ * much more computing power, which means that more interesting things
+can happen.
+
+
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="" src="https://www.youtube.com/embed/jJsWgjJycL8"></iframe>
+
+
+
+
+
+## Logs
+
+:::{postlist}
+:category: project-9065
+:::
+
+## Instructions
+
+
+
+For mechanical assembly, follow the instructions for {ref}`project-6050`  at [http://tote.readthedocs.org](http://tote.readthedocs.org) 
+
+
+---
+
+
+The code repository at [https://bitbucket.org/thesheep/tote0/src](https://bitbucket.org/thesheep/tote0/src)  contains all the files needed -- copy them to the pi
+
+
+---
+
+
+Get ServoBlaster from [https://github.com/richardghirst/PiBits/tree/master/ServoBlaster](https://github.com/richardghirst/PiBits/tree/master/ServoBlaster)  and compile it and install
+
+
+---
+
+
+Copy the 'servoblaster' startup script from the code repository to
+/etc/init.d and make it start at startup
+
+
+---
+
+
+Run the run.py program
+
+
+---
+
+
+PROFIT!!!
+
+
+---

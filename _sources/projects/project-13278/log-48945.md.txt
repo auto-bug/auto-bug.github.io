@@ -1,0 +1,41 @@
+---
+blogpost: true
+date: 2016-11-11
+category: project-13278
+---
+
+# Another Short
+Published on 2016-11-11 in {ref}`project-13278`.
+
+Releasing the design before actually receiving the boards and testing
+them turned out to be a mistake. Out of three boards that I got from
+OSHPark, two have a short between the servo power and ground. The
+third one seems fine.
+
+So I opened the designs and looked through them carefully trace by
+trace -- but no short there. I opened the gerber files and looked
+through that -- no short either. The fact that two boards have a short
+but the third doesn't, suggests that there is some problem with some
+traces being too close to each other.\
+
+
+So I took a knife, and started cutting the traces on the board, trying
+to locate the short. I narrowed it down to the lower right quarter of
+the board -- specifically, to the ground fill on the bottom, between
+the servo socket pins.
+
+
+:::{image} images/6440291478864850101.jpg
+
+:::
+
+
+Oops, seems like routing a "thin" trace between two 0.4mm pads doesn't
+leave enough room? This is a bit strange, because it always worked for
+me before -- perhaps I was just lucky.
+
+Anyways, I went through the design and changed all the pads to 0.35mm,
+and also made some other traces passing through narrow spaces thinner.
+I also deleted the old designs from OSHPark, and added this new,
+corrected one. Ordered it, and we will see how that one works.
+

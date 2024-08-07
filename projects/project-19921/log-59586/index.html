@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Sensor and Cable Management - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="sensor-and-cable-management">
+<h1>Sensor and Cable Management<a class="headerlink" href="#sensor-and-cable-management" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2017-05-14 in <a class="reference internal" href="../#project-19921"><span class="std std-ref">SpiderWing</span></a>.</p>
+<p>I’m slowly porting all my robot code to CircuitPython for the little
+crab robot, and I got as far as body kinematics before I ran out of
+memory on the Feather M0, so next step is some optimizations.</p>
+<p>I also decided to put a distance sensor on this little guy, so that it
+can react to the environment – since it doesn’t have wireless
+connectivity, I can’t make it just a remote controlled drone (and I
+don’t want to).</p>
+<p>So I finally sat down and ported that Arduino driver for the VL53L0X
+sensor to MicroPython. Well, mostly ported – there are still some
+parts that I need to implement, but it already does some readings. The
+code is at <a class="reference external" href="https://bitbucket.org/thesheep/micropython-vl53l0x">https://bitbucket.org/thesheep/micropython-vl53l0x</a>  but it’s definitely too big to fit on the M0. So I decided to look
+for another sensor, preferably with I²C interface, and I found the
+SHARP GP2Y0E03 in my drawers – the same sensor that <a class="reference internal" href="../../project-3736/#project-3736"><span class="std std-ref">µBob biped robot</span></a>  uses right now. I quickly wrote a simple driver for CircuitPython for
+it – the code is at <a class="reference external" href="https://bitbucket.org/thesheep/circuitpython-gp2y0e03/src/tip/gp2y0e03.py">https://bitbucket.org/thesheep/circuitpython-gp2y0e03</a>  – and I attached the sensor to the robot:</p>
+<img alt="projects/project-19921/images/9233401494787353422.jpg" src="projects/project-19921/images/9233401494787353422.jpg" />
+<p>You can see I also arranged the cables neatly, and added the rubber
+socks on the legs.Even though I had a ready library for the sensor, getting it to work
+took some time. You see, the PCA9685 chip that I’m using here for
+controlling the servos uses two I²C addresses: 0x40 and 0x70 (one for
+the individual chip, and one for a roll-call for all chips on the
+bus). But the GP2Y0E03 sensor also uses address 0x40 by default. I
+could mess with the PCB, solder some wires to the address pins od the
+PCA9685 and make it use a different address (I think I will in the
+next version of the PCB), but a quicker route was to change the
+sensor’s address – you do that by burning e-fuses on it to specify
+the new address. The procedure is a bit complex, but there is a ready
+Arduino sketch that does it for you, so I gave it a try. Without much
+thinking I changed the address to the 0xE0, which was the default in
+that sketch.</p>
+<p>Wait, aren’t I²C addresses only 7-bit? Where did 0xE0 come from? Well,
+that’s the 8-bit notation, including the read/write bit. To get the
+7-bit address you need to shift it right by one.</p>
+<p>I tested the sensor with the changed address, and it works
+beautifully. Now, time to put on the robot and make it do some things.
+But wait, it stops working on the robot, just returns 0 all the time.
+Wait a moment, what is 0xE0 shifter right by one bit? Isn’t it 0x70,
+the other address my servo driver uses? Argh!</p>
+<p>Fortunately, I had a second GP2Y0E03 sensor in my stock, so I changed
+the address in another one (this time paying more attention) and
+everything works perfectly now.</p>
+<p>Now I only need to rewrite all this code into as few functions as
+possible, to make it all fit in there.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

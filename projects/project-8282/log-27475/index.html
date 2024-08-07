@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Use a Pro Micro in a Keyboard - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="use-a-pro-micro-in-a-keyboard">
+<h1>Use a Pro Micro in a Keyboard<a class="headerlink" href="#use-a-pro-micro-in-a-keyboard" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2015-11-02 in <a class="reference internal" href="../#project-8282"><span class="std std-ref">Alpen Clack</span></a>.</p>
+<p>So you want to build your own keyboard (or keyboard-like device), but
+you are not sure what to use for the brains and how to connect and
+program it? I will describe what I came up with for the <a class="reference internal" href="../#project-8282"><span class="std std-ref">Alpen Clack</span></a>  keyboard.</p>
+<p>The ATmega32u4 microcontroller is an excellent choice for any HID
+device, such a mouse, a joystick or a keyboard. That’s mostly because
+it has hardware USB support, so you don’t have to muck about with
+unreliable and hacky bit-banged VUSB. There are three popular boards
+with that microcontroller: Arduino Leonardo, Teensy 2.0, and Pro Micro
+(not to be confused with Pro Mini, which uses ATmega328). Arduino
+Leonardo is too big for our needs. Teensy 2.0 is quite expensive. Pro
+Micro can be had for about $4 in singles from the usual oriental
+sources. Sounds like a winner. Let’s look at the pinout:</p>
+<img alt="projects/project-8282/images/3499681446499782805.png" src="projects/project-8282/images/3499681446499782805.png" />
+<hr class="docutils" />
+<p>According to this diagram, we have 18 usable pins. An 18-key keyboard
+is not very useful. Can we somehow connect more keys? Turns out we
+can, by using a <a class="reference external" href="http://pcbheaven.com/wikipages/How_Key_Matrices_Works/">key matrix</a> . We basically make rows and columns, and put switches on the
+crossings. Then we scan that repeatedly to figure out which ones are
+pressed. We add diodes, so that the pressed keys won’t interfere with
+each other. Simple.</p>
+<p>So, with 18 pins, the largest matrix we can get is a square 9×9.
+That’s 81 keys. Hmm, that may be fine for those tiny, chocolate bar
+keyboards, but a modern PC keyboard has 105 keys. Even if we ditch the
+keypad, like I did in my keyboard, that only removes 17 keys. We are
+still 7 keys short!</p>
+<p>Wait, what does it say about LEDs at the bottom there? Two more
+independent pins? Great, we only have to remove the two resistors and
+solder wires in their place, and we have 20 pins for our disposal.
+That gives us the largest matrix of 10×10, so 100 keys. Still not
+enough for the full layout, but should be fine for a tenkeyless
+keyboard.</p>
+<p>Next, programming the thing. After a short search, I found the <a class="reference external" href="https://github.com/tmk/tmk_keyboard">TMK Keyboard</a>  firmware, which is just perfect for our needs. All we need to do is
+to copy the “onekey” example keyboard, and modify the_config.h_,_ keymap.c_ and_matrix.c_files to fit our keyboard.</p>
+<p>In_config.h_, we have to set the correct number of rows and columns. I used 8
+columns and 11 rows in my keyboard, which gave me the 88 keys I needed
+(actually 87). You can also change some other options here and in the_Makefile_.</p>
+<p>Next, the hard part –<em>matrix.c</em>. You will need to define four functions:<em>init_cols, read_cols, unselect_rows_and</em> select_row_. You can look at all the examples included in the repository to get
+an idea what they need to do. Basically,<em>init_cols</em> sets all the column pins in INPUT mode with internal pull-up
+resistors. It’s called once at the start. Next, the_read_cols_ function reads the state of all those column pins, and reports it as
+a single byte (or more, if you have more than 8 columns, but see
+below). The_unselect_rows_ function sets all the row pins to floating, and finally the_select_row_ function sets the specified row pin to low. That’s it.</p>
+<p>One note about having more than 8 columns: while the code looks like
+it should support it, I didn’t manage to get that to work. I’m not too
+worried, because I only needed 8 in the end, but if you need more, you
+will probably need to copy the_matrix_scan_ function from one of the larger examples to get it to work.</p>
+<p>Lastly, you need to define the key map – basically to tell the
+firmware which key is which. You do that in_keymap.c,_by defining an array of arrays of arrays… I mean, an array of
+layers, each layer being an array of rows, each row being an array of
+columns, each column being an array of keys. The layers let you setup
+cool effects with special keys and such, see the <a class="reference external" href="https://github.com/tmk/tmk_keyboard/blob/master/doc/keymap.md">keymap documentation</a>  for details.</p>
+<p>Lastly, we need to modify the_Makefile_ for our board. I used_Makefile.pjrc_, because the default one doesn’t support N-key rollover yet. Set the
+following variables:</p>
+<div class="highlight-makefile notranslate"><div class="highlight"><pre><span></span><span class="nv">MCU</span> <span class="o">=</span> atmega32u4
+<span class="nv">OPT_DEFS</span> <span class="o">+=</span> -DBOOTLOADER_SIZE<span class="o">=</span><span class="m">512</span>
+<span class="nv">PROGRAM_CMD</span> <span class="o">=</span> avrdude -p <span class="k">$(</span>MCU<span class="k">)</span> -P /dev/ttyACM0 -c avr109 -U flash:w:<span class="k">$(</span>TARGET<span class="k">)</span>.hex
+</pre></div>
+</div>
+<p>Now you are ready to program your board. Connect a switch between the
+GND and RST pins, connect the board to USB and press the switch two
+times quickly. That puts the board into programming mode. Now run “<em>make -f Makefile.pjrc program</em>”, and it should compile and burn the firmware to your board. After
+that it will be visible in “lsusb” command as whatever ID you set in
+the_config.h_ file, and shorting any row pin with any column pin should produce key
+presses. Now you can solder the board into your matrix, and you are
+done.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

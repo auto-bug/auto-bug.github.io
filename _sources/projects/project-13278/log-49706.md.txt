@@ -1,0 +1,33 @@
+---
+blogpost: true
+date: 2016-11-30
+category: project-13278
+---
+
+# 20-channel Servo Shield
+Published on 2016-11-30 in {ref}`project-13278`.
+
+Yes, I keep refining the design. No, I don't actually need all those
+servo shields. But it's a fun challenge. So I made another one, this
+time controlling up to 20 servos at once.
+
+
+:::{image} images/1623221480510802870.png
+
+:::
+
+
+Note how all the servo sockets are on the edges. That means that if
+you use angled 3×10 male headers, you can actually stack those. And
+with the address selection on the analog pins, you can have up to 4
+shields at once. That's 80 servos. Of course, if you just reprogram
+them to use a different address, you could have hundreds of them.
+
+So where are the two extra servo channels coming from? Turns out that
+if your ATmega328p uses an internal oscilator and you don't have an
+external oscilator connected, you can use those pins as gpios.
+
+I'm still conflicted about whether to actually order this board or
+not. One idea is to order it, rewrite the firmware in plain C, and
+submit this to the 1kB contest...
+

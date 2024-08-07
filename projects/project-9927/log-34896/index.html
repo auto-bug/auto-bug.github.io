@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Clock Stretching Woes - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="clock-stretching-woes">
+<h1>Clock Stretching Woes<a class="headerlink" href="#clock-stretching-woes" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2016-03-30 in <a class="reference internal" href="../#project-9927"><span class="std std-ref">Tote HaD</span></a>.</p>
+<p>The parts are still trickling in, but I’m waiting for the rest of the
+PCBs to start the mass-production of the workshop kits. Hopefully they
+will arrive tomorrow or Friday, so I can do it over the weekend.</p>
+<p>Less good news is that the tracking number for the 200 servos that I
+ordered a week ago is not working (the seller gave me 4 different ones
+so far, none working). It’s too late to order this from a different
+seller, and there is no brick-and-mortar shop that I know that has
+those. So it’s possible that I will have only 10 complete kits, and 15
+kits without legs. I’m still hoping that the servos will arrive on
+time, but there is nothing I can do with this. Frustrating.</p>
+<p>Finally, on the software side, I made some progress debugging the I²C
+issues (after two evenings of analyzing the scope). I even found and
+tried a completely <a class="reference external" href="https://github.com/pololu/pololu-rpi-slave-arduino-library">new slave library by Pololu</a> , but decided to switch back to Wire.h for now (I might use that
+library later, especially since it has a workaround for the I²C bug in
+Raspberry Pi). Anyways, the issue seems to be that the Arduino slave
+is sometimes too slow for the 100kHz I²C, and the ESP8266
+implementation doesn’t support clock stretching, so it can’t slow down
+when needed. The good part is that I found a way to compile a version
+of the firmware with slower I²C, so this shouldn’t be a problem.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

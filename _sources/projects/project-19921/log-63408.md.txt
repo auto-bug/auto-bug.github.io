@@ -1,0 +1,26 @@
+---
+blogpost: true
+date: 2017-07-19
+category: project-19921
+---
+
+# Status Update
+Published on 2017-07-19 in {ref}`project-19921`.
+
+The mini-crab version of the robot is as good as it's going to get --
+I'm going to leave it as it is for a while, to have something to show
+at all the conferences and fairs.
+
+The bigger spider robot still needs work. I will probably need to
+shorten its coxas, as this configuration was an experiment and doesn't
+seem to work that great. I am happy about the longer tibias though. I
+will probably replace the ESP8266 Feather with a ESP32 one, for more
+processing power and — hopefully — smoother movement. I'm more or less
+happy with the PCB, so I don't think there will be more versions of
+it. I will however need to make some sensor shields to stack on top.
+
+The main thing that requires work, as usual, is the documentation.
+
+I also have plans to program the {ref}`project-21578`  board to act as a controller for this robot, but since both are still
+in development, it may take some time.
+

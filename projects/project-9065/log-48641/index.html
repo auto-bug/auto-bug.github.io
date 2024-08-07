@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Robot Fusion - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="robot-fusion">
+<h1>Robot Fusion<a class="headerlink" href="#robot-fusion" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2016-11-06 in <a class="reference internal" href="../#project-9065"><span class="std std-ref">Tote Zero</span></a>.</p>
+<p>So I never actually made that board from the last log. But remember <a class="reference internal" href="../../project-9927/#project-9927"><span class="std std-ref">Tote HaD</span></a> , those robots that we have built at Hackaday Belgrade? I have spent a
+considerable amount of time designing that PCB, and it has a couple of
+Easter eggs in there. On of them is that unpopulated pin header in the
+lower right corner:</p>
+<img alt="projects/project-9065/images/7686981478428435715.jpg" src="projects/project-9065/images/7686981478428435715.jpg" />
+<p>Turns out that you can put a female pin header in there:</p>
+<img alt="projects/project-9065/images/1163951478428487502.jpg" src="projects/project-9065/images/1163951478428487502.jpg" />
+<p>And then, instead of plugging that ESP8266 module in the usual socket,
+you can plug a Raspberry Pi Zero in there:</p>
+<img alt="projects/project-9065/images/7314471478428541384.jpg" src="projects/project-9065/images/7314471478428541384.jpg" />
+<p>The power from the LiPo is only between 3.7 and 4.2V, but turns out
+that this is enough for the pi – its regulator will switch into a
+low-voltage mode, and everything works:</p>
+<img alt="projects/project-9065/images/5699741478428627112.jpg" src="projects/project-9065/images/5699741478428627112.jpg" />
+<p>Next, I will just need to take the MicroPython code I used on the
+original, and touch it up to run on regular Python on the pi, with the
+SMBus library for the I²C communication.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

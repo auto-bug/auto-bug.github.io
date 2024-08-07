@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Boards #3 - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="boards-3">
+<h1>Boards #3<a class="headerlink" href="#boards-3" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2016-12-02 in <a class="reference internal" href="../#project-18120"><span class="std std-ref">D1 Mini Matrix Shield</span></a>.</p>
+<p>I can confirm that the HT16k33 chips I had were most likely faulty. I
+took one of the remaining unpopulated boards, and carefully checked it
+for shorts and continuity. It checked fine – each pad is connected
+with exactly one hole.  Then I took my last remaining chip, and
+soldered that carefully to the board. Added the pin headers, and
+plugged that into a breadboard. Then, without connecting any matrix, I
+carefully connected the wires for power and for I²C (with extra pullup
+resistors on them), and plugged the whole thing into USB.</p>
+<img alt="projects/project-18120/images/2682271480713745838.jpg" src="projects/project-18120/images/2682271480713745838.jpg" />
+<p>Then I did the I²C scan, and the result is the same as with the other
+chips. I double-checked the datasheet if there is any need for
+additional components of any kind for this chip (and also examined the
+breakout board I have for any extra components). Nothing. It should
+just be working, and it’s not. Ergo – broken chips.</p>
+<p>I ordered a new batch from a different seller this time, and will see
+how that works. In a few weeks. Perhaps the new PCBs will arrive by
+that time too.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+---
+blogpost: true
+date: 2018-01-25
+category: project-19371
+---
+
+# Version 3.0
+Published on 2018-01-25 in {ref}`project-19371`.
+
+I have been working a little on this project in the recent months,
+designing a new PCB using different parts and so on, but I didn't
+really have time to assemble and test it properly. Recently I found
+the PCBs in a drawer, found the matching parts, and decided to give it
+a go. Behold, version 3.0:
+
+
+
+:::{image} images/6528201516912435919.jpg
+
+:::
+
+
+and the back side:
+
+---------- more ----------
+
+:::{image} images/3290671516912471580.jpg
+
+:::
+
+
+I'm using a much smaller PCA9554 here, which has pretty much the same
+I²C interface. I also put all the parts on the back, so that you can
+stack this board with the display more tightly.
+
+Just like version 2.0, it has friction-fit pin headers, so you don't
+even need to solder anything. As a bonus, I added a header for a
+SSD1331 display module, which you can simply plug in there. Only one
+problem, the module is too wide and covers some of the buttons. 
+
+I also used different buttons — initially I wanted to use the same
+kind that is on the Pro Mini boards for reset, but then realized that
+the "quiet" ALPS buttons fit that footprint too. Well, they almost fit
+— they are a bit too wide, and stick a little bit out on the D-pad
+side. Oh well.
+
+Overall, I don't think the improvements are worth rolling a new
+version on Tindie — and I still have a bunch of version 2.0 ones to
+sell. However, I'm already thinking about version 4.0, which will be
+bigger, have footprints for multiple different display modules, and
+will use an ATtiny24 to do de-bouncing and buffering, just like on {ref}`project-27757` . It can take a while to finalize that one, though.
+

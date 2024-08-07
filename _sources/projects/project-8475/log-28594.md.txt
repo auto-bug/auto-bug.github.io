@@ -1,0 +1,36 @@
+---
+blogpost: true
+date: 2015-12-02
+category: project-8475
+---
+
+# Programming
+Published on 2015-12-02 in {ref}`project-8475`.
+
+Once I had the mechanics done, I started to work on the programming.
+Setting the speed of the servos was easy enough:
+
+
+```python
+import microbit
+
+microbit.pin0.set_analog_period(20)
+microbit.pin0.write_analog(int(25 + 100 * degrees / 180))
+```
+
+But then making it turn exactly 90° or travel exactly 10cm required
+some careful experimentation with timing.
+
+
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="" src="https://www.youtube.com/embed/iVpkl9NlzB0"></iframe>
+
+Once I had that, hooking up the distance sensor was easy. It's an
+analog SHARP range finder, so all I needed was to read the analog pin.
+Then I added some simple logic for finding out in which direction the
+obstacle is further away, and voila, object avoidance:
+
+
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="" src="https://www.youtube.com/embed/0ddh4n7rcWk"></iframe>
+
+And that's it. All the code sits in the repository: [https://bitbucket.org/thesheep/micro-bot/src](https://bitbucket.org/thesheep/micro-bot/src) 
+

@@ -1,0 +1,54 @@
+---
+blogpost: true
+date: 2017-12-04
+category: project-13278
+---
+
+# Fabrication and Version 2.0
+Published on 2017-12-04 in {ref}`project-13278`.
+
+There is a relatively high demand for this board on Tindie, so when I
+sold the last of the 75 hand-assembled modules, I stated looking at
+fabrication options. Unfortunately, for a board with so many soldering
+points (the servo socket headers), it was relatively expensive. I
+didn't realize that the work I was doing by hand is worth so much. In
+any case, I asked several fabrication services for quotes, and since I
+didn't want to increase the price too much, went with the cheapest
+one, which turned out to be PCBWay.
+
+They were very helpful all along the way. The bill of materials CSV
+file I sent them didn't parse quite well for them (probably because I
+wrote it by hand in Vim), but they had no problem with me just
+including an ASCII-art table in the e-mail instead. On every step of
+the process they sent me photos, asking if it looks correct. They also
+tried to catch possible errors themselves: for example, my BOM didn't
+include the stacking headers that I add to every module — they saw
+them in the photo and asked if they need to be added. (I send them
+unsoldered, so I add them later myself). There was also one small
+glitch when they initially wanted to use straight pin headers instead
+of angled ones, but because they sent me the photo I could point out
+the mistake, and there was no problem switching to the correct
+headers.
+
+I choose the cheapest shipping (again to keep the price low), but it
+still arrived without problems in 2 weeks. Here's a photo of the
+package I got:
+
+
+
+:::{image} images/7901051512382432339.jpg
+
+:::
+
+
+The anti-static bags on the bottom contain the soldered panels (I
+choose to depanelize them myself, again to save costs). The rest of
+the bags are all the left-over parts, including one unsoldered PCB
+panel of 5 modules.
+
+A quick test shows that the modules work very well.
+
+All in all, I'm very happy with them. You can buy the new modules on
+Tindie here:  [https://www.tindie.com/products/deshipu/16-channel-servo-shield-
+for-d1-mini-version-20](https://www.tindie.com/products/deshipu/16-channel-servo-shield-for-d1-mini-version-20/) 
+

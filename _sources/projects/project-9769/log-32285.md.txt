@@ -1,0 +1,95 @@
+---
+blogpost: true
+date: 2016-02-20
+category: project-9769
+---
+
+# Source Code
+Published on 2016-02-20 in {ref}`project-9769`.
+
+This is the first prototype version, but still here's the source code
+if you are interested in how it's done:
+
+
+```cpp
+#include <Servo.h>
+
+Servo servos[2];
+
+
+void move(int position) {
+    static int current = -1;
+
+    if (position == current) {
+        return;
+    }
+    current = position;
+
+    servos[0].attach(9); // right
+    servos[1].attach(10); // left
+    switch (position) {
+        case 0:
+            // Perk up.
+            servos[0].writeMicroseconds(1500 + 300);
+            servos[1].writeMicroseconds(1500 - 300);
+            Serial.println("perk");
+            break;
+        case 1:
+            // Droop down
+            servos[0].writeMicroseconds(1500 - 300);
+            servos[1].writeMicroseconds(1500 + 300);
+            Serial.println("droop");
+            break;
+        case 2:
+            servos[0].writeMicroseconds(1500 + 300);
+            servos[1].writeMicroseconds(1500 + 300);
+            Serial.println("left");
+            break;
+        case 3:
+            servos[0].writeMicroseconds(1500 - 300);
+            servos[1].writeMicroseconds(1500 - 300);
+            Serial.println("right");
+            break;
+        default:
+            Serial.println("unknown");
+    }
+}
+
+void rest() {
+    servos[0].detach();
+    servos[1].detach();
+}
+
+void setup() {
+    Serial.begin(115200);
+    move(0);
+}
+
+void loop() {
+    int z = analogRead(A0) - 490;
+    int y = analogRead(A1) - 490;
+    int x = analogRead(A2) - 490;
+
+    Serial.print(x);
+    Serial.print(", ");
+    Serial.print(y);
+    Serial.print(", ");
+    Serial.print(z);
+    Serial.println();
+
+    if (x > -10) {
+        if (y > 10) {
+            move(2);
+        } else if (y < -10) {
+            move(3);
+        } else {
+            move(0);
+        }
+    } else {
+        move(1);
+    }
+    delay(600);
+    rest();
+}
+```
+
