@@ -27,20 +27,20 @@ and the base of the servo. We also know all the mechanical dimensions
 of the robot: AB, BC, CD, DE. So how can we calculate α? From the [law of cosines](https://en.wikipedia.org/wiki/Law_of_cosines) , of course! Given a triangle with dimensions a, b c, the law of
 cosines lets us calculate the angles of that triangle:
 
-$\color{White} \large \gamma = \arccos \frac{a^2+b^2 - c^2}{2ab}$ Where γ is the angle opposite c. Also, we will actually calculate 180°-￼￼α, which is a sum of three angles: ADE, ADB and BDC. So we have:
+$\large \gamma = \arccos \frac{a^2+b^2 - c^2}{2ab}$ Where γ is the angle opposite c. Also, we will actually calculate 180°-￼￼α, which is a sum of three angles: ADE, ADB and BDC. So we have:
 
-$$\color{White} \large ADE = \arccos\frac{DE}{AD}$$
+$$\large ADE = \arccos\frac{DE}{AD}$$
 
 
-$$\color{White} \large BD = \sqrt{AD^2 - ED^2 + (ED - AB)^2}$$
+$$\large BD = \sqrt{AD^2 - ED^2 + (ED - AB)^2}$$
 
-$$\color{White} \large ADB = \arccos\frac{AD^2 + BD^2 - AB^2}{2\times AD \times BD}$$
+$$\large ADB = \arccos\frac{AD^2 + BD^2 - AB^2}{2\times AD \times BD}$$
 
-$$\color{White} \large BDC = \arccos\frac{BD^2 + CD^2 - BC^2}{2\times BD\times CD}$$
+$$\large BDC = \arccos\frac{BD^2 + CD^2 - BC^2}{2\times BD\times CD}$$
 
 And finally:
 
-$$\color{White} \large \alpha = 180\degree - ADE - ADB - BDC$$
+$$\large \alpha = 180°\degree - ADE - ADB - BDC$$
 
 That's it. That's the position the servo needs to move to. All we need
 to know is the distance AD. How can we know that distance for each of
