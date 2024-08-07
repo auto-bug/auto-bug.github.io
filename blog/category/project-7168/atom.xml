@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>http://deshipu.art/</id>
+  <title>deshipu.art - Posts in project-7168</title>
+  <updated>2024-08-07T20:27:28.991052+00:00</updated>
+  <link href="http://deshipu.art/"/>
+  <link href="http://deshipu.art/blog/category/project-7168/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-7168/log-40426/</id>
+    <title>New Brains</title>
+    <updated>2016-06-22T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="new-brains"&gt;
+
+&lt;p&gt;Published on 2016-06-22 in &lt;a class="reference internal" href="../../../projects/project-7168/#project-7168"&gt;&lt;span class="std std-ref"&gt;Logicoma-kun&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;For a long time I couldn’t decide what to use for brains for Logicoma-
+kun. The initial experiments were done with Arduino, but I’d like
+something stronger and with the possibility of remote programming. For
+a time I had high hopes for the WiPy – I waited for it to be released
+and then for the Timer bugs to be fixed, so that I could use it to
+control servos. But when it was finally fixed after several months, it
+turned out that I can’t control enough of them at once easily, and
+that programming WiPy over FTP is quite awkward.&lt;/p&gt;
+&lt;p&gt;Now that the Micropython for ESP8266 is re-done and working great, I
+decided to use the old combo: Arduino Pro Mini as a servo controller,
+and an ESP8266 module for the main brain. Promptly, I put together the
+whole thing on one of my breakout boards:&lt;/p&gt;
+&lt;img alt="projects/project-7168/images/3513681466596442451.jpg" src="projects/project-7168/images/3513681466596442451.jpg" /&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-7168/log-40426/" rel="alternate"/>
+    <summary>Published on 2016-06-22 in project-7168.</summary>
+    <published>2016-06-22T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-7168/log-40721/</id>
+    <title>Early Prototypes</title>
+    <updated>2016-06-27T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="early-prototypes"&gt;
+
+&lt;p&gt;Published on 2016-06-27 in &lt;a class="reference internal" href="../../../projects/project-7168/#project-7168"&gt;&lt;span class="std std-ref"&gt;Logicoma-kun&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I just realized I didn’t put here the videos of the early prototypes
+that I made to test if the idea is possible.&lt;/p&gt;
+&lt;p&gt;Here are they, first, the wheeled mode:&lt;/p&gt;
+&lt;iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="" src="https://www.youtube.com/embed/WvPRhwA7Aa0"&gt;&lt;/iframe&gt;
+&lt;p&gt;And then the legged mode:&lt;/p&gt;
+&lt;iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="" src="https://www.youtube.com/embed/2LjSKvdbtPk"&gt;&lt;/iframe&gt;
+&lt;p&gt;Hopefully I will program the final robot soon and upload a video of
+its operation.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-7168/log-40721/" rel="alternate"/>
+    <summary>Published on 2016-06-27 in project-7168.</summary>
+    <published>2016-06-27T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-7168/log-41251/</id>
+    <title>Eye Socket</title>
+    <updated>2016-07-06T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="eye-socket"&gt;
+
+&lt;p&gt;Published on 2016-07-06 in &lt;a class="reference internal" href="../../../projects/project-7168/#project-7168"&gt;&lt;span class="std std-ref"&gt;Logicoma-kun&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;If you look at the plastic Logicoma toys, you will see that the
+“turret” is pretty detailed – it has all sorts of bolts, handles,
+grooves, etc. Mine is smooth, because it’s just an acrylic ball. But I
+do plan on adding all those details, eventually. I decided to start
+with the eye socket, because I have a theory about how to make it, and
+I want to test it.&lt;/p&gt;
+&lt;p&gt;Since the eye hole in the acrylic ball is cut by hand so that the eye
+fits in it, I don’t know the exact dimensions. So I just placed it
+against a piece of acrylic and traced with a pen. Then just added the
+details.&lt;/p&gt;
+&lt;img alt="projects/project-7168/images/5468911467803268652.jpg" src="projects/project-7168/images/5468911467803268652.jpg" /&gt;
+&lt;p&gt;Next, some dremeling. Who needs a laser cutter. It’s maybe not
+perfect, but it’s cheap and fast.&lt;/p&gt;
+&lt;img alt="projects/project-7168/images/2842791467803315549.jpg" src="projects/project-7168/images/2842791467803315549.jpg" /&gt;
+&lt;p&gt;Then, I placed the soon-to-be eye socket in a metal ball that I had
+lying around (it was a box of chocolates for Christmas or something
+like that) and placed it in an oven. When the acrylic softened, it got
+this nice covex shape. I adjusted the “ears” manually a little
+(careful, hot!), and got something that fits on my acrylic ball just
+right (also drilled the holes):\&lt;/p&gt;
+&lt;img alt="projects/project-7168/images/9748021467803447011.jpg" src="projects/project-7168/images/9748021467803447011.jpg" /&gt;
+&lt;p&gt;Next, I drilled corresponding holes in the ball and used the rest of
+my plastic bolts to secure it in place.&lt;/p&gt;
+&lt;img alt="projects/project-7168/images/7329781467803501637.jpg" src="projects/project-7168/images/7329781467803501637.jpg" /&gt;
+&lt;p&gt;It’s not exactly as in the movies, but I think it’s close enough.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-7168/log-41251/" rel="alternate"/>
+    <summary>Published on 2016-07-06 in project-7168.</summary>
+    <published>2016-07-06T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-7168/log-42703/</id>
+    <title>Hands and Handles</title>
+    <updated>2016-07-28T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="hands-and-handles"&gt;
+
+&lt;p&gt;Published on 2016-07-28 in &lt;a class="reference internal" href="../../../projects/project-7168/#project-7168"&gt;&lt;span class="std std-ref"&gt;Logicoma-kun&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The acrylic rods just arrived, so with help of a lighter and a bit of
+glue I was able to make the “handles”:&lt;/p&gt;
+&lt;img alt="projects/project-7168/images/9490861469706873426.jpg" src="projects/project-7168/images/9490861469706873426.jpg" /&gt;
+&lt;p&gt;Since I had the rods already, I decided to also use them for the
+forearms of the hands:&lt;/p&gt;
+&lt;img alt="projects/project-7168/images/5042911469706908178.jpg" src="projects/project-7168/images/5042911469706908178.jpg" /&gt;
+&lt;p&gt;Finally, I found some LED lenses that glued together made a good
+“snout”. It’s slowly starting to look like a proper Logikoma:&lt;/p&gt;
+&lt;img alt="projects/project-7168/images/3536961469706961614.jpg" src="projects/project-7168/images/3536961469706961614.jpg" /&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-7168/log-42703/" rel="alternate"/>
+    <summary>Published on 2016-07-28 in project-7168.</summary>
+    <published>2016-07-28T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-7168/log-157725/</id>
+    <title>Still Alive</title>
+    <updated>2019-01-01T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="still-alive"&gt;
+
+&lt;p&gt;Published on 2019-01-01 in &lt;a class="reference internal" href="../../../projects/project-7168/#project-7168"&gt;&lt;span class="std std-ref"&gt;Logicoma-kun&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I recharged my batteries during the holiday break enough to actually
+work on this project a little bit more. One of the reasons I didn’t
+touch it for over two years is that it’s not really very convenient to
+program. I mean sure, it runs MicroPython, but to program it you
+either have to disconnect from the Internet and connect to its WiFi,
+or connect a USB to serial converter.&lt;/p&gt;
+&lt;p&gt;———- more ———-I realized that I can as well just make use of the progress I have
+made in the mean time, and use the &lt;span class="xref std std-ref"&gt;project-13278&lt;/span&gt; together with a D1 Mini clone:\&lt;/p&gt;
+&lt;img alt="projects/project-7168/images/2164301546298974291.jpg" src="projects/project-7168/images/2164301546298974291.jpg" /&gt;
+&lt;p&gt;In place of the custom ESP-3 with a Pro Micro, that I had in there
+previously.\&lt;/p&gt;
+&lt;img alt="projects/project-7168/images/7620761546298953806.jpg" src="projects/project-7168/images/7620761546298953806.jpg" /&gt;
+&lt;p&gt;I will also need some kind of a controller for it, but that will
+probably be a separate project. In any case, the very next step now is
+to get it to actually walk and ride around.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-7168/log-157725/" rel="alternate"/>
+    <summary>Published on 2019-01-01 in project-7168.</summary>
+    <published>2019-01-01T00:00:00+01:00</published>
+  </entry>
+</feed>

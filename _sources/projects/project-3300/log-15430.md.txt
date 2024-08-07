@@ -1,0 +1,41 @@
+---
+blogpost: true
+date: 2015-03-19
+category: project-3300
+---
+
+# Younger Brother
+Published on 2015-03-19 in {ref}`project-3300`.
+
+The PCBs just came from [DirtyPCBs](http://dirtypcbs.com/) , and I had the servos waiting since some time already, so I made a
+brother of the µKubik. It uses pretty much the same cirtcuit as the
+pKubik, my other project, but uses the much cheaper, but bigger, SG90
+servos. I also added a socket for a cheap ultrasonic distance sensor
+(much cheaper than the IR one used in µKubik). The software is exactly
+the same as for pKubik (I didn't even tweak the leg dimensions in the
+code, although I should).
+
+The result is a budget version of the µKubik, with all the parts
+together at about $25.
+
+
+:::{image} images/5382781426798346248.jpg
+
+:::
+
+
+It's a nice starting point for building walking robots. The serial and
+I²C interfaces of the Arduino are free, so you can use them to
+communicate with anything you want to add to the robot -- whether it's
+a more powerful processor, additional sensors or a laser gun. The
+software is also very simple and leaves a lot of room for
+experimenting and improvement. And you don't need any custom parts,
+except for the PCB -- the legs use the servo horns and screws that are
+shipped together with the servos.
+
+I will keep on working on better assembly instructions and maybe an
+improved PCB design (the current one has some tight spots, where order
+of soldering is important). Maybe I will manage to somehow organize
+some kind of a workshop, or even a contest for building them. We need
+more walking robots everywhere!
+

@@ -2,328 +2,262 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posted in 2016</title>
-  <updated>2024-08-07T20:12:49.028146+00:00</updated>
+  <updated>2024-08-07T20:27:29.076761+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/2016/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
   <entry>
-    <id>http://deshipu.art/projects/project-6050/log-48853/</id>
-    <title>Pimp Your Bot</title>
-    <updated>2016-11-09T00:00:00+01:00</updated>
-    <content type="html">&lt;section id="pimp-your-bot"&gt;
+    <id>http://deshipu.art/projects/project-3736/log-50993/</id>
+    <title>Ressurection</title>
+    <updated>2016-12-29T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="ressurection"&gt;
 
-&lt;p&gt;Published on 2016-11-09 in &lt;a class="reference internal" href="../../projects/project-6050/#project-6050"&gt;&lt;span class="std std-ref"&gt;Tote&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;The winter is coming, and my robots need some maintenance – after a
-year of traveling to various conferences and fairs, they accumulated a
-number of injuries. It’s also a good idea to recharge the lipo
-batteries once in a while.&lt;/p&gt;
-&lt;p&gt;I started repairing the robots, replacing broken servos, tuning them,
-etc. – and at some point I realized that they actually look pretty
-drab. Just a bunch of wires and servos, really. Of course, the idea
-was to make them as simple and easy to make as possible, so that’s
-just expected, but still they don’t look like something you would
-actually want to have.  That’s when I decided to take one of the
-prototypes (incidentally, the one that I used for proprioception
-experiments), and make a chassis for it, to make it look a little bit
-better.\&lt;/p&gt;
-&lt;p&gt;So I went to the Internets and started to look through concept art of
-various robots. I’m quite surprised and saddened by how many of those
-are simply “a human in suit with a weird helmet”. Oh well. Finally, I
-found one drawn by Paul Denton that fits Tote well and should be
-simple enough to make:&lt;/p&gt;
-&lt;img alt="../../_images/4506301478726184776.jpg" src="../../_images/4506301478726184776.jpg" /&gt;
-&lt;p&gt;It’s a bit dark and gritty, but that’s even better – any mistakes I
-make will not be as visible. So I started with a plastic box – from a
-set of toy blocks for kids. Of course I started by cutting the
-corners:&lt;/p&gt;
-&lt;img alt="../../_images/2843691478726292182.jpg" src="../../_images/2843691478726292182.jpg" /&gt;
-&lt;p&gt;Then I removed the legs from the robot, and installed the PCB inside
-the box:\&lt;/p&gt;
-&lt;img alt="../../_images/7280851478726343324.jpg" src="../../_images/7280851478726343324.jpg" /&gt;
-&lt;p&gt;I had to cur the sides of the box, and also the “ears” on the servos
-– to make them fit properly without colliding with the box or with
-themselves. Once I was happy with the shape, I hot-glued the PCB
-securely in place and started painting. I’m using acrylic paints for
-painting tabletop battle miniatures. It sticks pretty well to plastic.&lt;/p&gt;
-&lt;img alt="../../_images/6281001478726589492.jpg" src="../../_images/6281001478726589492.jpg" /&gt;
-&lt;p&gt;Once I had the base coat ready and it all dried, I started to dry-
-brush some of the wear and old paint on it, then dry-brushed the whole
-thing with metallic paint, to make it look like beaten metal.\&lt;/p&gt;
-&lt;img alt="../../_images/6727501478726680622.jpg" src="../../_images/6727501478726680622.jpg" /&gt;
-&lt;p&gt;Next, I had to do something with the wires. They are way too long,
-there is not enough space inside to hide them, and they are the wrong
-color. After some deliberation, I decided to just cut them to size:&lt;/p&gt;
-&lt;img alt="../../_images/4658581478726748371.jpg" src="../../_images/4658581478726748371.jpg" /&gt;
-&lt;p&gt;And then I also painted them black. Some mor dry-brushing, and it’s
-almost ready. I also made a hole at the top for the IR sensor for the
-remote to stick out.\&lt;/p&gt;
-&lt;img alt="../../_images/6585081478726795228.jpg" src="../../_images/6585081478726795228.jpg" /&gt;
-&lt;p&gt;Next, I worked on the eyes. I found some plastic lenses for LEDs in my
-drawer, and some red LEDs:\&lt;/p&gt;
-&lt;img alt="../../_images/796701478726919340.jpg" src="../../_images/796701478726919340.jpg" /&gt;
-&lt;p&gt;A bit of glue to secure the LEDs in place, some more to glue the
-lenses into the eyes, and some resistors and wires, and it’s almost
-ready. Now I just need to wait for the glue to set…&lt;/p&gt;
+&lt;p&gt;Published on 2016-12-29 in &lt;a class="reference internal" href="../../projects/project-3736/#project-3736"&gt;&lt;span class="std std-ref"&gt;µBob biped robot&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I really wanted to enter one of my robots into the 1kB contest, but
+unfortunately the inverse kinematics calculations result in quite some
+bit of code. I tried to use some pretty neat algorithms to get around
+that (see &lt;a class="reference external" href="https://hackaday.io/project/6050-tote/log/50664-cordic"&gt;https://hackaday.io/project/6050-tote/log/50664-cordic&lt;/a&gt; ), but in the end there is just too much happening on thet 8-bit
+microcontroller. Switching to a 32-bit microcontroller would probably
+helped, but then there is the size of all the HAL libraries and such
+– it would probably come down to about the same, or worse. So I
+looked at the shelf on which my robots are standing, and saw µBob. It
+has hard-coded gait, so there should be no problem with calculations.
+However, it used an ESP8266, and that’s again a lot of code in the
+SDK/Lua/MicroPython.&lt;/p&gt;
+&lt;p&gt;The robot also got quite beaten up on the last few conferences and
+maker fairs it has visited. The distance sensor never worked, the
+wires got loose, the battery inside shifted and changed its center of
+gravity, the feet lost some of the fingers, and the power switch is in
+a place that is really awkward to reach. So I decided to recycle the
+parts and make a new robot.&lt;/p&gt;
+&lt;img alt="projects/project-3736/images/3974481483050689226.jpg" src="projects/project-3736/images/3974481483050689226.jpg" /&gt;
+&lt;p&gt;Time to re-build this robot again, with a little bit more of proper
+construction. I started with the PCB, because you have to wait for
+them so long. So I made this:&lt;/p&gt;
+&lt;img alt="projects/project-3736/images/3439521483050998669.png" src="projects/project-3736/images/3439521483050998669.png" /&gt;
+&lt;p&gt;The two big empty spaces are for attaching the servos. There is also
+room for a power switch and a battery connector, and a footprint for
+an ATtiny85. I got two pins free, so I’ve broken them out into some
+extra headers.Once the PCBs arrived, I quickly assembled one, and started to program
+the attiny. That took whole day, because for some reason the
+programming would fail at various stages with very strange results.
+Lowering the clock speed of the programmer, adding some jumpers and
+additional options would help sometimes and then break again later. In
+the end it turned out that the wires that I soldered to my programming
+clip came off, and weren’t giving a good connection.&lt;/p&gt;
+&lt;p&gt;Next, I needed some code to drive the servos. Unfortunately, I
+couldn’t use the code from &lt;span class="xref std std-ref"&gt;project-9769&lt;/span&gt; , because this time I needed to drive 3 servos at once (actually 4,
+but two of them share a common signal). So I looked around and found &lt;a class="reference external" href="http://www.thebox.myzen.co.uk/Tutorial/LEDs.html"&gt;a servo library for the ATtiny85&lt;/a&gt; . It was too big for my purposes, but I used the ideas from it to
+write my own, that’s about 512 bytes (and probably can be further
+optimized).&lt;/p&gt;
+&lt;p&gt;Once I had that, I disassembled the poor µBob, and removed its legs:&lt;/p&gt;
+&lt;img alt="projects/project-3736/images/5240641483051624333.jpg" src="projects/project-3736/images/5240641483051624333.jpg" /&gt;
+&lt;p&gt;Then I attached the servos to the new PCB, with a programmed ATtiny85
+and a smaller battery (from those small quadcopters):&lt;/p&gt;
+&lt;img alt="projects/project-3736/images/3433491483051680543.jpg" src="projects/project-3736/images/3433491483051680543.jpg" /&gt;
+&lt;p&gt;The current status: the legs are just moving back and forth for now
+(testing the servos). Next, I will need some simple codo to make it
+move into poses, and then maybe I will attach a distance sensor and
+add some code for reading the ADC.&lt;/p&gt;
 &lt;/section&gt;
 </content>
-    <link href="http://deshipu.art/projects/project-6050/log-48853/" rel="alternate"/>
-    <summary>Published on 2016-11-09 in project-6050.</summary>
-    <published>2016-11-09T00:00:00+01:00</published>
+    <link href="http://deshipu.art/projects/project-3736/log-50993/" rel="alternate"/>
+    <summary>Published on 2016-12-29 in project-3736.</summary>
+    <published>2016-12-29T00:00:00+01:00</published>
   </entry>
   <entry>
-    <id>http://deshipu.art/projects/project-6050/log-48901/</id>
-    <title>Pimp Your Robot II</title>
-    <updated>2016-11-10T00:00:00+01:00</updated>
-    <content type="html">&lt;section id="pimp-your-robot-ii"&gt;
+    <id>http://deshipu.art/projects/project-7860/log-51040/</id>
+    <title>ATtiny10</title>
+    <updated>2016-12-30T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="attiny10"&gt;
 
-&lt;p&gt;Published on 2016-11-10 in &lt;a class="reference internal" href="../../projects/project-6050/#project-6050"&gt;&lt;span class="std std-ref"&gt;Tote&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;So, today I hotglued the lenses with the LEDs, updated the software to
-let me switch the LEDs on and off, added a piezo to the robot, so it
-makes sounds, and painted some red highlights on the legs. The end
-result:&lt;/p&gt;
-&lt;img alt="../../_images/4791001478776115934.jpg" src="../../_images/4791001478776115934.jpg" /&gt;
-&lt;p&gt;And here’s a short video:&lt;/p&gt;
-&lt;iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/sBmQx8Rb05I"&gt;&lt;/iframe&gt;
-&lt;/section&gt;
-</content>
-    <link href="http://deshipu.art/projects/project-6050/log-48901/" rel="alternate"/>
-    <summary>Published on 2016-11-10 in project-6050.</summary>
-    <published>2016-11-10T00:00:00+01:00</published>
-  </entry>
-  <entry>
-    <id>http://deshipu.art/projects/project-6050/log-50045/</id>
-    <title>Version 5</title>
-    <updated>2016-12-07T00:00:00+01:00</updated>
-    <content type="html">&lt;section id="version-5"&gt;
-
-&lt;p&gt;Published on 2016-12-07 in &lt;a class="reference internal" href="../../projects/project-6050/#project-6050"&gt;&lt;span class="std std-ref"&gt;Tote&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;I’ve been asked for a Tote kit for a Christmas preset by a friend, and
-I realized I no longer have any version 4 boards. So I had to go and
-order some. But if I’m ordering boards anyways, why not make some
-improvements here and there? So here’s a version 5.&lt;/p&gt;
-&lt;img alt="../../_images/7989951481143160341.png" src="../../_images/7989951481143160341.png" /&gt;
-&lt;p&gt;You can see the board is much simpler now. It’s basically just the
-servos, the battery, the pro mini, power switch and ir sensor. There
-are still the optional battery monitoring, piezo, distance sensor and
-extra capacitor, but by default they are not used. I also switched
-some pins around, so now using the serial pins for servos – but all
-the analog pins are free, and broken out close to each of the legs.
-That should make it easier to use them for sensors.&lt;/p&gt;
-&lt;p&gt;There is also a new step-by-step assembly tutorial for this version at &lt;a class="reference external" href="http://tote.readthedocs.io/en/latest/assembly_v5.html"&gt;http://tote.readthedocs.io/en/latest/assembly_v5.html&lt;/a&gt;  and slightly modified code at &lt;a class="reference external" href="https://bitbucket.org/thesheep/tote/src/tip/v5"&gt;https://bitbucket.org/thesheep/tote/src/tip/v5&lt;/a&gt; .&lt;/p&gt;
-&lt;img alt="../../_images/7428001481143601250.jpg" src="../../_images/7428001481143601250.jpg" /&gt;
-&lt;p&gt;And I still have the other 9 boards to give away.Oh, right and a DirtyPCB link: &lt;a class="reference external" href="http://dirtypcbs.com/store/user/preview/1154"&gt;http://dirtypcbs.com/store/user/preview/1154&lt;/a&gt; \&lt;/p&gt;
-&lt;/section&gt;
-</content>
-    <link href="http://deshipu.art/projects/project-6050/log-50045/" rel="alternate"/>
-    <summary>Published on 2016-12-07 in project-6050.</summary>
-    <published>2016-12-07T00:00:00+01:00</published>
-  </entry>
-  <entry>
-    <id>http://deshipu.art/projects/project-6050/log-50664/</id>
-    <title>CORDIC</title>
-    <updated>2016-12-21T00:00:00+01:00</updated>
-    <content type="html">&lt;section id="cordic"&gt;
-
-&lt;p&gt;Published on 2016-12-21 in &lt;a class="reference internal" href="../../projects/project-6050/#project-6050"&gt;&lt;span class="std std-ref"&gt;Tote&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Since the flu season began, I’ve been lying in bed sick quite some
-time. While I don’t recommend doing coding with a fever (takes way too
-much time to track down the trivial mistakes you make), you do have
-some free time to explore some coding ideas that you didn’t bother
-with before. One of such things on my to do list is rewriting Tote’s
-inverse kinematics code to use only integer math, and I found a
-marvelous family of algorithms that can let me do it.&lt;/p&gt;
-&lt;p&gt;If you look at my explanation of Tote’s inverse kinematics at &lt;a class="reference external" href="http://tote.readthedocs.io/en/latest/ik.html"&gt;http://tote.readthedocs.io/en/latest/ik.html&lt;/a&gt; , you will see that I’m using two trigonometric functions (actually
-inverse trigonometric functions) in there: atan2 and acos. They both
-return an angle – in the case of the standard library functions, in
-form of a number between -PI and PI (or was it 0 and 2PI? I can’t
-remember). That’s a pretty arbitrary range, that I have to then
-convert into servo pulse width in the range between 600 and 2400µs.
-Wouldn’t it me great if they instead returned integers from 0 to 1800,
-so that I could use them for the servo pulse width directly?&lt;/p&gt;
-&lt;p&gt;But how are such trigonometric functions calculated? There are several
-ways. You can approximate them with a polynomial, using a so-called
-Taylor series. You can also have a lookup table, with some
-interpolation for the values in between. But both of those approaches
-involve quite a lot of multiplications and divisions, and possibly
-floating point (or fixed point) numbers. Which is slow on a
-microcontroller such as the one used in Tote, not to mention a lot of
-code being generated (especially for the lookup tables). Fortunately
-there are the CORDIC algorithms, which involve only a lookup in a
-small table, some additions and some bit shifts. And of course you do
-it all on integers. Plus, you have very good control over the accuracy
-– the more iterations of the algorithm you do, the better results you
-get.&lt;/p&gt;
-&lt;p&gt;How does it work? The heart of the algorithm is a small mathematical
-trick that lets you rotate a point (x, y) around the center of the
-coordinate system (0, 0) by a fixed angle using just additions and bit
-shifts, provided you know the arcus tangent value of that fixed angle.
-So you make a lookup table with a dozen values for 45°, 22.5°, 11.25°,
-5.625°, and so on (each angle half of the previous one), and you do a
-binary search for your value.&lt;/p&gt;
-&lt;p&gt;Let’s say you want to calculate cos(a). Imagine a length 1 line
-starting at (0, 0) and going to (x, y), with the angle between the x
-axis and the line being a. Then the value we are looking for is x. How
-do we find x? We will start with a line at angle 0° and coordinates
-(1, 0), and rotate it (using our additions and shifts) by 45° one way
-or the other, depending if our a is larger or smaller than 0. We will
-get some point (x1, y1) this way. Then we will rotate it again, by
-22.5°, one way or the other depending on where the angle a is compared
-to our current angle. And we will repeat that, rotating by a smaller
-angle each time, until we get close enough to out angle a. At that
-point we have calculated our cos(a) (and also sin(a) at the same
-time).&lt;/p&gt;
-&lt;p&gt;Calculating the inverse trigonometric functions is similar, except we
-start with the line at (x, y), and try to rotate it to be as close to
-(1, 0) as possible, keeping track of how much we have rotated it so
-far. Once we got close enough to (1, 0), the total angle is our
-answer. Simple.&lt;/p&gt;
-&lt;p&gt;All that is left for me is to actually write some code, test it, tune
-it to use the smallest types possible and to work with enough accuracy
-for my particular use case, and put that code in Tote. I will let you
-know when that happens, but first I need to get over this flu.&lt;/p&gt;
-&lt;/section&gt;
-</content>
-    <link href="http://deshipu.art/projects/project-6050/log-50664/" rel="alternate"/>
-    <summary>Published on 2016-12-21 in project-6050.</summary>
-    <published>2016-12-21T00:00:00+01:00</published>
-  </entry>
-  <entry>
-    <id>http://deshipu.art/projects/project-6050/log-50708/</id>
-    <title>imath.h</title>
-    <updated>2016-12-22T00:00:00+01:00</updated>
-    <content type="html">&lt;section id="imath-h"&gt;
-
-&lt;p&gt;Published on 2016-12-22 in &lt;a class="reference internal" href="../../projects/project-6050/#project-6050"&gt;&lt;span class="std std-ref"&gt;Tote&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;It took me two evenings of pretty much randomly editing code, trying
-to make it as small as possible without breaking it horribly at the
-same time, but I finally have a library with three basic functions,&lt;em&gt;iasin&lt;/em&gt;,&lt;em&gt;iatan2&lt;/em&gt; and_isqrt_, which are_int16_t_ versions of the ones from the standard library. The angles are
-returned in the range of -1800 to 1800, and the input to asin is
--1&amp;lt;&amp;lt;13 +1 to 1&amp;lt;&amp;lt;13. The whole library is around 700 bytes (644 at the
-last compile) and should be relatively fast on the AVR (although I
-didn’t really time it). Oh, and the code is at &lt;a class="reference external" href="https://bitbucket.org/thesheep/imath/src/tip/imath.c"&gt;https://bitbucket.org/thesheep/imath/src/tip/imath.c&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;If you see any opportunity to shrink it even more, please tell me!&lt;/p&gt;
-&lt;p&gt;Unfortunately, this is still way too large to make Tote fit in the
-magical kilobyte. I might try with int8 versions next, but those are
-not going to have enough resolution for a proper walk, unless I will
-play with the ranges some more.&lt;/p&gt;
-&lt;p&gt;Here’s a comparison of the values from those functions with the
-standard library:&lt;/p&gt;
-&lt;div class="highlight-default notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;asin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;0.88&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=-&lt;/span&gt;&lt;span class="mf"&gt;61.04&lt;/span&gt; &lt;span class="n"&gt;iasin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;7168&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=-&lt;/span&gt;&lt;span class="mi"&gt;610&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;0.04&lt;/span&gt;
-&lt;span class="n"&gt;asin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;0.75&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=-&lt;/span&gt;&lt;span class="mf"&gt;48.59&lt;/span&gt; &lt;span class="n"&gt;iasin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;6144&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=-&lt;/span&gt;&lt;span class="mi"&gt;486&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.01&lt;/span&gt;
-&lt;span class="n"&gt;asin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;0.63&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=-&lt;/span&gt;&lt;span class="mf"&gt;38.68&lt;/span&gt; &lt;span class="n"&gt;iasin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;5120&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=-&lt;/span&gt;&lt;span class="mi"&gt;388&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.12&lt;/span&gt;
-&lt;span class="n"&gt;asin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;0.50&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=-&lt;/span&gt;&lt;span class="mf"&gt;30.00&lt;/span&gt; &lt;span class="n"&gt;iasin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;4096&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=-&lt;/span&gt;&lt;span class="mi"&gt;302&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.20&lt;/span&gt;
-&lt;span class="n"&gt;asin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;0.37&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=-&lt;/span&gt;&lt;span class="mf"&gt;22.02&lt;/span&gt; &lt;span class="n"&gt;iasin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;3072&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=-&lt;/span&gt;&lt;span class="mi"&gt;220&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;0.02&lt;/span&gt;
-&lt;span class="n"&gt;asin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;0.25&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=-&lt;/span&gt;&lt;span class="mf"&gt;14.48&lt;/span&gt; &lt;span class="n"&gt;iasin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;2048&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=-&lt;/span&gt;&lt;span class="mi"&gt;144&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;0.08&lt;/span&gt;
-&lt;span class="n"&gt;asin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;0.12&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=-&lt;/span&gt;&lt;span class="mf"&gt;7.18&lt;/span&gt; &lt;span class="n"&gt;iasin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1024&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=-&lt;/span&gt;&lt;span class="mi"&gt;70&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;0.18&lt;/span&gt;
-&lt;span class="n"&gt;asin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;0.00&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;0.00&lt;/span&gt; &lt;span class="n"&gt;iasin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.00&lt;/span&gt;
-&lt;span class="n"&gt;asin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;0.12&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;7.18&lt;/span&gt; &lt;span class="n"&gt;iasin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1024&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;72&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;0.02&lt;/span&gt;
-&lt;span class="n"&gt;asin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;0.25&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;14.48&lt;/span&gt; &lt;span class="n"&gt;iasin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2048&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;144&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.08&lt;/span&gt;
-&lt;span class="n"&gt;asin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;0.37&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;22.02&lt;/span&gt; &lt;span class="n"&gt;iasin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3072&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;220&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.02&lt;/span&gt;
-&lt;span class="n"&gt;asin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;0.50&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;30.00&lt;/span&gt; &lt;span class="n"&gt;iasin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;4096&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;300&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.00&lt;/span&gt;
-&lt;span class="n"&gt;asin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;0.63&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;38.68&lt;/span&gt; &lt;span class="n"&gt;iasin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5120&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;388&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;0.12&lt;/span&gt;
-&lt;span class="n"&gt;asin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;0.75&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;48.59&lt;/span&gt; &lt;span class="n"&gt;iasin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;6144&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;486&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;0.01&lt;/span&gt;
-&lt;span class="n"&gt;asin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;0.88&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;61.04&lt;/span&gt; &lt;span class="n"&gt;iasin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;7168&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;610&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.04&lt;/span&gt;
-&lt;span class="n"&gt;asin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;1.00&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;90.00&lt;/span&gt; &lt;span class="n"&gt;iasin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;8192&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;916&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;1.60&lt;/span&gt;
-
-&lt;span class="n"&gt;sqrt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;0.00&lt;/span&gt; &lt;span class="n"&gt;isqrt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.00&lt;/span&gt;
-&lt;span class="n"&gt;sqrt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1024&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;32.00&lt;/span&gt; &lt;span class="n"&gt;isqrt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1024&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;32&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.00&lt;/span&gt;
-&lt;span class="n"&gt;sqrt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2048&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;45.25&lt;/span&gt; &lt;span class="n"&gt;isqrt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2048&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;45&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.25&lt;/span&gt;
-&lt;span class="n"&gt;sqrt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3072&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;55.43&lt;/span&gt; &lt;span class="n"&gt;isqrt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3072&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;55&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.43&lt;/span&gt;
-&lt;span class="n"&gt;sqrt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;4096&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;64.00&lt;/span&gt; &lt;span class="n"&gt;isqrt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;4096&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;64&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.00&lt;/span&gt;
-&lt;span class="n"&gt;sqrt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5120&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;71.55&lt;/span&gt; &lt;span class="n"&gt;isqrt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5120&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;71&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.55&lt;/span&gt;
-&lt;span class="n"&gt;sqrt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;6144&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;78.38&lt;/span&gt; &lt;span class="n"&gt;isqrt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;6144&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;78&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.38&lt;/span&gt;
-&lt;span class="n"&gt;sqrt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;7168&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;84.66&lt;/span&gt; &lt;span class="n"&gt;isqrt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;7168&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;84&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.66&lt;/span&gt;
-&lt;span class="n"&gt;sqrt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;8192&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;90.51&lt;/span&gt; &lt;span class="n"&gt;isqrt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;8192&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;90&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.51&lt;/span&gt;
-
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;0.00&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.00&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1024&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;0.00&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1024&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.00&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2048&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;0.00&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2048&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.00&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3072&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;0.00&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3072&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.00&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4096&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;0.00&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4096&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.00&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5120&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;0.00&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5120&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.00&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;6144&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;0.00&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;6144&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.00&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;7168&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;0.00&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;7168&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.00&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;8192&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;0.00&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;8192&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.00&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1024&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;90.00&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1024&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;899&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.10&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1024&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1024&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;45.00&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1024&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1024&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;449&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.10&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1024&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2048&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;26.57&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1024&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2048&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;274&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;0.83&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1024&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3072&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;18.43&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1024&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3072&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;183&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.13&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1024&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4096&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;14.04&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1024&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4096&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;139&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.14&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1024&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5120&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;11.31&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1024&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5120&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;112&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.11&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1024&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;6144&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;9.46&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1024&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;6144&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;95&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;0.04&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1024&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;7168&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;8.13&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1024&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;7168&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;84&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;0.27&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1024&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;8192&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;7.13&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1024&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;8192&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;70&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.13&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2048&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;90.00&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2048&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;899&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.10&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2048&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1024&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;63.43&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2048&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1024&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;633&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.13&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2048&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2048&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;45.00&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2048&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2048&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;449&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.10&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2048&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3072&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;33.69&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2048&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3072&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;336&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.09&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2048&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4096&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;26.57&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2048&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4096&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;274&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;0.83&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2048&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5120&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;21.80&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2048&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5120&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;216&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.20&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2048&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;6144&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;18.43&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2048&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;6144&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;183&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.13&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2048&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;7168&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;15.95&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2048&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;7168&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;159&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.05&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2048&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;8192&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;14.04&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2048&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;8192&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;139&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.14&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3072&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;90.00&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3072&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;899&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.10&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3072&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1024&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;71.57&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3072&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1024&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;724&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;0.83&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3072&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2048&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;56.31&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3072&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2048&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;562&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.11&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3072&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3072&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;45.00&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3072&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3072&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;449&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.10&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3072&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4096&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;36.87&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3072&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4096&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;370&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;0.13&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3072&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5120&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;30.96&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3072&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5120&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;309&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.06&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3072&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;6144&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;26.57&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3072&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;6144&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;274&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;0.83&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3072&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;7168&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;23.20&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3072&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;7168&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;232&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;0.00&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3072&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;8192&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;20.56&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3072&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;8192&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;206&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;0.04&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;4096&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;90.00&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;4096&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;899&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.10&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;4096&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1024&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;75.96&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;4096&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1024&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;759&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.06&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;4096&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2048&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;63.43&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;4096&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2048&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;633&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.13&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;4096&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3072&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;53.13&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;4096&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3072&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;534&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;0.27&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;4096&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4096&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;45.00&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;4096&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4096&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;449&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.10&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;4096&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5120&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;38.66&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;4096&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5120&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;388&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;0.14&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;4096&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;6144&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;33.69&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;4096&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;6144&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;336&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.09&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;4096&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;7168&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;29.74&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;4096&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;7168&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;299&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;0.16&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;4096&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;8192&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;26.57&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;4096&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;8192&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;274&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;0.83&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5120&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;90.00&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5120&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;899&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.10&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5120&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1024&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;78.69&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5120&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1024&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;786&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.09&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5120&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2048&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;68.20&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5120&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2048&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;682&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;0.00&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5120&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3072&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;59.04&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5120&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3072&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;589&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.14&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5120&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4096&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;51.34&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5120&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4096&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;517&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;0.36&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5120&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5120&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;45.00&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5120&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5120&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;449&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.10&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5120&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;6144&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;39.81&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5120&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;6144&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;398&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.01&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5120&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;7168&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;35.54&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5120&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;7168&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;364&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;0.86&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5120&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;8192&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;32.01&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5120&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;8192&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;329&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;0.89&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;6144&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;90.00&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;6144&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;899&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.10&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;6144&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1024&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;80.54&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;6144&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1024&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;814&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;0.86&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;6144&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2048&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;71.57&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;6144&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2048&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;724&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;0.83&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;6144&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3072&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;63.43&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;6144&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3072&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;633&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.13&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;6144&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4096&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;56.31&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;6144&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4096&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;562&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.11&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;6144&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5120&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;50.19&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;6144&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5120&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;502&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;0.01&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;6144&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;6144&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;45.00&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;6144&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;6144&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;449&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.10&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;6144&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;7168&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;40.60&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;6144&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;7168&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;405&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.10&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;6144&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;8192&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;36.87&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;6144&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;8192&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;370&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;0.13&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;7168&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;90.00&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;7168&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;899&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.10&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;7168&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1024&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;81.87&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;7168&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1024&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;820&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;0.13&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;7168&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2048&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;74.05&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;7168&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2048&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;741&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;0.05&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;7168&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3072&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;66.80&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;7168&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3072&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;666&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.20&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;7168&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4096&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;60.26&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;7168&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4096&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;602&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.06&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;7168&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5120&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;54.46&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;7168&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5120&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;545&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;0.04&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;7168&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;6144&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;49.40&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;7168&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;6144&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;493&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.10&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;7168&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;7168&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;45.00&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;7168&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;7168&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;449&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.10&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;7168&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;8192&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;41.19&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;7168&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;8192&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;411&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.09&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;8192&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;90.00&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;8192&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;899&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.10&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;8192&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1024&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;82.87&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;8192&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1024&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;828&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.07&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;8192&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2048&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;75.96&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;8192&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2048&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;759&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.06&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;8192&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3072&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;69.44&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;8192&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3072&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;693&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.14&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;8192&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4096&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;63.43&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;8192&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4096&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;633&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.13&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;8192&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5120&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;57.99&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;8192&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5120&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;581&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;0.11&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;8192&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;6144&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;53.13&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;8192&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;6144&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;534&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;0.27&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;8192&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;7168&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;48.81&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;8192&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;7168&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;489&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;0.09&lt;/span&gt;
-&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;8192&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;8192&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;45.00&lt;/span&gt; &lt;span class="n"&gt;iatan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;8192&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;8192&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;449&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="mf"&gt;0.10&lt;/span&gt;
+&lt;p&gt;Published on 2016-12-30 in &lt;a class="reference internal" href="../../projects/project-7860/#project-7860"&gt;&lt;span class="std std-ref"&gt;Nyan Board&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;So the surprise chip, ATtiny10, arrived, and I started to work on
+programming it. I already have the code for it prepared, and the PCB
+has been ordered a week ago, so I just need to get the code on the
+chip somehow.&lt;/p&gt;
+&lt;p&gt;The ATtiny10 is not like the larger ATtinys – it doesn’t use ISP (aka
+SPI) for programming, but instead uses something called TPI (tiny
+programming interface), which seems to be something like half-duplex
+SPI. When I was upgrading my USBASP programmer, I noticed that the
+firmware has added support for TPI, and that it’s already in AVRdude
+too, so it should be simple, right?\&lt;/p&gt;
+&lt;img alt="projects/project-7860/images/4957611483132384500.jpg" src="projects/project-7860/images/4957611483132384500.jpg" /&gt;
+&lt;p&gt;I soldered the tiny chip to a breakout board (the last row of pins
+uses two pads, because the alignment wasn’t quite right, but the
+connections are good), I connected my programmer according to the
+schematic I found on some Polish blog (good thing I know the language)
+at &lt;a class="reference external" href="http://mirekk36.blogspot.ch/2013/07/attiny10-tpi-usbasp-mkavrcalculator.html"&gt;http://mirekk36.blogspot.ch/2013/07/attiny10-tpi-usbasp-
+mkavrcalculator.html&lt;/a&gt;  and I proceeded to upload the hex file with:&lt;/p&gt;
+&lt;div class="highlight-default notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;avrdude&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="n"&gt;usbasp&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;clone&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="n"&gt;t10&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;U&lt;/span&gt; &lt;span class="n"&gt;flash&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;w&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;hex&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;
 
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;p&gt;\&lt;/p&gt;
+&lt;p&gt;The result? Of course the well known and loved message error:&lt;/p&gt;
+&lt;div class="highlight-default notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;avrdude&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;error&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;program&lt;/span&gt; &lt;span class="n"&gt;enable&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;target&lt;/span&gt; &lt;span class="n"&gt;doesn&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;t answer.&lt;/span&gt;
+&lt;span class="n"&gt;avrdude&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;initialization&lt;/span&gt; &lt;span class="n"&gt;failed&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;rc&lt;/span&gt;&lt;span class="o"&gt;=-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+         &lt;span class="n"&gt;Double&lt;/span&gt; &lt;span class="n"&gt;check&lt;/span&gt; &lt;span class="n"&gt;connections&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="k"&gt;try&lt;/span&gt; &lt;span class="n"&gt;again&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ow"&gt;or&lt;/span&gt; &lt;span class="n"&gt;use&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;F&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;override&lt;/span&gt;
+         &lt;span class="n"&gt;this&lt;/span&gt; &lt;span class="n"&gt;check&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;I tried with different clock speeds, with the “slow clock” jumper, I
+disconnected and reconnected the whole thing several times, I measured
+the resistances. It all checks. Should work. Doesn’t.I even made a side trip to try and program it with a CP2102 USB2TTL,
+which AVRdude apparently can do, but that didn’t work either.&lt;/p&gt;
+&lt;p&gt;So now I’m sitting here after a whole day of trying to program this
+thing, looking at it, and considering giving up.&lt;/p&gt;
+&lt;p&gt;If anybody has any experience with this, or some suggestions for
+things to try, I’m open for ideas.&lt;/p&gt;
 &lt;/section&gt;
 </content>
-    <link href="http://deshipu.art/projects/project-6050/log-50708/" rel="alternate"/>
-    <summary>Published on 2016-12-22 in project-6050.</summary>
-    <published>2016-12-22T00:00:00+01:00</published>
+    <link href="http://deshipu.art/projects/project-7860/log-51040/" rel="alternate"/>
+    <summary>Published on 2016-12-30 in project-7860.</summary>
+    <published>2016-12-30T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-3736/log-51015/</id>
+    <title>The Body</title>
+    <updated>2016-12-30T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="the-body"&gt;
+
+&lt;p&gt;Published on 2016-12-30 in &lt;a class="reference internal" href="../../projects/project-3736/#project-3736"&gt;&lt;span class="std std-ref"&gt;µBob biped robot&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Today I’m continuing the work on resurrecting µBob. I decided to use a
+Pololu SHARP distance sensor (because it can work with 3V), and using
+a bit of hot glue I attached the pins to it, so that I can plug it in
+easily:&lt;/p&gt;
+&lt;img alt="projects/project-3736/images/2270691483094463315.jpg" src="projects/project-3736/images/2270691483094463315.jpg" /&gt;
+&lt;p&gt;On the robot side, I used stacking headers to give some distance from
+the PCB:&lt;/p&gt;
+&lt;img alt="projects/project-3736/images/6941621483094620260.jpg" src="projects/project-3736/images/6941621483094620260.jpg" /&gt;
+&lt;p&gt;Next, to make sure it will walk in this configuration, a quick test:&lt;/p&gt;
+&lt;iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/YhO5LxJPn1U"&gt;&lt;/iframe&gt;
+&lt;p&gt;Then I worked on the body frame. I decided to use paperclips this
+time. Turns out you can solder them, so I bent them and soldered them
+into the holes in the PCB:&lt;/p&gt;
+&lt;img alt="projects/project-3736/images/5372171483094728658.jpg" src="projects/project-3736/images/5372171483094728658.jpg" /&gt;
+&lt;p&gt;A little bit of hot glue, and the hat is back on:&lt;/p&gt;
+&lt;img alt="projects/project-3736/images/3258031483094773549.jpg" src="projects/project-3736/images/3258031483094773549.jpg" /&gt;
+&lt;p&gt;Finally, I also transplanted the old mustache.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-3736/log-51015/" rel="alternate"/>
+    <summary>Published on 2016-12-30 in project-3736.</summary>
+    <published>2016-12-30T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-7860/log-51067/</id>
+    <title>ATtiny10 Working</title>
+    <updated>2016-12-31T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="attiny10-working"&gt;
+
+&lt;p&gt;Published on 2016-12-31 in &lt;a class="reference internal" href="../../projects/project-7860/#project-7860"&gt;&lt;span class="std std-ref"&gt;Nyan Board&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;As soon as I posted the last log, I realized what the problem was. The
+TPICLK wire was loose all this time. After fixing that, programming
+with AVRdude and USBASP went without any problems, and I could test my
+music-playing code.&lt;/p&gt;
+&lt;p&gt;Of course it didn’t work properly at first. I had to change the timer
+initialization a little, use a different prescaler and adjust the
+octave. I also decided to run the timer at a higher frequency, because
+it’s a 16-bit timer, so I can get better accuracy this way – so I’m
+actually shifting the counts for the tones right a few bits.&lt;/p&gt;
+&lt;p&gt;But I still got some very weird glitches here and there, and I
+couldn’t quite see the problem, until I realized that they happen
+randomly, but only when a higher frequency sound goes after a lower
+frequency. Finally I realized, that when I’m changing the timer’s
+match register, I’m not resetting the counter – so if the counter is
+already past the point to which I’m setting the register, it will go
+all the way up to the full 16 bits before it resets. That also
+happened with the 8-bit counters on the other chips, but it wasn’t so
+visible, because the distortion was very small. With a larger timer it
+became much easier to hear. A fix is trivial – just reset the
+counter.\&lt;/p&gt;
+&lt;p&gt;And that extra code for resetting the counter took me exactly to 500
+bytes of compiled code:&lt;/p&gt;
+&lt;div class="highlight-default notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;AVR&lt;/span&gt; &lt;span class="n"&gt;Memory&lt;/span&gt; &lt;span class="n"&gt;Usage&lt;/span&gt;
+&lt;span class="o"&gt;----------------&lt;/span&gt;
+&lt;span class="n"&gt;Device&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;attiny10&lt;/span&gt;
+
+&lt;span class="n"&gt;Program&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;     &lt;span class="mi"&gt;500&lt;/span&gt; &lt;span class="nb"&gt;bytes&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;48.8&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;Full&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;bootloader&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;Data&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;          &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="nb"&gt;bytes&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;0.0&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;Full&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;bss&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;noinit&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;I guess I could put more songs in there…&lt;/p&gt;
+&lt;p&gt;In any case, now I’m just waiting for the PCBs to arrive. In
+retrospect, I could have made those new PCBs even smaller than
+currently – with the puny ATtiny10 and a single resistor they are
+almost empty. But the piezo speaker takes some room, so I guess this
+size is fine.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-7860/log-51067/" rel="alternate"/>
+    <summary>Published on 2016-12-31 in project-7860.</summary>
+    <published>2016-12-31T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-3736/log-51068/</id>
+    <title>Distance Sensor</title>
+    <updated>2016-12-31T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="distance-sensor"&gt;
+
+&lt;p&gt;Published on 2016-12-31 in &lt;a class="reference internal" href="../../projects/project-3736/#project-3736"&gt;&lt;span class="std std-ref"&gt;µBob biped robot&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;For the first time µBob has a working distance sensor on board (you
+might recall I tried to give it a distance sensor earlier, but it
+didn’t work). So let’s make use of it.&lt;/p&gt;
+&lt;p&gt;The sensor I’m using is a SHARP GP2Y0A60SZLF on a breakout board from
+Pololu. It’s an analog sensor, which is good, because I can use only a
+single pin for it. All I have to do is get the ADC to work. A bit of
+googling for examples, and a little bit of cross-checking with the
+datasheet, and I had the basic procedure:\&lt;/p&gt;
+&lt;div class="highlight-cpp notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;ADCSRA&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;ADEN&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;ADPS2&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;ADPS1&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;ADPS0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;// Pre-scaler 64.&lt;/span&gt;
+&lt;span class="n"&gt;ADMUX&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;ADLAR&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;REFS1&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;REFS0&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;pin&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mh"&gt;0x03&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="n"&gt;ADCSRA&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;|=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;ADSC&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="k"&gt;while&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ADCSRA&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;ADSC&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="c1"&gt;// Pass.&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="k"&gt;return&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;ADCH&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;ADCL&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;However, that didn’t work. I spent half a day trying to figure out why
+it would keep returning the same number all the time, changing only on
+reset. Everything was exactly the same as in the datasheet, the
+examples, even the Arduino cores that I checked. What did I miss?
+After asking around a bit on IRC and robotics forums, someone pointed
+out to me that the order in which you read ADCH and ADCL is important
+– there is a latch there, that makes sure the values won’t change in
+the middle of your reading. Sure enough, I had the order wrong. The
+fix is very simple – I can defer to the compiler to do the right
+thing by just doing:&lt;/p&gt;
+&lt;div class="highlight-cpp notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;return&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;ADC&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;That’s it. Suddenly I started getting changing values, as expected.
+However, the changes still weren’t in any way correlated with the
+voltage on the pin… Back to the drawing board. Four re-readings of
+the datasheet later I just tried the same program on a different chip,
+and it worked fine. Turns out the ATtiny85 that I have soldered to a
+breakout board some 2 years ago and used since for all sorts of
+uncanny experiments must have gotten the ADC broken somehow –
+possibly by applying higher voltage than it should get.&lt;/p&gt;
+&lt;p&gt;In any case, the next step is checking the range of the sensor. I
+don’t have any way to display the readings from the robot (and I want
+to check the readings in the robot, not on a separate circuit, because
+the voltages would be different), so I wrote a simple program that
+basically moves a servo depending on the value read from the sensor.
+Since I know the servo’s range, I can guess what the reading was.&lt;/p&gt;
+&lt;p&gt;That worked pretty well, now I just need to fine-tune the walking
+algorithm to make the robot go straight, add some animations for
+turning and going backwards, and make a simple state machine switching
+between those animations depending on the sensor readings. Should fit
+in the ~400 bytes of program space I have left.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-3736/log-51068/" rel="alternate"/>
+    <summary>Published on 2016-12-31 in project-3736.</summary>
+    <published>2016-12-31T00:00:00+01:00</published>
   </entry>
 </feed>

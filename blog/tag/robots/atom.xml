@@ -2,10 +2,227 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posts tagged robots</title>
-  <updated>2024-08-07T20:12:49.168456+00:00</updated>
+  <updated>2024-08-07T20:27:29.767211+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/tag/robots/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-3300/</id>
+    <title>µKubik quadruped robot</title>
+    <updated>2014-11-02T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="kubik-quadruped-robot"&gt;
+
+&lt;p&gt;Cheap and simple tabletop quadruped robot controlled with Python.&lt;/p&gt;
+&lt;div class="project-thumb"&gt;
+&lt;a class="reference external image-reference" href="/_images/1206291414960240002.jpg"&gt;&lt;img alt="projects/project-3300/images/1206291414960240002.jpg" src="projects/project-3300/images/1206291414960240002.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/1430461414960252484.jpg"&gt;&lt;img alt="projects/project-3300/images/1430461414960252484.jpg" src="projects/project-3300/images/1430461414960252484.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/5106921414960413902.jpg"&gt;&lt;img alt="projects/project-3300/images/5106921414960413902.jpg" src="projects/project-3300/images/5106921414960413902.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/6811941414960573602.jpg"&gt;&lt;img alt="projects/project-3300/images/6811941414960573602.jpg" src="projects/project-3300/images/6811941414960573602.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/3256351414960581097.jpg"&gt;&lt;img alt="projects/project-3300/images/3256351414960581097.jpg" src="projects/project-3300/images/3256351414960581097.jpg" /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;I consider this project more or less complete hardware-wise. I might
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;add a sensor or two more if I can fit them inside… It uses an old
+iPod Nano box for the body, but you can use pretty much anything: a
+pill box, a plastic jar, even just a piece of a PCB. All the parts
+together cost me around $75.&lt;/p&gt;
+&lt;p&gt;Software-wise, I have the creep and trot gaits working, and I have a
+program that lets me control it with a gamepad. I’m working on more
+interesting behaviors.&lt;/p&gt;
+&lt;section id="logs"&gt;
+&lt;h2&gt;Logs&lt;/h2&gt;
+&lt;ul class="postlist-style-none postlist simple"&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-05-29 - &lt;a class="reference internal" href="../../../projects/project-3300/log-18662/"&gt;Sensing the Servo Position&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-05-29 - &lt;a class="reference internal" href="../../../projects/project-3300/log-18666/"&gt;Sensing the Servo Force&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-05-28 - &lt;a class="reference internal" href="../../../projects/project-3300/log-18609/"&gt;Family Grows&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-05-08 - &lt;a class="reference internal" href="../../../projects/project-3300/log-17553/"&gt;Tote, µKubik’s younger brother&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-04-17 - &lt;a class="reference internal" href="../../../projects/project-3300/log-16640/"&gt;Force Sensing&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-03-19 - &lt;a class="reference internal" href="../../../projects/project-3300/log-15430/"&gt;Younger Brother&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-01-03 - &lt;a class="reference internal" href="../../../projects/project-3300/log-12504/"&gt;Follow Me!&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2014-12-23 - &lt;a class="reference internal" href="../../../projects/project-3300/log-12121/"&gt;One More Sensor&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2014-11-02 - &lt;a class="reference internal" href="../../../projects/project-3300/log-10846/"&gt;Walking around the desk&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2014-11-02 - &lt;a class="reference internal" href="../../../projects/project-3300/log-10851/"&gt;Size does matter&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section id="instructions"&gt;
+&lt;h2&gt;Instructions&lt;/h2&gt;
+&lt;/section&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-3300/" rel="alternate"/>
+    <summary>Cheap and simple tabletop quadruped robot controlled with Python.</summary>
+    <category term="ROBOT" label="ROBOT"/>
+    <category term="WALKING" label="WALKING"/>
+    <category term="arduino" label="arduino"/>
+    <category term="bluetooth" label="bluetooth"/>
+    <category term="ongoingproject" label="ongoing project"/>
+    <category term="quadruped" label="quadruped"/>
+    <category term="robots" label="robots"/>
+    <published>2014-11-02T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-3694/</id>
+    <title>Henk the Hexapod</title>
+    <updated>2014-12-27T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="henk-the-hexapod"&gt;
+
+&lt;p&gt;Scrapped. See Hexapod Henk MkII.&lt;/p&gt;
+&lt;div class="project-thumb"&gt;
+&lt;a class="reference external image-reference" href="/_images/833131419680850053.jpg"&gt;&lt;img alt="projects/project-3694/images/833131419680850053.jpg" src="projects/project-3694/images/833131419680850053.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/2509901419695103643.jpg"&gt;&lt;img alt="projects/project-3694/images/2509901419695103643.jpg" src="projects/project-3694/images/2509901419695103643.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/4448331419715879947.jpg"&gt;&lt;img alt="projects/project-3694/images/4448331419715879947.jpg" src="projects/project-3694/images/4448331419715879947.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/7383831419715890648.jpg"&gt;&lt;img alt="projects/project-3694/images/7383831419715890648.jpg" src="projects/project-3694/images/7383831419715890648.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/9896351455367427237.jpg"&gt;&lt;img alt="projects/project-3694/images/9896351455367427237.jpg" src="projects/project-3694/images/9896351455367427237.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/8702241455375720540.jpg"&gt;&lt;img alt="projects/project-3694/images/8702241455375720540.jpg" src="projects/project-3694/images/8702241455375720540.jpg" /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;This project waited on the shelf for so long, that I decided to scrap
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;it and rebuild into &lt;span class="xref std std-ref"&gt;project-10534&lt;/span&gt; . Go there for the latest news on the project. This project is kept
+for archive.&lt;/p&gt;
+&lt;p&gt;The legs are arranged in a circle, every 60°. The alternative was to
+have them in two rows, but they seemed to be too close together that
+way.\&lt;/p&gt;
+&lt;img alt="projects/project-3694/images/8558731419716704333.jpg" src="projects/project-3694/images/8558731419716704333.jpg" /&gt;
+&lt;p&gt;The power switch has a couple of 47kΩ resistors added to it, which
+form a voltage divider, connected to an analog pin. This way I can
+tell the battery voltage, and monitor it. Since the analog pin also
+doubles as DAC pin, I had to remove the speaker. It’s a bit of a
+shame, but it was too quiet anyways. I might add a proper audio board
+in the future, if really needed (or monitor the voltage differently).&lt;/p&gt;
+&lt;section id="logs"&gt;
+&lt;h2&gt;Logs&lt;/h2&gt;
+&lt;ul class="postlist-style-none postlist simple"&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-03-25 - &lt;a class="reference internal" href="../../../projects/project-3694/log-34527/"&gt;Henk MkII&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-02-14 - &lt;a class="reference internal" href="../../../projects/project-3694/log-31885/"&gt;Up Side Down&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-02-13 - &lt;a class="reference internal" href="../../../projects/project-3694/log-31843/"&gt;Brain Surgery&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2014-12-29 - &lt;a class="reference internal" href="../../../projects/project-3694/log-12251/"&gt;Moving a Leg and Making Sounds&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2014-12-27 - &lt;a class="reference internal" href="../../../projects/project-3694/log-12194/"&gt;Ready to Program&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section id="instructions"&gt;
+&lt;h2&gt;Instructions&lt;/h2&gt;
+&lt;/section&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-3694/" rel="alternate"/>
+    <summary>Scrapped. See Hexapod Henk MkII.</summary>
+    <category term="ROBOT" label="ROBOT"/>
+    <category term="Robotics" label="Robotics"/>
+    <category term="WALKING" label="WALKING"/>
+    <category term="hardware" label="hardware"/>
+    <category term="hexpod" label="hexpod"/>
+    <category term="micropython" label="micropython"/>
+    <category term="pyboard" label="pyboard"/>
+    <category term="robots" label="robots"/>
+    <category term="scrappedproject" label="scrapped project"/>
+    <published>2014-12-27T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-3736/</id>
+    <title>µBob biped robot</title>
+    <updated>2015-01-01T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="bob-biped-robot"&gt;
+
+&lt;p&gt;Two legs, four servos, ATtiny85 for brains&lt;/p&gt;
+&lt;div class="project-thumb"&gt;
+&lt;a class="reference external image-reference" href="/_images/5685391421358370717.jpg"&gt;&lt;img alt="projects/project-3736/images/5685391421358370717.jpg" src="projects/project-3736/images/5685391421358370717.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/5449001420123675649.jpg"&gt;&lt;img alt="projects/project-3736/images/5449001420123675649.jpg" src="projects/project-3736/images/5449001420123675649.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/5670041421322416717.jpg"&gt;&lt;img alt="projects/project-3736/images/5670041421322416717.jpg" src="projects/project-3736/images/5670041421322416717.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/1724701420123661569.jpg"&gt;&lt;img alt="projects/project-3736/images/1724701420123661569.jpg" src="projects/project-3736/images/1724701420123661569.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/9991401483094820639.jpg"&gt;&lt;img alt="projects/project-3736/images/9991401483094820639.jpg" src="projects/project-3736/images/9991401483094820639.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/9774881483280152600.jpg"&gt;&lt;img alt="projects/project-3736/images/9774881483280152600.jpg" src="projects/project-3736/images/9774881483280152600.jpg" /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;This is a tiny, minimalist version of a popular biped robot design. I
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;used tiny hobby servos, a very small lipo battery, a SHARP distance
+sensor and an ATtiny85 (previous version used an ESP8266 module).&lt;/p&gt;
+&lt;iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="" src="https://www.youtube.com/embed/S6yyWpflXrM"&gt;&lt;/iframe&gt;
+&lt;section id="logs"&gt;
+&lt;h2&gt;Logs&lt;/h2&gt;
+&lt;ul class="postlist-style-none postlist simple"&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-01-01 - &lt;a class="reference internal" href="../../../projects/project-3736/log-51106/"&gt;Obstacle Avoidance&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-12-31 - &lt;a class="reference internal" href="../../../projects/project-3736/log-51068/"&gt;Distance Sensor&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-12-30 - &lt;a class="reference internal" href="../../../projects/project-3736/log-51015/"&gt;The Body&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-12-29 - &lt;a class="reference internal" href="../../../projects/project-3736/log-50993/"&gt;Ressurection&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-08-13 - &lt;a class="reference internal" href="../../../projects/project-3736/log-22677/"&gt;ESP8266 Servo Breakout Board&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-06-25 - &lt;a class="reference internal" href="../../../projects/project-3736/log-19974/"&gt;Second Try on the Sensor&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-06-05 - &lt;a class="reference internal" href="../../../projects/project-3736/log-19069/"&gt;RIP ESP-12&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-06-04 - &lt;a class="reference internal" href="../../../projects/project-3736/log-18996/"&gt;Second Chance&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-06-04 - &lt;a class="reference internal" href="../../../projects/project-3736/log-18989/"&gt;PCB Fun&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-04-17 - &lt;a class="reference internal" href="../../../projects/project-3736/log-16612/"&gt;Not Feeling Well&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-01-21 - &lt;a class="reference internal" href="../../../projects/project-3736/log-13189/"&gt;My First PCB&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-01-18 - &lt;a class="reference internal" href="../../../projects/project-3736/log-13014/"&gt;Schematic&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-01-16 - &lt;a class="reference internal" href="../../../projects/project-3736/log-12970/"&gt;Onward!&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-01-15 - &lt;a class="reference internal" href="../../../projects/project-3736/log-12945/"&gt;Began Coding&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section id="instructions"&gt;
+&lt;h2&gt;Instructions&lt;/h2&gt;
+&lt;p&gt;You can add a hat, a mustache, some wire hands, perhaps a pipe or a
+monocle, etc. The battery is attached to the frame with some two-sided
+tape.&lt;/p&gt;
+&lt;hr class="docutils" /&gt;
+&lt;p&gt;First, you will need a PCB. There is a Fritzing file in the
+repository, which you can use to generate the gerbers and order it,
+and here is an OSHPark order you can use: &lt;a class="reference external" href="https://oshpark.com/shared_projects/qjZ6fhAS"&gt;https://oshpark.com/shared_projects/qjZ6fhAS&lt;/a&gt;&lt;/p&gt;
+&lt;img alt="projects/project-3736/images/2673271483283190712.png" src="projects/project-3736/images/2673271483283190712.png" /&gt;
+&lt;hr class="docutils" /&gt;
+&lt;p&gt;Once the PCBs arrive, you have to cut all the excess pieces, and
+polish the resulting irregularities. Depending on the servos you have,
+you might also need to file the PCB a bit to make them fit well. My
+servos fit exactly right, with some force, but you never know.&lt;/p&gt;
+&lt;img alt="projects/project-3736/images/3487221483283523271.jpg" src="projects/project-3736/images/3487221483283523271.jpg" /&gt;
+&lt;hr class="docutils" /&gt;
+&lt;p&gt;Assemble the PCB – solder the switch, the power socket, the servo
+sockets, the chip. Make sure to put two of the servo sockets on one
+side, and two on the other side – so that you don’t have to move
+wires through the PCB.&lt;/p&gt;
+&lt;img alt="projects/project-3736/images/3775531483283668599.jpg" src="projects/project-3736/images/3775531483283668599.jpg" /&gt;
+&lt;p&gt;\&lt;/p&gt;
+&lt;hr class="docutils" /&gt;
+&lt;p&gt;Before you attach the servos, program the chip using a programming
+clip. You will need to remove and disconnect the servos each time you
+are reprogramming it.&lt;/p&gt;
+&lt;hr class="docutils" /&gt;
+&lt;p&gt;Assemble the legs. To make knees, take two servo horns, heat them with
+a lighter, and press them together – they will fuse. Make sure you
+make something like this:&lt;/p&gt;
+&lt;img alt="projects/project-3736/images/2097181483283833852.jpg" src="projects/project-3736/images/2097181483283833852.jpg" /&gt;
+&lt;hr class="docutils" /&gt;
+&lt;p&gt;The feet are cut out from a piece of plastic and simply glued to the
+leg servos.&lt;/p&gt;
+&lt;hr class="docutils" /&gt;
+&lt;p&gt;For the distance sensor, use hot-glue to add a 3-pin header to the
+bottom:&lt;/p&gt;
+&lt;img alt="projects/project-3736/images/9233441483283923534.jpg" src="projects/project-3736/images/9233441483283923534.jpg" /&gt;
+&lt;p&gt;And connect those pins with short wires to the sensor’s contacts.&lt;/p&gt;
+&lt;hr class="docutils" /&gt;
+&lt;p&gt;Then use a stacking header to attach the sensor to the PCB:&lt;/p&gt;
+&lt;img alt="projects/project-3736/images/8898621483283999151.jpg" src="projects/project-3736/images/8898621483283999151.jpg" /&gt;
+&lt;hr class="docutils" /&gt;
+&lt;p&gt;For the body frame, bend some paper clips and solder them into the
+holes in the corners of the PCB:&lt;/p&gt;
+&lt;img alt="projects/project-3736/images/3962861483284053483.jpg" src="projects/project-3736/images/3962861483284053483.jpg" /&gt;
+&lt;/section&gt;
+&lt;hr class="docutils" /&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-3736/" rel="alternate"/>
+    <summary>Two legs, four servos, ATtiny85 for brains</summary>
+    <category term="ESP8266" label="ESP8266"/>
+    <category term="LUA" label="LUA"/>
+    <category term="ROBOT" label="ROBOT"/>
+    <category term="WALKING" label="WALKING"/>
+    <category term="biped" label="biped"/>
+    <category term="bob" label="bob"/>
+    <category term="hardware" label="hardware"/>
+    <category term="ongoingproject" label="ongoing project"/>
+    <category term="robots" label="robots"/>
+    <published>2015-01-01T00:00:00+01:00</published>
+  </entry>
   <entry>
     <id>http://deshipu.art/projects/project-6050/</id>
     <title>Tote</title>
@@ -14,12 +231,12 @@
 
 &lt;p&gt;Affordable spider robot&lt;/p&gt;
 &lt;div class="project-thumb"&gt;
-&lt;a class="reference external image-reference" href="/_images/8993911478722904690.jpg"&gt;&lt;img alt="../../../_images/8993911478722904690.jpg" src="../../../_images/8993911478722904690.jpg" /&gt;&lt;/a&gt;
-&lt;a class="reference external image-reference" href="/_images/7315931433077594582.jpg"&gt;&lt;img alt="../../../_images/7315931433077594582.jpg" src="../../../_images/7315931433077594582.jpg" /&gt;&lt;/a&gt;
-&lt;a class="reference external image-reference" href="/_images/456541448136439556.jpg"&gt;&lt;img alt="../../../_images/456541448136439556.jpg" src="../../../_images/456541448136439556.jpg" /&gt;&lt;/a&gt;
-&lt;a class="reference external image-reference" href="/_images/6897111441364634311.jpg"&gt;&lt;img alt="../../../_images/6897111441364634311.jpg" src="../../../_images/6897111441364634311.jpg" /&gt;&lt;/a&gt;
-&lt;a class="reference external image-reference" href="/_images/3394331478778433037.jpg"&gt;&lt;img alt="../../../_images/3394331478778433037.jpg" src="../../../_images/3394331478778433037.jpg" /&gt;&lt;/a&gt;
-&lt;a class="reference external image-reference" href="/_images/1163581449089331686.jpg"&gt;&lt;img alt="../../../_images/1163581449089331686.jpg" src="../../../_images/1163581449089331686.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/8993911478722904690.jpg"&gt;&lt;img alt="projects/project-6050/images/8993911478722904690.jpg" src="projects/project-6050/images/8993911478722904690.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/7315931433077594582.jpg"&gt;&lt;img alt="projects/project-6050/images/7315931433077594582.jpg" src="projects/project-6050/images/7315931433077594582.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/456541448136439556.jpg"&gt;&lt;img alt="projects/project-6050/images/456541448136439556.jpg" src="projects/project-6050/images/456541448136439556.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/6897111441364634311.jpg"&gt;&lt;img alt="projects/project-6050/images/6897111441364634311.jpg" src="projects/project-6050/images/6897111441364634311.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/3394331478778433037.jpg"&gt;&lt;img alt="projects/project-6050/images/3394331478778433037.jpg" src="projects/project-6050/images/3394331478778433037.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/1163581449089331686.jpg"&gt;&lt;img alt="projects/project-6050/images/1163581449089331686.jpg" src="projects/project-6050/images/1163581449089331686.jpg" /&gt;&lt;/a&gt;
 &lt;/div&gt;
 &lt;iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="" src="https://www.youtube.com/embed/XXotn-8DPQo"&gt;&lt;/iframe&gt;
 &lt;p&gt;Where are my robots? It’s already 15 years into the twenty-first
@@ -119,5 +336,64 @@ a base for experimenting with robot gaits and related problems.&lt;/p&gt;
     <category term="quadruped" label="quadruped"/>
     <category term="robots" label="robots"/>
     <published>2015-05-31T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-6321/</id>
+    <title>Katka, a mammalian robot</title>
+    <updated>2015-06-15T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="katka-a-mammalian-robot"&gt;
+
+&lt;p&gt;A small walking robot with a mammal-like configuration of legs.&lt;/p&gt;
+&lt;div class="project-thumb"&gt;
+&lt;a class="reference external image-reference" href="/_images/226891435314260622.jpg"&gt;&lt;img alt="projects/project-6321/images/226891435314260622.jpg" src="projects/project-6321/images/226891435314260622.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/8326261434400096795.jpg"&gt;&lt;img alt="projects/project-6321/images/8326261434400096795.jpg" src="projects/project-6321/images/8326261434400096795.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/6178521435314253175.jpg"&gt;&lt;img alt="projects/project-6321/images/6178521435314253175.jpg" src="projects/project-6321/images/6178521435314253175.jpg" /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;This is one of my early experiments at building a cheap quadruped.
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Since there are a lot of servomechanisms in such a robot, even when
+they are relatively cheap, they comprise a large part of the total
+price. So reducing the number of servos is an obvious way of reducing
+the price.&lt;/p&gt;
+&lt;p&gt;However, it’s almost impossible to have proper inverse kinematics with
+a robot in a spider/lizard configuration with only two degrees of
+freedom per leg. Fortunately, in the mammal configuration, when both
+degrees of freedom move the leg in the same plane, it’s possible to
+have two-dimensional inverse kinematics, and that’s what this robot
+does.&lt;/p&gt;
+&lt;p&gt;It can move its center of mass, and it can move its legs backwards in
+a straight line, and then raise them and move them forward. That is
+enough for implementing a proper statically stable “creep” gait.
+Unfortunately, it’s not enough for implementing proper turning. In
+order to turn, this robot works like a tank, by making the steps on
+one side shorter than on the other (or even reversing the direction).
+This is sub-optimal, as it leads to slippage and unpredictability, but
+that’s the best I could do without adding at least one servo and
+rebuilding the robot completely.&lt;/p&gt;
+&lt;iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="" src="https://www.youtube.com/embed/MJjPAcgxrWs"&gt;&lt;/iframe&gt;
+&lt;section id="logs"&gt;
+&lt;h2&gt;Logs&lt;/h2&gt;
+&lt;ul class="postlist-style-none postlist simple"&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-07-01 - &lt;a class="reference internal" href="../../../projects/project-6321/log-20293/"&gt;Spider Mode&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-06-26 - &lt;a class="reference internal" href="../../../projects/project-6321/log-20012/"&gt;Reworked Electronics&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-06-24 - &lt;a class="reference internal" href="../../../projects/project-6321/log-19942/"&gt;Walking Details&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section id="instructions"&gt;
+&lt;h2&gt;Instructions&lt;/h2&gt;
+&lt;/section&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-6321/" rel="alternate"/>
+    <summary>A small walking robot with a mammal-like configuration of legs.</summary>
+    <category term="ROBOT" label="ROBOT"/>
+    <category term="WALKING" label="WALKING"/>
+    <category term="arduino" label="arduino"/>
+    <category term="completedproject" label="completed project"/>
+    <category term="hardware" label="hardware"/>
+    <category term="quadruped" label="quadruped"/>
+    <category term="robots" label="robots"/>
+    <published>2015-06-15T00:00:00+02:00</published>
   </entry>
 </feed>

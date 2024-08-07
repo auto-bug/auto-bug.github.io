@@ -1,0 +1,31 @@
+---
+blogpost: true
+date: 2015-01-06
+category: project-3301
+---
+
+# Autonomous Walk
+Published on 2015-01-06 in {ref}`project-3301`.
+
+Camera and battery problems aside, I finally got this little fellow to
+walk on its own, without a cable connecting it to the computer. It
+still uses the serial interface to talk with an Arduino Pro Mini,
+which is its spinal cord, but this time the signal comes from the
+VoCore board mounted under its belly.
+
+
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="" src="https://www.youtube.com/embed/XHKIPd-WXu0"></iframe>
+
+As you can see, it's far from perfect. There are a lot of spasms,
+which I suspect come from noise on the serial line (although they are
+suspiciously regular). I will try lowering the baud rate of the
+connection next, to see if that goes away.
+
+I also have some progress on the camera front. Turns out that an older
+version of mjpeg-streamer doesn't segfault in the YUV mode, so I'm
+going to use that. Unfortunately, the battery accident left me without
+a working camera, so I'm waiting for a new batch of them to arrive (I
+get them cheap from junk laptops). In the mean time I made a proper
+plug for the camera module, so that, hopefully, I will break fewer.\
+
+

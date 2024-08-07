@@ -1,0 +1,37 @@
+---
+blogpost: true
+date: 2015-05-29
+category: project-3300
+---
+
+# Sensing the Servo Position
+Published on 2015-05-29 in {ref}`project-3300`.
+
+So I finally came around to testing this setup. A 9g hobby servo, with
+an additional cable hooked up to the middle pin of its pot, and
+connected to an analog pin on the arduino. Voila, now we can sense the
+position of the servo. Kinda.
+
+Turns out that even with a lot of small capacitors all over the place,
+and software smoothing of the signal, I still can't get more precise
+than about 2°. Which is actually quite nice already if the only thing
+you need is to tell if your servo "got there" already.
+
+But I wanted much more. In particular, I wanted to be able to tell the
+magnitude and direction of the force working against the servo. Then I
+would be able to tell if the leg is supporting the robot's weight at
+the moment (and hence wasn't put in the abyss beyond the table), or
+even implement compliant motion, like in this video:
+
+
+<iframe width="500" height="281" frameborder="0" allowfullscreen="" src="https://www.youtube.com/embed/AMVO6rI5mL4"></iframe>
+
+
+
+Alas, turns out that it's not so simple. The pot measures the servo's
+position quite well when it's unloaded. but as soon as you put any
+load on the servo, the reading is going up -- and that's no matter in
+what direction you apply the load. That's not so good, and I think it
+may have somethig to do with voltage drop on a loaded servo. I will
+need more experiments.
+

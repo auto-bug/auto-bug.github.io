@@ -1,0 +1,24 @@
+---
+blogpost: true
+date: 2016-11-23
+category: project-7860
+---
+
+# Efficient Tone
+Published on 2016-11-23 in {ref}`project-7860`.
+
+One change that I will need to do this time will be to completely
+rewrite the tone-generating function. Originally, I just used whatever
+was available in the Arduino core that I used -- and that turns out to
+be quite a bit of code. Way over the 1k limit.
+
+But hey, generating a PWM signal at a specified frequency while the
+microcontroller doesn't have anything else to do is not rocket
+science, right? Even if I completely fail to understand the timers, in
+the worst case I can just have a bunch of empty loops spinning there,
+busy-waiting for the right moment to flip the pin.
+
+I didn't have much time today to do any actual experiments with the
+ATtiny85, but I did find an interesting article about a technique,
+that will maybe let me do a much better thing than a square wave: [http://www.technoblogy.com/show?QVN](http://www.technoblogy.com/show?QVN) 
+

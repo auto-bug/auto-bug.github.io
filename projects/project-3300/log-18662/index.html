@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Sensing the Servo Position - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="sensing-the-servo-position">
+<h1>Sensing the Servo Position<a class="headerlink" href="#sensing-the-servo-position" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2015-05-29 in <a class="reference internal" href="../#project-3300"><span class="std std-ref">µKubik quadruped robot</span></a>.</p>
+<p>So I finally came around to testing this setup. A 9g hobby servo, with
+an additional cable hooked up to the middle pin of its pot, and
+connected to an analog pin on the arduino. Voila, now we can sense the
+position of the servo. Kinda.</p>
+<p>Turns out that even with a lot of small capacitors all over the place,
+and software smoothing of the signal, I still can’t get more precise
+than about 2°. Which is actually quite nice already if the only thing
+you need is to tell if your servo “got there” already.</p>
+<p>But I wanted much more. In particular, I wanted to be able to tell the
+magnitude and direction of the force working against the servo. Then I
+would be able to tell if the leg is supporting the robot’s weight at
+the moment (and hence wasn’t put in the abyss beyond the table), or
+even implement compliant motion, like in this video:</p>
+<iframe width="500" height="281" frameborder="0" allowfullscreen="" src="https://www.youtube.com/embed/AMVO6rI5mL4"></iframe>
+<p>Alas, turns out that it’s not so simple. The pot measures the servo’s
+position quite well when it’s unloaded. but as soon as you put any
+load on the servo, the reading is going up – and that’s no matter in
+what direction you apply the load. That’s not so good, and I think it
+may have somethig to do with voltage drop on a loaded servo. I will
+need more experiments.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

@@ -1,0 +1,178 @@
+---
+blogpost: true
+date: 2015-09-27
+category: project
+tags:  atmel, hardware, nyan cat, arduino, completed project, attiny
+image: 1
+---
+
+# Nyan Board
+
+A small ATtiny85 board playing the Nyan Cat tune.
+
+<div class="project-thumb">
+
+:::{image} images/1866961443356063710.png
+:target: /_images/1866961443356063710.png
+:::
+
+:::{image} images/2776431445590942205.jpg
+:target: /_images/2776431445590942205.jpg
+:::
+
+:::{image} images/4626181445593540149.jpg
+:target: /_images/4626181445593540149.jpg
+:::
+
+:::{image} images/960051445598257399.jpg
+:target: /_images/960051445598257399.jpg
+:::
+
+:::{image} images/3272621445675770492.jpg
+:target: /_images/3272621445675770492.jpg
+:::
+
+:::{image} images/8787551480673398340.jpg
+:target: /_images/8787551480673398340.jpg
+:::
+
+</div>
+
+
+    
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="" src="https://www.youtube.com/embed/XDQEJe-PwHs"></iframe>
+
+
+
+
+
+## Logs
+
+:::{postlist}
+:category: project-7860
+:::
+
+## Instructions
+
+
+
+Separate a single cat from the rest of the board. You can use a rotary
+tool, a scroll saw, a hand saw or a file. For best effect, round off
+the edges.
+
+
+:::{image} images/6782841445675901847.jpg
+
+:::
+
+
+
+---
+
+
+If it's a cat with holes for the eyes, you need to get rid of the
+metallic layer inside the holes. Cut it with a knife until there is no
+electrical connection between the pads of the LED.
+
+
+:::{image} images/9676331445676133120.jpg
+
+:::
+
+
+
+---
+
+
+Solder all the parts onto the board. Also solder an additional wire
+for the reset.
+
+
+:::{image} images/6671441445676197796.jpg
+
+:::
+Pay attention to the polarization of the LEDs.
+
+
+---
+
+
+Connect your programmer. I use USBASP, but there is a number of
+different programmers that you can use, including an Arduino.
+
+
+:::{image} images/8122851445676305092.jpg
+
+:::
+
+
+
+---
+
+
+Follow this tutorial to setup your [Arduino IDE](http://highlowtech.org/?p=1695) . You may need to run it as root. Use this arduino core: [https://code.google.com/p/arduino-tiny/](https://code.google.com/p/arduino-tiny/) 
+
+
+---
+
+
+Upload the following code:
+
+
+```cpp
+const int BEEP_PIN = 4;
+const int LED_PIN = 3;
+
+const int LENGTH = 27;
+const int NOTES[] = {
+    65, 67, 70, 67, 74, 74, 72, 65, 67, 70, 67, 72, 72, 70, 69, 67, 65, 67, 70,
+    67, 70, 72, 69, 65, 65, 72, 70
+};
+const float DURATIONS[] = {
+    0.25, 0.25, 0.25, 0.25, 0.75, 0.75, 1.5, 0.25, 0.25, 0.25, 0.25, 0.75,
+    0.75, 0.75, 0.25, 0.5, 0.25, 0.25, 0.25, 0.25, 1.0, 0.5, 0.75, 0.25,
+    1.0, 0.5, 1.0, 2.0
+};
+const int BPM = 120;
+
+
+void play(const int notes[], const float durations[], int bpm, int length) {
+    float bps = (60.0 / BPM) * 1000.0;
+    for (int i = 0; i < length; ++i) {
+        int hertz = (int) (pow(2.0, ((notes[i] - 69.0) / 12.0)) * 440);
+        tone(BEEP_PIN, hertz, (long) (durations[i] * bps) - 10);
+        delay((long) (durations[i] * bps));
+        toggle_eyes();
+    }
+}
+
+void toggle_eyes() {
+    static bool blink = false;
+
+    digitalWrite(LED_PIN, blink);
+    blink = !blink;
+}
+
+void setup() {
+    pinMode(BEEP_PIN, OUTPUT);
+    pinMode(LED_PIN, OUTPUT);
+}
+
+void loop() {
+    play(NOTES, DURATIONS, BPM, LENGTH);
+}
+```
+
+
+---
+
+
+Disconnect the programmer, and connect a power source (from 3V to 5V)
+to the brown (minus) and red (plus) wires. You should hear music and
+the eyes should blink. Congratulations.
+
+You can now glue the speaker to the back of the cat, and it's
+finished.
+
+
+---

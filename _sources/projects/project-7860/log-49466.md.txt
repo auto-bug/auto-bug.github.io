@@ -1,0 +1,94 @@
+---
+blogpost: true
+date: 2016-11-24
+category: project-7860
+---
+
+# Shrunken Cat
+Published on 2016-11-24 in {ref}`project-7860`.
+
+So I tried the technique described in that link in the previous log,
+and somehow it didn't work that well for me. I must be doing something
+wrong, but I didn't understand all details enough to be able to tell
+what exactly.
+
+But since I already had the ATtiny85 out, I decided to go ahead and
+make a version of the original code that doesn't rely on the Tone()
+function (because that function brings about 1500kB of binaries). So
+instead I just used the good old Timer1.
+
+
+```cpp
+const unsigned char FREQ[] = {
+    0, 134, 134, 127, 127, 225, 225, 213, 201, 201, 201, 190, 190, 190, 169,
+    169, 150, 150,
+};
+
+const unsigned char OCTAVE[] = {
+    0, 4, 5, 4, 5, 5, 4, 5, 4, 5, 6, 4, 5, 6, 4, 5, 4, 5,
+};
+
+const signed char INTRO_NOTES[] = {
+    9, 12, -15, -4, 9, 12, 15, 4, 6, 10, 6, 2, -4, -15, 9, 12, -15, -4, 6, 2,
+    4, 6, 13, 10, 13, 4, 0
+};
+
+const signed char MELODY_NOTES[] = {
+    -15, -17, 9, 9, 0, 3, 7, 5, 3, 0, -3, -5, -7, 7, 5, 3, 5, 9, 15, 17, 9, 15,
+    5, 9, 3, 5, 3, -9, -15, 17, 9, 15, 5, 9, 3, 7, 9, 7, 5, 3, 5, -7, 3, 5, 9,
+    15, 5, 9, 5, 3, -5, -3, -5, -15, -17, 9, 9, 0, 3, 7, 5, 3, 0, -3, -5, -7,
+    7, 5, 3, 5, 9, 15, 17, 9, 15, 5, 9, 3, 5, 3, -9, -15, 17, 9, 15, 5, 9, 3,
+    7, 9, 7, 5, 3, 5, -7, 3, 5, 9, 15, 5, 9, 5, 3, -5, -3, -5, -3, 14, 16, -3,
+    14, 16, 3, 5, 9, 3, 12, 9, 12, 15, -3, -3, 14, 16, 3, 14, 12, 9, 5, 3, 14,
+    8, 11, 14, -3, 14, 16, -3, 14, 16, 3, 3, 5, 9, 3, 14, 16, 14, -3, 3, 1, 3,
+    14, 16, 11, 12, 9, 12, 15, -3, -1, -3, 14, 16, -3, 14, 16, 3, 5, 9, 3, 12,
+    9, 12, 15, -3, -3, 14, 16, 3, 14, 12, 9, 5, 3, 14, 8, 11, 14, -3, 14, 16,
+    -3, 14, 16, 3, 3, 5, 9, 3, 14, 16, 14, -3, 3, 1, 3, 14, 16, 3, 12, 9, 12,
+    15, -3, -5
+};
+
+void play(const signed char *notes, const unsigned int length) {
+    for (int n = 0; n < length; ++n) {
+        //    signed char f = pgm_read_byte_near(notes + n);
+        signed char note = notes[n];
+        unsigned char duration, pause;
+        if (note < 0) {
+            duration = 220;
+            pause = 30;
+            note = -note;
+        } else {
+            duration = 110;
+            pause = 15;
+        }
+        if (note) {
+            TCCR1 = 1<<CTC1 | (11 - OCTAVE[note]);
+            OCR1C = FREQ[note] - 1;
+        }
+        delay(duration);
+        TCCR1 = 1<<CTC1;
+        delay(pause);
+        PORTB ^= 1<<3;
+    }
+}
+
+void setup() {
+    DDRB = 1<<4 | 1<<3;
+    GTCCR |= 1<<COM1B0;
+    play(INTRO_NOTES, 26);
+}
+
+void loop() {
+    play(MELODY_NOTES, 216);
+}
+```
+
+I'm still using delay(), because I'm too lazy to setup my own counters
+for that. Apparently, this is enough:
+```
+Sketch uses 938 bytes (11%) of program storage space. Maximum is 8,192 bytes.
+Global variables use 289 bytes (56%) of dynamic memory, leaving 223 bytes for local variables. Maximum is 512 bytes.
+```
+
+I will probably work on it some more when I get bored, but the basics
+are working. Oh, that version is for the 8Mhz internal clock. For the
+1Mhz clock, change the 11 to 8.

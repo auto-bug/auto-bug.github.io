@@ -1,0 +1,196 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>http://deshipu.art/</id>
+  <title>deshipu.art - Posts in project-3694</title>
+  <updated>2024-08-07T20:27:28.865695+00:00</updated>
+  <link href="http://deshipu.art/"/>
+  <link href="http://deshipu.art/blog/category/project-3694/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-3694/log-12194/</id>
+    <title>Ready to Program</title>
+    <updated>2014-12-27T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="ready-to-program"&gt;
+
+&lt;p&gt;Published on 2014-12-27 in &lt;a class="reference internal" href="../../../projects/project-3694/#project-3694"&gt;&lt;span class="std std-ref"&gt;Henk the Hexapod&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This robot took me two days to build from scratch, but I’m pretty
+happy with it already. I think it’s pretty much finished mechanically
+(only missing some rubber endings on the legs). Software-wise, I have
+ported my maestro controller library to Micropython, so I can already
+move the individual servos from the REPL console of the PyBoard, over
+USB. The next step will be to port the inverse kinematics code, adjust
+it to take into consideration that there are six legs now and that
+they are at various angles to the body, and then make it walk.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-3694/log-12194/" rel="alternate"/>
+    <summary>Published on 2014-12-27 in project-3694.</summary>
+    <published>2014-12-27T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-3694/log-12251/</id>
+    <title>Moving a Leg and Making Sounds</title>
+    <updated>2014-12-29T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="moving-a-leg-and-making-sounds"&gt;
+
+&lt;p&gt;Published on 2014-12-29 in &lt;a class="reference internal" href="../../../projects/project-3694/#project-3694"&gt;&lt;span class="std std-ref"&gt;Henk the Hexapod&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The software for the basic inverse kinematics is going slowly, mostly
+because I’m reorganizing the code that I already used in all the other
+robots, with a goal of making a library of it. In the meantime, I had
+a little distraction: I added the buzzer to a DAC pin of the &lt;a class="reference external" href="http://micropython.org"&gt;PyBoard&lt;/a&gt; , and it turns out it’s fast enough to &lt;a class="reference external" href="https://micropython.org/doc/tut-amp-skin"&gt;play WAV files&lt;/a&gt; ! After some mucking around with the &lt;a class="reference external" href="http://theportalwiki.com/wiki/Turret_voice_lines"&gt;turret lines from Portal&lt;/a&gt; , I finally used &lt;a class="reference external" href="http://bfxr.net"&gt;bfxr&lt;/a&gt;  to generate some simple bleeps and pews, and then &lt;a class="reference external" href="https://libav.org/avconv.html"&gt;avconv&lt;/a&gt;  to concert them to 8bit, 11025 rate files.&lt;/p&gt;
+&lt;p&gt;A video showing that I have control over the servos and the speaker:&lt;/p&gt;
+&lt;iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="" src="https://www.youtube.com/embed/KuDnKCzzc0Q"&gt;&lt;/iframe&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-3694/log-12251/" rel="alternate"/>
+    <summary>Published on 2014-12-29 in project-3694.</summary>
+    <published>2014-12-29T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-3694/log-31843/</id>
+    <title>Brain Surgery</title>
+    <updated>2016-02-13T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="brain-surgery"&gt;
+
+&lt;p&gt;Published on 2016-02-13 in &lt;a class="reference internal" href="../../../projects/project-3694/#project-3694"&gt;&lt;span class="std std-ref"&gt;Henk the Hexapod&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This robot waited on the shelf for a long time (enough for its LiPo
+battery to go bad), so when I got the &lt;span class="xref std std-ref"&gt;project-1313&lt;/span&gt;  board, I decided to install it here. I’m also replacing the Pololu
+servo controller I used in there with a much simplier &lt;span class="xref std std-ref"&gt;project-9131&lt;/span&gt;  that I built out of a Pro Mini board. Other parts will probably
+remain the same, although I might need to skip the speaker, as ADC and
+DAC are on the same pin, and I need that battery voltage monitoring.&lt;/p&gt;
+&lt;img alt="projects/project-3694/images/2299901455367858580.jpg" src="projects/project-3694/images/2299901455367858580.jpg" /&gt;
+&lt;p&gt;I started by testing the I²C communication between OpenMV and the
+servo controller. Since OpenMV is still in beta and not even yet
+released to Kickstarter backers, I didn’t expect this to Just Work™
+out of the box, and I was right. First, turns out that the_SDA_ and_SCL_ pins are reversed compared to &lt;a class="reference external" href="https://openmv.io/docs/openmv/quickref.html"&gt;what the documentation says&lt;/a&gt; . That was relatively easy to figure, I just swapped them and suddenly_I2C.scan()_ started showing my device. Splendid!&lt;/p&gt;
+&lt;p&gt;Then I just copied the line that I previously tested with PyBoard:&lt;/p&gt;
+&lt;div class="highlight-python notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;bus&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mem_write&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;struct&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pack&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&amp;lt;H&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1500&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;and… nothing happened. Except that further_I2C.scan()_ stopped finding anything, and further writes just returned_IOError 16_ until the OpenMV board was hard reset. Interesting. I connected my
+pocket oscilloscope to see what is happening, and sure enough, the_SCL_ line is being held low by the master after the first write. Looks
+like a bug in the firmware.So I started looking through the source code ( &lt;a class="reference external" href="https://github.com/openmv/openmv"&gt;it’s available on Github&lt;/a&gt; ). Initially I looked at the_soft_i2c.c_ file, but soon I realized that it’s only being used in the mlx
+module. Perhaps the authors had the same problem, and used software
+I²C to work around it and get the mlx to work?&lt;/p&gt;
+&lt;p&gt;Then &lt;a class="reference external" href="https://hackaday.io/hacker/61401"&gt;&amp;#64;Arsenijs&lt;/a&gt;  suggested on the hackaday chat that this may be related to &lt;a class="reference external" href="https://github.com/micropython/micropython/issues/1765"&gt;an I²C bug that was recently fixed in Micropython&lt;/a&gt; . I tried disabling IRQs before calling the_I2C.mem_write()_, and lo and behold, it works! It’s not necessarily this bug (as it
+only manifests when there is an error reading or writing), but
+switching the interrupts off makes the Micropython not use DMA, and
+apparently this works. Happy with that, I wrote about my findings &lt;a class="reference external" href="https://openmv.io/forums/viewtopic.php?f=6&amp;amp;t=51"&gt;on the OpenMV forum and went to sleep&lt;/a&gt; .&lt;/p&gt;
+&lt;p&gt;Next day I took Henk, opened it, ripped out the servo controller,
+connected the servos to the new one, drilled a hole for the camera to
+stick out, and here I am now, wondering how to best arrange the UBEC
+and battery inside. I will keep you updated.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-3694/log-31843/" rel="alternate"/>
+    <summary>Published on 2016-02-13 in project-3694.</summary>
+    <published>2016-02-13T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-3694/log-31885/</id>
+    <title>Up Side Down</title>
+    <updated>2016-02-14T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="up-side-down"&gt;
+
+&lt;p&gt;Published on 2016-02-14 in &lt;a class="reference internal" href="../../../projects/project-3694/#project-3694"&gt;&lt;span class="std std-ref"&gt;Henk the Hexapod&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Today I worked a little bit more with the robot. It’s actually quite
+convenient to have it sit on a box (so that the legs are in the air)
+next to my computer, connected over the USB cable.&lt;/p&gt;
+&lt;img alt="projects/project-3694/images/6448311455476737235.jpg" src="projects/project-3694/images/6448311455476737235.jpg" /&gt;
+&lt;p&gt;As you can see, the OpenMV camera is actually installed up-side-down.
+That’s because it was more convenient for me, and it looks a little
+bit like a snout. I figured it wouldn’t matter, as I would simply
+reverse the y coordinate of any results I get from the camera. It
+turns out that sometimes it does matter – in particular, the face
+detection algorithms don’t detect up-side-down faces. I looked for a
+way to flip the image, and after I couldn’t find anything, &lt;a class="reference external" href="https://openmv.io/forums/viewtopic.php?f=6&amp;amp;t=56"&gt;I asked on the OpenMV forum, where the authors immediately helped me&lt;/a&gt; . Turns out the sensor has a setting which you can enable to make it
+flip the image in hardware. Here’s a photo from the eyes of the robot:&lt;/p&gt;
+&lt;img alt="projects/project-3694/images/5026061455477102794.jpg" src="projects/project-3694/images/5026061455477102794.jpg" /&gt;
+&lt;p&gt;The quality is not that great, because it’s pretty dark in my room.
+I’m using a wide-angle lens, so you can see the two front legs of the
+robot in there.&lt;/p&gt;
+&lt;p&gt;Next I went on working on the walking code (again). As usual, starting
+with the Servo class:&lt;/p&gt;
+&lt;div class="highlight-python notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pyb&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;ustruct&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;math&lt;/span&gt;
+
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Servo&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;min_pos&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;600&lt;/span&gt;
+    &lt;span class="n"&gt;max_pos&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;2400&lt;/span&gt;
+    &lt;span class="n"&gt;pos_range&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;180&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;servos&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;reverse&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;False&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;trim&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;servos&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;servos&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;index&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;index&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;reverse&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;reverse&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;trim&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;trim&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;move&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;radians&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;degrees&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;degrees&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;degrees&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;math&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;degrees&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;radians&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;degrees&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;trim&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;reverse&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;degrees&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pos_range&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;degrees&lt;/span&gt;
+        &lt;span class="n"&gt;position&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;min_pos&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+            &lt;span class="n"&gt;degrees&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;max_pos&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;min_pos&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pos_range&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;position&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;min&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;max_pos&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;max&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;min_pos&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;position&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;servos&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;position&lt;/span&gt;
+
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Servos&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;ADDRESS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;9&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;bus&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pyb&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;I2C&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;pyb&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;I2C&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;MASTER&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;servos&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mi"&gt;18&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__setitem__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;servos&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__getitem__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;Servo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;update&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;servos&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;servos&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;servos&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;18&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;servo&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;servos&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+                &lt;span class="n"&gt;pyb&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;disable_irq&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+                &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;bus&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mem_write&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+                    &lt;span class="n"&gt;ustruct&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pack&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;lt;&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;H&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;servos&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;servo&lt;/span&gt;&lt;span class="p"&gt;]),&lt;/span&gt;
+                    &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ADDRESS&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                    &lt;span class="n"&gt;servo&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                &lt;span class="p"&gt;)&lt;/span&gt;
+            &lt;span class="k"&gt;finally&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+                &lt;span class="n"&gt;pyb&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;enable_irq&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Now I can move each of the joints of the robot individually. Next up,
+leg (practically the same as in &lt;a class="reference internal" href="../../../projects/project-6050/#project-6050"&gt;&lt;span class="std std-ref"&gt;Tote&lt;/span&gt;&lt;/a&gt; ) and then body (the hard part) inverse kinematics.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-3694/log-31885/" rel="alternate"/>
+    <summary>Published on 2016-02-14 in project-3694.</summary>
+    <published>2016-02-14T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-3694/log-34527/</id>
+    <title>Henk MkII</title>
+    <updated>2016-03-25T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="henk-mkii"&gt;
+
+&lt;p&gt;Published on 2016-03-25 in &lt;a class="reference internal" href="../../../projects/project-3694/#project-3694"&gt;&lt;span class="std std-ref"&gt;Henk the Hexapod&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;After the rebuild, I decided to start a new project profile, &lt;span class="xref std std-ref"&gt;project-10534&lt;/span&gt; . It’s also so that I can enter this project in the Hackaday Prize
+2016. Since I’m basically starting from scratch here, it makes sense
+to start a new project. The old logs here, while still may be
+interesting, no longer talk about this new, overhauled robot. So go
+there for any new developments.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-3694/log-34527/" rel="alternate"/>
+    <summary>Published on 2016-03-25 in project-3694.</summary>
+    <published>2016-03-25T00:00:00+01:00</published>
+  </entry>
+</feed>

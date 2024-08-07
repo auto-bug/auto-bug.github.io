@@ -1,0 +1,25 @@
+---
+blogpost: true
+date: 2015-05-29
+category: project-3300
+---
+
+# Sensing the Servo Force
+Published on 2015-05-29 in {ref}`project-3300`.
+
+So, a little bit of rethinking what I actually need, and the solution
+became obvious. I don't want to know the position of the servo, I want
+to know the force that is affecting it (and, at the same time, the
+force that the servo is using to counter that). So, it doesn't make
+sense to add the additional wire to the pot. I want to know how hard
+the motor is working -- so the additional wire should go to one of the
+motor pins. From that a couple of simple experiments, and I have my
+"compliant motion", more or less:
+
+
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="" src="https://www.youtube.com/embed/Ms8yTKYebaI"></iframe>
+
+Of course, the code is very crude, so it's easy to get oscillation or
+runaway, but in the end I will use it for robot's sense, so it will
+not feed itself...
+

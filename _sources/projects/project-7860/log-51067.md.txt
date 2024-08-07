@@ -1,0 +1,60 @@
+---
+blogpost: true
+date: 2016-12-31
+category: project-7860
+---
+
+# ATtiny10 Working
+Published on 2016-12-31 in {ref}`project-7860`.
+
+As soon as I posted the last log, I realized what the problem was. The
+TPICLK wire was loose all this time. After fixing that, programming
+with AVRdude and USBASP went without any problems, and I could test my
+music-playing code.
+
+Of course it didn't work properly at first. I had to change the timer
+initialization a little, use a different prescaler and adjust the
+octave. I also decided to run the timer at a higher frequency, because
+it's a 16-bit timer, so I can get better accuracy this way -- so I'm
+actually shifting the counts for the tones right a few bits.
+
+But I still got some very weird glitches here and there, and I
+couldn't quite see the problem, until I realized that they happen
+randomly, but only when a higher frequency sound goes after a lower
+frequency. Finally I realized, that when I'm changing the timer's
+match register, I'm not resetting the counter -- so if the counter is
+already past the point to which I'm setting the register, it will go
+all the way up to the full 16 bits before it resets. That also
+happened with the 8-bit counters on the other chips, but it wasn't so
+visible, because the distortion was very small. With a larger timer it
+became much easier to hear. A fix is trivial -- just reset the
+counter.\
+
+
+And that extra code for resetting the counter took me exactly to 500
+bytes of compiled code:
+
+
+
+
+```
+AVR Memory Usage
+----------------
+Device: attiny10
+
+Program:     500 bytes (48.8% Full)
+(.text + .data + .bootloader)
+
+Data:          0 bytes (0.0% Full)
+(.data + .bss + .noinit)
+
+```
+
+I guess I could put more songs in there...
+
+In any case, now I'm just waiting for the PCBs to arrive. In
+retrospect, I could have made those new PCBs even smaller than
+currently -- with the puny ATtiny10 and a single resistor they are
+almost empty. But the piezo speaker takes some room, so I guess this
+size is fine.
+

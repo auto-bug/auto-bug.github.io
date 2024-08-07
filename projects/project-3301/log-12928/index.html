@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>My First PCB - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="my-first-pcb">
+<h1>My First PCB<a class="headerlink" href="#my-first-pcb" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2015-01-14 in <a class="reference internal" href="../#project-3301"><span class="std std-ref">Pico-Kubik quadruped robot</span></a>.</p>
+<p>The whole robot building thing is supposed to be a learning
+experience. So after fumbling with the wires and prototype boards for
+a while, I decided it’s time to try and design an printed circuit
+board for the robot. The advantage, apart from much better handling
+the tiny 1.27mm spacing, would be that it could also double as a base
+for the robot.</p>
+<p>After trying my skills with a number of available PCB-designing
+software (Egale and KiCad, among others), I finally decided to use…
+Fritzing. Maybe it’s not as advanced as the others, but at least has
+user interface from this millennium, and can generate Gerber files
+without too much hassle. It’s also the only one where I found how to
+place elements on the board and connect them first, and then create
+the schematic – which is much better if I have a choice for using
+multiple pins for the same thing, and can choose the closest one. It
+also already came with an Arduino Pro Mini footprint.</p>
+<p>The board is pretty simple, it’s just has a place to put your Arduino
+in, and sockets for the servos. There is also room for a big
+capacitor, a power switch, a battery voltage monitoring circuit, and
+an optional IR receiver. It can then use just the Arduino for some
+simple behaviors, or have something smarter (like the VoCore)
+connected through the UART or I²C.</p>
+<img alt="projects/project-3301/images/9133471421255929002.png" src="projects/project-3301/images/9133471421255929002.png" />
+</section>
+
+
+</div>
+  </body>
+</html>

@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Katka, a mammalian robot - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="katka-a-mammalian-robot">
+<h1>Katka, a mammalian robot<a class="headerlink" href="#katka-a-mammalian-robot" title="Permalink to this heading">¶</a></h1>
+<p>A small walking robot with a mammal-like configuration of legs.</p>
+<div class="project-thumb">
+<a class="reference external image-reference" href="/_images/226891435314260622.jpg"><img alt="projects/project-6321/images/226891435314260622.jpg" src="projects/project-6321/images/226891435314260622.jpg" /></a>
+<a class="reference external image-reference" href="/_images/8326261434400096795.jpg"><img alt="projects/project-6321/images/8326261434400096795.jpg" src="projects/project-6321/images/8326261434400096795.jpg" /></a>
+<a class="reference external image-reference" href="/_images/6178521435314253175.jpg"><img alt="projects/project-6321/images/6178521435314253175.jpg" src="projects/project-6321/images/6178521435314253175.jpg" /></a>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>This is one of my early experiments at building a cheap quadruped.
+</pre></div>
+</div>
+<p>Since there are a lot of servomechanisms in such a robot, even when
+they are relatively cheap, they comprise a large part of the total
+price. So reducing the number of servos is an obvious way of reducing
+the price.</p>
+<p>However, it’s almost impossible to have proper inverse kinematics with
+a robot in a spider/lizard configuration with only two degrees of
+freedom per leg. Fortunately, in the mammal configuration, when both
+degrees of freedom move the leg in the same plane, it’s possible to
+have two-dimensional inverse kinematics, and that’s what this robot
+does.</p>
+<p>It can move its center of mass, and it can move its legs backwards in
+a straight line, and then raise them and move them forward. That is
+enough for implementing a proper statically stable “creep” gait.
+Unfortunately, it’s not enough for implementing proper turning. In
+order to turn, this robot works like a tank, by making the steps on
+one side shorter than on the other (or even reversing the direction).
+This is sub-optimal, as it leads to slippage and unpredictability, but
+that’s the best I could do without adding at least one servo and
+rebuilding the robot completely.</p>
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="" src="https://www.youtube.com/embed/MJjPAcgxrWs"></iframe>
+<section id="logs">
+<h2>Logs<a class="headerlink" href="#logs" title="Permalink to this heading">¶</a></h2>
+<ul class="postlist-style-none postlist simple">
+<li class="ablog-post"><p class="ablog-post-title">2015-07-01 - <a class="reference internal" href="log-20293/">Spider Mode</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2015-06-26 - <a class="reference internal" href="log-20012/">Reworked Electronics</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2015-06-24 - <a class="reference internal" href="log-19942/">Walking Details</a></p></li>
+</ul>
+</section>
+<section id="instructions">
+<h2>Instructions<a class="headerlink" href="#instructions" title="Permalink to this heading">¶</a></h2>
+</section>
+</section>
+
+
+</div>
+  </body>
+</html>

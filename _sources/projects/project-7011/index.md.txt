@@ -1,0 +1,66 @@
+---
+blogpost: true
+date: 2015-07-29
+category: project
+tags:  completed project, hardware
+image: 1
+---
+
+# Frowney
+
+8x8 LED matrix + Arduino Pro Micro
+
+<div class="project-thumb">
+
+:::{image} images/6651031438192718168.jpg
+:target: /_images/6651031438192718168.jpg
+:::
+
+:::{image} images/3550531438192727009.jpg
+:target: /_images/3550531438192727009.jpg
+:::
+
+:::{image} images/7550341438194268134.jpg
+:target: /_images/7550341438194268134.jpg
+:::
+
+:::{image} images/1085111438259829374.jpg
+:target: /_images/1085111438259829374.jpg
+:::
+
+:::{image} images/9720631438259840424.jpg
+:target: /_images/9720631438259840424.jpg
+:::
+
+</div>
+
+
+    The pins are exactly the right pitch and locations, but you also need
+to put resistors on half of them, so I cut those pins a little shorter
+and added SMD resistors, which happen to be exactly as long as the
+pins.
+
+I also had to unsolder all the LEDs from the board itself.
+
+Even though I removed the LED from pin 15, the corresponding column is
+still a little bit dimmer than the others, I wonder if there is
+something I can do about it. (Turns out it was a bad soldering joint.)
+
+
+:::{image} images/2457951438194248152.jpg
+
+:::
+
+
+
+
+
+
+## Logs
+
+:::{postlist}
+:category: project-7011
+:::
+
+## Instructions
+

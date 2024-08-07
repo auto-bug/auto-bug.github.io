@@ -1,0 +1,26 @@
+---
+blogpost: true
+date: 2018-06-24
+category: project-7860
+---
+
+# Corrected Repositories
+Published on 2018-06-24 in {ref}`project-7860`.
+
+ [@Travis Hardiman ](https://hackaday.io/hacker/125739) pointed out that the code I have in the [repository](https://bitbucket.org/thesheep/nyan/src/tiny10/main/)  in the attiny10 branch is actually for attiny85, and the attiny10
+code is missing, so I went ahead and re-created the attiny10 code
+(which I must have lost somehow), this time on attiny9 (which is the
+same as attiny10, only doesn't have ADC, which we don't need). It's in
+the attiny9 branch now. So to summarize:
+
+
+ * attiny85:  [https://bitbucket.org/thesheep/nyan/src/tiny10/main/](https://bitbucket.org/thesheep/nyan/src/tiny10/main/) 
+ * attiny10 and attiny9: [https://bitbucket.org/thesheep/nyan/src/tiny9/main/](https://bitbucket.org/thesheep/nyan/src/tiny10/main/) 
+ * attiny13:  [https://bitbucket.org/thesheep/nyan/src/tiny13/main/](https://bitbucket.org/thesheep/nyan/src/tiny10/main/) 
+
+Sorry for the confusion.
+
+Also, to program the attiny10, you need to use a programmer capable of
+programming with the TPI protocol — recent versions of USBASP support
+it, you just need to add a 1kΩ resistor...
+

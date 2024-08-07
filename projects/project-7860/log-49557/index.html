@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>The Power of Plain C - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="the-power-of-plain-c">
+<h1>The Power of Plain C<a class="headerlink" href="#the-power-of-plain-c" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2016-11-26 in <a class="reference internal" href="../#project-7860"><span class="std std-ref">Nyan Board</span></a>.</p>
+<p>So I gave up on using that formula, and instead tabulated the
+frequencies – that’s just 8 bytes, after all. I also changed the
+encoding of the notes, so that it’s easier to read (in octal). The 3
+least significant bits are the pointer to the table of frequencies,
+the next two bits are the octave (with 0 being a pause), and the sixth
+bit is the duration. That got me down to about 800 bytes.</p>
+<p>Hmm, but I’m sure I can do better. At this point, I’m basically not
+using anything from Arduino itself, except maybe for the delay. So
+what if I just go with plain C, like the good old days? A quick google
+found me a ready Makefile for the ATtiny85 (complete with fuse
+flashing), and a bit of looking around got me the _delay_ms()
+function. Perfect.</p>
+<p>The result? See for yourself:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AVR</span> <span class="n">Memory</span> <span class="n">Usage</span>
+<span class="o">----------------</span>
+<span class="n">Device</span><span class="p">:</span> <span class="n">attiny85</span>
+
+<span class="n">Program</span><span class="p">:</span>     <span class="mi">492</span> <span class="nb">bytes</span> <span class="p">(</span><span class="mf">6.0</span><span class="o">%</span> <span class="n">Full</span><span class="p">)</span>
+<span class="p">(</span><span class="o">.</span><span class="n">text</span> <span class="o">+</span> <span class="o">.</span><span class="n">data</span> <span class="o">+</span> <span class="o">.</span><span class="n">bootloader</span><span class="p">)</span>
+
+<span class="n">Data</span><span class="p">:</span>          <span class="mi">8</span> <span class="nb">bytes</span> <span class="p">(</span><span class="mf">1.6</span><span class="o">%</span> <span class="n">Full</span><span class="p">)</span>
+<span class="p">(</span><span class="o">.</span><span class="n">data</span> <span class="o">+</span> <span class="o">.</span><span class="n">bss</span> <span class="o">+</span> <span class="o">.</span><span class="n">noinit</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If I’m reading this right, that is exactly 500 bytes total. Woo!</p>
+<p>The code (with the makefile) is available in the repository here (no
+rickrolling this time, I promise): <a class="reference external" href="https://bitbucket.org/thesheep/nyan/src/495dfa41484dade01bdf7ff79b41f9337f430e5b/main/?at=default">https://bitbucket.org/thesheep/nyan/src/495dfa41484dade01bdf7ff79b41f9
+337f430e5b/main/?at=default</a></p>
+</section>
+
+
+</div>
+  </body>
+</html>

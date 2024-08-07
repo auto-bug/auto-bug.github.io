@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Second Chance - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="second-chance">
+<h1>Second Chance<a class="headerlink" href="#second-chance" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2015-06-04 in <a class="reference internal" href="../#project-3736"><span class="std std-ref">µBob biped robot</span></a>.</p>
+<p>As I mentioned previously, I’m remaking µBob’s brains. It’s still
+going to be an ESP8266, but this time it’s the ESP-12 module, and it’s
+properly mounted on a printed circuit board that I have etched myself!
+Also, a distance sensor. But first, the board:</p>
+<img alt="projects/project-3736/images/4866721433421696717.jpg" src="projects/project-3736/images/4866721433421696717.jpg" />
+<p>As you can see, the quality is abysmal. After several failed attempts
+at transferring the toner from the printed page to the board properly,
+I finally decided to call it “good enough”, fix the most glaring
+problems with acrylic paint and etch the thing. Surprisingly, the
+drilling went well and I only broke one drill bit. Then I covered all
+the traces with solder, and fixed the broken traces with small pieces
+of wire. Soldered all the parts, and here it is:</p>
+<img alt="projects/project-3736/images/8937801433422061381.jpg" src="projects/project-3736/images/8937801433422061381.jpg" />
+<p>You can see the module, the distance sensor, and one of the two SMD
+capacitors I had to add for it. On the other side:</p>
+<img alt="projects/project-3736/images/8516881433422111952.jpg" src="projects/project-3736/images/8516881433422111952.jpg" />
+<p>You see the four servo sockets, the power switch, and a bunch of
+headers for power and debugging. Then I went over the board with an
+ohm-meter. And I’m glad I did! after removing a couple of short
+circuits that would have fried my programmer, I decided I’m ready to
+risk, and actually connected the thing to my computer:</p>
+<img alt="projects/project-3736/images/4002461433422229553.jpg" src="projects/project-3736/images/4002461433422229553.jpg" />
+<p>Seems like at least some connections work, because I was able to flash
+Micropython to it, and get a REPL prompt on the serial console. I’m
+afraid to check if the servo connections and the distance sensor
+work…</p>
+<p>Also, I will have to upload NodeMCU firmware to it for now, as the
+Micropython one doesn’t support PWM yet, and I’m not sure I’m up to
+bit-banging it by brute force.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+---
+blogpost: true
+date: 2014-12-23
+category: project-3300
+---
+
+# One More Sensor
+Published on 2014-12-23 in {ref}`project-3300`.
+
+While I still can't get myself to write the code for using the
+accelerometer+gyroscope properly, I did recently do a small
+modification to this robot. I got myself a bunch of coin-sized 3A
+voltage regulators, so I replaced the UBEC that I used in this robot
+with one of those. That, together with shorter wires, saved me some
+space inside, which I used to add a Sharp distance sensor, and to
+position the accelerometer module a little better.
+
+
+:::{image} images/1378261419370980391.jpg
+
+:::
+
+
+Now I can at least try to write some simple obstacle avoidance code...
+

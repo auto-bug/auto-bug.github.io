@@ -1,0 +1,33 @@
+---
+blogpost: true
+date: 2016-12-21
+category: project-7860
+---
+
+# ATtiny13
+Published on 2016-12-21 in {ref}`project-7860`.
+
+The ATtiny13 chips finally arrived, and I can test the code from the
+"tiny13" branch on real hardware (find it at [https://bitbucket.org/thesheep/nyan/src/tiny13](https://bitbucket.org/thesheep/nyan/src/tiny13) ). After some struggling with getting my USBASP programmer to work
+with the chip (I needed a newer firmware and a -B option for avrdude
+to slow the clock), I got it flashed and playing:
+
+
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/Hm16nQde7aM"></iframe>
+
+It's a bit too fast, but changing the clock definition in the Makefile
+to 1200000 fixed that. The tone is probably wrong too, but I'm tone-
+deaf, so I don't care.
+
+The difference from the regular Nyan Board is that it uses Timer0
+(because there is no Timer1 on ATtiny13), and a different pin for the
+speaker. If you look at the six cats on the PCB, you will see that one
+is slightly different -- that's the ATtiny13 version.
+
+
+:::{image} images/6675221479762717830.png
+
+:::
+I still have one more chip to try for the Nyan Board, but that is
+going to be a surprise.
+

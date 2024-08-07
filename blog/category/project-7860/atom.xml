@@ -1,0 +1,200 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>http://deshipu.art/</id>
+  <title>deshipu.art - Posts in project-7860</title>
+  <updated>2024-08-07T20:27:29.021656+00:00</updated>
+  <link href="http://deshipu.art/"/>
+  <link href="http://deshipu.art/blog/category/project-7860/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-7860/log-51067/</id>
+    <title>ATtiny10 Working</title>
+    <updated>2016-12-31T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="attiny10-working"&gt;
+
+&lt;p&gt;Published on 2016-12-31 in &lt;a class="reference internal" href="../../../projects/project-7860/#project-7860"&gt;&lt;span class="std std-ref"&gt;Nyan Board&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;As soon as I posted the last log, I realized what the problem was. The
+TPICLK wire was loose all this time. After fixing that, programming
+with AVRdude and USBASP went without any problems, and I could test my
+music-playing code.&lt;/p&gt;
+&lt;p&gt;Of course it didn’t work properly at first. I had to change the timer
+initialization a little, use a different prescaler and adjust the
+octave. I also decided to run the timer at a higher frequency, because
+it’s a 16-bit timer, so I can get better accuracy this way – so I’m
+actually shifting the counts for the tones right a few bits.&lt;/p&gt;
+&lt;p&gt;But I still got some very weird glitches here and there, and I
+couldn’t quite see the problem, until I realized that they happen
+randomly, but only when a higher frequency sound goes after a lower
+frequency. Finally I realized, that when I’m changing the timer’s
+match register, I’m not resetting the counter – so if the counter is
+already past the point to which I’m setting the register, it will go
+all the way up to the full 16 bits before it resets. That also
+happened with the 8-bit counters on the other chips, but it wasn’t so
+visible, because the distortion was very small. With a larger timer it
+became much easier to hear. A fix is trivial – just reset the
+counter.\&lt;/p&gt;
+&lt;p&gt;And that extra code for resetting the counter took me exactly to 500
+bytes of compiled code:&lt;/p&gt;
+&lt;div class="highlight-default notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;AVR&lt;/span&gt; &lt;span class="n"&gt;Memory&lt;/span&gt; &lt;span class="n"&gt;Usage&lt;/span&gt;
+&lt;span class="o"&gt;----------------&lt;/span&gt;
+&lt;span class="n"&gt;Device&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;attiny10&lt;/span&gt;
+
+&lt;span class="n"&gt;Program&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;     &lt;span class="mi"&gt;500&lt;/span&gt; &lt;span class="nb"&gt;bytes&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;48.8&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;Full&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;bootloader&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;Data&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;          &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="nb"&gt;bytes&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;0.0&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;Full&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;bss&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;noinit&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;I guess I could put more songs in there…&lt;/p&gt;
+&lt;p&gt;In any case, now I’m just waiting for the PCBs to arrive. In
+retrospect, I could have made those new PCBs even smaller than
+currently – with the puny ATtiny10 and a single resistor they are
+almost empty. But the piezo speaker takes some room, so I guess this
+size is fine.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-7860/log-51067/" rel="alternate"/>
+    <summary>Published on 2016-12-31 in project-7860.</summary>
+    <published>2016-12-31T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-7860/log-51107/</id>
+    <title>ATtiny10 Board</title>
+    <updated>2017-01-01T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="attiny10-board"&gt;
+
+&lt;p&gt;Published on 2017-01-01 in &lt;a class="reference internal" href="../../../projects/project-7860/#project-7860"&gt;&lt;span class="std std-ref"&gt;Nyan Board&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I’m still waiting for this board to ship from OSHPark, but since I
+tested the code with the chip already, I’m quite confident it will
+work just fine. Since it will probably not get here before the
+contest, I will share the order link here: &lt;a class="reference external" href="https://oshpark.com/shared_projects/CWLBdY8g"&gt;https://oshpark.com/shared_projects/CWLBdY8g&lt;/a&gt;&lt;/p&gt;
+&lt;img alt="projects/project-7860/images/7217871483282911739.png" src="projects/project-7860/images/7217871483282911739.png" /&gt;
+&lt;p&gt;\&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-7860/log-51107/" rel="alternate"/>
+    <summary>Published on 2017-01-01 in project-7860.</summary>
+    <published>2017-01-01T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-7860/log-51328/</id>
+    <title>ATtiny10 Nyan Cat</title>
+    <updated>2017-01-04T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="attiny10-nyan-cat"&gt;
+
+&lt;p&gt;Published on 2017-01-04 in &lt;a class="reference internal" href="../../../projects/project-7860/#project-7860"&gt;&lt;span class="std std-ref"&gt;Nyan Board&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Just in time for the contest, the boards from OSHPark arrived today!&lt;/p&gt;
+&lt;img alt="projects/project-7860/images/6457811483529097953.jpg" src="projects/project-7860/images/6457811483529097953.jpg" /&gt;
+&lt;p&gt;I immediately assembled one in order to test it.&lt;/p&gt;
+&lt;img alt="projects/project-7860/images/1326011483529191061.jpg" src="projects/project-7860/images/1326011483529191061.jpg" /&gt;
+&lt;p&gt;During that process, I learned about a new revolutionary discovery by
+the Chinese scientists! In their secret laboratories they developed a
+new kind of copper wire, one that is utterly impossible to solder, no
+matter how much flux you use and how hot the soldering iron is.
+Apparently, I got some wires like that from them, possibly by mistake.
+Using wires from a different vendor made it finally work (I also had
+to remove the speaker from the clock pin during programming).&lt;/p&gt;
+&lt;p&gt;Once I finally managed to flash the code, I only got clicks. A quick
+inspection revealed, that I used wrong pins for the speaker and the
+LEDs! The code expected speaker to be on PB0 and the LEDs on PB1. But
+the PCB puts the speaker on PB1 and the LEDs on PB2. Changing the LEDs
+pin is trivial, but can I change the speaker pin? Turns out that yes,
+the PB1 pin also is connected to the timer, and I vaguely remember
+changing the pins while designing the PCB with this in mind. I must
+have completely forgotten about it afterwards. In any case, just
+changing COM0A0 to COM0B0 fixed the problem. I also fixed a small bug
+where I only cleared TCNT0L and not the whole TCNT0, and it works.&lt;/p&gt;
+&lt;iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/jhULsiHoyeE"&gt;&lt;/iframe&gt;
+&lt;p&gt;The last bugfix made the code 2 bytes bigger, but it still fits within
+the limits:&lt;/p&gt;
+&lt;div class="highlight-default notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;AVR&lt;/span&gt; &lt;span class="n"&gt;Memory&lt;/span&gt; &lt;span class="n"&gt;Usage&lt;/span&gt;
+&lt;span class="o"&gt;----------------&lt;/span&gt;
+&lt;span class="n"&gt;Device&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;attiny10&lt;/span&gt;
+
+&lt;span class="n"&gt;Program&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;     &lt;span class="mi"&gt;502&lt;/span&gt; &lt;span class="nb"&gt;bytes&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;49.0&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;Full&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;bootloader&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;Data&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;          &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="nb"&gt;bytes&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;0.0&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;Full&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;bss&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;noinit&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; 
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-7860/log-51328/" rel="alternate"/>
+    <summary>Published on 2017-01-04 in project-7860.</summary>
+    <published>2017-01-04T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-7860/log-54942/</id>
+    <title>Crazy Custom Colors</title>
+    <updated>2017-03-15T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="crazy-custom-colors"&gt;
+
+&lt;p&gt;Published on 2017-03-15 in &lt;a class="reference internal" href="../../../projects/project-7860/#project-7860"&gt;&lt;span class="std std-ref"&gt;Nyan Board&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;At the beginning of this year, DirtyPCBs announced a new service: &lt;a class="reference external" href="http://dirtypcbs.com/store/panels/details/1/mystery_color"&gt;Mystery Color PCB Group Buy&lt;/a&gt;  &lt;a class="reference external" href="http://dirtypcbs.com/store/panels/details/1/mystery_color"&gt;&lt;/a&gt; . The idea is similar to what OSHPark does – you get 3 PCBs and get
+charged by the surface area. But there is a twist – they are going to
+experiment with various soldermask color combinations, and you never
+know what you get.&lt;/p&gt;
+&lt;p&gt;I decided to try this, and made an order for the single Nyan Board –
+because I thought it would be fun to have it in a crazy color. The
+example PCB on the picture is pink, so I expected something flashy. I
+made my order on February 05, 2017. Today is March 15, 2017 and the PCBs arrived. I have to admit that
+this is a bit longer than I expected.&lt;/p&gt;
+&lt;p&gt;But never mind that, what are the new exciting colors? I have to admit
+that I am a little bit disappointed here too. Here’s a photo:&lt;/p&gt;
+&lt;img alt="projects/project-7860/images/6059241489574405659.jpg" src="projects/project-7860/images/6059241489574405659.jpg" /&gt;
+&lt;p&gt;First of all, the boards are mostly naked FR4. The soldermask is
+present only where there is either copper or silkscreen – all the
+other areas are simply unpainted. That pretty much ruins everything.\&lt;/p&gt;
+&lt;p&gt;The soldermask itself is a kind of body color orange, which might be
+interesting for human figures or faces, if only you knew the color in
+advance and could somehow get the whole board covered in it. The
+silkscreen is pretty much standard unexciting black.&lt;/p&gt;
+&lt;p&gt;On the plus side, I ordered 3 boards, and I received 11, which is a
+bit strange, but I guess a good deal for $4 with shipping.&lt;/p&gt;
+&lt;section id="update"&gt;
+&lt;h2&gt;Update:&lt;/h2&gt;
+&lt;p&gt;After talking with DirtyPCBs, I examined my boards closely, and
+realized how wrong and unfair I was. The soldermask is not_missing_ from between the copper traces. And it’s not orange – that orange is
+just the color of copper traces covered with it. Yes.**The soldermask is transparent!**This opens a lot of possibilities for novel designs, although I still
+have to say that it would look much better if the FR4 underneath was
+some other color than the default.&lt;/p&gt;
+&lt;p&gt;Also, they refunded it to me completely, and now I feel like a
+complete jerk.&lt;/p&gt;
+&lt;/section&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-7860/log-54942/" rel="alternate"/>
+    <summary>Published on 2017-03-15 in project-7860.</summary>
+    <published>2017-03-15T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-7860/log-148360/</id>
+    <title>Corrected Repositories</title>
+    <updated>2018-06-24T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="corrected-repositories"&gt;
+
+&lt;p&gt;Published on 2018-06-24 in &lt;a class="reference internal" href="../../../projects/project-7860/#project-7860"&gt;&lt;span class="std std-ref"&gt;Nyan Board&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://hackaday.io/hacker/125739"&gt;&amp;#64;Travis Hardiman &lt;/a&gt; pointed out that the code I have in the &lt;a class="reference external" href="https://bitbucket.org/thesheep/nyan/src/tiny10/main/"&gt;repository&lt;/a&gt;  in the attiny10 branch is actually for attiny85, and the attiny10
+code is missing, so I went ahead and re-created the attiny10 code
+(which I must have lost somehow), this time on attiny9 (which is the
+same as attiny10, only doesn’t have ADC, which we don’t need). It’s in
+the attiny9 branch now. So to summarize:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;attiny85:  &lt;a class="reference external" href="https://bitbucket.org/thesheep/nyan/src/tiny10/main/"&gt;https://bitbucket.org/thesheep/nyan/src/tiny10/main/&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;attiny10 and attiny9: &lt;a class="reference external" href="https://bitbucket.org/thesheep/nyan/src/tiny10/main/"&gt;https://bitbucket.org/thesheep/nyan/src/tiny9/main/&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;attiny13:  &lt;a class="reference external" href="https://bitbucket.org/thesheep/nyan/src/tiny10/main/"&gt;https://bitbucket.org/thesheep/nyan/src/tiny13/main/&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Sorry for the confusion.&lt;/p&gt;
+&lt;p&gt;Also, to program the attiny10, you need to use a programmer capable of
+programming with the TPI protocol — recent versions of USBASP support
+it, you just need to add a 1kΩ resistor…&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-7860/log-148360/" rel="alternate"/>
+    <summary>Published on 2018-06-24 in project-7860.</summary>
+    <published>2018-06-24T00:00:00+02:00</published>
+  </entry>
+</feed>

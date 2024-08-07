@@ -1,0 +1,25 @@
+---
+blogpost: true
+date: 2015-02-22
+category: project-3301
+---
+
+# Minimal Version
+Published on 2015-02-22 in {ref}`project-3301`.
+
+
+<iframe width="500" height="281" frameborder="0" allowfullscreen="" src="https://www.youtube.com/embed/qBw0tjDqrSs"></iframe>
+
+
+
+So here's the minimal version of the robot -- only the servos, an
+Arduino and an IR sensor for control with a TV remote. The gait still
+needs a little bit of tweaking (and I didn't adjust the trims on the
+servos), but it still walks pretty well. I also need to add rotation.
+
+This can be used as is, bascially a remote-controlled toy, or you can
+attach various things to the Arduino (both the serial and the I²C pins
+are free) to control it in a little bit more intelligent way (like the
+VoCore + webcam version that I started with). In particular, I'm
+looking forward to getting that OpenMV board to put it on this thing.
+

@@ -1,0 +1,182 @@
+---
+blogpost: true
+date: 2015-01-01
+category: project
+tags:  robots, ESP8266, ROBOT, WALKING, hardware, LUA, bob, biped, ongoing project
+image: 1
+---
+
+# µBob biped robot
+
+Two legs, four servos, ATtiny85 for brains
+
+<div class="project-thumb">
+
+:::{image} images/5685391421358370717.jpg
+:target: /_images/5685391421358370717.jpg
+:::
+
+:::{image} images/5449001420123675649.jpg
+:target: /_images/5449001420123675649.jpg
+:::
+
+:::{image} images/5670041421322416717.jpg
+:target: /_images/5670041421322416717.jpg
+:::
+
+:::{image} images/1724701420123661569.jpg
+:target: /_images/1724701420123661569.jpg
+:::
+
+:::{image} images/9991401483094820639.jpg
+:target: /_images/9991401483094820639.jpg
+:::
+
+:::{image} images/9774881483280152600.jpg
+:target: /_images/9774881483280152600.jpg
+:::
+
+</div>
+
+
+    This is a tiny, minimalist version of a popular biped robot design. I
+used tiny hobby servos, a very small lipo battery, a SHARP distance
+sensor and an ATtiny85 (previous version used an ESP8266 module).
+
+
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="" src="https://www.youtube.com/embed/S6yyWpflXrM"></iframe>
+
+
+
+
+
+## Logs
+
+:::{postlist}
+:category: project-3736
+:::
+
+## Instructions
+
+
+
+You can add a hat, a mustache, some wire hands, perhaps a pipe or a
+monocle, etc. The battery is attached to the frame with some two-sided
+tape.
+
+
+---
+
+
+First, you will need a PCB. There is a Fritzing file in the
+repository, which you can use to generate the gerbers and order it,
+and here is an OSHPark order you can use: [https://oshpark.com/shared_projects/qjZ6fhAS](https://oshpark.com/shared_projects/qjZ6fhAS) 
+
+
+:::{image} images/2673271483283190712.png
+
+:::
+
+
+
+---
+
+
+Once the PCBs arrive, you have to cut all the excess pieces, and
+polish the resulting irregularities. Depending on the servos you have,
+you might also need to file the PCB a bit to make them fit well. My
+servos fit exactly right, with some force, but you never know.
+
+
+:::{image} images/3487221483283523271.jpg
+
+:::
+
+
+
+---
+
+
+Assemble the PCB -- solder the switch, the power socket, the servo
+sockets, the chip. Make sure to put two of the servo sockets on one
+side, and two on the other side -- so that you don't have to move
+wires through the PCB.
+
+
+:::{image} images/3775531483283668599.jpg
+
+:::
+\
+
+
+
+---
+
+
+Before you attach the servos, program the chip using a programming
+clip. You will need to remove and disconnect the servos each time you
+are reprogramming it.
+
+
+---
+
+
+Assemble the legs. To make knees, take two servo horns, heat them with
+a lighter, and press them together -- they will fuse. Make sure you
+make something like this:
+
+
+:::{image} images/2097181483283833852.jpg
+
+:::
+
+
+
+---
+
+
+The feet are cut out from a piece of plastic and simply glued to the
+leg servos.
+
+
+---
+
+
+For the distance sensor, use hot-glue to add a 3-pin header to the
+bottom:
+
+
+:::{image} images/9233441483283923534.jpg
+
+:::
+
+
+And connect those pins with short wires to the sensor's contacts.
+
+
+---
+
+
+Then use a stacking header to attach the sensor to the PCB:
+
+
+:::{image} images/8898621483283999151.jpg
+
+:::
+
+
+
+---
+
+
+For the body frame, bend some paper clips and solder them into the
+holes in the corners of the PCB:
+
+
+:::{image} images/3962861483284053483.jpg
+
+:::
+
+
+
+---

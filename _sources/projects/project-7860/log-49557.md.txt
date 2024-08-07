@@ -1,0 +1,44 @@
+---
+blogpost: true
+date: 2016-11-26
+category: project-7860
+---
+
+# The Power of Plain C
+Published on 2016-11-26 in {ref}`project-7860`.
+
+So I gave up on using that formula, and instead tabulated the
+frequencies -- that's just 8 bytes, after all. I also changed the
+encoding of the notes, so that it's easier to read (in octal). The 3
+least significant bits are the pointer to the table of frequencies,
+the next two bits are the octave (with 0 being a pause), and the sixth
+bit is the duration. That got me down to about 800 bytes.
+
+Hmm, but I'm sure I can do better. At this point, I'm basically not
+using anything from Arduino itself, except maybe for the delay. So
+what if I just go with plain C, like the good old days? A quick google
+found me a ready Makefile for the ATtiny85 (complete with fuse
+flashing), and a bit of looking around got me the _delay_ms()
+function. Perfect.
+
+The result? See for yourself:
+
+
+```
+AVR Memory Usage
+----------------
+Device: attiny85
+
+Program:     492 bytes (6.0% Full)
+(.text + .data + .bootloader)
+
+Data:          8 bytes (1.6% Full)
+(.data + .bss + .noinit)
+```
+
+If I'm reading this right, that is exactly 500 bytes total. Woo!
+
+The code (with the makefile) is available in the repository here (no
+rickrolling this time, I promise): [https://bitbucket.org/thesheep/nyan/src/495dfa41484dade01bdf7ff79b41f9
+337f430e5b/main/?at=default](https://bitbucket.org/thesheep/nyan/src/495dfa41484dade01bdf7ff79b41f9337f430e5b/main/?at=default) 
+

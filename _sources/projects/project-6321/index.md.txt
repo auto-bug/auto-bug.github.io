@@ -1,0 +1,67 @@
+---
+blogpost: true
+date: 2015-06-15
+category: project
+tags:  ROBOT, WALKING, hardware, completed project, arduino, robots, quadruped
+image: 1
+---
+
+# Katka, a mammalian robot
+
+A small walking robot with a mammal-like configuration of legs.
+
+<div class="project-thumb">
+
+:::{image} images/226891435314260622.jpg
+:target: /_images/226891435314260622.jpg
+:::
+
+:::{image} images/8326261434400096795.jpg
+:target: /_images/8326261434400096795.jpg
+:::
+
+:::{image} images/6178521435314253175.jpg
+:target: /_images/6178521435314253175.jpg
+:::
+
+</div>
+
+
+    This is one of my early experiments at building a cheap quadruped.
+Since there are a lot of servomechanisms in such a robot, even when
+they are relatively cheap, they comprise a large part of the total
+price. So reducing the number of servos is an obvious way of reducing
+the price.
+
+However, it's almost impossible to have proper inverse kinematics with
+a robot in a spider/lizard configuration with only two degrees of
+freedom per leg. Fortunately, in the mammal configuration, when both
+degrees of freedom move the leg in the same plane, it's possible to
+have two-dimensional inverse kinematics, and that's what this robot
+does.
+
+It can move its center of mass, and it can move its legs backwards in
+a straight line, and then raise them and move them forward. That is
+enough for implementing a proper statically stable "creep" gait.
+Unfortunately, it's not enough for implementing proper turning. In
+order to turn, this robot works like a tank, by making the steps on
+one side shorter than on the other (or even reversing the direction).
+This is sub-optimal, as it leads to slippage and unpredictability, but
+that's the best I could do without adding at least one servo and
+rebuilding the robot completely.
+
+
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="" src="https://www.youtube.com/embed/MJjPAcgxrWs"></iframe>
+
+
+
+
+
+## Logs
+
+:::{postlist}
+:category: project-6321
+:::
+
+## Instructions
+

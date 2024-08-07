@@ -1,0 +1,34 @@
+---
+blogpost: true
+date: 2015-02-13
+category: project-3301
+---
+
+# Still Alive
+Published on 2015-02-13 in {ref}`project-3301`.
+
+The progress on this guy has been kind of slow, and mostly in
+software. The current status is that I have the video streaming from
+camera to the web browser working, and I resolved the issue with noise
+on the serial line that made it impossible for the robot to walk
+properly (it turned out to be some kernel logs still being output to
+the serial). There still seems to be some problem either with the leg
+inverse kinematics, or the walking algorithm, as the legs move a
+little strange -- this requires further investigation.
+
+I also have no idea for the control scheme. Right now I just start the
+micropython script from the command line over ssh, but it would be
+nice to be able to control the robot interactively, possibly through
+the web page that includes the streamed video. There is a socket
+library in micropython, so I could just listen for commands on some
+port, but from JavaScript I can only do HTTP or websocket
+communication... I need to think about it some more.
+
+As for the twin brother, I'm trying to program it entirely in Arduino,
+so that it's the cheapest quadruped robot around. If that works, I
+will add a basic "laser tag" gun to it and try to talk some friends
+into making their own version, so that we can have a cheap version of
+the Mech Warfare battles. It will probably be a separate project,
+though.\
+
+

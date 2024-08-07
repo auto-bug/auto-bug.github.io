@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Up Side Down - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="up-side-down">
+<h1>Up Side Down<a class="headerlink" href="#up-side-down" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2016-02-14 in <a class="reference internal" href="../#project-3694"><span class="std std-ref">Henk the Hexapod</span></a>.</p>
+<p>Today I worked a little bit more with the robot. It’s actually quite
+convenient to have it sit on a box (so that the legs are in the air)
+next to my computer, connected over the USB cable.</p>
+<img alt="projects/project-3694/images/6448311455476737235.jpg" src="projects/project-3694/images/6448311455476737235.jpg" />
+<p>As you can see, the OpenMV camera is actually installed up-side-down.
+That’s because it was more convenient for me, and it looks a little
+bit like a snout. I figured it wouldn’t matter, as I would simply
+reverse the y coordinate of any results I get from the camera. It
+turns out that sometimes it does matter – in particular, the face
+detection algorithms don’t detect up-side-down faces. I looked for a
+way to flip the image, and after I couldn’t find anything, <a class="reference external" href="https://openmv.io/forums/viewtopic.php?f=6&amp;t=56">I asked on the OpenMV forum, where the authors immediately helped me</a> . Turns out the sensor has a setting which you can enable to make it
+flip the image in hardware. Here’s a photo from the eyes of the robot:</p>
+<img alt="projects/project-3694/images/5026061455477102794.jpg" src="projects/project-3694/images/5026061455477102794.jpg" />
+<p>The quality is not that great, because it’s pretty dark in my room.
+I’m using a wide-angle lens, so you can see the two front legs of the
+robot in there.</p>
+<p>Next I went on working on the walking code (again). As usual, starting
+with the Servo class:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyb</span>
+<span class="kn">import</span> <span class="nn">ustruct</span>
+<span class="kn">import</span> <span class="nn">math</span>
+
+
+<span class="k">class</span> <span class="nc">Servo</span><span class="p">:</span>
+    <span class="n">min_pos</span> <span class="o">=</span> <span class="mi">600</span>
+    <span class="n">max_pos</span> <span class="o">=</span> <span class="mi">2400</span>
+    <span class="n">pos_range</span> <span class="o">=</span> <span class="mi">180</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">servos</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">trim</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">servos</span> <span class="o">=</span> <span class="n">servos</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">index</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reverse</span> <span class="o">=</span> <span class="n">reverse</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">trim</span> <span class="o">=</span> <span class="n">trim</span>
+
+    <span class="k">def</span> <span class="nf">move</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">radians</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">degrees</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">degrees</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">degrees</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">radians</span><span class="p">)</span>
+        <span class="n">degrees</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">trim</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">reverse</span><span class="p">:</span>
+            <span class="n">degrees</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pos_range</span> <span class="o">-</span> <span class="n">degrees</span>
+        <span class="n">position</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_pos</span> <span class="o">+</span> <span class="p">(</span>
+            <span class="n">degrees</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">max_pos</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_pos</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">pos_range</span><span class="p">)</span>
+        <span class="n">position</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">max_pos</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">min_pos</span><span class="p">,</span> <span class="n">position</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">servos</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">position</span>
+
+
+<span class="k">class</span> <span class="nc">Servos</span><span class="p">:</span>
+    <span class="n">ADDRESS</span> <span class="o">=</span> <span class="mi">9</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bus</span> <span class="o">=</span> <span class="n">pyb</span><span class="o">.</span><span class="n">I2C</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">pyb</span><span class="o">.</span><span class="n">I2C</span><span class="o">.</span><span class="n">MASTER</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">servos</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">18</span>
+
+    <span class="k">def</span> <span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">servos</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Servo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">servos</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">servos</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">servos</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">18</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">servo</span> <span class="ow">in</span> <span class="n">servos</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">pyb</span><span class="o">.</span><span class="n">disable_irq</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">bus</span><span class="o">.</span><span class="n">mem_write</span><span class="p">(</span>
+                    <span class="n">ustruct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s1">&#39;&lt;&#39;</span> <span class="o">+</span> <span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">servos</span><span class="p">[</span><span class="n">servo</span><span class="p">]),</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">ADDRESS</span><span class="p">,</span>
+                    <span class="n">servo</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="k">finally</span><span class="p">:</span>
+                <span class="n">pyb</span><span class="o">.</span><span class="n">enable_irq</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Now I can move each of the joints of the robot individually. Next up,
+leg (practically the same as in <a class="reference internal" href="../../project-6050/#project-6050"><span class="std std-ref">Tote</span></a> ) and then body (the hard part) inverse kinematics.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

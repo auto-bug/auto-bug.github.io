@@ -1,0 +1,38 @@
+---
+blogpost: true
+date: 2015-08-25
+category: project-6608
+---
+
+# First Unit
+Published on 2015-08-25 in {ref}`project-6608`.
+
+The first unit is fully assembled, programmed and tested!
+
+
+:::{image} images/9987031440503589740.jpg
+
+:::
+
+
+The operation is fairly simple:
+
+
+ * pressing a button increments the corresponding counter,
+ * it also makes the LED on that button shine for 400 milliseconds,
+ * while the LED is shining, pressing any buttons has no effect,
+ * it also makes the display work for 30 seconds,
+ * the display shows the state of a counter,
+ * it switches between the three counters every 2 seconds,
+ * the counter being displayed is indicated by letters "a", "b" and "c",
+ * to reset the counters switch the device off and on again.
+
+I'm quite happy with how it came out. The only problem is that the
+LEDs on the buttons are fairly weak and not well visible in a bright
+room. They will be probably fine in a conference room, though.
+
+Finally, a movie:
+
+
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/3ajmW4K8xTs"></iframe>
+

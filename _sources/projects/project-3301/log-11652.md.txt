@@ -1,0 +1,38 @@
+---
+blogpost: true
+date: 2014-12-06
+category: project-3301
+---
+
+# Rubber Paint and Blue Smoke
+Published on 2014-12-06 in {ref}`project-3301`.
+
+While I still didn't get to get the camera modules to stream any
+video, I worked a little bit on the servo controller and mechanical
+parts of the robot.
+
+For one, I discovered why all the frequencies were half what I
+expected from the code -- I selected the 5V, not 3.3V board in the
+Arduino IDE, so the code was compiled for the wrong model. Selecting
+the right board fixes all those issues.
+
+Another thing is the voltage monitor. I added a simple voltage divider
+on two resistors, and connected it to one of the analog pins on the
+servo controller. Now I can shut down the servos if the battery
+voltage reaches a critical level.
+
+I also painted the servo horns at the ends of the legs with some
+rubber paint, hoping that will let them get a better grip on the
+floor. Unfortunately, it seems to have very little effect.
+
+Finally, when testing the new servo controller code, I must have
+shorted one of the cables, and my servo controller released blue
+smoke. As you all know, those electronic components are actually
+powered by magical blue smoke inside, and if you release it, they stop
+working. I'm considering using a 5V one now, because I've run out of
+3.3V replacements...
+
+Update: So, after some research, it turns out that the part that got
+fried is... the on/off switch. Phew. That's literally the cheapest
+part, so I'm lucky.
+

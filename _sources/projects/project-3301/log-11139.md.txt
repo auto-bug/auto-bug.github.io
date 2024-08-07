@@ -1,0 +1,23 @@
+---
+blogpost: true
+date: 2014-11-17
+category: project-3301
+---
+
+# Vocore
+Published on 2014-11-17 in {ref}`project-3301`.
+
+My vocore boards finally arrived. They are so tiny!
+
+So far not much done. I have tested one of the boards, ssh'd into it,
+installed the Micropython packages on it from the OpenWRT
+repositories, got TTL to work, tested that the interactive shell
+works.
+
+Next I will need to experiment with GPIOs and PWM on it, see if I can
+get it to control the servos directly. In the worst case, I will just
+connect a 3.3V Arduino Pro Mini over TTL as the servo controller, but
+I'm optimistic.
+
+The PyBoard will probably get moved to a slightly bigger robot body.
+

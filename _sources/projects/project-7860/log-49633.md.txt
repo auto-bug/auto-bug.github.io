@@ -1,0 +1,78 @@
+---
+blogpost: true
+date: 2016-11-28
+category: project-7860
+---
+
+# ATtiny13
+Published on 2016-11-28 in {ref}`project-7860`.
+
+I'm still waiting for my chips, but [@davedarko](https://hackaday.iohttps://hackaday.io/hacker/3459)  has a bunch of ATtiny13s handy, and he reports that there is a small
+problem: ATtiny13 doesn't have Timer1. A quick look at the datasheet
+confirms that -- so I will need to use Timer0 instead. However, there
+are two problems with that. First, Timer0 cannot directly control the
+PB4 pin that I used for the piezo on the boards, and second, its
+prescaler is not nearly as accurate, so I can't use it for selecting
+octaves. But let's try and see what we can do.
+
+The first problem is simple: I undusted my old trusty time machine,
+went back a week, and modified the original board design, to make one
+of the cats (the middle right one) different from others -- it has
+piezo on pin PB0, and separate LEDs on PB3 and PB4, so it can blink
+its eyes independently.
+
+The second one is a bit worse -- we will have to compromise. I'm
+setting the prescaler to a static value, and I'm shifting the timer
+counters right by the octave number -- this way the higher the octave,
+the smaller the numbers -- so higher frequency. (You may remember from
+your music lessons, that each octave has twice the frequency of the
+previous one). The problem with this is that I lose accuracy at the
+higher frequencies. Oh well. Also, I had to switch the chip to 1Mhz,
+because then I can get the prescaler at the right spot.
+
+The end result isn't bad, and it's only 2 bytes larger than the
+ATtiny85 version (because I now blink the other eye too, otherwise it
+would have been smaller). Here it is:
+
+
+```cpp
+void play(const byte *notes, byte length) {
+    union {
+        struct {
+            unsigned int tone: 3;
+            unsigned int octave: 2;
+            unsigned int length: 1;
+        } note;
+        byte raw;
+    } note;
+
+    while (length --> 0) { // "Goes to 0" operator.
+        note.raw = pgm_read_byte_near(notes++);
+        if (note.note.octave) {
+            TCCR0B = 2; // Pre-scaler /64
+            OCR0A = pgm_read_byte_near(FREQ + note.note.tone) >> (note.note.octave - 1);
+        }
+        if (note.note.length) {
+            _delay_ms(220);
+            TCCR0B = 0;
+            _delay_ms(30);
+        } else {
+            _delay_ms(110);
+            TCCR0B = 0;
+            _delay_ms(15);
+        }
+        PORTB ^= 1<<3 | 1<<4;
+    }
+}
+
+int main() {
+    DDRB = 1<<0 | 1<<3 | 1<<4; // Output pins PB0, PB3, PB4.
+    TCCR0A |= 1<<COM0A0 | 1<<WGM01; // Enable output on PB0 and set CTC mode.
+    PORTB ^= 1<<4; // Close one eye, so they blink one at a time.
+    play(INTRO_NOTES, 26);
+    while(1) {
+        play(MELODY_NOTES, 216);
+    }
+}
+```
+

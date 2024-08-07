@@ -1,0 +1,323 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>http://deshipu.art/</id>
+  <title>deshipu.art - Posts tagged arduino</title>
+  <updated>2024-08-07T20:27:29.272546+00:00</updated>
+  <link href="http://deshipu.art/"/>
+  <link href="http://deshipu.art/blog/tag/arduino/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-3300/</id>
+    <title>µKubik quadruped robot</title>
+    <updated>2014-11-02T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="kubik-quadruped-robot"&gt;
+
+&lt;p&gt;Cheap and simple tabletop quadruped robot controlled with Python.&lt;/p&gt;
+&lt;div class="project-thumb"&gt;
+&lt;a class="reference external image-reference" href="/_images/1206291414960240002.jpg"&gt;&lt;img alt="projects/project-3300/images/1206291414960240002.jpg" src="projects/project-3300/images/1206291414960240002.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/1430461414960252484.jpg"&gt;&lt;img alt="projects/project-3300/images/1430461414960252484.jpg" src="projects/project-3300/images/1430461414960252484.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/5106921414960413902.jpg"&gt;&lt;img alt="projects/project-3300/images/5106921414960413902.jpg" src="projects/project-3300/images/5106921414960413902.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/6811941414960573602.jpg"&gt;&lt;img alt="projects/project-3300/images/6811941414960573602.jpg" src="projects/project-3300/images/6811941414960573602.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/3256351414960581097.jpg"&gt;&lt;img alt="projects/project-3300/images/3256351414960581097.jpg" src="projects/project-3300/images/3256351414960581097.jpg" /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;I consider this project more or less complete hardware-wise. I might
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;add a sensor or two more if I can fit them inside… It uses an old
+iPod Nano box for the body, but you can use pretty much anything: a
+pill box, a plastic jar, even just a piece of a PCB. All the parts
+together cost me around $75.&lt;/p&gt;
+&lt;p&gt;Software-wise, I have the creep and trot gaits working, and I have a
+program that lets me control it with a gamepad. I’m working on more
+interesting behaviors.&lt;/p&gt;
+&lt;section id="logs"&gt;
+&lt;h2&gt;Logs&lt;/h2&gt;
+&lt;ul class="postlist-style-none postlist simple"&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-05-29 - &lt;a class="reference internal" href="../../../projects/project-3300/log-18662/"&gt;Sensing the Servo Position&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-05-29 - &lt;a class="reference internal" href="../../../projects/project-3300/log-18666/"&gt;Sensing the Servo Force&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-05-28 - &lt;a class="reference internal" href="../../../projects/project-3300/log-18609/"&gt;Family Grows&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-05-08 - &lt;a class="reference internal" href="../../../projects/project-3300/log-17553/"&gt;Tote, µKubik’s younger brother&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-04-17 - &lt;a class="reference internal" href="../../../projects/project-3300/log-16640/"&gt;Force Sensing&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-03-19 - &lt;a class="reference internal" href="../../../projects/project-3300/log-15430/"&gt;Younger Brother&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-01-03 - &lt;a class="reference internal" href="../../../projects/project-3300/log-12504/"&gt;Follow Me!&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2014-12-23 - &lt;a class="reference internal" href="../../../projects/project-3300/log-12121/"&gt;One More Sensor&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2014-11-02 - &lt;a class="reference internal" href="../../../projects/project-3300/log-10846/"&gt;Walking around the desk&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2014-11-02 - &lt;a class="reference internal" href="../../../projects/project-3300/log-10851/"&gt;Size does matter&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section id="instructions"&gt;
+&lt;h2&gt;Instructions&lt;/h2&gt;
+&lt;/section&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-3300/" rel="alternate"/>
+    <summary>Cheap and simple tabletop quadruped robot controlled with Python.</summary>
+    <category term="ROBOT" label="ROBOT"/>
+    <category term="WALKING" label="WALKING"/>
+    <category term="arduino" label="arduino"/>
+    <category term="bluetooth" label="bluetooth"/>
+    <category term="ongoingproject" label="ongoing project"/>
+    <category term="quadruped" label="quadruped"/>
+    <category term="robots" label="robots"/>
+    <published>2014-11-02T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-6321/</id>
+    <title>Katka, a mammalian robot</title>
+    <updated>2015-06-15T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="katka-a-mammalian-robot"&gt;
+
+&lt;p&gt;A small walking robot with a mammal-like configuration of legs.&lt;/p&gt;
+&lt;div class="project-thumb"&gt;
+&lt;a class="reference external image-reference" href="/_images/226891435314260622.jpg"&gt;&lt;img alt="projects/project-6321/images/226891435314260622.jpg" src="projects/project-6321/images/226891435314260622.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/8326261434400096795.jpg"&gt;&lt;img alt="projects/project-6321/images/8326261434400096795.jpg" src="projects/project-6321/images/8326261434400096795.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/6178521435314253175.jpg"&gt;&lt;img alt="projects/project-6321/images/6178521435314253175.jpg" src="projects/project-6321/images/6178521435314253175.jpg" /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;This is one of my early experiments at building a cheap quadruped.
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Since there are a lot of servomechanisms in such a robot, even when
+they are relatively cheap, they comprise a large part of the total
+price. So reducing the number of servos is an obvious way of reducing
+the price.&lt;/p&gt;
+&lt;p&gt;However, it’s almost impossible to have proper inverse kinematics with
+a robot in a spider/lizard configuration with only two degrees of
+freedom per leg. Fortunately, in the mammal configuration, when both
+degrees of freedom move the leg in the same plane, it’s possible to
+have two-dimensional inverse kinematics, and that’s what this robot
+does.&lt;/p&gt;
+&lt;p&gt;It can move its center of mass, and it can move its legs backwards in
+a straight line, and then raise them and move them forward. That is
+enough for implementing a proper statically stable “creep” gait.
+Unfortunately, it’s not enough for implementing proper turning. In
+order to turn, this robot works like a tank, by making the steps on
+one side shorter than on the other (or even reversing the direction).
+This is sub-optimal, as it leads to slippage and unpredictability, but
+that’s the best I could do without adding at least one servo and
+rebuilding the robot completely.&lt;/p&gt;
+&lt;iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="" src="https://www.youtube.com/embed/MJjPAcgxrWs"&gt;&lt;/iframe&gt;
+&lt;section id="logs"&gt;
+&lt;h2&gt;Logs&lt;/h2&gt;
+&lt;ul class="postlist-style-none postlist simple"&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-07-01 - &lt;a class="reference internal" href="../../../projects/project-6321/log-20293/"&gt;Spider Mode&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-06-26 - &lt;a class="reference internal" href="../../../projects/project-6321/log-20012/"&gt;Reworked Electronics&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-06-24 - &lt;a class="reference internal" href="../../../projects/project-6321/log-19942/"&gt;Walking Details&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section id="instructions"&gt;
+&lt;h2&gt;Instructions&lt;/h2&gt;
+&lt;/section&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-6321/" rel="alternate"/>
+    <summary>A small walking robot with a mammal-like configuration of legs.</summary>
+    <category term="ROBOT" label="ROBOT"/>
+    <category term="WALKING" label="WALKING"/>
+    <category term="arduino" label="arduino"/>
+    <category term="completedproject" label="completed project"/>
+    <category term="hardware" label="hardware"/>
+    <category term="quadruped" label="quadruped"/>
+    <category term="robots" label="robots"/>
+    <published>2015-06-15T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-7522/</id>
+    <title>Hacking the MeArm</title>
+    <updated>2015-09-01T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="hacking-the-mearm"&gt;
+
+&lt;p&gt;I’ve got a MeArm and I’m going to do science to it.&lt;/p&gt;
+&lt;div class="project-thumb"&gt;
+&lt;a class="reference external image-reference" href="/_images/6760221441141978269.jpg"&gt;&lt;img alt="projects/project-7522/images/6760221441141978269.jpg" src="projects/project-7522/images/6760221441141978269.jpg" /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Basically I got a {ref}`project-181` , and I&amp;#39;m going to do stuff with it. That may involve modifying it a
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;little, adding position and force feedback to the servos, and
+programming it to do cool stuff.&lt;/p&gt;
+&lt;section id="logs"&gt;
+&lt;h2&gt;Logs&lt;/h2&gt;
+&lt;ul class="postlist-style-none postlist simple"&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-10-12 - &lt;a class="reference internal" href="../../../projects/project-7522/log-47571/"&gt;Still Alive&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-09-01 - &lt;a class="reference internal" href="../../../projects/project-7522/log-24510/"&gt;Acrylic Nuts and Bolts&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section id="instructions"&gt;
+&lt;h2&gt;Instructions&lt;/h2&gt;
+&lt;/section&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-7522/" rel="alternate"/>
+    <summary>I’ve got a MeArm and I’m going to do science to it.</summary>
+    <category term="ROBOT" label="ROBOT"/>
+    <category term="arduino" label="arduino"/>
+    <category term="arm" label="arm"/>
+    <category term="hardware" label="hardware"/>
+    <category term="mearm" label="mearm"/>
+    <category term="ongoingproject" label="ongoing project"/>
+    <published>2015-09-01T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-7564/</id>
+    <title>Banana Bomb</title>
+    <updated>2015-09-05T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="banana-bomb"&gt;
+
+&lt;p&gt;A prop that looks like a bomb from the movies.&lt;/p&gt;
+&lt;div class="project-thumb"&gt;
+&lt;a class="reference external image-reference" href="/_images/143291441447673213.jpg"&gt;&lt;img alt="projects/project-7564/images/143291441447673213.jpg" src="projects/project-7564/images/143291441447673213.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/733471441447685697.jpg"&gt;&lt;img alt="projects/project-7564/images/733471441447685697.jpg" src="projects/project-7564/images/733471441447685697.jpg" /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;iframe width="500" height="281" frameborder="0" allowfullscreen="" src="https://www.youtube.com/embed/N3f-M5qfWtQ"&gt;&lt;/iframe&gt;
+&lt;section id="logs"&gt;
+&lt;h2&gt;Logs&lt;/h2&gt;
+&lt;ul class="postlist-style-none postlist simple"&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-09-05 - &lt;a class="reference internal" href="../../../projects/project-7564/log-24682/"&gt;We Do What We Must&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section id="instructions"&gt;
+&lt;h2&gt;Instructions&lt;/h2&gt;
+&lt;/section&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-7564/" rel="alternate"/>
+    <summary>A prop that looks like a bomb from the movies.</summary>
+    <category term="arduino" label="arduino"/>
+    <category term="bomb" label="bomb"/>
+    <category term="completedproject" label="completed project"/>
+    <category term="hardware" label="hardware"/>
+    <published>2015-09-05T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-7860/</id>
+    <title>Nyan Board</title>
+    <updated>2015-09-27T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="nyan-board"&gt;
+
+&lt;p&gt;A small ATtiny85 board playing the Nyan Cat tune.&lt;/p&gt;
+&lt;div class="project-thumb"&gt;
+&lt;a class="reference external image-reference" href="/_images/1866961443356063710.png"&gt;&lt;img alt="projects/project-7860/images/1866961443356063710.png" src="projects/project-7860/images/1866961443356063710.png" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/2776431445590942205.jpg"&gt;&lt;img alt="projects/project-7860/images/2776431445590942205.jpg" src="projects/project-7860/images/2776431445590942205.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/4626181445593540149.jpg"&gt;&lt;img alt="projects/project-7860/images/4626181445593540149.jpg" src="projects/project-7860/images/4626181445593540149.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/960051445598257399.jpg"&gt;&lt;img alt="projects/project-7860/images/960051445598257399.jpg" src="projects/project-7860/images/960051445598257399.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/3272621445675770492.jpg"&gt;&lt;img alt="projects/project-7860/images/3272621445675770492.jpg" src="projects/project-7860/images/3272621445675770492.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/8787551480673398340.jpg"&gt;&lt;img alt="projects/project-7860/images/8787551480673398340.jpg" src="projects/project-7860/images/8787551480673398340.jpg" /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="" src="https://www.youtube.com/embed/XDQEJe-PwHs"&gt;&lt;/iframe&gt;
+&lt;section id="logs"&gt;
+&lt;h2&gt;Logs&lt;/h2&gt;
+&lt;ul class="postlist-style-none postlist simple"&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-06-24 - &lt;a class="reference internal" href="../../../projects/project-7860/log-148360/"&gt;Corrected Repositories&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-03-15 - &lt;a class="reference internal" href="../../../projects/project-7860/log-54942/"&gt;Crazy Custom Colors&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-01-04 - &lt;a class="reference internal" href="../../../projects/project-7860/log-51328/"&gt;ATtiny10 Nyan Cat&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-01-01 - &lt;a class="reference internal" href="../../../projects/project-7860/log-51107/"&gt;ATtiny10 Board&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-12-31 - &lt;a class="reference internal" href="../../../projects/project-7860/log-51067/"&gt;ATtiny10 Working&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-12-30 - &lt;a class="reference internal" href="../../../projects/project-7860/log-51040/"&gt;ATtiny10&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-12-21 - &lt;a class="reference internal" href="../../../projects/project-7860/log-50663/"&gt;ATtiny13&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-12-02 - &lt;a class="reference internal" href="../../../projects/project-7860/log-49831/"&gt;Nyan Boards in Singles (Actually Triplets)&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-12-02 - &lt;a class="reference internal" href="../../../projects/project-7860/log-49803/"&gt;Faulty Parts&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-12-01 - &lt;a class="reference internal" href="../../../projects/project-7860/log-49767/"&gt;Boards Arrived&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-11-28 - &lt;a class="reference internal" href="../../../projects/project-7860/log-49638/"&gt;Schematic&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-11-28 - &lt;a class="reference internal" href="../../../projects/project-7860/log-49633/"&gt;ATtiny13&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-11-26 - &lt;a class="reference internal" href="../../../projects/project-7860/log-49557/"&gt;The Power of Plain C&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-11-26 - &lt;a class="reference internal" href="../../../projects/project-7860/log-49552/"&gt;Tabulate your Data&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-11-24 - &lt;a class="reference internal" href="../../../projects/project-7860/log-49466/"&gt;Shrunken Cat&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-11-23 - &lt;a class="reference internal" href="../../../projects/project-7860/log-49426/"&gt;Efficient Tone&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-11-21 - &lt;a class="reference internal" href="../../../projects/project-7860/log-49317/"&gt;Second Version&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-01-06 - &lt;a class="reference internal" href="../../../projects/project-7860/log-29974/"&gt;Doing Useful Work&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-11-09 - &lt;a class="reference internal" href="../../../projects/project-7860/log-27716/"&gt;Now Using PROGMEM&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-10-23 - &lt;a class="reference internal" href="../../../projects/project-7860/log-26942/"&gt;PCBs Are Here&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-10-23 - &lt;a class="reference internal" href="../../../projects/project-7860/log-26965/"&gt;Great Success&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-10-02 - &lt;a class="reference internal" href="../../../projects/project-7860/log-26101/"&gt;Programming ATtiny85&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-09-27 - &lt;a class="reference internal" href="../../../projects/project-7860/log-25930/"&gt;Melody&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-09-27 - &lt;a class="reference internal" href="../../../projects/project-7860/log-25924/"&gt;Boards Ordered&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section id="instructions"&gt;
+&lt;h2&gt;Instructions&lt;/h2&gt;
+&lt;p&gt;Separate a single cat from the rest of the board. You can use a rotary
+tool, a scroll saw, a hand saw or a file. For best effect, round off
+the edges.&lt;/p&gt;
+&lt;img alt="projects/project-7860/images/6782841445675901847.jpg" src="projects/project-7860/images/6782841445675901847.jpg" /&gt;
+&lt;hr class="docutils" /&gt;
+&lt;p&gt;If it’s a cat with holes for the eyes, you need to get rid of the
+metallic layer inside the holes. Cut it with a knife until there is no
+electrical connection between the pads of the LED.&lt;/p&gt;
+&lt;img alt="projects/project-7860/images/9676331445676133120.jpg" src="projects/project-7860/images/9676331445676133120.jpg" /&gt;
+&lt;hr class="docutils" /&gt;
+&lt;p&gt;Solder all the parts onto the board. Also solder an additional wire
+for the reset.&lt;/p&gt;
+&lt;img alt="projects/project-7860/images/6671441445676197796.jpg" src="projects/project-7860/images/6671441445676197796.jpg" /&gt;
+&lt;p&gt;Pay attention to the polarization of the LEDs.&lt;/p&gt;
+&lt;hr class="docutils" /&gt;
+&lt;p&gt;Connect your programmer. I use USBASP, but there is a number of
+different programmers that you can use, including an Arduino.&lt;/p&gt;
+&lt;img alt="projects/project-7860/images/8122851445676305092.jpg" src="projects/project-7860/images/8122851445676305092.jpg" /&gt;
+&lt;hr class="docutils" /&gt;
+&lt;p&gt;Follow this tutorial to setup your &lt;a class="reference external" href="http://highlowtech.org/?p=1695"&gt;Arduino IDE&lt;/a&gt; . You may need to run it as root. Use this arduino core: &lt;a class="reference external" href="https://code.google.com/p/arduino-tiny/"&gt;https://code.google.com/p/arduino-tiny/&lt;/a&gt;&lt;/p&gt;
+&lt;hr class="docutils" /&gt;
+&lt;p&gt;Upload the following code:&lt;/p&gt;
+&lt;div class="highlight-cpp notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;const&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;BEEP_PIN&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="k"&gt;const&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;LED_PIN&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+
+&lt;span class="k"&gt;const&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;LENGTH&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;27&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="k"&gt;const&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;NOTES&lt;/span&gt;&lt;span class="p"&gt;[]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="mi"&gt;65&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;67&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;70&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;67&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;74&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;74&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;72&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;65&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;67&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;70&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;67&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;72&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;72&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;70&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;69&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;67&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;65&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;67&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;70&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="mi"&gt;67&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;70&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;72&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;69&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;65&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;65&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;72&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;70&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="p"&gt;};&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="k"&gt;const&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kt"&gt;float&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;DURATIONS&lt;/span&gt;&lt;span class="p"&gt;[]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="mf"&gt;0.25&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mf"&gt;0.25&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mf"&gt;0.25&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mf"&gt;0.25&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mf"&gt;0.75&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mf"&gt;0.75&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mf"&gt;1.5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mf"&gt;0.25&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mf"&gt;0.25&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mf"&gt;0.25&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mf"&gt;0.25&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mf"&gt;0.75&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="mf"&gt;0.75&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mf"&gt;0.75&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mf"&gt;0.25&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mf"&gt;0.5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mf"&gt;0.25&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mf"&gt;0.25&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mf"&gt;0.25&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mf"&gt;0.25&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mf"&gt;1.0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mf"&gt;0.5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mf"&gt;0.75&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mf"&gt;0.25&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="mf"&gt;1.0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mf"&gt;0.5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mf"&gt;1.0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mf"&gt;2.0&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="p"&gt;};&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="k"&gt;const&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;BPM&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;120&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+
+
+&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;play&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;const&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;notes&lt;/span&gt;&lt;span class="p"&gt;[],&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;const&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kt"&gt;float&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;durations&lt;/span&gt;&lt;span class="p"&gt;[],&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;bpm&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;length&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="kt"&gt;float&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;bps&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;60.0&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;BPM&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mf"&gt;1000.0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;length&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;hertz&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pow&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;2.0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;notes&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mf"&gt;69.0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mf"&gt;12.0&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;440&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;tone&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;BEEP_PIN&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;hertz&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;long&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;durations&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;bps&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;delay&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="kt"&gt;long&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;durations&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;bps&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;toggle_eyes&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+
+&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;toggle_eyes&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="k"&gt;static&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kt"&gt;bool&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;blink&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;false&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;digitalWrite&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;LED_PIN&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;blink&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;blink&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="n"&gt;blink&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+
+&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;setup&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;pinMode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;BEEP_PIN&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;OUTPUT&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;pinMode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;LED_PIN&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;OUTPUT&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+
+&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;loop&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;play&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;NOTES&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;DURATIONS&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;BPM&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;LENGTH&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;hr class="docutils" /&gt;
+&lt;p&gt;Disconnect the programmer, and connect a power source (from 3V to 5V)
+to the brown (minus) and red (plus) wires. You should hear music and
+the eyes should blink. Congratulations.&lt;/p&gt;
+&lt;p&gt;You can now glue the speaker to the back of the cat, and it’s
+finished.&lt;/p&gt;
+&lt;/section&gt;
+&lt;hr class="docutils" /&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-7860/" rel="alternate"/>
+    <summary>A small ATtiny85 board playing the Nyan Cat tune.</summary>
+    <category term="arduino" label="arduino"/>
+    <category term="atmel" label="atmel"/>
+    <category term="attiny" label="attiny"/>
+    <category term="completedproject" label="completed project"/>
+    <category term="hardware" label="hardware"/>
+    <category term="nyancat" label="nyan cat"/>
+    <published>2015-09-27T00:00:00+02:00</published>
+  </entry>
+</feed>

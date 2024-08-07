@@ -1,0 +1,58 @@
+---
+blogpost: true
+date: 2015-06-25
+category: project-3736
+---
+
+# Second Try on the Sensor
+Published on 2015-06-25 in {ref}`project-3736`.
+
+I finally found the motivation today to replace the distance sensor on
+µBob.  That involved de-soldering the ESP-12 module, replacing the
+sensor, bending the legs just right, replacing the power switch with a
+smaller one, and re-soldering the ESP-12. I also made a small change
+in the software, to make it start walking immediately after being
+powered on -- this way I can show it off at various conferences and
+talks without having to connect to WiFi to issue the commands.
+
+
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/ZexN6fpkvF8"></iframe>
+
+I also tested the new sensor (after moving the battery out of the
+way), but it seems that it's not working properly. The previous one
+was always high, this one is always low. Using a cellphone camera I
+can see that the light in the sensor is actually shining properly, so
+I suppose it's something wrong with my wiring -- either the
+connections are wrong, or the PCB that I etched has some gap or short.
+Either way, no sensors for this version of µBob.
+
+
+:::{image} images/9101921435245450854.jpg
+
+:::
+
+
+I other news, while Micropython for the ESP8266 is still very
+experimental and not suitable yet to control this robot, there is some
+very nice support for ESP8266 in the Arduino IDE now, and the have
+ported [the Servo library](https://github.com/esp8266/Arduino#servo) . They claim it can support up to 12 servos with a single timer, and
+up to 24 with the second one used. Which makes me wonder how I would
+connect them all when the best module so far, ESP-12, has only 10
+usable GPIO pins (well, 11 if I use some trick to have GPIO15 held
+down at boot). There are [some rumors about an ESP-12D module](http://s1.electrodragon.com/wp-content/uploads/2015/04/ESP12E-pins.png) , which has 2 additional usable GPIO pins due to using a dual-channel
+flash chip, instead of quad-channel one, but nobody seems to have
+those in stock. In any case, that would let me build an ESP-based
+quadruped robot, so took some time already to design a servo breakout
+board for it:
+
+
+:::{image} images/9348441435245873331.png
+
+:::
+
+
+It's one inch by one inch, has room for a dozen of those ultra-micro
+servos, a voltage regulator, and free analog pin, which could maybe be
+used for some sensor... If I can't find an ESP-12D, an ESP-12 will
+also work, sans 2 servos. But I can still build a quadruped like {ref}`project-6321`  with just eight of the servos.
+

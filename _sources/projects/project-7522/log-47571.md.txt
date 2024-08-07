@@ -1,0 +1,30 @@
+---
+blogpost: true
+date: 2016-10-12
+category: project-7522
+---
+
+# Still Alive
+Published on 2016-10-12 in {ref}`project-7522`.
+
+So I dug out this project. I never actually intended to abandon it for
+so long, but somehow that's exactly what happened. Today I started
+preparing for the [PyCon.PL](http://pl.pycon.org)  confernece, and looked at the shelf, and there it was. We are going
+to do some Micro:Bit hacking at the conference, and I thought: "Hey,
+it's a good thing to connect a Micro:Bit to!" So I took it out, blew
+the dust from it, replaced two broken bolts (those acrylic bolts are
+delicate when you tighten them too much) and added a bunch of wires to
+the servos:
+
+
+:::{image} images/2902801476262046533.jpg
+
+:::
+
+
+Every servo has now two extra wires: one going to the center tap of
+the pot, and one going to the motor. Why? Because I want to be able to
+do position and force sensing! Probably not right now and not with the
+Micro:Bit, but I really want to do some experiments with complain
+motion and such.
+

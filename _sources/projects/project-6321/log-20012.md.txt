@@ -1,0 +1,35 @@
+---
+blogpost: true
+date: 2015-06-26
+category: project-6321
+---
+
+# Reworked Electronics
+Published on 2015-06-26 in {ref}`project-6321`.
+
+Since I have a couple of new boards for {ref}`project-6050` , I decided to re-make the electronics for Katka. I got rid of the
+boost converter and the huge capacitor, using a 3.3V Pro Mini instead
+of the 5V. I also soldered all the parts on one side of the board, so
+that it can be attached easily with screws at the top of the robot.
+The battery is still just strapped to the front -- it has to be there
+for the center of gravity to be in the right place, unless I bite the
+bullet and rework the legs too.
+
+
+:::{image} images/7079041435314084862.jpg
+
+:::
+
+
+
+---
+I also fixed a very silly bug in the code, which made it ignore all TV
+remote commands. I still have a quite bad bug in the rotation code
+somewhere, so turning is not very nice.
+
+
+:::{image} images/8157741435314170641.jpg
+
+:::
+
+

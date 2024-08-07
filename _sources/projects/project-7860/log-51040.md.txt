@@ -1,0 +1,61 @@
+---
+blogpost: true
+date: 2016-12-30
+category: project-7860
+---
+
+# ATtiny10
+Published on 2016-12-30 in {ref}`project-7860`.
+
+So the surprise chip, ATtiny10, arrived, and I started to work on
+programming it. I already have the code for it prepared, and the PCB
+has been ordered a week ago, so I just need to get the code on the
+chip somehow.
+
+The ATtiny10 is not like the larger ATtinys -- it doesn't use ISP (aka
+SPI) for programming, but instead uses something called TPI (tiny
+programming interface), which seems to be something like half-duplex
+SPI. When I was upgrading my USBASP programmer, I noticed that the
+firmware has added support for TPI, and that it's already in AVRdude
+too, so it should be simple, right?\
+
+
+
+:::{image} images/4957611483132384500.jpg
+
+:::
+I soldered the tiny chip to a breakout board (the last row of pins
+uses two pads, because the alignment wasn't quite right, but the
+connections are good), I connected my programmer according to the
+schematic I found on some Polish blog (good thing I know the language)
+at [http://mirekk36.blogspot.ch/2013/07/attiny10-tpi-usbasp-
+mkavrcalculator.html](http://mirekk36.blogspot.ch/2013/07/attiny10-tpi-usbasp-mkavrcalculator.html)  and I proceeded to upload the hex file with:
+
+
+```
+avrdude -c usbasp-clone -p t10 -U flash:w:main.hex:i
+
+```
+
+The result? Of course the well known and loved message error:
+
+
+```
+avrdude: error: program enable: target doesn't answer.
+avrdude: initialization failed, rc=-1
+         Double check connections and try again, or use -F to override
+         this check.
+
+```
+
+I tried with different clock speeds, with the "slow clock" jumper, I
+disconnected and reconnected the whole thing several times, I measured
+the resistances. It all checks. Should work. Doesn't.I even made a side trip to try and program it with a CP2102 USB2TTL,
+which AVRdude apparently can do, but that didn't work either.
+
+So now I'm sitting here after a whole day of trying to program this
+thing, looking at it, and considering giving up.
+
+If anybody has any experience with this, or some suggestions for
+things to try, I'm open for ideas.
+

@@ -1,0 +1,25 @@
+---
+blogpost: true
+date: 2014-11-24
+category: project-3301
+---
+
+# Walking Controlled from PC
+Published on 2014-11-24 in {ref}`project-3301`.
+
+With very little progress with the camera (I can make shots with_fswebcam_, but when streaming with_mjpg-stream_, all frames are empty), I decided to go back to the mechanical part
+and see if it actually walks. I measured the legs, put it all into the [inverse kinematics](https://bitbucket.org/thesheep/pkubik/src/f0c05b8506bea5cfca37cf0ce62996a7dcb6a0cf/robot.py)  and copied the code for the creep gait from [µKubik](https://bitbucket.org/thesheep/pkubik/src/f0c05b8506bea5cfca37cf0ce62996a7dcb6a0cf/creep.py) . Turned out I need to do some more fine-tuning of the trim and
+reverse settings in my servo controller, but it finally walked:
+
+
+<iframe allowfullscreen="None" width="500" height="281" frameborder="0" src="https://www.youtube.com/embed/uTGFulDR2lg"></iframe>
+
+
+
+It's still pretty slow, and the cable makes it unbalanced, but the
+basic idea is there.\
+
+
+Now back to getting the camera to work. In the worst case I guess I
+will just stream the shots made with_fswebcam_... I wish I had [OpenMV](http://hackaday.io/project/1313-openmv)  for this robot brains.
+

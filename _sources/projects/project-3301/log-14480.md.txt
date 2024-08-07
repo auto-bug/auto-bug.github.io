@@ -1,0 +1,43 @@
+---
+blogpost: true
+date: 2015-02-25
+category: project-3301
+---
+
+# VoCore Version Rebuild
+Published on 2015-02-25 in {ref}`project-3301`.
+
+
+:::{image} images/691181424889720727.jpg
+
+:::
+
+
+I finally got to rebuilding the VoCore version of pKubik using the new
+printed circuit board. On the photo, starting from the top, you can
+see:
+
+
+ * a hat
+ * battery charging module
+ * camera module
+ * battery
+ * VoCore
+ * breakout board for the VoCore
+ * Arduino Pro Mini
+ * the new board.
+
+I also compiled a new OpenWRT image for it, and made sure everything
+works as it did before. So now I am where I was a week ago, except
+with a sturdier and more modular construction.
+
+I also have the gait implementation I wrote for the Arduino-only
+version, and I'm tempted to drop the Micropython version. Instead just
+accept commands for the Arduino-controlled gait on the serial, and
+echo those through ssh from the VoCore.
+
+Oh, I also finally found a good source of rubber for the feet. Old-
+school bicycle valves used pieces of a small rubber hose. You can
+still buy them in bike shops today, and they make excellent feet for
+the robots.
+

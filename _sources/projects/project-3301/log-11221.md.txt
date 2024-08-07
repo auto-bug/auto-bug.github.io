@@ -1,0 +1,18 @@
+---
+blogpost: true
+date: 2014-11-19
+category: project-3301
+---
+
+# Startup Sequence
+Published on 2014-11-19 in {ref}`project-3301`.
+
+No walking video yet (I need to update the dimensions and leg order in
+my walking code for this robot), but here's the start-up sequence:
+
+
+<iframe allowfullscreen="None" width="500" height="281" frameborder="0" src="https://www.youtube.com/embed/QmNp2Z4Ek_E"></iframe>
+
+I starts up the servos in sequence, not all at once, to avoid a sudden
+surge of power drain and a brown-out.
+

@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>The Eye - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="the-eye">
+<h1>The Eye<a class="headerlink" href="#the-eye" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2015-08-29 in <a class="reference internal" href="../#project-7168"><span class="std std-ref">Logicoma-kun</span></a>.</p>
+<p>I still don’t have a nice solution for the hands, but I’m leaving that
+for later. Today I decided to work on the eye.</p>
+<p>As I probably mentioned before, I plan to put a distance sensor inside
+that rotating eye. That means I need a distance sensor that is small
+enough. Fortunately, I have bought several of those <a class="reference external" href="http://hackaday.com/2015/02/18/new-part-day-time-of-flight-sensors/">time-of-flight sensors that were described on Hackaday some time ago</a> , so I decided to use those. Some time ago I made breakout boards for
+them, so it was time to actually cut them out and try the thing.</p>
+<p>Turns out that soldering QFN packages with a soldering iron, and with
+the pads not sticking out even a tiny bit, is practically impossible.
+But I remembered that in the FabLab nearby they had a hot air gun.
+That should do it nicely.</p>
+<img alt="projects/project-7168/images/3679791440868472367.jpg" src="projects/project-7168/images/3679791440868472367.jpg" />
+<hr class="docutils" />
+<p>A quick test with Arduino Nano and <a class="reference external" href="https://github.com/sparkfun/SparkFun_ToF_Range_Finder-VL6180_Arduino_Library/tree/V_1.1.0">Sparkfun’s library demo</a>  confirmed that I indeed have a properly soldered sensor in there. By
+the way, why didn’t I just buy one of the breakout boards from
+Sparkfun, or cheaper, Aliexpress? Because they are huge! I made my
+board square, put the sensor right in the middle, and put all the
+discrete components on the other side, to minimize space used.</p>
+<img alt="projects/project-7168/images/769711440868673206.jpg" src="projects/project-7168/images/769711440868673206.jpg" />
+<p>This way I can fit that sensor in tight places, such as the eye of
+this robot. A little bit of hot glue, some dremeling to make a hole,<em>et voila:</em></p>
+<img alt="projects/project-7168/images/949341440868868384.jpg" src="projects/project-7168/images/949341440868868384.jpg" />
+<p>Now, I had to make that hole, and I had to make it bigger than I
+wanted. Initially I planned to only make a tiny hole or two for the
+lenses of the sensor (it’s infra-red, so that transparent acrylic is
+more like a mirror to it, than transparent), but turns out that it
+gave wrong readings until I enlarged the hole to this size. Oh well.</p>
+<p>Next, I cut out the “ears” from a servo, and glued that inside the
+ball (the rubber band just holds it in place until the glue catches).</p>
+<img alt="projects/project-7168/images/7049581440869160574.jpg" src="projects/project-7168/images/7049581440869160574.jpg" />
+<p>Then just install it in place.</p>
+<img alt="projects/project-7168/images/2409551440869294850.jpg" src="projects/project-7168/images/2409551440869294850.jpg" />
+<p>I might add the second half of the ball (with a hole for the servo cut
+out in it), to increase the angle at which the eye can rotate, but for
+now I’m pretty happy with the result. It could be better, but it could
+also be a lot worse.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

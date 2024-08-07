@@ -1,0 +1,40 @@
+---
+blogpost: true
+date: 2015-10-23
+category: project-7860
+---
+
+# PCBs Are Here
+Published on 2015-10-23 in {ref}`project-7860`.
+
+So the PCBs arrived today. I must say that they look much smaller than
+they looked in Fritzing. Right off the bat I can see two pretty bad
+mistakes.
+
+
+:::{image} images/7772811445591404804.jpg
+
+:::
+
+
+
+---
+First, I made some connections between them at the last minute,
+because [@davedarko](https://hackaday.io/hacker/3459)  pointed out that DirtyPCBs don't accept disconnected boards. The
+connections were some very small rectangles. I can see in the
+fabricated boards that they were enlarged consireably -- probably to
+make the whole thing more stable less prone to breaking on its own. Oh
+well, I will just have to dremel them to the right shape.
+
+Second, the top two cats have a different design for the eyes -- the
+LEDs are on the back side, and there are holes through which they
+should shine. Those holes should not be metalized, as they touch the
+LED pads on both sides, and I designed them as non-metalized in
+Fritzing. DirtyPCBs made them metalized anyways -- probably a because
+they touched a pad and their software does that then. Oh well, some
+more dremeling.
+
+Other than that it looks good and I will start assembling them as soon
+as I find where I misplaced my attiny85s, or the new batch that I
+ordered arrives, whichever comes first.
+

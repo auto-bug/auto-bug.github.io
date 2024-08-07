@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Younger Brother - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="younger-brother">
+<h1>Younger Brother<a class="headerlink" href="#younger-brother" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2015-03-19 in <a class="reference internal" href="../#project-3300"><span class="std std-ref">µKubik quadruped robot</span></a>.</p>
+<p>The PCBs just came from <a class="reference external" href="http://dirtypcbs.com/">DirtyPCBs</a> , and I had the servos waiting since some time already, so I made a
+brother of the µKubik. It uses pretty much the same cirtcuit as the
+pKubik, my other project, but uses the much cheaper, but bigger, SG90
+servos. I also added a socket for a cheap ultrasonic distance sensor
+(much cheaper than the IR one used in µKubik). The software is exactly
+the same as for pKubik (I didn’t even tweak the leg dimensions in the
+code, although I should).</p>
+<p>The result is a budget version of the µKubik, with all the parts
+together at about $25.</p>
+<img alt="projects/project-3300/images/5382781426798346248.jpg" src="projects/project-3300/images/5382781426798346248.jpg" />
+<p>It’s a nice starting point for building walking robots. The serial and
+I²C interfaces of the Arduino are free, so you can use them to
+communicate with anything you want to add to the robot – whether it’s
+a more powerful processor, additional sensors or a laser gun. The
+software is also very simple and leaves a lot of room for
+experimenting and improvement. And you don’t need any custom parts,
+except for the PCB – the legs use the servo horns and screws that are
+shipped together with the servos.</p>
+<p>I will keep on working on better assembly instructions and maybe an
+improved PCB design (the current one has some tight spots, where order
+of soldering is important). Maybe I will manage to somehow organize
+some kind of a workshop, or even a contest for building them. We need
+more walking robots everywhere!</p>
+</section>
+
+
+</div>
+  </body>
+</html>

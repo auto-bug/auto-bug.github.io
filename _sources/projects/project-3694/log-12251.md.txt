@@ -1,0 +1,19 @@
+---
+blogpost: true
+date: 2014-12-29
+category: project-3694
+---
+
+# Moving a Leg and Making Sounds
+Published on 2014-12-29 in {ref}`project-3694`.
+
+The software for the basic inverse kinematics is going slowly, mostly
+because I'm reorganizing the code that I already used in all the other
+robots, with a goal of making a library of it. In the meantime, I had
+a little distraction: I added the buzzer to a DAC pin of the [PyBoard](http://micropython.org) , and it turns out it's fast enough to [play WAV files](https://micropython.org/doc/tut-amp-skin) ! After some mucking around with the [turret lines from Portal](http://theportalwiki.com/wiki/Turret_voice_lines) , I finally used [bfxr](http://bfxr.net)  to generate some simple bleeps and pews, and then [avconv](https://libav.org/avconv.html)  to concert them to 8bit, 11025 rate files.
+
+A video showing that I have control over the servos and the speaker:
+
+
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="" src="https://www.youtube.com/embed/KuDnKCzzc0Q"></iframe>
+

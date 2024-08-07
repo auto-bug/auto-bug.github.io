@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Corrected Repositories - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="corrected-repositories">
+<h1>Corrected Repositories<a class="headerlink" href="#corrected-repositories" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2018-06-24 in <a class="reference internal" href="../#project-7860"><span class="std std-ref">Nyan Board</span></a>.</p>
+<p><a class="reference external" href="https://hackaday.io/hacker/125739">&#64;Travis Hardiman </a> pointed out that the code I have in the <a class="reference external" href="https://bitbucket.org/thesheep/nyan/src/tiny10/main/">repository</a>  in the attiny10 branch is actually for attiny85, and the attiny10
+code is missing, so I went ahead and re-created the attiny10 code
+(which I must have lost somehow), this time on attiny9 (which is the
+same as attiny10, only doesn’t have ADC, which we don’t need). It’s in
+the attiny9 branch now. So to summarize:</p>
+<ul class="simple">
+<li><p>attiny85:  <a class="reference external" href="https://bitbucket.org/thesheep/nyan/src/tiny10/main/">https://bitbucket.org/thesheep/nyan/src/tiny10/main/</a></p></li>
+<li><p>attiny10 and attiny9: <a class="reference external" href="https://bitbucket.org/thesheep/nyan/src/tiny10/main/">https://bitbucket.org/thesheep/nyan/src/tiny9/main/</a></p></li>
+<li><p>attiny13:  <a class="reference external" href="https://bitbucket.org/thesheep/nyan/src/tiny10/main/">https://bitbucket.org/thesheep/nyan/src/tiny13/main/</a></p></li>
+</ul>
+<p>Sorry for the confusion.</p>
+<p>Also, to program the attiny10, you need to use a programmer capable of
+programming with the TPI protocol — recent versions of USBASP support
+it, you just need to add a 1kΩ resistor…</p>
+</section>
+
+
+</div>
+  </body>
+</html>

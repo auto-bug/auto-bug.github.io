@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Distance Sensor - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="distance-sensor">
+<h1>Distance Sensor<a class="headerlink" href="#distance-sensor" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2016-12-31 in <a class="reference internal" href="../#project-3736"><span class="std std-ref">µBob biped robot</span></a>.</p>
+<p>For the first time µBob has a working distance sensor on board (you
+might recall I tried to give it a distance sensor earlier, but it
+didn’t work). So let’s make use of it.</p>
+<p>The sensor I’m using is a SHARP GP2Y0A60SZLF on a breakout board from
+Pololu. It’s an analog sensor, which is good, because I can use only a
+single pin for it. All I have to do is get the ADC to work. A bit of
+googling for examples, and a little bit of cross-checking with the
+datasheet, and I had the basic procedure:\</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">ADCSRA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="n">ADEN</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="n">ADPS2</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="n">ADPS1</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">0</span><span class="o">&lt;&lt;</span><span class="n">ADPS0</span><span class="p">;</span><span class="w"> </span><span class="c1">// Pre-scaler 64.</span>
+<span class="n">ADMUX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="o">&lt;&lt;</span><span class="n">ADLAR</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">0</span><span class="o">&lt;&lt;</span><span class="n">REFS1</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">0</span><span class="o">&lt;&lt;</span><span class="n">REFS0</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">pin</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0x03</span><span class="p">;</span><span class="w"></span>
+<span class="n">ADCSRA</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="n">ADSC</span><span class="p">;</span><span class="w"></span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">ADCSRA</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="n">ADSC</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Pass.</span>
+<span class="p">}</span><span class="w"></span>
+<span class="k">return</span><span class="w"> </span><span class="n">ADCH</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">ADCL</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>However, that didn’t work. I spent half a day trying to figure out why
+it would keep returning the same number all the time, changing only on
+reset. Everything was exactly the same as in the datasheet, the
+examples, even the Arduino cores that I checked. What did I miss?
+After asking around a bit on IRC and robotics forums, someone pointed
+out to me that the order in which you read ADCH and ADCL is important
+– there is a latch there, that makes sure the values won’t change in
+the middle of your reading. Sure enough, I had the order wrong. The
+fix is very simple – I can defer to the compiler to do the right
+thing by just doing:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">return</span><span class="w"> </span><span class="n">ADC</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>That’s it. Suddenly I started getting changing values, as expected.
+However, the changes still weren’t in any way correlated with the
+voltage on the pin… Back to the drawing board. Four re-readings of
+the datasheet later I just tried the same program on a different chip,
+and it worked fine. Turns out the ATtiny85 that I have soldered to a
+breakout board some 2 years ago and used since for all sorts of
+uncanny experiments must have gotten the ADC broken somehow –
+possibly by applying higher voltage than it should get.</p>
+<p>In any case, the next step is checking the range of the sensor. I
+don’t have any way to display the readings from the robot (and I want
+to check the readings in the robot, not on a separate circuit, because
+the voltages would be different), so I wrote a simple program that
+basically moves a servo depending on the value read from the sensor.
+Since I know the servo’s range, I can guess what the reading was.</p>
+<p>That worked pretty well, now I just need to fine-tune the walking
+algorithm to make the robot go straight, add some animations for
+turning and going backwards, and make a simple state machine switching
+between those animations depending on the sensor readings. Should fit
+in the ~400 bytes of program space I have left.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

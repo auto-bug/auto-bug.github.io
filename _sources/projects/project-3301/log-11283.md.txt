@@ -1,0 +1,25 @@
+---
+blogpost: true
+date: 2014-11-22
+category: project-3301
+---
+
+# VoCore+Webcam
+Published on 2014-11-22 in {ref}`project-3301`.
+
+I have the servo controller working, with all the servos trimmed and
+reversed to the right base positions. I should be able to get it to
+walk by controlling it over TTL2USB from the computer.
+
+In the meantime, I got the UART on VoCore to work the way I wanted.
+Next thing is to get it to work with the laptop camera module over
+USB. Right now I got it to actually see the camera device and load the
+right kernel drivers for it. Running mjpg-streamer switches the LED on
+the camera on, and I can go to the website to see the stream... Except
+all the frames have 0 bytes, and the driver crashes as soon as I stop
+the streamer.
+
+
+:::{image} images/5886611416693095770.jpg
+
+:::

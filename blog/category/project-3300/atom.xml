@@ -1,0 +1,142 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>http://deshipu.art/</id>
+  <title>deshipu.art - Posts in project-3300</title>
+  <updated>2024-08-07T20:27:28.841714+00:00</updated>
+  <link href="http://deshipu.art/"/>
+  <link href="http://deshipu.art/blog/category/project-3300/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-3300/log-16640/</id>
+    <title>Force Sensing</title>
+    <updated>2015-04-17T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="force-sensing"&gt;
+
+&lt;p&gt;Published on 2015-04-17 in &lt;a class="reference internal" href="../../../projects/project-3300/#project-3300"&gt;&lt;span class="std std-ref"&gt;µKubik quadruped robot&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;After showing the robots at PyCon.us, I had some great conversations
+about all the possible ways I could improve them. One particularly
+nice idea is to connect some extra wires to the servo pots, and by
+measuring the voltage on them get some idea about their actual
+positions and (indirectly) the force being applied to them. To do it
+with all 12 servos, I would need 12 analog input pins, though. I can
+think about several possibilities:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;Use two arduino pro minis, each controlling two legs, with 6 digital
+and 6 analog pins.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Use a 16-channel analog multiplexer chip. That requires 1 analog and 4
+digital pins.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Use a 16-channel ADC chip, possibly through I²C.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Use an additional board with lots of analog pins, like Teensy 3.1.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Only do force-sensing on the 4 most important servos (the ones that
+carry the robot).&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I think I will start with the last option, mostly because that doesn’t
+require changing much and it will let me see how well this actually
+works. Then I can try one of the other options if needed.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-3300/log-16640/" rel="alternate"/>
+    <summary>Published on 2015-04-17 in project-3300.</summary>
+    <published>2015-04-17T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-3300/log-17553/</id>
+    <title>Tote, µKubik’s younger brother</title>
+    <updated>2015-05-08T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="tote-kubik-s-younger-brother"&gt;
+
+&lt;p&gt;Published on 2015-05-08 in &lt;a class="reference internal" href="../../../projects/project-3300/#project-3300"&gt;&lt;span class="std std-ref"&gt;µKubik quadruped robot&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I separated the Arduino-only version of µKubik as a separate project,
+called Tote, with comprehensive build instructions available at &lt;a class="reference external" href="http://tote.readthedocs.org/"&gt;http://tote.readthedocs.org/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;It’s supposed to be a starting point for people experimenting with
+their own quadrupeds.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-3300/log-17553/" rel="alternate"/>
+    <summary>Published on 2015-05-08 in project-3300.</summary>
+    <published>2015-05-08T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-3300/log-18609/</id>
+    <title>Family Grows</title>
+    <updated>2015-05-28T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="family-grows"&gt;
+
+&lt;p&gt;Published on 2015-05-28 in &lt;a class="reference internal" href="../../../projects/project-3300/#project-3300"&gt;&lt;span class="std std-ref"&gt;µKubik quadruped robot&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;As I’m writing the &lt;a class="reference external" href="http://tote.readthedocs.org/"&gt;guide for building and programming this robot&lt;/a&gt; , I need a way to test if the instructions make sense and are simple
+enough. So I’ve build another brother for µKubik, this time following
+my own instructions to the letter. It went well, except I didn’t count
+how many servos I have available beforehand, and I ended up one servo
+too short. Oh well.&lt;/p&gt;
+&lt;img alt="projects/project-3300/images/8476491432813530496.jpg" src="projects/project-3300/images/8476491432813530496.jpg" /&gt;
+&lt;p&gt;On the good side, the version with most of the parts mounted underside
+actually works very well and is very compact. Also, there was no servo
+reversing necessary, so the robot walks pretty much out of the box
+(you do have to adjust the default servo positions).&lt;/p&gt;
+&lt;p&gt;Now I will try and add an ESP8266 module to it, with Micropython
+firmware, and see if I can control it that way.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-3300/log-18609/" rel="alternate"/>
+    <summary>Published on 2015-05-28 in project-3300.</summary>
+    <published>2015-05-28T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-3300/log-18666/</id>
+    <title>Sensing the Servo Force</title>
+    <updated>2015-05-29T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="sensing-the-servo-force"&gt;
+
+&lt;p&gt;Published on 2015-05-29 in &lt;a class="reference internal" href="../../../projects/project-3300/#project-3300"&gt;&lt;span class="std std-ref"&gt;µKubik quadruped robot&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;So, a little bit of rethinking what I actually need, and the solution
+became obvious. I don’t want to know the position of the servo, I want
+to know the force that is affecting it (and, at the same time, the
+force that the servo is using to counter that). So, it doesn’t make
+sense to add the additional wire to the pot. I want to know how hard
+the motor is working – so the additional wire should go to one of the
+motor pins. From that a couple of simple experiments, and I have my
+“compliant motion”, more or less:&lt;/p&gt;
+&lt;iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="" src="https://www.youtube.com/embed/Ms8yTKYebaI"&gt;&lt;/iframe&gt;
+&lt;p&gt;Of course, the code is very crude, so it’s easy to get oscillation or
+runaway, but in the end I will use it for robot’s sense, so it will
+not feed itself…&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-3300/log-18666/" rel="alternate"/>
+    <summary>Published on 2015-05-29 in project-3300.</summary>
+    <published>2015-05-29T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-3300/log-18662/</id>
+    <title>Sensing the Servo Position</title>
+    <updated>2015-05-29T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="sensing-the-servo-position"&gt;
+
+&lt;p&gt;Published on 2015-05-29 in &lt;a class="reference internal" href="../../../projects/project-3300/#project-3300"&gt;&lt;span class="std std-ref"&gt;µKubik quadruped robot&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;So I finally came around to testing this setup. A 9g hobby servo, with
+an additional cable hooked up to the middle pin of its pot, and
+connected to an analog pin on the arduino. Voila, now we can sense the
+position of the servo. Kinda.&lt;/p&gt;
+&lt;p&gt;Turns out that even with a lot of small capacitors all over the place,
+and software smoothing of the signal, I still can’t get more precise
+than about 2°. Which is actually quite nice already if the only thing
+you need is to tell if your servo “got there” already.&lt;/p&gt;
+&lt;p&gt;But I wanted much more. In particular, I wanted to be able to tell the
+magnitude and direction of the force working against the servo. Then I
+would be able to tell if the leg is supporting the robot’s weight at
+the moment (and hence wasn’t put in the abyss beyond the table), or
+even implement compliant motion, like in this video:&lt;/p&gt;
+&lt;iframe width="500" height="281" frameborder="0" allowfullscreen="" src="https://www.youtube.com/embed/AMVO6rI5mL4"&gt;&lt;/iframe&gt;
+&lt;p&gt;Alas, turns out that it’s not so simple. The pot measures the servo’s
+position quite well when it’s unloaded. but as soon as you put any
+load on the servo, the reading is going up – and that’s no matter in
+what direction you apply the load. That’s not so good, and I think it
+may have somethig to do with voltage drop on a loaded servo. I will
+need more experiments.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-3300/log-18662/" rel="alternate"/>
+    <summary>Published on 2015-05-29 in project-3300.</summary>
+    <published>2015-05-29T00:00:00+02:00</published>
+  </entry>
+</feed>

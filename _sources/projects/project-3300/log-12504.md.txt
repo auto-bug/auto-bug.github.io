@@ -1,0 +1,22 @@
+---
+blogpost: true
+date: 2015-01-03
+category: project-3300
+---
+
+# Follow Me!
+Published on 2015-01-03 in {ref}`project-3300`.
+
+I finally had some time to program a simple behavior using the new
+distance sensor. The robot follows whatever is in front of it, trying
+to keep a constant distance. When the object disappears, it stops and
+looks around for it. See the video:
+
+
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="" src="https://www.youtube.com/embed/qmuZv3mmvRI"></iframe>
+
+One thing that made it a little challenging is that the output from
+this sensor is very noisy. I worked around that by keeping the last 10
+measurements in a queue, and using the average of them -- a kind of a
+low-pass filter.
+

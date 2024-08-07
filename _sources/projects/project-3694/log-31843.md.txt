@@ -1,0 +1,49 @@
+---
+blogpost: true
+date: 2016-02-13
+category: project-3694
+---
+
+# Brain Surgery
+Published on 2016-02-13 in {ref}`project-3694`.
+
+This robot waited on the shelf for a long time (enough for its LiPo
+battery to go bad), so when I got the {ref}`project-1313`  board, I decided to install it here. I'm also replacing the Pololu
+servo controller I used in there with a much simplier {ref}`project-9131`  that I built out of a Pro Mini board. Other parts will probably
+remain the same, although I might need to skip the speaker, as ADC and
+DAC are on the same pin, and I need that battery voltage monitoring.
+
+
+:::{image} images/2299901455367858580.jpg
+
+:::
+
+
+I started by testing the I²C communication between OpenMV and the
+servo controller. Since OpenMV is still in beta and not even yet
+released to Kickstarter backers, I didn't expect this to Just Work™
+out of the box, and I was right. First, turns out that the_SDA_ and_SCL_ pins are reversed compared to [what the documentation says](https://openmv.io/docs/openmv/quickref.html) . That was relatively easy to figure, I just swapped them and suddenly_I2C.scan()_ started showing my device. Splendid!
+
+Then I just copied the line that I previously tested with PyBoard:
+
+
+```python
+bus.mem_write(struct.pack("<H", 1500), 9, 0)
+```
+
+and... nothing happened. Except that further_I2C.scan()_ stopped finding anything, and further writes just returned_IOError 16_ until the OpenMV board was hard reset. Interesting. I connected my
+pocket oscilloscope to see what is happening, and sure enough, the_SCL_ line is being held low by the master after the first write. Looks
+like a bug in the firmware.So I started looking through the source code ( [it's available on Github](https://github.com/openmv/openmv) ). Initially I looked at the_soft_i2c.c_ file, but soon I realized that it's only being used in the mlx
+module. Perhaps the authors had the same problem, and used software
+I²C to work around it and get the mlx to work?
+
+Then [@Arsenijs](https://hackaday.io/hacker/61401)  suggested on the hackaday chat that this may be related to [an I²C bug that was recently fixed in Micropython](https://github.com/micropython/micropython/issues/1765) . I tried disabling IRQs before calling the_I2C.mem_write()_, and lo and behold, it works! It's not necessarily this bug (as it
+only manifests when there is an error reading or writing), but
+switching the interrupts off makes the Micropython not use DMA, and
+apparently this works. Happy with that, I wrote about my findings [on the OpenMV forum and went to sleep](https://openmv.io/forums/viewtopic.php?f=6&t=51) .
+
+Next day I took Henk, opened it, ripped out the servo controller,
+connected the servos to the new one, drilled a hole for the camera to
+stick out, and here I am now, wondering how to best arrange the UBEC
+and battery inside. I will keep you updated.
+

@@ -1,0 +1,41 @@
+---
+blogpost: true
+date: 2015-01-08
+category: project-3301
+---
+
+# Camera Works!
+Published on 2015-01-08 in {ref}`project-3301`.
+
+Finally, I got the streaming from camera to work! Look:
+
+
+:::{image} images/2868501420746366408.jpg
+
+:::
+
+
+The video is rotated by 90° and quite slow, but that's details that I
+can handle. The trick was to use an older version of mjpeg-streamer
+that doesn't segfault in YUV mode.
+
+
+:::{image} images/9276731420746455794.jpg
+
+:::
+
+
+I also worked on the physical body of the robot a little bit. Instead
+of a transparent piece of plastic with everything glued to it, I now
+have a prototype board with a bunch of sockets and all the wires
+connecting them. The VoCore, Arduino, camera and battery just plug
+into that. And the PCB is exactly the right size to serve as a lid for
+a transparent plastic box. I just have to shave a couple of mm off the
+top of the camera module...
+
+
+:::{image} images/8120681420746631668.jpg
+
+:::
+
+

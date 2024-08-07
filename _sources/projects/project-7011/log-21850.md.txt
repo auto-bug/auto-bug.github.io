@@ -1,0 +1,159 @@
+---
+blogpost: true
+date: 2015-07-30
+category: project-7011
+---
+
+# Snaaaakeeee
+Published on 2015-07-30 in {ref}`project-7011`.
+
+After a quick poll about which game to implement, I decided to make
+Snake. It's a good old classic from the Nokia phones, where you
+control snake that grows with every dot it eats. Perfect for a low-
+resolution monochrome screen and two buttons.
+
+After a bit of coding, I came up with a more or less functional game:
+
+
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="" src="https://www.youtube.com/embed/K7bY5NpnezM"></iframe>
+
+
+---
+Some more coding and tweaking, and I also added death and button
+debouncing. The code is not pretty, and could be still greatly
+optimized and extended, but it gets the job done.
+
+The added PCB on the back of the Frowny is a module for the battery
+recharging, by the way.
+
+
+```cpp
+const unsigned char rows[8] = {9, 14, 8, 12, 1, 7, 2, 5};
+const unsigned char cols[8] = {13, 3, 4, 10, 6, 11, 15, 16};
+const int pins[17] = {
+    0,
+    10, 16, 14, 15, A0, A1, A2, A3,
+    2, 3, 4, 5, 6, 7, 8, 9,
+};
+const int button_pins[2] = {0, 1};
+
+
+unsigned char screen[8][8] = {
+    0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0,
+};
+unsigned char direction = 0;
+
+
+void setup() {
+    for (unsigned char i=0; i<8; ++i) {
+        pinMode(pins[cols[i]], INPUT);
+        pinMode(pins[rows[i]], OUTPUT);
+        digitalWrite(pins[rows[i]], LOW);
+    }
+    pinMode(0, INPUT_PULLUP);
+    pinMode(1, INPUT_PULLUP);
+}
+
+void display() {
+    for (unsigned char col=0; col<8; ++col) {
+        for (unsigned char row=0; row<8; ++row) {
+            digitalWrite(pins[rows[row]], !screen[col][row]);
+        }
+        pinMode(pins[cols[col]], OUTPUT);
+        digitalWrite(pins[cols[col]], HIGH);
+        delay(1);
+        pinMode(pins[cols[col]], INPUT);
+    }
+}
+
+void buttons() {
+    static const long DEBOUNCE = 300;
+    static long last_button = 0;
+    unsigned long now = millis();
+
+    if (now - last_button <= DEBOUNCE) {
+        return;
+    }
+
+    if (!digitalRead(button_pins[0])) {
+        direction = (direction - 1) % 4;
+        last_button = now;
+    } else if (!digitalRead(button_pins[1])) {
+        direction = (direction + 1) % 4;
+        last_button = now;
+    }
+}
+
+void clear_screen() {
+    for (int y=0; y<8; ++y) {
+        for (int x=0; x<8; ++x) {
+            screen[y][x] = 0;
+        }
+    }
+}
+
+void game() {
+    static const long TICK = 400;
+    static const signed char DX[4] = { 0,  1,  0, -1};
+    static const signed char DY[4] = {-1,  0,  1,  0};
+
+    static unsigned long last_tick = 0;
+    static signed char snake_x=3, snake_y=3;
+    static signed char apple_x=3, apple_y=3;
+    static signed char body_x[64] = {};
+    static signed char body_y[64] = {};
+    static unsigned char body_head = 0;
+    static unsigned char body_tail = 0;
+
+    unsigned long now = millis();
+
+    if (now - last_tick <= TICK) {
+        return;
+    }
+    last_tick = now;
+
+    if (apple_x == snake_x && apple_y == snake_y) {
+        apple_x = random(0, 8);
+        apple_y = random(0, 8);
+        while (screen[apple_y][apple_x]) {
+            apple_x = random(0, 8);
+            apple_y = random(0, 8);
+        }
+        screen[apple_y][apple_x] = HIGH;
+        body_tail = (body_tail - 1) % 64;
+    } else if (screen[snake_y][snake_x]) {
+        body_head = body_tail;
+        body_tail = (body_tail - 1) % 64;
+        snake_x = 3;
+        snake_y = 3;
+        direction = 0;
+        clear_screen();
+        screen[apple_y][apple_x] = HIGH;
+    }
+
+    screen[snake_y][snake_x] = HIGH;
+    body_x[body_head] = snake_x;
+    body_y[body_head] = snake_y;
+
+    screen[body_y[body_tail]][body_x[body_tail]] = LOW;
+    body_head = (body_head + 1) % 64;
+    body_tail = (body_tail + 1) % 64;
+    snake_x = constrain(snake_x + DX[constrain(direction, 0, 3)], 0, 7);
+    snake_y = constrain(snake_y + DY[constrain(direction, 0, 3)], 0, 7);
+}
+
+void loop() {
+    display();
+    buttons();
+    game();
+}
+
+```
+

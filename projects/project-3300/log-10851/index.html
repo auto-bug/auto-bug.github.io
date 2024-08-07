@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Size does matter - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="size-does-matter">
+<h1>Size does matter<a class="headerlink" href="#size-does-matter" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2014-11-02 in <a class="reference internal" href="../#project-3300"><span class="std std-ref">µKubik quadruped robot</span></a>.</p>
+<p>There is a number of lessons I have learned with my first attempt at a
+quadruped robot, Kubik. I think that the most important one is that
+the size does matter.</p>
+<p>You see, if you double or triple the size of a robot, its weight is
+going to increase 8 or 27 times, respectively. That’s because it grows
+proportionately to the volume, and volume grows proportionately to the
+third power of the size. This has consequences.</p>
+<p>The first consequence is that suddenly you need eight times more
+powerful servomotors. Obviously they are more expensive, heavier and
+require more power. They are also slightly more dangerous, as they
+might have enough power to pinch your finger or break one of the
+parts. The second consequence is that you will need stronger
+materials. The cheap plastic servo horns will no longer be sufficient,
+you will need to use much heavier plexiglas, wood or metal. And
+because they are stronger, it’s also difficult to cut them. The third
+consequence is that you are going to need better mechanical design.
+You can no longer just attach the servo to the body, and have the leg
+attached to its horn only. You will need to use proper servo brackets,
+possibly with ball bearings. That also adds to the weight. The fourth
+consequence: your more powerful servos will need more power, so you
+need larger and heavier battery, plus a stronger voltage regulator. It
+will also heat more.</p>
+<p>But that doesn’t end here. Once you have all those things, you can see
+that the weight of your robot increased even more! So you enter a
+vicious cycle of replacing part after part and redesigning your
+construction until it can barely bear its own weight and kinda limp
+about for several seconds until the battery runs out.</p>
+<p>Now, let’s consider what happens when you shrink your robot by half.
+It means that it became 8 times lighter. Of course, you had to make
+some sacrifices.</p>
+<p>Your servomotors need to be smaller, but can also be weaker. The good
+news is that they get small faster than they get weaker, so you get
+quite nice amount of spare power. Also, until you pass the micro-servo
+size, the smaller ones are going to be cheaper (they get slightly more
+expensive when you get smaller than that, though). Your battery needs
+to be smaller and lighter, but it doesn’t have to be as large anymore,
+so it gets cheaper. If you get down to 1S, it’s also much easier to
+find charger modules and such for them. You can use practically any
+materials, so you can reuse parts that you already have, or easily
+make new ones. Your mechanical design doesn’t need to be perfect.
+Sure, you will need more precision in some places, but you can also
+get away with just attaching something with a single screw. And you
+can just glue everything together anyways. Finally, you have to use
+smaller electronics. Your Raspberry Pi won’t fit there anymore, so you
+have to look at the small micro-controller boards, or maybe something
+like the Vocore. You will have to program them in C or assembly, and
+you won’t be able to do much processing on them.</p>
+<p>All those pros and cons change non-linearly with the size. That means,
+that there are certain “sweet spots”, sizes which are easier to
+design, build and handle, and there are areas of pain. I believe, that
+with Micro-Kubik I hit a sweet spot for the price and ease of
+building. It uses the cheapest servomotors available, and the cheapest
+available Arduino clone. Its legs are just the plastic horns that came
+with the servos, held together by the screws that came with them too.
+It uses a 2S lipo battery that is very popular for the cheap RC
+airplane models. The most expensive part is the Bluetooth module, but
+I used a cable just fine before. And you can have it walk on your
+desk, without the need for a workshop and a storage space. Oh, and you
+can drop it on the floor from your table without any damage. Mostly.</p>
+<p>Sure, it’s not a sweet spot for the processing power, or the number of
+sensors that I can fit inside (although I could have picked a bigger
+box for the body). But that can be worked around, and we see a lot of
+new small electronic parts appearing all the time, so it’s getting
+better.</p>
+<p>So my advice is: if you are just starting building robots, build
+something that fits in your hand and on your desk.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

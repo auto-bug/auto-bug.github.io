@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Spider Mode - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="spider-mode">
+<h1>Spider Mode<a class="headerlink" href="#spider-mode" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2015-07-01 in <a class="reference internal" href="../#project-6321"><span class="std std-ref">Katka, a mammalian robot</span></a>.</p>
+<p>Yesterday I finally decided to kill one of my failed projects, the
+Pico-Kubik (pKubik for short). It was the third robot in the series,
+following <a class="reference internal" href="../../project-3300/#project-3300"><span class="std std-ref">µKubik quadruped robot</span></a> . It was supposed to be smaller and cheaper by the virtue of only
+using 8 servos, 2 per each leg, and doing inverse kinematics through
+solving a complicated set of non-linear equations, for all legs at
+once. The idea was that while I can’t position accurately each leg in
+3D with only 2 degrees of freedom per leg, I can do it if I use all
+the legs together, and ignore the position of the body itself. While I
+still think it may be doable, the complexity of required math defeated
+me, and the robot was standing there on the shelf, waiting for its
+turn.</p>
+<hr class="docutils" />
+<p>So yesterday I decided to disassemble it, and reassemble into a
+younger sister of <a class="reference internal" href="../#project-6321"><span class="std std-ref">Katka, a mammalian robot</span></a> . I’ve been complaining that Katka’s leg construction is sub-optimal
+and needs rebuilding, but since that requires physical changes, and I
+don’t have a version control system for the physical world, I was
+reluctant to break an otherwise perfectly fine robot. So now, with 8
+spare servos to use, I could just build another Katka from scratch,
+but with a different leg configuration.</p>
+<p>I also have this idea at the back of my mind, of building a working <a class="reference external" href="https://grabcad.com/library/logicoma-1">Logicoma model</a> , that would look something like this:</p>
+<img alt="projects/project-6321/images/3021291435744764582.png" src="projects/project-6321/images/3021291435744764582.png" />
+<p>As you can see, this is basically Katka, but with the legs a little
+more spread out, and with additional continuous-rotation servos for
+the wheels. The angled wheels would let it turn by moving the legs
+forward and backward. So, I needed to confirm that this configuration
+will indeed walk well, and maybe later add the wheels.</p>
+<p>Anyways, here’s the robot walking:</p>
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/Rg6Nodhyvvs"></iframe>
+<p>One problem I had is that since the center of mass is much lower in
+this one, I needed to tilt the body sideways much further then in
+Katka to make sure the center of gravity moves far away from the leg
+being raised. I suppose that with the greater leg range that this
+configuration gives, I could also move the body forward and backward a
+little, to improve that. But generally I’m very happy with how it
+works.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

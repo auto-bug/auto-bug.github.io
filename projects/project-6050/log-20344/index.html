@@ -68,10 +68,10 @@ Tote, because the GND pin has been moved to the other side of the
 board. Sigh. That’s fine, though, you can just use short wires, or, if
 you have a socket, a set of extra-long pin headers and some Dupont
 cables:\</p>
-<img alt="../../../_images/5343941435843885374.jpg" src="../../../_images/5343941435843885374.jpg" />
+<img alt="projects/project-6050/images/5343941435843885374.jpg" src="projects/project-6050/images/5343941435843885374.jpg" />
 <p>Then it simply plugs into the Tote socket. Looks a little bit weird,
 but should work just fine:</p>
-<img alt="../../../_images/5006831435843968794.jpg" src="../../../_images/5006831435843968794.jpg" />
+<img alt="projects/project-6050/images/5006831435843968794.jpg" src="projects/project-6050/images/5006831435843968794.jpg" />
 <p>Now just adjust the pin numbers in <a class="reference external" href="https://bitbucket.org/thesheep/tote/src/806a193584f9e4653414de2dd4f55ba884f0502d/start/servos.ino?at=teensy31#cl-9">servos.ino</a> , remove the IR code (it’s based on AVR interrupts, so probably won’t
 work on Teensy), and we are ready to go. Another super-easy
 conversion.Except that it doesn’t work. As soon as the robot is witched on, it

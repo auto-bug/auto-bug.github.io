@@ -1,0 +1,39 @@
+---
+blogpost: true
+date: 2014-11-25
+category: project-3301
+---
+
+# Everything Connected
+Published on 2014-11-25 in {ref}`project-3301`.
+
+Finally all the parts come together: 12 servos,_Arduino Pro Mini_,_VoCore_board, camera module and battery. I was a little worried about the
+battery handling this load, but it turns out it is around 400_mA_ together (VoCore is up to 200_mA_ alone). It will probably be more when the servos work, but the
+battery should still handle that.
+
+
+:::{image} images/9165721416869732065.jpg
+
+:::
+
+
+Of course I initially connected the serial line from_VoCore_ to_Arduino_ backwards, but fortunately no other problems. The serial line works,
+but I still need to build a custom image for the_VoCore_ to disable logging to console on it -- otherwise it interferes with
+the servo commands.
+
+The_UNIX_ version of_Micropython_ works nicely on_VoCore_, and can write to the serial just as to a normal file. The example
+program I run just shifts the whole body around a little, and it went
+a little crazy because of the console logging, but it will work just
+fine.
+
+The camera only works in the photo mode, with_fswebcam_, and I can't get it to stream, but I think I will leave it for now. I
+might get it to work later on.
+
+What is left now is all the software, as well as holding all the parts
+together in a better way than with a rubber band. I also might add a
+voltage regulator later on, when I get one small enough.
+
+And how about a paper chassis, making it look like the robots in
+Uber's failed [Human Resources](http://www.uberent.com/humanresources/) ? I will have to think about it!\
+
+

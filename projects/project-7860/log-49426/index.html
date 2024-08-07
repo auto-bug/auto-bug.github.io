@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Efficient Tone - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="efficient-tone">
+<h1>Efficient Tone<a class="headerlink" href="#efficient-tone" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2016-11-23 in <a class="reference internal" href="../#project-7860"><span class="std std-ref">Nyan Board</span></a>.</p>
+<p>One change that I will need to do this time will be to completely
+rewrite the tone-generating function. Originally, I just used whatever
+was available in the Arduino core that I used – and that turns out to
+be quite a bit of code. Way over the 1k limit.</p>
+<p>But hey, generating a PWM signal at a specified frequency while the
+microcontroller doesn’t have anything else to do is not rocket
+science, right? Even if I completely fail to understand the timers, in
+the worst case I can just have a bunch of empty loops spinning there,
+busy-waiting for the right moment to flip the pin.</p>
+<p>I didn’t have much time today to do any actual experiments with the
+ATtiny85, but I did find an interesting article about a technique,
+that will maybe let me do a much better thing than a square wave: <a class="reference external" href="http://www.technoblogy.com/show?QVN">http://www.technoblogy.com/show?QVN</a></p>
+</section>
+
+
+</div>
+  </body>
+</html>

@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Everything Connected - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="everything-connected">
+<h1>Everything Connected<a class="headerlink" href="#everything-connected" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2014-11-25 in <a class="reference internal" href="../#project-3301"><span class="std std-ref">Pico-Kubik quadruped robot</span></a>.</p>
+<p>Finally all the parts come together: 12 servos,<em>Arduino Pro Mini</em>,<em>VoCore_board, camera module and battery. I was a little worried about the
+battery handling this load, but it turns out it is around 400_mA</em> together (VoCore is up to 200_mA_ alone). It will probably be more when the servos work, but the
+battery should still handle that.</p>
+<img alt="projects/project-3301/images/9165721416869732065.jpg" src="projects/project-3301/images/9165721416869732065.jpg" />
+<p>Of course I initially connected the serial line from_VoCore_ to_Arduino_ backwards, but fortunately no other problems. The serial line works,
+but I still need to build a custom image for the_VoCore_ to disable logging to console on it – otherwise it interferes with
+the servo commands.</p>
+<p>The_UNIX_ version of_Micropython_ works nicely on_VoCore_, and can write to the serial just as to a normal file. The example
+program I run just shifts the whole body around a little, and it went
+a little crazy because of the console logging, but it will work just
+fine.</p>
+<p>The camera only works in the photo mode, with_fswebcam_, and I can’t get it to stream, but I think I will leave it for now. I
+might get it to work later on.</p>
+<p>What is left now is all the software, as well as holding all the parts
+together in a better way than with a rubber band. I also might add a
+voltage regulator later on, when I get one small enough.</p>
+<p>And how about a paper chassis, making it look like the robots in
+Uber’s failed <a class="reference external" href="http://www.uberent.com/humanresources/">Human Resources</a> ? I will have to think about it!\</p>
+</section>
+
+
+</div>
+  </body>
+</html>

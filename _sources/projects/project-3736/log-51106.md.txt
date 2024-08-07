@@ -1,0 +1,74 @@
+---
+blogpost: true
+date: 2017-01-01
+category: project-3736
+---
+
+# Obstacle Avoidance
+Published on 2017-01-01 in {ref}`project-3736`.
+
+All that was left was writing the code, and testing it. And making
+some corrections, and testing them. And fine-tuning some parameter,
+and testing. And then a little bit of testing.
+
+All this time I was programming the robot using my programming clip.
+Unfortunately, it became a bit loose, so I had to hold it in place
+with my hand while programming, so it was a little inconvenient.
+Because of the placement of the chip, I also had to remove at least
+one leg every time I wanted to program it, and I had to disconnect the
+servos, as they take too much power and make the computer shut down
+the USB port. In the end, it was a lot of reprogramming, and I wish I
+had broken out the programming interface in some more convenient way.
+Oh well.
+
+During testing, I also connected a piezo speaker to the last unused
+pin, and bit-banged beeps on it (it's not a timer pin, so couldn't do
+PWM, I guess something to consider for the next version). That helped
+in debugging a lot, since I could place different beeps in different
+places in the program, and I would know where the robot was. Since
+they were primitively bit-banged, the robot also paused while beeping,
+which let me see better the different phases of its movement.
+
+At some point I decided to get rid of the old feed, and made new ones,
+out of an expired public transportation card. I also painted the new
+feet with liquid rubber, to give them a better grip.
+
+
+:::{image} images/9499261483281935973.jpg
+
+:::
+
+
+You can also see on this photo, that I went back to the old battery.
+It fits in the hat, and it has a much better C value. I decided to not
+include the battery charger module in the robot this time -- you have
+to disconnect the battery for charging.
+
+
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/S6yyWpflXrM"></iframe>
+
+Finally, a video of the robot doing its thing. It checks the distance
+at every step, at the moment when the body is horizontal. I used the
+fact that with each step it's looking in a different direction, and I
+made it choose the direction of the turn based on that. Oh, I also
+sped up the final version of the code. Unfortunately, I had to remove
+the beeping code to make it all fit in 1kB for the challenge.
+
+
+```
+AVR Memory Usage
+----------------
+Device: attiny85
+
+Program:    1006 bytes (12.3% Full)
+(.text + .data + .bootloader)
+
+Data:         19 bytes (3.7% Full)
+(.data + .bss + .noinit)
+
+```
+
+The walking code turned out to be much larger than I expected -- even
+though it's mostly just calling a single function with three 16-bit
+integer parameters. I guess I could scale them down to bytes to save
+some space...

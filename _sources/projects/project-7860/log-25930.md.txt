@@ -1,0 +1,129 @@
+---
+blogpost: true
+date: 2015-09-27
+category: project-7860
+---
+
+# Melody
+Published on 2015-09-27 in {ref}`project-7860`.
+
+While waiting for the boards, I need to write the program that would
+run on those boards. Quick googling allowed me to find an Arduino
+sketch that plays the Nyan Cat tune on Arduino. A quick refactoring
+and fixing of formatting, and here it is:
+
+
+```cpp
+/*
+ * Nyan Cat
+ * Plays Nyan Cat
+ * Example: 
+<iframe width="500" height="281" frameborder="0" allowfullscreen="" src="https://www.youtube.com/embed/eFHfGA5e4n8"></iframe>
+
+
+ * Circuit: 8-ohm speaker on digital pin 8
+ * By: Bruce Helsen (geobruce), Stan Draulans (purewantfun)
+ */
+
+#include "pitches.h"
+
+
+const unsigned int INTRO_NOTES[] = {
+    NOTE_DS5, NOTE_E5, NOTE_FS5, NOTE_B5, NOTE_DS5, NOTE_E5, NOTE_FS5, NOTE_B5,
+    NOTE_CS6, NOTE_DS6, NOTE_CS6, NOTE_AS5, NOTE_B5, NOTE_FS5, NOTE_DS5,
+    NOTE_E5, NOTE_FS5, NOTE_B5, NOTE_CS6, NOTE_AS5, NOTE_B5, NOTE_CS6,
+    NOTE_E6, NOTE_DS6, NOTE_E6, NOTE_B5,
+};
+
+const unsigned char INTRO_DURATIONS[] = {
+    16, 16, 8, 8, 16, 16, 16, 16, 16, 16, 16, 16, 8, 8, 16, 16, 8, 8, 16, 16,
+    16, 16, 16, 16, 16, 16,
+};
+
+const unsigned int MELODY_NOTES[] = {
+    NOTE_FS5, NOTE_GS5, NOTE_DS5, NOTE_DS5, REST, NOTE_B4, NOTE_D5, NOTE_CS5,
+    NOTE_B4, REST, NOTE_B4, NOTE_CS5, NOTE_D5, NOTE_D5, NOTE_CS5, NOTE_B4,
+    NOTE_CS5, NOTE_DS5, NOTE_FS5, NOTE_GS5, NOTE_DS5, NOTE_FS5, NOTE_CS5,
+    NOTE_DS5, NOTE_B4, NOTE_CS5, NOTE_B4, NOTE_DS5, NOTE_FS5, NOTE_GS5,
+    NOTE_DS5, NOTE_FS5, NOTE_CS5, NOTE_DS5, NOTE_B4, NOTE_D5, NOTE_DS5,
+    NOTE_D5, NOTE_CS5, NOTE_B4, NOTE_CS5, NOTE_D5, NOTE_B4, NOTE_CS5,
+    NOTE_DS5, NOTE_FS5, NOTE_CS5, NOTE_DS5, NOTE_CS5, NOTE_B4, NOTE_CS5,
+    NOTE_B4, NOTE_CS5, NOTE_FS5, NOTE_GS5, NOTE_DS5, NOTE_DS5, REST, NOTE_B4,
+    NOTE_D5, NOTE_CS5, NOTE_B4, REST, NOTE_B4, NOTE_CS5, NOTE_D5, NOTE_D5,
+    NOTE_CS5, NOTE_B4, NOTE_CS5, NOTE_DS5, NOTE_FS5, NOTE_GS5, NOTE_DS5,
+    NOTE_FS5, NOTE_CS5, NOTE_DS5, NOTE_B4, NOTE_CS5, NOTE_B4, NOTE_DS5,
+    NOTE_FS5, NOTE_GS5, NOTE_DS5, NOTE_FS5, NOTE_CS5, NOTE_DS5, NOTE_B4,
+    NOTE_D5, NOTE_DS5, NOTE_D5, NOTE_CS5, NOTE_B4, NOTE_CS5, NOTE_D5, NOTE_B4,
+    NOTE_CS5, NOTE_DS5, NOTE_FS5, NOTE_CS5, NOTE_DS5, NOTE_CS5, NOTE_B4,
+    NOTE_CS5, NOTE_B4, NOTE_CS5, NOTE_B4, NOTE_FS4, NOTE_GS4, NOTE_B4,
+    NOTE_FS4, NOTE_GS4, NOTE_B4, NOTE_CS5, NOTE_DS5, NOTE_B4, NOTE_E5,
+    NOTE_DS5, NOTE_E5, NOTE_FS5, NOTE_B4, NOTE_B4, NOTE_FS4, NOTE_GS4,
+    NOTE_B4, NOTE_FS4, NOTE_E5, NOTE_DS5, NOTE_CS5, NOTE_B4, NOTE_FS4,
+    NOTE_DS4, NOTE_E4, NOTE_FS4, NOTE_B4, NOTE_FS4, NOTE_GS4, NOTE_B4,
+    NOTE_FS4, NOTE_GS4, NOTE_B4, NOTE_B4, NOTE_CS5, NOTE_DS5, NOTE_B4,
+    NOTE_FS4, NOTE_GS4, NOTE_FS4, NOTE_B4, NOTE_B4, NOTE_AS4, NOTE_B4,
+    NOTE_FS4, NOTE_GS4, NOTE_E4, NOTE_E5, NOTE_DS5, NOTE_E5, NOTE_FS5,
+    NOTE_B4, NOTE_AS4, NOTE_B4, NOTE_FS4, NOTE_GS4, NOTE_B4, NOTE_FS4,
+    NOTE_GS4, NOTE_B4, NOTE_CS5, NOTE_DS5, NOTE_B4, NOTE_E5, NOTE_DS5,
+    NOTE_E5, NOTE_FS5, NOTE_B4, NOTE_B4, NOTE_FS4, NOTE_GS4, NOTE_B4,
+    NOTE_FS4, NOTE_E5, NOTE_DS5, NOTE_CS5, NOTE_B4, NOTE_FS4, NOTE_DS4,
+    NOTE_E4, NOTE_FS4, NOTE_B4, NOTE_FS4, NOTE_GS4, NOTE_B4, NOTE_FS4,
+    NOTE_GS4, NOTE_B4, NOTE_B4, NOTE_CS5, NOTE_DS5, NOTE_B4, NOTE_FS4,
+    NOTE_GS4, NOTE_FS4, NOTE_B4, NOTE_B4, NOTE_AS4, NOTE_B4, NOTE_FS4,
+    NOTE_GS4, NOTE_B4, NOTE_E5, NOTE_DS5, NOTE_E5, NOTE_FS5, NOTE_B4, NOTE_CS5,
+};
+
+const unsigned char MELODY_DURATIONS[] = {
+    8, 8, 16, 16, 16, 16, 16, 16, 16, 16, 8, 8, 8, 16, 16, 16, 16, 16, 16, 16,
+    16, 16, 16, 16, 16, 16, 16, 8, 8, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16,
+    16, 16, 8, 16, 16, 16, 16, 16, 16, 16, 16, 8, 8, 8, 8, 8, 16, 16, 16, 16,
+    16, 16, 16, 16, 8, 8, 8, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16,
+    16, 16, 8, 8, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 8, 16, 16,
+    16, 16, 16, 16, 16, 16, 8, 8, 8, 8, 16, 16, 8, 16, 16, 16, 16, 16, 16, 16,
+    16, 16, 16, 8, 8, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 8, 16,
+    16, 8, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 8, 16, 16, 16, 16, 16, 16,
+    16, 16, 16, 16, 8, 8, 8, 16, 16, 8, 16, 16, 16, 16, 16, 16, 16, 16, 16,
+    16, 8, 8, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 8, 16, 16, 8,
+    16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 8, 16, 16, 16, 16, 16, 16, 16, 16,
+    16, 16, 8, 8,
+};
+
+const int BEEP_PIN = 8;
+const int SPEED = 1500;
+
+
+void play(const unsigned int *notes,
+          const unsigned char *durations,
+          const unsigned int length) {
+    for (unsigned int n = 0; n < length; n++) {
+        int d = SPEED / durations[n];
+        tone(BEEP_PIN, notes[n], d);
+        delay(1.3 * d);
+        noTone(BEEP_PIN);
+    }
+}
+
+
+void setup() {
+    play(INTRO_NOTES, INTRO_DURATIONS, 25);
+}
+
+
+void loop() {
+    play(MELODY_NOTES, MELODY_DURATIONS, 216);
+}
+```
+
+I'm not sure it will fit onto the ATtiny85, but if it doesn't, I see a
+lot of room for optimization there.
+
+Since this is just "for fun" project, I'm completely ignoring the
+copyrights here (the Nyan Cat is a registered trademark anyways). I'm
+not even sure it would apply, since if I decided to transcribe that
+song myself, I would come up with exactly same notes, so there is not
+much originality here. I'm retaining the names of the original
+authors, though, because I think they deserve it anyways.\
+
+
+P.S. Wow, I didn't know you could embed videos in code!
+

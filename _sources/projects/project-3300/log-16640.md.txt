@@ -1,0 +1,31 @@
+---
+blogpost: true
+date: 2015-04-17
+category: project-3300
+---
+
+# Force Sensing
+Published on 2015-04-17 in {ref}`project-3300`.
+
+After showing the robots at PyCon.us, I had some great conversations
+about all the possible ways I could improve them. One particularly
+nice idea is to connect some extra wires to the servo pots, and by
+measuring the voltage on them get some idea about their actual
+positions and (indirectly) the force being applied to them. To do it
+with all 12 servos, I would need 12 analog input pins, though. I can
+think about several possibilities:
+
+
+ * Use two arduino pro minis, each controlling two legs, with 6 digital
+and 6 analog pins.
+ * Use a 16-channel analog multiplexer chip. That requires 1 analog and 4
+digital pins.
+ * Use a 16-channel ADC chip, possibly through I²C.
+ * Use an additional board with lots of analog pins, like Teensy 3.1.
+ * Only do force-sensing on the 4 most important servos (the ones that
+carry the robot).
+
+I think I will start with the last option, mostly because that doesn't
+require changing much and it will let me see how well this actually
+works. Then I can try one of the other options if needed.
+

@@ -1,0 +1,34 @@
+---
+blogpost: true
+date: 2015-06-05
+category: project-3736
+---
+
+# RIP ESP-12
+Published on 2015-06-05 in {ref}`project-3736`.
+
+I have a lot of bad luck with this project. Or maybe I'm just sloppy.
+Anyways, I uploaded the nodemcu firmware, uploaded the uBob code, and
+decided it's time to test the servos -- to do that, I need to run it
+from a battery. So I got out my battery, and tried to connect it, but
+the connector wouldn't want to fit... So I forced it. And when I saw
+the blue smoke, I realized I connected it backwards...
+
+The module fried, along with the power switch. Probably also the
+distance sensor.
+
+I quickly desoldered the fried module and switch, and soldered new
+ones (ugh, my stash is running out). Uploaded firmware, uploaded code,
+connected battery, connected servos, ran it:
+
+
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="" src="https://www.youtube.com/embed/x-mz9sEII00"></iframe>
+
+It works! Of course I switched two of the pins, but that's a small
+correction in the software. But does the distance sensor work? A quick
+test says "no". It always returns 1. And I don't know if it's a bad
+connection, bad wiring, or if I fried it too. I also don't have enough
+motivation now to desolder everything and solder a new sensor, so I'm
+putting it off to some later date. Maybe by that time I can use
+Micropython!
+

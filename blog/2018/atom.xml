@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posted in 2018</title>
-  <updated>2024-08-07T20:12:48.997955+00:00</updated>
+  <updated>2024-08-07T20:27:29.043263+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/2018/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -27,16 +27,43 @@ would need to be replaced.&lt;/p&gt;
 standard setup (a 1S lipo connected directly without any voltage
 stabilization), add a battery charging circuit, and replace the servo.&lt;/p&gt;
 &lt;p&gt;Here’s the USB port for the battery charging circuit:&lt;/p&gt;
-&lt;img alt="../../_images/9036641528398127759.jpg" src="../../_images/9036641528398127759.jpg" /&gt;
+&lt;img alt="projects/project-6050/images/9036641528398127759.jpg" src="projects/project-6050/images/9036641528398127759.jpg" /&gt;
 &lt;p&gt;And the replaced servo, primed with black paint, waiting to dry for a
 dry-brushing:&lt;/p&gt;
-&lt;img alt="../../_images/2825991528398180978.jpg" src="../../_images/2825991528398180978.jpg" /&gt;
+&lt;img alt="projects/project-6050/images/2825991528398180978.jpg" src="projects/project-6050/images/2825991528398180978.jpg" /&gt;
 &lt;p&gt;And finally the whole robot, it all its robot glory:&lt;/p&gt;
-&lt;img alt="../../_images/7540951528398222731.jpg" src="../../_images/7540951528398222731.jpg" /&gt;
+&lt;img alt="projects/project-6050/images/7540951528398222731.jpg" src="projects/project-6050/images/7540951528398222731.jpg" /&gt;
 &lt;/section&gt;
 </content>
     <link href="http://deshipu.art/projects/project-6050/log-147636/" rel="alternate"/>
     <summary>Published on 2018-06-07 in project-6050.</summary>
     <published>2018-06-07T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-7860/log-148360/</id>
+    <title>Corrected Repositories</title>
+    <updated>2018-06-24T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="corrected-repositories"&gt;
+
+&lt;p&gt;Published on 2018-06-24 in &lt;a class="reference internal" href="../../projects/project-7860/#project-7860"&gt;&lt;span class="std std-ref"&gt;Nyan Board&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://hackaday.io/hacker/125739"&gt;&amp;#64;Travis Hardiman &lt;/a&gt; pointed out that the code I have in the &lt;a class="reference external" href="https://bitbucket.org/thesheep/nyan/src/tiny10/main/"&gt;repository&lt;/a&gt;  in the attiny10 branch is actually for attiny85, and the attiny10
+code is missing, so I went ahead and re-created the attiny10 code
+(which I must have lost somehow), this time on attiny9 (which is the
+same as attiny10, only doesn’t have ADC, which we don’t need). It’s in
+the attiny9 branch now. So to summarize:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;attiny85:  &lt;a class="reference external" href="https://bitbucket.org/thesheep/nyan/src/tiny10/main/"&gt;https://bitbucket.org/thesheep/nyan/src/tiny10/main/&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;attiny10 and attiny9: &lt;a class="reference external" href="https://bitbucket.org/thesheep/nyan/src/tiny10/main/"&gt;https://bitbucket.org/thesheep/nyan/src/tiny9/main/&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;attiny13:  &lt;a class="reference external" href="https://bitbucket.org/thesheep/nyan/src/tiny10/main/"&gt;https://bitbucket.org/thesheep/nyan/src/tiny13/main/&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Sorry for the confusion.&lt;/p&gt;
+&lt;p&gt;Also, to program the attiny10, you need to use a programmer capable of
+programming with the TPI protocol — recent versions of USBASP support
+it, you just need to add a 1kΩ resistor…&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-7860/log-148360/" rel="alternate"/>
+    <summary>Published on 2018-06-24 in project-7860.</summary>
+    <published>2018-06-24T00:00:00+02:00</published>
   </entry>
 </feed>

@@ -1,0 +1,102 @@
+---
+blogpost: true
+date: 2016-02-14
+category: project-3694
+---
+
+# Up Side Down
+Published on 2016-02-14 in {ref}`project-3694`.
+
+Today I worked a little bit more with the robot. It's actually quite
+convenient to have it sit on a box (so that the legs are in the air)
+next to my computer, connected over the USB cable.
+
+
+:::{image} images/6448311455476737235.jpg
+
+:::
+
+
+As you can see, the OpenMV camera is actually installed up-side-down.
+That's because it was more convenient for me, and it looks a little
+bit like a snout. I figured it wouldn't matter, as I would simply
+reverse the y coordinate of any results I get from the camera. It
+turns out that sometimes it does matter -- in particular, the face
+detection algorithms don't detect up-side-down faces. I looked for a
+way to flip the image, and after I couldn't find anything, [I asked on the OpenMV forum, where the authors immediately helped me](https://openmv.io/forums/viewtopic.php?f=6&t=56) . Turns out the sensor has a setting which you can enable to make it
+flip the image in hardware. Here's a photo from the eyes of the robot:
+
+
+:::{image} images/5026061455477102794.jpg
+
+:::
+
+
+The quality is not that great, because it's pretty dark in my room.
+I'm using a wide-angle lens, so you can see the two front legs of the
+robot in there.
+
+Next I went on working on the walking code (again). As usual, starting
+with the Servo class:
+
+
+```python
+import pyb
+import ustruct
+import math
+
+
+class Servo:
+    min_pos = 600
+    max_pos = 2400
+    pos_range = 180
+
+    def __init__(self, servos, index, reverse=False, trim=0):
+        self.servos = servos
+        self.index = index
+        self.reverse = reverse
+        self.trim = trim
+
+    def move(self, radians=None, degrees=None):
+        if degrees is None:
+            degrees = math.degrees(radians)
+        degrees += self.trim
+        if self.reverse:
+            degrees = self.pos_range - degrees
+        position = self.min_pos + (
+            degrees * (self.max_pos - self.min_pos) / self.pos_range)
+        position = min(self.max_pos, max(self.min_pos, position))
+        self.servos[self.index] = position
+
+
+class Servos:
+    ADDRESS = 9
+
+    def __init__(self):
+        self.bus = pyb.I2C(2, pyb.I2C.MASTER)
+        self.servos = [0] * 18
+
+    def __setitem__(self, index, value):
+        self.servos[index] = value
+
+    def __getitem__(self, index):
+        return Servo(self, index)
+
+    def update(self, servos=None):
+        if servos is None:
+            servos = range(18)
+        for servo in servos:
+            try:
+                pyb.disable_irq()
+                self.bus.mem_write(
+                    ustruct.pack('<' + 'H', self.servos[servo]),
+                    self.ADDRESS,
+                    servo,
+                )
+            finally:
+                pyb.enable_irq()
+```
+
+ Now I can move each of the joints of the robot individually. Next up,
+leg (practically the same as in {ref}`project-6050` ) and then body (the hard part) inverse kinematics.
+

@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Reversing a Servo - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="reversing-a-servo">
+<h1>Reversing a Servo<a class="headerlink" href="#reversing-a-servo" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2015-12-20 in <a class="reference internal" href="../#project-7168"><span class="std std-ref">Logicoma-kun</span></a>.</p>
+<p>It’s been a long time since I worked on this robot, mainly because I
+got stuck with the hands mechanism. You see, I want it to have hands
+like the original Logikoma had, and since I have one free servo
+channel, I wanted them to move, allowing me to grab things with them.
+This gets rather difficult to do if you don’t want to make custom
+3D-printed or laser-cut parts, and I didn’t think about it when I was
+ordering the laser-cut chassis.</p>
+<p>I finally had this idea – I can just mount the hands directly on two
+servos, and connect both servos to the same signal – pretty much what
+I already do with the wheels. But then there is a tiny complication –
+I need the servos to move in opposite directions. There is really no
+room to mount one of them up-side down, so I still had a problem.</p>
+<p>Then it occured to me. If you open a servo, you will see the PCB with
+the electronics, and some leads going to the motor and to the
+potentiometer:</p>
+<img alt="projects/project-7168/images/1183381450627741840.jpg" src="projects/project-7168/images/1183381450627741840.jpg" />
+<p>Swapping just the motor leads won’t work – the servo will go crazy
+and try to move in the opposite direction than it wants. But if you
+also swap the potentiometer leads, then all is good again – both the
+motor direction and the position feedback are reversed. Voila, a
+reversed servo!</p>
+<p>Now all I need is to attach them under Logicoma-kun’s body, and
+connect to the one servo channel:</p>
+<img alt="projects/project-7168/images/1751101450627898408.jpg" src="projects/project-7168/images/1751101450627898408.jpg" />
+<p>Then attach the hands to them, and we are done!</p>
+</section>
+
+
+</div>
+  </body>
+</html>

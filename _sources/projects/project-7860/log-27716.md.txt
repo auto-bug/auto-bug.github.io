@@ -1,0 +1,13 @@
+---
+blogpost: true
+date: 2015-11-09
+category: project-7860
+---
+
+# Now Using PROGMEM
+Published on 2015-11-09 in {ref}`project-7860`.
+
+Thanks to [@davedarko](https://hackaday.io/hacker/3459) 's persistence and his {ref}`project-8252`  project, there is now version of this song that keeps all the note
+data in PROGMEM, and thus uses so little memory, that it runs on
+ATTiny45. The updated code is in the repository linked on the left.
+

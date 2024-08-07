@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Ressurection - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="ressurection">
+<h1>Ressurection<a class="headerlink" href="#ressurection" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2016-12-29 in <a class="reference internal" href="../#project-3736"><span class="std std-ref">µBob biped robot</span></a>.</p>
+<p>I really wanted to enter one of my robots into the 1kB contest, but
+unfortunately the inverse kinematics calculations result in quite some
+bit of code. I tried to use some pretty neat algorithms to get around
+that (see <a class="reference external" href="https://hackaday.io/project/6050-tote/log/50664-cordic">https://hackaday.io/project/6050-tote/log/50664-cordic</a> ), but in the end there is just too much happening on thet 8-bit
+microcontroller. Switching to a 32-bit microcontroller would probably
+helped, but then there is the size of all the HAL libraries and such
+– it would probably come down to about the same, or worse. So I
+looked at the shelf on which my robots are standing, and saw µBob. It
+has hard-coded gait, so there should be no problem with calculations.
+However, it used an ESP8266, and that’s again a lot of code in the
+SDK/Lua/MicroPython.</p>
+<p>The robot also got quite beaten up on the last few conferences and
+maker fairs it has visited. The distance sensor never worked, the
+wires got loose, the battery inside shifted and changed its center of
+gravity, the feet lost some of the fingers, and the power switch is in
+a place that is really awkward to reach. So I decided to recycle the
+parts and make a new robot.</p>
+<img alt="projects/project-3736/images/3974481483050689226.jpg" src="projects/project-3736/images/3974481483050689226.jpg" />
+<p>Time to re-build this robot again, with a little bit more of proper
+construction. I started with the PCB, because you have to wait for
+them so long. So I made this:</p>
+<img alt="projects/project-3736/images/3439521483050998669.png" src="projects/project-3736/images/3439521483050998669.png" />
+<p>The two big empty spaces are for attaching the servos. There is also
+room for a power switch and a battery connector, and a footprint for
+an ATtiny85. I got two pins free, so I’ve broken them out into some
+extra headers.Once the PCBs arrived, I quickly assembled one, and started to program
+the attiny. That took whole day, because for some reason the
+programming would fail at various stages with very strange results.
+Lowering the clock speed of the programmer, adding some jumpers and
+additional options would help sometimes and then break again later. In
+the end it turned out that the wires that I soldered to my programming
+clip came off, and weren’t giving a good connection.</p>
+<p>Next, I needed some code to drive the servos. Unfortunately, I
+couldn’t use the code from <span class="xref std std-ref">project-9769</span> , because this time I needed to drive 3 servos at once (actually 4,
+but two of them share a common signal). So I looked around and found <a class="reference external" href="http://www.thebox.myzen.co.uk/Tutorial/LEDs.html">a servo library for the ATtiny85</a> . It was too big for my purposes, but I used the ideas from it to
+write my own, that’s about 512 bytes (and probably can be further
+optimized).</p>
+<p>Once I had that, I disassembled the poor µBob, and removed its legs:</p>
+<img alt="projects/project-3736/images/5240641483051624333.jpg" src="projects/project-3736/images/5240641483051624333.jpg" />
+<p>Then I attached the servos to the new PCB, with a programmed ATtiny85
+and a smaller battery (from those small quadcopters):</p>
+<img alt="projects/project-3736/images/3433491483051680543.jpg" src="projects/project-3736/images/3433491483051680543.jpg" />
+<p>The current status: the legs are just moving back and forth for now
+(testing the servos). Next, I will need some simple codo to make it
+move into poses, and then maybe I will attach a distance sensor and
+add some code for reading the ADC.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

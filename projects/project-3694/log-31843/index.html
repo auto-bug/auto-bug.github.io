@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Brain Surgery - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="brain-surgery">
+<h1>Brain Surgery<a class="headerlink" href="#brain-surgery" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2016-02-13 in <a class="reference internal" href="../#project-3694"><span class="std std-ref">Henk the Hexapod</span></a>.</p>
+<p>This robot waited on the shelf for a long time (enough for its LiPo
+battery to go bad), so when I got the <span class="xref std std-ref">project-1313</span>  board, I decided to install it here. I’m also replacing the Pololu
+servo controller I used in there with a much simplier <span class="xref std std-ref">project-9131</span>  that I built out of a Pro Mini board. Other parts will probably
+remain the same, although I might need to skip the speaker, as ADC and
+DAC are on the same pin, and I need that battery voltage monitoring.</p>
+<img alt="projects/project-3694/images/2299901455367858580.jpg" src="projects/project-3694/images/2299901455367858580.jpg" />
+<p>I started by testing the I²C communication between OpenMV and the
+servo controller. Since OpenMV is still in beta and not even yet
+released to Kickstarter backers, I didn’t expect this to Just Work™
+out of the box, and I was right. First, turns out that the_SDA_ and_SCL_ pins are reversed compared to <a class="reference external" href="https://openmv.io/docs/openmv/quickref.html">what the documentation says</a> . That was relatively easy to figure, I just swapped them and suddenly_I2C.scan()_ started showing my device. Splendid!</p>
+<p>Then I just copied the line that I previously tested with PyBoard:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bus</span><span class="o">.</span><span class="n">mem_write</span><span class="p">(</span><span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s2">&quot;&lt;H&quot;</span><span class="p">,</span> <span class="mi">1500</span><span class="p">),</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>and… nothing happened. Except that further_I2C.scan()_ stopped finding anything, and further writes just returned_IOError 16_ until the OpenMV board was hard reset. Interesting. I connected my
+pocket oscilloscope to see what is happening, and sure enough, the_SCL_ line is being held low by the master after the first write. Looks
+like a bug in the firmware.So I started looking through the source code ( <a class="reference external" href="https://github.com/openmv/openmv">it’s available on Github</a> ). Initially I looked at the_soft_i2c.c_ file, but soon I realized that it’s only being used in the mlx
+module. Perhaps the authors had the same problem, and used software
+I²C to work around it and get the mlx to work?</p>
+<p>Then <a class="reference external" href="https://hackaday.io/hacker/61401">&#64;Arsenijs</a>  suggested on the hackaday chat that this may be related to <a class="reference external" href="https://github.com/micropython/micropython/issues/1765">an I²C bug that was recently fixed in Micropython</a> . I tried disabling IRQs before calling the_I2C.mem_write()_, and lo and behold, it works! It’s not necessarily this bug (as it
+only manifests when there is an error reading or writing), but
+switching the interrupts off makes the Micropython not use DMA, and
+apparently this works. Happy with that, I wrote about my findings <a class="reference external" href="https://openmv.io/forums/viewtopic.php?f=6&amp;t=51">on the OpenMV forum and went to sleep</a> .</p>
+<p>Next day I took Henk, opened it, ripped out the servo controller,
+connected the servos to the new one, drilled a hole for the camera to
+stick out, and here I am now, wondering how to best arrange the UBEC
+and battery inside. I will keep you updated.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

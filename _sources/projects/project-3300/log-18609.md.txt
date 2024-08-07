@@ -1,0 +1,29 @@
+---
+blogpost: true
+date: 2015-05-28
+category: project-3300
+---
+
+# Family Grows
+Published on 2015-05-28 in {ref}`project-3300`.
+
+As I'm writing the [guide for building and programming this robot](http://tote.readthedocs.org/) , I need a way to test if the instructions make sense and are simple
+enough. So I've build another brother for µKubik, this time following
+my own instructions to the letter. It went well, except I didn't count
+how many servos I have available beforehand, and I ended up one servo
+too short. Oh well.
+
+
+:::{image} images/8476491432813530496.jpg
+
+:::
+
+
+On the good side, the version with most of the parts mounted underside
+actually works very well and is very compact. Also, there was no servo
+reversing necessary, so the robot walks pretty much out of the box
+(you do have to adjust the default servo positions).
+
+Now I will try and add an ESP8266 module to it, with Micropython
+firmware, and see if I can control it that way.
+

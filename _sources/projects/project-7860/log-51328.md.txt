@@ -1,0 +1,65 @@
+---
+blogpost: true
+date: 2017-01-04
+category: project-7860
+---
+
+# ATtiny10 Nyan Cat
+Published on 2017-01-04 in {ref}`project-7860`.
+
+Just in time for the contest, the boards from OSHPark arrived today!
+
+
+:::{image} images/6457811483529097953.jpg
+
+:::
+
+
+I immediately assembled one in order to test it.
+
+
+:::{image} images/1326011483529191061.jpg
+
+:::
+
+
+During that process, I learned about a new revolutionary discovery by
+the Chinese scientists! In their secret laboratories they developed a
+new kind of copper wire, one that is utterly impossible to solder, no
+matter how much flux you use and how hot the soldering iron is.
+Apparently, I got some wires like that from them, possibly by mistake.
+Using wires from a different vendor made it finally work (I also had
+to remove the speaker from the clock pin during programming).
+
+Once I finally managed to flash the code, I only got clicks. A quick
+inspection revealed, that I used wrong pins for the speaker and the
+LEDs! The code expected speaker to be on PB0 and the LEDs on PB1. But
+the PCB puts the speaker on PB1 and the LEDs on PB2. Changing the LEDs
+pin is trivial, but can I change the speaker pin? Turns out that yes,
+the PB1 pin also is connected to the timer, and I vaguely remember
+changing the pins while designing the PCB with this in mind. I must
+have completely forgotten about it afterwards. In any case, just
+changing COM0A0 to COM0B0 fixed the problem. I also fixed a small bug
+where I only cleared TCNT0L and not the whole TCNT0, and it works.
+
+
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/jhULsiHoyeE"></iframe>
+
+The last bugfix made the code 2 bytes bigger, but it still fits within
+the limits:
+
+
+
+
+```
+AVR Memory Usage
+----------------
+Device: attiny10
+
+Program:     502 bytes (49.0% Full)
+(.text + .data + .bootloader)
+
+Data:          0 bytes (0.0% Full)
+(.data + .bss + .noinit) 
+```
+

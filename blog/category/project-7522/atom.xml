@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>http://deshipu.art/</id>
+  <title>deshipu.art - Posts in project-7522</title>
+  <updated>2024-08-07T20:27:29.005081+00:00</updated>
+  <link href="http://deshipu.art/"/>
+  <link href="http://deshipu.art/blog/category/project-7522/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-7522/log-24510/</id>
+    <title>Acrylic Nuts and Bolts</title>
+    <updated>2015-09-01T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="acrylic-nuts-and-bolts"&gt;
+
+&lt;p&gt;Published on 2015-09-01 in &lt;a class="reference internal" href="../../../projects/project-7522/#project-7522"&gt;&lt;span class="std std-ref"&gt;Hacking the MeArm&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;One of the more important challenges in the design of MeArm is making
+it as light as possible, especially at the end of the arm, where there
+is the longest lever and the inertia is the worst. But if you look at
+the robot, it has 10 metal bolts in there, which are quite heavy. So
+what can be done without laser-cutting my own version of the gripper
+that would use fewer bolts?&lt;/p&gt;
+&lt;p&gt;When I was looking for bolts for the &lt;a class="reference internal" href="../../../projects/project-6608/#project-6608"&gt;&lt;span class="std std-ref"&gt;Talk Ranking Machine&lt;/span&gt;&lt;/a&gt; , I stumbled upon those acrylic bolts. They are like completely normal
+nuts and bolts, except they are made out of acrylic, instead of metal.
+And they are light. Sure, they are not as strong as metal bolts, but
+they are as strong as the rest of MeArm, so it doesn’t matter. They
+fit this project perfectly:&lt;/p&gt;
+&lt;img alt="projects/project-7522/images/965201441142440985.jpg" src="projects/project-7522/images/965201441142440985.jpg" /&gt;
+&lt;p&gt;Now, there is a trick to using them. You will need one normal metal
+bolt, to thread the holes first. Preferably several times, and make
+sure you get all the way through, because if you don’t, you are going
+to break the acrylic bolts trying to force them in. After screwing the
+bolt in and out several times, you can screw in the acrylic bolt, and
+cut it to size with wire clippers. Easy.&lt;/p&gt;
+&lt;p&gt;You can see on the picture that I didn’t replace one bolt inside the
+robot, and the four bolts in the base. The bolts in the base are
+longer than the acrylic bolts I had, and they don’t matter for the
+weight of the arm itself anyways, and the bolt in the middle was just
+too hard to get to without disassembling the whole robot first, so I
+let it be. It’s close to the center of gravity anyways, so it
+shouldn’t matter that much.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-7522/log-24510/" rel="alternate"/>
+    <summary>Published on 2015-09-01 in project-7522.</summary>
+    <published>2015-09-01T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-7522/log-47571/</id>
+    <title>Still Alive</title>
+    <updated>2016-10-12T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="still-alive"&gt;
+
+&lt;p&gt;Published on 2016-10-12 in &lt;a class="reference internal" href="../../../projects/project-7522/#project-7522"&gt;&lt;span class="std std-ref"&gt;Hacking the MeArm&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;So I dug out this project. I never actually intended to abandon it for
+so long, but somehow that’s exactly what happened. Today I started
+preparing for the &lt;a class="reference external" href="http://pl.pycon.org"&gt;PyCon.PL&lt;/a&gt;  confernece, and looked at the shelf, and there it was. We are going
+to do some Micro:Bit hacking at the conference, and I thought: “Hey,
+it’s a good thing to connect a Micro:Bit to!” So I took it out, blew
+the dust from it, replaced two broken bolts (those acrylic bolts are
+delicate when you tighten them too much) and added a bunch of wires to
+the servos:&lt;/p&gt;
+&lt;img alt="projects/project-7522/images/2902801476262046533.jpg" src="projects/project-7522/images/2902801476262046533.jpg" /&gt;
+&lt;p&gt;Every servo has now two extra wires: one going to the center tap of
+the pot, and one going to the motor. Why? Because I want to be able to
+do position and force sensing! Probably not right now and not with the
+Micro:Bit, but I really want to do some experiments with complain
+motion and such.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-7522/log-47571/" rel="alternate"/>
+    <summary>Published on 2016-10-12 in project-7522.</summary>
+    <published>2016-10-12T00:00:00+02:00</published>
+  </entry>
+</feed>

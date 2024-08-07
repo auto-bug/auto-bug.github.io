@@ -1,0 +1,54 @@
+---
+blogpost: true
+date: 2016-12-30
+category: project-3736
+---
+
+# The Body
+Published on 2016-12-30 in {ref}`project-3736`.
+
+Today I'm continuing the work on resurrecting µBob. I decided to use a
+Pololu SHARP distance sensor (because it can work with 3V), and using
+a bit of hot glue I attached the pins to it, so that I can plug it in
+easily:
+
+
+:::{image} images/2270691483094463315.jpg
+
+:::
+
+
+On the robot side, I used stacking headers to give some distance from
+the PCB:
+
+
+:::{image} images/6941621483094620260.jpg
+
+:::
+
+
+Next, to make sure it will walk in this configuration, a quick test:
+
+
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/YhO5LxJPn1U"></iframe>
+
+Then I worked on the body frame. I decided to use paperclips this
+time. Turns out you can solder them, so I bent them and soldered them
+into the holes in the PCB:
+
+
+:::{image} images/5372171483094728658.jpg
+
+:::
+
+
+A little bit of hot glue, and the hat is back on:
+
+
+:::{image} images/3258031483094773549.jpg
+
+:::
+
+
+Finally, I also transplanted the old mustache.
+

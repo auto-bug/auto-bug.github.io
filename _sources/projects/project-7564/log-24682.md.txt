@@ -1,0 +1,101 @@
+---
+blogpost: true
+date: 2015-09-05
+category: project-7564
+---
+
+# We Do What We Must
+Published on 2015-09-05 in {ref}`project-7564`.
+
+Because we can. I had a 7-segment display left over from the {ref}`project-6608` , and this really begged to be done. Yes, it's useless, silly, and
+potentially even dangerous if someone left it in a public place. But
+it was quite fun to do too.
+
+
+:::{image} images/4499701441448041198.jpg
+
+:::
+
+
+Both the display and the battery holder are soldered directly to the
+Pro Mini -- the pinout just happens to match. There is no off switch,
+you just have to remove the battery. The code looks like this:
+
+
+```cpp
+const int GND_PINS[] = {8, 12, 13, A2};
+const int VCC_PINS[] = {A1, 11, 6, 4, 3, A0, 7, 5};
+const unsigned char DIGITS[] = {
+    0b00111111,
+    0b00000110,
+    0b01011011,
+    0b01001111,
+    0b01100110,
+    0b01101101,
+    0b01111101,
+    0b00000111,
+    0b01111111,
+    0b01101111,
+};
+const int BEEP_PIN = 2;
+
+
+void show7seg(int number) {
+    unsigned char digit;
+    div_t result;
+
+    for (int d = 0; d < 4; ++d) {
+        result = div(number, 10);
+        digit = DIGITS[result.rem % 10];
+        number = result.quot;
+        for (int s = 0; s < 8; ++s) {
+            digitalWrite(VCC_PINS[s], digit & (1 << s));
+        }
+        pinMode(GND_PINS[d], OUTPUT);
+        digitalWrite(GND_PINS[d], LOW);
+        delay(2);
+        pinMode(GND_PINS[d], INPUT);
+    }
+}
+
+
+
+void setup() {
+    for (int s = 0; s < 8; ++s) {
+        pinMode(VCC_PINS[s], OUTPUT);
+    }
+    for (int d = 0; d < 4; ++d) {
+        pinMode(GND_PINS[d], INPUT);
+    }
+    pinMode(9, OUTPUT);
+    digitalWrite(9, LOW);
+    pinMode(10, OUTPUT);
+    digitalWrite(10, HIGH);
+}
+
+
+void loop() {
+    static long int last = 0;
+    static int count = 2400;
+    long int now = millis();
+
+    if (now - last > 500) {
+        digitalWrite(10, LOW);
+    }
+    if (now - last > 1000) {
+        count -= 1;
+        if (count % 100 == 99) {
+            count -= 40;
+        }
+        last = now;
+        tone(BEEP_PIN, 1200, 25);
+        digitalWrite(10, HIGH);
+    }
+
+    show7seg(count);
+}
+```
+
+And that's pretty much it. I might actually make it a game, by adding
+several wires that you have to cut, that would either stop the counter
+or make it go faster or something...

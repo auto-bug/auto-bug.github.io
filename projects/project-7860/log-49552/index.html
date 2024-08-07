@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Tabulate your Data - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="tabulate-your-data">
+<h1>Tabulate your Data<a class="headerlink" href="#tabulate-your-data" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2016-11-26 in <a class="reference internal" href="../#project-7860"><span class="std std-ref">Nyan Board</span></a>.</p>
+<p>So I tried to shrink this program even more. There are those two
+lookup tables in there, one with frequencies of the notes and one with
+octaves. By sorting the notes and replacing the frequencies with a
+simple formula (Wolfram Alpha helped me to come up with it), I got:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">120</span> <span class="o">+</span> <span class="p">(</span><span class="mi">354</span> <span class="o">+</span> <span class="n">a</span> <span class="o">*</span> <span class="mi">6363</span> <span class="o">+</span> <span class="n">a</span> <span class="o">*</span> <span class="n">a</span> <span class="o">*</span> <span class="mi">293</span><span class="p">)</span> <span class="o">//</span> <span class="mi">1000</span>
+</pre></div>
+</div>
+<p>Very happy with it, I put it in my program. BAM! 500 bytes larger.Why? Well, I blame 16-bit division and modulo that i had to use…\</p>
+</section>
+
+
+</div>
+  </body>
+</html>

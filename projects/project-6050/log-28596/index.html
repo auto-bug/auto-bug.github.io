@@ -60,10 +60,10 @@ stuff with it!</p>
 <p>But yeah, there were some hurdles. First, we had to write <a class="reference external" href="http://microbit-micropython.readthedocs.org/">some documentation for it</a> , because it’s all just being created as we go. Then I had to use an
 edge connector, which I received separately, to get access to the I²C
 pins:</p>
-<img alt="../../../_images/3065641449081853661.jpg" src="../../../_images/3065641449081853661.jpg" />
+<img alt="projects/project-6050/images/3065641449081853661.jpg" src="projects/project-6050/images/3065641449081853661.jpg" />
 <p>I already had the_i2cslave_code that I’ve written for Raspberry Pi last time, so that part was
 easier. So all I needed was to hook it up and test:</p>
-<img alt="../../../_images/3608111449081939724.jpg" src="../../../_images/3608111449081939724.jpg" />
+<img alt="projects/project-6050/images/3608111449081939724.jpg" src="projects/project-6050/images/3608111449081939724.jpg" />
 <p>Unfortunately, it didn’t work. The_i2c.write()_ function simply seemed to do nothing at all. I reported the issue,
 and the good Micropython developers added error handling to it, so now
 at least I could see an exception being raised. But it turned out to
@@ -72,7 +72,7 @@ the whole weekend trying different variations, adding pullup
 resistors, checking if the accelerometer and compass that are on the
 same I²C bus work (they did), etc. I also tested it multiple times
 with Raspberry Pi, to make sure the error is on the micro:bit side:</p>
-<img alt="../../../_images/1072471449082320846.jpg" src="../../../_images/1072471449082320846.jpg" />
+<img alt="projects/project-6050/images/1072471449082320846.jpg" src="projects/project-6050/images/1072471449082320846.jpg" />
 <p>Finally, my week with micro:bit ended, and I had to send it to the
 next person. So I packed the whole thing up and went to bed.</p>
 <p>I couldn’t sleep that night. Instead, I read the I²C specification and

@@ -1,0 +1,18 @@
+---
+blogpost: true
+date: 2014-12-27
+category: project-3694
+---
+
+# Ready to Program
+Published on 2014-12-27 in {ref}`project-3694`.
+
+This robot took me two days to build from scratch, but I'm pretty
+happy with it already. I think it's pretty much finished mechanically
+(only missing some rubber endings on the legs). Software-wise, I have
+ported my maestro controller library to Micropython, so I can already
+move the individual servos from the REPL console of the PyBoard, over
+USB. The next step will be to port the inverse kinematics code, adjust
+it to take into consideration that there are six legs now and that
+they are at various angles to the body, and then make it walk.
+

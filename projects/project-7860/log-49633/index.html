@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>ATtiny13 - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="attiny13">
+<h1>ATtiny13<a class="headerlink" href="#attiny13" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2016-11-28 in <a class="reference internal" href="../#project-7860"><span class="std std-ref">Nyan Board</span></a>.</p>
+<p>I’m still waiting for my chips, but <a class="reference external" href="https://hackaday.iohttps://hackaday.io/hacker/3459">&#64;davedarko</a>  has a bunch of ATtiny13s handy, and he reports that there is a small
+problem: ATtiny13 doesn’t have Timer1. A quick look at the datasheet
+confirms that – so I will need to use Timer0 instead. However, there
+are two problems with that. First, Timer0 cannot directly control the
+PB4 pin that I used for the piezo on the boards, and second, its
+prescaler is not nearly as accurate, so I can’t use it for selecting
+octaves. But let’s try and see what we can do.</p>
+<p>The first problem is simple: I undusted my old trusty time machine,
+went back a week, and modified the original board design, to make one
+of the cats (the middle right one) different from others – it has
+piezo on pin PB0, and separate LEDs on PB3 and PB4, so it can blink
+its eyes independently.</p>
+<p>The second one is a bit worse – we will have to compromise. I’m
+setting the prescaler to a static value, and I’m shifting the timer
+counters right by the octave number – this way the higher the octave,
+the smaller the numbers – so higher frequency. (You may remember from
+your music lessons, that each octave has twice the frequency of the
+previous one). The problem with this is that I lose accuracy at the
+higher frequencies. Oh well. Also, I had to switch the chip to 1Mhz,
+because then I can get the prescaler at the right spot.</p>
+<p>The end result isn’t bad, and it’s only 2 bytes larger than the
+ATtiny85 version (because I now blink the other eye too, otherwise it
+would have been smaller). Here it is:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">play</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">byte</span><span class="w"> </span><span class="o">*</span><span class="n">notes</span><span class="p">,</span><span class="w"> </span><span class="n">byte</span><span class="w"> </span><span class="n">length</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">union</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">tone</span><span class="o">:</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">octave</span><span class="o">:</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">length</span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="n">note</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">byte</span><span class="w"> </span><span class="n">raw</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="n">note</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">length</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// &quot;Goes to 0&quot; operator.</span>
+<span class="w">        </span><span class="n">note</span><span class="p">.</span><span class="n">raw</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pgm_read_byte_near</span><span class="p">(</span><span class="n">notes</span><span class="o">++</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">note</span><span class="p">.</span><span class="n">note</span><span class="p">.</span><span class="n">octave</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">TCCR0B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="c1">// Pre-scaler /64</span>
+<span class="w">            </span><span class="n">OCR0A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pgm_read_byte_near</span><span class="p">(</span><span class="n">FREQ</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">note</span><span class="p">.</span><span class="n">note</span><span class="p">.</span><span class="n">tone</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">note</span><span class="p">.</span><span class="n">note</span><span class="p">.</span><span class="n">octave</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">note</span><span class="p">.</span><span class="n">note</span><span class="p">.</span><span class="n">length</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">_delay_ms</span><span class="p">(</span><span class="mi">220</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="n">TCCR0B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="n">_delay_ms</span><span class="p">(</span><span class="mi">30</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">_delay_ms</span><span class="p">(</span><span class="mi">110</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="n">TCCR0B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="n">_delay_ms</span><span class="p">(</span><span class="mi">15</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="n">PORTB</span><span class="w"> </span><span class="o">^=</span><span class="w"> </span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">3</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">4</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">DDRB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">0</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">3</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="c1">// Output pins PB0, PB3, PB4.</span>
+<span class="w">    </span><span class="n">TCCR0A</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="n">COM0A0</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="n">WGM01</span><span class="p">;</span><span class="w"> </span><span class="c1">// Enable output on PB0 and set CTC mode.</span>
+<span class="w">    </span><span class="n">PORTB</span><span class="w"> </span><span class="o">^=</span><span class="w"> </span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="c1">// Close one eye, so they blink one at a time.</span>
+<span class="w">    </span><span class="n">play</span><span class="p">(</span><span class="n">INTRO_NOTES</span><span class="p">,</span><span class="w"> </span><span class="mi">26</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">play</span><span class="p">(</span><span class="n">MELODY_NOTES</span><span class="p">,</span><span class="w"> </span><span class="mi">216</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+
+
+</div>
+  </body>
+</html>

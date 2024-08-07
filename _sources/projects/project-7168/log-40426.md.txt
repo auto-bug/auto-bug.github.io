@@ -1,0 +1,29 @@
+---
+blogpost: true
+date: 2016-06-22
+category: project-7168
+---
+
+# New Brains
+Published on 2016-06-22 in {ref}`project-7168`.
+
+For a long time I couldn't decide what to use for brains for Logicoma-
+kun. The initial experiments were done with Arduino, but I'd like
+something stronger and with the possibility of remote programming. For
+a time I had high hopes for the WiPy -- I waited for it to be released
+and then for the Timer bugs to be fixed, so that I could use it to
+control servos. But when it was finally fixed after several months, it
+turned out that I can't control enough of them at once easily, and
+that programming WiPy over FTP is quite awkward.
+
+Now that the Micropython for ESP8266 is re-done and working great, I
+decided to use the old combo: Arduino Pro Mini as a servo controller,
+and an ESP8266 module for the main brain. Promptly, I put together the
+whole thing on one of my breakout boards:
+
+
+:::{image} images/3513681466596442451.jpg
+
+:::
+
+

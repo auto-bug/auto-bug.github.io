@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Servo Controller - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="servo-controller">
+<h1>Servo Controller<a class="headerlink" href="#servo-controller" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2014-11-19 in <a class="reference internal" href="../#project-3301"><span class="std std-ref">Pico-Kubik quadruped robot</span></a>.</p>
+<p>After looking at the PWM library for Vocore ( <a class="reference external" href="http://vonger.cn/?topic=pwm-is-running-at-gpios">http://vonger.cn/?topic=pwm-is-running-at-gpios</a> ) and trying to actually solder more than 2 wires to its tiny 1.27mm
+headers, I decided that I don’t want to drive those servos directly
+from Vocore. I need a servo controller. A 3.3V Arduino Pro Mini clone
+will do quite well for that, with a very simple sketch for setting the
+servo positions by TTL ( <a class="reference external" href="https://bitbucket.org/thesheep/pkubik/src/tip/controller/">https://bitbucket.org/thesheep/pkubik/src/tip/controller/</a> ).</p>
+<img alt="projects/project-3301/images/6055131416433000348.jpg" src="projects/project-3301/images/6055131416433000348.jpg" />
+<p>This way I can test the mechanical part of the robot already, by
+talking to it over USB2TTL from the computer, and then add Vocore and
+use one of its two UARTs for the same thing. Writing to a tty file
+should be easier than a PWM driver.\</p>
+<p>One problem now, though. Arduino’s Servo.h library worked perfectly on
+the 5V Pro Minis that I used before, but it seems to have some
+problems on the 3.3V one. Either the library is sensitive to the CPU
+speed change, or the board is simply not fast enough to drive all the
+12 servos. Or I simply have some silly mistake in there.</p>
+<p>Update: Seems like just halving the pulse width does the trick.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

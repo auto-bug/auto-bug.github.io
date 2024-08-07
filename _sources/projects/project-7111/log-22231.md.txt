@@ -1,0 +1,17 @@
+---
+blogpost: true
+date: 2015-08-06
+category: project-7111
+---
+
+# The Buttons, They Do Nothing!
+Published on 2015-08-06 in {ref}`project-7111`.
+
+So far, the buttons don't really do anything useful -- they send
+"Button n" over the serial. But that is going to change in the future
+software updates.
+
+This tiny screen is really too small to see all the information that
+you need, so I will need to add a scroll buffer to this device, and
+then I can use the buttons to scroll the output.
+

@@ -62,7 +62,7 @@ sockets, so the same as the Pro Minis and Teensy. Of course, the
 pinout is not compatible, so I would need to make a custom board, or
 do the same trick I did with Teensy – use wires to connect to the
 right pins.</p>
-<img alt="../../../_images/6606801437063124752.jpg" src="../../../_images/6606801437063124752.jpg" />
+<img alt="projects/project-6050/images/6606801437063124752.jpg" src="projects/project-6050/images/6606801437063124752.jpg" />
 <hr class="docutils" />
 <p>But how do I program it? Do I need a JTAG programmer, a complex setup
 for cross-compiling to ARM and a complicated GDB configuration? Turns
@@ -71,7 +71,7 @@ program that board:</p>
 <iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/Ze6q6NidS5w"></iframe>
 <p>Turns out it’s very simple and works like a charm. They also have the
 pinout of that board <a class="reference external" href="http://www.stm32duino.com/viewtopic.php?f=28&amp;t=117">on their forum</a> :</p>
-<img alt="../../../_images/1925191437063394286.png" src="../../../_images/1925191437063394286.png" />
+<img alt="projects/project-6050/images/1925191437063394286.png" src="projects/project-6050/images/1925191437063394286.png" />
 <p>That should make it all much easier. Unfortunately, that pinout
 doesn’t say which pins support PWM and thus are suitable for use with
 the Servo library. I had to get them by trial and error, which is what

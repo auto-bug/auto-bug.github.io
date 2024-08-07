@@ -1,0 +1,120 @@
+---
+blogpost: true
+date: 2015-10-02
+category: project-7860
+---
+
+# Programming ATtiny85
+Published on 2015-10-02 in {ref}`project-7860`.
+
+While I'm waiting for my boards to be fabricated, I finally got my
+clip delivered, so I can start programming that SMD attiny.
+(Technically, I could have soldered some wires to it and programmed it
+that way, but I'm too lazy for that).
+
+I started with [this excellent tutorial](http://highlowtech.org/?p=1695)  and a blink sketch. What do you know, it worked at first try! The
+only problem I had was to get the IDE to see the USBASP programmer
+without root -- finally I failed with that, and ran the thing as root
+(I know, I know). I might need to work on that some more in spare
+time. Anyways, here's the photo of the LED blinking:
+
+
+:::{image} images/9737581443802523787.jpg
+
+:::
+
+
+I used that USB2TTL as a power source, because I couldn't be bothered
+to stand up and look for a battery. So, the next step is to try and
+run that Nyan Cat sketch from the previous log. What do you know, it
+might actually work right away!
+
+
+---
+Nope. The Arduino core that I used here is very minimal and doesn't
+include the_tone()_ function. Tried to implement it myself briefly, then to steal a ready
+version from some other project, but then I just tried [a different, more complete (but more memory-heavy) core](http://code.google.com/p/arduino-tiny/) . This worked for the intro alone, but intro+loop is way too big to
+fit there. But no problem, it was in a very verbose format -- not only
+it recorded the frequencies of each individual note as two-byte
+integer, but also the duration of the note was a full byte. The first
+step was to get rid of the duration. Since this particular tune only
+uses two lengths of notes -- eights and sixteens -- I encoded that in
+the sign of the integer used by the note. That made the program
+compile, with whole 10 bytes to spare. But it didn't work. 10 bytes
+turned out to be too little for local variables to run this program.
+So the next step of the compression: the song only uses 18 different
+pitches, so I put the frequencies for those in an array, and used
+single-byte indices into that array for describing the notes (the sign
+of the index still denotes the length). That let me cut the program
+size in half, and there is still lots of room left for adding the
+blinking eyes.\
+
+
+
+
+
+```cpp
+#include "pitches.h"
+
+
+const int FREQ[] = {
+    REST, NOTE_AS4, NOTE_AS5, NOTE_B4, NOTE_B5, NOTE_CS5, NOTE_CS6, NOTE_D5,
+    NOTE_DS4, NOTE_DS5, NOTE_DS6, NOTE_E4, NOTE_E5, NOTE_E6, NOTE_FS4,
+    NOTE_FS5, NOTE_GS4, NOTE_GS5,
+};
+
+const signed char INTRO_NOTES[] = {
+9, 12, -15, -4, 9, 12, 15, 4, 6, 10, 6, 2, -4, -15, 9, 12, -15, -4, 6, 2,
+4, 6, 13, 10, 13, 4, 0
+};
+
+const signed char MELODY_NOTES[] = {
+-15, -17, 9, 9, 0, 3, 7, 5, 3, 0, -3, -5, -7, 7, 5, 3, 5, 9, 15, 17, 9, 15, 5,
+9, 3, 5, 3, -9, -15, 17, 9, 15, 5, 9, 3, 7, 9, 7, 5, 3, 5, -7, 3, 5, 9, 15, 5,
+9, 5, 3, -5, -3, -5, -15, -17, 9, 9, 0, 3, 7, 5, 3, 0, -3, -5, -7, 7, 5, 3, 5,
+9, 15, 17, 9, 15, 5, 9, 3, 5, 3, -9, -15, 17, 9, 15, 5, 9, 3, 7, 9, 7, 5, 3, 5,
+-7, 3, 5, 9, 15, 5, 9, 5, 3, -5, -3, -5, -3, 14, 16, -3, 14, 16, 3, 5, 9, 3,
+12, 9, 12, 15, -3, -3, 14, 16, 3, 14, 12, 9, 5, 3, 14, 8, 11, 14, -3, 14, 16,
+-3, 14, 16, 3, 3, 5, 9, 3, 14, 16, 14, -3, 3, 1, 3, 14, 16, 11, 12, 9, 12, 15,
+-3, -1, -3, 14, 16, -3, 14, 16, 3, 5, 9, 3, 12, 9, 12, 15, -3, -3, 14, 16, 3,
+14, 12, 9, 5, 3, 14, 8, 11, 14, -3, 14, 16, -3, 14, 16, 3, 3, 5, 9, 3, 14, 16,
+14, -3, 3, 1, 3, 14, 16, 3, 12, 9, 12, 15, -3, -5
+};
+
+
+#define BEEP_PIN 3
+#define SPEED 1500
+
+
+void play(const signed char *notes, const unsigned int length) {
+    for (unsigned int n = 0; n < length; n++) {
+        int f = notes[n];
+        int d;
+        if (f < 0) {
+            d = SPEED / 8;
+            f = -f;
+        } else {
+            d = SPEED / 16;
+        }
+        tone(BEEP_PIN, FREQ[f], d);
+        delay(1.3 * d);
+        noTone(BEEP_PIN);
+    }
+}
+
+
+void setup() {
+    play(INTRO_NOTES, 26);
+}
+
+
+void loop() {
+    play(MELODY_NOTES, 216);
+}
+```
+
+And the obligatory video:
+
+
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/Ua1yUqLFlqo"></iframe>
+

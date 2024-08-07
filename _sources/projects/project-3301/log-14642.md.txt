@@ -1,0 +1,37 @@
+---
+blogpost: true
+date: 2015-03-02
+category: project-3301
+---
+
+# Battery Life
+Published on 2015-03-02 in {ref}`project-3301`.
+
+I get a lot of questions about how long can those tiny robots go on a
+single battery charge. And I never know what to say, because it
+depends on what they are doing and the calculations are difficult. So
+I decided to try and see.
+
+I've set the pure-arduino one, with 180mAh battery, to walk around the
+table leg in circles at full speed (which is actually pretty slow,
+with its tiny short legs), and waited until the battery overcharge
+protection kicked it.
+
+Took exactly 20 minutes -- which is what I gave as a guesstimate to
+the people before.
+
+I also noticed one nice thing in the process. The robot kept on
+walking around that table leg, and repeated the same circle for those
+20 minutes, without spiraling away in any direction, as I expected it
+to. This means that whatever inaccuracies it has in its measurements,
+leg inverse kinematics calculations and mechanical skewing of legs,
+they are all relatively constant and repeatable. That bodes well for
+implementing navigation for it.
+
+Now I need to make a similar test with the VoCore version, with video
+streaming running. The VoCore can suck up to 300mA, but that one has a
+350mAh battery, so maybe the time will be similar...\
+
+
+UPDATE: 21 minutes with low-resolution streaming, walking in circles.
+

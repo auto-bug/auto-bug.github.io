@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>http://deshipu.art/</id>
+  <title>deshipu.art - Posts tagged hexpod</title>
+  <updated>2024-08-07T20:27:29.584372+00:00</updated>
+  <link href="http://deshipu.art/"/>
+  <link href="http://deshipu.art/blog/tag/hexpod/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-3694/</id>
+    <title>Henk the Hexapod</title>
+    <updated>2014-12-27T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="henk-the-hexapod"&gt;
+
+&lt;p&gt;Scrapped. See Hexapod Henk MkII.&lt;/p&gt;
+&lt;div class="project-thumb"&gt;
+&lt;a class="reference external image-reference" href="/_images/833131419680850053.jpg"&gt;&lt;img alt="projects/project-3694/images/833131419680850053.jpg" src="projects/project-3694/images/833131419680850053.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/2509901419695103643.jpg"&gt;&lt;img alt="projects/project-3694/images/2509901419695103643.jpg" src="projects/project-3694/images/2509901419695103643.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/4448331419715879947.jpg"&gt;&lt;img alt="projects/project-3694/images/4448331419715879947.jpg" src="projects/project-3694/images/4448331419715879947.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/7383831419715890648.jpg"&gt;&lt;img alt="projects/project-3694/images/7383831419715890648.jpg" src="projects/project-3694/images/7383831419715890648.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/9896351455367427237.jpg"&gt;&lt;img alt="projects/project-3694/images/9896351455367427237.jpg" src="projects/project-3694/images/9896351455367427237.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/8702241455375720540.jpg"&gt;&lt;img alt="projects/project-3694/images/8702241455375720540.jpg" src="projects/project-3694/images/8702241455375720540.jpg" /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;This project waited on the shelf for so long, that I decided to scrap
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;it and rebuild into &lt;span class="xref std std-ref"&gt;project-10534&lt;/span&gt; . Go there for the latest news on the project. This project is kept
+for archive.&lt;/p&gt;
+&lt;p&gt;The legs are arranged in a circle, every 60°. The alternative was to
+have them in two rows, but they seemed to be too close together that
+way.\&lt;/p&gt;
+&lt;img alt="projects/project-3694/images/8558731419716704333.jpg" src="projects/project-3694/images/8558731419716704333.jpg" /&gt;
+&lt;p&gt;The power switch has a couple of 47kΩ resistors added to it, which
+form a voltage divider, connected to an analog pin. This way I can
+tell the battery voltage, and monitor it. Since the analog pin also
+doubles as DAC pin, I had to remove the speaker. It’s a bit of a
+shame, but it was too quiet anyways. I might add a proper audio board
+in the future, if really needed (or monitor the voltage differently).&lt;/p&gt;
+&lt;section id="logs"&gt;
+&lt;h2&gt;Logs&lt;/h2&gt;
+&lt;ul class="postlist-style-none postlist simple"&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-03-25 - &lt;a class="reference internal" href="../../../projects/project-3694/log-34527/"&gt;Henk MkII&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-02-14 - &lt;a class="reference internal" href="../../../projects/project-3694/log-31885/"&gt;Up Side Down&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-02-13 - &lt;a class="reference internal" href="../../../projects/project-3694/log-31843/"&gt;Brain Surgery&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2014-12-29 - &lt;a class="reference internal" href="../../../projects/project-3694/log-12251/"&gt;Moving a Leg and Making Sounds&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2014-12-27 - &lt;a class="reference internal" href="../../../projects/project-3694/log-12194/"&gt;Ready to Program&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section id="instructions"&gt;
+&lt;h2&gt;Instructions&lt;/h2&gt;
+&lt;/section&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-3694/" rel="alternate"/>
+    <summary>Scrapped. See Hexapod Henk MkII.</summary>
+    <category term="ROBOT" label="ROBOT"/>
+    <category term="Robotics" label="Robotics"/>
+    <category term="WALKING" label="WALKING"/>
+    <category term="hardware" label="hardware"/>
+    <category term="hexpod" label="hexpod"/>
+    <category term="micropython" label="micropython"/>
+    <category term="pyboard" label="pyboard"/>
+    <category term="robots" label="robots"/>
+    <category term="scrappedproject" label="scrapped project"/>
+    <published>2014-12-27T00:00:00+01:00</published>
+  </entry>
+</feed>

@@ -1,0 +1,42 @@
+---
+blogpost: true
+date: 2019-01-01
+category: project-7168
+---
+
+# Still Alive
+Published on 2019-01-01 in {ref}`project-7168`.
+
+I recharged my batteries during the holiday break enough to actually
+work on this project a little bit more. One of the reasons I didn't
+touch it for over two years is that it's not really very convenient to
+program. I mean sure, it runs MicroPython, but to program it you
+either have to disconnect from the Internet and connect to its WiFi,
+or connect a USB to serial converter.
+
+---------- more ----------I realized that I can as well just make use of the progress I have
+made in the mean time, and use the {ref}`project-13278` together with a D1 Mini clone:\
+
+
+
+
+:::{image} images/2164301546298974291.jpg
+
+:::
+
+
+In place of the custom ESP-3 with a Pro Micro, that I had in there
+previously.\
+
+
+
+
+:::{image} images/7620761546298953806.jpg
+
+:::
+
+
+I will also need some kind of a controller for it, but that will
+probably be a separate project. In any case, the very next step now is
+to get it to actually walk and ride around.
+

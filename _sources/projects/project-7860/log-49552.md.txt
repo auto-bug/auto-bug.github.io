@@ -1,0 +1,22 @@
+---
+blogpost: true
+date: 2016-11-26
+category: project-7860
+---
+
+# Tabulate your Data
+Published on 2016-11-26 in {ref}`project-7860`.
+
+So I tried to shrink this program even more. There are those two
+lookup tables in there, one with frequencies of the notes and one with
+octaves. By sorting the notes and replacing the frequencies with a
+simple formula (Wolfram Alpha helped me to come up with it), I got:
+
+
+```python
+120 + (354 + a * 6363 + a * a * 293) // 1000
+```
+
+Very happy with it, I put it in my program. BAM! 500 bytes larger.Why? Well, I blame 16-bit division and modulo that i had to use...\
+
+

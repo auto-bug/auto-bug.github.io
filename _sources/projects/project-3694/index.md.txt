@@ -1,0 +1,75 @@
+---
+blogpost: true
+date: 2014-12-27
+category: project
+tags:  ROBOT, hexpod, Robotics, micropython, hardware, WALKING, scrapped project, robots, pyboard
+image: 1
+---
+
+# Henk the Hexapod
+
+Scrapped. See Hexapod Henk MkII.
+
+<div class="project-thumb">
+
+:::{image} images/833131419680850053.jpg
+:target: /_images/833131419680850053.jpg
+:::
+
+:::{image} images/2509901419695103643.jpg
+:target: /_images/2509901419695103643.jpg
+:::
+
+:::{image} images/4448331419715879947.jpg
+:target: /_images/4448331419715879947.jpg
+:::
+
+:::{image} images/7383831419715890648.jpg
+:target: /_images/7383831419715890648.jpg
+:::
+
+:::{image} images/9896351455367427237.jpg
+:target: /_images/9896351455367427237.jpg
+:::
+
+:::{image} images/8702241455375720540.jpg
+:target: /_images/8702241455375720540.jpg
+:::
+
+</div>
+
+
+    This project waited on the shelf for so long, that I decided to scrap
+it and rebuild into {ref}`project-10534` . Go there for the latest news on the project. This project is kept
+for archive.
+
+The legs are arranged in a circle, every 60°. The alternative was to
+have them in two rows, but they seemed to be too close together that
+way.\
+
+
+
+:::{image} images/8558731419716704333.jpg
+
+:::
+
+
+The power switch has a couple of 47kΩ resistors added to it, which
+form a voltage divider, connected to an analog pin. This way I can
+tell the battery voltage, and monitor it. Since the analog pin also
+doubles as DAC pin, I had to remove the speaker. It's a bit of a
+shame, but it was too quiet anyways. I might add a proper audio board
+in the future, if really needed (or monitor the voltage differently).
+
+
+
+
+
+## Logs
+
+:::{postlist}
+:category: project-3694
+:::
+
+## Instructions
+
