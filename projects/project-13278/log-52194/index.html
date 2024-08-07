@@ -49,7 +49,7 @@
 <div role="main">
   <section id="ch-firmware-improvements">
 <h1>20ch Firmware Improvements<a class="headerlink" href="#ch-firmware-improvements" title="Permalink to this heading">¶</a></h1>
-<p>Published on 2017-01-20 in <span class="xref std std-ref">project-13278</span>.</p>
+<p>Published on 2017-01-20 in <a class="reference internal" href="../#project-13278"><span class="std std-ref">Servo Breakout for WeMos D1 Mini</span></a>.</p>
 <p>Today I spent several hours working on the firmware – adding the
 address selection support and making the whole thing much robust.</p>
 <p>The first thing I added, was to modify place where the servo events
@@ -86,7 +86,7 @@ a few microseconds of a glitch, but that’s better than the
 alternative.</p>
 <p>For the address selection, I had to use the analog-only pins of the
 ATmegaXX8. I was already a bit tired when I started on it, so I
-stupidly copied the code from my <span class="xref std std-ref">project-9769</span>  project, forgetting that it’s for an ATtiny85. And it mostly worked
+stupidly copied the code from my <a class="reference internal" href="../../project-9769/#project-9769"><span class="std std-ref">Mechatronic Ears</span></a>  project, forgetting that it’s for an ATtiny85. And it mostly worked
 – the AVR chips are very similar, after all, especially when using
 the correct header files with the right macros – except that I masked
 wrong bits in the mux selection. It took me sever tries to track that

@@ -49,7 +49,7 @@
 <div role="main">
   <section id="some-progress">
 <h1>Some Progress<a class="headerlink" href="#some-progress" title="Permalink to this heading">¶</a></h1>
-<p>Published on 2021-10-01 in <span class="xref std std-ref">project-180364</span>.</p>
+<p>Published on 2021-10-01 in <a class="reference internal" href="../#project-180364"><span class="std std-ref">Gif Pendant</span></a>.</p>
 <p>I had a friend visiting over the weekend, and they were interested in
 this project, so we sat down together and made some progress with it.
 I assembled a second unit, flashed the usual bootloader to it, and
@@ -57,10 +57,10 @@ started to work on the CircuitPython firmware with the displayio
 library included.</p>
 <p>Right away I ran into a stumbling block: displayio is too large to fit
 on the SAMD21 flash by default, even with all the unneeded modules
-disabled. Fortunately I had a similar problem with <span class="xref std std-ref">project-180309</span> before, and I knew that reducing the size of the filesystem from 64kB
+disabled. Fortunately I had a similar problem with <a class="reference internal" href="../../project-180309/#project-180309"><span class="std std-ref">PewPew OLED</span></a> before, and I knew that reducing the size of the filesystem from 64kB
 to 48kB solves that problem.</p>
 <p>Next problem took us some more time to resolve. I copied the display
-initialization code from <span class="xref std std-ref">project-165032</span> , since both displays use the same ST7735, they just differ in size.
+initialization code from <a class="reference internal" href="../../project-165032/#project-165032"><span class="std std-ref">PewPew M4</span></a> , since both displays use the same ST7735, they just differ in size.
 But on the pendant this code was crashing the whole firmware. It took
 me some time to figure out that the PA10 pin I used as MOSI for the
 display can’t in fact be used as MOSI, despite what my notes say.

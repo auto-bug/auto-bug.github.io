@@ -49,7 +49,7 @@
 <div role="main">
   <section id="porting-to-m5stack">
 <h1>Porting to M5Stack<a class="headerlink" href="#porting-to-m5stack" title="Permalink to this heading">¶</a></h1>
-<p>Published on 2018-03-11 in <span class="xref std std-ref">project-80626</span>.</p>
+<p>Published on 2018-03-11 in <a class="reference internal" href="../#project-80626"><span class="std std-ref">Stage, a Tile and Sprite Engine</span></a>.</p>
 <p>One of the nicer MicroPython-capable boards with integrated color
 display out there is the M5Stack. It’s a bit pricey, but you get a
 really nice enclosure, and if you get the “faces” thing, even several
@@ -68,7 +68,7 @@ have proper rendering:</p>
 <img alt="projects/project-80626/images/95211520724881062.jpg" src="projects/project-80626/images/95211520724881062.jpg" />
 <p>Now, the buttons. The keyboard attachments all use an ATmega328p chip
 working as an I2C slave on address 0x08 and reporting the pressed keys
-as a simple bit mask — pretty much like <span class="xref std std-ref">project-19371</span> or <span class="xref std std-ref">project-26823</span> . That’s a problem, because I have to poll the bus, and if I do it
+as a simple bit mask — pretty much like <a class="reference internal" href="../../project-19371/#project-19371"><span class="std std-ref">D1 Mini X-Pad Shield</span></a> or <span class="xref std std-ref">project-26823</span> . That’s a problem, because I have to poll the bus, and if I do it
 only once a frame, I might lose keypresses. For now I used the naive
 code that just returns the current state of the buttons. I will need
 to see if I can use a timer to have a proper button handling, with a
