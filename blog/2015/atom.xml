@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posted in 2015</title>
-  <updated>2024-08-07T19:53:54.420935+00:00</updated>
+  <updated>2024-08-07T20:01:02.510365+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/2015/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -52,7 +52,7 @@ its parameters, unlike the 3.7V, which was a bit low. Finally, I
 replaced the 1S 3.7V LiPo battery with a 2S one, so that the regulator
 has something to drop from (the boost converters that I have all have
 a 500mA shutoff, so they are not suitable for powering 12 servos).&lt;/p&gt;
-&lt;img alt="https://cdn.hackaday.io/images/8908951448135428477.jpg" src="https://cdn.hackaday.io/images/8908951448135428477.jpg" /&gt;
+&lt;img alt="../../_images/8908951448135428477.jpg" src="../../_images/8908951448135428477.jpg" /&gt;
 &lt;p&gt;Next, I will need the code for the Pro Mini to act as a I²C slave,
 receive the positions and move the servos. For the moving servos part
 I just reused the servo.ino code I already had for Tote. For the I²C
@@ -149,7 +149,7 @@ my old Python gait code:&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;Then I assembled all the parts of the robot together, and it’s ready
 to start walking:&lt;/p&gt;
-&lt;img alt="https://cdn.hackaday.io/images/1173681448136046223.jpg" src="https://cdn.hackaday.io/images/1173681448136046223.jpg" /&gt;
+&lt;img alt="../../_images/1173681448136046223.jpg" src="../../_images/1173681448136046223.jpg" /&gt;
 &lt;p&gt;Except I decided to sit down and refactor the Python code a little bit
 (and I need to adjust it to a different servo configuration, etc.), so
 it’s still some time until it actually walks.&lt;/p&gt;
@@ -176,10 +176,10 @@ stuff with it!&lt;/p&gt;
 &lt;p&gt;But yeah, there were some hurdles. First, we had to write &lt;a class="reference external" href="http://microbit-micropython.readthedocs.org/"&gt;some documentation for it&lt;/a&gt; , because it’s all just being created as we go. Then I had to use an
 edge connector, which I received separately, to get access to the I²C
 pins:&lt;/p&gt;
-&lt;img alt="https://cdn.hackaday.io/images/3065641449081853661.jpg" src="https://cdn.hackaday.io/images/3065641449081853661.jpg" /&gt;
+&lt;img alt="../../_images/3065641449081853661.jpg" src="../../_images/3065641449081853661.jpg" /&gt;
 &lt;p&gt;I already had the_i2cslave_code that I’ve written for Raspberry Pi last time, so that part was
 easier. So all I needed was to hook it up and test:&lt;/p&gt;
-&lt;img alt="https://cdn.hackaday.io/images/3608111449081939724.jpg" src="https://cdn.hackaday.io/images/3608111449081939724.jpg" /&gt;
+&lt;img alt="../../_images/3608111449081939724.jpg" src="../../_images/3608111449081939724.jpg" /&gt;
 &lt;p&gt;Unfortunately, it didn’t work. The_i2c.write()_ function simply seemed to do nothing at all. I reported the issue,
 and the good Micropython developers added error handling to it, so now
 at least I could see an exception being raised. But it turned out to
@@ -188,7 +188,7 @@ the whole weekend trying different variations, adding pullup
 resistors, checking if the accelerometer and compass that are on the
 same I²C bus work (they did), etc. I also tested it multiple times
 with Raspberry Pi, to make sure the error is on the micro:bit side:&lt;/p&gt;
-&lt;img alt="https://cdn.hackaday.io/images/1072471449082320846.jpg" src="https://cdn.hackaday.io/images/1072471449082320846.jpg" /&gt;
+&lt;img alt="../../_images/1072471449082320846.jpg" src="../../_images/1072471449082320846.jpg" /&gt;
 &lt;p&gt;Finally, my week with micro:bit ended, and I had to send it to the
 next person. So I packed the whole thing up and went to bed.&lt;/p&gt;
 &lt;p&gt;I couldn’t sleep that night. Instead, I read the I²C specification and
@@ -249,7 +249,7 @@ card also cannot be ignored. All the adapters and cables are not a
 problem, as it wouldn’t need them while connected to the robot.&lt;/p&gt;
 &lt;p&gt;I started some initial testing on the Servo Blaster daemon for
 controlling the servos:&lt;/p&gt;
-&lt;img alt="https://cdn.hackaday.io/images/6435031449239124956.jpg" src="https://cdn.hackaday.io/images/6435031449239124956.jpg" /&gt;
+&lt;img alt="../../_images/6435031449239124956.jpg" src="../../_images/6435031449239124956.jpg" /&gt;
 &lt;p&gt;I also designed and ordered a PCB that makes the Pi Zero fit a little
 better than on this photo. We will see how that works.&lt;/p&gt;
 &lt;/section&gt;
@@ -274,7 +274,7 @@ finally got myself to remove the PyBoard from &lt;span class="xref std std-ref"&
 MicroPython too. I just added the servo-handling code that &lt;a class="reference external" href="https://hackaday.io/hacker/38882"&gt;&amp;#64;wagner&lt;/a&gt;  wrote for his robot. I also used the same pins, timers and channels.
 Since I didn’t want to make a custom PCB, I just used the old trick
 and connected the PyBoard using dupont cables:&lt;/p&gt;
-&lt;img alt="https://cdn.hackaday.io/images/8629801450613484223.jpg" src="https://cdn.hackaday.io/images/8629801450613484223.jpg" /&gt;
+&lt;img alt="../../_images/8629801450613484223.jpg" src="../../_images/8629801450613484223.jpg" /&gt;
 &lt;p&gt;The resulting code is available at &lt;a class="reference external" href="https://bitbucket.org/thesheep/pyb_tote/src"&gt;https://bitbucket.org/thesheep/pyb_tote/src&lt;/a&gt;&lt;/p&gt;
 &lt;/section&gt;
 </content>

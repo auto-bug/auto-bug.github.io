@@ -91,13 +91,13 @@ Here’s an experiment that I performed to test a “compliant motion”
 servo:</p>
 <iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/Ms8yTKYebaI"></iframe>
 <p>I soldered an additional wire to the servo’s motor, like this:\</p>
-<img alt="https://cdn.hackaday.io/images/2507231433409447350.jpg" src="https://cdn.hackaday.io/images/2507231433409447350.jpg" />
+<img alt="../../../_images/2507231433409447350.jpg" src="../../../_images/2507231433409447350.jpg" />
 <p>I also had to make the hole in the cover a little bit larger, to fit
 the extra wire:</p>
-<img alt="https://cdn.hackaday.io/images/6186631433409502496.jpg" src="https://cdn.hackaday.io/images/6186631433409502496.jpg" />
+<img alt="../../../_images/6186631433409502496.jpg" src="../../../_images/6186631433409502496.jpg" />
 <p>Now, just connect the extra wire to one of the free analog pins on the
 Pro Mini:</p>
-<img alt="https://cdn.hackaday.io/images/407621433409552947.jpg" src="https://cdn.hackaday.io/images/407621433409552947.jpg" />
+<img alt="../../../_images/407621433409552947.jpg" src="../../../_images/407621433409552947.jpg" />
 <p>As you can see, the robot also uses a voltage regulator that I
 described in <a class="reference external" href="https://hackaday.io/project/6050-tote-affordable-spider-robot/log/18738-different-power-sources">the previous log</a> . That’s because I need the voltage readings from the motors to be
 consistent, and not depend on how much juice is left in the battery.Now just a simple addition to the walking algorithm. Every time you
@@ -115,15 +115,15 @@ terrain without additional endstop switches at the ends of the legs.</p>
 see how the voltage on both of the motor wires looks like. Here’s the
 servo going one way, stopping for a moment, and then going the other
 way:</p>
-<img alt="https://cdn.hackaday.io/images/6523361433962373953.png" src="https://cdn.hackaday.io/images/6523361433962373953.png" />
+<img alt="../../../_images/6523361433962373953.png" src="../../../_images/6523361433962373953.png" />
 <p>You can see that when stopped, the motor floats at about 2.3V, and
 goes up to 5.7V or almost to 0V when moving. You can also see that
 there is quite a lot of oscillating at the end, when it overshoots and
 corrects:</p>
-<img alt="https://cdn.hackaday.io/images/1875031433962508897.png" src="https://cdn.hackaday.io/images/1875031433962508897.png" />
+<img alt="../../../_images/1875031433962508897.png" src="../../../_images/1875031433962508897.png" />
 <p>An interesting thing happens when you reverse the direction without
 stopping:</p>
-<img alt="https://cdn.hackaday.io/images/6556091433962558341.png" src="https://cdn.hackaday.io/images/6556091433962558341.png" />
+<img alt="../../../_images/6556091433962558341.png" src="../../../_images/6556091433962558341.png" />
 <p>One of the motor leads gets high voltage long before the other gets
 low. Since what drives the motor is the difference, this gives the
 motor some time to stop and reverse, before applying the full force.</p>

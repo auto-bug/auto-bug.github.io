@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posted in 2017</title>
-  <updated>2024-08-07T19:53:54.336816+00:00</updated>
+  <updated>2024-08-07T20:01:02.443973+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/2017/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -42,7 +42,7 @@ MicroPython and has WiFi build in, which makes it easy to use a remote
 console to program and debug it very conveniently. There is also a
 LiPo shield, which makes it possible to recharge the battery from the
 USB. So I spent some hours making this:&lt;/p&gt;
-&lt;img alt="https://cdn.hackaday.io/images/5545441484170063244.png" src="https://cdn.hackaday.io/images/5545441484170063244.png" /&gt;
+&lt;img alt="../../_images/5545441484170063244.png" src="../../_images/5545441484170063244.png" /&gt;
 &lt;p&gt;The base is just the &lt;span class="xref std std-ref"&gt;project-13278&lt;/span&gt;  with 20 channels for the servos. I tried to make it easier to
 reprogram by including the ISP header. There are no Tote-specific
 markings about leg servos and so on there – just channel numbers, so
@@ -66,7 +66,7 @@ power to the 5V pin, to bypass the voltage regulator on the board.&lt;/p&gt;
 &lt;p&gt;Later, I found a tube of ATmega328 chips in the MLF package, and I was
 a bit bored, so I made a version for that, playing with Fritzing’s
 curvy traces:&lt;/p&gt;
-&lt;img alt="https://cdn.hackaday.io/images/7757741484170897474.png" src="https://cdn.hackaday.io/images/7757741484170897474.png" /&gt;
+&lt;img alt="../../_images/7757741484170897474.png" src="../../_images/7757741484170897474.png" /&gt;
 &lt;p&gt;It was fun, but ultimately unproductive. Anyways, I liked the first
 board, so I ordered it at DirtyPCBs and went do bed.I couldn’t sleep that night.&lt;/p&gt;
 &lt;p&gt;Tossing and turning, I started thinking about different options I have
@@ -92,7 +92,7 @@ There are also other Arduino-compatible boards with that footprint,
 and there is an M0 board that also runs MicroPython. And the shields
 somehow look more appealing.&lt;/p&gt;
 &lt;p&gt;So I decided to give it a try, and I came up with this:&lt;/p&gt;
-&lt;img alt="https://cdn.hackaday.io/images/8821021484171642513.png" src="https://cdn.hackaday.io/images/8821021484171642513.png" /&gt;
+&lt;img alt="../../_images/8821021484171642513.png" src="../../_images/8821021484171642513.png" /&gt;
 &lt;p&gt;Unfortunately, the Feather is a fraction longer than the 5cm of the
 Tote’s base, so it sticks out about 2mm in front. That’s where the
 ESP8266’s antenna is, so I guess that’s fine. I also made a couple of
@@ -123,7 +123,7 @@ a cheap soldering iron, without using any flux. This board is simply
 too complex for Tote. I need something simpler.&lt;/p&gt;
 &lt;p&gt;So I deleted the microcontroller and all the SMD parts, and started
 working again. I came up with something like this:&lt;/p&gt;
-&lt;img alt="https://cdn.hackaday.io/images/4663631484172769261.png" src="https://cdn.hackaday.io/images/4663631484172769261.png" /&gt;
+&lt;img alt="../../_images/4663631484172769261.png" src="../../_images/4663631484172769261.png" /&gt;
 &lt;p&gt;There is a number of changes. I used an ATmega chip in a DIP package,
 which should be easy enough to solder with a rusty nail. There are no
 analog-only pins in that version, so the battery monitoring went away.
@@ -310,7 +310,7 @@ Sadly, yes.&lt;/p&gt;
 &lt;p&gt;The trick is to use the Feather board as an ISP programmer, using the
 “Arduino as ISP” example sketch from the Arduino IDE. You will need to
 make the following connections:&lt;/p&gt;
-&lt;img alt="https://cdn.hackaday.io/images/967991484403277085.png" src="https://cdn.hackaday.io/images/967991484403277085.png" /&gt;
+&lt;img alt="../../_images/967991484403277085.png" src="../../_images/967991484403277085.png" /&gt;
 &lt;p&gt;Now, in your Arduino IDE go to Files→Examples→11.ArduinoISP and select
 that example. Then scroll to around line 68 and change this:&lt;/p&gt;
 &lt;div class="highlight-cpp notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;// Configure which pins to use:&lt;/span&gt;
@@ -365,17 +365,17 @@ you would still need to order the PCB for it. Or would you?&lt;/p&gt;
 &lt;p&gt;Of course not! The PCB doesn’t have anything you can’t easily
 reproduce on a vero/strip/perma board! Here’s one example of a Tote on
 a strip board:&lt;/p&gt;
-&lt;img alt="https://cdn.hackaday.io/images/5143501484479792847.png" src="https://cdn.hackaday.io/images/5143501484479792847.png" /&gt;
+&lt;img alt="../../_images/5143501484479792847.png" src="../../_images/5143501484479792847.png" /&gt;
 &lt;p&gt;Sure, you will need to remap the pins in the code, but that should be
 quite easy. Yes, I went wild in Fritzing, and it’s barely readable.
 Here’s a clearer picture of the strip board you will need to make:&lt;/p&gt;
-&lt;img alt="https://cdn.hackaday.io/images/6940371484479875736.png" src="https://cdn.hackaday.io/images/6940371484479875736.png" /&gt;
+&lt;img alt="../../_images/6940371484479875736.png" src="../../_images/6940371484479875736.png" /&gt;
 &lt;p&gt;It even has the voltage divider for monitoring the battery. Oh, right,
 and don’t use alkaline batteries like on the picture. Use a LiPo from
 a quadcopter or from an old cellphone.&lt;/p&gt;
 &lt;p&gt;I have to admit that one thing they say about Fritzing is true: it
 sucks for making schematics:&lt;/p&gt;
-&lt;img alt="https://cdn.hackaday.io/images/3958631484480008034.png" src="https://cdn.hackaday.io/images/3958631484480008034.png" /&gt;
+&lt;img alt="../../_images/3958631484480008034.png" src="../../_images/3958631484480008034.png" /&gt;
 &lt;p&gt;I wonder if I should fork this version off the main Tote, and keep a
 repository with the Arduino code for it, with remapped pins and so
 on…&lt;/p&gt;

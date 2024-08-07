@@ -79,7 +79,7 @@ MicroPython and has WiFi build in, which makes it easy to use a remote
 console to program and debug it very conveniently. There is also a
 LiPo shield, which makes it possible to recharge the battery from the
 USB. So I spent some hours making this:</p>
-<img alt="https://cdn.hackaday.io/images/5545441484170063244.png" src="https://cdn.hackaday.io/images/5545441484170063244.png" />
+<img alt="../../../_images/5545441484170063244.png" src="../../../_images/5545441484170063244.png" />
 <p>The base is just the <span class="xref std std-ref">project-13278</span>  with 20 channels for the servos. I tried to make it easier to
 reprogram by including the ISP header. There are no Tote-specific
 markings about leg servos and so on there – just channel numbers, so
@@ -103,7 +103,7 @@ power to the 5V pin, to bypass the voltage regulator on the board.</p>
 <p>Later, I found a tube of ATmega328 chips in the MLF package, and I was
 a bit bored, so I made a version for that, playing with Fritzing’s
 curvy traces:</p>
-<img alt="https://cdn.hackaday.io/images/7757741484170897474.png" src="https://cdn.hackaday.io/images/7757741484170897474.png" />
+<img alt="../../../_images/7757741484170897474.png" src="../../../_images/7757741484170897474.png" />
 <p>It was fun, but ultimately unproductive. Anyways, I liked the first
 board, so I ordered it at DirtyPCBs and went do bed.I couldn’t sleep that night.</p>
 <p>Tossing and turning, I started thinking about different options I have
@@ -129,7 +129,7 @@ There are also other Arduino-compatible boards with that footprint,
 and there is an M0 board that also runs MicroPython. And the shields
 somehow look more appealing.</p>
 <p>So I decided to give it a try, and I came up with this:</p>
-<img alt="https://cdn.hackaday.io/images/8821021484171642513.png" src="https://cdn.hackaday.io/images/8821021484171642513.png" />
+<img alt="../../../_images/8821021484171642513.png" src="../../../_images/8821021484171642513.png" />
 <p>Unfortunately, the Feather is a fraction longer than the 5cm of the
 Tote’s base, so it sticks out about 2mm in front. That’s where the
 ESP8266’s antenna is, so I guess that’s fine. I also made a couple of
@@ -160,7 +160,7 @@ a cheap soldering iron, without using any flux. This board is simply
 too complex for Tote. I need something simpler.</p>
 <p>So I deleted the microcontroller and all the SMD parts, and started
 working again. I came up with something like this:</p>
-<img alt="https://cdn.hackaday.io/images/4663631484172769261.png" src="https://cdn.hackaday.io/images/4663631484172769261.png" />
+<img alt="../../../_images/4663631484172769261.png" src="../../../_images/4663631484172769261.png" />
 <p>There is a number of changes. I used an ATmega chip in a DIP package,
 which should be easy enough to solder with a rusty nail. There are no
 analog-only pins in that version, so the battery monitoring went away.
