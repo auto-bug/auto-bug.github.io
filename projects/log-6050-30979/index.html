@@ -56,14 +56,58 @@ random rambling on the subject, just to clear it out of my head.</p>
 <ol class="arabic simple">
 <li><p>A Raspberry Pi Zero was released, and it’s small and cheap enough to
 fit in Tote and provide some more advanced features, like a Python
-interpreter and possibly w WiFi camera. I forked <span class="xref std std-ref">project-9065</span></p></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
+interpreter and possibly w WiFi camera. I forked <span class="xref std std-ref">project-9065</span>  to explore that possibility, but it does makes things more
+complicated. An operating system, the need to shut it down cleanly,
+the need to keep it updated and properly configured, is a pain. Not to
+mention the booting time. Powering the Raspberry Pi is also much more
+involved than with Arduino – I have to use a 2S battery, which needs
+a professional charger with balancing.</p></li>
+<li><p>Batteries. While it’s easy to get a LiPo battery from an old cellphone
+or similar device, and there are lots of LiPo batteries available in
+shops for all those quadcopters, the technology is kinda tricky. They
+are not as safe as I would like, and you can damage them by over-
+discharging, so I need the voltage monitoring circuitry. Switching to
+standard NiCd or NiMH rechargeable AAA batteries seems like a good
+alternative. They are much heavier, but Tote can handle that. I will
+do some experiments in the near future.</p></li>
+<li><p>TV remote. This is the easiest and cheapest way to get remote control,
+so that’s why I used it, but now I’m beginning to have my doubts. It
+turns Tote into a toy and discourages tinkering. It also requires some
+work if you have a different remote than mine – you have to change
+all the key codes. And it’s not really that great for precise control.
+On the other hand, bluetooth and WiFi both have some great solutions.</p></li>
+<li><p>Sensors. This is another thing that keeps Tote in the remote-
+controlled toy category. It needs to have more sensors by default. I
+have already found switches for the feet, and probably will make that
+standard. Unfortunately the popular and cheap distance sensors out
+there all require 5V to work properly, and the 3.3V versions are much
+more expensive, so I think I can’t have them by default. Same for
+inertial sensors – a good module with proper filtering simply costs
+too much.</p></li>
+<li><p>Micropython. I’ve tried multiple times to make Tote programmable in
+Python, and all of them turned to be sub-optimal – either too
+expensive or too limiting. But there is a good chance that the ESP8266
+port of Micropython will become much more usable, thanks to the
+Kickstarter campaign to fund its development. I’m still not sure there
+will be enough memory to handle everything I want, but it’s certainly
+very exciting for me. Since the ESP8266 only has about 9 usable GPIO
+pins on it, and I need to control 12 servos, I would probably still
+keep the Arduino and offload the leg inverse kinematics calculations
+to it. I’m torn between this and the Pi Zero.</p></li>
+<li><p>Force feedback and compliant motion. This is a very interesting topic,
+and it makes the robot much more interesting, but with the current
+design I simply don’t have enough analog pins, and their precision is
+also not so great. Thinking about adding some external ADC modules
+over I²C – they are not very expensive. Then I would need to decide
+whether to measure the servo position (easy, not that useful) or the
+force (hacky, hard, much more interesting).</p></li>
+<li><p>Community. Right now I know about about 4 people other than me that
+have built a robot more or less inspired by Tote. As far as I know
+they do not communicate with each other and do not share experiences
+or ideas. I suppose I could do a lot better in this area.</p></li>
+<li><p>Open MV. I should get it in a few weeks, and I’m definitely going to
+try and put it on Tote or any of my other robots. But it’s too
+expensive to be a default.</p></li>
 </ol>
 </section>
 
