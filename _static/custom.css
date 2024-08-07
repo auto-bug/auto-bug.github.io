@@ -207,5 +207,12 @@ div.project-list li {
     display: inline-block;
     width: 30%;
     margin: 0.125ex;
+    text-align: center;
+    position: relative;
+}
+div.project-list img {
+    max-width: 100%;
+    position: absolute;
+    top: 0;
 
 }
