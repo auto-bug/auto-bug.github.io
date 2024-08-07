@@ -1,0 +1,111 @@
+---
+blogpost: true
+date: 2015-06-23
+category: project-6050
+---
+
+# Failure: HC-SR04 Distance Sensor
+Published on 2015-06-23 in {ref}`project-6050`.
+
+What is a robot without sensors? Just a remote-controlled toy! It's
+time to add some external sensors to Tote.
+
+If you looked at the [PCB](http://tote.readthedocs.org/en/latest/_images/pcb2a.png) , you probably noticed the four pins broken out at the bottom. Yes,
+they match the pinout of a cheap HC-SR04 ultrasonic range finder. It
+should be a great way to add some obstacle avoidance or person
+following capabilities to Tote, just like its older brother µKubik
+has.
+
+
+---
+\
+
+
+
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="" src="https://www.youtube.com/embed/qmuZv3mmvRI"></iframe>
+
+So let's do it. The trigger pin is connected to pin 3 on the Arduino,
+and the echo is on pin 13 -- yes, I ran out of pins and had to reuse
+the LED pin for this. As a side effect, the LED blinks every time we
+read the distance. A quick sketch to test the sensor:
+
+
+```cpp
+#define TRIG_PIN 3
+#define ECHO_PIN 13
+
+
+void setup() {
+  Serial.begin(115200);
+  pinMode(TRIG_PIN, OUTPUT);
+  pinMode(ECHO_PIN, INPUT);
+}
+
+
+void loop() {
+  unsigned long int duration, distance;
+
+  digitalWrite(TRIG_PIN, LOW);
+  delayMicroseconds(2);
+  digitalWrite(TRIG_PIN, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(TRIG_PIN, LOW);
+  duration = pulseIn(ECHO_PIN, HIGH);
+  distance = duration / 58.2;
+  Serial.print(distance);
+  Serial.println(" cm");
+  delay(500);
+}
+
+```
+
+And lo and behold, proper readings:
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="" src="https://www.youtube.com/embed/_Bw_2RLY4qY"></iframe>
+
+Yay, so that's it, right? Now just add [some basic logic to the code](https://bitbucket.org/thesheep/tote/src/eda3cc49cbb6e0774d22d0e6b12d5ccc45cfd3c9/start/ping.ino?at=ping)  to make the robot stop when there is an obstacle in front, and we are
+ready to go, right? Wrong.
+
+For some reason, the robot stop immediately after the first step.
+What's happening?
+
+OK, let's connect the serial and see. The distance readings are all 0.
+Why? Disconnect the battery, connect the Pro Mini to the USB and look
+again. Readings are all connect. Disconnect the USB power and run it
+from battery -- 0 again. Argh.
+
+Wait a minute. The Pro Mini actually has VCC at 5V while it's being
+powered from the USB cable, and 3.3V when it runs from the battery...
+What were the power requirements of that HC-SR04 sensor again? Where
+is the [datasheet](http://www.elecfreaks.com/store/download/HC-SR04.pdf) ...
+
+Right, working voltage 5V. Sigh. Of curse I did check that before when
+I was designing the board, but back then I still wanted to use a 5V
+Pro Mini, and a voltage regulator. I later switched to 3.3V and
+completely forgot about the sensor. So what can be done?
+
+Well, looking at what I have lying around I took a 5V Pro Mini, a 2S
+LiPo battery and a 5V voltage regulator, and quickly replaced Tote's
+guts.**Warning**: the 5V Pro Mini doesn't have the RAW pin separated from the VCC pin
+like the 3.3V version does, so don't connect it to the USB2TTL while
+it's in the robot -- the power draw will quickly fry the power
+regulator in Pro Mini. You have to remove it for programming.
+
+
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="" src="https://www.youtube.com/embed/QjZ5rQOpvEw"></iframe>
+
+You can see that now it kinda works, except for random times when the
+sensor returns completely weird values. Maybe the sensor is broken?
+Replacing the sensor didn't help much. Taking three readings in a
+quick succession and taking maximum of them didn't help either -- it
+seems, that the sensor just has some moments when the readings are
+consistently bad. I can't think of a solution.
+
+While this is a failure, I thought that I will publish it anyways, as
+even the failures give us something to learn from -- often even more
+than the successes. And speaking of failures, remember how I promised
+to connect a Raspberry Pi to Tote? That's too cancelled for the moment
+-- my A+ RPI suddenly stopped working, the power LED won't shine, the
+activity LED shines weakly when powered from USB, and not at all when
+powered through the pins. I guess I have a streak of bad luck. Oh
+well.
+

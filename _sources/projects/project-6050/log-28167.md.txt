@@ -1,0 +1,152 @@
+---
+blogpost: true
+date: 2015-11-21
+category: project-6050
+---
+
+# I²C Slave
+Published on 2015-11-21 in {ref}`project-6050`.
+
+I have done a little bit of progress towards putting a Raspberry Pi on
+Tote. You see, I didn't want to make it communicate over serial,
+because I've done that already with ESP8266 (see previous logs). This
+time I wanted something more ambitious, so I decided to use I²C. As
+the first step, I completely rebuilt one of my robot prototypes, to
+use the new PCB and to also leave the top side of the PCB as flat as
+possible -- it only has the Pro Mini and the servo horns there, and
+all the rest is on the bottom side. I also added a voltage regulator
+giving a steady 5V, so that I can power the Raspberry Pi with it. The
+Pro Mini still uses only 3.3V, but it's fine with 5V, as it has an
+internal regulator. Servos actually work better at 5V, as it's within
+its parameters, unlike the 3.7V, which was a bit low. Finally, I
+replaced the 1S 3.7V LiPo battery with a 2S one, so that the regulator
+has something to drop from (the boost converters that I have all have
+a 500mA shutoff, so they are not suitable for powering 12 servos).
+
+
+:::{image} https://cdn.hackaday.io/images/8908951448135428477.jpg
+
+:::
+
+
+Next, I will need the code for the Pro Mini to act as a I²C slave,
+receive the positions and move the servos. For the moving servos part
+I just reused the servo.ino code I already had for Tote. For the I²C
+slave, I did something like this:
+
+
+```cpp
+#include "servos.h"
+
+#include <Wire.h>
+
+
+const int SLAVE_ADDRESS = 0x04;
+
+
+void setup() {
+    Wire.begin(SLAVE_ADDRESS);
+    Wire.onReceive(receiveEvent);
+    servo_setup();
+}
+
+
+void loop() {
+    delay(100);
+}
+
+
+void receiveEvent(int bytes) {
+    union {
+        byte bytes[4];
+        float value;
+    } float2bytes;
+    unsigned int servo = Wire.read() | Wire.read() << 8;
+    for (int j = 0; j < 4; ++j) {
+        if (!Wire.available()) { return; }
+        float2bytes.bytes[j] = Wire.read();
+    }
+    servo_move(servo, float2bytes.value);
+}
+```
+
+Nothing fancy or complicated, but it gets the job done. One thing I
+could have done easier -- I'm sending the positions as floats, because
+that's what the functions I already had were accepting. I could have
+instead make them work in µs, as most servo controllers out there, and
+use simple integers. I might still switch to that, if it turns out to
+be too slow, but for now this is good enough.
+
+Next, I wrote some Python code on the Raspberry Pi side, to test if I
+can actually move the servos:
+
+
+
+
+```python
+import smbus
+import struct
+import math
+
+bus = smbus.SMBus(1)
+ADDRESS = 0x04
+
+def servo_move(servo, radians=None, degrees=None):
+    if radians is None:
+        radians = math.radians(degrees)
+    bus.write_block_data(ADDRESS, servo,
+        [ord(b) for b in struct.pack('<f', radians)])
+```
+
+ After some small tweaks, it works. By the way, funny how
+write_block_data requires a list of integers, not a string of bytes,
+as the struct.pack() produces. Oh well.Once I had that tested, it's time to wrap it in a class and plug into
+my old Python gait code:
+
+
+
+
+```python
+import smbus
+
+import struct
+import math
+
+
+class Servo(object):
+    def __init__(self, servos, index):
+        self.servos = servos
+        self.index = index
+
+    def move(self, radians=None, degrees=None):
+        self.servos.move(self.index, radians, degrees)
+
+
+class Servos(object):
+    def __init__(self, address=0x04, bus=1):
+        self.address = address
+        self.bus = smbus.SMBus(bus)
+
+    def __getitem__(self, index):
+        return Servo(self, index)
+
+    def move(self, servo, radians=None, degrees=None):
+        if radians is None:
+            radians = math.radians(degrees)
+        self.bus.write_block_data(self.address, servo,
+            [ord(b) for b in struct.pack('<f', radians)])
+```
+
+Then I assembled all the parts of the robot together, and it's ready
+to start walking:
+
+
+:::{image} https://cdn.hackaday.io/images/1173681448136046223.jpg
+
+:::
+
+
+Except I decided to sit down and refactor the Python code a little bit
+(and I need to adjust it to a different servo configuration, etc.), so
+it's still some time until it actually walks.
+

@@ -1,0 +1,29 @@
+---
+blogpost: true
+date: 2015-12-20
+category: project-6050
+---
+
+# PyBoard
+Published on 2015-12-20 in {ref}`project-6050`.
+
+There is a version of Tote using PyBoard as its brains: {ref}`project-6877` 
+
+But the code for that was translated from Tote's Arduino code, and
+didn't work too well for some reason. I promised to try and fix that
+some time ago, but somehow I never got the time for it. Last night I
+finally got myself to remove the PyBoard from {ref}`project-3694` , put it on Tote and program.
+
+As the base, I used the micro:bit version of Tote's code, since it's
+MicroPython too. I just added the servo-handling code that [@wagner](https://hackaday.io/hacker/38882)  wrote for his robot. I also used the same pins, timers and channels.
+Since I didn't want to make a custom PCB, I just used the old trick
+and connected the PyBoard using dupont cables:
+
+
+:::{image} https://cdn.hackaday.io/images/8629801450613484223.jpg
+
+:::
+
+
+The resulting code is available at [https://bitbucket.org/thesheep/pyb_tote/src](https://bitbucket.org/thesheep/pyb_tote/src) 
+

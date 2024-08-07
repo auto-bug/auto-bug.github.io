@@ -1,0 +1,160 @@
+---
+blogpost: true
+date: 2015-06-17
+category: project-6050
+---
+
+# Remote control with ESP8266 and Micropython
+Published on 2015-06-17 in {ref}`project-6050`.
+
+Since some time I was planning to write a log about how to extend Tote
+with additional boards. I was planning to show examples of connecting
+the Raspberry Pi, Teensy 3.1, ESP8266 and anything else I could find,
+all running different kinds of Python. That would also let me score
+more points in the " [mountain of prizes](http://hackaday.com/2015/06/08/a-mountain-of-prizes-for-projects-using-these-parts/) " as those boards use chips from all kinds of manufacturers, and I
+could claim then that Tote "uses" them. But reality as always
+interferes.
+---
+
+
+Raspberry Pi now requires at least 3GB SD card for its system image,
+and turns out I don't have any that big around.
+
+The Micropython port for Teensy 3.1 doesn't yet support UART (even
+though the module with all the functions is there, they just do
+nothing).
+
+The Micropython port for ESP8266 doesn't have enough room for my
+Python code for controlling the robot.
+
+So I had to settle down to just showing how to do remote control over
+something else than a TV remote. I'm still using the ESP8266 with
+Micropython on it, except instead of controlling the motions of the
+whole robot with it, as I planned, I'm just passing the keypresses
+from the computer, and the Arduino still takes care of moving the
+legs. Oh well. It still took me several hours of debugging to get
+working.
+
+Let's start with a very simple thing -- controlling the robot over a
+serial cable, connected directly to an USB2TTL module stuck in your
+computer's USB port. You need three wires: GND, TX and RX. You connect
+them to the FTDI header on the Pro Mini, and to the USB2TTL in
+following way:
+
+
+ * GND ↔ GND
+ * RX ↔ TX
+ * TX ↔ RX
+
+By the way, this is also an excellent way of debugging the robot --
+you can print stuff to the serial console and verify that the program
+does what you think it should. Anyways, you will need some extra code
+on your Pro Mini too. There are two ways to go about this.
+
+You can just have a very simple [servo controller](https://bitbucket.org/thesheep/ukubik/src/tip/ukubik/)  on the Arduino side, and feed it servo positions every frame from the [Python code for the gaits](https://bitbucket.org/thesheep/ukubik/src/tip/creep.py) . That's exactly what the {ref}`project-3300`  does, except instead of a serial cable it uses serial over Bluetooth.
+But the code is the same. This gives you a lot of control on the
+Python side.
+
+The other way is to leave all the [Arduino code from original Tote](https://bitbucket.org/thesheep/tote/src/tip/start/) , but replace the TV remote part with [code that simply reads the key presses from the serial](https://bitbucket.org/thesheep/tote/src/460f15fa2da489125bb3ade9d76b81fb3b1b60ad/start/serial.ino?at=serial-control) . That's the route we are going to take, and it looks like this:
+
+
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/Da69xJNugLQ"></iframe>
+
+Now, let's replace that cable with something a little bit more modern.
+ESP8266 is all the rage these days, and there is a highly experimental
+port of Micropython for it, so why not? Those ESP-01 boards are not
+too useful anyways, because they have hardly any pins broken out, but
+they are enough for our purpose, as the RX and TX pins are there. I
+began by making a simple rig for programming them:
+
+
+:::{image} https://cdn.hackaday.io/images/9500271434528311364.jpg
+
+:::
+
+
+Then I followed the excellent [Adafruit tutorial on flashing Micropython to ESP8266](https://learn.adafruit.com/building-and-running-micropython-on-the-esp8266)  and got a working console. Yay! Now, diving into [recently added documentation](https://github.com/micropython/micropython/tree/master/docs/library) , I figured out how to write a simple "repeater" server:
+
+
+```python
+import esp
+import sys
+
+def recv(socket, data):
+    sys.stdout.write(data)
+
+socket = esp.socket()
+socket.onconnect(lambda s: s.onrecv(recv))
+socket.bind(('0.0.0.0', 2323))
+socket.listen(1)
+```
+
+It just prints on the console anything it gets on port 2323. I saved
+that as_esp8266/scripts/main_._py_ and recompiled -- the ESP9266 port of Micropython doesn't yet have
+filesystem support, so you have to add all files to the firmware
+itself. Then restart, get to the console with_USB2TTL_, and make it connect to the WiFi:
+
+
+```python
+import network
+network.connect('your ssid', 'your password')
+```
+
+That gets remembered, so you don't have to do it every time. Quick
+test of the server using_netcat_:
+```ruby
+$ nc 192.168.0.13 2323
+xxx
+h
+ddddd
+x
+
+```
+
+And we are finished on this side. Or so I thought. But we will get to
+that. Now, for the robot side, I flashed that "serial control" version of
+the Tote code to the Pro Mini, and made a simple connector for the
+ESP8266 using some female headers, two-sided tape and a bunch of
+wires:
+
+
+:::{image} https://cdn.hackaday.io/images/6642121434528945481.jpg
+
+:::
+
+
+It fits nicely on the_FTDI_ connector on top of the robot:
+
+
+:::{image} https://cdn.hackaday.io/images/2532981434529049651.jpg
+
+:::
+
+
+Now let's test it. I made it so that after powering on, the robot does
+nothing and waits for "xx" on the serial -- that's because many boards
+will print random stuff to serial while booting, and you don't want
+that to be interpreted as commands. So I switch the robot on, send
+"xx" and... nothing. What?
+
+Fast forward four hours. I'm up to my ears in debugging. Tried 3
+different ESP8266 boards and 3 different Pro Minis, debugged it using_SoftwareSerial_ and by connecting the RX pin to the ESP and the TX one to the_USB2TTL_, one exceptionally helpful fellow on the_#arduino_ IRC channel even wrote a serial-forwarding code for me in low-level
+AVR C. The outcome? Both the Pro Mini and ESP8266 work perfectly fine
+when connected to the computer through_USB2TTL_. But as soon as you connect them to each other and try to transmit
+serial data at 115200 baud rate, half the data gets corrupted. That's
+over a 4mm long wire. Adding pullups, pulldowns, capacitors, etc.
+doesn't help. I sat over this until the small hours of the night, but
+didn't figure out a solution. I guess I will need to start saving for
+an osciloscpe.
+
+After a night's sleep, I went back to that Micropython code, grepped
+for "115200", and changed it to "9600", recompiled, flashed, changed
+the speed on the Arduino side and what do you know, it works!
+
+
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/4HnUbrXEJcQ"></iframe>
+
+Next I will try to get that SD card for the RPI and show you the more
+low-level control. Who knows, maybe by this time the picam also
+arrives, and we can have some OpenCV fun.
+

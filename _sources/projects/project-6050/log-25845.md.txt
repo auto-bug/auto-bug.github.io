@@ -1,0 +1,50 @@
+---
+blogpost: true
+date: 2015-09-25
+category: project-6050
+---
+
+# Vertical Climb
+Published on 2015-09-25 in {ref}`project-6050`.
+
+A small robot walking around your desk or even around your room on the
+floor is one thing. The same robot climbing your furniture and able to
+get everywhere in your room is a completely different game! That's why
+I always wanted to make Tote able to climb. Unfortunately, the problem
+is harder than it seems at first sight.
+
+One way of doing it is by using magnets on the feet. It limits you to
+metal surfaces, but that's a start. Today the magnets I ordered for
+that purpose finally arrived, so I was able to do some experiments.
+Unfortunately, the results are not very encouraging.
+
+First, I attached the magnets to the robot. I figured that I want to
+maximize the traction, while minimizing the force needed to actually
+un-stick the leg, so I went for small flat magnets, and I wrapped them
+into rubber from a balloon, then tied that to each leg.
+
+
+:::{image} https://cdn.hackaday.io/images/2779621443167364903.jpg
+
+:::
+
+
+
+---
+Since the magnets seemed to be small and weak, I used two of them on
+every foot initially. The effect wasn't very good -- they turned out
+to be too strong, and Tote couldn't lift any of its feet:
+
+
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/4jt5LtwM7lM"></iframe>
+
+Fine, let's try with fewer magnets then. That turned out to be just
+strong enough to hold the robot when all four feet are touching the
+metal surface, but not strong enough when on of the feet is raised:
+
+
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/ECNVdPBbJJM"></iframe>
+
+Oh well, nobody said it will be easy. Back to the drawing board now.
+Maybe I will try to climb a net next time?
+

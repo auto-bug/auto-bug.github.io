@@ -1,0 +1,76 @@
+---
+blogpost: true
+date: 2015-07-30
+category: project-6050
+---
+
+# Follow Me, I Say!
+Published on 2015-07-30 in {ref}`project-6050`.
+
+I didn't have much time to work on Tote this week, but since the
+sensors arrived, I will at least finish the "follow me" log.
+
+This time the sensors I got [GP2Y0A60SZLF Pololu modules](https://www.pololu.com/product/2474) ,  which are specified to work from 2.7V. Hacks like the previous two
+attempts will sometimes work, but as you can see, often not, and you
+shouldn't rely on them.
+
+This sensor works beautifully though. Here's my testing rig:
+
+
+:::{image} https://cdn.hackaday.io/images/7331021438284585367.jpg
+
+:::
+
+
+
+---
+And here are the results:\
+
+
+<table ><tbody ><tr ><td >Distance</td><td >Reading</td></tr><tr ><td >50</td><td >20</td></tr><tr ><td >45</td><td >68</td></tr><tr ><td >40</td><td >122</td></tr><tr ><td >35</td><td >174</td></tr><tr ><td >30</td><td >243</td></tr><tr ><td >25</td><td >317</td></tr><tr ><td >20</td><td >423</td></tr><tr ><td >15</td><td >597</td></tr><tr ><td >10</td><td >900</td></tr><tr ><td >5</td><td >1020</td></tr></tbody></table>As you can see, they don't repeat and use pretty much all the scale
+from 0 to 1023. Perfect.
+
+Now, let's just modify our program a little, using the new values for
+the readings:
+
+
+```cpp
+void sharp_loop() {
+    int distance = 0;
+    for (unsigned char i=0; i<10; ++i) {
+        distance += analogRead(A4);
+    }
+    distance /= 10;
+    if (distance > 700) {
+        creep_dx = 0;
+        creep_dy = -1;
+        creep_rotation = 0;
+        beep(352, 100);
+    } else if (distance > 520) {
+        creep_dx = 0;
+        creep_dy = 0;
+        creep_rotation = 0;
+    } else if (distance > 260) {
+        creep_dx = 0;
+        creep_dy = 1;
+        creep_rotation = 0;
+        beep(704, 100);
+    } else {
+        creep_dx = 0;
+        creep_dy = 0;
+        creep_rotation = PI/45;
+        beep(1408, 100);
+    }
+}
+```
+
+And here we go:
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/1I-EeEPEjx8"></iframe>
+
+There still can be a lot of improvements. Instead of rotating in one
+direction, the robot could first just rotate its body left and right
+to see if the target is still there. I could use some timeouts between
+switching into the "search" mode, so that it doesn't switch back and
+forth constantly. The speed could be adjusted depending on the actual
+distance, etc. I will leave those as homework, though.
+

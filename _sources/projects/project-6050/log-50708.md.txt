@@ -1,0 +1,141 @@
+---
+blogpost: true
+date: 2016-12-22
+category: project-6050
+---
+
+# imath.h
+Published on 2016-12-22 in {ref}`project-6050`.
+
+It took me two evenings of pretty much randomly editing code, trying
+to make it as small as possible without breaking it horribly at the
+same time, but I finally have a library with three basic functions,_iasin_,_iatan2_ and_isqrt_, which are_int16_t_ versions of the ones from the standard library. The angles are
+returned in the range of -1800 to 1800, and the input to asin is
+-1<<13 +1 to 1<<13. The whole library is around 700 bytes (644 at the
+last compile) and should be relatively fast on the AVR (although I
+didn't really time it). Oh, and the code is at [https://bitbucket.org/thesheep/imath/src/tip/imath.c](https://bitbucket.org/thesheep/imath/src/tip/imath.c) 
+
+If you see any opportunity to shrink it even more, please tell me!
+
+Unfortunately, this is still way too large to make Tote fit in the
+magical kilobyte. I might try with int8 versions next, but those are
+not going to have enough resolution for a proper walk, unless I will
+play with the ranges some more.
+
+Here's a comparison of the values from those functions with the
+standard library:
+
+
+```
+asin(-0.88)=-61.04 iasin(-7168)=-610 diff -0.04
+asin(-0.75)=-48.59 iasin(-6144)=-486 diff 0.01
+asin(-0.63)=-38.68 iasin(-5120)=-388 diff 0.12
+asin(-0.50)=-30.00 iasin(-4096)=-302 diff 0.20
+asin(-0.37)=-22.02 iasin(-3072)=-220 diff -0.02
+asin(-0.25)=-14.48 iasin(-2048)=-144 diff -0.08
+asin(-0.12)=-7.18 iasin(-1024)=-70 diff -0.18
+asin(0.00)=0.00 iasin(0)=0 diff 0.00
+asin(0.12)=7.18 iasin(1024)=72 diff -0.02
+asin(0.25)=14.48 iasin(2048)=144 diff 0.08
+asin(0.37)=22.02 iasin(3072)=220 diff 0.02
+asin(0.50)=30.00 iasin(4096)=300 diff 0.00
+asin(0.63)=38.68 iasin(5120)=388 diff -0.12
+asin(0.75)=48.59 iasin(6144)=486 diff -0.01
+asin(0.88)=61.04 iasin(7168)=610 diff 0.04
+asin(1.00)=90.00 iasin(8192)=916 diff -1.60
+
+sqrt(0)=0.00 isqrt(0)=0 diff 0.00
+sqrt(1024)=32.00 isqrt(1024)=32 diff 0.00
+sqrt(2048)=45.25 isqrt(2048)=45 diff 0.25
+sqrt(3072)=55.43 isqrt(3072)=55 diff 0.43
+sqrt(4096)=64.00 isqrt(4096)=64 diff 0.00
+sqrt(5120)=71.55 isqrt(5120)=71 diff 0.55
+sqrt(6144)=78.38 isqrt(6144)=78 diff 0.38
+sqrt(7168)=84.66 isqrt(7168)=84 diff 0.66
+sqrt(8192)=90.51 isqrt(8192)=90 diff 0.51
+
+atan2(0, 0)=0.00 iatan2(0, 0)=0 diff 0.00
+atan2(0, 1024)=0.00 iatan2(0, 1024)=0 diff 0.00
+atan2(0, 2048)=0.00 iatan2(0, 2048)=0 diff 0.00
+atan2(0, 3072)=0.00 iatan2(0, 3072)=0 diff 0.00
+atan2(0, 4096)=0.00 iatan2(0, 4096)=0 diff 0.00
+atan2(0, 5120)=0.00 iatan2(0, 5120)=0 diff 0.00
+atan2(0, 6144)=0.00 iatan2(0, 6144)=0 diff 0.00
+atan2(0, 7168)=0.00 iatan2(0, 7168)=0 diff 0.00
+atan2(0, 8192)=0.00 iatan2(0, 8192)=0 diff 0.00
+atan2(1024, 0)=90.00 iatan2(1024, 0)=899 diff 0.10
+atan2(1024, 1024)=45.00 iatan2(1024, 1024)=449 diff 0.10
+atan2(1024, 2048)=26.57 iatan2(1024, 2048)=274 diff -0.83
+atan2(1024, 3072)=18.43 iatan2(1024, 3072)=183 diff 0.13
+atan2(1024, 4096)=14.04 iatan2(1024, 4096)=139 diff 0.14
+atan2(1024, 5120)=11.31 iatan2(1024, 5120)=112 diff 0.11
+atan2(1024, 6144)=9.46 iatan2(1024, 6144)=95 diff -0.04
+atan2(1024, 7168)=8.13 iatan2(1024, 7168)=84 diff -0.27
+atan2(1024, 8192)=7.13 iatan2(1024, 8192)=70 diff 0.13
+atan2(2048, 0)=90.00 iatan2(2048, 0)=899 diff 0.10
+atan2(2048, 1024)=63.43 iatan2(2048, 1024)=633 diff 0.13
+atan2(2048, 2048)=45.00 iatan2(2048, 2048)=449 diff 0.10
+atan2(2048, 3072)=33.69 iatan2(2048, 3072)=336 diff 0.09
+atan2(2048, 4096)=26.57 iatan2(2048, 4096)=274 diff -0.83
+atan2(2048, 5120)=21.80 iatan2(2048, 5120)=216 diff 0.20
+atan2(2048, 6144)=18.43 iatan2(2048, 6144)=183 diff 0.13
+atan2(2048, 7168)=15.95 iatan2(2048, 7168)=159 diff 0.05
+atan2(2048, 8192)=14.04 iatan2(2048, 8192)=139 diff 0.14
+atan2(3072, 0)=90.00 iatan2(3072, 0)=899 diff 0.10
+atan2(3072, 1024)=71.57 iatan2(3072, 1024)=724 diff -0.83
+atan2(3072, 2048)=56.31 iatan2(3072, 2048)=562 diff 0.11
+atan2(3072, 3072)=45.00 iatan2(3072, 3072)=449 diff 0.10
+atan2(3072, 4096)=36.87 iatan2(3072, 4096)=370 diff -0.13
+atan2(3072, 5120)=30.96 iatan2(3072, 5120)=309 diff 0.06
+atan2(3072, 6144)=26.57 iatan2(3072, 6144)=274 diff -0.83
+atan2(3072, 7168)=23.20 iatan2(3072, 7168)=232 diff -0.00
+atan2(3072, 8192)=20.56 iatan2(3072, 8192)=206 diff -0.04
+atan2(4096, 0)=90.00 iatan2(4096, 0)=899 diff 0.10
+atan2(4096, 1024)=75.96 iatan2(4096, 1024)=759 diff 0.06
+atan2(4096, 2048)=63.43 iatan2(4096, 2048)=633 diff 0.13
+atan2(4096, 3072)=53.13 iatan2(4096, 3072)=534 diff -0.27
+atan2(4096, 4096)=45.00 iatan2(4096, 4096)=449 diff 0.10
+atan2(4096, 5120)=38.66 iatan2(4096, 5120)=388 diff -0.14
+atan2(4096, 6144)=33.69 iatan2(4096, 6144)=336 diff 0.09
+atan2(4096, 7168)=29.74 iatan2(4096, 7168)=299 diff -0.16
+atan2(4096, 8192)=26.57 iatan2(4096, 8192)=274 diff -0.83
+atan2(5120, 0)=90.00 iatan2(5120, 0)=899 diff 0.10
+atan2(5120, 1024)=78.69 iatan2(5120, 1024)=786 diff 0.09
+atan2(5120, 2048)=68.20 iatan2(5120, 2048)=682 diff -0.00
+atan2(5120, 3072)=59.04 iatan2(5120, 3072)=589 diff 0.14
+atan2(5120, 4096)=51.34 iatan2(5120, 4096)=517 diff -0.36
+atan2(5120, 5120)=45.00 iatan2(5120, 5120)=449 diff 0.10
+atan2(5120, 6144)=39.81 iatan2(5120, 6144)=398 diff 0.01
+atan2(5120, 7168)=35.54 iatan2(5120, 7168)=364 diff -0.86
+atan2(5120, 8192)=32.01 iatan2(5120, 8192)=329 diff -0.89
+atan2(6144, 0)=90.00 iatan2(6144, 0)=899 diff 0.10
+atan2(6144, 1024)=80.54 iatan2(6144, 1024)=814 diff -0.86
+atan2(6144, 2048)=71.57 iatan2(6144, 2048)=724 diff -0.83
+atan2(6144, 3072)=63.43 iatan2(6144, 3072)=633 diff 0.13
+atan2(6144, 4096)=56.31 iatan2(6144, 4096)=562 diff 0.11
+atan2(6144, 5120)=50.19 iatan2(6144, 5120)=502 diff -0.01
+atan2(6144, 6144)=45.00 iatan2(6144, 6144)=449 diff 0.10
+atan2(6144, 7168)=40.60 iatan2(6144, 7168)=405 diff 0.10
+atan2(6144, 8192)=36.87 iatan2(6144, 8192)=370 diff -0.13
+atan2(7168, 0)=90.00 iatan2(7168, 0)=899 diff 0.10
+atan2(7168, 1024)=81.87 iatan2(7168, 1024)=820 diff -0.13
+atan2(7168, 2048)=74.05 iatan2(7168, 2048)=741 diff -0.05
+atan2(7168, 3072)=66.80 iatan2(7168, 3072)=666 diff 0.20
+atan2(7168, 4096)=60.26 iatan2(7168, 4096)=602 diff 0.06
+atan2(7168, 5120)=54.46 iatan2(7168, 5120)=545 diff -0.04
+atan2(7168, 6144)=49.40 iatan2(7168, 6144)=493 diff 0.10
+atan2(7168, 7168)=45.00 iatan2(7168, 7168)=449 diff 0.10
+atan2(7168, 8192)=41.19 iatan2(7168, 8192)=411 diff 0.09
+atan2(8192, 0)=90.00 iatan2(8192, 0)=899 diff 0.10
+atan2(8192, 1024)=82.87 iatan2(8192, 1024)=828 diff 0.07
+atan2(8192, 2048)=75.96 iatan2(8192, 2048)=759 diff 0.06
+atan2(8192, 3072)=69.44 iatan2(8192, 3072)=693 diff 0.14
+atan2(8192, 4096)=63.43 iatan2(8192, 4096)=633 diff 0.13
+atan2(8192, 5120)=57.99 iatan2(8192, 5120)=581 diff -0.11
+atan2(8192, 6144)=53.13 iatan2(8192, 6144)=534 diff -0.27
+atan2(8192, 7168)=48.81 iatan2(8192, 7168)=489 diff -0.09
+atan2(8192, 8192)=45.00 iatan2(8192, 8192)=449 diff 0.10
+
+```
+
+\

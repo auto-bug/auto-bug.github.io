@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Cheap Chinese STM32 Boards - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="cheap-chinese-stm32-boards">
+<h1>Cheap Chinese STM32 Boards<a class="headerlink" href="#cheap-chinese-stm32-boards" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2015-07-16 in <a class="reference internal" href="../#project-6050"><span class="std std-ref">Tote</span></a>.</p>
+<p>We already saw that Tote can work with a Pro Mini, Pro Micro or Teensy
+3.1 as its brains. The Teensy is especially interesting, as it gives
+us a lot of pins for additional sensors and effectors. But it’s quite
+expensive. Could we maybe use a cheaper ARM board instead?</p>
+<p>Turns out we can. Digging through my parts box, I found a “blue pill”
+board that I ordered some time ago from China for $4. It’s an STM32
+Cortex-m3 microcontroller on a relatively small development board. A
+little bigger than Teensy, but still compatible with the 600mil DIM
+sockets, so the same as the Pro Minis and Teensy. Of course, the
+pinout is not compatible, so I would need to make a custom board, or
+do the same trick I did with Teensy – use wires to connect to the
+right pins.</p>
+<img alt="https://cdn.hackaday.io/images/6606801437063124752.jpg" src="https://cdn.hackaday.io/images/6606801437063124752.jpg" />
+<hr class="docutils" />
+<p>But how do I program it? Do I need a JTAG programmer, a complex setup
+for cross-compiling to ARM and a complicated GDB configuration? Turns
+out that I don’t, because there is the <a class="reference external" href="http://www.stm32duino.com/">stm32duino</a>  project! And they even have a step-by-step YouTube video on how to
+program that board:</p>
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/Ze6q6NidS5w"></iframe>
+<p>Turns out it’s very simple and works like a charm. They also have the
+pinout of that board <a class="reference external" href="http://www.stm32duino.com/viewtopic.php?f=28&amp;t=117">on their forum</a> :</p>
+<img alt="https://cdn.hackaday.io/images/1925191437063394286.png" src="https://cdn.hackaday.io/images/1925191437063394286.png" />
+<p>That should make it all much easier. Unfortunately, that pinout
+doesn’t say which pins support PWM and thus are suitable for use with
+the Servo library. I had to get them by trial and error, which is what
+I spent the bulk of my time on. But ultimately I came up with a
+working set of pins, which I put in the <a class="reference external" href="https://bitbucket.org/thesheep/tote/commits/162ec23c4fbeadc1ddd0feea622ca22ff2a53662">servo.ino</a>  of the code that worked for Teensy 3.1. And it works. I will skip the
+video this time, because it looks exactly the same as the one with
+Teensy, so you can go and watch that one instead.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

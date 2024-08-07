@@ -1,0 +1,54 @@
+---
+blogpost: true
+date: 2015-09-04
+category: project-6050
+---
+
+# Weight Lifting
+Published on 2015-09-04 in {ref}`project-6050`.
+
+I've been recently asked how much weight can Tote carry. So far I had
+to give a honest answer, that I don't know. The heaviest I had it
+carry was a pack of 4 AA batteries. So I decided to make a few tests.
+
+Note, that this is a version of Tote that uses four SG92R servos for
+its knees, and eight SG90 servos for all the other joints. The SG92R
+servos are a little more expensive than SG90, but considerably
+stronger. Otherwise, they have exactly the same shape, so can be a
+drop-in replacement. Oh, and the plastic horns they come with are
+black, which makes the robot look much cooler!
+
+
+:::{image} https://cdn.hackaday.io/images/5236311441371158507.jpg
+
+:::
+
+
+
+---
+This is Tote under load of about 800g. As you can see, there is 600ml
+of tea, plus the beaker and teabag, which themselves weight around
+200g. With this load the robot shows visible effort and the battery
+alarm will occasionally go off (but the robot doesn't shut down, it
+has to have low battery for longer time to shut down), but it holds.
+The battery life probably isn't too great, and I wouldn't bet on it
+getting through rough terrain with that load, but still quite
+impressive.
+
+Another question is, considering that Tote's gait is statically
+stable, can it just stop at any moment and wait for its batteries to
+recharge? Will the servos collapse under the weight if they are un-
+powered? Let's try and see!
+
+
+
+
+:::{image} https://cdn.hackaday.io/images/9038561441371399287.jpg
+
+:::
+
+
+This is the robot powered off, all legs on the ground. As you can see,
+it's about 400g of load, and it stands. So yes, it would probably be
+possible to have it make several steps, then stop to recharge the
+batteries, then continue.

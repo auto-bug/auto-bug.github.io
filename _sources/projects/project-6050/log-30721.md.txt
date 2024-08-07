@@ -1,0 +1,30 @@
+---
+blogpost: true
+date: 2016-01-23
+category: project-6050
+---
+
+# Another Tote in the Wild
+Published on 2016-01-23 in {ref}`project-6050`.
+
+Today I spent most of the day with a friend building his own instance
+of Tote. Not only it was great fun, but I also learned a bit about
+which parts need work (unsurprisingly, tuning and trimming the servos
+is hard). We also experimented with a slightly different leg geometry
+(the hip servos rotated by 90°), which gives slightly longer legs with
+better reach. I think I will make it the default.
+
+
+:::{image} https://cdn.hackaday.io/images/3752301453586230602.jpg
+
+:::
+
+
+One particularly hairy problem we've hit is that his 3.3V Pro Mini is
+apparently set to 16Mhz for some reason. Fortunately I have programmed
+Arduinos with the wrong frequency before and recognized the symptoms
+(the servos got wrong frequency signal), and the board still works
+with 3.3V (for this AVR this counts as overclocking), but I wonder if
+it wouldn't cause some problems with more sensitive parts, such as the
+EEPROM.
+

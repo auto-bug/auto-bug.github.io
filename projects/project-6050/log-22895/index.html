@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Proprioception Revisited: Touch - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="proprioception-revisited-touch">
+<h1>Proprioception Revisited: Touch<a class="headerlink" href="#proprioception-revisited-touch" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2015-08-15 in <a class="reference internal" href="../#project-6050"><span class="std std-ref">Tote</span></a>.</p>
+<p>Sensing the positions of limbs and the forces acting on them is just
+part of the proprioception, there is also the sense of touch and the
+inner ear. Today we will do touch.</p>
+<p>I spent a really long time looking for the right touch sensor for the
+robot’s feet. Everything I tried was either too imprecise, too hard to
+trigger, too unreliable or too hard to build. I needed something off-
+the shelf that I could put on the end of the leg and that would tell
+me whether it’s touching the ground or not. Seems easy.</p>
+<hr class="docutils" />
+<p>The obvious first choice is microswitch pushbuttons, similar to that
+reset switch on the Pro Mini. Small, light, easy to install, simple,
+reliable. Except the force you have to use to make one “click” is way
+too large for Tote’s mass. It can basically stand on them and still
+have them off.</p>
+<p>Second, endstop switches. The ones with a lever. Turns out that they
+have pretty large travel, and that it’s hard to attach them such that
+the lever is at the right angle. And if you remove the lever to make
+the travel smaller, they become too hard to trigger, like the
+pushbuttons.</p>
+<p>Then came a lot of more exotic solutions. Force sensors from kitchen
+scales are way too expensive and too large. Bend sensors are too
+unreliable, and would require an opamp to actually detect the
+difference with Arduino’s ADC. I had some limited success with a
+whisker in a metal tube, but that was definitely too hard to make for
+regular people. I even tried an optical sensor, but that only worked
+on flat surfaces, which kinda misses the whole point.</p>
+<p>Finally, someone pointed me to a website of an electronics parts store
+where you can search the switches by the force required to switch
+them, and turns out there are switches that only require 0.3N! They
+are not pushbuttons or endstops, though. They are used for detecting
+whether a card is inserted into a slot. Once I knew that, I easily
+found and ordered those babies:</p>
+<img alt="https://cdn.hackaday.io/images/842901439652196480.jpg" src="https://cdn.hackaday.io/images/842901439652196480.jpg" />
+<p>They are perfect for mounting at the tips of the robot’s legs. See
+those plastic studs? They fit perfectly into the holes on that servo
+horn! And they are super-sensitive!</p>
+<p>So add some wires, glue the switches to the legs, connect them all in
+series and attach to a free pin on the Arduino (since at most one leg
+is in the air at any given time, I only need one pin), and voila, a
+robot with a sense of touch:</p>
+<img alt="https://cdn.hackaday.io/images/1721441439652461744.jpg" src="https://cdn.hackaday.io/images/1721441439652461744.jpg" />
+<p>Of course we also need software to make use of those sensors. For now
+I went with something really simple – just keep lowering the leg
+slowly until it touches the ground. You can see the code in <a class="reference external" href="https://bitbucket.org/thesheep/tote/src/80f55d5a512f389c991f28f3e281c279de9f15d6/start/creep.ino?at=switches#creep.ino-102">the “switches” branch</a> . And the effect? See for yourself:</p>
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/-KoazMHrplg"></iframe>
+<p>If you look closely you will notice, that even after the robot extends
+the leg far down because it didn’t find the floor, it moves it back to
+its default position anyways – that’s why the robot’s body stays at
+the same height even several steps, despite the imprecision of the
+switches. To make this actually useful, one would need to modify the
+gait code to keep the body at constant height relative to the average
+of the heights of all the legs. I will leave that as an exercise for
+the reader, though (or a future experiment log).</p>
+</section>
+
+
+</div>
+  </body>
+</html>

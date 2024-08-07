@@ -1,0 +1,172 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>New Year Reflections - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="new-year-reflections">
+<h1>New Year Reflections<a class="headerlink" href="#new-year-reflections" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2017-01-11 in <a class="reference internal" href="../#project-6050"><span class="std std-ref">Tote</span></a>.</p>
+<section id="year-s-summary">
+<h2>Year’s Summary<a class="headerlink" href="#year-s-summary" title="Permalink to this heading">¶</a></h2>
+<p>This is one of my oldest projects, and definitely one that I have put
+the most total work into so far. With the year’s end, I decided to
+reflect a bit about the progress made so far and the way forward.\</p>
+<p>There wasn’t a lot of activity, but some interesting things did happen
+last year.</p>
+<p>We had a workshop in Belgrade, where we built 20 <span class="xref std std-ref">project-9927</span> s. I have learned a lot about how (not) to source parts for such an
+event, how to run it, what parts are actually hard for people, etc.
+There were also some improvements to the construction itself
+contributed by the participants – but only during the workshop. I’m a
+bit disappointed that nobody seems to have done anything with their
+robot after the workshop – or, at least, I haven’t heard about it. I
+think this is an important point to consider.\</p>
+<p>There have also been some Tote-inspired builds out there. I helped to
+build at least two of them. There are even more unfinished projects,
+but I guess that’s normal.</p>
+<p>On my side, I released another version of the PCB, experimented with
+some alternate brains (including the <span class="xref std std-ref">project-9065</span>  with a Raspberry Pi), and made one of my prototypes look much better
+by giving it a chassis and some LED eyes, and a coat of paint. There
+has been practically no progress on the software side, despite some
+research on the CORDIC algorithms and servo PWM code. I also didn’t
+experiment much with sensors and behaviors. The step-by-step tutorial
+is also empty.</p>
+<p>Overall, even though some work got done, and even though I gained some
+experience, I’m not particularly happy with the outcomes of the Tote
+project. I’m starting to realize that it’s not enough to give people a
+platform to experiment with – even if they do experiments and
+improvements, it’s all for nothing if they don’t share them.</p>
+</section>
+<section id="wrong-goals">
+<h2>Wrong Goals<a class="headerlink" href="#wrong-goals" title="Permalink to this heading">¶</a></h2>
+<p>I think that part of the problem is that I have been focusing on the
+wrong parts of the project. I need to pause and re-evaluate some of
+the assumptions I made, and see where that takes me.</p>
+<p>When I was just starting with Tote, I still remembered being a student
+and not having much of a budget for this kind of projects. So I made
+lowering the total cost the number one priority (well, apart from
+having it actually work, of course). As I look at this now, this might
+have been a mistake. Sure, when you are a student in Poland, price is
+the number one factor for anything. But it turns out that most people
+who do this hobby stuff actually don’t mind spending a little bit more
+if that saves them time, makes things more convenient, gives better
+results or even just makes things look more shiny. If you are going to
+put hours of work into a project anyways, you don’t mind waiting a
+little bit more to get the extra funds. So I am going to pay less
+attention to the price (but still try to keep everything frugal) from
+now on.</p>
+<p>By default, Tote is controlled with a TV remote, and has no autonomous
+functionality. I did that, because I figured it’s the simplest
+starting point, and also shows off the hardware capabilities, leaving
+any software-side innovation to the users. Or maybe I was just lazy.
+In any case, I think that this has turned it into a toy, and
+discouraged actually programming it. There are some other decisions
+that also contributed to it: the need for an external programmer for
+programming, the main code written in C++, no easy way to update and
+debug the code. I think I should start putting more effort into making
+it easier to actually program this robot, and encourage it more. Fast
+iteration is the key to good progress. I have become painfully aware
+of that recently when working on the recent version <span class="xref std std-ref">project-3736</span> , where I had to physically unscrew and detach the legs to access the
+chip for programming. That’s the best way to make sure nobody ever
+changes anything in the program unless they absolutely must. So I need
+to try and remove all the obstacles for programming. And also finally
+finish the programming tutorial for it.</p>
+<p>Simplicity was another design goal (it always is), but I kinda lost
+track of it in my pursuit of squeezing as much as possible from the
+small budget. It especially shows in my <a class="reference external" href="https://hackaday.io/project/6050/log/30979-the-way-forward">The Way Forward</a>  log a few months ago and <a class="reference external" href="https://hackaday.io/project/9065-tote-zero/log/31747-everything-in-one">the crazy PCB design for Tote Zero</a> . Something definitely went wrong there. I really need to break up the
+whole design into independent, single-function modules, and I need to
+work on lowering the complexity of each of them – preferably using
+ready off-the-shelf parts and modules. I also need to look into making
+the assembly easier. One of the goals from the beginning was to not
+require any special tools like 3D printers or laser cutters – so that
+you can make it at home easily. However, I forgot that soldering
+skills are also an “advanced tool”, and that while many people have
+access to some way of soldering, soldering tiny, densely packed SMD
+components is not a common skill. So I definitely need to review that.</p>
+<p>Sourcing the parts is a problem too. From the start the goal was to
+use standard, off-the-shelf, easily available components, and I did
+follow that. However, in my pursuit to make things cheap and also to
+make it easy to reuse whatever parts you might have lying around, I
+left a lot of things underspecified. The battery is an excellent
+example of that – I’m mostly using LiPos for toy quadcopters, because
+they are cheap, light and can provide a lot of current. But every
+manufacturers makes them in a little bit different sizes, with
+different plugs (they especially love to swap the + and - leads), and
+generally storing and charging them is a bit involved. Because of
+that, my designs just leave the battery out, assuming the user will
+use whatever he has, and will attach it whenever it fits, usually with
+a two-sided tape, or maybe velcro. That’s definitely sub-optimal, and
+I need to put more focus into specifying the parts a little bit more
+precisely and using more standard ones. It’s also a very daunting task
+to order a couple of servos in one place, a battery in another place,
+the pcb in yet another place, the mcrocontroller board in yet another,
+etc. – I think that this stops many people from trying this project.
+Of course, the obvious solution would be a kit, but I don’t want to be
+selling anything… Perhaps I should try looking at Tindie anyways?</p>
+<p>Finally, but perhaps most importantly, I need to find a way to disown
+this project, to make it a brand of its own, and not something
+attached to my name. I think that most people, when they build a
+complex project like this, like to “own” it, make it their own – and
+not say “I’ve build Radomir’s robot”. I haven’t figured out how to do
+that yet. Perhaps I will need to team up with some other similar
+projects?</p>
+</section>
+<section id="future-plans">
+<h2>Future Plans<a class="headerlink" href="#future-plans" title="Permalink to this heading">¶</a></h2>
+<p>I definitely want to continue working on Tote with the goal of
+crowdsourcing innovation in the area of quadruped robots. There will
+probably be some large changes, though, as a result of the above goal
+changes. I will probably use a different development board, something
+that has shields. I will try to make the battery and power more
+manageable, and I will put more focus on the documentation and
+software side of things.</p>
+</section>
+</section>
+
+
+</div>
+  </body>
+</html>

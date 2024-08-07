@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Making Tote without a PCB - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="making-tote-without-a-pcb">
+<h1>Making Tote without a PCB<a class="headerlink" href="#making-tote-without-a-pcb" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2015-09-03 in <a class="reference internal" href="../#project-6050"><span class="std std-ref">Tote</span></a>.</p>
+<p>Seeing how most of robots based on or inspired by Tote don’t actually
+use the original printed circuit board, I conclude that ordering one
+is the main pain point. I don’t really see why, because it’s not very
+expensive and the waiting time is about the same as with ordering the
+servos and all the other parts. And it’s not like you won’t find a use
+for the other 9 boards, as they are pretty much generic servo breakout
+boards. They are just shaped in a way that makes it easy to attach the
+legs. Anyways, I decided to explain how you can build Tote with just a
+proto-board, like <span class="xref std std-ref">project-7473</span>  and <span class="xref std std-ref">project-6877</span> . Let’s start with the connections (note that the connections for your
+IR sensor may be different):</p>
+<img alt="https://cdn.hackaday.io/images/4140411441297670400.png" src="https://cdn.hackaday.io/images/4140411441297670400.png" />
+<hr class="docutils" />
+<p>As you can see, it’s not overly complicated. The board needs to be
+19x19 holes to keep the original dimensions of Tote – if you change
+that, you will need to change the_BASE_ variable in the code, so that the robot knows how big it is. If you
+don’t like to make so many connections with wires, you can also use a
+strip board and cut some of the strips.\</p>
+<p>Note one trick though. The pin 13 of the Pro Mini is not used for a
+servo – there is a gap in there. That’s because it has a LED on it,
+and we want to be able to use it for signaling.</p>
+<p>I also skipped the battery voltage monitoring circuit, so you will
+have to comment that section in the code, or your robot will keep on
+shutting down randomly for no reason.</p>
+<p>Next comes the mechanical part. You need to drill (or otherwise make)
+the holes for mounting the servos. You can use an electric drill, a
+dremel (like me), or even simply a metal file. <a class="reference external" href="https://bitbucket.org/thesheep/tote/downloads/tote-body.pdf">I made a handy template</a>  that you can print out and glue to your board to get the holes right,
+but it’s really quite simple. Four 7mm holes in the corners, and eight
+small holes for the screws:</p>
+<img alt="https://cdn.hackaday.io/images/11441298191321.jpg" src="https://cdn.hackaday.io/images/11441298191321.jpg" />
+<p>And that’s pretty much it. Solder all the headers and parts, make the
+connections, check with a multi-meter for short circuits, and you are
+ready to go.You can also easily adapt for other microcontroller boards than the
+Pro Mini, of course.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

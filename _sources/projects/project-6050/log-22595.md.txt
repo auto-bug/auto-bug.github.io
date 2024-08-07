@@ -1,0 +1,45 @@
+---
+blogpost: true
+date: 2015-08-12
+category: project-6050
+---
+
+# New New Board in the Wild
+Published on 2015-08-12 in {ref}`project-6050`.
+
+So the version 4 printed circuit boards arrived a few days ago (no,
+that's not super-fast shipping from China, I just waited several weeks
+before even writing about them). I'm almost perfectly happy with them,
+so far I only came up with two small things I want to change. Probably
+not enough to make another version.
+
+
+:::{image} https://cdn.hackaday.io/images/5633101439376955396.jpg
+
+:::
+
+
+
+---
+
+
+This time the board is bigger and the servo horns are not attached
+diagonally -- they fit within the board. The holes for the horns
+should be a little bit larger (depends on what servos you get, some of
+them fit perfectly) and not metalized, but that's something you can
+fix easily with a file. The board on the photo has all the parts
+soldered on one side of the board -- because I want to have the Pro
+Mini pluggable there. It's possible to also put the servo sockets and
+capacitor below, and have the top of the robot almost flat, then make
+use of all those mounting holes.
+
+
+:::{image} https://cdn.hackaday.io/images/6946751439377231590.jpg
+
+:::
+
+
+The finished robot is quite nice, and it's sturdier than the previous
+versions. Also much easier to assemble. I still need to fine-tune the
+leg positions on this one, and add the IR sensor.
+
