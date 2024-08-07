@@ -15,6 +15,8 @@
     <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/sphinx_highlight.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../../genindex/" />
     <link rel="search" title="Search" href="../../../search/" />
   
@@ -47,7 +49,7 @@
 </div>
 
 <div role="main">
-  <section id="inverse-kinematics">
+  <section class="tex2jax_ignore mathjax_ignore" id="inverse-kinematics">
 <h1>Inverse Kinematics<a class="headerlink" href="#inverse-kinematics" title="Permalink to this heading">¶</a></h1>
 <p>Published on 2017-03-18 in <a class="reference internal" href="../#project-20379"><span class="std std-ref">Deltabot</span></a>.</p>
 <p>Inverse kinematics for delta robots seem to have an opinion of being
@@ -62,18 +64,17 @@ have one input: the distance AD between the business end of the robot
 and the base of the servo. We also know all the mechanical dimensions
 of the robot: AB, BC, CD, DE. So how can we calculate α? From the <a class="reference external" href="https://en.wikipedia.org/wiki/Law_of_cosines">law of cosines</a> , of course! Given a triangle with dimensions a, b c, the law of
 cosines lets us calculate the angles of that triangle:</p>
-<p>$$\color{White} \large \gamma = \arccos \frac{a^2+b^2 - c^2}{2ab}$$ Where γ is the angle opposite c. Also, we will actually calculate 180°-￼￼α, which is a sum of three angles:</p>
-<p>ADE, ADB and BDC. So we have:</p>
-<p>$$\color{White} \large ADE = \arccos\frac{DE}{AD}$$ \</p>
-<p>$$\color{White} \large BD = \sqrt{AD^2 - ED^2 + (ED - AB)^2}$$ $$\color{White} \large ADB = \arccos\frac{AD^2 + BD^2 - AB^2}{2\times AD \times BD}$$</p>
-<p>$$\color{White} \large BDC = \arccos\frac{BD^2 + CD^2 - BC^2}{2\times BD\times CD}$$ And finally:</p>
-<p>$$\color{White} \large \alpha = 180\degree - ADE - ADB - BDC$$ That’s it. That’s the position the servo needs to move to. All we need
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\color{White} \large \gamma = \arccos \frac{a^2+b^2 - c^2}{2ab}$$ Where γ is the angle opposite c. Also, we will actually calculate 180°-￼￼α, which is a sum of three angles:\\ADE, ADB and BDC. So we have:\\$$\color{White} \large ADE = \arccos\frac{DE}{AD}$$ \\\
+$$\color{White} \large BD = \sqrt{AD^2 - ED^2 + (ED - AB)^2}$$ $$\color{White} \large ADB = \arccos\frac{AD^2 + BD^2 - AB^2}{2\times AD \times BD}\end{aligned}\end{align} \]</div>
+<p>$<span class="math notranslate nohighlight">\(\color{White} \large BDC = \arccos\frac{BD^2 + CD^2 - BC^2}{2\times BD\times CD}\)</span>$ And finally:</p>
+<p>$<span class="math notranslate nohighlight">\(\color{White} \large \alpha = 180\degree - ADE - ADB - BDC\)</span>$ That’s it. That’s the position the servo needs to move to. All we need
 to know is the distance AD. How can we know that distance for each of
 the arms? That’s very simple! It’s just the distance between the point
 we want our robot to move to, (x, y, z), and the base of the given
 arm, (x₁, y₁, z₁), which we know (we can measure them or calculate
 from the distance ED and the angle of the given arm).</p>
-<p>$$\color{White} \large AD = \sqrt{(x-x_1)^2 + (y-y_1)^2 + (z - z_1)^2}$$ Applying all this math should let us move the robot to the coordinates
+<p>$<span class="math notranslate nohighlight">\(\color{White} \large AD = \sqrt{(x-x_1)^2 + (y-y_1)^2 + (z - z_1)^2}\)</span>$ Applying all this math should let us move the robot to the coordinates
 we desire.</p>
 </section>
 

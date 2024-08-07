@@ -15,6 +15,8 @@
     <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/sphinx_highlight.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../../genindex/" />
     <link rel="search" title="Search" href="../../../search/" />
   
@@ -47,7 +49,7 @@
 </div>
 
 <div role="main">
-  <section id="a-little-bigger-please">
+  <section class="tex2jax_ignore mathjax_ignore" id="a-little-bigger-please">
 <h1>A Little Bigger Please?<a class="headerlink" href="#a-little-bigger-please" title="Permalink to this heading">¶</a></h1>
 <p>Published on 2019-07-18 in <a class="reference internal" href="../#project-165032"><span class="std std-ref">PewPew M4</span></a>.</p>
 <p>I have just spent a week at the Europython conference, with all
@@ -79,8 +81,8 @@ distance as the large 8x8 LED matrix, but that’s not the main use
 case. Of course, the problem is that pushing so many bits to the
 display each frame is not fast enough for smooth animation. So let’s
 also upgrade the microcontroller, and use the SAMD51 — sure, it’s more
-expensive, but it’s only $2. I think we can still fit in the magic
-barrier of $10 with that. And PCBs are getting cheap too recently, so
+expensive, but it’s only <span class="math notranslate nohighlight">\(2. I think we can still fit in the magic
+barrier of \)</span>10 with that. And PCBs are getting cheap too recently, so
 let’s use a bigger PCB that is easier to hold.</p>
 <p>So all in all, a more capable hardware with fewer hacks, for a little
 higher price, but much improved convenience. Of course I started

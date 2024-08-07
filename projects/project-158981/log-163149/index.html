@@ -15,6 +15,8 @@
     <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/sphinx_highlight.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../../genindex/" />
     <link rel="search" title="Search" href="../../../search/" />
   
@@ -47,7 +49,7 @@
 </div>
 
 <div role="main">
-  <section id="reevaluating-the-feasibility">
+  <section class="tex2jax_ignore mathjax_ignore" id="reevaluating-the-feasibility">
 <h1>Reevaluating the Feasibility<a class="headerlink" href="#reevaluating-the-feasibility" title="Permalink to this heading">¶</a></h1>
 <p>Published on 2019-05-09 in <a class="reference internal" href="../#project-158981"><span class="std std-ref">Kubik M0</span></a>.</p>
 <p>I compiled a custom CircuitPython firmware with all the pins exposed,
@@ -74,7 +76,7 @@ me more than 10 PWM outputs on the  SAMD21E18A chip. So what other
 options do I have now?\</p>
 <p>I could use a SAMD21G18A that has 38 GPIO pins — I’m sure they come
 with some extra timers that would enable a few extra PWMs. But
-the SAMD21E18A costs $2.38 in singles, while SAMD21G18A costs $3.47.
+the SAMD21E18A costs <span class="math notranslate nohighlight">\(2.38 in singles, while SAMD21G18A costs \)</span>3.47.
 That increase in price wouldn’t be that bad by itself, however, for
 $4.01 I can have a SAMD51G19A instead, and a PCA9685 costs a dollar.</p>
 <p>So now I have several options:</p>

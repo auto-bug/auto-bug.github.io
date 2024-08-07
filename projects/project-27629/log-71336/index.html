@@ -15,6 +15,8 @@
     <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/sphinx_highlight.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../../genindex/" />
     <link rel="search" title="Search" href="../../../search/" />
   
@@ -47,7 +49,7 @@
 </div>
 
 <div role="main">
-  <section id="design-decisions">
+  <section class="tex2jax_ignore mathjax_ignore" id="design-decisions">
 <h1>Design Decisions<a class="headerlink" href="#design-decisions" title="Permalink to this heading">¶</a></h1>
 <p>Published on 2017-12-08 in <a class="reference internal" href="../#project-27629"><span class="std std-ref">µGame</span></a>.</p>
 <p>Or why did I decide to build this thing the way I did. And how I could
@@ -115,8 +117,8 @@ available modules: ST7735S, SSD1331 and SSD1351. The last two are very
 nice OLED displays — which gives me good angles and low power
 consumption — but they are relatively expensive, and require some
 scary electonics like voltage booster, so I would need to use them as
-modules with all the stuff already included — around $20 a piece. The
-ST7735 display, on the other hand, can be found for less than $3, has
+modules with all the stuff already included — around <span class="math notranslate nohighlight">\(20 a piece. The
+ST7735 display, on the other hand, can be found for less than \)</span>3, has
 reasonable angles if mounted correctly, and can be driven quite fast
 over the SPI. And doesn’t require any extra parts, except maybe for a
 current-limiting resistor for the backlight. So I went with that.</p>
