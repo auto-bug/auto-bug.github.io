@@ -1,0 +1,54 @@
+---
+blogpost: true
+date: 2023-10-13
+category: project-188909
+---
+
+# A Display
+Published on 2023-10-13 in {ref}`project-188909`.
+
+There are many different microcontroller boards that you can use with
+Wee Bug, from the Seeedstudio Xaio, through Adafruit QtPy, to
+Waveshare Zero boards. They all have the power pins in the same places
+(sometimes mirrored), and the GPIO pins are flexible enough to be used
+in the roles they need in the robot. But the Zero is particularly
+interesting, because they have four additional pins at the bottom of
+the board, that could be used by an additional board connected on top.
+Like, for instance, a display. It so happens I was working on getting
+one display to work, and I needed to make a breakout board for it, so
+I thought why not, and made it a shield, or maybe a "face shield", for
+the Wee Bug.
+
+
+
+:::{image} images/7276981697229717812.jpg
+
+:::
+
+
+And since the other display I was recently playing with has the exact
+same footprint, I made the breakout in a shape that fits both of them.
+At a whim, I also added a footprint for the 1.8" ST7735 display on the
+other side, just because I could.\
+
+
+Of course the next step is to make it display something interesting. I
+already experimented with eyes, and the closeup of a single monstrous
+eye that Adafruit demos do is a bit too monstrous to my tastes, so for
+now I went with the GIF animation I made for the {ref}`project-192761` . I plant to eventually re-draw the same character I used on the
+silkscreen on earlier prototypes, and animate it to make it look like
+it's controlling the robot from the inside, but of course that is much
+more work than it seems, so it will take a while.
+
+
+
+:::{image} images/9379991697229971691.jpg
+
+:::
+
+
+The practical advantage of having a display on a CircuitPython-
+programmed robot is the fact that you no longer need to explain how to
+connect to the USB console, so you can see error messages. People can
+just read the errors from the screen.
+

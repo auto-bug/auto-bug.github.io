@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>First Version - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="first-version">
+<h1>First Version<a class="headerlink" href="#first-version" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2022-08-25 in <a class="reference internal" href="../#project-186921"><span class="std std-ref">µGame 22</span></a>.</p>
+<p>I was working on this behind the scenes for a while, mostly because I
+didn’t have the energy to write the logs, and because the progress was
+really slow. It’s my first time using the RP2040 chip, so I wasn’t
+even sure it will work. But I did design the PCB, and when I ran out
+of excuses, ordered it together with the laser-cut acrylic parts from <a class="reference external" href="https://hackaday.io/hacker/879772">&#64;Elecrow</a> .</p>
+<img alt="projects/project-186921/images/4441851661424458324.png" src="projects/project-186921/images/4441851661424458324.png" />
+<img alt="projects/project-186921/images/8544691661424474254.png" src="projects/project-186921/images/8544691661424474254.png" />
+<p>There isn’t really that much going on here. We have the RP2040 with
+all the required caps, resistors, crystals and flash memory, we have a
+magnetic speaker with a FET, power switch, seven buttons and a
+display. Very basic. Oh, and I used lead-free solder for the first
+time. It’s a bit annoying with how it doesn’t melt as well as the
+regular one, but it’s not too bad.</p>
+<img alt="projects/project-186921/images/6990341661424633651.jpg" src="projects/project-186921/images/6990341661424633651.jpg" />
+<p>The first test of the RP2040 required a few passes with the hot air
+gun to get working. You can see I have wrong footprint for the crystal</p>
+<ul class="simple">
+<li><p>that’s the only kind I could get quickly. Next version will have the
+proper footprint. I have to say that having a UF2 bootloader built-in
+into the chip is super convenient, no need to flash anything with a
+programmer.</p></li>
+</ul>
+<p>Oh, I forgot. There was a problem with the speaker. Since I added the
+FET at the last moment, I didn’t remove the ground seed from the pad,
+and as a result the pad was shorted to the ground. A few deft cuts
+fixed this. It will also be fixed in the next version.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+---
+blogpost: true
+date: 2023-10-14
+category: project-188909
+---
+
+# Balancing
+Published on 2023-10-14 in {ref}`project-188909`.
+
+I had some time for coding at the hackerspace this week, so I wrote
+simple code for balancing to test the accelerometer. It goes something
+like this:
+
+
+```python
+import robot
+import time
+import lis3dh
+import busio
+import board
+
+
+i2c = busio.I2C(sda=board.D4, scl=board.D5, frequency=600000)
+accel = lis3dh.LIS3DH(i2c)
+height=20
+
+tilt = 0
+while True:
+    x, y, z = accel.get()
+    if x > 500:
+        tilt = min(tilt + 20, tilt + 1)
+    if x < -500:
+        tilt = max(tilt - 20, tilt - 1)
+    for leg in robot.LEGS:
+        if leg.left:
+            leg.move(0, height - tilt)
+        else:
+            leg.move(0, height + tilt)
+    time.sleep(0.05)
+```
+
+Even for simple code like this, the effect is pretty cool:
+
+
+
+:::{image} images/4358171697310568947.gif
+
+:::
+
+
+ Of course to make it useful, it has to also work in the other axis,
+and be integrated with the walking algorithm and others. I have some
+ideas about how to do it, though, so stay tuned.
+

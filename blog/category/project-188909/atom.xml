@@ -1,0 +1,254 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>http://deshipu.art/</id>
+  <title>deshipu.art - Posts in project-188909</title>
+  <updated>2024-08-07T20:35:29.630596+00:00</updated>
+  <link href="http://deshipu.art/"/>
+  <link href="http://deshipu.art/blog/category/project-188909/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-188909/log-225667/</id>
+    <title>Not All Batteries are Created Equal</title>
+    <updated>2023-12-01T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="not-all-batteries-are-created-equal"&gt;
+
+&lt;p&gt;Published on 2023-12-01 in &lt;a class="reference internal" href="../../../projects/project-188909/#project-188909"&gt;&lt;span class="std std-ref"&gt;Wee Bug&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;With the new PCB in version 6.0 I switched to the bigger 16340 battery
+that I originally used in &lt;a class="reference internal" href="../../../projects/project-180025/#project-180025"&gt;&lt;span class="std std-ref"&gt;Fluffbug&lt;/span&gt;&lt;/a&gt; , thinking that the extra weight is not so great, and extra capacity
+will be useful. Also those batteries are much easier to find, since
+they are commonly used in vapers. And incidentally, with version 6.0 I
+started to have problems with power. The robot would work on a fully
+charged battery for maybe half a minute, and then the servos would get
+all shaky, and soon the protection circuit would kick in and shut the
+power down.&lt;/p&gt;
+&lt;p&gt;I initially thought the shaky servos are because those small 2g servos
+come in two versions: 3.7V and 5V, and maybe I got the 5V ones this
+time. So I made a PCB version 6.1 where I added a boost converter to
+give the servos consistent 5V voltage. It didn’t make any difference,
+though, the servos were still shaky. I tried added capacitors
+everywhere I could, but that didn’t solve the issue.&lt;/p&gt;
+&lt;img alt="projects/project-188909/images/8289261701453557803.jpg" src="projects/project-188909/images/8289261701453557803.jpg" /&gt;
+&lt;p&gt;On a hunch, I made a professional adapter out of a paperclip, and
+inserted the previous 14250 battery. Suddenly all the power problems
+went away, the servos are no longer shaky (both with the boost
+converter and without). Interesting. So I went looking for a 16340
+battery from a different batch, and lo and behold, the power problems
+are also gone. It was the battery all along.&lt;/p&gt;
+&lt;img alt="projects/project-188909/images/5100801701453649354.jpg" src="projects/project-188909/images/5100801701453649354.jpg" /&gt;
+&lt;p&gt;Turns out that you really have to be careful where you get your
+batteries, because they differ not only in capacity (by the way, don’t
+believe in what they print on them, a battery with that capacity would
+need to be four times bigger with this chemistry), but also in their
+C-rating, which is basically how much current you can draw from it at
+once.&lt;/p&gt;
+&lt;img alt="projects/project-188909/images/68631701453788165.jpg" src="projects/project-188909/images/68631701453788165.jpg" /&gt;
+&lt;p&gt;You need to somehow find a “reputable” source for your batteries,
+which is a bit of a problem, because obviously this is a &lt;a class="reference external" href="https://en.wikipedia.org/wiki/The_Market_for_Lemons#Thesis"&gt;lemon market&lt;/a&gt; . Out of curiosity, I also tried a battery removed from a vaper that I
+found on a sidewalk. Turns out that it performs really well, despite
+being a no-name thing. I guess the manufacturer of those devices found
+a trusted source.&lt;/p&gt;
+&lt;img alt="projects/project-188909/images/8126001701454046241.jpg" src="projects/project-188909/images/8126001701454046241.jpg" /&gt;
+&lt;p&gt;So if you really want to save on the battery, check your sidewalk for
+a free one. You will also save the environment from being poisoned
+with toxic lithium.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-188909/log-225667/" rel="alternate"/>
+    <summary>Published on 2023-12-01 in project-188909.</summary>
+    <published>2023-12-01T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-188909/log-225955/</id>
+    <title>1mm and 1.25mm Versions</title>
+    <updated>2023-12-12T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="mm-and-1-25mm-versions"&gt;
+
+&lt;p&gt;Published on 2023-12-12 in &lt;a class="reference internal" href="../../../projects/project-188909/#project-188909"&gt;&lt;span class="std std-ref"&gt;Wee Bug&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The 2g servos I’m using for weebug come in three different connectors:
+the traditional 2.54mm pitch servo plug, a 1.25mm pitch jst plug, and
+a 1mm pitch plug. I think the traditional plug is way too big for this
+kind of robot, so that leaves us with two versions: the 1.25mm and
+1mm. I started with the bigger one initially, because that’s what I
+had in my drawer, and I used through-hole sockets for them for the
+same reason. But when I later wanted to switch to SMD sockets, I found
+that all 1.25mm socket are for some reason unreasonably large, with
+big additional structural elements added on both sides. I switched to
+1mm sockets because they were tiny in comparison. So all recent
+versions of the weebug use the 1mm sockets.&lt;/p&gt;
+&lt;p&gt;I still had two early versions using the 1.25mm servos, and I wanted
+to upgrade them to the newer PCB. So I did a quick replacement to the
+through-hole sockets in the design, nudged aside some of the traces
+that got in the way on the back side, and added a footprint for the
+smaller battery holder, so that I can use either one. Oh, and I
+ordered it with yellow soldermask and black silkscreen, so that the
+danger stripes look how they should:&lt;/p&gt;
+&lt;img alt="projects/project-188909/images/9701781702401994932.jpg" src="projects/project-188909/images/9701781702401994932.jpg" /&gt;
+&lt;p&gt;I transplanted the legs from one of the old bots, and it works. I just
+have to update the code to account for the change of which servo goes
+to which pin.&lt;/p&gt;
+&lt;p&gt;In other news, I’m still investigating servo power issues. No
+definitive conclusions yet, but I’m leaning towards ditching the boost
+converter and putting the servos back on direct battery power.
+Together with using reasonable quality of batteries, that should help.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-188909/log-225955/" rel="alternate"/>
+    <summary>Published on 2023-12-12 in project-188909.</summary>
+    <published>2023-12-12T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-188909/log-226028/</id>
+    <title>Wee Display</title>
+    <updated>2023-12-15T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="wee-display"&gt;
+
+&lt;p&gt;Published on 2023-12-15 in &lt;a class="reference internal" href="../../../projects/project-188909/#project-188909"&gt;&lt;span class="std std-ref"&gt;Wee Bug&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;img alt="projects/project-188909/images/47221702660969258.gif" src="projects/project-188909/images/47221702660969258.gif" /&gt;
+&lt;p&gt;A while ago I made a &lt;a class="reference external" href="https://hackaday.io/project/188909-wee-bug/log/224310-a-display"&gt;display shield&lt;/a&gt;  (mask?) for the Wee Bug, but because it needs additional pins to talk
+to the microcontroller, it only works with the Waveshare Mini boards,
+and not the Xiao or QtPy boards, that don’t have those extra pins. But
+then I found this tiny 0.66” OLED screen in my drawer, and thought
+“wait a minute, this display can use I2C for communication, and I
+already have an I2C bus for the accelerometer on the robot, so it
+would need no extra pins”. All I need is a breakout board for it. Oh,
+and the tiny little issue of the reset circuit.&lt;/p&gt;
+&lt;p&gt;What reset circuit, you ask? Well, I happen to know from experience,
+that those display will not work correctly when you just switch them
+on and start sending them data. They need to be restarted, physically,
+with the RST pin, a short moment after being powered on. I’m not
+entirely sure why, and why this isn’t built into the chip’s
+initialization, but that’s how it is. If you don’t do that restart,
+they will just keep displaying random pixels, ignoring any update
+commands.&lt;/p&gt;
+&lt;p&gt;Normally I solve this in software. I have a GPIO pin connected to RST,
+and I wiggle it as a part of the display initialization. Easy enough.
+But in this case I don’t have an extra pin to spare. So I need
+something else to wiggle the pin for me. A reset circuit.&lt;/p&gt;
+&lt;p&gt;As always, as the first thing I went to Adafruit’s excellent
+documentation, and looked at the schematics of their own display
+modules using similar displays. Sure enough, they had their reset
+circuits on them, in the form of an APX803L40 chip. Neat, just a
+single chip doing what I wanted, and I was afraid I would have to muck
+about with transistors and capacitors and resistors and diodes and who
+knows what else. The only problem is that the schematic didn’t specify
+what threshold voltage should the chip have, so I ordered the 3.3V
+(because that’s the voltage I will use to power the display) and 2.5V
+(because that’s the 2/3 of the final voltage) versions. Then I quickly
+made a PCB and since it was so small, ordered it from OSHPark.&lt;/p&gt;
+&lt;img alt="projects/project-188909/images/1458951702661857606.jpg" src="projects/project-188909/images/1458951702661857606.jpg" /&gt;
+&lt;p&gt;When it arrived a few weeks later (free shipping from US is slooooow),
+I quickly soldered it up and tested. I immediately realized that I
+forgot to add the pull-up resistors on the I2C bus, but that’s fine
+since the robot already has them, for the accelerometer. But even with
+those, it didn’t show up on the I2C bus scans. What’s wrong?&lt;/p&gt;
+&lt;p&gt;At the time I was quite sick, and I didn’t have the energy for too
+much experimenting. I just verified that it still didn’t show up when
+I replaced the reset chip with a pull-up resistor, but didn’t pursue
+it further. It went into a drawer.&lt;/p&gt;
+&lt;p&gt;This week I felt better, and I decided to give it another look. I went
+over the schematic and compared it with examples of modules I found
+online. One difference between my schematic and the Adafruit one is
+that I didn’t break out the RST pin, and I didn’t include the pull-up
+resistor they have on it. A quick bodge job to add that resistor
+didn’t help. Hmm. Another difference is that I didn’t ground the
+unused pins. But the datasheet didn’t say they have to be grounded…
+I tried another bodge to ground all those pins, and still nothing.&lt;/p&gt;
+&lt;p&gt;What else could be wrong? I still suspected the reset circuit, so I
+desoldered the reset chip, and put a pull-up resistor in its place.
+And suddenly it showed up on the I2C scan! Turns out I need both the
+CE pin pulled low, and the RST pulled high. Of course the display
+wouldn’t work like that, since it didn’t get its reset after power up.
+So I once more put the reset chip in there, &lt;em&gt;and&lt;/em&gt; added the pull-up
+resistor, while &lt;em&gt;at the same time&lt;/em&gt; having CE connected to GND. That
+was it, that made it all work.&lt;/p&gt;
+&lt;img alt="projects/project-188909/images/5833931702662829258.jpg" src="projects/project-188909/images/5833931702662829258.jpg" /&gt;
+&lt;p&gt;It certainly took me more time than it should, but I have an animated
+eye working on the robot now.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-188909/log-226028/" rel="alternate"/>
+    <summary>Published on 2023-12-15 in project-188909.</summary>
+    <published>2023-12-15T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-188909/log-228303/</id>
+    <title>Thermal Camera</title>
+    <updated>2024-03-19T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="thermal-camera"&gt;
+
+&lt;p&gt;Published on 2024-03-19 in &lt;a class="reference internal" href="../../../projects/project-188909/#project-188909"&gt;&lt;span class="std std-ref"&gt;Wee Bug&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;There is a header with the 3.3V power, I2C and INT pins broken out
+just above the servos on the Wee Bug (and other of my robots as well),
+because I was planning on plugging a time-of-flight distance sensor
+module in there. Turns out that a lot of different sensor modules are
+compatible with pretty much the same pinout, so you can use them in
+that place. So far I tried a gesture sensor and a TV remote IR sensor
+(that one is not a module, just a part plugged directly into the power
+and INT holes). But I noticed that the AMG888 thermal camera module
+also has the same pinout.&lt;/p&gt;
+&lt;p&gt;So when I assembled a new &lt;a class="reference internal" href="../../../projects/project-188908/#project-188908"&gt;&lt;span class="std std-ref"&gt;Moo Bug&lt;/span&gt;&lt;/a&gt; using a pi pico clone board with a built-in display, I decided to give
+it a try:&lt;/p&gt;
+&lt;img alt="projects/project-188909/images/4313281710886498298.jpg" src="projects/project-188909/images/4313281710886498298.jpg" /&gt;
+&lt;p&gt;Turns out that there is already a driver library for that sensor in
+CircuitPython, so my code was very simple:&lt;/p&gt;
+&lt;div class="highlight-default notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;time&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;busio&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;board&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;adafruit_amg88xx&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;displayio&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;rainbowio&lt;/span&gt;
+
+
+&lt;span class="n"&gt;i2c&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;busio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;I2C&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;GP5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;GP4&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;amg&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;adafruit_amg88xx&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AMG88XX&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i2c&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;bitmap&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;displayio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Bitmap&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;256&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;palette&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;displayio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Palette&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;256&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;sprite&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;displayio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;TileGrid&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;bitmap&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;pixel_shader&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;palette&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DISPLAY&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;root_group&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;displayio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Group&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;scale&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DISPLAY&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;root_group&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sprite&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DISPLAY&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;brightness&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;0.01&lt;/span&gt;
+
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;256&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;palette&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;rainbowio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;colorwheel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;255&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;row&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;enumerate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;amg&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pixels&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;temp&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;enumerate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+            &lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;min&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;255&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;max&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;temp&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mi"&gt;30&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+            &lt;span class="n"&gt;bitmap&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;
+    &lt;span class="n"&gt;time&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sleep&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;0.1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Now I’m thinking about what kind of behavior I could code using that
+camera. And no, no heat-seeking missiles.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-188909/log-228303/" rel="alternate"/>
+    <summary>Published on 2024-03-19 in project-188909.</summary>
+    <published>2024-03-19T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-188909/log-229014/</id>
+    <title>Designs Published</title>
+    <updated>2024-04-16T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="designs-published"&gt;
+
+&lt;p&gt;Published on 2024-04-16 in &lt;a class="reference internal" href="../../../projects/project-188909/#project-188909"&gt;&lt;span class="std std-ref"&gt;Wee Bug&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I have been putting off publishing the design files and code, hoping
+that I can clean them up a little bit first, but who am I kidding? If
+I don’t publish them as they are, they are probably never going to be
+public. So I put them on github, you can find the link to the project
+repository on the left side of the hackaday.io project page.&lt;/p&gt;
+&lt;p&gt;I will keep adding to the documentation, right now it’s just the PCB
+schematic and designs, and the basic walking code. That should be
+enough for experienced tinkerers, but it could be much better, and I
+hope to make it better over time.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-188909/log-229014/" rel="alternate"/>
+    <summary>Published on 2024-04-16 in project-188909.</summary>
+    <published>2024-04-16T00:00:00+02:00</published>
+  </entry>
+</feed>

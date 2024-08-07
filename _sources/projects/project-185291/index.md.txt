@@ -1,0 +1,157 @@
+---
+blogpost: true
+date: 2022-05-08
+category: project
+tags:  games, ongoing project, python, handheld, hardware, 2022hackadayprize, Workshops, pewpew, education, circuitpython
+image: 1
+---
+
+# PewPew LCD
+
+Learn Python programming with an affordable gaming handheld.
+
+<div class="project-thumb">
+
+:::{image} images/5126801652438487334.jpg
+:target: /_images/5126801652438487334.jpg
+:::
+
+:::{image} images/9092651653658984938.jpg
+:target: /_images/9092651653658984938.jpg
+:::
+
+:::{image} images/4599321652033186279.jpg
+:target: /_images/4599321652033186279.jpg
+:::
+
+:::{image} images/466101653686036260.jpg
+:target: /_images/466101653686036260.jpg
+:::
+
+:::{image} images/6146911653686014621.jpg
+:target: /_images/6146911653686014621.jpg
+:::
+
+:::{image} images/5608251719175785248.jpg
+:target: /_images/5608251719175785248.jpg
+:::
+
+</div>
+
+
+    Teaching programming is hard. And it's not made any easier by the fact
+that before you even start teaching, you have to first do the
+ungrateful job of an IT support worker and get your students through
+all the hoops of installing all the necessary software and libraries
+on their computers. And when you finish, the programs they have
+written only works on their own computers, unless they go through all
+the same (and possibly some additional) hoops.
+
+The PewPew family of devices is one possible answer to this. They are
+designed with one main goal in mind – to remove as many obstacles
+between your students and the game they want to create, as possible.
+To achieve that goal, the device itself has Python running on it – a
+version of Python designed for microcontrollers, called CircuitPython
+– so all you have to do is edit the files on it, using any text
+editor, to write your programs. As soon as you save, the device
+restarts and runs your code. In addition, if you want to show your
+game to other people, or enjoy it on the bus, you can simply put it
+into your pocket.
+
+This is one of many devices in the family – I started with {ref}`project-21578` and as I tried it in different workshops, I refined the design with {ref}`project-159733` , {ref}`project-165032` , {ref}`project-177306` , {ref}`project-178061` and   {ref}`project-180309` . So far the standalone version has been the most successful, being
+simple and affordable, but later experimenting showed me that there is
+room for improvement.
+
+This time I want to design a device that is even simpler and cheaper
+than any previous one, while at the same time being more convenient to
+use, and maybe helping us find a use for some of the old electronic
+spare parts that lie around.
+
+
+
+
+
+## Logs
+
+:::{postlist}
+:category: project-185291
+:::
+
+## Instructions
+
+
+
+
+### Fabricate the PCB
+
+
+Use the provided gerber files to get the PCBs fabricated. Use 0.6mm
+thickness of the PCB. Lead-free or gold coating recommended, as the
+device will be touched by hands.
+
+
+---
+
+
+
+### Populate the PCB
+
+
+Solder all the components. The QFN chip can be soldered by drag-
+soldering the edges, though a hot-air gun or hot-plate are recommended
+for convenience. All the other components are easily soldered by hand.
+
+
+---
+
+
+
+### Flash the Bootloader
+
+
+Get the UF2 bootloader from the link in the hardware repository
+readme, and flash it onto the microcontroller using a JLink programmer
+or compatible. The SWD and SWC pins are marked 1 and 2 on the
+connector at the bottom of the device. VCC is marked + and GND is
+marked -. Use a 12-pin male header to friction-fit it into the
+connector and a breadboard for a reliable connection while
+programming. Power can be provide through the USB connector, make sure
+the switch is in the USB position.
+
+
+---
+
+
+
+### Flash the Firmware
+
+
+Once the bootloader is flashed, a PEWBOOT disk will be available over
+the USB. Download the latest CircuitPython firmware from
+circuitpython.org and copy it over to that disk. The device will reset
+and the CIRCUITPY disk will become available.
+
+
+---
+
+
+
+### Install the Menu and Games
+
+
+Copy the main.py file from the software repository, and copy any game
+files from the pewpew github onto the device.
+
+
+---
+
+
+
+### Ready
+
+
+Safely remove the USB disk, and disconnect the device. Insert a
+battery.
+
+
+---

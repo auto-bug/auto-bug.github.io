@@ -1,0 +1,35 @@
+---
+blogpost: true
+date: 2023-12-12
+category: project-186921
+---
+
+# Sound Volume Reduced
+Published on 2023-12-12 in {ref}`project-186921`.
+
+I have been quiet the past few months about this project, because I
+was still struggling with power problems. Adding the boost converter
+was a great idea, and it works very well, but if you make the speaker
+play white noise, it will still overwhelm the batteries and make the
+voltage drop enough that the display resets, and you get a white
+screen of death.
+
+I tried lowering the gain on the amplifier (I dedicated an extra GPIO
+pin for that, so that I can do it with software), but it didn't help.
+So I let the project sit for a while, while I waited for inspiration.
+
+The inspiration struck a few days ago, and I was lucky that I could
+test it immediately, by cutting a trace on the board and soldering a
+resistor in series with the speaker. I know, it sounds obvious now,
+but you have to remember that I have very little experience with
+analog circuits. So yeah, the resistor limits the current drawn by the
+speaker, at the cost of lowering the volume somewhat. But now the
+screen doesn't reset, and the volume was too loud for my tastes
+anyways.
+
+I think this was the last problem I was struggling with, and the next
+step is to bodge the remaining ten prototypes I have assembled and run
+a workshop with them, to see if the participants find any new and
+exciting problems. If they don't, and I will start looking into
+producing and selling them.
+

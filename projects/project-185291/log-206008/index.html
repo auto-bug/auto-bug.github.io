@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>9-bit DisplayIO and CircuitPython - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="bit-displayio-and-circuitpython">
+<h1>9-bit DisplayIO and CircuitPython<a class="headerlink" href="#bit-displayio-and-circuitpython" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2022-05-10 in <a class="reference internal" href="../#project-185291"><span class="std std-ref">PewPew LCD</span></a>.</p>
+<p>When I was testing that breakout board for the display I’ve chosen, I
+immediately noticed a funny thing: while it uses the standard 4-wire
+SPI interface, it actually only has 3 wires: SCK, MOSI, and CS. There
+is no D/C pin! So how is the driver chip supposed to know if you are
+sending it data to be displayed or commands to execute? Well, the
+answer is simple yet brilliant – before every byte, you send it an
+additional bit that says if it’s data or command. So you effectively
+send it 9-bit words.</p>
+<p>This is all great, and for testing it was relatively simple to just
+prepare the commands and data by shifting the bytes in the buffer and
+injecting the additional bits in between, but I really wanted this
+display to work with CircuitPython’s DisplalyIO library, so that when
+your program ends, you can see the REPL console and any errors or
+other messages. This required a little bit more work, but <a class="reference external" href="https://github.com/adafruit/circuitpython/pull/6114">I made a path that adds this functionality to DisplayIO’s FourWire
+protocol implementation</a>  – basically if you don’t specify a command pin, it will assume 9-bit
+SPI.</p>
+<img alt="projects/project-185291/images/3122831646695335836.jpg" src="projects/project-185291/images/3122831646695335836.jpg" />
+<p>With this solved, I proceeded to make a board definition for my
+device, with the display’s initialization compiled into the firmware,
+so that you can see things on the screen right from the beginning.
+Unfortunately I stumbled into a tricky bug then, which I wasn’t able
+to fix, and had to take a little break until <a class="reference external" href="https://github.com/adafruit/circuitpython/pull/6321">it was solved by Dan Halbert.</a></p>
+</section>
+
+
+</div>
+  </body>
+</html>

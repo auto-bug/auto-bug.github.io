@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Version Two - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="version-two">
+<h1>Version Two<a class="headerlink" href="#version-two" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2022-05-10 in <a class="reference internal" href="../#project-185291"><span class="std std-ref">PewPew LCD</span></a>.</p>
+<p>With an embarrassing failure that was the first PCB behind me, I went
+ahead and fixed the design somewhat:</p>
+<img alt="projects/project-185291/images/3215701648160216656.png" src="projects/project-185291/images/3215701648160216656.png" />
+<p>The flex connector for the display is now outside the display’s
+outline, the microontroller had to be moved, the USB is now flipped to
+correct orientation. I ordered this time at <a class="reference external" href="https://hackaday.io/hacker/147848">&#64;Elecrow </a> because they had more choice of colors for the 0.6mm thick PCBs, and
+the quality seems to be better. A month later I had the first working
+prototype in my hand:</p>
+<img alt="projects/project-185291/images/4354011649793678786.jpg" src="projects/project-185291/images/4354011649793678786.jpg" />
+<p>I adapted the software I used previously on the <a class="reference internal" href="../../project-180309/#project-180309"><span class="std std-ref">PewPew OLED</span></a>  – the displays are pretty similar in how they handle pixels. One
+problem I encountered is that while the driver chip has the commands
+to flip the display 180°, and the breakout module I used to test them
+worked fine, the cheap displays I got for the device ignore those
+commands – I’m guessing they don’t actually use the same driver chip,
+but some cheaper alternative.</p>
+<img alt="projects/project-185291/images/2440721649794016688.jpg" src="projects/project-185291/images/2440721649794016688.jpg" />
+<p>Fortunately this wasn’t a huge problem, because displayio can rotate
+the display in software, and my own driver code can easily just output
+the pages in reverse order.</p>
+<p>Mechanically there are a few small nits to pick in the design, but
+that is not going to change anything electrically. I discovered that I
+don’t need the backlight resistor – you can see a solder blob in its
+place on the photo. The display itself is a little bit shifted to one
+side, about one millimeter – I will need to correct that. I will
+probably also change the way the traces go to the d-pad pads, so that
+it’s harder to touch the traces instead of the pads. Finally, I’m
+thinking about adding some holes under the display to make it easier
+to glue it to the PCB. All of those are minor adjustments, though.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

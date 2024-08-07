@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Not All Batteries are Created Equal - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="not-all-batteries-are-created-equal">
+<h1>Not All Batteries are Created Equal<a class="headerlink" href="#not-all-batteries-are-created-equal" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2023-12-01 in <a class="reference internal" href="../#project-188909"><span class="std std-ref">Wee Bug</span></a>.</p>
+<p>With the new PCB in version 6.0 I switched to the bigger 16340 battery
+that I originally used in <a class="reference internal" href="../../project-180025/#project-180025"><span class="std std-ref">Fluffbug</span></a> , thinking that the extra weight is not so great, and extra capacity
+will be useful. Also those batteries are much easier to find, since
+they are commonly used in vapers. And incidentally, with version 6.0 I
+started to have problems with power. The robot would work on a fully
+charged battery for maybe half a minute, and then the servos would get
+all shaky, and soon the protection circuit would kick in and shut the
+power down.</p>
+<p>I initially thought the shaky servos are because those small 2g servos
+come in two versions: 3.7V and 5V, and maybe I got the 5V ones this
+time. So I made a PCB version 6.1 where I added a boost converter to
+give the servos consistent 5V voltage. It didn’t make any difference,
+though, the servos were still shaky. I tried added capacitors
+everywhere I could, but that didn’t solve the issue.</p>
+<img alt="projects/project-188909/images/8289261701453557803.jpg" src="projects/project-188909/images/8289261701453557803.jpg" />
+<p>On a hunch, I made a professional adapter out of a paperclip, and
+inserted the previous 14250 battery. Suddenly all the power problems
+went away, the servos are no longer shaky (both with the boost
+converter and without). Interesting. So I went looking for a 16340
+battery from a different batch, and lo and behold, the power problems
+are also gone. It was the battery all along.</p>
+<img alt="projects/project-188909/images/5100801701453649354.jpg" src="projects/project-188909/images/5100801701453649354.jpg" />
+<p>Turns out that you really have to be careful where you get your
+batteries, because they differ not only in capacity (by the way, don’t
+believe in what they print on them, a battery with that capacity would
+need to be four times bigger with this chemistry), but also in their
+C-rating, which is basically how much current you can draw from it at
+once.</p>
+<img alt="projects/project-188909/images/68631701453788165.jpg" src="projects/project-188909/images/68631701453788165.jpg" />
+<p>You need to somehow find a “reputable” source for your batteries,
+which is a bit of a problem, because obviously this is a <a class="reference external" href="https://en.wikipedia.org/wiki/The_Market_for_Lemons#Thesis">lemon market</a> . Out of curiosity, I also tried a battery removed from a vaper that I
+found on a sidewalk. Turns out that it performs really well, despite
+being a no-name thing. I guess the manufacturer of those devices found
+a trusted source.</p>
+<img alt="projects/project-188909/images/8126001701454046241.jpg" src="projects/project-188909/images/8126001701454046241.jpg" />
+<p>So if you really want to save on the battery, check your sidewalk for
+a free one. You will also save the environment from being poisoned
+with toxic lithium.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

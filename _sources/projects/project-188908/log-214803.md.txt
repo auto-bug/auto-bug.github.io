@@ -1,0 +1,39 @@
+---
+blogpost: true
+date: 2022-12-31
+category: project-188908
+---
+
+# The OLED Face
+Published on 2022-12-31 in {ref}`project-188908`.
+
+The PCBs arrived right after the holidays, and I quickly assembled
+one, moved the whole legs from one of my fluffbugs, and here it is,
+all working as expected. I just had to update the pin names in my
+circuitpython code, that's literally it. But then I decided to try and
+get to work one of the shields – the one with a display and a speaker.
+
+
+
+:::{image} images/9751991672441425672.jpg
+
+:::
+
+
+The display just worked. I used the SH1106 library for displayio, and
+I just had to rotate the display 180° and add a 2-pixel horizontal
+shift to adapt it to this particular display. I got really good with
+that working on all those handheld game consoles.
+
+The speaker turned out to be a bit more challenging. I used a
+MAX98357A I2S amplifier, because I had that on a module earlier and I
+was confident it works well. Well, despite the schematic being
+practically the same with the module (minus some unnecessary caps, as
+usual), this one didn't work. The chip is a bit small QFN package, but
+visually it looked soldered well. I tried a lot of different things,
+until at fifth re-soldering of the chip with the hot-air gun, it
+suddenly started working. I suppose looking good is not enough. Of
+course with such a tiny speaker the quality is questionable, but it
+does sound properly robotic, and it's surprisingly loud (I hardwired
+the amplifier to maximum gain).
+

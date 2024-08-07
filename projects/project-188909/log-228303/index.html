@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Thermal Camera - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="thermal-camera">
+<h1>Thermal Camera<a class="headerlink" href="#thermal-camera" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2024-03-19 in <a class="reference internal" href="../#project-188909"><span class="std std-ref">Wee Bug</span></a>.</p>
+<p>There is a header with the 3.3V power, I2C and INT pins broken out
+just above the servos on the Wee Bug (and other of my robots as well),
+because I was planning on plugging a time-of-flight distance sensor
+module in there. Turns out that a lot of different sensor modules are
+compatible with pretty much the same pinout, so you can use them in
+that place. So far I tried a gesture sensor and a TV remote IR sensor
+(that one is not a module, just a part plugged directly into the power
+and INT holes). But I noticed that the AMG888 thermal camera module
+also has the same pinout.</p>
+<p>So when I assembled a new <a class="reference internal" href="../../project-188908/#project-188908"><span class="std std-ref">Moo Bug</span></a> using a pi pico clone board with a built-in display, I decided to give
+it a try:</p>
+<img alt="projects/project-188909/images/4313281710886498298.jpg" src="projects/project-188909/images/4313281710886498298.jpg" />
+<p>Turns out that there is already a driver library for that sensor in
+CircuitPython, so my code was very simple:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">busio</span>
+<span class="kn">import</span> <span class="nn">board</span>
+<span class="kn">import</span> <span class="nn">adafruit_amg88xx</span>
+<span class="kn">import</span> <span class="nn">displayio</span>
+<span class="kn">import</span> <span class="nn">rainbowio</span>
+
+
+<span class="n">i2c</span> <span class="o">=</span> <span class="n">busio</span><span class="o">.</span><span class="n">I2C</span><span class="p">(</span><span class="n">board</span><span class="o">.</span><span class="n">GP5</span><span class="p">,</span> <span class="n">board</span><span class="o">.</span><span class="n">GP4</span><span class="p">)</span>
+<span class="n">amg</span> <span class="o">=</span> <span class="n">adafruit_amg88xx</span><span class="o">.</span><span class="n">AMG88XX</span><span class="p">(</span><span class="n">i2c</span><span class="p">)</span>
+
+<span class="n">bitmap</span> <span class="o">=</span> <span class="n">displayio</span><span class="o">.</span><span class="n">Bitmap</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">256</span><span class="p">)</span>
+<span class="n">palette</span> <span class="o">=</span> <span class="n">displayio</span><span class="o">.</span><span class="n">Palette</span><span class="p">(</span><span class="mi">256</span><span class="p">)</span>
+<span class="n">sprite</span> <span class="o">=</span> <span class="n">displayio</span><span class="o">.</span><span class="n">TileGrid</span><span class="p">(</span><span class="n">bitmap</span><span class="p">,</span> <span class="n">pixel_shader</span><span class="o">=</span><span class="n">palette</span><span class="p">)</span>
+<span class="n">board</span><span class="o">.</span><span class="n">DISPLAY</span><span class="o">.</span><span class="n">root_group</span> <span class="o">=</span> <span class="n">displayio</span><span class="o">.</span><span class="n">Group</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">board</span><span class="o">.</span><span class="n">DISPLAY</span><span class="o">.</span><span class="n">root_group</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sprite</span><span class="p">)</span>
+<span class="n">board</span><span class="o">.</span><span class="n">DISPLAY</span><span class="o">.</span><span class="n">brightness</span> <span class="o">=</span> <span class="mf">0.01</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">256</span><span class="p">):</span>
+    <span class="n">palette</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">rainbowio</span><span class="o">.</span><span class="n">colorwheel</span><span class="p">(</span><span class="mi">255</span> <span class="o">-</span> <span class="n">i</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">y</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">amg</span><span class="o">.</span><span class="n">pixels</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">temp</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+            <span class="n">c</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">int</span><span class="p">((</span><span class="n">temp</span> <span class="o">-</span> <span class="mi">20</span><span class="p">)</span> <span class="o">*</span> <span class="mi">30</span><span class="p">)))</span>
+            <span class="n">bitmap</span><span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">c</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>Now I’m thinking about what kind of behavior I could code using that
+camera. And no, no heat-seeking missiles.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

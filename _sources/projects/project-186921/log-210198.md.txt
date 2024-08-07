@@ -1,0 +1,52 @@
+---
+blogpost: true
+date: 2022-08-26
+category: project-186921
+---
+
+# Second Version
+Published on 2022-08-26 in {ref}`project-186921`.
+
+The second version of the PCB and case just left the [@Elecrow ](https://hackaday.io/hacker/879772) fab and should arrive here early next week.
+
+
+
+:::{image} images/9786271661520057648.png
+
+:::
+
+
+
+
+:::{image} images/8699571661520071629.png
+
+:::
+
+
+I made the following improvements:
+
+
+ * Added a qwiic connector, so you can extend it with sensors. I decided
+against having a 12-pin connector like in all the other PewPews,
+because this is mostly supposed to be for the games, but I still
+wanted an easy way to connect things.
+ * Proper footprint for the kind of crystal oscillator that I have.
+ * Swapped places of the USB and speaker, I think it's better when the
+USB plug is further from the edge.
+ * Fixed the short on the speaker.
+ * Moved the reset and boot jumpers to the back of the device, so that
+you have access to them with the case on.
+ * Added vias on the SWD and SWC pins, so you can access them for
+debugging.
+ * Added a cutout for the switch, and moved the switch deeper, so it no
+longer sticks out of the device's outline.
+ * Used smaller holes on the front plate, so it should work with the nice
+black screws I have.
+ * Rounded the edges on the case elements.
+ * Added a coutout for the qwiic connector.
+ * Moved the labels for the buttons to make them more visible.
+
+Overall, it's all small changes, but they make the device a little bit
+more convenient and nice. I considered switching to USB-C connector,
+but I couldn't be bothered preparing the footprint for it.
+

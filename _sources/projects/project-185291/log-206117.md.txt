@@ -1,0 +1,55 @@
+---
+blogpost: true
+date: 2022-05-13
+category: project-185291
+---
+
+# Dithering About
+Published on 2022-05-13 in {ref}`project-185291`.
+
+It's time to look a little bit closer at the software. The display has
+resolution of 96x68, and I need to display a grid of 8x8 pixels in
+four shades on it. A quick calculation tells me I can have blocks of
+12x8.5 pixels. Of course that's wrong, because I can use half of a
+pixel, and that block would be very much not square. But I don't have
+to use the whole screen. With 8x8 blocks, I use 64x64 area in the
+middle — the blocks are square, but the empty area on the sides looks
+bad. By experimenting I settled on 10x8 blocks — this is stretched
+enough to only leave 8 unused pixels on each side, but not as bad as
+to make the blocks visibly flat.
+
+
+
+:::{image} images/1225991652432995347.jpg
+
+:::
+
+
+Next, I needed to figure out the best patterns for dithering those
+blocks. Of course the 100% and the 0% ones are easy, the ones in the
+middle though require some thought. Theoretically, they should be
+around 33% and 66% to give an uniform distribution, [but there is no good way of arranging the pixels in the block without
+creating obvious patterns like that.](https://mastodon.technology/@deshipu/108176511938133147)  Even if we make it 9x8 instead of 10x8, to be divisible by 3.
+
+So as you can see in the image above, I initially went with 25% and
+75% dithering. They are pretty uniform, and one is just a negative of
+the other, so the look is very consistent. However, I still wasn't
+happy with how the dark grey looked almost like black. So finally I
+settled on 25% and 50%, to make the blocks easier to tell apart:
+
+
+
+:::{image} images/529681652433531759.jpg
+
+:::
+
+
+I'm pretty happy with how that turned out.
+
+By the way, it was suggested I could try PWM-ing the pixels, to get my
+shades of grey without dithering, but since this is an SPI display, I
+don't really control every frame of the image, and keeping consistent
+timing would have been hard. It would also require constant updating,
+taking away microcontroller time from the user's program, and making
+it slower.
+

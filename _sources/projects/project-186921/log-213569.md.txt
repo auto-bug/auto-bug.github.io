@@ -1,0 +1,44 @@
+---
+blogpost: true
+date: 2022-11-20
+category: project-186921
+---
+
+# USB Type C
+Published on 2022-11-20 in {ref}`project-186921`.
+
+Today I bit the bullet, and designed a version of the µGame22 with a
+USB Type C socket. What finally convinced me was the fact that a
+prototype I gave out had its USB port brutally ripped out, probably
+because it was put in a bag with the plug still plugged in. The USB
+Type C socket is much sturdier, and the particular model I choose has
+through-hole mechanical mounting, so it should be really solid. The
+main thing that was stopping me from doing this before was the fact
+that there is no ready footprint in Fritzing for such a fancy part,
+and that making such a footprint stretches the capabilities of
+Fritzing pretty thin. Not only do you have to deal with elongated
+plated holes, but also it's an SMD part that is two-sided. I ended up
+making two separate parts, and placing them on the opposite sides of
+the PCB.
+
+
+
+:::{image} images/4368861668899814086.png
+
+:::
+
+
+
+
+:::{image} images/3731511668899829595.png
+
+:::
+
+
+Will the fab house accept this design? We will see on Monday. Will
+this work? We will see in two or three weeks, when the PCBs and parts
+arrive.
+
+Shout out to the nice people at Mastodon who helped me to simplify the
+routing and to get the resistors right!
+

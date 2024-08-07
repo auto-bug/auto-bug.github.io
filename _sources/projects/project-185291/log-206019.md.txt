@@ -1,0 +1,20 @@
+---
+blogpost: true
+date: 2022-05-10
+category: project-185291
+---
+
+# Published
+Published on 2022-05-10 in {ref}`project-185291`.
+
+With the second version being pretty much where I wanted it, I decided
+to go ahead, publish all the [designs](https://github.com/pypewpew/pewpew-lcd)  and [code](https://github.com/pypewpew/pew-pewpew-lcd) , and once I had done that, apply for the open source hardware
+certification.
+
+The PewPew LCD is now officially certified open source hardware, with
+number  [CH000013](https://certification.oshwa.org/ch000013.html) .
+
+I also submitted a [pull request to include the board definition in CircuitPython,](https://github.com/adafruit/circuitpython/pull/6331)  but before that, I had to [apply for USB VID/PID numbers](https://github.com/pidcodes/pidcodes.github.com/pull/733) .
+
+Once that is merged, I will need to add the board to [circuitpython.org](https://circuitpython.org) .
+

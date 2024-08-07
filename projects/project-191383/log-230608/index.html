@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Version Two - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="version-two">
+<h1>Version Two<a class="headerlink" href="#version-two" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2024-06-20 in <a class="reference internal" href="../#project-191383"><span class="std std-ref">Bigbug</span></a>.</p>
+<p>The robot was built to see if it would work, and I have to say that it
+worked pretty well so far. However, after taking it to several
+different events, I now have some ideas about how to improve it for
+such events specifically.</p>
+<p>The main problem I have is that the robot is really to slow to walk
+around with it. As such, it’s mostly spending its time on the time,
+waiting to be switched on for a few steps to show to the passing
+people, and switched off before it falls off the table. Its size is
+also a bit awkward. It’s too big to really do anything useful on the
+table, but too small to be safe from being trampled on the floor.</p>
+<p>So now I want to build a second version, using faster servos and
+longer legs. That should solve both the problems. I also want to try
+and make the body look less like a bunch of duct-taped garbage, but
+that’s a secondary consideration.</p>
+<p>I already have the servos for the second version. I went with the JX
+PDI-6208MG, mostly because they are roughly the same size as the MG995
+I used in the first version, but should be about twice as fast. I also
+got some aluminium cases to see if I can use them as the body. One
+such case seems to be particularly suitable, so I went ahead and cut
+some holes in it to mount the servos:</p>
+<img alt="projects/project-191383/images/970631718834962094.JPG" src="projects/project-191383/images/970631718834962094.JPG" />
+<p>Cutting thick aluminium with a dremel turned out to be harder than I
+anticipated, but with some struggle, I got all four holes for the
+servo, and the accompanying mounting holes done, and then painted the
+enclosure with black spray paint to make all the scratches less
+obvious.</p>
+<img alt="projects/project-191383/images/4597261718835314447.JPG" src="projects/project-191383/images/4597261718835314447.JPG" />
+<p>As for the legs, I was planning to cut them from 3mm sheet aluminium
+again, but then I realized that some of the usual PCB fabs also let
+you order CNC cut parts. Initially I tried three of them, but with the
+pricing they showed, I started preparing the hacksaw.</p>
+<img alt="projects/project-191383/images/1935491718835442162.JPG" src="projects/project-191383/images/1935491718835442162.JPG" />
+<p>But then I thought about the fact that they also do bead-blasting and
+anodizing of the parts. I imagined nice red anodized aluminium legs,
+and I went to try some more fabs. One of the offered to make the parts
+for 1/3 of the price of the others, and that is acceptable for me for
+a one-off project, so I ended up ordering the parts anyways.</p>
+<p>They wanted step files, so I took this opportunity to learn to use
+FreeCAD a little bit…</p>
+<img alt="projects/project-191383/images/704231718835566061.png" src="projects/project-191383/images/704231718835566061.png" />
+<p>I know, I know, this is horrible. But it’s the step file that counts
+in the end. With the leg parts ordered and scheduled to arrive in some
+two weeks, I got to work on the electronics.</p>
+<p>I don’t need anything too fancy here. I wanted to use the pi pico, to
+have enough extra pins for things like speakers, blinking LEDs, extra
+moving parts and so on. I considered using a 3S lipo battery pack, but
+it’s considerably heavier than the 2 18650 batteries I used
+previously, so I kept those. I looked at the buck converter chips
+available, but I didn’t find anything that would be much better than
+just using a ready buck module, so I just left holes to connect that.
+The rest is simple: power switch, servo sockets, and a shottky diode
+for the pi pico VSYS (I might replace it with a different diode with a
+larger voltage drop, to raise the voltage for the servos).</p>
+<img alt="projects/project-191383/images/4118001718836070859.png" src="projects/project-191383/images/4118001718836070859.png" />
+<p>Just in case, I made the PCB shaped just like the body of the robot in <a class="reference internal" href="../../project-188909/#project-188909"><span class="std std-ref">Wee Bug</span></a> and <a class="reference internal" href="../../project-180025/#project-180025"><span class="std std-ref">Fluffbug</span></a> , so that if the aluminium case proves to be too heavy or otherwise
+problematic, I can revert to the taped garbage looks. I moved the
+batteries to both sides of the PCB to make the weight more evenly
+distributed, and I added a bunch of break-off parts for attaching the
+servos.</p>
+<p>Now with the PCB and the leg parts on order, all we have to do is
+wait.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

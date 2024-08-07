@@ -1,0 +1,67 @@
+---
+blogpost: true
+date: 2024-03-19
+category: project-188909
+---
+
+# Thermal Camera
+Published on 2024-03-19 in {ref}`project-188909`.
+
+There is a header with the 3.3V power, I2C and INT pins broken out
+just above the servos on the Wee Bug (and other of my robots as well),
+because I was planning on plugging a time-of-flight distance sensor
+module in there. Turns out that a lot of different sensor modules are
+compatible with pretty much the same pinout, so you can use them in
+that place. So far I tried a gesture sensor and a TV remote IR sensor
+(that one is not a module, just a part plugged directly into the power
+and INT holes). But I noticed that the AMG888 thermal camera module
+also has the same pinout.
+
+So when I assembled a new {ref}`project-188908` using a pi pico clone board with a built-in display, I decided to give
+it a try:
+
+
+
+:::{image} images/4313281710886498298.jpg
+
+:::
+
+
+Turns out that there is already a driver library for that sensor in
+CircuitPython, so my code was very simple:
+
+
+```
+import time
+import busio
+import board
+import adafruit_amg88xx
+import displayio
+import rainbowio
+
+
+i2c = busio.I2C(board.GP5, board.GP4)
+amg = adafruit_amg88xx.AMG88XX(i2c)
+
+bitmap = displayio.Bitmap(8, 8, 256)
+palette = displayio.Palette(256)
+sprite = displayio.TileGrid(bitmap, pixel_shader=palette)
+board.DISPLAY.root_group = displayio.Group(scale=8)
+board.DISPLAY.root_group.append(sprite)
+board.DISPLAY.brightness = 0.01
+
+for i in range(256):
+    palette[i] = rainbowio.colorwheel(255 - i)
+
+while True:
+    for y, row in enumerate(amg.pixels):
+        for x, temp in enumerate(row):
+            c = min(255, max(0, int((temp - 20) * 30)))
+            bitmap[x,y] = c
+    time.sleep(0.1)
+
+```
+
+Now I'm thinking about what kind of behavior I could code using that
+camera. And no, no heat-seeking missiles. 
+

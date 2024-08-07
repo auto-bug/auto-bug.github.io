@@ -1,0 +1,225 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>http://deshipu.art/</id>
+  <title>deshipu.art - Posts in project-186921</title>
+  <updated>2024-08-07T20:35:29.597273+00:00</updated>
+  <link href="http://deshipu.art/"/>
+  <link href="http://deshipu.art/blog/category/project-186921/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-186921/log-222063/</id>
+    <title>Jumping Fritzing</title>
+    <updated>2023-08-09T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="jumping-fritzing"&gt;
+
+&lt;p&gt;Published on 2023-08-09 in &lt;a class="reference internal" href="../../../projects/project-186921/#project-186921"&gt;&lt;span class="std std-ref"&gt;µGame 22&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;There hasn’t been much activity here, mostly because I didn’t really
+know where to take this project. I don’t want it to become my second
+job, designing, supporting and selling a shiny product, ready to use
+for people who don’t want to contribute anything themselves, but I
+don’t really have any better idea about how to get it into the hands
+of those who want to be creative with it. So I kinda let it float in
+limbo until I figure this out.&lt;/p&gt;
+&lt;p&gt;The USB-C version worked very well, I’m going to keep that. But I
+think there is room for improvement in the power circuit, and the
+sound could use some work as well. So those are the things I need to
+work on next. I already have an I2S amplifier chip tested in a
+different project that I can use here, and I got the MOSFETs for doing
+the “ideal diode” circuit, and maybe also for the backlight control.
+Maybe I will even use the boost converter chips I got for testing, to
+make it run longer on the same batteries.&lt;/p&gt;
+&lt;p&gt;As for distribution, I have decided to move the design from Fritzing
+to EasyEDA, so that you can order the PCB with assembly from JLCPCB
+with a single click. Hopefully this will let the people who want it to
+get it easily, while freeing me from having to sell it.&lt;/p&gt;
+&lt;img alt="projects/project-186921/images/7199241691579534661.png" src="projects/project-186921/images/7199241691579534661.png" /&gt;
+&lt;p&gt;So I’m basically re-doing the whole thing in EasyEDA now, also picking
+more easily sourced parts as I go. So far I only needed one custom
+footprint, for the display itself, but I think I will need to also
+modify the button footprint to make the pads a little bit shorter.
+Otherwise it’s going well – a few more sleepless nights, and it should
+be finished.&lt;/p&gt;
+&lt;p&gt;Oh, and as a bonus, there is a 3D render!&lt;/p&gt;
+&lt;img alt="projects/project-186921/images/756071691579781324.png" src="projects/project-186921/images/756071691579781324.png" /&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-186921/log-222063/" rel="alternate"/>
+    <summary>Published on 2023-08-09 in project-186921.</summary>
+    <published>2023-08-09T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-186921/log-222328/</id>
+    <title>Version 2.2</title>
+    <updated>2023-08-17T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="version-2-2"&gt;
+
+&lt;p&gt;Published on 2023-08-17 in &lt;a class="reference internal" href="../../../projects/project-186921/#project-186921"&gt;&lt;span class="std std-ref"&gt;µGame 22&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I finished the EasyEDA version of the board a while ago, and I have
+sent the design files to JLCPCB for assembly. They arrived today, and
+I was quite surprised to see that they just work, without any problems
+or mistakes:&lt;/p&gt;
+&lt;img alt="projects/project-186921/images/6063321692288680727.jpg" src="projects/project-186921/images/6063321692288680727.jpg" /&gt;
+&lt;p&gt;Even the original laser-cut case fits, though the QWIIC socket is a
+bit of a tight fit in there.&lt;/p&gt;
+&lt;p&gt;Encouraged by this, I proceeded to testing the battery power, and lo
+and behold, it works as well!&lt;/p&gt;
+&lt;p&gt;Then came time for checking the sound. I completely changed this, got
+rid of the transistor driving the speaker, and instead used an I2S
+amplifier. And it works very well, and is pretty loud even at the
+lowest gain setting.&lt;/p&gt;
+&lt;p&gt;There is however a slight problem with this when running on battery
+power. You see, the speaker is so loud, that it makes the battery
+voltage drop, which causes the backlight to dim and sometimes even the
+display – the only part that really needs 3V for power – will
+sometimes reset and show the white screen of death. That only happens
+with the loudest sound I have in my games – the explosion – but it is
+a problem.&lt;/p&gt;
+&lt;p&gt;So what can I do with it? I will try and see if I can squeeze a boost
+converter circuit in there, to keep the battery voltage stable even
+when the poor little things are overloaded. It should also prolong the
+battery life, so yay. The problem is that I have never done this
+before, so I’m a bit worried how it will go. The datasheets seem to be
+simple enough, though.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-186921/log-222328/" rel="alternate"/>
+    <summary>Published on 2023-08-17 in project-186921.</summary>
+    <published>2023-08-17T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-186921/log-222364/</id>
+    <title>Menu Improvements</title>
+    <updated>2023-08-19T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="menu-improvements"&gt;
+
+&lt;p&gt;Published on 2023-08-19 in &lt;a class="reference internal" href="../../../projects/project-186921/#project-186921"&gt;&lt;span class="std std-ref"&gt;µGame 22&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Today was a CircuitPython Day, so I wanted to celebrate it by working
+on a game. However, before I got to that, I decided to improve the
+game selection menu that I use on my consoles, so that you can keep
+individual games in subdirectories, together with all their asset
+files. The idea is simple: if a directory contains a python file named
+a certain way (I choose “code.py”, so you can put the same files in a
+subdirectory to have them appear in the menu, or in the top directory,
+to have them run by default instead of the menu), it appears in the
+menu, and selecting it runs that file. I decided it’s the
+responsibility of the game code itself to make sure it looks for the
+files in the right place, though I will add a helper function for that
+to the &lt;a class="reference internal" href="../../../projects/project-80626/#project-80626"&gt;&lt;span class="std std-ref"&gt;Stage, a Tile and Sprite Engine&lt;/span&gt;&lt;/a&gt; , for convenience (Any suggestions on how it should be named?).&lt;/p&gt;
+&lt;img alt="projects/project-186921/images/9991711692399690626.jpg" src="projects/project-186921/images/9991711692399690626.jpg" /&gt;
+&lt;p&gt;It was a simple enough modification, but I immediately stumbled upon a
+problem. Turns out that CircuitPython doesn’t reset the current
+working directory on reload – and reload is exactly how the menu
+starts the games, and how they go back to the menu. Not only it’s not
+reset, but also if there is a file named “code.py” in the current
+working directory, it will be run at startup in place of the one in
+the top directory! That means that once you select a game, you will
+have to play it forever, because any attempt at reloading results in
+the game running again. Very annoying.&lt;/p&gt;
+&lt;p&gt;So instead of working on a game I fixed that bug. And in the process I
+also found and fixed another bug, where the flash chip that I’m using
+on ugame22 is not properly supported on rp2040 boards. And then I
+decided that I should properly publish the design files for this
+console, and have the board definition merged into CircuitPython’s
+tree, so that such regressions are caught by automatic testing. So you
+see, instead of working on the game I am standing on a pile of shaved
+yaks, but it still feels like I make some progress, so I can’t
+complain.&lt;/p&gt;
+&lt;p&gt;Oh, and by the way, version 2.3 is already in fabrication. I tested
+the sound on version 2.2 and it works great, however, when running on
+battery the speaker is taking so much current from the poor little
+batteries, that the voltage drops on them, the screen backlight dims,
+and sometimes even the screen itself resets. So in version 2.3 I added
+a boost converter circuit, so that the voltage from batteries is
+stabilized, and we can suck those puppies dry, until there is no
+single ion left in them.&lt;/p&gt;
+&lt;p&gt;The space is getting a bit tight, though, so I hope that’s all the
+additions I will need.&lt;/p&gt;
+&lt;img alt="projects/project-186921/images/6570071692400087798.png" src="projects/project-186921/images/6570071692400087798.png" /&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-186921/log-222364/" rel="alternate"/>
+    <summary>Published on 2023-08-19 in project-186921.</summary>
+    <published>2023-08-19T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-186921/log-225959/</id>
+    <title>Sound Volume Reduced</title>
+    <updated>2023-12-12T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="sound-volume-reduced"&gt;
+
+&lt;p&gt;Published on 2023-12-12 in &lt;a class="reference internal" href="../../../projects/project-186921/#project-186921"&gt;&lt;span class="std std-ref"&gt;µGame 22&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I have been quiet the past few months about this project, because I
+was still struggling with power problems. Adding the boost converter
+was a great idea, and it works very well, but if you make the speaker
+play white noise, it will still overwhelm the batteries and make the
+voltage drop enough that the display resets, and you get a white
+screen of death.&lt;/p&gt;
+&lt;p&gt;I tried lowering the gain on the amplifier (I dedicated an extra GPIO
+pin for that, so that I can do it with software), but it didn’t help.
+So I let the project sit for a while, while I waited for inspiration.&lt;/p&gt;
+&lt;p&gt;The inspiration struck a few days ago, and I was lucky that I could
+test it immediately, by cutting a trace on the board and soldering a
+resistor in series with the speaker. I know, it sounds obvious now,
+but you have to remember that I have very little experience with
+analog circuits. So yeah, the resistor limits the current drawn by the
+speaker, at the cost of lowering the volume somewhat. But now the
+screen doesn’t reset, and the volume was too loud for my tastes
+anyways.&lt;/p&gt;
+&lt;p&gt;I think this was the last problem I was struggling with, and the next
+step is to bodge the remaining ten prototypes I have assembled and run
+a workshop with them, to see if the participants find any new and
+exciting problems. If they don’t, and I will start looking into
+producing and selling them.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-186921/log-225959/" rel="alternate"/>
+    <summary>Published on 2023-12-12 in project-186921.</summary>
+    <published>2023-12-12T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-186921/log-229348/</id>
+    <title>Improving Screws</title>
+    <updated>2024-05-01T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="improving-screws"&gt;
+
+&lt;p&gt;Published on 2024-05-01 in &lt;a class="reference internal" href="../../../projects/project-186921/#project-186921"&gt;&lt;span class="std std-ref"&gt;µGame 22&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;One of the remaining problems that I still have with this handheld
+console is the way the case is held together. I originally used self-
+tapping screws to hold the two layers of laser-cut acrylic together,
+but there are many problems with this approach. The holes need to be
+just the right size for the screws to tap them properly, but still sit
+in there firmly. The screws themselves tend to be of poor quality,
+with their heads breaking off. The last layer of the acrylic is pretty
+thin, and is only held in place by a few threads of the screw. And
+finally, when I take the console to various events, I always tend to
+lose screws along the way.&lt;/p&gt;
+&lt;p&gt;So I decided to look into this and find a better way to hold the whole
+thing together.&lt;/p&gt;
+&lt;p&gt;LCSC recently introduced a new category in their parts shop,
+mechanical fasteners, so I went and looked for possible solutions. I
+found something they call “welding nut”, which is basically like a
+threaded insert, but instead of being embedded in a plastic case, it’s
+soldered to the PCB. That sounds promising, so I added a few of the
+smallest ones to my next parts order.&lt;/p&gt;
+&lt;img alt="projects/project-186921/images/5664671714552767290.jpg" src="projects/project-186921/images/5664671714552767290.jpg" /&gt;
+&lt;p&gt;When they arrived, I decided that they look very promising. I got two
+kinds, one that is a smooth tube, and one that is a hex nut. The
+latter looks more promising, especially since it comes at a variety of
+heights. I tried to modify my design in EasyEDA to see how that would
+work mechanically:&lt;/p&gt;
+&lt;img alt="projects/project-186921/images/2058951714552884345.png" src="projects/project-186921/images/2058951714552884345.png" /&gt;
+&lt;p&gt;It barely fits in some places, but it looks like I could pull it off.
+Of course the middle layer of the acrylic would need to be modified to
+make room for those nuts (or maybe even removed entirely, now that the
+top layer can rest on the nuts?), but that shouldn’t be too much of a
+problem. I’m still wondering if I should be using the 3mm high nuts,
+that match the height of the middle acrylic layer, and all the
+electronic parts theoretically, or use 2.5mm ones to allow for thinner
+acrylic (it’s never exactly 3mm) and tighter fit overall.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-186921/log-229348/" rel="alternate"/>
+    <summary>Published on 2024-05-01 in project-186921.</summary>
+    <published>2024-05-01T00:00:00+02:00</published>
+  </entry>
+</feed>

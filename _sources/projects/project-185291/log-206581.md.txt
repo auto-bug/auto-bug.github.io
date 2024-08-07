@@ -1,0 +1,56 @@
+---
+blogpost: true
+date: 2022-05-27
+category: project-185291
+---
+
+# The PewPew Ecosystem
+Published on 2022-05-27 in {ref}`project-185291`.
+
+PewPew LCD is a very simple device: just a display and a
+microcontroller. The real power for it comes from the whole [PewPew](https://pewpew.rtfd.io/)  ecosystem, that has been growing over the years witch each new
+workshop.
+
+There is a lot of documentation, starting with the [pew library reference](https://pewpew.readthedocs.io/en/latest/pew.html) , through the basic  [bouncing ball tutorial](https://pewpew.readthedocs.io/en/latest/tutorial.html) , to the more advanced [sokoban tutorial](https://pewpew.readthedocs.io/en/latest/tutorial-sokoban.html) .
+
+There is documentation for [all the hardware devices](https://pewpew.readthedocs.io/en/latest/devices.html) , and also [pewmulator](https://pewpew.readthedocs.io/en/latest/pewmulator.html) , a program that lets you run PewPew games on your computer with
+regular Python.
+
+And for those who want to extend the PewPew devices, there is a whole [section on connecting various electronic components](https://pewpew.readthedocs.io/en/latest/components.html)  to the expansion connector, and controlling them from code. This lets
+you not only add additional effects to your games,  or use non-
+standard ways of controlling them, but also lets you reuse the device
+for your electronic projects, whether it's a plant monitoring system,
+a smart home controller, or some kind of remote control for a robot.
+
+Finally there is a [community](https://pewpew.readthedocs.io/en/latest/community.html)  page, that links to the mailing list for the project, the
+repositories with code and hardware designs, and the CircuitPython
+Discord server, where you can get help.
+
+Finally, in the repositories you can find all the games:
+
+
+ *  [snake](https://github.com/pypewpew/game-snake) 
+ *  [tetris](https://github.com/pypewpew/game-tetris) 
+ *  [othello](https://github.com/pypewpew/game-othello) 
+ *  [sokoban](https://github.com/pypewpew/game-sokoban) 
+ *  [boulder](https://github.com/pypewpew/game-boulder) 
+ *  [lightsout](https://github.com/pypewpew/game-lightsout) 
+ *  [breakout](https://github.com/pypewpew/game-breakout) 
+ *  [frog](https://github.com/pypewpew/game-frog) 
+
+They can both give you inspiration and serve as starting points for
+your own games.
+
+Hopefully, with further workshops and with more people discovering the
+joy of making simple games this ecosystem will continue to grow and
+improve.
+
+However, on the PewPew LCD you are not limited to just the PewPew
+ecosystem! Because it comes with CircuitPython's displayio, you can
+use the display for anything, not just 8x8 pixels for simple games.
+And if you really want to, you could it even program it with Arduino
+or any other environment available for SAMD21, to really leverage the
+power of that  tiny microcontroller — there is, however, no ready
+support for this, so you would be mostly on your own.\
+
+

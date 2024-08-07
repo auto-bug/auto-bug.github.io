@@ -1,0 +1,45 @@
+---
+blogpost: true
+date: 2022-04-12
+category: project
+tags:  ongoing project, hardware
+image: 1
+---
+
+# LCD Shield for S2 Mini
+
+Playing with old-school 7-segment LCD displays
+
+<div class="project-thumb">
+
+:::{image} images/5552691649797968020.jpg
+:target: /_images/5552691649797968020.jpg
+:::
+
+</div>
+
+
+    There is a numer of relatively generic LCD displays out there for
+things like thermometers, clocks, sensors, and various indicators.
+Driving them is pretty complicated, but there are two ways around it:
+you can use a microcontroller with a built in driver peripheral, or
+you can use a dedicated driver chip. I want to explore the latter
+option here.
+
+Why would you like to use a display like this? Well, they are cheap,
+don't emit light or require backlight, and are very low power. It's
+the perfect display for any battery-powered device. Plus, we really
+have a lot of them just lying there, waiting to be reused.
+
+
+
+
+
+## Logs
+
+:::{postlist}
+:category: project-184839
+:::
+
+## Instructions
+

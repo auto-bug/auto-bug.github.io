@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>The Display - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="the-display">
+<h1>The Display<a class="headerlink" href="#the-display" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2022-05-10 in <a class="reference internal" href="../#project-185291"><span class="std std-ref">PewPew LCD</span></a>.</p>
+<p>Inspired by the Sensor Watch project, I initially thought about using
+a custom LCD screen, with just the right size and just the right
+number of “pixels”. Since Joe Castillo was using a SAML22 chip in his
+design, which is a close cousin of the SAMD21 I use, and he’s also
+interested in porting CircuitPython to it, it seemed like a good idea.
+But when I researched it a bit closer, it turned out to not be so
+great. Preparing a mock design of the display, like this:</p>
+<img alt="projects/project-185291/images/2037631645999818419.png" src="projects/project-185291/images/2037631645999818419.png" />
+<p>I quickly realized that the QFN32 version of the chip will simply not
+have enough pins to drive it, and that a bigger and more expensive
+version would have to be used. Furthermore, I would still have no good
+way of displaying the error messages. And of course ordering such a
+display would only contribute the all the electronic trash lying
+around. So I decided to go with an existing display after all, but
+maybe take a look at the older LCD screens available.</p>
+<p>I remembered another of my experiments, when I was designing a
+conference badge:</p>
+<img alt="projects/project-185291/images/6178221646299570694.jpg" src="projects/project-185291/images/6178221646299570694.jpg" />
+<p>I rejected that design back then, because I wanted animations, and the
+display was too slow to even display a bouncing ball. Plus, it was
+more expensive than the color TFT displays available. But for PewPew
+speed of the display doesn’t matter as much – the games are not that
+fast. So if I could find a similar display, only cheaper…</p>
+<p>So I raided my drawers, and found this HX1230 breakout board:</p>
+<img alt="projects/project-185291/images/5174321646299763923.jpg" src="projects/project-185291/images/5174321646299763923.jpg" />
+<p>Several hours of searching and detective work led me to discover that
+the display used here is RH-112, and that it was used in many old
+Nokia phones, including Nokia 1202. A quick look at Aliexpress reveals
+that there are lots of spare parts for those phones available,
+including the displays, that can be bought for $1.30 a piece. Seems
+like this is the perfect display fo this project, and since the
+displays are already produced and lie there in the storehouses, I’m
+actually decreasing the amount of electronic trash by using them for
+something more useful.\</p>
+</section>
+
+
+</div>
+  </body>
+</html>

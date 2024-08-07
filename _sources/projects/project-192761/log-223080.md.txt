@@ -1,0 +1,43 @@
+---
+blogpost: true
+date: 2023-09-12
+category: project-192761
+---
+
+# Design
+Published on 2023-09-12 in {ref}`project-192761`.
+
+I went with EasyEDA for the design, because I'm trying to move away
+from Fritzing, but I still can't stand KiCad. Plus I get all those
+footprints for free. The basic PCB was done in a single evening. I
+drew the body using a graphic tablet, imported it as the silkscreen
+layer, and made the board outline and all the rest manually.
+
+
+
+:::{image} images/174701694474181953.png
+
+:::
+
+
+It took me a while to figure out the positions of all the components
+on the back, especially the battery and the Xiao module. Initially I
+tried to use a coin cell battery, but the people on the badgelife
+discord talked me out of it. I ended up with a 14250 lipo battery, and
+I put the battery holder over the module, so that it can act as a
+backpack.
+
+
+
+:::{image} images/3064251694474360015.png
+
+:::
+
+
+Electronics wise there is the display, the Xiao module, the battery
+with a power switch, two LEDs on the gun, and a LIS3DH accelerometer
+chip. Oh, and a transistor to do power switching between USB and
+battery, but since I plan to use the Xiao ESP32-S3, that already comes
+with its own power circuit and battery charging, I will just short the
+pins on the footprint.
+

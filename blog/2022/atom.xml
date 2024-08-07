@@ -2,220 +2,36 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posted in 2022</title>
-  <updated>2024-08-07T20:34:14.165151+00:00</updated>
+  <updated>2024-08-07T20:35:30.474735+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/2022/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
   <entry>
-    <id>http://deshipu.art/projects/project-182342/log-214260/</id>
-    <title>More Frustration</title>
-    <updated>2022-12-14T00:00:00+01:00</updated>
-    <content type="html">&lt;section id="more-frustration"&gt;
+    <id>http://deshipu.art/projects/project-188909/log-214836/</id>
+    <title>2.0 Already!</title>
+    <updated>2022-12-31T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="already"&gt;
 
-&lt;p&gt;Published on 2022-12-14 in &lt;a class="reference internal" href="../../projects/project-182342/#project-182342"&gt;&lt;span class="std std-ref"&gt;Camera Shield for S2 Mini&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;So I figured out the display problem – I connected the (unused) reset
-pin to the camera’s master clock pin by mistake, so the display was
-being reset at 16MHz… After fixing that, I finally got an image on
-the screen:&lt;/p&gt;
-&lt;img alt="projects/project-182342/images/2789761670972544097.jpg" src="projects/project-182342/images/2789761670972544097.jpg" /&gt;
-&lt;p&gt;That… doesn’t look like any swapped pins. To my untrained eye it
-looks like simply empty unintialized memory. Could it be that it
-“works” in the 16MHz mode simply because it does nothing? I tried
-switching it back to 20MHz, and now I’m getting a suspicious
-exception:&lt;/p&gt;
-&lt;div class="highlight-default notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Traceback&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;most&lt;/span&gt; &lt;span class="n"&gt;recent&lt;/span&gt; &lt;span class="n"&gt;call&lt;/span&gt; &lt;span class="n"&gt;last&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-  &lt;span class="n"&gt;File&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;code.py&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt; &lt;span class="mi"&gt;45&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; 
-&lt;span class="ne"&gt;TypeError&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;unsupported&lt;/span&gt; &lt;span class="n"&gt;bitmap&lt;/span&gt; &lt;span class="nb"&gt;type&lt;/span&gt;
-
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;So it looks like the bitmap type changes depending on the clock
-frequency? How does that even make any sense? Madness!&lt;/p&gt;
+&lt;p&gt;Published on 2022-12-31 in &lt;a class="reference internal" href="../../projects/project-188909/#project-188909"&gt;&lt;span class="std std-ref"&gt;Wee Bug&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I looked at my PCB design today with fresh eyes, and I found a mistake
+in how the power is routed, which would require a bodge. So I used
+that as an excuse to re-design it with the 14250 battery holder, which
+also made it much smaller. And since you can add designs to an
+existing order in JLCPCB, I did just that. So the 1.0 version will be
+obsolete on arrival, sadly, but I will get to build a much smaller
+robot.&lt;/p&gt;
+&lt;img alt="projects/project-188909/images/5688921672515769751.png" src="projects/project-188909/images/5688921672515769751.png" /&gt;
+&lt;img alt="projects/project-188909/images/7722411672515787420.png" src="projects/project-188909/images/7722411672515787420.png" /&gt;
+&lt;p&gt;I also went ahead and designed a PCB for the mechanical parts of the
+legs. I was lucky to not get hit by the panelization penalization, but
+it’s fine for a one-off design like this. If I were making more units,
+I would go for laser-cut parts instead.&lt;/p&gt;
+&lt;img alt="projects/project-188909/images/7148661672515893147.png" src="projects/project-188909/images/7148661672515893147.png" /&gt;
 &lt;/section&gt;
 </content>
-    <link href="http://deshipu.art/projects/project-182342/log-214260/" rel="alternate"/>
-    <summary>Published on 2022-12-14 in project-182342.</summary>
-    <published>2022-12-14T00:00:00+01:00</published>
-  </entry>
-  <entry>
-    <id>http://deshipu.art/projects/project-182342/log-214298/</id>
-    <title>Great Success</title>
-    <updated>2022-12-15T00:00:00+01:00</updated>
-    <content type="html">&lt;section id="great-success"&gt;
-
-&lt;p&gt;Published on 2022-12-15 in &lt;a class="reference internal" href="../../projects/project-182342/#project-182342"&gt;&lt;span class="std std-ref"&gt;Camera Shield for S2 Mini&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Last time I gave up on the ESP32-S2, so today I decided to see how
-this camera works with the RP2040 instead. That uses a different
-library, called imagecapture, and since that library makes the master
-clock pin optional, I decided to first try with an off-the-shelf
-module that I have, which I couldn’t use previously, because it
-doesn’t expose the master clock pin – it has a crystal oscillator on
-board for this.&lt;/p&gt;
-&lt;img alt="projects/project-182342/images/5808101671062604773.jpg" src="projects/project-182342/images/5808101671062604773.jpg" /&gt;
-&lt;p&gt;I got everything connected, I copied the example code, and… it just
-works, as advertised. Wow.&lt;/p&gt;
-&lt;p&gt;But wait, does that mean my shield is faulty? Let’s connect it and
-see!&lt;/p&gt;
-&lt;img alt="projects/project-182342/images/4460811671062674536.jpg" src="projects/project-182342/images/4460811671062674536.jpg" /&gt;
-&lt;p&gt;This time it didn’t work as great – I got some data from the JPEG
-mode, but when I saved it in a file, it wasn’t recognized as a JPEG
-file. So I looked closely. A normal JPEG file starts with bytes ff d8
-ff e0 00, but the data I got starts with ff e8 ff d0 00 – the e8 and
-d8 are swapped! But how? Well, e8 is 11101000 in binary, and d8 is
-11011000 – could it be I have two data pins swapped? I tried swapping
-them back, and lo and behold – a correct JPEG image file popped out!&lt;/p&gt;
-&lt;p&gt;Could it be that was my problem all along? The diagram telling which
-pin is which on the camera was wrong? After all, datasheets have
-mistakes in them. So I quickly went back to the S2 Mini to see if my
-shield works after all if I swap the two pins. I connected everything
-back and… nothing. As before the 16MHz clock returns unintialized
-memory, and the 20MHz clock just sits there waiting for data
-indefinitely.&lt;/p&gt;
-&lt;p&gt;So I went through the pins one more time, and I discovered that the
-stickers that I got with my S2 Mini boards, with pin numbers on them
-have the pins 12 and 13 swapped. And it just so happens I was using
-pin 12 as the pixel clock. Except I had it s pin 13 in my code,
-because of the mistake in the sticker. Changing it to 12 suddenly made
-everything work (with the 20MHz master clock, the 16MHz is still
-broken). Both the RGB565 and the JPEG modes work perfectly!&lt;/p&gt;
-&lt;img alt="projects/project-182342/images/5965751671063347687.jpg" src="projects/project-182342/images/5965751671063347687.jpg" /&gt;
-&lt;p&gt;I can’t even say how happy that makes me. This shield was a lot of
-frustration, and it the end it all turned out to be due to mistakes in
-pin numbering.&lt;/p&gt;
-&lt;p&gt;Here is the working code, if anybody is interested:&lt;/p&gt;
-&lt;div class="highlight-default notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;adafruit_ili9341&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;busio&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;digitalio&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;esp32_camera&lt;/span&gt;
-
-
-&lt;span class="n"&gt;displayio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;release_displays&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;span class="n"&gt;display_bus&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;displayio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;FourWire&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-    &lt;span class="n"&gt;busio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SPI&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;clock&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IO7&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;MOSI&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IO5&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
-    &lt;span class="n"&gt;command&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IO9&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="n"&gt;chip_select&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IO3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="n"&gt;baudrate&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;80_000_000&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;display&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;adafruit_ili9341&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ILI9341&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-    &lt;span class="n"&gt;display_bus&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="n"&gt;width&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;320&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="n"&gt;height&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;240&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="n"&gt;i2c&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;busio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;I2C&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;scl&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IO35&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sda&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IO33&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;data_pins&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
-    &lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IO21&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IO17&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IO16&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IO18&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IO37&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IO34&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IO36&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IO39&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;esp32_camera&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Camera&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-    &lt;span class="n"&gt;data_pins&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;data_pins&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="n"&gt;external_clock_pin&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IO11&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="n"&gt;pixel_clock_pin&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IO12&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="n"&gt;vsync_pin&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IO40&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="n"&gt;href_pin&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IO38&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="n"&gt;pixel_format&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;esp32_camera&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;PixelFormat&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;RGB565&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="n"&gt;frame_size&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;esp32_camera&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;FrameSize&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;QVGA&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="n"&gt;i2c&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;i2c&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="n"&gt;external_clock_frequency&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;20_000_000&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="n"&gt;g&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;displayio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Group&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;span class="n"&gt;bitmap&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;
-&lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="n"&gt;bitmap&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="n"&gt;bitmap&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;take&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;span class="n"&gt;shader&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;displayio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ColorConverter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-    &lt;span class="n"&gt;input_colorspace&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;displayio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Colorspace&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;BGR565_SWAPPED&lt;/span&gt;
-&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;tg&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;displayio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;TileGrid&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;bitmap&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;pixel_shader&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;shader&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;g&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tg&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;display&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;g&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;display&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;auto_refresh&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;False&lt;/span&gt;
-&lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="n"&gt;bitmap&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;take&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-    &lt;span class="n"&gt;tg&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="c1"&gt;# make the grid dirty&lt;/span&gt;
-    &lt;span class="n"&gt;tg&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
-    &lt;span class="n"&gt;display&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;refresh&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;/section&gt;
-</content>
-    <link href="http://deshipu.art/projects/project-182342/log-214298/" rel="alternate"/>
-    <summary>Published on 2022-12-15 in project-182342.</summary>
-    <published>2022-12-15T00:00:00+01:00</published>
-  </entry>
-  <entry>
-    <id>http://deshipu.art/projects/project-182342/log-214332/</id>
-    <title>Next Steps</title>
-    <updated>2022-12-15T00:00:00+01:00</updated>
-    <content type="html">&lt;section id="next-steps"&gt;
-
-&lt;p&gt;Published on 2022-12-15 in &lt;a class="reference internal" href="../../projects/project-182342/#project-182342"&gt;&lt;span class="std std-ref"&gt;Camera Shield for S2 Mini&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Now that I have it working, what is the next step? Well, right now the
-shield requires the microcontroller to provide the main clock signal
-for the camera chip. That means that the camera needs at least one PWM
-channel to work, and with only 8 channels available on the esp32-s2,
-and with 8 servo needed on my &lt;a class="reference internal" href="../../projects/project-180025/#project-180025"&gt;&lt;span class="std std-ref"&gt;Fluffbug&lt;/span&gt;&lt;/a&gt; robot, that doesn’t work very well. But I also have an off-the-shelf
-camera module that doesn’t even have the main clock pin broken out,
-because it has an oscillator that takes care of that. Could I add an
-oscillator to my shield, and make the PWM channel unnecessary?
-Probably. But how?&lt;/p&gt;
-&lt;p&gt;Well, let’s search around for schematics of those modules and see if
-we find any useful hints. The first one I found is already promising:&lt;/p&gt;
-&lt;img alt="projects/project-182342/images/8081571671131448067.jpg" src="projects/project-182342/images/8081571671131448067.jpg" /&gt;
-&lt;p&gt;It shows that we only need to connect a single part to the MCLK pin,
-the one marked as X1, and labeled “24M” underneath. So probably some
-kind of a 24MHz oscillator. There is some more detailed documentation
-at  &lt;a class="reference external" href="https://doc.embedfire.com/mcu/stm32/f407batianhu/std/zh/latest/book/DCMI_OV2640.html#id31"&gt;https://doc.embedfire.com/mcu/stm32/f407batianhu/std/zh/latest/book/DC
-MI_OV2640.html#id31&lt;/a&gt; , together with an image:&lt;/p&gt;
-&lt;img alt="projects/project-182342/images/6583491671131606462.jpeg" src="projects/project-182342/images/6583491671131606462.jpeg" /&gt;
-&lt;p&gt;Here the oscillator Y1 is connected through a resistor, but otherwise
-it seems the same. The text under the image says ” 标号处的是一个24MHz的有源晶振”,
-which translates to “The label is a 24MHz active crystal oscillator”.
-So, active crystal oscillator. It’s also powered with the 2.8V, so we
-need a CMOS one.  And I can probably test it without having to make a
-new PCB, as I don’t much care about accuracy here, just that the clock
-is provided.&lt;/p&gt;
-&lt;p&gt;Unfortunately I don’t have any 24MHz active crystals oscillators in my
-drawer at the very moment, so I will need to order one to see how that
-works.&lt;/p&gt;
-&lt;/section&gt;
-</content>
-    <link href="http://deshipu.art/projects/project-182342/log-214332/" rel="alternate"/>
-    <summary>Published on 2022-12-15 in project-182342.</summary>
-    <published>2022-12-15T00:00:00+01:00</published>
-  </entry>
-  <entry>
-    <id>http://deshipu.art/projects/project-182342/log-214420/</id>
-    <title>Version 4 and MooCam</title>
-    <updated>2022-12-18T00:00:00+01:00</updated>
-    <content type="html">&lt;section id="version-4-and-moocam"&gt;
-
-&lt;p&gt;Published on 2022-12-18 in &lt;a class="reference internal" href="../../projects/project-182342/#project-182342"&gt;&lt;span class="std std-ref"&gt;Camera Shield for S2 Mini&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Since I was ordering PCBs anyways, I went ahead and added the version
-4 of the shield, with the footprint fot the oscillator added, to the
-order:&lt;/p&gt;
-&lt;img alt="projects/project-182342/images/2212091671404004214.png" src="projects/project-182342/images/2212091671404004214.png" /&gt;
-&lt;p&gt;Nothing really exciting there. I also ordered the oscillators, and
-they should arrive shortly, so we will see how well this works.&lt;/p&gt;
-&lt;p&gt;The pull request for making the xclk pin optional got merged to
-CircuitPython, so that should work once version 8.0 is released.&lt;/p&gt;
-&lt;p&gt;I also had a stab at a similar shield for the Raspberry Pi Pico and
-Pico W. It’s an excellent moment for it, since the Raspberry Pi
-Foundation loves surveillance so much – they should be more than happy
-that their corrupted government is getting more tools to make sure
-nobody harbors Unapproved Opinions.&lt;/p&gt;
-&lt;img alt="projects/project-182342/images/8534841671404202083.png" src="projects/project-182342/images/8534841671404202083.png" /&gt;
-&lt;p&gt;Since there was room, and since extra storage might be useful with a
-camera, I also added a microSD card socket in there, and a button for
-the shutter on the front side, together with a police star.&lt;/p&gt;
-&lt;img alt="projects/project-182342/images/6588411671404265113.png" src="projects/project-182342/images/6588411671404265113.png" /&gt;
-&lt;p&gt;We will see how all that works, but unless I made some horrible
-mistakes, it should work.&lt;/p&gt;
-&lt;/section&gt;
-</content>
-    <link href="http://deshipu.art/projects/project-182342/log-214420/" rel="alternate"/>
-    <summary>Published on 2022-12-18 in project-182342.</summary>
-    <published>2022-12-18T00:00:00+01:00</published>
+    <link href="http://deshipu.art/projects/project-188909/log-214836/" rel="alternate"/>
+    <summary>Published on 2022-12-31 in project-188909.</summary>
+    <published>2022-12-31T00:00:00+01:00</published>
   </entry>
   <entry>
     <id>http://deshipu.art/projects/project-182342/log-214837/</id>
@@ -243,6 +59,144 @@ design files available, and that’s it.&lt;/p&gt;
 </content>
     <link href="http://deshipu.art/projects/project-182342/log-214837/" rel="alternate"/>
     <summary>Published on 2022-12-31 in project-182342.</summary>
+    <published>2022-12-31T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-188909/log-214805/</id>
+    <title>PCB Design</title>
+    <updated>2022-12-31T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="pcb-design"&gt;
+
+&lt;p&gt;Published on 2022-12-31 in &lt;a class="reference internal" href="../../projects/project-188909/#project-188909"&gt;&lt;span class="std std-ref"&gt;Wee Bug&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I measured the servos, and quickly designed a PCB similar to the one
+used in &lt;a class="reference internal" href="../../projects/project-180025/#project-180025"&gt;&lt;span class="std std-ref"&gt;Fluffbug&lt;/span&gt;&lt;/a&gt; , but proportionally smaller.&lt;/p&gt;
+&lt;img alt="projects/project-188909/images/91721672442475030.png" src="projects/project-188909/images/91721672442475030.png" /&gt;
+&lt;p&gt;I gave up on the IDC connectors for the servos, and just went with the
+1.25mm JST sockets. Instead of the Lolin S2 Mini, I decided to use
+either the Adafruit Qt Py board, or Seeedstudio Xiao – as it happens,
+they have the same pinouts, so I can decide later, or even switch
+between them. All the rest is pretty much the same as in Fluffbug, but
+since there was some free space, I also added a footprint for an
+optional infrared sensor, so that I can use a tv remote to control the
+robot.&lt;/p&gt;
+&lt;p&gt;The last problem is the battery. I didn’t want to use the pouch lipo
+batteries, because they are not standard and pretty dangerous, so I
+looked at what standard battery size would fit it. Eventually, I
+decided on LIR2450 (or the bigger LIR2477 version), and added a coin
+cell battery holder to the PCB. The contacts stick out a bit, but I
+can just cut them.&lt;/p&gt;
+&lt;img alt="projects/project-188909/images/852881672442795666.png" src="projects/project-188909/images/852881672442795666.png" /&gt;
+&lt;p&gt;Of course as my luck has it, as soon as I ordered the PCBs, I found
+out the perfect battery size that would make it look exactly as
+Fluffbug, only smaller: the 14250 cells. There is even a holder for it
+that looks identical to the one in Fluffbug, just smaller:&lt;/p&gt;
+&lt;p&gt;__&lt;/p&gt;
+&lt;img alt="projects/project-188909/images/1668661672442921859.jpg" src="projects/project-188909/images/1668661672442921859.jpg" /&gt;
+&lt;p&gt;Just look at how cute it is! In the end, I decided to order some of
+those cells and holders as well, and I will try to bodge them on the
+PCB somehow.\&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-188909/log-214805/" rel="alternate"/>
+    <summary>Published on 2022-12-31 in project-188909.</summary>
+    <published>2022-12-31T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-188908/log-214803/</id>
+    <title>The OLED Face</title>
+    <updated>2022-12-31T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="the-oled-face"&gt;
+
+&lt;p&gt;Published on 2022-12-31 in &lt;a class="reference internal" href="../../projects/project-188908/#project-188908"&gt;&lt;span class="std std-ref"&gt;Moo Bug&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The PCBs arrived right after the holidays, and I quickly assembled
+one, moved the whole legs from one of my fluffbugs, and here it is,
+all working as expected. I just had to update the pin names in my
+circuitpython code, that’s literally it. But then I decided to try and
+get to work one of the shields – the one with a display and a speaker.&lt;/p&gt;
+&lt;img alt="projects/project-188908/images/9751991672441425672.jpg" src="projects/project-188908/images/9751991672441425672.jpg" /&gt;
+&lt;p&gt;The display just worked. I used the SH1106 library for displayio, and
+I just had to rotate the display 180° and add a 2-pixel horizontal
+shift to adapt it to this particular display. I got really good with
+that working on all those handheld game consoles.&lt;/p&gt;
+&lt;p&gt;The speaker turned out to be a bit more challenging. I used a
+MAX98357A I2S amplifier, because I had that on a module earlier and I
+was confident it works well. Well, despite the schematic being
+practically the same with the module (minus some unnecessary caps, as
+usual), this one didn’t work. The chip is a bit small QFN package, but
+visually it looked soldered well. I tried a lot of different things,
+until at fifth re-soldering of the chip with the hot-air gun, it
+suddenly started working. I suppose looking good is not enough. Of
+course with such a tiny speaker the quality is questionable, but it
+does sound properly robotic, and it’s surprisingly loud (I hardwired
+the amplifier to maximum gain).&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-188908/log-214803/" rel="alternate"/>
+    <summary>Published on 2022-12-31 in project-188908.</summary>
+    <published>2022-12-31T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-188909/</id>
+    <title>Wee Bug</title>
+    <updated>2022-12-31T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="wee-bug"&gt;
+
+&lt;p&gt;Fluffbug but smaller&lt;/p&gt;
+&lt;div class="project-thumb"&gt;
+&lt;a class="reference external image-reference" href="/_images/9509241673273452763.jpg"&gt;&lt;img alt="projects/project-188909/images/9509241673273452763.jpg" src="projects/project-188909/images/9509241673273452763.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/9859711673287876667.jpg"&gt;&lt;img alt="projects/project-188909/images/9859711673287876667.jpg" src="projects/project-188909/images/9859711673287876667.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/4258961674770699507.jpg"&gt;&lt;img alt="projects/project-188909/images/4258961674770699507.jpg" src="projects/project-188909/images/4258961674770699507.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/17991693090470263.jpg"&gt;&lt;img alt="projects/project-188909/images/17991693090470263.jpg" src="projects/project-188909/images/17991693090470263.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/1955731693143555811.jpg"&gt;&lt;img alt="projects/project-188909/images/1955731693143555811.jpg" src="projects/project-188909/images/1955731693143555811.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/5593081710886184394.jpg"&gt;&lt;img alt="projects/project-188909/images/5593081710886184394.jpg" src="projects/project-188909/images/5593081710886184394.jpg" /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;While digging through my drawers, I stumbled upon a bag of sub-micro
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;servos I bought a few years ago from HobbyKing for the &lt;a class="reference internal" href="../../projects/project-10665/#project-10665"&gt;&lt;span class="std std-ref"&gt;Pony Bot&lt;/span&gt;&lt;/a&gt; , but never used in the end, because they had wrong connectors. Turns
+out there are HK-282A servos with 1.25mm-pitch JST connectors and
+HK-282AS, with 1mm-pitch unidentified connectors. In any case, the
+Pony Bot is on hold indefinitely for now, until I can find the energy
+to actually program a gait for it, so I thought that maybe I can use
+those tiny servos for something else: make a tiny version of the &lt;a class="reference internal" href="../../projects/project-180025/#project-180025"&gt;&lt;span class="std std-ref"&gt;Fluffbug&lt;/span&gt;&lt;/a&gt; robot. That would also have the advantage of not needing to write a
+new gait code, since the one already written for Fluffbug should work.&lt;/p&gt;
+&lt;p&gt;So I went ahead and started to design a Fluffbug, but with everything
+smaller.&lt;/p&gt;
+&lt;img alt="projects/project-188909/images/3804161677707812005.gif" src="projects/project-188909/images/3804161677707812005.gif" /&gt;
+&lt;section id="logs"&gt;
+&lt;h2&gt;Logs&lt;/h2&gt;
+&lt;ul class="postlist-style-none postlist simple"&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2024-04-16 - &lt;a class="reference internal" href="../../projects/project-188909/log-229014/"&gt;Designs Published&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2024-03-19 - &lt;a class="reference internal" href="../../projects/project-188909/log-228303/"&gt;Thermal Camera&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-12-15 - &lt;a class="reference internal" href="../../projects/project-188909/log-226028/"&gt;Wee Display&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-12-12 - &lt;a class="reference internal" href="../../projects/project-188909/log-225955/"&gt;1mm and 1.25mm Versions&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-12-01 - &lt;a class="reference internal" href="../../projects/project-188909/log-225667/"&gt;Not All Batteries are Created Equal&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-10-24 - &lt;a class="reference internal" href="../../projects/project-188909/log-224561/"&gt;Add Some Fluff&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-10-14 - &lt;a class="reference internal" href="../../projects/project-188909/log-224329/"&gt;Balancing&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-10-13 - &lt;a class="reference internal" href="../../projects/project-188909/log-224310/"&gt;A Display&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-09-30 - &lt;a class="reference internal" href="../../projects/project-188909/log-223768/"&gt;Version 6.0&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-09-20 - &lt;a class="reference internal" href="../../projects/project-188909/log-223462/"&gt;A String of Prototypes&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-08-27 - &lt;a class="reference internal" href="../../projects/project-188909/log-222565/"&gt;New Body in Action&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-08-19 - &lt;a class="reference internal" href="../../projects/project-188909/log-222365/"&gt;New Body&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-06-14 - &lt;a class="reference internal" href="../../projects/project-188909/log-220213/"&gt;New Servos&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-03-01 - &lt;a class="reference internal" href="../../projects/project-188909/log-216427/"&gt;Just Programmed&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-01-26 - &lt;a class="reference internal" href="../../projects/project-188909/log-215547/"&gt;Now Just Program It&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2022-12-31 - &lt;a class="reference internal" href="../../projects/project-188909/log-214805/"&gt;PCB Design&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2022-12-31 - &lt;a class="reference internal" href="../../projects/project-188909/log-214836/"&gt;2.0 Already!&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section id="instructions"&gt;
+&lt;h2&gt;Instructions&lt;/h2&gt;
+&lt;/section&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-188909/" rel="alternate"/>
+    <summary>Fluffbug but smaller</summary>
+    <category term="ROBOT" label="ROBOT"/>
+    <category term="circuitpython" label="circuitpython"/>
+    <category term="hardware" label="hardware"/>
+    <category term="ongoingproject" label="ongoing project"/>
+    <category term="quadruped" label="quadruped"/>
     <published>2022-12-31T00:00:00+01:00</published>
   </entry>
 </feed>

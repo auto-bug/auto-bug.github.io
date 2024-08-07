@@ -1,0 +1,55 @@
+---
+blogpost: true
+date: 2022-05-09
+category: project-185291
+---
+
+# Why a New Design?
+Published on 2022-05-09 in {ref}`project-185291`.
+
+So far the most successful among the PewPew family of devices has been
+the {ref}`project-159733` – I ran many workshops with it, I sold it on Tindie, I made several
+badges for conferences out of it, and now [@Makerfabs ](https://hackaday.io/hacker/268569) is selling it for general population to use. Despite being a bit
+clunky, it's simple and cheap and gets the job done very well. I have
+later experimented with other designs, adding various display screens,
+stronger microcontrollers, a variety of buttons and touh pads,
+different LEDs and recently even WiFi, but the resulting designs were
+inevitably more complex and more expensive. Now I feel like I can put
+together what I have learned through all this experimentation, and
+design a device that is even better for running workshops, less
+complex, and cheaper than the Standalone.
+
+The problematic component is the LED matrix. Yes, it's cheap, but
+that's pretty much its only advantage. The original FeatherWing
+version used a bi-color matrix, with four possible colors. In the
+Standalone I replaced it with a much easier to source and to drive,
+and also cheaper, monochrome matrix, that is driven in the background
+by a special software library compiled into CircuitPython. There are
+no longer any colors, just shades of light, and to save pins, the same
+library also scans for the button presses. This leads to some visual
+artifacts and of course displaying text is not easy.
+
+I have tried replacing the LED matrix with individual LEDs – either
+bi-color or monochrome, but while this makes the device considerably
+slimmer and lighter, it increases the assembly cost – with all those
+discrete LEDs having to be soldered.
+
+Adding a color TFT screen required more memory and more processing
+power, and while the resulting device is very nice on its own, and
+lets you make much more advanced and nicer games, it is also more
+expensive and complex – not suitable for quick workshops anymore.
+
+Finally, I was pretty happy with a monochrome OLED screen. The
+additional code required forced me to shrink the filesystem on the
+device a little bit, from 64kB to 48kB, but you can still fit all the
+games that have been written for the device so far on it all at once,
+so I don't consider it a big drawback. The screen is the wrong shape,
+landscape rather than square, so a lot of it is wasted, which is not
+great, but acceptable. The additional components required by the
+display, and the large number of connections of the display itself
+contributed to both the complexity and price, though. I tried to
+offset it by shedding components such as buttons, battery holder, USB
+socket and expansion socket with pads and cutouts in the PCB itself –
+and I am happy with the results – but I feel like I can do better
+still, with a different display.
+

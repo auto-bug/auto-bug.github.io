@@ -1,0 +1,346 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>http://deshipu.art/</id>
+  <title>deshipu.art - Posts in project-185291</title>
+  <updated>2024-08-07T20:35:29.576092+00:00</updated>
+  <link href="http://deshipu.art/"/>
+  <link href="http://deshipu.art/blog/category/project-185291/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-185291/log-212341/</id>
+    <title>The Challenge</title>
+    <updated>2022-10-16T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="the-challenge"&gt;
+
+&lt;p&gt;Published on 2022-10-16 in &lt;a class="reference internal" href="../../../projects/project-185291/#project-185291"&gt;&lt;span class="std std-ref"&gt;PewPew LCD&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This project was submitted to the 2022 Hackaday Prize, and it
+qualified to semifinals, so let me take some time and talk about the
+challenge that I am trying to tackle with it.&lt;/p&gt;
+&lt;p&gt;Of course, the theme of the round was re-using existing parts, so that
+they serve a purpose instead of ending up in a landfill, and that is
+of course an important thing. In case of this project, the part being
+reused is the display, which used to be produced for a number of very
+popular phones, and which is still available as replacement part for
+them, even though those phones are not nearly as popular as they used
+to be. It’s a dated technology, which has long been replaced with OLED
+screens, but which still has some indisputable advantages, such as
+very low power consumption, and is more than adequate for this
+particular use case. So yes, we are re-using a part that would
+otherwise just pollute our world. Good. I also made some other
+conscious decisions about what to use, such as settling on a battery
+type that is practically, in reality, recycled, or a USB connector
+that works with older hardware.&lt;/p&gt;
+&lt;p&gt;But the main goal of this project is not related to protecting the
+environment, a worthy goal that it is, but rather it looks forward
+into the future a little bit further, to give a better chance of
+saving the world to those who come after us. Technical culture is a
+big thing. You either understand the tools that you use and control
+them, or they control you. With the tools around us getting more
+powerful and ubiquitous, and with them having increasing effect on our
+everyday lives, it’s more important than ever to understand and
+control them. But it is also becoming increasingly harder to do that,
+as they become more complex, harder to inspect and repair, and more
+dependent on centralized services. If our successors are going to
+learn this, they need a stepping stone, something that is easier to
+understand and learn from, something they can own and control. I hope
+this project to be that. Or one of such things, anyways, for I hope
+there will be many more.&lt;/p&gt;
+&lt;p&gt;Obviously they also need teachers and the materials to learn from, but
+while I do some teaching myself, I’m not an organizer and there is
+little I can do about encouraging people to teach and write books.
+What I can do is to give them tools that will make the teaching easier
+and less challenging. I can design a device that is not only useful in
+the teaching, but also not tied to any large corporation or
+government, and not dependent on their sponsorship, like the Raspberry
+Pi or Micro:bit projects are. Something that is cheap and easy to get
+because it was designed to be cheap and easy to source, not because
+someone poured a ton of money into it to subsidize it, and can at any
+moment change their mind. Something that is truly open source, without
+any binary blobs or secret sauce, without a trademark or a patent,
+without strings attached.&lt;/p&gt;
+&lt;p&gt;It’s not ideal. While the screen is recycled and the battery is
+recyclable, the microcontroller itself is new, and affected by the
+global chip shortage at the moment. Using any other chip would make
+this project more complex and more expensive, and possibly also tie it
+to one of the organizations that could control it. It was a trade-off.
+Perhaps in the future there will be a chip that better fits the goals
+of this project – one that is more open, or that can be recycled from
+old hardware, while not adding a lot of complexity. But I currently
+don’t see anything like this, and I believe that it’s better to make
+something imperfect now, than to wait for perfection forever. We are
+not getting any younger.&lt;/p&gt;
+&lt;p&gt;I also hope that in the future there will be many more PewPew-
+compatible devices. The pew library is already ported to pretty much
+any homebrew console that runs CircuitPython, and some platforms that
+run regular Python. As new devices are designed, PewPew can be ported
+to them as well. So maybe you will not need to produce new devices for
+a workshop anymore, because everyone will already have something that
+can be made to run the pew library in their drawer already. Sure, it
+might require more work, but that’s learning too, and there are
+hackerspaces and repair cafes to help with that. So there is actually
+much more opportunity for reuse and bringing old things back to life,
+in the future. Things like smartwatches and sportbands, alarm clocks
+and fancy remotes, pocket translators and music players could all
+potentially become pewpew-compatible, with the help of the community.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-185291/log-212341/" rel="alternate"/>
+    <summary>Published on 2022-10-16 in project-185291.</summary>
+    <published>2022-10-16T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-185291/log-222610/</id>
+    <title>What Remains to be Done</title>
+    <updated>2023-08-29T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="what-remains-to-be-done"&gt;
+
+&lt;p&gt;Published on 2023-08-29 in &lt;a class="reference internal" href="../../../projects/project-185291/#project-185291"&gt;&lt;span class="std std-ref"&gt;PewPew LCD&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I had a bit of a break on this project, caused both by my lack of
+motivation, and by the chip shortage, meaning you couldn’t get any
+SAMD21 chips (or anything that could easily replace them) anywhere.
+The shortage is apparently ending this September, and I have also
+recovered some strength, so I can think about the project again.&lt;/p&gt;
+&lt;p&gt;The time that passed wasn’t entirely wasted. I got to test the device
+in different conditions, with different computers, different programs
+and different batteries, and I have discovered at least two serious
+problems that require my attention, and that could lead to an increase
+of the price of the device.&lt;/p&gt;
+&lt;p&gt;The first problem wasn’t immediately apparent with the simple games I
+tested the device with, mostly because they check for button presses
+pretty often. But not all programs written for PewPew devices do that,
+and the less frequently they check for the presses, the worse the
+touch buttons on the device work. You see, originally the pew library
+would use the same interrupt it used to refresh the LED matrix to also
+check for button presses, so the checks were very frequent and were
+happening in the background. When it was ported to other devices, it
+used the keypad library to also keep checking the presses in the
+background at a high rate, and processed the resulting events when the
+game asked button presses. But there is currently no keypad library
+for touch pads in CircuitPython, or any other way of checking for
+touch in the background. So the pew library for this device only
+checks the pads for touches when the game asks it. And that means that
+if the game doesn’t ask often enough, some touches will be missed. And
+that results in an unreliable and laggy feel of the games on this
+device. It simply is not pleasant to use it. We can’t allow that.&lt;/p&gt;
+&lt;p&gt;I can think of two ways of solving this problem. The first is to fix
+it in software and write a library similar to keypad, but for touch.
+This requires some datasheet diving to be done right, without slowing
+the code running in the foreground on the device. I’m not entirely
+sure I can do it, but I will try. I can think of two ways of doing it,
+the harder, with interrupts, and the easier, with the system tick. If
+I don’t manage to write such a library, the only other solution I can
+think of is to add back physical buttons to the device. It would
+increase the price, yes, but it would also immediately solve the
+problem, as I could then again use the keypad library, and it would
+provide the users with tactile feedback, further increasing the
+pleasure from using the device. Plus, buttons are really not that
+expensive, even the nice ones.&lt;/p&gt;
+&lt;p&gt;The second problem has to do with batteries. You see, the kind of coin
+batteries that this device uses are not the same all over the world.
+When I designed the prototype, I tested it with batteries I bought in
+Switzerland, and they had no problem driving the display and the
+microcontroller. However, when I went to a conference to UK, and
+bought some batteries there, they proved to be too weak to even start
+the device. I can only assume that regulations in different countries
+require different power from the same type of the battery, and
+naturally batteries destined to different markets differ in quality.&lt;/p&gt;
+&lt;p&gt;Again, there are several ways I could solve this problem. I could
+switch back to two AAA cells, instead of a coin battery. I could
+require a thicker (and more expensive) variant of the coin battery I’m
+using, or even a bigger (and harder to obtain) one. I could remove the
+battery slot entirely and say that the device should be connected to
+USB for use – after all, that’s how it would be used during the
+workshop, which is the main target for it. But a simple boost
+converter circuit would work too, and it would also make it run on the
+same battery longer, draining it more completely before failure.
+What’s more important, it would feed the device a consistent voltage
+as long as the battery had enough juice left in it. And there are
+ready boost converter chips out there for really cheap. It would add
+to the cost of the device a little, and complicate it a bit more, but
+I think the increased reliability and use of the battery is well worth
+it.&lt;/p&gt;
+&lt;p&gt;So I need to redesign the prototype to add a boost converter circuit
+to it, complete with a small inductor and a controller chip, and some
+beefy filtering capacitors. I have already tested a similar circuit in
+another project, and it works very well, so I’m optimistic about this.&lt;/p&gt;
+&lt;p&gt;There is a third problem, but it has more to do with logistics than
+with the hardware. I don’t want to be selling those devices myself.
+Sure, I can order a batch for a workshop or two, but I don’t want to
+have to run to the post office to fulfill orders. But I want other
+people to also be able to run workshops with them. That means that I
+need to make them as easy to order as possible, and that’s done easily
+by re-doing the design in EasyEDA instead of Fritzing. With that,
+people can simply open the designs without having to install anything
+on their computers, change the silkscreen according to their needs,
+and order the device assembled with a few clicks. Well, mostly
+assembled, they would still need to buy and solder the displays.&lt;/p&gt;
+&lt;p&gt;Unless, of course, I switched to some kind of displays that are
+available from LCSC, like the small OLED screens I used in the &lt;a class="reference internal" href="../../../projects/project-180309/#project-180309"&gt;&lt;span class="std std-ref"&gt;PewPew OLED&lt;/span&gt;&lt;/a&gt; . Come to think of it… hmmm…&lt;/p&gt;
+&lt;p&gt;Anyways, I have some work and some decisions before me.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-185291/log-222610/" rel="alternate"/>
+    <summary>Published on 2023-08-29 in project-185291.</summary>
+    <published>2023-08-29T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-185291/log-222719/</id>
+    <title>Never Be Clever for the Sake of Being Clever</title>
+    <updated>2023-09-01T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="never-be-clever-for-the-sake-of-being-clever"&gt;
+
+&lt;p&gt;Published on 2023-09-01 in &lt;a class="reference internal" href="../../../projects/project-185291/#project-185291"&gt;&lt;span class="std std-ref"&gt;PewPew LCD&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;A bunch of sleepless nights, and I have designed a version of PewPew
+with that ST7735 display from LCSC in EasyEDA, to see how that single-
+click assembly thing would work for it. I was very careful to use the
+parts from the basic parts list as much as possible, so as to not
+incur extra costs for loading new parts into the PnP machines. It
+looks like this:&lt;/p&gt;
+&lt;img alt="projects/project-185291/images/6883751693591818494.png" src="projects/project-185291/images/6883751693591818494.png" /&gt;
+&lt;p&gt;Of course all the parts are on the back, including the long row of
+parts that is the power supply, including the LDO regulator for
+handling the USB 5V, and a boost converter for the battery.
+Unfortunately I didn’t take a screenshot of the finished board from
+the back, so here it is without the boost circuit.&lt;/p&gt;
+&lt;img alt="projects/project-185291/images/6033781693592930573.png" src="projects/project-185291/images/6033781693592930573.png" /&gt;
+&lt;p&gt;There is also plenty of space for documenting the pins and adding
+whatever PCB art I decide on, but for a prototype that is enough. So I
+clicked the magical one-click button, did all the additional clicks to
+generate the BOM and PNP files that for some reason the one-click
+button doesn’t handle, and was presented for a quote for assembling 5
+units: a little bit over $50. And that is without the SAMD21, which
+happens to have a “shortfall”, and without the display, that doesn’t
+even appear in the parts search, despite the fact that you can find it
+on LCSC without problems. Add to this the shipping costs and the
+missing parts (which happen to be the two most expensive ones), and
+you can easily expect $20 a piece. That’s not what I expected, so I
+looked closely at the breakdown of fees, and turns out I’d have to pay
+extra $25 “setup fee” for the fact that the PCB is 0.6mm thick instead
+of the regular 1.6mm thickness. It would also have to be green,
+because all other colors in that thickness are ridiculously expensive.\&lt;/p&gt;
+&lt;p&gt;In hindsight, this isn’t surprising. If they have to change the
+settings of the whole production line just to churn out those 5
+boards, it’s going to take time and work from their engineers. The
+good thing is that it’s a one-time fee, so it would have much less of
+an impact on the final price if I ordered, say, 100 units. But I want
+people to be able to order just a dozen units for a workshop, so this
+is definitely sub-optimal.&lt;/p&gt;
+&lt;p&gt;What can I do? What if I stopped trying to be clever with the battery
+holder and the USB socket, and used regular parts like everyone else,
+and regular thickness of the PCB? Those parts cost literal cents,
+after all. Let’s see:&lt;/p&gt;
+&lt;img alt="projects/project-185291/images/8454121693592462152.png" src="projects/project-185291/images/8454121693592462152.png" /&gt;
+&lt;p&gt;I also simplified the board outline, while I was at it, in the vain
+hope that it would make the previews on the JLCPCB website work, but
+it didn’t. I guess their engineers are busy with other things. In any
+case, this time it was just around $30 for 5 units, which sounds much
+more reasonable, until you remember that the boards are missing the
+two most expensive and hardest to solder parts, the MCU and the
+display. And this time the largest fee is the “extra components” fee,
+for using parts that aren’t the basic parts list. Because while the
+USB socket and battery holder indeed only cost cents, they are not
+“basic parts”, so you pay an additional fee (much higher than the
+price of the part) just for loading them into the PnP. I feel like I
+can’t win this.&lt;/p&gt;
+&lt;p&gt;So the plan right now is to focus on the other problem I have
+identified in the previous log, maybe get a new revision of the nokia
+display prototype into EasyEDA if I can’t sleep again, and try to see
+if some fab would be interested to carry those boards in their shop.
+Because the only way to get them cheap is to make a lot of them at
+once. But that will have to wait until the SAMD21 is back in stock.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-185291/log-222719/" rel="alternate"/>
+    <summary>Published on 2023-09-01 in project-185291.</summary>
+    <published>2023-09-01T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-185291/log-223517/</id>
+    <title>Connectors</title>
+    <updated>2023-09-23T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="connectors"&gt;
+
+&lt;p&gt;Published on 2023-09-23 in &lt;a class="reference internal" href="../../../projects/project-185291/#project-185291"&gt;&lt;span class="std std-ref"&gt;PewPew LCD&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;If I we can’t have them solder the display on the PCB for us, and have
+to get it separately, maybe we can at least skip the soldering step by
+using an FPC connector. This way you just have to stick the display in
+the, insert it into the connector and you are done. The Nokia display
+has a 12-pin FPC ribbon, with 0.6mm pitch. Looking through LCSC, there
+are no 12-pin connectors in that pitch, but there is a 13-pin one. A
+bit of a weird number, but maybe we can shift the ribbon to one side
+and still use it. So I ordered it to see how it will work
+mechanically. Three weeks later it arrived, and I have to say I didn’t
+expect this:&lt;/p&gt;
+&lt;img alt="projects/project-185291/images/2897611695456429712.jpg" src="projects/project-185291/images/2897611695456429712.jpg" /&gt;
+&lt;p&gt;A bit small, isn’t it? You see, it does have 13 pins, but six of them
+are on the bottom, while seven are on the top side of the ribbon,
+alternating. That does explain why all those connectors have an odd
+number of pins.&lt;/p&gt;
+&lt;p&gt;But that means we need either a 23 or 25 pin connector, depending on
+whether the contacts are on top or bottom. A search through LCSC
+reveals that the 25 pin connector has been discontinued, so that
+leaves us with the 23-pin one. No problem, we can manage that by
+threading the FPC ribbon through a hole in the PCB without bending,
+and having the connector on the other side.&lt;/p&gt;
+&lt;p&gt;There is only one more problem left. That connector costs $0.50 a
+piece – it doesn’t seem like that much until you realize it’s half the
+price of the display. Ooof. I will keep exploring the possibilities.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-185291/log-223517/" rel="alternate"/>
+    <summary>Published on 2023-09-23 in project-185291.</summary>
+    <published>2023-09-23T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-185291/log-230707/</id>
+    <title>Practicality Beats Purity</title>
+    <updated>2024-06-23T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="practicality-beats-purity"&gt;
+
+&lt;p&gt;Published on 2024-06-23 in &lt;a class="reference internal" href="../../../projects/project-185291/#project-185291"&gt;&lt;span class="std std-ref"&gt;PewPew LCD&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;It’s been a while since the last update in this project, but that
+doesn’t mean nothing was happening. In fact, the whole project got a
+complete overhaul, as I reevaluated the goals and the methods of
+reaching them.&lt;/p&gt;
+&lt;p&gt;I went back all the way to the &lt;a class="reference internal" href="../../../projects/project-165032/#project-165032"&gt;&lt;span class="std std-ref"&gt;PewPew M4&lt;/span&gt;&lt;/a&gt; design, including standard thickness PCB, a micro-USB socket that is
+not made out of the PCB, and a plastic battery holder for two AAA
+batteries. And physical buttons. I also changed the display to a
+ST7735, 180x128, 1.8” color TFT.&lt;/p&gt;
+&lt;p&gt;Why such sudden changes? Well, the short answer is: because I need a
+reliable, working, non-experimental device that can be easily produced
+at scale for workshops right now. The long answer requires me to fill
+in some details.&lt;/p&gt;
+&lt;p&gt;First of all, all the cool features like the USB port and battery
+holder made of PCB itself require a thin 0.6mm PCB. Which is usually
+more expensive, not available in colors, or not available for assembly
+with PNP machines. Or all three. So I dropped all that in order to be
+able to use the cheapest assembly options out there.&lt;/p&gt;
+&lt;p&gt;Second, while the Nokia display is very reasonably priced at 1$, and
+it gives us all a warm feeling reusing old parts that would rot in the
+warehouse somewhere otherwise, it’s problematic, because you can’t
+have to buy it separately and solder onto all the consoles yourself.
+And no, you can’t use a connector, because you can’t buy matching
+connectors. On the other hand, ST7735 displays go for $2, are bigger,
+have better contrast, better support in software and will be around
+for a while yet. And surprise surprise, they also come from old
+(though slightly more recent) Nokia phones.&lt;/p&gt;
+&lt;p&gt;Third, and this is entirely my fault, I can’t get the touch buttons
+working reliably. The problem is that I’m only checking them when the
+keys are checked in the game loop. And at 12 or even 6 FPS, that is
+not often enough. So they feel unreliable and laggy. I would need to
+write a version of the keypad library for CircuitPython that checks
+them in the background (or uses interrupts), and I made an attempt at
+this, but I’m blocked by the proprietary qtouch library that the
+SAMD21 uses. So I accepted the additional cost and went back to
+physical buttons. I found tact switches that are clicky but have low
+actuation power, and they feel great.&lt;/p&gt;
+&lt;p&gt;I’m now in the process of assembling 50 units for a workshop I will be
+running in two weeks. Wish me luck.&lt;/p&gt;
+&lt;img alt="projects/project-185291/images/6344511719177304495.jpg" src="projects/project-185291/images/6344511719177304495.jpg" /&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-185291/log-230707/" rel="alternate"/>
+    <summary>Published on 2024-06-23 in project-185291.</summary>
+    <published>2024-06-23T00:00:00+02:00</published>
+  </entry>
+</feed>

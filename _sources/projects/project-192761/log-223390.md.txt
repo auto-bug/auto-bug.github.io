@@ -1,0 +1,30 @@
+---
+blogpost: true
+date: 2023-09-19
+category: project-192761
+---
+
+# Missing Components
+Published on 2023-09-19 in {ref}`project-192761`.
+
+Today I finally added all the missing components: the resistor for the
+backlight, the accelerometer with its i2c pull-ups, and the two red
+LEDs on the gun, with their matching resistors as well. I was waiting
+for the right sized resistors to arrive from LCSC, but they seem to be
+stuck at the airport for the last three weeks, so I squeezed the
+bigger resistors I have in those footprints instead. I also improved
+the idle animation a bit, adding random eye movements and improving
+the timing of the blinking:
+
+
+
+:::{image} images/9565751695115469391.gif
+
+:::
+
+
+Now I need to figure out how to process the data from the
+accelerometer to make it detect the events that will trigger different
+animations. And of course to draw all those different animations. It
+will probably take a while.
+

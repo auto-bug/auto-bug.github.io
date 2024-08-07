@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Sound Volume Reduced - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="sound-volume-reduced">
+<h1>Sound Volume Reduced<a class="headerlink" href="#sound-volume-reduced" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2023-12-12 in <a class="reference internal" href="../#project-186921"><span class="std std-ref">µGame 22</span></a>.</p>
+<p>I have been quiet the past few months about this project, because I
+was still struggling with power problems. Adding the boost converter
+was a great idea, and it works very well, but if you make the speaker
+play white noise, it will still overwhelm the batteries and make the
+voltage drop enough that the display resets, and you get a white
+screen of death.</p>
+<p>I tried lowering the gain on the amplifier (I dedicated an extra GPIO
+pin for that, so that I can do it with software), but it didn’t help.
+So I let the project sit for a while, while I waited for inspiration.</p>
+<p>The inspiration struck a few days ago, and I was lucky that I could
+test it immediately, by cutting a trace on the board and soldering a
+resistor in series with the speaker. I know, it sounds obvious now,
+but you have to remember that I have very little experience with
+analog circuits. So yeah, the resistor limits the current drawn by the
+speaker, at the cost of lowering the volume somewhat. But now the
+screen doesn’t reset, and the volume was too loud for my tastes
+anyways.</p>
+<p>I think this was the last problem I was struggling with, and the next
+step is to bodge the remaining ten prototypes I have assembled and run
+a workshop with them, to see if the participants find any new and
+exciting problems. If they don’t, and I will start looking into
+producing and selling them.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

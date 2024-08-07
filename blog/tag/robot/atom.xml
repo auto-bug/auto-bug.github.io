@@ -2,184 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posts tagged ROBOT</title>
-  <updated>2024-08-07T20:34:15.883827+00:00</updated>
+  <updated>2024-08-07T20:35:32.271861+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/tag/robot/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
-  <entry>
-    <id>http://deshipu.art/projects/project-19603/</id>
-    <title>D1 Mini Tote</title>
-    <updated>2017-01-26T00:00:00+01:00</updated>
-    <content type="html">&lt;section id="d1-mini-tote"&gt;
-
-&lt;p&gt;A version of Tote with the D1 Mini ESP8266 board as a brain.&lt;/p&gt;
-&lt;div class="project-thumb"&gt;
-&lt;a class="reference external image-reference" href="/_images/2666111485449727353.jpg"&gt;&lt;img alt="projects/project-19603/images/2666111485449727353.jpg" src="projects/project-19603/images/2666111485449727353.jpg" /&gt;&lt;/a&gt;
-&lt;a class="reference external image-reference" href="/_images/2334121500903935343.jpg"&gt;&lt;img alt="projects/project-19603/images/2334121500903935343.jpg" src="projects/project-19603/images/2334121500903935343.jpg" /&gt;&lt;/a&gt;
-&lt;/div&gt;
-&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;This is the next step of evolution of {ref}`project-6050`  and {ref}`project-9927` , the spider robots that were designed to be as simple and easy to
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;build as possible, without sacrificing the proper walking algorithms.
-This time the focus is on making it easier to program and to modify by
-attaching additional hardware.&lt;/p&gt;
-&lt;p&gt;While Tote was focusing on building a proper quadruped robot without
-special materials and tools and as cheaply as possible, the subsequent
-projects focus on making the robot more reliable and easier to
-experiment with. The &lt;a class="reference internal" href="../../../projects/project-19921/#project-19921"&gt;&lt;span class="std std-ref"&gt;SpiderWing&lt;/span&gt;&lt;/a&gt; project loosens the budget constraints, aiming to make a sturdier,
-stronger and more consistently reproducible robot. This project works
-in parallel to that, trying to incorporate the same improvements, but
-without rising the price too much. The two projects are meant to cover
-the conflicting needs of hobby robot developers.&lt;/p&gt;
-&lt;p&gt;Of course, the overarching goal for both of them is to stimulate
-research in affordable and reliable legged robots, so that we can have
-devices like this at our homes one day.&lt;/p&gt;
-&lt;section id="logs"&gt;
-&lt;h2&gt;Logs&lt;/h2&gt;
-&lt;ul class="postlist-style-none postlist simple"&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-05-08 - &lt;a class="reference internal" href="../../../projects/project-19603/log-163051/"&gt;One More Version&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-06-15 - &lt;a class="reference internal" href="../../../projects/project-19603/log-61660/"&gt;Sturdier Legs&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-06-14 - &lt;a class="reference internal" href="../../../projects/project-19603/log-61585/"&gt;More Brain Power&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-02-20 - &lt;a class="reference internal" href="../../../projects/project-19603/log-53577/"&gt;Battery Protection&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-02-18 - &lt;a class="reference internal" href="../../../projects/project-19603/log-53501/"&gt;Smaller ATmega&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-01-29 - &lt;a class="reference internal" href="../../../projects/project-19603/log-52602/"&gt;Debugging&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-01-26 - &lt;a class="reference internal" href="../../../projects/project-19603/log-52462/"&gt;Surprise PCBs&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/section&gt;
-&lt;section id="instructions"&gt;
-&lt;h2&gt;Instructions&lt;/h2&gt;
-&lt;section id="mechanical-assembly"&gt;
-&lt;h3&gt;Mechanical Assembly&lt;/h3&gt;
-&lt;p&gt;For mechanical assembly, follow the instructions at &lt;a class="reference external" href="http://tote.readthedocs.io/en/latest/assembly_v5.html#legs"&gt;http://tote.readthedocs.io/en/latest/assembly_v5.html#legs&lt;/a&gt;&lt;/p&gt;
-&lt;/section&gt;
-&lt;hr class="docutils" /&gt;
-&lt;section id="electronics"&gt;
-&lt;h3&gt;Electronics&lt;/h3&gt;
-&lt;p&gt;Solder the headers, PWM chip and resistors onto the board. Add the
-power switch and battery holder. Connect the servo plugs.&lt;/p&gt;
-&lt;/section&gt;
-&lt;hr class="docutils" /&gt;
-&lt;section id="programming"&gt;
-&lt;h3&gt;Programming&lt;/h3&gt;
-&lt;p&gt;Copy the python code from project’s repository onto your D1 Mini using
-Adafruit’s Ampy utility. Plug the D1 Mini into the PCB.&lt;/p&gt;
-&lt;/section&gt;
-&lt;hr class="docutils" /&gt;
-&lt;section id="extending"&gt;
-&lt;h3&gt;Extending&lt;/h3&gt;
-&lt;p&gt;Use the D1 Mini’s headers to add shields with sensors and other
-components to the robot. Modify the code to take advantage of them.&lt;/p&gt;
-&lt;/section&gt;
-&lt;/section&gt;
-&lt;hr class="docutils" /&gt;
-&lt;/section&gt;
-</content>
-    <link href="http://deshipu.art/projects/project-19603/" rel="alternate"/>
-    <summary>A version of Tote with the D1 Mini ESP8266 board as a brain.</summary>
-    <category term="2017HackadayPrize" label="2017HackadayPrize"/>
-    <category term="ESP8266" label="ESP8266"/>
-    <category term="ROBOT" label="ROBOT"/>
-    <category term="WALKING" label="WALKING"/>
-    <category term="d1mini" label="d1 mini"/>
-    <category term="hardware" label="hardware"/>
-    <category term="ongoingproject" label="ongoing project"/>
-    <category term="quadruped" label="quadruped"/>
-    <category term="spider" label="spider"/>
-    <category term="tote" label="tote"/>
-    <published>2017-01-26T00:00:00+01:00</published>
-  </entry>
-  <entry>
-    <id>http://deshipu.art/projects/project-19921/</id>
-    <title>SpiderWing</title>
-    <updated>2017-02-18T00:00:00+01:00</updated>
-    <content type="html">&lt;section id="spiderwing"&gt;
-
-&lt;p&gt;Spider robot powered by Adafruit Feather boards and CircuitPython.&lt;/p&gt;
-&lt;div class="project-thumb"&gt;
-&lt;a class="reference external image-reference" href="/_images/4253281487438198842.jpg"&gt;&lt;img alt="projects/project-19921/images/4253281487438198842.jpg" src="projects/project-19921/images/4253281487438198842.jpg" /&gt;&lt;/a&gt;
-&lt;a class="reference external image-reference" href="/_images/5950241497285635699.jpg"&gt;&lt;img alt="projects/project-19921/images/5950241497285635699.jpg" src="projects/project-19921/images/5950241497285635699.jpg" /&gt;&lt;/a&gt;
-&lt;a class="reference external image-reference" href="/_images/3137951500460500978.jpg"&gt;&lt;img alt="projects/project-19921/images/3137951500460500978.jpg" src="projects/project-19921/images/3137951500460500978.jpg" /&gt;&lt;/a&gt;
-&lt;a class="reference external image-reference" href="/_images/9842911577816167234.JPG"&gt;&lt;img alt="projects/project-19921/images/9842911577816167234.JPG" src="projects/project-19921/images/9842911577816167234.JPG" /&gt;&lt;/a&gt;
-&lt;/div&gt;
-&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;This is the successor of the {ref}`project-6050`  robot, and its small family ( {ref}`project-9065` , {ref}`project-9927` , {ref}`project-19603` ). Tote itself was focused mostly on affordability, ease of assembly
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;and extensibility — and I think that it achieved those goals
-relatively well. However, it turns out that physically building the
-robot and programming the first gait is just the tip of the iceberg.
-We need something a little more powerful than a simple Arduino, and
-something much easier to program and test. The SpiderWing builds on
-top of Tote, but focuses more on the ease of programming and
-reliability. It uses slightly more expensive parts (Adafruit Feather
-boards, SG92R servos) to be more reliable and easier to reproduce
-exactly (whereas every Tote is slightly different from all the
-others). It will also use advanced sensors, such as the time-of-flight
-distance sensors or the IMU sensors with built-in fusion algorithms,
-in order to get better and more consistent results.&lt;/p&gt;
-&lt;p&gt;Of course the ultimate goal remains the same — to bring walking robots
-into our homes and hopefully crowd-source their development, so that
-they become reliable and cheap enough to be generally useful.&lt;/p&gt;
-&lt;iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/Y69_nhqh28M"&gt;&lt;/iframe&gt;
-&lt;iframe style="width: 500px; height: 281px;" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/4QuXRsifHEk"&gt;&lt;/iframe&gt;
-&lt;section id="logs"&gt;
-&lt;h2&gt;Logs&lt;/h2&gt;
-&lt;ul class="postlist-style-none postlist simple"&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-12-31 - &lt;a class="reference internal" href="../../../projects/project-19921/log-172522/"&gt;It’s Alive (Again)&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-12-16 - &lt;a class="reference internal" href="../../../projects/project-19921/log-171982/"&gt;Bodgetty Bodge&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-12-08 - &lt;a class="reference internal" href="../../../projects/project-19921/log-171687/"&gt;Batteries! Why Doesn’t Anybody Think About the Batteries?&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-11-03 - &lt;a class="reference internal" href="../../../projects/project-19921/log-170560/"&gt;New PCB Design&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-11-02 - &lt;a class="reference internal" href="../../../projects/project-19921/log-170536/"&gt;Time for a Refresh&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-07-23 - &lt;a class="reference internal" href="../../../projects/project-19921/log-63890/"&gt;Repository and License&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-07-23 - &lt;a class="reference internal" href="../../../projects/project-19921/log-63888/"&gt;Proper Crawl&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-07-19 - &lt;a class="reference internal" href="../../../projects/project-19921/log-63408/"&gt;Status Update&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-05-15 - &lt;a class="reference internal" href="../../../projects/project-19921/log-59618/"&gt;Smartening Up&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-05-14 - &lt;a class="reference internal" href="../../../projects/project-19921/log-59586/"&gt;Sensor and Cable Management&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-05-13 - &lt;a class="reference internal" href="../../../projects/project-19921/log-59494/"&gt;The Good, The Bad and the Adorable&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/section&gt;
-&lt;section id="instructions"&gt;
-&lt;h2&gt;Instructions&lt;/h2&gt;
-&lt;section id="mechanical-assembly"&gt;
-&lt;h3&gt;Mechanical Assembly&lt;/h3&gt;
-&lt;p&gt;For mechanical assembly, follow the instructions at &lt;a class="reference external" href="http://tote.readthedocs.io/en/latest/assembly_v5.html#legs"&gt;http://tote.readthedocs.io/en/latest/assembly_v5.html#legs&lt;/a&gt;&lt;/p&gt;
-&lt;/section&gt;
-&lt;hr class="docutils" /&gt;
-&lt;section id="electronics"&gt;
-&lt;h3&gt;Electronics&lt;/h3&gt;
-&lt;p&gt;Solder the headers, the PWM chip and the two resistors onto the PCB.
-Add the power switch and the battery holder.&lt;/p&gt;
-&lt;/section&gt;
-&lt;hr class="docutils" /&gt;
-&lt;section id="programming"&gt;
-&lt;h3&gt;Programming&lt;/h3&gt;
-&lt;p&gt;Copy the python files from the project’s repository onto your feather
-board.&lt;/p&gt;
-&lt;/section&gt;
-&lt;hr class="docutils" /&gt;
-&lt;section id="profit"&gt;
-&lt;h3&gt;PROFIT!&lt;/h3&gt;
-&lt;p&gt;Modify the code, add sensors, experiment.&lt;/p&gt;
-&lt;/section&gt;
-&lt;/section&gt;
-&lt;hr class="docutils" /&gt;
-&lt;/section&gt;
-</content>
-    <link href="http://deshipu.art/projects/project-19921/" rel="alternate"/>
-    <summary>Spider robot powered by Adafruit Feather boards and CircuitPython.</summary>
-    <category term="2017HackadayPrize" label="2017HackadayPrize"/>
-    <category term="ESP8266" label="ESP8266"/>
-    <category term="Feather" label="Feather"/>
-    <category term="Huzzah" label="Huzzah"/>
-    <category term="ROBOT" label="ROBOT"/>
-    <category term="WALKING" label="WALKING"/>
-    <category term="adafruit" label="adafruit"/>
-    <category term="featherwing" label="featherwing"/>
-    <category term="hardware" label="hardware"/>
-    <category term="ongoingproject" label="ongoing project"/>
-    <category term="quadruped" label="quadruped"/>
-    <category term="spider" label="spider"/>
-    <published>2017-02-18T00:00:00+01:00</published>
-  </entry>
   <entry>
     <id>http://deshipu.art/projects/project-19936/</id>
     <title>Marvin</title>
@@ -305,5 +131,113 @@ board.&lt;/p&gt;
     <category term="quadruped" label="quadruped"/>
     <category term="spider" label="spider"/>
     <published>2018-06-10T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-188908/</id>
+    <title>Moo Bug</title>
+    <updated>2022-12-30T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="moo-bug"&gt;
+
+&lt;p&gt;Fluffbug, but with a Pi Cow&lt;/p&gt;
+&lt;div class="project-thumb"&gt;
+&lt;a class="reference external image-reference" href="/_images/9476581672439955406.jpg"&gt;&lt;img alt="projects/project-188908/images/9476581672439955406.jpg" src="projects/project-188908/images/9476581672439955406.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/9187891710844611867.jpg"&gt;&lt;img alt="projects/project-188908/images/9187891710844611867.jpg" src="projects/project-188908/images/9187891710844611867.jpg" /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Some time ago I decided that the SAMD21 chip I originally used for the {ref}`project-180025` is not powerful enough, and impossible to get anyways due to chip
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;shortage, and I identified two options I could go with, ESP32-S2 and
+RP2040. In the end I went with the Lolin S2 Mini board and the
+ESP32-S2 chip, but I never stopped thinking how would the things go if
+I went the other way. And then the Raspberry Pi Pico W board was
+released, adding WiFi to RP2040, and it became even more tempting to
+try it with the robots. I resisted several months, but eventually
+caved in, and this is it: Moo Bug, a Fluffbug with a Pi Cow (“pico w”,
+get it?).&lt;/p&gt;
+&lt;section id="logs"&gt;
+&lt;h2&gt;Logs&lt;/h2&gt;
+&lt;ul class="postlist-style-none postlist simple"&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2024-03-18 - &lt;a class="reference internal" href="../../../projects/project-188908/log-228292/"&gt;Going Smaller&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2022-12-31 - &lt;a class="reference internal" href="../../../projects/project-188908/log-214803/"&gt;The OLED Face&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2022-12-30 - &lt;a class="reference internal" href="../../../projects/project-188908/log-214801/"&gt;The PCB Design&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section id="instructions"&gt;
+&lt;h2&gt;Instructions&lt;/h2&gt;
+&lt;/section&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-188908/" rel="alternate"/>
+    <summary>Fluffbug, but with a Pi Cow</summary>
+    <category term="ROBOT" label="ROBOT"/>
+    <category term="circuitpython" label="circuitpython"/>
+    <category term="hardware" label="hardware"/>
+    <category term="ongoingproject" label="ongoing project"/>
+    <category term="quadruped" label="quadruped"/>
+    <published>2022-12-30T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-188909/</id>
+    <title>Wee Bug</title>
+    <updated>2022-12-31T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="wee-bug"&gt;
+
+&lt;p&gt;Fluffbug but smaller&lt;/p&gt;
+&lt;div class="project-thumb"&gt;
+&lt;a class="reference external image-reference" href="/_images/9509241673273452763.jpg"&gt;&lt;img alt="projects/project-188909/images/9509241673273452763.jpg" src="projects/project-188909/images/9509241673273452763.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/9859711673287876667.jpg"&gt;&lt;img alt="projects/project-188909/images/9859711673287876667.jpg" src="projects/project-188909/images/9859711673287876667.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/4258961674770699507.jpg"&gt;&lt;img alt="projects/project-188909/images/4258961674770699507.jpg" src="projects/project-188909/images/4258961674770699507.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/17991693090470263.jpg"&gt;&lt;img alt="projects/project-188909/images/17991693090470263.jpg" src="projects/project-188909/images/17991693090470263.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/1955731693143555811.jpg"&gt;&lt;img alt="projects/project-188909/images/1955731693143555811.jpg" src="projects/project-188909/images/1955731693143555811.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/5593081710886184394.jpg"&gt;&lt;img alt="projects/project-188909/images/5593081710886184394.jpg" src="projects/project-188909/images/5593081710886184394.jpg" /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;While digging through my drawers, I stumbled upon a bag of sub-micro
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;servos I bought a few years ago from HobbyKing for the &lt;a class="reference internal" href="../../../projects/project-10665/#project-10665"&gt;&lt;span class="std std-ref"&gt;Pony Bot&lt;/span&gt;&lt;/a&gt; , but never used in the end, because they had wrong connectors. Turns
+out there are HK-282A servos with 1.25mm-pitch JST connectors and
+HK-282AS, with 1mm-pitch unidentified connectors. In any case, the
+Pony Bot is on hold indefinitely for now, until I can find the energy
+to actually program a gait for it, so I thought that maybe I can use
+those tiny servos for something else: make a tiny version of the &lt;a class="reference internal" href="../../../projects/project-180025/#project-180025"&gt;&lt;span class="std std-ref"&gt;Fluffbug&lt;/span&gt;&lt;/a&gt; robot. That would also have the advantage of not needing to write a
+new gait code, since the one already written for Fluffbug should work.&lt;/p&gt;
+&lt;p&gt;So I went ahead and started to design a Fluffbug, but with everything
+smaller.&lt;/p&gt;
+&lt;img alt="projects/project-188909/images/3804161677707812005.gif" src="projects/project-188909/images/3804161677707812005.gif" /&gt;
+&lt;section id="logs"&gt;
+&lt;h2&gt;Logs&lt;/h2&gt;
+&lt;ul class="postlist-style-none postlist simple"&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2024-04-16 - &lt;a class="reference internal" href="../../../projects/project-188909/log-229014/"&gt;Designs Published&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2024-03-19 - &lt;a class="reference internal" href="../../../projects/project-188909/log-228303/"&gt;Thermal Camera&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-12-15 - &lt;a class="reference internal" href="../../../projects/project-188909/log-226028/"&gt;Wee Display&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-12-12 - &lt;a class="reference internal" href="../../../projects/project-188909/log-225955/"&gt;1mm and 1.25mm Versions&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-12-01 - &lt;a class="reference internal" href="../../../projects/project-188909/log-225667/"&gt;Not All Batteries are Created Equal&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-10-24 - &lt;a class="reference internal" href="../../../projects/project-188909/log-224561/"&gt;Add Some Fluff&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-10-14 - &lt;a class="reference internal" href="../../../projects/project-188909/log-224329/"&gt;Balancing&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-10-13 - &lt;a class="reference internal" href="../../../projects/project-188909/log-224310/"&gt;A Display&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-09-30 - &lt;a class="reference internal" href="../../../projects/project-188909/log-223768/"&gt;Version 6.0&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-09-20 - &lt;a class="reference internal" href="../../../projects/project-188909/log-223462/"&gt;A String of Prototypes&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-08-27 - &lt;a class="reference internal" href="../../../projects/project-188909/log-222565/"&gt;New Body in Action&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-08-19 - &lt;a class="reference internal" href="../../../projects/project-188909/log-222365/"&gt;New Body&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-06-14 - &lt;a class="reference internal" href="../../../projects/project-188909/log-220213/"&gt;New Servos&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-03-01 - &lt;a class="reference internal" href="../../../projects/project-188909/log-216427/"&gt;Just Programmed&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-01-26 - &lt;a class="reference internal" href="../../../projects/project-188909/log-215547/"&gt;Now Just Program It&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2022-12-31 - &lt;a class="reference internal" href="../../../projects/project-188909/log-214805/"&gt;PCB Design&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2022-12-31 - &lt;a class="reference internal" href="../../../projects/project-188909/log-214836/"&gt;2.0 Already!&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section id="instructions"&gt;
+&lt;h2&gt;Instructions&lt;/h2&gt;
+&lt;/section&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-188909/" rel="alternate"/>
+    <summary>Fluffbug but smaller</summary>
+    <category term="ROBOT" label="ROBOT"/>
+    <category term="circuitpython" label="circuitpython"/>
+    <category term="hardware" label="hardware"/>
+    <category term="ongoingproject" label="ongoing project"/>
+    <category term="quadruped" label="quadruped"/>
+    <published>2022-12-31T00:00:00+01:00</published>
   </entry>
 </feed>

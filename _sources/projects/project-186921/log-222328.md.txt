@@ -1,0 +1,47 @@
+---
+blogpost: true
+date: 2023-08-17
+category: project-186921
+---
+
+# Version 2.2
+Published on 2023-08-17 in {ref}`project-186921`.
+
+I finished the EasyEDA version of the board a while ago, and I have
+sent the design files to JLCPCB for assembly. They arrived today, and
+I was quite surprised to see that they just work, without any problems
+or mistakes:
+
+
+
+:::{image} images/6063321692288680727.jpg
+
+:::
+
+
+Even the original laser-cut case fits, though the QWIIC socket is a
+bit of a tight fit in there.
+
+Encouraged by this, I proceeded to testing the battery power, and lo
+and behold, it works as well!
+
+Then came time for checking the sound. I completely changed this, got
+rid of the transistor driving the speaker, and instead used an I2S
+amplifier. And it works very well, and is pretty loud even at the
+lowest gain setting.
+
+There is however a slight problem with this when running on battery
+power. You see, the speaker is so loud, that it makes the battery
+voltage drop, which causes the backlight to dim and sometimes even the
+display – the only part that really needs 3V for power – will
+sometimes reset and show the white screen of death. That only happens
+with the loudest sound I have in my games – the explosion – but it is
+a problem.
+
+So what can I do with it? I will try and see if I can squeeze a boost
+converter circuit in there, to keep the battery voltage stable even
+when the poor little things are overloaded. It should also prolong the
+battery life, so yay. The problem is that I have never done this
+before, so I'm a bit worried how it will go. The datasheets seem to be
+simple enough, though.
+

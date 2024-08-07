@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>New Body - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="new-body">
+<h1>New Body<a class="headerlink" href="#new-body" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2023-08-19 in <a class="reference internal" href="../#project-188909"><span class="std std-ref">Wee Bug</span></a>.</p>
+<p>I couldn’t sleep last night, and when I can’t sleep I design PCBs.
+This time I decided to get back to this little cute robot and make a
+new PCB for its body. The original one was kinda slapped together
+without much deliberation, just to make it look like its bigger
+brother <a class="reference internal" href="../../project-180025/#project-180025"><span class="std std-ref">Fluffbug</span></a> but fit the small servo sockets. This time I decided to do it
+properly.</p>
+<p>First of all, I want some solution for the cable management. I can’t
+use IDC plugs like with Fluffbug, because the wires those little
+servos use are so thin! But I also don’t want to have to re-crimp the
+plugs after cutting the wires to the right size. So I decided to
+compromise by adding slots to the PCB under the servos, where you can
+hide excess wires. Hopefully they are large enough to fit all of them.</p>
+<p>Second thing is to give up on the Xiao board, and use a discrete
+microcontroller chip right on the board. That lets me use all the
+pins, makes the whole thing smaller, and, if you assemble it yourself,
+also cheaper. It has the downside that you can’t easily replace the
+code by changing the modules. Oh well.</p>
+<img alt="projects/project-188909/images/7670971692401567284.png" src="projects/project-188909/images/7670971692401567284.png" />
+<p>And finally, the most visible change is to add some visual bling. This
+robot looks a little bit like a crab, and I could have leaned into it,
+but while I personally think crabs are incredibly cute, many people
+don’t agree with me, especially the ones with some arachnophobia. So I
+decided to make it look like a mech from an anime movie or game
+instead, by adding a picture of a pilot on the front of the PCB.\</p>
+<img alt="projects/project-188909/images/4545951692401554121.png" src="projects/project-188909/images/4545951692401554121.png" />
+<p>Last, but not least, I added an accelerometer chip in there, so that
+we can have some sensors to react to. The board should arrive in a
+week or so, and I will probably take some time assembling it. I will
+keep you updated.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

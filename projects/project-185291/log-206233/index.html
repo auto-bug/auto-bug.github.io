@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Why not Recycle Everything? - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="why-not-recycle-everything">
+<h1>Why not Recycle Everything?<a class="headerlink" href="#why-not-recycle-everything" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2022-05-17 in <a class="reference internal" href="../#project-185291"><span class="std std-ref">PewPew LCD</span></a>.</p>
+<p>With both the screen and the battery being chosen with their impact on
+environment in mind, you are probably wondering what about the
+remaining components, especially the microcontroller?</p>
+<p>The quick answer to that is that the chip shortage has cleared any old
+micrcontrollers from the warehouses quite well already, so there isn’t
+really much surplus we could draw on here.</p>
+<p>The more detailed answer is that the main and overriding goal of this
+project is to remove as many obstacles between you and the game you
+are going to write, as possible, and the older microcontrollers simply
+don’t have the resources, in terms of memory and speed, to run a
+Python interpreter. They often don’t even have native USB peripheral
+on them, which means you would have to muck about installing
+toolchains, compiling your programs, and using special dongles and
+programs to flash them onto the device. This is simply unacceptable.</p>
+<p>As for the other components, they are really generic, and you could
+easily use recycled ones if you are building this by hand. But for
+producing hundreds of the devices, the additional effort in hand-
+placing them and doing quality checks to make sure they work, with
+added risk that they might stop working at any time anyways, is simply
+not worth it.</p>
+<p>So we will have this mixture of old and new technology — ancient
+screen with a advanced microcontroller, traditional battery with a
+modern voltage regulator, generic switch with new capacitors.</p>
+<p>Oh, and I also looked into using paper PCBs, but it seems the
+technology is not quite there yet.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

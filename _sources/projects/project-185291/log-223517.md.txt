@@ -1,0 +1,43 @@
+---
+blogpost: true
+date: 2023-09-23
+category: project-185291
+---
+
+# Connectors
+Published on 2023-09-23 in {ref}`project-185291`.
+
+If I we can't have them solder the display on the PCB for us, and have
+to get it separately, maybe we can at least skip the soldering step by
+using an FPC connector. This way you just have to stick the display in
+the, insert it into the connector and you are done. The Nokia display
+has a 12-pin FPC ribbon, with 0.6mm pitch. Looking through LCSC, there
+are no 12-pin connectors in that pitch, but there is a 13-pin one. A
+bit of a weird number, but maybe we can shift the ribbon to one side
+and still use it. So I ordered it to see how it will work
+mechanically. Three weeks later it arrived, and I have to say I didn't
+expect this:
+
+
+
+:::{image} images/2897611695456429712.jpg
+
+:::
+
+
+A bit small, isn't it? You see, it does have 13 pins, but six of them
+are on the bottom, while seven are on the top side of the ribbon,
+alternating. That does explain why all those connectors have an odd
+number of pins.
+
+But that means we need either a 23 or 25 pin connector, depending on
+whether the contacts are on top or bottom. A search through LCSC
+reveals that the 25 pin connector has been discontinued, so that
+leaves us with the 23-pin one. No problem, we can manage that by
+threading the FPC ribbon through a hole in the PCB without bending,
+and having the connector on the other side.
+
+There is only one more problem left. That connector costs $0.50 a
+piece – it doesn't seem like that much until you realize it's half the
+price of the display. Ooof. I will keep exploring the possibilities.
+

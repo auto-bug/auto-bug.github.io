@@ -1,0 +1,57 @@
+---
+blogpost: true
+date: 2022-08-25
+category: project-186921
+---
+
+# First Version
+Published on 2022-08-25 in {ref}`project-186921`.
+
+I was working on this behind the scenes for a while, mostly because I
+didn't have the energy to write the logs, and because the progress was
+really slow. It's my first time using the RP2040 chip, so I wasn't
+even sure it will work. But I did design the PCB, and when I ran out
+of excuses, ordered it together with the laser-cut acrylic parts from [@Elecrow](https://hackaday.io/hacker/879772) .
+
+
+:::{image} images/4441851661424458324.png
+
+:::
+
+
+
+
+
+
+
+:::{image} images/8544691661424474254.png
+
+:::
+
+
+There isn't really that much going on here. We have the RP2040 with
+all the required caps, resistors, crystals and flash memory, we have a
+magnetic speaker with a FET, power switch, seven buttons and a
+display. Very basic. Oh, and I used lead-free solder for the first
+time. It's a bit annoying with how it doesn't melt as well as the
+regular one, but it's not too bad.
+
+
+
+:::{image} images/6990341661424633651.jpg
+
+:::
+
+
+The first test of the RP2040 required a few passes with the hot air
+gun to get working. You can see I have wrong footprint for the crystal
+- that's the only kind I could get quickly. Next version will have the
+proper footprint. I have to say that having a UF2 bootloader built-in
+into the chip is super convenient, no need to flash anything with a
+programmer.
+
+Oh, I forgot. There was a problem with the speaker. Since I added the
+FET at the last moment, I didn't remove the ground seed from the pad,
+and as a result the pad was shorted to the ground. A few deft cuts
+fixed this. It will also be fixed in the next version.
+

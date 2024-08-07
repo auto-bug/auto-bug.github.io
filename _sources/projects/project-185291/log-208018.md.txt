@@ -1,0 +1,117 @@
+---
+blogpost: true
+date: 2022-06-29
+category: project-185291
+---
+
+# Better Game Selection Menu
+Published on 2022-06-29 in {ref}`project-185291`.
+
+The original {ref}`project-21578` and {ref}`project-159733` only have 8x8 LED displays, so the menu for selecting games amounted
+to the name of the currently chosen game scrolling on that display
+horizontally, while up and down buttons would switch to the previous
+or next game on the list, with a nifty animation. I initially used the
+same program as the menu for the PewPew LCD, but there is a huge
+problem with it: that LCD screen is not made for fast scrolling:
+
+
+
+:::{image} images/9429841656531424494.jpg
+
+:::
+
+
+All you get is a smudge, because the pixels don't change fast enough
+to support this animation. But not a problem, after all with all those
+pixels we can have a proper menu, similar to that on the {ref}`project-165032` — with multiple items displayed, and an arrow to choose one of them.
+
+I've been meaning to write that menu program for a while now, but my
+day job and life in general kept getting in the way. Today I finally
+decided to just sit down and do it, and I'm pretty happy with the
+result so far:
+
+
+
+:::{image} images/2739841656531670625.jpg
+
+:::
+
+
+There are several tricks in here. I used the terminalio library of
+CircuitPython to use the same text terminal as the REPL uses, but I
+re-created the TileGrid and the root group to make it all two times
+bigger — the tiny font is good for printing the errors, because the
+whole traceback fits on the screen, but it was really too small to
+comfortably select a game title. For now I'm just using text ">>" for
+the arrow, but since I re-created the root group, there is nothing
+stopping me from adding a sprite of a pointing hand in there. I also
+still need to add scrolling, for the case when there are more than six
+items to choose from, and perhaps some kind of display for the battery
+voltage would be nice? In any case, I have the basics functional, so
+that's a start.
+
+Oh, and the code is not complex at all:
+
+
+```
+import os
+import pew
+import supervisor
+import board
+import displayio
+import terminalio
+
+
+def wait_keys():
+    try:
+        while True:
+            keys = pew.keys()
+            if keys:
+                break
+        for i in range(5):
+            if not pew.keys():
+                break
+            pew.tick(0.0625)
+        else:
+            keys = pew.keys()
+    except pew.GameOver:
+        keys = 0
+    return keys
+
+
+def menu(terminal, items):
+    terminal.write("\x1b[2J")
+    for item in items[:6]:
+        terminal.write("  %s\r\n" % item[:10])
+    selected = 0
+    total = min(6, len(items)) - 1
+    while True:
+        terminal.write("\x1b[%d;1H>>" % (selected + 1))
+        pew.tick(0.125)
+        keys = wait_keys()
+        terminal.write("\x1b[%d;1H  " % (selected + 1))
+        if keys & pew.K_UP and selected > 0:
+            selected -= 1
+        if keys & pew.K_DOWN and selected < total:
+            selected += 1
+        if keys & pew.K_O:
+            terminal.write("\x1b[2J")
+            return items[selected]
+
+pew.init()
+grid = board.DISPLAY.root_group[0]
+grid = displayio.TileGrid(grid.bitmap, pixel_shader=grid.pixel_shader,
+    tile_width = grid.tile_width, tile_height=grid.tile_height,
+    width = 12, height = 6)
+screen = displayio.Group()
+screen.scale = 2
+screen.append(grid)
+board.DISPLAY.show(screen)
+terminal = terminalio.Terminal(grid, terminalio.FONT)
+files = [name[:-3] for name in os.listdir()
+         if name.endswith('.py') and name != 'main.py']
+game = menu(terminal, files)
+supervisor.set_next_code_file("%s.py" % game, reload_on_success=True)
+supervisor.reload()
+```
+

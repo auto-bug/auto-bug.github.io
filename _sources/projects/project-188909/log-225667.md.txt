@@ -1,0 +1,77 @@
+---
+blogpost: true
+date: 2023-12-01
+category: project-188909
+---
+
+# Not All Batteries are Created Equal
+Published on 2023-12-01 in {ref}`project-188909`.
+
+With the new PCB in version 6.0 I switched to the bigger 16340 battery
+that I originally used in {ref}`project-180025` , thinking that the extra weight is not so great, and extra capacity
+will be useful. Also those batteries are much easier to find, since
+they are commonly used in vapers. And incidentally, with version 6.0 I
+started to have problems with power. The robot would work on a fully
+charged battery for maybe half a minute, and then the servos would get
+all shaky, and soon the protection circuit would kick in and shut the
+power down.
+
+I initially thought the shaky servos are because those small 2g servos
+come in two versions: 3.7V and 5V, and maybe I got the 5V ones this
+time. So I made a PCB version 6.1 where I added a boost converter to
+give the servos consistent 5V voltage. It didn't make any difference,
+though, the servos were still shaky. I tried added capacitors
+everywhere I could, but that didn't solve the issue.
+
+
+
+:::{image} images/8289261701453557803.jpg
+
+:::
+
+
+On a hunch, I made a professional adapter out of a paperclip, and
+inserted the previous 14250 battery. Suddenly all the power problems
+went away, the servos are no longer shaky (both with the boost
+converter and without). Interesting. So I went looking for a 16340
+battery from a different batch, and lo and behold, the power problems
+are also gone. It was the battery all along.
+
+
+
+:::{image} images/5100801701453649354.jpg
+
+:::
+
+
+Turns out that you really have to be careful where you get your
+batteries, because they differ not only in capacity (by the way, don't
+believe in what they print on them, a battery with that capacity would
+need to be four times bigger with this chemistry), but also in their
+C-rating, which is basically how much current you can draw from it at
+once.
+
+
+
+:::{image} images/68631701453788165.jpg
+
+:::
+
+
+You need to somehow find a "reputable" source for your batteries,
+which is a bit of a problem, because obviously this is a [lemon market](https://en.wikipedia.org/wiki/The_Market_for_Lemons#Thesis) . Out of curiosity, I also tried a battery removed from a vaper that I
+found on a sidewalk. Turns out that it performs really well, despite
+being a no-name thing. I guess the manufacturer of those devices found
+a trusted source.
+
+
+
+:::{image} images/8126001701454046241.jpg
+
+:::
+
+
+So if you really want to save on the battery, check your sidewalk for
+a free one. You will also save the environment from being poisoned
+with toxic lithium.
+

@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Connectors - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="connectors">
+<h1>Connectors<a class="headerlink" href="#connectors" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2023-09-23 in <a class="reference internal" href="../#project-185291"><span class="std std-ref">PewPew LCD</span></a>.</p>
+<p>If I we can’t have them solder the display on the PCB for us, and have
+to get it separately, maybe we can at least skip the soldering step by
+using an FPC connector. This way you just have to stick the display in
+the, insert it into the connector and you are done. The Nokia display
+has a 12-pin FPC ribbon, with 0.6mm pitch. Looking through LCSC, there
+are no 12-pin connectors in that pitch, but there is a 13-pin one. A
+bit of a weird number, but maybe we can shift the ribbon to one side
+and still use it. So I ordered it to see how it will work
+mechanically. Three weeks later it arrived, and I have to say I didn’t
+expect this:</p>
+<img alt="projects/project-185291/images/2897611695456429712.jpg" src="projects/project-185291/images/2897611695456429712.jpg" />
+<p>A bit small, isn’t it? You see, it does have 13 pins, but six of them
+are on the bottom, while seven are on the top side of the ribbon,
+alternating. That does explain why all those connectors have an odd
+number of pins.</p>
+<p>But that means we need either a 23 or 25 pin connector, depending on
+whether the contacts are on top or bottom. A search through LCSC
+reveals that the 25 pin connector has been discontinued, so that
+leaves us with the 23-pin one. No problem, we can manage that by
+threading the FPC ribbon through a hole in the PCB without bending,
+and having the connector on the other side.</p>
+<p>There is only one more problem left. That connector costs $0.50 a
+piece – it doesn’t seem like that much until you realize it’s half the
+price of the display. Ooof. I will keep exploring the possibilities.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

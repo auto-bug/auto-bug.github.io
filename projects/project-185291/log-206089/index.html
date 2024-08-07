@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>On Batteries - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="on-batteries">
+<h1>On Batteries<a class="headerlink" href="#on-batteries" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2022-05-12 in <a class="reference internal" href="../#project-185291"><span class="std std-ref">PewPew LCD</span></a>.</p>
+<p>If we are talking about the environment, then let’s talk about the
+only consumable part of this device: the battery (by “consumable” I
+mean it needs to be replaced once in a while, please don’t eat
+batteries).</p>
+<p>The very first PewPew FeatherWing used a lithium-polymer rechargeable
+battery, simply because all Feathers use such batteries. I didn’t
+think much about it back then, and I didn’t have a clear use case in
+mind at the time, I just went with what was the default on the
+platform.</p>
+<p>Starting with PewPew Standalone, all devices use primary cell
+batteries — that is, non-rechargeable. Why? Surely rechargeable
+batteries must be much better for the environment, since you get to
+reuse them, and primary cells are just thrown away when they are
+spent? It’s not that simple, and you have to consider how the device
+is used.</p>
+<img alt="projects/project-185291/images/4561131652438440441.jpg" src="projects/project-185291/images/4561131652438440441.jpg" />
+<p>PewPews are designed for workshops. That means that you are most
+likely going to receive your device on a workshop, use it intensively
+for a couple of hours, then take it home with you, maybe carry it
+around for a few days to show to your friends, and then put it in a
+drawer and forget about it for a couple of years. Hopefully, once in a
+while you will find it again, resurrect it and have some fun with it
+again, or give it away to the neighbor’s kid to play, at which points
+the whole story repeats. You might also incorporate it as a control
+panel in some bigger project, at which point it will be probably
+powered from that project.\</p>
+<p>In any case, if you think about the power profile of such use, it’s
+exactly what kills rechargeable batteries. They are good for things
+you use all the time and keep charged, like smartphones or laptops
+(through they don’t like to be topped up all the time), and lying for
+years without a charge in a drawer is really bad for them — to the
+point where they can burst in fire when you try to charge them
+afterwards. So you would have to replace them anyways, but replacing
+such — usually somewhat non-standard — batteries is not as easy as
+buying a pack of batteries in a nearby kiosk.</p>
+<p>With primary cells you don’t care — they will get you through the
+initial intensive use, and when you find the device in your drawer
+years later, you will just clean whatever spilled from them and
+replace them with standard cells that are cheap and widely available.</p>
+<p>The second problem this solves is transportation. The workshops are
+likely to happen some distance from where the devices were first
+produced, and getting them there might involve shipping or flying.
+Both of those means of transportation have rules about lithium-polymer
+batteries, and if you want to take 20 of such batteries with you,
+there might be some problems with that. With primary cells this is not
+a problem — you ship them without the batteries (which also makes them
+lighter and the shipping costs lower), and buy the batteries when you
+get there. Easy. This way you are also reasonably sure the batteries
+are fresh and were stored properly.</p>
+<p>And third problem is recycling. You might think that primary batteries
+are bad for the environment, because when they run out you throw them
+in the trash. However, where I live that is illegal, and I firmly
+believe it should be illegal everywhere (and we are getting there,
+with laws slowly changing to cover that). Primary cells — mostly
+alkaline and coin cell batteries — are collected and recycled. And
+they really are getting recycled, unlike the lithium-polymer
+batteries, which are only collected, since recycling them is not
+economically viable.</p>
+<p>How come, you ask? Well, the alkaline and coin cell batteries have
+been around for a while, without much of a change to their
+construction or chemistry. Sure, the manufacturers are trying to
+improve the production process and raise the quality, but those
+designs are practically stable by now — there is very little changing,
+if at all. This means there was also time to develop efficient
+procedures for recycling the batteries, and recovering the valuable
+chemicals from them. The lithium-polymer batteries are not like that.
+There is a constant innovation in construction and chemistry of those
+batteries, and a battery you buy today is going to be considerably
+different from a battery you bought five years ago. They are also
+pretty complex inside, with all sorts of complex processes used to
+make the electrode surfaces bigger and the batteries more efficient —
+which also means the different parts of the battery are difficult to
+separate. You can’t just grind the whole thing into powder and soak it
+to remove the chemicals, like they do with alkaline batteries.</p>
+<p>So in the end, in this particular use case, primary cells seem to be
+much friendlier for the environment and more practical.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

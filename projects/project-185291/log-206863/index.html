@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Power Switch - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="power-switch">
+<h1>Power Switch<a class="headerlink" href="#power-switch" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2022-06-02 in <a class="reference internal" href="../#project-185291"><span class="std std-ref">PewPew LCD</span></a>.</p>
+<p>Today I had a bit of a discussion about the design of this device, and
+I realized that I have written here about removing various components
+to slim down the design and lower the costs, but I never really wrote
+about why I didn’t remove the power switch, even though I could do it,
+with some compromises.</p>
+<img alt="projects/project-185291/images/6649211654121932202.jpg" src="projects/project-185291/images/6649211654121932202.jpg" />
+<p>But first let me explain what the power switch actually does here. On
+most normal electronic devices, the power switch would be labeled “on”
+and “off”, but in here, just like on the <a class="reference internal" href="../../project-165032/#project-165032"><span class="std std-ref">PewPew M4</span></a> , the labels say “bat” and “usb”. What does it mean? This is because
+it’s not really a switch that switches the power on or off, it’s a
+switch that switches between two power sources: the battery and the
+USB socket. Of course, when the device is not connected to the
+computer, switching it to “usb” effectively switches the device off.
+When it’s connected, you can’t really switch it off, because switching
+it to “bat” will just make it run on battery power (even though it’s
+still connected to the computer, it will use up the battery then).\</p>
+<p>This a bit quaint setup actually lets me avoid a lot of complexity.
+Normally, a device that can be powered both from battery and from USB
+has to, at the very least, protect those two power sources from each
+other — either using some low-voltage-drop diodes, a “perfect diode”
+circuit, or some kind of power management chip. This of course adds to
+the complexity,  and in case of the simple diodes, wastes some of the
+energy from the battery. A simple mechanical switch can easily make
+sure that the two power sources never touch.</p>
+<p>But what about removing the power switch? It could be done if I
+decided to also drop one of the two possible power sources. In fact, I
+did just that in the <a class="reference internal" href="../../project-177306/#project-177306"><span class="std std-ref">PewPew Slim</span></a> , which can only be powered from USB, since being a business card,
+it’s too thin for a battery.</p>
+<p>I could also go the other way, and remove the USB power option. This
+would not only let me remove the power switch, but also the 3.3V LDO
+that converts the 5V from USB to a voltage the device needs. The early
+versions of <a class="reference internal" href="../../project-159733/#project-159733"><span class="std std-ref">PewPew Standalone</span></a> were like that, even though they had the switch for cutting the
+battery, they didn’t work with USB power.  Later I added the LDO,
+because testing on living humans during actual workshops proved that
+it’s really needed for this particular use case. But if it wasn’t, I
+could drop the switch too, and since CircuitPython has now deep sleep
+support, and you can wake up SAMD21 from deep sleep on a touch event,
+I could make it simply wake up when any of the touchpads are pressed,
+and go to deep sleep (also disabling the display) if they are not
+pressed for some time.</p>
+<p>In the end the switch turns out to be an optimization that lets me use
+both power sources without needing additional components for power
+management.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

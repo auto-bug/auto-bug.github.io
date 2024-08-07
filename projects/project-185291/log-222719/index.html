@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Never Be Clever for the Sake of Being Clever - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="never-be-clever-for-the-sake-of-being-clever">
+<h1>Never Be Clever for the Sake of Being Clever<a class="headerlink" href="#never-be-clever-for-the-sake-of-being-clever" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2023-09-01 in <a class="reference internal" href="../#project-185291"><span class="std std-ref">PewPew LCD</span></a>.</p>
+<p>A bunch of sleepless nights, and I have designed a version of PewPew
+with that ST7735 display from LCSC in EasyEDA, to see how that single-
+click assembly thing would work for it. I was very careful to use the
+parts from the basic parts list as much as possible, so as to not
+incur extra costs for loading new parts into the PnP machines. It
+looks like this:</p>
+<img alt="projects/project-185291/images/6883751693591818494.png" src="projects/project-185291/images/6883751693591818494.png" />
+<p>Of course all the parts are on the back, including the long row of
+parts that is the power supply, including the LDO regulator for
+handling the USB 5V, and a boost converter for the battery.
+Unfortunately I didn’t take a screenshot of the finished board from
+the back, so here it is without the boost circuit.</p>
+<img alt="projects/project-185291/images/6033781693592930573.png" src="projects/project-185291/images/6033781693592930573.png" />
+<p>There is also plenty of space for documenting the pins and adding
+whatever PCB art I decide on, but for a prototype that is enough. So I
+clicked the magical one-click button, did all the additional clicks to
+generate the BOM and PNP files that for some reason the one-click
+button doesn’t handle, and was presented for a quote for assembling 5
+units: a little bit over $50. And that is without the SAMD21, which
+happens to have a “shortfall”, and without the display, that doesn’t
+even appear in the parts search, despite the fact that you can find it
+on LCSC without problems. Add to this the shipping costs and the
+missing parts (which happen to be the two most expensive ones), and
+you can easily expect $20 a piece. That’s not what I expected, so I
+looked closely at the breakdown of fees, and turns out I’d have to pay
+extra $25 “setup fee” for the fact that the PCB is 0.6mm thick instead
+of the regular 1.6mm thickness. It would also have to be green,
+because all other colors in that thickness are ridiculously expensive.\</p>
+<p>In hindsight, this isn’t surprising. If they have to change the
+settings of the whole production line just to churn out those 5
+boards, it’s going to take time and work from their engineers. The
+good thing is that it’s a one-time fee, so it would have much less of
+an impact on the final price if I ordered, say, 100 units. But I want
+people to be able to order just a dozen units for a workshop, so this
+is definitely sub-optimal.</p>
+<p>What can I do? What if I stopped trying to be clever with the battery
+holder and the USB socket, and used regular parts like everyone else,
+and regular thickness of the PCB? Those parts cost literal cents,
+after all. Let’s see:</p>
+<img alt="projects/project-185291/images/8454121693592462152.png" src="projects/project-185291/images/8454121693592462152.png" />
+<p>I also simplified the board outline, while I was at it, in the vain
+hope that it would make the previews on the JLCPCB website work, but
+it didn’t. I guess their engineers are busy with other things. In any
+case, this time it was just around $30 for 5 units, which sounds much
+more reasonable, until you remember that the boards are missing the
+two most expensive and hardest to solder parts, the MCU and the
+display. And this time the largest fee is the “extra components” fee,
+for using parts that aren’t the basic parts list. Because while the
+USB socket and battery holder indeed only cost cents, they are not
+“basic parts”, so you pay an additional fee (much higher than the
+price of the part) just for loading them into the PnP. I feel like I
+can’t win this.</p>
+<p>So the plan right now is to focus on the other problem I have
+identified in the previous log, maybe get a new revision of the nokia
+display prototype into EasyEDA if I can’t sleep again, and try to see
+if some fab would be interested to carry those boards in their shop.
+Because the only way to get them cheap is to make a lot of them at
+once. But that will have to wait until the SAMD21 is back in stock.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

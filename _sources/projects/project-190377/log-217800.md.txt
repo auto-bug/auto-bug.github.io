@@ -1,0 +1,140 @@
+---
+blogpost: true
+date: 2023-04-18
+category: project-190377
+---
+
+# Servo Library
+Published on 2023-04-18 in {ref}`project-190377`.
+
+I finally made some progress on the library for CircuitPython for
+controlling the smart servos. For now I only have the basics, and I
+don't support SYNC WRITE (though I do have WRITE and REG WRITE, so you
+can move them all at once). But you can already set the id, set
+target, speed and time, and read load, position and
+voltage/temperature. That's basically all we are going to need. The
+code goes something like this:
+
+
+```
+import struct
+
+
+class ServoBus:
+    def __init__(self, uart):
+        self.uart = uart
+
+    def _chcecksum(self, data):
+        checksum = 0
+        for byte in data:
+            checksum = (checksum + byte) & 0xff
+        return checksum ^ 0xff
+
+    def send(self, servo_id, command, data=b'', reply=True):
+        buf = bytearray(len(data) + 5)
+        buf[0:1] = b'\xff\xff'
+        buf[2:4] = struct.pack('>BBB', servo_id, len(data) + 2, command)
+        buf[5:-1] = data
+        buf[-1] = self._chcecksum(memoryview(buf)[2:-1])
+        sent = self.uart.write(buf)
+        readback = self.uart.read(sent)
+        #print(readback)
+        if not reply:
+            return
+        b = self.uart.read(1)
+        while b == b'\xff':
+            b = self.uart.read(1)
+        if b is None:
+            raise RuntimeError("No reply")
+        reply_len = self.uart.read(1)[0]
+        reply = bytearray(reply_len + 3)
+        reply[0] = b[0]
+        reply[1] = reply_len
+        reply[2:] = self.uart.read(reply_len)
+        if self._chcecksum(memoryview(reply)[:-1]) != reply[-1]:
+            raise RuntimeError("Bad checksum")
+        return reply
+
+    def ping(self, servo_id=0xfe):
+        reply = self.send(servo_id, 0x01)
+        return reply[2]
+
+    def read8(self, servo_id, register, length=1):
+        reply = self.send(servo_id, 0x02, struct.pack('>BB', register, length))
+        return reply[3:-1]
+
+    def read16(self, servo_id, register, length=1):
+        reply = self.read8(servo_id, register, length * 2)
+        return struct.unpack('>' + 'H' * length, reply)
+
+    def write8(self, servo_id, register, *params, bulk=False):
+        write_command = 0x04 if bulk else 0x03
+        data = bytearray(len(params) + 1)
+        data[0] = register
+        data[1:] = bytes(params)
+        reply = self.send(servo_id, write_command, data)
+        return reply[2]
+
+    def write16(self, servo_id, register, *params, bulk=False):
+        write_command = 0x04 if bulk else 0x03
+        data = bytearray(len(params) * 2 + 1)
+        data[0] = register
+        data[1:] = struct.pack('>' + 'H' * len(params), *params)
+        reply = self.send(servo_id, write_command, data)
+        return reply[2]
+
+    def commit(self, servo_id=0xfe):
+        reply = self.send(servo_id, 0x05, reply=False)
+
+
+class SCS0009:
+    def __init__(self, servo_bus, servo_id, reverse=False):
+        self.servo_id = servo_id
+        self.servo_bus = servo_bus
+        self.reverse = reverse
+
+    def set_id(self, new_id, permanent=True):
+        if permanent:
+            self.servo_bus.write8(self.servo_id, 0x30, 0)
+        return self.servo_bus.write8(self.servo_id, 0x05, new_id)
+
+    def set_torque(self, value, bulk=False):
+        return self.servo_bus.write8(self.servo_id, 0x28, value, bulk=bulk)
+
+    def set_target(self, value, bulk=False):
+        if self.reverse:
+            value = 1023 - value
+        return self.servo_bus.write16(self.servo_id, 0x2a, value, bulk=bulk)
+
+    def set_time(self, value, bulk=False):
+        return self.servo_bus.write16(self.servo_id, 0x2c, value, bulk=bulk)
+
+    def set_speed(self, value, bulk=False):
+        return self.servo_bus.write16(self.servo_id, 0x2e, value, bulk=bulk)
+
+    def get_position(self):
+        value = self.servo_bus.read16(self.servo_id, 0x38, 1)[0]
+        if self.reverse:
+            value = 1023 - value
+        return value
+
+    def get_speed(self):
+        return self.servo_bus.read16(self.servo_id, 0x3a, 1)[0]
+
+    def get_load(self):
+        return self.servo_bus.read16(self.servo_id, 0x3c, 1)[0]
+
+    def get_voltage(self):
+        return self.servo_bus.read8(self.servo_id, 0x3e, 1)[0]
+
+    def get_temperature(self):
+        return self.servo_bus.read8(self.servo_id, 0x3f, 1)[0]
+
+    def commit(self):
+        return self.servo_bus.commit(self.servo_id)
+
+```
+
+Next up is to get the walking code to use this, and then see what
+improvements we can do to it using the time/speed settings. 
+

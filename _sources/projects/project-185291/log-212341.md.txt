@@ -1,0 +1,84 @@
+---
+blogpost: true
+date: 2022-10-16
+category: project-185291
+---
+
+# The Challenge
+Published on 2022-10-16 in {ref}`project-185291`.
+
+This project was submitted to the 2022 Hackaday Prize, and it
+qualified to semifinals, so let me take some time and talk about the
+challenge that I am trying to tackle with it.
+
+Of course, the theme of the round was re-using existing parts, so that
+they serve a purpose instead of ending up in a landfill, and that is
+of course an important thing. In case of this project, the part being
+reused is the display, which used to be produced for a number of very
+popular phones, and which is still available as replacement part for
+them, even though those phones are not nearly as popular as they used
+to be. It's a dated technology, which has long been replaced with OLED
+screens, but which still has some indisputable advantages, such as
+very low power consumption, and is more than adequate for this
+particular use case. So yes, we are re-using a part that would
+otherwise just pollute our world. Good. I also made some other
+conscious decisions about what to use, such as settling on a battery
+type that is practically, in reality, recycled, or a USB connector
+that works with older hardware.
+
+But the main goal of this project is not related to protecting the
+environment, a worthy goal that it is, but rather it looks forward
+into the future a little bit further, to give a better chance of
+saving the world to those who come after us. Technical culture is a
+big thing. You either understand the tools that you use and control
+them, or they control you. With the tools around us getting more
+powerful and ubiquitous, and with them having increasing effect on our
+everyday lives, it's more important than ever to understand and
+control them. But it is also becoming increasingly harder to do that,
+as they become more complex, harder to inspect and repair, and more
+dependent on centralized services. If our successors are going to
+learn this, they need a stepping stone, something that is easier to
+understand and learn from, something they can own and control. I hope
+this project to be that. Or one of such things, anyways, for I hope
+there will be many more. 
+
+Obviously they also need teachers and the materials to learn from, but
+while I do some teaching myself, I'm not an organizer and there is
+little I can do about encouraging people to teach and write books.
+What I can do is to give them tools that will make the teaching easier
+and less challenging. I can design a device that is not only useful in
+the teaching, but also not tied to any large corporation or
+government, and not dependent on their sponsorship, like the Raspberry
+Pi or Micro:bit projects are. Something that is cheap and easy to get
+because it was designed to be cheap and easy to source, not because
+someone poured a ton of money into it to subsidize it, and can at any
+moment change their mind. Something that is truly open source, without
+any binary blobs or secret sauce, without a trademark or a patent,
+without strings attached.
+
+It's not ideal. While the screen is recycled and the battery is
+recyclable, the microcontroller itself is new, and affected by the
+global chip shortage at the moment. Using any other chip would make
+this project more complex and more expensive, and possibly also tie it
+to one of the organizations that could control it. It was a trade-off.
+Perhaps in the future there will be a chip that better fits the goals
+of this project – one that is more open, or that can be recycled from
+old hardware, while not adding a lot of complexity. But I currently
+don't see anything like this, and I believe that it's better to make
+something imperfect now, than to wait for perfection forever. We are
+not getting any younger.
+
+I also hope that in the future there will be many more PewPew-
+compatible devices. The pew library is already ported to pretty much
+any homebrew console that runs CircuitPython, and some platforms that
+run regular Python. As new devices are designed, PewPew can be ported
+to them as well. So maybe you will not need to produce new devices for
+a workshop anymore, because everyone will already have something that
+can be made to run the pew library in their drawer already. Sure, it
+might require more work, but that's learning too, and there are
+hackerspaces and repair cafes to help with that. So there is actually
+much more opportunity for reuse and bringing old things back to life,
+in the future. Things like smartwatches and sportbands, alarm clocks
+and fancy remotes, pocket translators and music players could all
+potentially become pewpew-compatible, with the help of the community.
+

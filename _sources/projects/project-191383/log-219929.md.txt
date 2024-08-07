@@ -1,0 +1,63 @@
+---
+blogpost: true
+date: 2023-06-02
+category: project-191383
+---
+
+# Initial Decisions
+Published on 2023-06-02 in {ref}`project-191383`.
+
+Building a smaller robot is easy, as everything is cheaper, relatively
+stronger, and the only worry is fitting everything together in the
+smaller package. Building a bigger robot is a challenge. Everything is
+more expensive and costs more to ship, takes more power and has
+smaller margins for strength. And inertia rears up its ugly head. So
+we need to plan carefully.
+
+Most decisions will be driven by the choice of the servos. The MG996R
+are almost twice as big as the SG92R I used for Fluffbug, so we will
+scale the whole thing proportionally. The 23mm width of the SG92R
+becomes 40mm width of the MG996R, and everything else grows with it.
+
+I'm not going to use a PCB for the body, it would cost too much, and
+I'm not sure at this point how big it would need to be to fit all the
+components, so instead it will be a piece of plywood, cut by hand to
+fit the servo size. I'm going to use the same hand-cut plywood for the
+leg parts, at least initially, because getting them laser-cut in China
+and shipped here would be a bit expensive, and I don't have enough
+social skill to ask for lasercutter access at my hackerspace.
+
+
+
+:::{image} images/1908001685666797248.jpg
+
+:::
+
+
+For the brains, I think I will go with another Pi Pico clone, because
+it's easy to add servo connectors to it using just prototyping board –
+I'm not making a dedicated PCB, at least not just yet.\
+
+
+The power needs a substantial upgrade. I think I can no longer use a
+single 1S lipo cell. I will go with two 18650 cells, with built-in
+protection. That means there isn't going to be a charging circuit or
+an on-board protection circuit, which simplifies things a bit. On the
+other hand, I will need to get that 8V to the cozy 5-6V for the servos
+and electronics, so I will need a buck converter in there, and one
+that can handle considerable currents. I have some no-name UBEC
+modules in my drawer, so I'm going to try these, and if that doesn't
+work, a 9A buck converter is on order.
+
+
+
+:::{image} images/3129521685666771555.jpg
+
+:::
+
+
+That's pretty much all I should need to get the basic walking going.
+Once I got that, I will see about maybe putting a Linux single board
+computer on it, or other things.\
+
+

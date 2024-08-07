@@ -2,71 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posts tagged python</title>
-  <updated>2024-08-07T20:34:18.589784+00:00</updated>
+  <updated>2024-08-07T20:35:35.239025+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/tag/python/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
-  <entry>
-    <id>http://deshipu.art/projects/project-27757/</id>
-    <title>Micro:Boy</title>
-    <updated>2017-10-15T00:00:00+02:00</updated>
-    <content type="html">&lt;section id="micro-boy"&gt;
-
-&lt;p&gt;Arcade games on the Micro:bit&lt;/p&gt;
-&lt;div class="project-thumb"&gt;
-&lt;a class="reference external image-reference" href="/_images/7354261515360205991.jpg"&gt;&lt;img alt="projects/project-27757/images/7354261515360205991.jpg" src="projects/project-27757/images/7354261515360205991.jpg" /&gt;&lt;/a&gt;
-&lt;a class="reference external image-reference" href="/_images/3762871516221178379.jpg"&gt;&lt;img alt="projects/project-27757/images/3762871516221178379.jpg" src="projects/project-27757/images/3762871516221178379.jpg" /&gt;&lt;/a&gt;
-&lt;a class="reference external image-reference" href="/_images/9897221516920665977.jpg"&gt;&lt;img alt="projects/project-27757/images/9897221516920665977.jpg" src="projects/project-27757/images/9897221516920665977.jpg" /&gt;&lt;/a&gt;
-&lt;/div&gt;
-&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;The Micro:bit is a pretty decent platform for teaching kids to
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;program, but you can’t really make arcade-style games for it. You only
-have two buttons and a 5x5 display. Perhaps enough for a very small
-snake game, but that’s pretty much it. That’s why I started working on &lt;a class="reference internal" href="../../../projects/project-21578/#project-21578"&gt;&lt;span class="std std-ref"&gt;PewPew FeatherWing&lt;/span&gt;&lt;/a&gt; as an alternative platform, but at some point I started wondering if
-it’s really impossible to do it on the micro:bit.&lt;/p&gt;
-&lt;p&gt;When the most recent version of micropython got the ability to use any
-pins for I2C, I realized that I can finally connect a display easily.
-I could use a HT16K33 and a 8x8 LED matrix like on the PewPew, but I
-decided to try something else — a monochrome OLED display, similar to
-the one used on many Arduino-based game consoles.&lt;/p&gt;
-&lt;section id="logs"&gt;
-&lt;h2&gt;Logs&lt;/h2&gt;
-&lt;ul class="postlist-style-none postlist simple"&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-01-25 - &lt;a class="reference internal" href="../../../projects/project-27757/log-84157/"&gt;MemoryError&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-01-20 - &lt;a class="reference internal" href="../../../projects/project-27757/log-78338/"&gt;Progress on a Game&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-01-18 - &lt;a class="reference internal" href="../../../projects/project-27757/log-77209/"&gt;Why Separate Button Controller?&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-01-17 - &lt;a class="reference internal" href="../../../projects/project-27757/log-77038/"&gt;Button Controller&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-01-09 - &lt;a class="reference internal" href="../../../projects/project-27757/log-72743/"&gt;Advanced Spriting&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-01-08 - &lt;a class="reference internal" href="../../../projects/project-27757/log-72667/"&gt;Blit&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-01-07 - &lt;a class="reference internal" href="../../../projects/project-27757/log-72626/"&gt;Some Progress&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-12-17 - &lt;a class="reference internal" href="../../../projects/project-27757/log-71654/"&gt;After All it Works!&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-12-15 - &lt;a class="reference internal" href="../../../projects/project-27757/log-71591/"&gt;Restart&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-11-30 - &lt;a class="reference internal" href="../../../projects/project-27757/log-71054/"&gt;Special Bolts&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-11-18 - &lt;a class="reference internal" href="../../../projects/project-27757/log-70648/"&gt;Shield Connectors&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-10-15 - &lt;a class="reference internal" href="../../../projects/project-27757/log-68977/"&gt;Quick and Dirty&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-10-15 - &lt;a class="reference internal" href="../../../projects/project-27757/log-68976/"&gt;Basic Display&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/section&gt;
-&lt;section id="instructions"&gt;
-&lt;h2&gt;Instructions&lt;/h2&gt;
-&lt;/section&gt;
-&lt;/section&gt;
-</content>
-    <link href="http://deshipu.art/projects/project-27757/" rel="alternate"/>
-    <summary>Arcade games on the Micro:bit</summary>
-    <category term="CONSole" label="CONSole"/>
-    <category term="arcade" label="arcade"/>
-    <category term="completedproject" label="completed project"/>
-    <category term="game" label="game"/>
-    <category term="games" label="games"/>
-    <category term="hardware" label="hardware"/>
-    <category term="micro:bit" label="micro:bit"/>
-    <category term="microbit" label="microbit"/>
-    <category term="micropython" label="micropython"/>
-    <category term="python" label="python"/>
-    <published>2017-10-15T00:00:00+02:00</published>
-  </entry>
   <entry>
     <id>http://deshipu.art/projects/project-100853/</id>
     <title>CircuitPython Badge</title>
@@ -354,5 +293,143 @@ it, but I hope that I can also do some other fun things with it.&lt;/p&gt;
     <category term="micropython" label="micropython"/>
     <category term="python" label="python"/>
     <published>2019-04-11T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-185291/</id>
+    <title>PewPew LCD</title>
+    <updated>2022-05-08T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="pewpew-lcd"&gt;
+
+&lt;p&gt;Learn Python programming with an affordable gaming handheld.&lt;/p&gt;
+&lt;div class="project-thumb"&gt;
+&lt;a class="reference external image-reference" href="/_images/5126801652438487334.jpg"&gt;&lt;img alt="projects/project-185291/images/5126801652438487334.jpg" src="projects/project-185291/images/5126801652438487334.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/9092651653658984938.jpg"&gt;&lt;img alt="projects/project-185291/images/9092651653658984938.jpg" src="projects/project-185291/images/9092651653658984938.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/4599321652033186279.jpg"&gt;&lt;img alt="projects/project-185291/images/4599321652033186279.jpg" src="projects/project-185291/images/4599321652033186279.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/466101653686036260.jpg"&gt;&lt;img alt="projects/project-185291/images/466101653686036260.jpg" src="projects/project-185291/images/466101653686036260.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/6146911653686014621.jpg"&gt;&lt;img alt="projects/project-185291/images/6146911653686014621.jpg" src="projects/project-185291/images/6146911653686014621.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/5608251719175785248.jpg"&gt;&lt;img alt="projects/project-185291/images/5608251719175785248.jpg" src="projects/project-185291/images/5608251719175785248.jpg" /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Teaching programming is hard. And it&amp;#39;s not made any easier by the fact
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;that before you even start teaching, you have to first do the
+ungrateful job of an IT support worker and get your students through
+all the hoops of installing all the necessary software and libraries
+on their computers. And when you finish, the programs they have
+written only works on their own computers, unless they go through all
+the same (and possibly some additional) hoops.&lt;/p&gt;
+&lt;p&gt;The PewPew family of devices is one possible answer to this. They are
+designed with one main goal in mind – to remove as many obstacles
+between your students and the game they want to create, as possible.
+To achieve that goal, the device itself has Python running on it – a
+version of Python designed for microcontrollers, called CircuitPython
+– so all you have to do is edit the files on it, using any text
+editor, to write your programs. As soon as you save, the device
+restarts and runs your code. In addition, if you want to show your
+game to other people, or enjoy it on the bus, you can simply put it
+into your pocket.&lt;/p&gt;
+&lt;p&gt;This is one of many devices in the family – I started with &lt;a class="reference internal" href="../../../projects/project-21578/#project-21578"&gt;&lt;span class="std std-ref"&gt;PewPew FeatherWing&lt;/span&gt;&lt;/a&gt; and as I tried it in different workshops, I refined the design with &lt;a class="reference internal" href="../../../projects/project-159733/#project-159733"&gt;&lt;span class="std std-ref"&gt;PewPew Standalone&lt;/span&gt;&lt;/a&gt; , &lt;a class="reference internal" href="../../../projects/project-165032/#project-165032"&gt;&lt;span class="std std-ref"&gt;PewPew M4&lt;/span&gt;&lt;/a&gt; , &lt;a class="reference internal" href="../../../projects/project-177306/#project-177306"&gt;&lt;span class="std std-ref"&gt;PewPew Slim&lt;/span&gt;&lt;/a&gt; , &lt;a class="reference internal" href="../../../projects/project-178061/#project-178061"&gt;&lt;span class="std std-ref"&gt;PewPew S2&lt;/span&gt;&lt;/a&gt; and   &lt;a class="reference internal" href="../../../projects/project-180309/#project-180309"&gt;&lt;span class="std std-ref"&gt;PewPew OLED&lt;/span&gt;&lt;/a&gt; . So far the standalone version has been the most successful, being
+simple and affordable, but later experimenting showed me that there is
+room for improvement.&lt;/p&gt;
+&lt;p&gt;This time I want to design a device that is even simpler and cheaper
+than any previous one, while at the same time being more convenient to
+use, and maybe helping us find a use for some of the old electronic
+spare parts that lie around.&lt;/p&gt;
+&lt;section id="logs"&gt;
+&lt;h2&gt;Logs&lt;/h2&gt;
+&lt;ul class="postlist-style-none postlist simple"&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2024-06-23 - &lt;a class="reference internal" href="../../../projects/project-185291/log-230707/"&gt;Practicality Beats Purity&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-09-23 - &lt;a class="reference internal" href="../../../projects/project-185291/log-223517/"&gt;Connectors&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-09-01 - &lt;a class="reference internal" href="../../../projects/project-185291/log-222719/"&gt;Never Be Clever for the Sake of Being Clever&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-08-29 - &lt;a class="reference internal" href="../../../projects/project-185291/log-222610/"&gt;What Remains to be Done&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2022-10-16 - &lt;a class="reference internal" href="../../../projects/project-185291/log-212341/"&gt;The Challenge&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2022-10-13 - &lt;a class="reference internal" href="../../../projects/project-185291/log-212185/"&gt;PewPew Around the World&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2022-09-30 - &lt;a class="reference internal" href="../../../projects/project-185291/log-211533/"&gt;Swiss Python Summit 2022&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2022-07-19 - &lt;a class="reference internal" href="../../../projects/project-185291/log-208720/"&gt;EuroPython 2022&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2022-06-29 - &lt;a class="reference internal" href="../../../projects/project-185291/log-208018/"&gt;Better Game Selection Menu&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2022-06-19 - &lt;a class="reference internal" href="../../../projects/project-185291/log-207653/"&gt;A Workshop&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2022-06-02 - &lt;a class="reference internal" href="../../../projects/project-185291/log-206863/"&gt;Power Switch&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2022-05-28 - &lt;a class="reference internal" href="../../../projects/project-185291/log-206623/"&gt;More Battery&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2022-05-27 - &lt;a class="reference internal" href="../../../projects/project-185291/log-206579/"&gt;Version 2.1 Assembled&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2022-05-27 - &lt;a class="reference internal" href="../../../projects/project-185291/log-206581/"&gt;The PewPew Ecosystem&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2022-05-24 - &lt;a class="reference internal" href="../../../projects/project-185291/log-206478/"&gt;Talk to the Display&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2022-05-17 - &lt;a class="reference internal" href="../../../projects/project-185291/log-206233/"&gt;Why not Recycle Everything?&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2022-05-14 - &lt;a class="reference internal" href="../../../projects/project-185291/log-206139/"&gt;Version 2.1&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2022-05-13 - &lt;a class="reference internal" href="../../../projects/project-185291/log-206117/"&gt;Dithering About&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2022-05-13 - &lt;a class="reference internal" href="../../../projects/project-185291/log-206125/"&gt;CircuitPython&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2022-05-12 - &lt;a class="reference internal" href="../../../projects/project-185291/log-206089/"&gt;On Batteries&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2022-05-10 - &lt;a class="reference internal" href="../../../projects/project-185291/log-206018/"&gt;Version Two&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2022-05-10 - &lt;a class="reference internal" href="../../../projects/project-185291/log-206007/"&gt;The Display&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2022-05-10 - &lt;a class="reference internal" href="../../../projects/project-185291/log-206019/"&gt;Published&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2022-05-10 - &lt;a class="reference internal" href="../../../projects/project-185291/log-206009/"&gt;First Hardware&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2022-05-10 - &lt;a class="reference internal" href="../../../projects/project-185291/log-206010/"&gt;Environmental Cost of Displays&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2022-05-10 - &lt;a class="reference internal" href="../../../projects/project-185291/log-206008/"&gt;9-bit DisplayIO and CircuitPython&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2022-05-09 - &lt;a class="reference internal" href="../../../projects/project-185291/log-205991/"&gt;Why a New Design?&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section id="instructions"&gt;
+&lt;h2&gt;Instructions&lt;/h2&gt;
+&lt;section id="fabricate-the-pcb"&gt;
+&lt;h3&gt;Fabricate the PCB&lt;/h3&gt;
+&lt;p&gt;Use the provided gerber files to get the PCBs fabricated. Use 0.6mm
+thickness of the PCB. Lead-free or gold coating recommended, as the
+device will be touched by hands.&lt;/p&gt;
+&lt;/section&gt;
+&lt;hr class="docutils" /&gt;
+&lt;section id="populate-the-pcb"&gt;
+&lt;h3&gt;Populate the PCB&lt;/h3&gt;
+&lt;p&gt;Solder all the components. The QFN chip can be soldered by drag-
+soldering the edges, though a hot-air gun or hot-plate are recommended
+for convenience. All the other components are easily soldered by hand.&lt;/p&gt;
+&lt;/section&gt;
+&lt;hr class="docutils" /&gt;
+&lt;section id="flash-the-bootloader"&gt;
+&lt;h3&gt;Flash the Bootloader&lt;/h3&gt;
+&lt;p&gt;Get the UF2 bootloader from the link in the hardware repository
+readme, and flash it onto the microcontroller using a JLink programmer
+or compatible. The SWD and SWC pins are marked 1 and 2 on the
+connector at the bottom of the device. VCC is marked + and GND is
+marked -. Use a 12-pin male header to friction-fit it into the
+connector and a breadboard for a reliable connection while
+programming. Power can be provide through the USB connector, make sure
+the switch is in the USB position.&lt;/p&gt;
+&lt;/section&gt;
+&lt;hr class="docutils" /&gt;
+&lt;section id="flash-the-firmware"&gt;
+&lt;h3&gt;Flash the Firmware&lt;/h3&gt;
+&lt;p&gt;Once the bootloader is flashed, a PEWBOOT disk will be available over
+the USB. Download the latest CircuitPython firmware from
+circuitpython.org and copy it over to that disk. The device will reset
+and the CIRCUITPY disk will become available.&lt;/p&gt;
+&lt;/section&gt;
+&lt;hr class="docutils" /&gt;
+&lt;section id="install-the-menu-and-games"&gt;
+&lt;h3&gt;Install the Menu and Games&lt;/h3&gt;
+&lt;p&gt;Copy the main.py file from the software repository, and copy any game
+files from the pewpew github onto the device.&lt;/p&gt;
+&lt;/section&gt;
+&lt;hr class="docutils" /&gt;
+&lt;section id="ready"&gt;
+&lt;h3&gt;Ready&lt;/h3&gt;
+&lt;p&gt;Safely remove the USB disk, and disconnect the device. Insert a
+battery.&lt;/p&gt;
+&lt;/section&gt;
+&lt;/section&gt;
+&lt;hr class="docutils" /&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-185291/" rel="alternate"/>
+    <summary>Learn Python programming with an affordable gaming handheld.</summary>
+    <category term="2022hackadayprize" label="2022hackadayprize"/>
+    <category term="Workshops" label="Workshops"/>
+    <category term="circuitpython" label="circuitpython"/>
+    <category term="education" label="education"/>
+    <category term="games" label="games"/>
+    <category term="handheld" label="handheld"/>
+    <category term="hardware" label="hardware"/>
+    <category term="ongoingproject" label="ongoing project"/>
+    <category term="pewpew" label="pewpew"/>
+    <category term="python" label="python"/>
+    <published>2022-05-08T00:00:00+02:00</published>
   </entry>
 </feed>

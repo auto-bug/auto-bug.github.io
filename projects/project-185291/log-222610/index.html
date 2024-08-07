@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>What Remains to be Done - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="what-remains-to-be-done">
+<h1>What Remains to be Done<a class="headerlink" href="#what-remains-to-be-done" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2023-08-29 in <a class="reference internal" href="../#project-185291"><span class="std std-ref">PewPew LCD</span></a>.</p>
+<p>I had a bit of a break on this project, caused both by my lack of
+motivation, and by the chip shortage, meaning you couldn’t get any
+SAMD21 chips (or anything that could easily replace them) anywhere.
+The shortage is apparently ending this September, and I have also
+recovered some strength, so I can think about the project again.</p>
+<p>The time that passed wasn’t entirely wasted. I got to test the device
+in different conditions, with different computers, different programs
+and different batteries, and I have discovered at least two serious
+problems that require my attention, and that could lead to an increase
+of the price of the device.</p>
+<p>The first problem wasn’t immediately apparent with the simple games I
+tested the device with, mostly because they check for button presses
+pretty often. But not all programs written for PewPew devices do that,
+and the less frequently they check for the presses, the worse the
+touch buttons on the device work. You see, originally the pew library
+would use the same interrupt it used to refresh the LED matrix to also
+check for button presses, so the checks were very frequent and were
+happening in the background. When it was ported to other devices, it
+used the keypad library to also keep checking the presses in the
+background at a high rate, and processed the resulting events when the
+game asked button presses. But there is currently no keypad library
+for touch pads in CircuitPython, or any other way of checking for
+touch in the background. So the pew library for this device only
+checks the pads for touches when the game asks it. And that means that
+if the game doesn’t ask often enough, some touches will be missed. And
+that results in an unreliable and laggy feel of the games on this
+device. It simply is not pleasant to use it. We can’t allow that.</p>
+<p>I can think of two ways of solving this problem. The first is to fix
+it in software and write a library similar to keypad, but for touch.
+This requires some datasheet diving to be done right, without slowing
+the code running in the foreground on the device. I’m not entirely
+sure I can do it, but I will try. I can think of two ways of doing it,
+the harder, with interrupts, and the easier, with the system tick. If
+I don’t manage to write such a library, the only other solution I can
+think of is to add back physical buttons to the device. It would
+increase the price, yes, but it would also immediately solve the
+problem, as I could then again use the keypad library, and it would
+provide the users with tactile feedback, further increasing the
+pleasure from using the device. Plus, buttons are really not that
+expensive, even the nice ones.</p>
+<p>The second problem has to do with batteries. You see, the kind of coin
+batteries that this device uses are not the same all over the world.
+When I designed the prototype, I tested it with batteries I bought in
+Switzerland, and they had no problem driving the display and the
+microcontroller. However, when I went to a conference to UK, and
+bought some batteries there, they proved to be too weak to even start
+the device. I can only assume that regulations in different countries
+require different power from the same type of the battery, and
+naturally batteries destined to different markets differ in quality.</p>
+<p>Again, there are several ways I could solve this problem. I could
+switch back to two AAA cells, instead of a coin battery. I could
+require a thicker (and more expensive) variant of the coin battery I’m
+using, or even a bigger (and harder to obtain) one. I could remove the
+battery slot entirely and say that the device should be connected to
+USB for use – after all, that’s how it would be used during the
+workshop, which is the main target for it. But a simple boost
+converter circuit would work too, and it would also make it run on the
+same battery longer, draining it more completely before failure.
+What’s more important, it would feed the device a consistent voltage
+as long as the battery had enough juice left in it. And there are
+ready boost converter chips out there for really cheap. It would add
+to the cost of the device a little, and complicate it a bit more, but
+I think the increased reliability and use of the battery is well worth
+it.</p>
+<p>So I need to redesign the prototype to add a boost converter circuit
+to it, complete with a small inductor and a controller chip, and some
+beefy filtering capacitors. I have already tested a similar circuit in
+another project, and it works very well, so I’m optimistic about this.</p>
+<p>There is a third problem, but it has more to do with logistics than
+with the hardware. I don’t want to be selling those devices myself.
+Sure, I can order a batch for a workshop or two, but I don’t want to
+have to run to the post office to fulfill orders. But I want other
+people to also be able to run workshops with them. That means that I
+need to make them as easy to order as possible, and that’s done easily
+by re-doing the design in EasyEDA instead of Fritzing. With that,
+people can simply open the designs without having to install anything
+on their computers, change the silkscreen according to their needs,
+and order the device assembled with a few clicks. Well, mostly
+assembled, they would still need to buy and solder the displays.</p>
+<p>Unless, of course, I switched to some kind of displays that are
+available from LCSC, like the small OLED screens I used in the <a class="reference internal" href="../../project-180309/#project-180309"><span class="std std-ref">PewPew OLED</span></a> . Come to think of it… hmmm…</p>
+<p>Anyways, I have some work and some decisions before me.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

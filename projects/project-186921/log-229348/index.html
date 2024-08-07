@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Improving Screws - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="improving-screws">
+<h1>Improving Screws<a class="headerlink" href="#improving-screws" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2024-05-01 in <a class="reference internal" href="../#project-186921"><span class="std std-ref">µGame 22</span></a>.</p>
+<p>One of the remaining problems that I still have with this handheld
+console is the way the case is held together. I originally used self-
+tapping screws to hold the two layers of laser-cut acrylic together,
+but there are many problems with this approach. The holes need to be
+just the right size for the screws to tap them properly, but still sit
+in there firmly. The screws themselves tend to be of poor quality,
+with their heads breaking off. The last layer of the acrylic is pretty
+thin, and is only held in place by a few threads of the screw. And
+finally, when I take the console to various events, I always tend to
+lose screws along the way.</p>
+<p>So I decided to look into this and find a better way to hold the whole
+thing together.</p>
+<p>LCSC recently introduced a new category in their parts shop,
+mechanical fasteners, so I went and looked for possible solutions. I
+found something they call “welding nut”, which is basically like a
+threaded insert, but instead of being embedded in a plastic case, it’s
+soldered to the PCB. That sounds promising, so I added a few of the
+smallest ones to my next parts order.</p>
+<img alt="projects/project-186921/images/5664671714552767290.jpg" src="projects/project-186921/images/5664671714552767290.jpg" />
+<p>When they arrived, I decided that they look very promising. I got two
+kinds, one that is a smooth tube, and one that is a hex nut. The
+latter looks more promising, especially since it comes at a variety of
+heights. I tried to modify my design in EasyEDA to see how that would
+work mechanically:</p>
+<img alt="projects/project-186921/images/2058951714552884345.png" src="projects/project-186921/images/2058951714552884345.png" />
+<p>It barely fits in some places, but it looks like I could pull it off.
+Of course the middle layer of the acrylic would need to be modified to
+make room for those nuts (or maybe even removed entirely, now that the
+top layer can rest on the nuts?), but that shouldn’t be too much of a
+problem. I’m still wondering if I should be using the 3mm high nuts,
+that match the height of the middle acrylic layer, and all the
+electronic parts theoretically, or use 2.5mm ones to allow for thinner
+acrylic (it’s never exactly 3mm) and tighter fit overall.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

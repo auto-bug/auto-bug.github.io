@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Menu Improvements - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="menu-improvements">
+<h1>Menu Improvements<a class="headerlink" href="#menu-improvements" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2023-08-19 in <a class="reference internal" href="../#project-186921"><span class="std std-ref">µGame 22</span></a>.</p>
+<p>Today was a CircuitPython Day, so I wanted to celebrate it by working
+on a game. However, before I got to that, I decided to improve the
+game selection menu that I use on my consoles, so that you can keep
+individual games in subdirectories, together with all their asset
+files. The idea is simple: if a directory contains a python file named
+a certain way (I choose “code.py”, so you can put the same files in a
+subdirectory to have them appear in the menu, or in the top directory,
+to have them run by default instead of the menu), it appears in the
+menu, and selecting it runs that file. I decided it’s the
+responsibility of the game code itself to make sure it looks for the
+files in the right place, though I will add a helper function for that
+to the <a class="reference internal" href="../../project-80626/#project-80626"><span class="std std-ref">Stage, a Tile and Sprite Engine</span></a> , for convenience (Any suggestions on how it should be named?).</p>
+<img alt="projects/project-186921/images/9991711692399690626.jpg" src="projects/project-186921/images/9991711692399690626.jpg" />
+<p>It was a simple enough modification, but I immediately stumbled upon a
+problem. Turns out that CircuitPython doesn’t reset the current
+working directory on reload – and reload is exactly how the menu
+starts the games, and how they go back to the menu. Not only it’s not
+reset, but also if there is a file named “code.py” in the current
+working directory, it will be run at startup in place of the one in
+the top directory! That means that once you select a game, you will
+have to play it forever, because any attempt at reloading results in
+the game running again. Very annoying.</p>
+<p>So instead of working on a game I fixed that bug. And in the process I
+also found and fixed another bug, where the flash chip that I’m using
+on ugame22 is not properly supported on rp2040 boards. And then I
+decided that I should properly publish the design files for this
+console, and have the board definition merged into CircuitPython’s
+tree, so that such regressions are caught by automatic testing. So you
+see, instead of working on the game I am standing on a pile of shaved
+yaks, but it still feels like I make some progress, so I can’t
+complain.</p>
+<p>Oh, and by the way, version 2.3 is already in fabrication. I tested
+the sound on version 2.2 and it works great, however, when running on
+battery the speaker is taking so much current from the poor little
+batteries, that the voltage drops on them, the screen backlight dims,
+and sometimes even the screen itself resets. So in version 2.3 I added
+a boost converter circuit, so that the voltage from batteries is
+stabilized, and we can suck those puppies dry, until there is no
+single ion left in them.</p>
+<p>The space is getting a bit tight, though, so I hope that’s all the
+additions I will need.</p>
+<img alt="projects/project-186921/images/6570071692400087798.png" src="projects/project-186921/images/6570071692400087798.png" />
+</section>
+
+
+</div>
+  </body>
+</html>

@@ -1,0 +1,65 @@
+---
+blogpost: true
+date: 2022-06-02
+category: project-185291
+---
+
+# Power Switch
+Published on 2022-06-02 in {ref}`project-185291`.
+
+Today I had a bit of a discussion about the design of this device, and
+I realized that I have written here about removing various components
+to slim down the design and lower the costs, but I never really wrote
+about why I didn't remove the power switch, even though I could do it,
+with some compromises.
+
+
+
+:::{image} images/6649211654121932202.jpg
+
+:::
+
+
+But first let me explain what the power switch actually does here. On
+most normal electronic devices, the power switch would be labeled "on"
+and "off", but in here, just like on the {ref}`project-165032` , the labels say "bat" and "usb". What does it mean? This is because
+it's not really a switch that switches the power on or off, it's a
+switch that switches between two power sources: the battery and the
+USB socket. Of course, when the device is not connected to the
+computer, switching it to "usb" effectively switches the device off.
+When it's connected, you can't really switch it off, because switching
+it to "bat" will just make it run on battery power (even though it's
+still connected to the computer, it will use up the battery then).\
+
+
+This a bit quaint setup actually lets me avoid a lot of complexity.
+Normally, a device that can be powered both from battery and from USB
+has to, at the very least, protect those two power sources from each
+other — either using some low-voltage-drop diodes, a "perfect diode"
+circuit, or some kind of power management chip. This of course adds to
+the complexity,  and in case of the simple diodes, wastes some of the
+energy from the battery. A simple mechanical switch can easily make
+sure that the two power sources never touch.
+
+But what about removing the power switch? It could be done if I
+decided to also drop one of the two possible power sources. In fact, I
+did just that in the {ref}`project-177306` , which can only be powered from USB, since being a business card,
+it's too thin for a battery.
+
+I could also go the other way, and remove the USB power option. This
+would not only let me remove the power switch, but also the 3.3V LDO
+that converts the 5V from USB to a voltage the device needs. The early
+versions of {ref}`project-159733` were like that, even though they had the switch for cutting the
+battery, they didn't work with USB power.  Later I added the LDO,
+because testing on living humans during actual workshops proved that
+it's really needed for this particular use case. But if it wasn't, I
+could drop the switch too, and since CircuitPython has now deep sleep
+support, and you can wake up SAMD21 from deep sleep on a touch event,
+I could make it simply wake up when any of the touchpads are pressed,
+and go to deep sleep (also disabling the display) if they are not
+pressed for some time.
+
+In the end the switch turns out to be an optimization that lets me use
+both power sources without needing additional components for power
+management.
+

@@ -1,0 +1,52 @@
+---
+blogpost: true
+date: 2023-04-03
+category: project-190377
+---
+
+# The Devil in the Details
+Published on 2023-04-03 in {ref}`project-190377`.
+
+While the new servos are mostly a drop-in replacement for the rc
+servos, there are still some considerations we have to keep in mind.
+The first potential problem is that I'm powering those servos directly
+from the LiPO battery, with voltage that is below the recommended
+minimal voltage of 4.8V. The analog servos didn't really mind, and a
+simple trick of increasing their driving frequency helped with any
+weakness problems they could have. But the new servos have an actual
+microcontroller inside. Will it work with the lower voltage?
+
+A quick experiment shows that the answer is "yes". I tried them with
+voltages as low as 3.2V, and they seem to work perfectly fine. Of
+course that doesn't mean there won't be some problems related to this
+discovered down the road. I still might need to add a boost converter
+to the robot to provide a stable voltage.
+
+Another problem is mechanical in nature. While the case of those new
+servos has the same dimensions as those of rc servos, the output shaft
+is a little bit smaller and shorter. That is not a huge problem, as
+matching servo horns are provided, but turns out that the difference
+is enough that the 3mm thick laser-cut leg parts touch the servo case,
+which is adding unnecessary friction. I might consider cutting new leg
+parts from 2mm acrylic and with smaller holes for the horns, but for
+now I will simply use leg parts from earlier versions of the robot,
+which are made out of 1.6mm PCB that fits well enough.
+
+
+
+:::{image} images/6069071680546317561.jpg
+
+:::
+
+
+I also designed and ordered a PCB for the body, to connect the servos
+more conveniently. In the mean time I can just use the extension
+cables provided with the servos.
+
+
+
+:::{image} images/3251341680546517770.png
+
+:::
+
+

@@ -1,0 +1,27 @@
+---
+blogpost: true
+date: 2023-09-30
+category: project-192761
+---
+
+# Second Animation and Accelerometer
+Published on 2023-09-30 in {ref}`project-192761`.
+
+I had a little bit of time today, so I quickly made a second animation
+for this badge:
+
+
+
+:::{image} images/8857511696110288975.gif
+
+:::
+
+
+I also added the code to read the raw x, y, and z values from the
+accelerometer, and play this animation if the x component is greater
+than 5000 – which basically means that the badge is tilted to the
+left. Of course adding a similar animation for the right tilt is
+trivial. I also want to make a "stunned" animation, to be displayed
+after the board has been shaken – but to detect that I will need to
+keep some previous values and calculate the variance.
+

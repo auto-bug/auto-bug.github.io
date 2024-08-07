@@ -1,0 +1,45 @@
+---
+blogpost: true
+date: 2023-04-02
+category: project-190377
+---
+
+# Smart Servos
+Published on 2023-04-02 in {ref}`project-190377`.
+
+Hobby servos were not designed for robots – they are mainly for
+remote-controlled airplanes and boats, and they were created back in
+times of analog radios, when PWM signal was the easiest to multiplex.
+While they are relatively cheap and convenient, in that they already
+contain the drive train, the motor controller and a position sensor of
+sorts, they are pretty lacking in terms of feedback. Yes, you can add
+wires to them to be able to read the position of the potentiometer or
+the power sent to the motor, or even add some current monitoring
+circuit, but it always requires additional components and the use of
+additional microcontroller pins, and gets unreliable and tricky when
+the servos are not powered with stable voltage.
+
+But there are other servos, that were mostly designed for robots and
+similar constructions. Smart servos tend to be slower, with more
+torque, two-way digital bus communication, more convenient mounting
+options and brackets, and general sense of solidity. They however also
+tend to be rather bulky and expensive, and because I prefer to build
+small and cheap robots, I never really tried them properly.
+
+But recently I have discovered FeeTech SCS0009 smart servos, which
+contain all the logic of a smart servo in a package compatible with a
+nine gram hobby servo. Of course they are more expensive, but not so
+much that I couldn't run some experiments with them. And since they
+are a drop-in replacement for the hobby servos, I don't need to design
+a whole new robot for them, I can use all the mechanical parts of the {ref}`project-180025` or {ref}`project-188908` , and probably reuse the PCB as well. The only thing I need to
+implement is the new communication protocol. So that's the plan for
+now: a version of Fluffbug with smart servos in place of the hobby
+servos. And we will see where we can take it from there.
+
+
+
+:::{image} images/3992241680428880702.jpg
+
+:::
+
+

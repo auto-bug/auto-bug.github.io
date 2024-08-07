@@ -1,0 +1,59 @@
+---
+blogpost: true
+date: 2022-05-10
+category: project-185291
+---
+
+# Version Two
+Published on 2022-05-10 in {ref}`project-185291`.
+
+With an embarrassing failure that was the first PCB behind me, I went
+ahead and fixed the design somewhat:
+
+
+:::{image} images/3215701648160216656.png
+
+:::
+
+
+The flex connector for the display is now outside the display's
+outline, the microontroller had to be moved, the USB is now flipped to
+correct orientation. I ordered this time at [@Elecrow ](https://hackaday.io/hacker/147848) because they had more choice of colors for the 0.6mm thick PCBs, and
+the quality seems to be better. A month later I had the first working
+prototype in my hand:
+
+
+
+:::{image} images/4354011649793678786.jpg
+
+:::
+
+
+I adapted the software I used previously on the {ref}`project-180309`  – the displays are pretty similar in how they handle pixels. One
+problem I encountered is that while the driver chip has the commands
+to flip the display 180°, and the breakout module I used to test them
+worked fine, the cheap displays I got for the device ignore those
+commands – I'm guessing they don't actually use the same driver chip,
+but some cheaper alternative.
+
+
+
+:::{image} images/2440721649794016688.jpg
+
+:::
+
+
+Fortunately this wasn't a huge problem, because displayio can rotate
+the display in software, and my own driver code can easily just output
+the pages in reverse order.
+
+Mechanically there are a few small nits to pick in the design, but
+that is not going to change anything electrically. I discovered that I
+don't need the backlight resistor – you can see a solder blob in its
+place on the photo. The display itself is a little bit shifted to one
+side, about one millimeter – I will need to correct that. I will
+probably also change the way the traces go to the d-pad pads, so that
+it's harder to touch the traces instead of the pads. Finally, I'm
+thinking about adding some holes under the display to make it easier
+to glue it to the PCB. All of those are minor adjustments, though.
+

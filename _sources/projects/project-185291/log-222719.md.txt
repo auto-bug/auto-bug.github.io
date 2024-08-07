@@ -1,0 +1,93 @@
+---
+blogpost: true
+date: 2023-09-01
+category: project-185291
+---
+
+# Never Be Clever for the Sake of Being Clever
+Published on 2023-09-01 in {ref}`project-185291`.
+
+A bunch of sleepless nights, and I have designed a version of PewPew
+with that ST7735 display from LCSC in EasyEDA, to see how that single-
+click assembly thing would work for it. I was very careful to use the
+parts from the basic parts list as much as possible, so as to not
+incur extra costs for loading new parts into the PnP machines. It
+looks like this:
+
+
+
+:::{image} images/6883751693591818494.png
+
+:::
+
+
+Of course all the parts are on the back, including the long row of
+parts that is the power supply, including the LDO regulator for
+handling the USB 5V, and a boost converter for the battery.
+Unfortunately I didn't take a screenshot of the finished board from
+the back, so here it is without the boost circuit.
+
+
+
+:::{image} images/6033781693592930573.png
+
+:::
+
+
+There is also plenty of space for documenting the pins and adding
+whatever PCB art I decide on, but for a prototype that is enough. So I
+clicked the magical one-click button, did all the additional clicks to
+generate the BOM and PNP files that for some reason the one-click
+button doesn't handle, and was presented for a quote for assembling 5
+units: a little bit over $50. And that is without the SAMD21, which
+happens to have a "shortfall", and without the display, that doesn't
+even appear in the parts search, despite the fact that you can find it
+on LCSC without problems. Add to this the shipping costs and the
+missing parts (which happen to be the two most expensive ones), and
+you can easily expect $20 a piece. That's not what I expected, so I
+looked closely at the breakdown of fees, and turns out I'd have to pay
+extra $25 "setup fee" for the fact that the PCB is 0.6mm thick instead
+of the regular 1.6mm thickness. It would also have to be green,
+because all other colors in that thickness are ridiculously expensive.\
+
+
+In hindsight, this isn't surprising. If they have to change the
+settings of the whole production line just to churn out those 5
+boards, it's going to take time and work from their engineers. The
+good thing is that it's a one-time fee, so it would have much less of
+an impact on the final price if I ordered, say, 100 units. But I want
+people to be able to order just a dozen units for a workshop, so this
+is definitely sub-optimal.
+
+What can I do? What if I stopped trying to be clever with the battery
+holder and the USB socket, and used regular parts like everyone else,
+and regular thickness of the PCB? Those parts cost literal cents,
+after all. Let's see:
+
+
+
+:::{image} images/8454121693592462152.png
+
+:::
+
+
+I also simplified the board outline, while I was at it, in the vain
+hope that it would make the previews on the JLCPCB website work, but
+it didn't. I guess their engineers are busy with other things. In any
+case, this time it was just around $30 for 5 units, which sounds much
+more reasonable, until you remember that the boards are missing the
+two most expensive and hardest to solder parts, the MCU and the
+display. And this time the largest fee is the "extra components" fee,
+for using parts that aren't the basic parts list. Because while the
+USB socket and battery holder indeed only cost cents, they are not
+"basic parts", so you pay an additional fee (much higher than the
+price of the part) just for loading them into the PnP. I feel like I
+can't win this.
+
+So the plan right now is to focus on the other problem I have
+identified in the previous log, maybe get a new revision of the nokia
+display prototype into EasyEDA if I can't sleep again, and try to see
+if some fab would be interested to carry those boards in their shop.
+Because the only way to get them cheap is to make a lot of them at
+once. But that will have to wait until the SAMD21 is back in stock.
+

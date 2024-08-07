@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Smart Servos - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="smart-servos">
+<h1>Smart Servos<a class="headerlink" href="#smart-servos" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2023-04-02 in <a class="reference internal" href="../#project-190377"><span class="std std-ref">Sly Bug</span></a>.</p>
+<p>Hobby servos were not designed for robots – they are mainly for
+remote-controlled airplanes and boats, and they were created back in
+times of analog radios, when PWM signal was the easiest to multiplex.
+While they are relatively cheap and convenient, in that they already
+contain the drive train, the motor controller and a position sensor of
+sorts, they are pretty lacking in terms of feedback. Yes, you can add
+wires to them to be able to read the position of the potentiometer or
+the power sent to the motor, or even add some current monitoring
+circuit, but it always requires additional components and the use of
+additional microcontroller pins, and gets unreliable and tricky when
+the servos are not powered with stable voltage.</p>
+<p>But there are other servos, that were mostly designed for robots and
+similar constructions. Smart servos tend to be slower, with more
+torque, two-way digital bus communication, more convenient mounting
+options and brackets, and general sense of solidity. They however also
+tend to be rather bulky and expensive, and because I prefer to build
+small and cheap robots, I never really tried them properly.</p>
+<p>But recently I have discovered FeeTech SCS0009 smart servos, which
+contain all the logic of a smart servo in a package compatible with a
+nine gram hobby servo. Of course they are more expensive, but not so
+much that I couldn’t run some experiments with them. And since they
+are a drop-in replacement for the hobby servos, I don’t need to design
+a whole new robot for them, I can use all the mechanical parts of the <a class="reference internal" href="../../project-180025/#project-180025"><span class="std std-ref">Fluffbug</span></a> or <a class="reference internal" href="../../project-188908/#project-188908"><span class="std std-ref">Moo Bug</span></a> , and probably reuse the PCB as well. The only thing I need to
+implement is the new communication protocol. So that’s the plan for
+now: a version of Fluffbug with smart servos in place of the hobby
+servos. And we will see where we can take it from there.</p>
+<img alt="projects/project-190377/images/3992241680428880702.jpg" src="projects/project-190377/images/3992241680428880702.jpg" />
+</section>
+
+
+</div>
+  </body>
+</html>

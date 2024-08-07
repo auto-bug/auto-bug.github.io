@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>A Display - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="a-display">
+<h1>A Display<a class="headerlink" href="#a-display" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2023-10-13 in <a class="reference internal" href="../#project-188909"><span class="std std-ref">Wee Bug</span></a>.</p>
+<p>There are many different microcontroller boards that you can use with
+Wee Bug, from the Seeedstudio Xaio, through Adafruit QtPy, to
+Waveshare Zero boards. They all have the power pins in the same places
+(sometimes mirrored), and the GPIO pins are flexible enough to be used
+in the roles they need in the robot. But the Zero is particularly
+interesting, because they have four additional pins at the bottom of
+the board, that could be used by an additional board connected on top.
+Like, for instance, a display. It so happens I was working on getting
+one display to work, and I needed to make a breakout board for it, so
+I thought why not, and made it a shield, or maybe a “face shield”, for
+the Wee Bug.</p>
+<img alt="projects/project-188909/images/7276981697229717812.jpg" src="projects/project-188909/images/7276981697229717812.jpg" />
+<p>And since the other display I was recently playing with has the exact
+same footprint, I made the breakout in a shape that fits both of them.
+At a whim, I also added a footprint for the 1.8” ST7735 display on the
+other side, just because I could.\</p>
+<p>Of course the next step is to make it display something interesting. I
+already experimented with eyes, and the closeup of a single monstrous
+eye that Adafruit demos do is a bit too monstrous to my tastes, so for
+now I went with the GIF animation I made for the <a class="reference internal" href="../../project-192761/#project-192761"><span class="std std-ref">Astro-chan Badge</span></a> . I plant to eventually re-draw the same character I used on the
+silkscreen on earlier prototypes, and animate it to make it look like
+it’s controlling the robot from the inside, but of course that is much
+more work than it seems, so it will take a while.</p>
+<img alt="projects/project-188909/images/9379991697229971691.jpg" src="projects/project-188909/images/9379991697229971691.jpg" />
+<p>The practical advantage of having a display on a CircuitPython-
+programmed robot is the fact that you no longer need to explain how to
+connect to the USB console, so you can see error messages. People can
+just read the errors from the screen.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

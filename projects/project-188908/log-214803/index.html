@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>The OLED Face - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="the-oled-face">
+<h1>The OLED Face<a class="headerlink" href="#the-oled-face" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2022-12-31 in <a class="reference internal" href="../#project-188908"><span class="std std-ref">Moo Bug</span></a>.</p>
+<p>The PCBs arrived right after the holidays, and I quickly assembled
+one, moved the whole legs from one of my fluffbugs, and here it is,
+all working as expected. I just had to update the pin names in my
+circuitpython code, that’s literally it. But then I decided to try and
+get to work one of the shields – the one with a display and a speaker.</p>
+<img alt="projects/project-188908/images/9751991672441425672.jpg" src="projects/project-188908/images/9751991672441425672.jpg" />
+<p>The display just worked. I used the SH1106 library for displayio, and
+I just had to rotate the display 180° and add a 2-pixel horizontal
+shift to adapt it to this particular display. I got really good with
+that working on all those handheld game consoles.</p>
+<p>The speaker turned out to be a bit more challenging. I used a
+MAX98357A I2S amplifier, because I had that on a module earlier and I
+was confident it works well. Well, despite the schematic being
+practically the same with the module (minus some unnecessary caps, as
+usual), this one didn’t work. The chip is a bit small QFN package, but
+visually it looked soldered well. I tried a lot of different things,
+until at fifth re-soldering of the chip with the hot-air gun, it
+suddenly started working. I suppose looking good is not enough. Of
+course with such a tiny speaker the quality is questionable, but it
+does sound properly robotic, and it’s surprisingly loud (I hardwired
+the amplifier to maximum gain).</p>
+</section>
+
+
+</div>
+  </body>
+</html>

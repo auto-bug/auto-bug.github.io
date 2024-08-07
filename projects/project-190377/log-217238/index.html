@@ -1,0 +1,149 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>The Protocol - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="the-protocol">
+<h1>The Protocol<a class="headerlink" href="#the-protocol" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2023-04-02 in <a class="reference internal" href="../#project-190377"><span class="std std-ref">Sly Bug</span></a>.</p>
+<p>To talk to a smart servo you use a half-duplex UART protocol – meaning
+both RX and TX is done over the same wire, just not at the same time.
+The microcontroller sends a command, and then releases the pin and
+switches it to input to let the servo reply. Many microcontrollers
+have a special UART mode for this, but since it’s not supported in
+CircuitPython, for now I just connected the RX and TX pins together
+with 10kΩ resistors (to avoid having a short when both sides try to
+speak at the same time), and ignoring the looped back data whenever we
+send anything. I decided to use a raspberry pi pico for this, so later
+on I may implement proper half-duplex UART with the PIO assembly. For
+now this will do.</p>
+<img alt="projects/project-190377/images/8926541680464820649.jpg" src="projects/project-190377/images/8926541680464820649.jpg" />
+<p>The <a class="reference external" href="http://www.feetechrc.com/Data/feetechrc/upload/file/20220915/6379883463905538176347522.pdf">datasheet for SCS0009</a>  specifies the baudrate for the serial as 1000000 – it seems strange,
+not being a power of two or anything close, but it seems to work.</p>
+<p>Now, there is a higher level protocol on top of that serial
+communication. We send and receive frames of data, and those frames
+have a well defined structure. An outgoing frame looks like this:</p>
+<ul class="simple">
+<li><p>The first two bytes of a frame are 255 255 – this is to mark the start
+of the frame, but also to safeguard against missing the beginning of
+the transmission.</p></li>
+<li><p>The third byte is the ID of the servo – which can be from 1 to 254,
+with 254 being the broadcast ID that addresses all servos at once.
+Note that it can’t be 255, so you can’t confuse it with the beginning
+of the frame.</p></li>
+<li><p>The fourth byte is the length of the data that follows. This is so
+that you know how many more bytes to read from the serial connection
+before switching to output to send your reply, and so that you don’t
+need to use timeouts for this.</p></li>
+<li><p>The fifth byte for an outgoing frame is the command. It can be 1 for
+ping, 2 for read, 3 for write, 4 for regwrite, 5 for action, 6 for
+reset and 83 for syncwrite. We will talk about those commands later.</p></li>
+<li><p>Then you send the parameters for the command.</p></li>
+<li><p>Finally, you send a checksum, calculated from the whole frame.</p></li>
+</ul>
+<p>Once you send your frame, you switch to receiving, and wait for a
+reply frame. The reply frame has a slightly different, albeit similar
+structure:</p>
+<ul class="simple">
+<li><p>First you get the two 255 255 bytes.</p></li>
+<li><p>Then the ID of the servo that is replying.</p></li>
+<li><p>The length of following data.</p></li>
+<li><p>The status of the servo. This is 0 if everything is fine, but contains
+flags for different error conditions, like overheat or overload.</p></li>
+<li><p>Then come any parameters of the reply.</p></li>
+<li><p>And finally a checksum.</p></li>
+</ul>
+<p>This protocol is share by all of the FeeTech servos, and probably many
+other smart servos out there. The examples in the documentation are
+invaluable for implementing the details, because they are not
+immediately clear from the descriptions.</p>
+<p>Now that you have the higher level protocol, you will need one more
+thing: the register map of the particular servo you want to control.
+This is also part of the documentation, and it’s different for the
+different models of the servos. The most interesting registers for the
+SCS0009 are:</p>
+<ul class="simple">
+<li><p>0x2A tartget location</p></li>
+<li><p>0x2C running time</p></li>
+<li><p>0x2E running speed</p></li>
+<li><p>0x38 current location</p></li>
+<li><p>0x3C current load</p></li>
+</ul>
+<p>There are of course many more, including settings that are saved in
+the internal EPROM for the servo ID, its PID parameters or safety
+protections. We will not need those for now.</p>
+<p>Now, let’s talk more about commands.</p>
+<p>Ping is simple – it just makes the given servo send a response. It can
+be useful to test the communication, check the ID of the servo (if you
+only connect one and send a ping to the broadcast ID), or get its
+status.</p>
+<p>Read and write let you get or set the content of the registers. The
+read takes the number of the register and the number of bytes to read
+from it (some registers are 2 bytes long), and write takes the number
+of the register and the values to write. Easy.</p>
+<p>The regwrite is interesting, because it lets you schedule a change in
+the register without actually committing it yet. You can do it for
+several servos, and then when you are ready, confirm the change by
+sending the action command to the broadcast ID. This is useful when
+you need to move several servos together at once.</p>
+<p>Reset is self-explanatory. It resets the servo to the settings it has
+saved in its EPROM.</p>
+<p>Finally, syncwrite is a command that lets you send to the broadcast ID
+a big chunk of data, and each servo will fish from it the data for its
+registers. It’s faster then the regwrite+action way, but basically
+serves the same purpose – moving all the servos together at the same
+time.</p>
+<p>That is pretty much all we will need. I will be making a CircuitPython
+library with all of this stuff next.</p>
+<p>Special thanks to Abby from FeeTech for sending me all the necessary
+documentation! I would never figure it all out myself.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Practicality Beats Purity - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="practicality-beats-purity">
+<h1>Practicality Beats Purity<a class="headerlink" href="#practicality-beats-purity" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2024-06-23 in <a class="reference internal" href="../#project-185291"><span class="std std-ref">PewPew LCD</span></a>.</p>
+<p>It’s been a while since the last update in this project, but that
+doesn’t mean nothing was happening. In fact, the whole project got a
+complete overhaul, as I reevaluated the goals and the methods of
+reaching them.</p>
+<p>I went back all the way to the <a class="reference internal" href="../../project-165032/#project-165032"><span class="std std-ref">PewPew M4</span></a> design, including standard thickness PCB, a micro-USB socket that is
+not made out of the PCB, and a plastic battery holder for two AAA
+batteries. And physical buttons. I also changed the display to a
+ST7735, 180x128, 1.8” color TFT.</p>
+<p>Why such sudden changes? Well, the short answer is: because I need a
+reliable, working, non-experimental device that can be easily produced
+at scale for workshops right now. The long answer requires me to fill
+in some details.</p>
+<p>First of all, all the cool features like the USB port and battery
+holder made of PCB itself require a thin 0.6mm PCB. Which is usually
+more expensive, not available in colors, or not available for assembly
+with PNP machines. Or all three. So I dropped all that in order to be
+able to use the cheapest assembly options out there.</p>
+<p>Second, while the Nokia display is very reasonably priced at 1$, and
+it gives us all a warm feeling reusing old parts that would rot in the
+warehouse somewhere otherwise, it’s problematic, because you can’t
+have to buy it separately and solder onto all the consoles yourself.
+And no, you can’t use a connector, because you can’t buy matching
+connectors. On the other hand, ST7735 displays go for $2, are bigger,
+have better contrast, better support in software and will be around
+for a while yet. And surprise surprise, they also come from old
+(though slightly more recent) Nokia phones.</p>
+<p>Third, and this is entirely my fault, I can’t get the touch buttons
+working reliably. The problem is that I’m only checking them when the
+keys are checked in the game loop. And at 12 or even 6 FPS, that is
+not often enough. So they feel unreliable and laggy. I would need to
+write a version of the keypad library for CircuitPython that checks
+them in the background (or uses interrupts), and I made an attempt at
+this, but I’m blocked by the proprietary qtouch library that the
+SAMD21 uses. So I accepted the additional cost and went back to
+physical buttons. I found tact switches that are clicky but have low
+actuation power, and they feel great.</p>
+<p>I’m now in the process of assembling 50 units for a workshop I will be
+running in two weeks. Wish me luck.</p>
+<img alt="projects/project-185291/images/6344511719177304495.jpg" src="projects/project-185291/images/6344511719177304495.jpg" />
+</section>
+
+
+</div>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>http://deshipu.art/</id>
+  <title>deshipu.art - Posts in project-196453</title>
+  <updated>2024-08-07T20:35:29.757774+00:00</updated>
+  <link href="http://deshipu.art/"/>
+  <link href="http://deshipu.art/blog/category/project-196453/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-196453/log-230322/</id>
+    <title>Assembly</title>
+    <updated>2024-06-06T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="assembly"&gt;
+
+&lt;p&gt;Published on 2024-06-06 in &lt;a class="reference internal" href="../../../projects/project-196453/#project-196453"&gt;&lt;span class="std std-ref"&gt;Badge Ribbon for CircuitPython&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I finally got both the PCBs and the LEDs, so it’s time to assemble it
+all.&lt;/p&gt;
+&lt;img alt="projects/project-196453/images/5785581717674494468.jpg" src="projects/project-196453/images/5785581717674494468.jpg" /&gt;
+&lt;p&gt;In hindsight, I should have left the traces covered by soldermask
+somehow, but it was too hard to do in EasyEDA. Oh well, they are not
+visible anyways.&lt;/p&gt;
+&lt;img alt="projects/project-196453/images/9997261717674563343.jpg" src="projects/project-196453/images/9997261717674563343.jpg" /&gt;
+&lt;p&gt;The lights look good, especially after being covered by hot glue on
+the back side, to improve light diffusion. I probably should have
+added one more LED in the upper left corner of the logo.&lt;/p&gt;
+&lt;p&gt;I think that if I do something similar again, I will place the LEDs
+outside of the transparent areas, and let the hot glue pipe the light
+to them. This way there won’t be visible spots of light.&lt;/p&gt;
+&lt;p&gt;All in all, the project is very simple, but should be useful at the
+conferences.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-196453/log-230322/" rel="alternate"/>
+    <summary>Published on 2024-06-06 in project-196453.</summary>
+    <published>2024-06-06T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-196453/log-230321/</id>
+    <title>The Design</title>
+    <updated>2024-06-06T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="the-design"&gt;
+
+&lt;p&gt;Published on 2024-06-06 in &lt;a class="reference internal" href="../../../projects/project-196453/#project-196453"&gt;&lt;span class="std std-ref"&gt;Badge Ribbon for CircuitPython&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I started with the &lt;a class="reference internal" href="../../../projects/project-27579/#project-27579"&gt;&lt;span class="std std-ref"&gt;Blinka&lt;/span&gt;&lt;/a&gt; files I already had from my previous projects. I had to resize and fix
+them a little to fit on the new form factor. Then it was just a
+question of finding the right kind of flashing LEDs – unfortunately I
+couldn’t find them on LCSC, so I just ordered them from Aliexpress. I
+got two kinds, slow and fast, and I plan to mix them.&lt;/p&gt;
+&lt;img alt="projects/project-196453/images/6260661717674414073.png" src="projects/project-196453/images/6260661717674414073.png" /&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-196453/log-230321/" rel="alternate"/>
+    <summary>Published on 2024-06-06 in project-196453.</summary>
+    <published>2024-06-06T00:00:00+02:00</published>
+  </entry>
+</feed>

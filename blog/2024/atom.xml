@@ -2,189 +2,211 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posted in 2024</title>
-  <updated>2024-08-07T20:34:14.110376+00:00</updated>
+  <updated>2024-08-07T20:35:30.439097+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/2024/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
   <entry>
-    <id>http://deshipu.art/projects/project-178061/log-230354/</id>
-    <title>S3</title>
-    <updated>2024-06-07T00:00:00+02:00</updated>
-    <content type="html">&lt;section id="s3"&gt;
-
-&lt;p&gt;Published on 2024-06-07 in &lt;a class="reference internal" href="../../projects/project-178061/#project-178061"&gt;&lt;span class="std std-ref"&gt;PewPew S2&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;New microcontrollers keep coming out, and each one looks like an
-interesting choice for a game console. I have been working a little
-bit on the Xiao S3, so I decided to try and make a PCB for it with the
-same display and buttons. I also used it as a test for the solderable
-nuts that I wrote about in &lt;span class="xref std std-ref"&gt;project-186921&lt;/span&gt; .&lt;/p&gt;
-&lt;img alt="projects/project-178061/images/1846391717777136617.png" src="projects/project-178061/images/1846391717777136617.png" /&gt;
-&lt;p&gt;I started with the latest PCB for uGame 22, and removed the RP2)40
-chip and all related components. That left me with the power and audio
-citcuits, which I moved to the other side of the board. I then placed
-the Xiao footprint in a cutout, so that it can be flush with the PCB
-from the bottom. The rendering doesn’t show it, because it assumes the
-module will go on the bottom of the PCB, when in fact it’s supposed to
-go on the top, partially fitting in that cutout.&lt;/p&gt;
-&lt;p&gt;I also had to change how the buttons are handled, because Xiao only
-has 11 usable GPIO pins. So I added a shift register, knowing that
-CircuitPython already has a keypad library that handles it in the
-background. Unfortunately that also meant adding explicit pull-up
-resistors for each button.&lt;/p&gt;
-&lt;p&gt;Finally, I added the solderable nut footprints. I already got some
-samples, so I knew what to expect from them. The render shows hex
-nuts, but the ones I ended up using are actually round. But they are
-still 3mm high, the same as the middle layer of acrylic was supposed
-to be. I placed them in the same spots as the screw holes were, so I
-can reuse the acrylic parts I already have.&lt;/p&gt;
-&lt;img alt="projects/project-178061/images/940871717777594030.jpg" src="projects/project-178061/images/940871717777594030.jpg" /&gt;
-&lt;p&gt;When the PCBs arrived, I assembled one, skipping the power circuit – I
-didn’t feel like looking for the parts in the drawers, and I already
-know that circuit works fine. I had to compile my own version of the
-firmware, because the support for that board in CircuitPython is still
-not merged, due to Seeed Studio not providing a VID/PID to use. I also
-had to add the &lt;a class="reference internal" href="../../projects/project-80626/#project-80626"&gt;&lt;span class="std std-ref"&gt;Stage, a Tile and Sprite Engine&lt;/span&gt;&lt;/a&gt; to the firmware, to have all my games working – it’s not usually
-enabled for boards that don’t have a built-in display.&lt;/p&gt;
-&lt;p&gt;Overall, I’m very happy about how this microcontroller performs and
-about how the solderable nuts came out mechanically. I’m now thinking
-about repeating my experiment with the parallel display, but with the
-ESP32-S3 this time. Who knows, maybe it was something about the RP2040
-implementation that made things so slow? If the parallel display works
-well, I might use a WROOM module for the next version of this console.&lt;/p&gt;
-&lt;/section&gt;
-</content>
-    <link href="http://deshipu.art/projects/project-178061/log-230354/" rel="alternate"/>
-    <summary>Published on 2024-06-07 in project-178061.</summary>
-    <published>2024-06-07T00:00:00+02:00</published>
-  </entry>
-  <entry>
-    <id>http://deshipu.art/projects/project-178061/log-230360/</id>
-    <title>The Return of the Parallel Display</title>
-    <updated>2024-06-07T00:00:00+02:00</updated>
-    <content type="html">&lt;section id="the-return-of-the-parallel-display"&gt;
-
-&lt;p&gt;Published on 2024-06-07 in &lt;a class="reference internal" href="../../projects/project-178061/#project-178061"&gt;&lt;span class="std std-ref"&gt;PewPew S2&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;As I mentioned in the previous log, while the parallel display
-protocol doesn’t help much with the RP2040 chip, it might be a
-different story with the ESP32-S2 and S3. So it would be nice to check
-it, because we have a chance of having really smooth updates if it
-does work better. Unfortunately, the Xiao has too few pins to drive
-such a display, so we will need to use a Lolin S3 Mini for our tests,
-and eventually a WROOM module for the console itself.&lt;/p&gt;
-&lt;p&gt;Since I already tried that display with the RP2040, I know it has some
-caveats: you have to move a resistor on it to switch it from 16-bit
-mode to 8-bit mode, and the data pins are actually numbered backwards.
-So I connected the display remembering those things:&lt;/p&gt;
-&lt;img alt="projects/project-178061/images/71021717795809955.jpg" src="projects/project-178061/images/71021717795809955.jpg" /&gt;
-&lt;p&gt;Then I wrote a simple example program that should start the display.
-Note that the program is slightly different from what I used last
-time, because some stuff has been moved to individual modules in
-version 9 of CircuitPython.&lt;/p&gt;
-&lt;div class="highlight-default notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;paralleldisplaybus&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;board&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;displayio&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;busdisplay&lt;/span&gt;
-
-&lt;span class="n"&gt;_INIT_SEQUENCE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
-    &lt;span class="sa"&gt;b&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\x01\x80\x80&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;  &lt;span class="c1"&gt;# Software reset then delay 0x80 (128ms)&lt;/span&gt;
-    &lt;span class="sa"&gt;b&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\xEF\x03\x03\x80\x02&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
-    &lt;span class="sa"&gt;b&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\xCF\x03\x00\xC1\x30&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
-    &lt;span class="sa"&gt;b&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\xED\x04\x64\x03\x12\x81&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
-    &lt;span class="sa"&gt;b&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\xE8\x03\x85\x00\x78&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
-    &lt;span class="sa"&gt;b&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\xCB\x05\x39\x2C\x00\x34\x02&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
-    &lt;span class="sa"&gt;b&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\xF7\x01\x20&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
-    &lt;span class="sa"&gt;b&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\xEA\x02\x00\x00&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
-    &lt;span class="sa"&gt;b&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\xc0\x01\x23&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;  &lt;span class="c1"&gt;# Power control VRH[5:0]&lt;/span&gt;
-    &lt;span class="sa"&gt;b&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\xc1\x01\x10&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;  &lt;span class="c1"&gt;# Power control SAP[2:0];BT[3:0]&lt;/span&gt;
-    &lt;span class="sa"&gt;b&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\xc5\x02\x3e\x28&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;  &lt;span class="c1"&gt;# VCM control&lt;/span&gt;
-    &lt;span class="sa"&gt;b&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\xc7\x01\x86&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;  &lt;span class="c1"&gt;# VCM control2&lt;/span&gt;
-    &lt;span class="sa"&gt;b&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\x36\x01\x38&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;  &lt;span class="c1"&gt;# Memory Access Control&lt;/span&gt;
-    &lt;span class="sa"&gt;b&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\x37\x01\x00&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;  &lt;span class="c1"&gt;# Vertical scroll zero&lt;/span&gt;
-    &lt;span class="sa"&gt;b&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\x3a\x01\x55&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;  &lt;span class="c1"&gt;# COLMOD: Pixel Format Set&lt;/span&gt;
-    &lt;span class="sa"&gt;b&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\xb1\x02\x00\x18&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;  &lt;span class="c1"&gt;# Frame Rate Control (In Normal Mode/Full Colors)&lt;/span&gt;
-    &lt;span class="sa"&gt;b&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\xb6\x03\x08\x82\x27&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;  &lt;span class="c1"&gt;# Display Function Control&lt;/span&gt;
-    &lt;span class="sa"&gt;b&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\xF2\x01\x00&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;  &lt;span class="c1"&gt;# 3Gamma Function Disable&lt;/span&gt;
-    &lt;span class="sa"&gt;b&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\x26\x01\x01&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;  &lt;span class="c1"&gt;# Gamma curve selected&lt;/span&gt;
-    &lt;span class="sa"&gt;b&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\xe0\x0f\x0F\x31\x2B\x0C\x0E\x08\x4E\xF1\x37\x07\x10\x03\x0E\x09\x00&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;  &lt;span class="c1"&gt;# Set Gamma&lt;/span&gt;
-    &lt;span class="sa"&gt;b&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\xe1\x0f\x00\x0E\x14\x03\x11\x07\x31\xC1\x48\x08\x0F\x0C\x31\x36\x0F&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;  &lt;span class="c1"&gt;# Set Gamma&lt;/span&gt;
-    &lt;span class="sa"&gt;b&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\x11\x80\x78&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;  &lt;span class="c1"&gt;# Exit Sleep then delay 0x78 (120ms)&lt;/span&gt;
-    &lt;span class="sa"&gt;b&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\x29\x80\x78&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;  &lt;span class="c1"&gt;# Display on then delay 0x78 (120ms)&lt;/span&gt;
-&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="n"&gt;displayio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;release_displays&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;span class="n"&gt;bus&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;paralleldisplaybus&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ParallelBus&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-    &lt;span class="n"&gt;chip_select&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IO35&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="c1"&gt;# CS&lt;/span&gt;
-    &lt;span class="n"&gt;command&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IO36&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="c1"&gt;# RS&lt;/span&gt;
-    &lt;span class="n"&gt;write&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IO44&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="c1"&gt;# WR&lt;/span&gt;
-    &lt;span class="n"&gt;reset&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IO43&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="c1"&gt;# REST&lt;/span&gt;
-    &lt;span class="n"&gt;frequency&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;2_000_000&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="n"&gt;data_pins&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;
-        &lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IO18&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IO16&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IO2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IO4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IO12&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IO13&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IO11&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IO10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="p"&gt;],&lt;/span&gt;
-&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;display&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;busdisplay&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;BusDisplay&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-    &lt;span class="n"&gt;bus&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="n"&gt;_INIT_SEQUENCE&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="n"&gt;width&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;320&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="n"&gt;height&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;240&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;And… nothing. The display doesn’t work, all you can see is the white
-screen of death.&lt;/p&gt;
-&lt;p&gt;I spent the next few hours trying different combinations of pins,
-making sure the connections are correct and solid, replacing wires and
-re-soldering the display to the breakout. I even replaced it with a
-new display, in case I somehow broke the old one. Nothing helped. When
-you hit such a spot, it’s time break out the heavy guns: the logic
-analyzer.&lt;/p&gt;
-&lt;img alt="projects/project-178061/images/2830001717796098266.jpg" src="projects/project-178061/images/2830001717796098266.jpg" /&gt;
-&lt;p&gt;Unfortunately my analyzer only has 8 channels, so I could only monitor
-the clock and 7 data lines at a time. But I looked at all the signals
-(CS, RS, WR) and the first 7 bits of data, and they all look correct.
-The display should be working.&lt;/p&gt;
-&lt;p&gt;I even tried replacing the S3 with an S2, in case this version has
-something broken, but still no joy.&lt;/p&gt;
-&lt;p&gt;At this point I’m out of ideas for things to try. I’m going to leave
-this on my desk for a couple of days and see if any new ideas present
-themselves. I might even dig out the RP2040  to make sure it still
-works with that chip. We will see.&lt;/p&gt;
-&lt;/section&gt;
-</content>
-    <link href="http://deshipu.art/projects/project-178061/log-230360/" rel="alternate"/>
-    <summary>Published on 2024-06-07 in project-178061.</summary>
-    <published>2024-06-07T00:00:00+02:00</published>
-  </entry>
-  <entry>
-    <id>http://deshipu.art/projects/project-182310/log-230631/</id>
-    <title>Results</title>
+    <id>http://deshipu.art/projects/project-191383/log-230608/</id>
+    <title>Version Two</title>
     <updated>2024-06-20T00:00:00+02:00</updated>
-    <content type="html">&lt;section id="results"&gt;
+    <content type="html">&lt;section id="version-two"&gt;
 
-&lt;p&gt;Published on 2024-06-20 in &lt;a class="reference internal" href="../../projects/project-182310/#project-182310"&gt;&lt;span class="std std-ref"&gt;NHYTGB Keyboard&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;I just realized that I never updated this project with the results of
-my experiment.&lt;/p&gt;
-&lt;p&gt;In short, I’m disappointed.&lt;/p&gt;
-&lt;p&gt;I was hoping the muscle memory and learning from a traditional split
-keyboard would transfer to this layout, but it turns out that our
-muscle memory seems to operate in terms of absolute positions, not
-relative movements, and that rotating the keyboard by 90° and flipping
-it completely defeats any learning you might have benefited from from
-use of a regular keyboard.&lt;/p&gt;
-&lt;p&gt;The keyboard is possible to use, but you basically have to learn to
-type on it from scratch.&lt;/p&gt;
+&lt;p&gt;Published on 2024-06-20 in &lt;a class="reference internal" href="../../projects/project-191383/#project-191383"&gt;&lt;span class="std std-ref"&gt;Bigbug&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The robot was built to see if it would work, and I have to say that it
+worked pretty well so far. However, after taking it to several
+different events, I now have some ideas about how to improve it for
+such events specifically.&lt;/p&gt;
+&lt;p&gt;The main problem I have is that the robot is really to slow to walk
+around with it. As such, it’s mostly spending its time on the time,
+waiting to be switched on for a few steps to show to the passing
+people, and switched off before it falls off the table. Its size is
+also a bit awkward. It’s too big to really do anything useful on the
+table, but too small to be safe from being trampled on the floor.&lt;/p&gt;
+&lt;p&gt;So now I want to build a second version, using faster servos and
+longer legs. That should solve both the problems. I also want to try
+and make the body look less like a bunch of duct-taped garbage, but
+that’s a secondary consideration.&lt;/p&gt;
+&lt;p&gt;I already have the servos for the second version. I went with the JX
+PDI-6208MG, mostly because they are roughly the same size as the MG995
+I used in the first version, but should be about twice as fast. I also
+got some aluminium cases to see if I can use them as the body. One
+such case seems to be particularly suitable, so I went ahead and cut
+some holes in it to mount the servos:&lt;/p&gt;
+&lt;img alt="projects/project-191383/images/970631718834962094.JPG" src="projects/project-191383/images/970631718834962094.JPG" /&gt;
+&lt;p&gt;Cutting thick aluminium with a dremel turned out to be harder than I
+anticipated, but with some struggle, I got all four holes for the
+servo, and the accompanying mounting holes done, and then painted the
+enclosure with black spray paint to make all the scratches less
+obvious.&lt;/p&gt;
+&lt;img alt="projects/project-191383/images/4597261718835314447.JPG" src="projects/project-191383/images/4597261718835314447.JPG" /&gt;
+&lt;p&gt;As for the legs, I was planning to cut them from 3mm sheet aluminium
+again, but then I realized that some of the usual PCB fabs also let
+you order CNC cut parts. Initially I tried three of them, but with the
+pricing they showed, I started preparing the hacksaw.&lt;/p&gt;
+&lt;img alt="projects/project-191383/images/1935491718835442162.JPG" src="projects/project-191383/images/1935491718835442162.JPG" /&gt;
+&lt;p&gt;But then I thought about the fact that they also do bead-blasting and
+anodizing of the parts. I imagined nice red anodized aluminium legs,
+and I went to try some more fabs. One of the offered to make the parts
+for 1/3 of the price of the others, and that is acceptable for me for
+a one-off project, so I ended up ordering the parts anyways.&lt;/p&gt;
+&lt;p&gt;They wanted step files, so I took this opportunity to learn to use
+FreeCAD a little bit…&lt;/p&gt;
+&lt;img alt="projects/project-191383/images/704231718835566061.png" src="projects/project-191383/images/704231718835566061.png" /&gt;
+&lt;p&gt;I know, I know, this is horrible. But it’s the step file that counts
+in the end. With the leg parts ordered and scheduled to arrive in some
+two weeks, I got to work on the electronics.&lt;/p&gt;
+&lt;p&gt;I don’t need anything too fancy here. I wanted to use the pi pico, to
+have enough extra pins for things like speakers, blinking LEDs, extra
+moving parts and so on. I considered using a 3S lipo battery pack, but
+it’s considerably heavier than the 2 18650 batteries I used
+previously, so I kept those. I looked at the buck converter chips
+available, but I didn’t find anything that would be much better than
+just using a ready buck module, so I just left holes to connect that.
+The rest is simple: power switch, servo sockets, and a shottky diode
+for the pi pico VSYS (I might replace it with a different diode with a
+larger voltage drop, to raise the voltage for the servos).&lt;/p&gt;
+&lt;img alt="projects/project-191383/images/4118001718836070859.png" src="projects/project-191383/images/4118001718836070859.png" /&gt;
+&lt;p&gt;Just in case, I made the PCB shaped just like the body of the robot in &lt;a class="reference internal" href="../../projects/project-188909/#project-188909"&gt;&lt;span class="std std-ref"&gt;Wee Bug&lt;/span&gt;&lt;/a&gt; and &lt;a class="reference internal" href="../../projects/project-180025/#project-180025"&gt;&lt;span class="std std-ref"&gt;Fluffbug&lt;/span&gt;&lt;/a&gt; , so that if the aluminium case proves to be too heavy or otherwise
+problematic, I can revert to the taped garbage looks. I moved the
+batteries to both sides of the PCB to make the weight more evenly
+distributed, and I added a bunch of break-off parts for attaching the
+servos.&lt;/p&gt;
+&lt;p&gt;Now with the PCB and the leg parts on order, all we have to do is
+wait.&lt;/p&gt;
 &lt;/section&gt;
 </content>
-    <link href="http://deshipu.art/projects/project-182310/log-230631/" rel="alternate"/>
-    <summary>Published on 2024-06-20 in project-182310.</summary>
+    <link href="http://deshipu.art/projects/project-191383/log-230608/" rel="alternate"/>
+    <summary>Published on 2024-06-20 in project-191383.</summary>
     <published>2024-06-20T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-185291/log-230707/</id>
+    <title>Practicality Beats Purity</title>
+    <updated>2024-06-23T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="practicality-beats-purity"&gt;
+
+&lt;p&gt;Published on 2024-06-23 in &lt;a class="reference internal" href="../../projects/project-185291/#project-185291"&gt;&lt;span class="std std-ref"&gt;PewPew LCD&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;It’s been a while since the last update in this project, but that
+doesn’t mean nothing was happening. In fact, the whole project got a
+complete overhaul, as I reevaluated the goals and the methods of
+reaching them.&lt;/p&gt;
+&lt;p&gt;I went back all the way to the &lt;a class="reference internal" href="../../projects/project-165032/#project-165032"&gt;&lt;span class="std std-ref"&gt;PewPew M4&lt;/span&gt;&lt;/a&gt; design, including standard thickness PCB, a micro-USB socket that is
+not made out of the PCB, and a plastic battery holder for two AAA
+batteries. And physical buttons. I also changed the display to a
+ST7735, 180x128, 1.8” color TFT.&lt;/p&gt;
+&lt;p&gt;Why such sudden changes? Well, the short answer is: because I need a
+reliable, working, non-experimental device that can be easily produced
+at scale for workshops right now. The long answer requires me to fill
+in some details.&lt;/p&gt;
+&lt;p&gt;First of all, all the cool features like the USB port and battery
+holder made of PCB itself require a thin 0.6mm PCB. Which is usually
+more expensive, not available in colors, or not available for assembly
+with PNP machines. Or all three. So I dropped all that in order to be
+able to use the cheapest assembly options out there.&lt;/p&gt;
+&lt;p&gt;Second, while the Nokia display is very reasonably priced at 1$, and
+it gives us all a warm feeling reusing old parts that would rot in the
+warehouse somewhere otherwise, it’s problematic, because you can’t
+have to buy it separately and solder onto all the consoles yourself.
+And no, you can’t use a connector, because you can’t buy matching
+connectors. On the other hand, ST7735 displays go for $2, are bigger,
+have better contrast, better support in software and will be around
+for a while yet. And surprise surprise, they also come from old
+(though slightly more recent) Nokia phones.&lt;/p&gt;
+&lt;p&gt;Third, and this is entirely my fault, I can’t get the touch buttons
+working reliably. The problem is that I’m only checking them when the
+keys are checked in the game loop. And at 12 or even 6 FPS, that is
+not often enough. So they feel unreliable and laggy. I would need to
+write a version of the keypad library for CircuitPython that checks
+them in the background (or uses interrupts), and I made an attempt at
+this, but I’m blocked by the proprietary qtouch library that the
+SAMD21 uses. So I accepted the additional cost and went back to
+physical buttons. I found tact switches that are clicky but have low
+actuation power, and they feel great.&lt;/p&gt;
+&lt;p&gt;I’m now in the process of assembling 50 units for a workshop I will be
+running in two weeks. Wish me luck.&lt;/p&gt;
+&lt;img alt="projects/project-185291/images/6344511719177304495.jpg" src="projects/project-185291/images/6344511719177304495.jpg" /&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-185291/log-230707/" rel="alternate"/>
+    <summary>Published on 2024-06-23 in project-185291.</summary>
+    <published>2024-06-23T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-191383/log-230744/</id>
+    <title>The PCB Body</title>
+    <updated>2024-06-24T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="the-pcb-body"&gt;
+
+&lt;p&gt;Published on 2024-06-24 in &lt;a class="reference internal" href="../../projects/project-191383/#project-191383"&gt;&lt;span class="std std-ref"&gt;Bigbug&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The PCBs arrived (is it just me or are they really getting faster
+recently?) today.&lt;/p&gt;
+&lt;img alt="projects/project-191383/images/1569411719257885095.JPG" src="projects/project-191383/images/1569411719257885095.JPG" /&gt;
+&lt;p&gt;And I assembled one, just to see how it all fits together.&lt;/p&gt;
+&lt;img alt="projects/project-191383/images/9389941719257946353.JPG" src="projects/project-191383/images/9389941719257946353.JPG" /&gt;
+&lt;p&gt;Apart from the fact that the switch works in reverse (on is down),
+everything is pretty much as expected. I used nylon screws to save a
+bit on on weight (and because they are black and look better).&lt;/p&gt;
+&lt;p&gt;Now I’m only waiting for the legs. They should be fabricated next
+week, and we will see if they arrive before I travel.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-191383/log-230744/" rel="alternate"/>
+    <summary>Published on 2024-06-24 in project-191383.</summary>
+    <published>2024-06-24T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-191383/log-231040/</id>
+    <title>The Legs</title>
+    <updated>2024-07-03T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="the-legs"&gt;
+
+&lt;p&gt;Published on 2024-07-03 in &lt;a class="reference internal" href="../../projects/project-191383/#project-191383"&gt;&lt;span class="std std-ref"&gt;Bigbug&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;It took a while (because I picked the cheap and slow option), but the
+leg parts finally arrived.&lt;/p&gt;
+&lt;img alt="projects/project-191383/images/6053351720028992851.jpg" src="projects/project-191383/images/6053351720028992851.jpg" /&gt;
+&lt;p&gt;They look great: 3mm thick anodized aluminium. Very solid and pretty
+light too. So I assembled the robot with the PCB body first, just to
+see how it all looks like:&lt;/p&gt;
+&lt;img alt="projects/project-191383/images/1759941720029078902.jpg" src="projects/project-191383/images/1759941720029078902.jpg" /&gt;
+&lt;p&gt;Turns out that those servos are really beefy. In fact, they are so
+strong and fast, that my lazy code, which tells them too move from one
+end to the other when making a step, makes them draw so much current
+that the 8/15A regulator shuts down. This is more of a software
+problem, though, than hardware — the power is perfectly adequate when
+the servos are moving more gradually and don’t make sudden movements
+all at once. There is also a problem that I already noticed in the
+first version of Big Bug, that is even more pronounced now with the
+longer legs — the robot is tilted to one side for some reason. I
+initially thought that it’s because the servos have asymmetric
+response to the PWM signal, moving faster in one direction than in the
+other, but then the difference would be between diagonal legs, and
+it’s clearly a left/right asymmetry. I will need to investigate that
+closer.&lt;/p&gt;
+&lt;p&gt;With the initial tests done, I proceeded to move the robot to its
+proper aluminium body.&lt;/p&gt;
+&lt;img alt="projects/project-191383/images/7773551720029405627.jpg" src="projects/project-191383/images/7773551720029405627.jpg" /&gt;
+&lt;p&gt;I used one more spare PCB from the PCB body, but I cut off the
+mechanical part to which the servos were attached, so that it will fit
+inside the case better. I also experimented with several different
+buck converters, but in the end settled on the 8/16A one that I used
+initially. I ordered a few more to try later, too, so I might still
+change it.&lt;/p&gt;
+&lt;p&gt;The total weight of the whole robot is just shy of 1kg, which is not
+too bad. I might actually make it even less by replacing the case lids
+with PCBs (I don’t feel like drilling all the holes for the power
+switch and USB in the original lids), and using a smaller battery.&lt;/p&gt;
+&lt;p&gt;I drilled the holes on the sides for the servo cables, added some
+plastic cable management thingies, wrapped some rubber strings on the
+feet, and closed the lid:&lt;/p&gt;
+&lt;img alt="projects/project-191383/images/8654621720029703398.jpg" src="projects/project-191383/images/8654621720029703398.jpg" /&gt;
+&lt;p&gt;Now all that is remaining is, as always, programming. And waiting for
+the additional parts.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-191383/log-231040/" rel="alternate"/>
+    <summary>Published on 2024-07-03 in project-191383.</summary>
+    <published>2024-07-03T00:00:00+02:00</published>
   </entry>
   <entry>
     <id>http://deshipu.art/projects/project-178061/log-231499/</id>

@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>PCB Design - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="pcb-design">
+<h1>PCB Design<a class="headerlink" href="#pcb-design" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2022-12-31 in <a class="reference internal" href="../#project-188909"><span class="std std-ref">Wee Bug</span></a>.</p>
+<p>I measured the servos, and quickly designed a PCB similar to the one
+used in <a class="reference internal" href="../../project-180025/#project-180025"><span class="std std-ref">Fluffbug</span></a> , but proportionally smaller.</p>
+<img alt="projects/project-188909/images/91721672442475030.png" src="projects/project-188909/images/91721672442475030.png" />
+<p>I gave up on the IDC connectors for the servos, and just went with the
+1.25mm JST sockets. Instead of the Lolin S2 Mini, I decided to use
+either the Adafruit Qt Py board, or Seeedstudio Xiao – as it happens,
+they have the same pinouts, so I can decide later, or even switch
+between them. All the rest is pretty much the same as in Fluffbug, but
+since there was some free space, I also added a footprint for an
+optional infrared sensor, so that I can use a tv remote to control the
+robot.</p>
+<p>The last problem is the battery. I didn’t want to use the pouch lipo
+batteries, because they are not standard and pretty dangerous, so I
+looked at what standard battery size would fit it. Eventually, I
+decided on LIR2450 (or the bigger LIR2477 version), and added a coin
+cell battery holder to the PCB. The contacts stick out a bit, but I
+can just cut them.</p>
+<img alt="projects/project-188909/images/852881672442795666.png" src="projects/project-188909/images/852881672442795666.png" />
+<p>Of course as my luck has it, as soon as I ordered the PCBs, I found
+out the perfect battery size that would make it look exactly as
+Fluffbug, only smaller: the 14250 cells. There is even a holder for it
+that looks identical to the one in Fluffbug, just smaller:</p>
+<p>__</p>
+<img alt="projects/project-188909/images/1668661672442921859.jpg" src="projects/project-188909/images/1668661672442921859.jpg" />
+<p>Just look at how cute it is! In the end, I decided to order some of
+those cells and holders as well, and I will try to bodge them on the
+PCB somehow.\</p>
+</section>
+
+
+</div>
+  </body>
+</html>

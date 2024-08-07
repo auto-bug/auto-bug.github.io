@@ -1,0 +1,140 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>http://deshipu.art/</id>
+  <title>deshipu.art - Posts in project-192761</title>
+  <updated>2024-08-07T20:35:29.708395+00:00</updated>
+  <link href="http://deshipu.art/"/>
+  <link href="http://deshipu.art/blog/category/project-192761/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-192761/log-223081/</id>
+    <title>Assembly</title>
+    <updated>2023-09-12T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="assembly"&gt;
+
+&lt;p&gt;Published on 2023-09-12 in &lt;a class="reference internal" href="../../../projects/project-192761/#project-192761"&gt;&lt;span class="std std-ref"&gt;Astro-chan Badge&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The boards arrived today, and I assembled one. Well, partially, since
+I don’t have the resistors for the I2C pullups on the accelerometer
+yet, and the battery holders should arrive tomorrow…&lt;/p&gt;
+&lt;img alt="projects/project-192761/images/9697001694474628274.jpg" src="projects/project-192761/images/9697001694474628274.jpg" /&gt;
+&lt;p&gt;I got the display working with CircuitPython.&lt;/p&gt;
+&lt;img alt="projects/project-192761/images/9059021694474692551.jpg" src="projects/project-192761/images/9059021694474692551.jpg" /&gt;
+&lt;p&gt;Then I went ahead and used the gifio module for directly displaying
+animated gifs on the display. I think I need to simplify the graphics
+a bit if I want to be able to produce several matching animations for
+the different accelerometer movements, but I’m getting close.&lt;/p&gt;
+&lt;img alt="projects/project-192761/images/2249201694474790261.jpg" src="projects/project-192761/images/2249201694474790261.jpg" /&gt;
+&lt;p&gt;Of course you could also just put your avatar on the display and call
+it a day, maybe add some rotation for accelerometer reactions…&lt;/p&gt;
+&lt;img alt="projects/project-192761/images/6467731694474869411.jpg" src="projects/project-192761/images/6467731694474869411.jpg" /&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-192761/log-223081/" rel="alternate"/>
+    <summary>Published on 2023-09-12 in project-192761.</summary>
+    <published>2023-09-12T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-192761/log-223080/</id>
+    <title>Design</title>
+    <updated>2023-09-12T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="design"&gt;
+
+&lt;p&gt;Published on 2023-09-12 in &lt;a class="reference internal" href="../../../projects/project-192761/#project-192761"&gt;&lt;span class="std std-ref"&gt;Astro-chan Badge&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I went with EasyEDA for the design, because I’m trying to move away
+from Fritzing, but I still can’t stand KiCad. Plus I get all those
+footprints for free. The basic PCB was done in a single evening. I
+drew the body using a graphic tablet, imported it as the silkscreen
+layer, and made the board outline and all the rest manually.&lt;/p&gt;
+&lt;img alt="projects/project-192761/images/174701694474181953.png" src="projects/project-192761/images/174701694474181953.png" /&gt;
+&lt;p&gt;It took me a while to figure out the positions of all the components
+on the back, especially the battery and the Xiao module. Initially I
+tried to use a coin cell battery, but the people on the badgelife
+discord talked me out of it. I ended up with a 14250 lipo battery, and
+I put the battery holder over the module, so that it can act as a
+backpack.&lt;/p&gt;
+&lt;img alt="projects/project-192761/images/3064251694474360015.png" src="projects/project-192761/images/3064251694474360015.png" /&gt;
+&lt;p&gt;Electronics wise there is the display, the Xiao module, the battery
+with a power switch, two LEDs on the gun, and a LIS3DH accelerometer
+chip. Oh, and a transistor to do power switching between USB and
+battery, but since I plan to use the Xiao ESP32-S3, that already comes
+with its own power circuit and battery charging, I will just short the
+pins on the footprint.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-192761/log-223080/" rel="alternate"/>
+    <summary>Published on 2023-09-12 in project-192761.</summary>
+    <published>2023-09-12T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-192761/log-223224/</id>
+    <title>First Animation</title>
+    <updated>2023-09-13T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="first-animation"&gt;
+
+&lt;p&gt;Published on 2023-09-13 in &lt;a class="reference internal" href="../../../projects/project-192761/#project-192761"&gt;&lt;span class="std std-ref"&gt;Astro-chan Badge&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;It took me a few days to decide on the style I want the image to be.
+On one hand I want it to be a cute astronaut girl, but on the other
+hand I want to keep it as simple as possible, so that I can animate it
+easily, and so that it’s recognizable from a distance. After some
+experimenting with different techniques and programs, and looking at
+different cartoons, I finally decided on a style that is inspired by
+the Swiss Familienwagen decorations. It’s very cartoonish and simple,
+but stil pretty cute. I got the first, easiest animation done:
+blinking.&lt;/p&gt;
+&lt;img alt="projects/project-192761/images/9977361694641928532.gif" src="projects/project-192761/images/9977361694641928532.gif" /&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-192761/log-223224/" rel="alternate"/>
+    <summary>Published on 2023-09-13 in project-192761.</summary>
+    <published>2023-09-13T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-192761/log-223390/</id>
+    <title>Missing Components</title>
+    <updated>2023-09-19T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="missing-components"&gt;
+
+&lt;p&gt;Published on 2023-09-19 in &lt;a class="reference internal" href="../../../projects/project-192761/#project-192761"&gt;&lt;span class="std std-ref"&gt;Astro-chan Badge&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Today I finally added all the missing components: the resistor for the
+backlight, the accelerometer with its i2c pull-ups, and the two red
+LEDs on the gun, with their matching resistors as well. I was waiting
+for the right sized resistors to arrive from LCSC, but they seem to be
+stuck at the airport for the last three weeks, so I squeezed the
+bigger resistors I have in those footprints instead. I also improved
+the idle animation a bit, adding random eye movements and improving
+the timing of the blinking:&lt;/p&gt;
+&lt;img alt="projects/project-192761/images/9565751695115469391.gif" src="projects/project-192761/images/9565751695115469391.gif" /&gt;
+&lt;p&gt;Now I need to figure out how to process the data from the
+accelerometer to make it detect the events that will trigger different
+animations. And of course to draw all those different animations. It
+will probably take a while.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-192761/log-223390/" rel="alternate"/>
+    <summary>Published on 2023-09-19 in project-192761.</summary>
+    <published>2023-09-19T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-192761/log-223769/</id>
+    <title>Second Animation and Accelerometer</title>
+    <updated>2023-09-30T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="second-animation-and-accelerometer"&gt;
+
+&lt;p&gt;Published on 2023-09-30 in &lt;a class="reference internal" href="../../../projects/project-192761/#project-192761"&gt;&lt;span class="std std-ref"&gt;Astro-chan Badge&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I had a little bit of time today, so I quickly made a second animation
+for this badge:&lt;/p&gt;
+&lt;img alt="projects/project-192761/images/8857511696110288975.gif" src="projects/project-192761/images/8857511696110288975.gif" /&gt;
+&lt;p&gt;I also added the code to read the raw x, y, and z values from the
+accelerometer, and play this animation if the x component is greater
+than 5000 – which basically means that the badge is tilted to the
+left. Of course adding a similar animation for the right tilt is
+trivial. I also want to make a “stunned” animation, to be displayed
+after the board has been shaken – but to detect that I will need to
+keep some previous values and calculate the variance.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-192761/log-223769/" rel="alternate"/>
+    <summary>Published on 2023-09-30 in project-192761.</summary>
+    <published>2023-09-30T00:00:00+02:00</published>
+  </entry>
+</feed>

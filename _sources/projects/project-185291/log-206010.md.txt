@@ -1,0 +1,44 @@
+---
+blogpost: true
+date: 2022-05-10
+category: project-185291
+---
+
+# Environmental Cost of Displays
+Published on 2022-05-10 in {ref}`project-185291`.
+
+While reusing old displays wasn't initially the goal of this project,
+the goal of making it affordable lead straight in that direction, and
+then the Hackaday Prize came along with this category, so I thought
+why not submit it.
+
+But while no lone hacker is going to save the planet with our toys, we
+can at least help somewhat by raising the awareness of the
+environmental effects of the technology we are using. So I went and
+tried to do some research about how bad the displays actually are for
+the environment.
+
+On the surface of it, the impact seems negligible. It's mostly glass,
+silicon, some mild chemicals for the liquid crystals, some metals for
+the contacts, plastic for the case. But it turns out that most thin
+displays, whether they are LCDs, OLED, plasma, TFT, IPS or e-ink,
+share one thing with thin-film photovoltaic cells that makes them
+horrible for the planet: transparent electrodes. Of course you need
+transparent electrodes to bring electricity to all those pixels, if
+you want to also be able to see the pixels. Such electrodes are
+usually made of silicon, just like in chips, and to get the right
+shapes, they are etched in similar way that you etch copper on the
+PCBs. Except the best chemical for etching silicon is nitrogen
+trifluoride.
+
+What is nitrogen trifluoride? It seems pretty harmless. It's
+colorless, non-flammable gas with pretty low toxicity. Easy to handle,
+pretty safe. However, it's an extremely potent greenhouse gas. How
+potent? 17200 times more potent than carbon dioxide. That's 17
+thousands. Oof! It stays in the atmosphere for an estimated 740 years.
+And its concentration in the air is growing steadily at about 11%
+increase per year, as of 2011.
+
+So yeah, let's see if we can reuse those displays we already have, and
+maybe rethink those solar panels a bit too.
+

@@ -1,0 +1,72 @@
+---
+blogpost: true
+date: 2022-12-31
+category: project
+tags:  quadruped, ROBOT, hardware, circuitpython, ongoing project
+image: 1
+---
+
+# Wee Bug
+
+Fluffbug but smaller
+
+<div class="project-thumb">
+
+:::{image} images/9509241673273452763.jpg
+:target: /_images/9509241673273452763.jpg
+:::
+
+:::{image} images/9859711673287876667.jpg
+:target: /_images/9859711673287876667.jpg
+:::
+
+:::{image} images/4258961674770699507.jpg
+:target: /_images/4258961674770699507.jpg
+:::
+
+:::{image} images/17991693090470263.jpg
+:target: /_images/17991693090470263.jpg
+:::
+
+:::{image} images/1955731693143555811.jpg
+:target: /_images/1955731693143555811.jpg
+:::
+
+:::{image} images/5593081710886184394.jpg
+:target: /_images/5593081710886184394.jpg
+:::
+
+</div>
+
+
+    While digging through my drawers, I stumbled upon a bag of sub-micro
+servos I bought a few years ago from HobbyKing for the {ref}`project-10665` , but never used in the end, because they had wrong connectors. Turns
+out there are HK-282A servos with 1.25mm-pitch JST connectors and
+HK-282AS, with 1mm-pitch unidentified connectors. In any case, the
+Pony Bot is on hold indefinitely for now, until I can find the energy
+to actually program a gait for it, so I thought that maybe I can use
+those tiny servos for something else: make a tiny version of the {ref}`project-180025` robot. That would also have the advantage of not needing to write a
+new gait code, since the one already written for Fluffbug should work.
+
+So I went ahead and started to design a Fluffbug, but with everything
+smaller.
+
+
+
+:::{image} images/3804161677707812005.gif
+
+:::
+
+
+
+
+
+
+## Logs
+
+:::{postlist}
+:category: project-188909
+:::
+
+## Instructions
+

@@ -1,0 +1,40 @@
+---
+blogpost: true
+date: 2022-05-17
+category: project-185291
+---
+
+# Why not Recycle Everything?
+Published on 2022-05-17 in {ref}`project-185291`.
+
+With both the screen and the battery being chosen with their impact on
+environment in mind, you are probably wondering what about the
+remaining components, especially the microcontroller?
+
+The quick answer to that is that the chip shortage has cleared any old
+micrcontrollers from the warehouses quite well already, so there isn't
+really much surplus we could draw on here.
+
+The more detailed answer is that the main and overriding goal of this
+project is to remove as many obstacles between you and the game you
+are going to write, as possible, and the older microcontrollers simply
+don't have the resources, in terms of memory and speed, to run a
+Python interpreter. They often don't even have native USB peripheral
+on them, which means you would have to muck about installing
+toolchains, compiling your programs, and using special dongles and
+programs to flash them onto the device. This is simply unacceptable.
+
+As for the other components, they are really generic, and you could
+easily use recycled ones if you are building this by hand. But for
+producing hundreds of the devices, the additional effort in hand-
+placing them and doing quality checks to make sure they work, with
+added risk that they might stop working at any time anyways, is simply
+not worth it.
+
+So we will have this mixture of old and new technology — ancient
+screen with a advanced microcontroller, traditional battery with a
+modern voltage regulator, generic switch with new capacitors.
+
+Oh, and I also looked into using paper PCBs, but it seems the
+technology is not quite there yet.
+

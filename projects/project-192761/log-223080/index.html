@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Design - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="design">
+<h1>Design<a class="headerlink" href="#design" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2023-09-12 in <a class="reference internal" href="../#project-192761"><span class="std std-ref">Astro-chan Badge</span></a>.</p>
+<p>I went with EasyEDA for the design, because I’m trying to move away
+from Fritzing, but I still can’t stand KiCad. Plus I get all those
+footprints for free. The basic PCB was done in a single evening. I
+drew the body using a graphic tablet, imported it as the silkscreen
+layer, and made the board outline and all the rest manually.</p>
+<img alt="projects/project-192761/images/174701694474181953.png" src="projects/project-192761/images/174701694474181953.png" />
+<p>It took me a while to figure out the positions of all the components
+on the back, especially the battery and the Xiao module. Initially I
+tried to use a coin cell battery, but the people on the badgelife
+discord talked me out of it. I ended up with a 14250 lipo battery, and
+I put the battery holder over the module, so that it can act as a
+backpack.</p>
+<img alt="projects/project-192761/images/3064251694474360015.png" src="projects/project-192761/images/3064251694474360015.png" />
+<p>Electronics wise there is the display, the Xiao module, the battery
+with a power switch, two LEDs on the gun, and a LIS3DH accelerometer
+chip. Oh, and a transistor to do power switching between USB and
+battery, but since I plan to use the Xiao ESP32-S3, that already comes
+with its own power circuit and battery charging, I will just short the
+pins on the footprint.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

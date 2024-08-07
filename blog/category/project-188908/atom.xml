@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>http://deshipu.art/</id>
+  <title>deshipu.art - Posts in project-188908</title>
+  <updated>2024-08-07T20:35:29.617272+00:00</updated>
+  <link href="http://deshipu.art/"/>
+  <link href="http://deshipu.art/blog/category/project-188908/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-188908/log-214801/</id>
+    <title>The PCB Design</title>
+    <updated>2022-12-30T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="the-pcb-design"&gt;
+
+&lt;p&gt;Published on 2022-12-30 in &lt;a class="reference internal" href="../../../projects/project-188908/#project-188908"&gt;&lt;span class="std std-ref"&gt;Moo Bug&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This is my first project where I completely switched to EasyEDA as a
+PCB design tool. I honestly tried KiCAD several times over the years,
+and it’s just so hilariously bad at exploring designs, that I gave up
+on it. EasyEDA is still far from ideal (especially the copper fills),
+but it’s not completely unusable.&lt;/p&gt;
+&lt;p&gt;In any case, I followed up on my fluffbug work, of course, but I made
+everything except for the battery holder surface-mount. I found some
+pretty nice low-profile smd female headers on LCSC, and the IDC
+connectors for the servos also exist in SMD versions. This actually
+gives me much more room on the PCB, because headers no longer take up
+both sides.&lt;/p&gt;
+&lt;img alt="projects/project-188908/images/4419021672440629343.png" src="projects/project-188908/images/4419021672440629343.png" /&gt;
+&lt;img alt="projects/project-188908/images/7571221672440647456.png" src="projects/project-188908/images/7571221672440647456.png" /&gt;
+&lt;p&gt;There are still a few pilot holes for all the components, so there was
+some work squeezing it all to fit, but in the end it came out rather
+compact. Since the headers are double-row, I can use them to add
+bigger “face” shields for the robot, with things like displays,
+cameras, sensors or speakers. In fact, I went ahead and designed two
+shields, one the size of the pico with a camera, and one bigger, with
+an oled display and a speaker.&lt;/p&gt;
+&lt;img alt="projects/project-188908/images/630771672440827528.jpg" src="projects/project-188908/images/630771672440827528.jpg" /&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-188908/log-214801/" rel="alternate"/>
+    <summary>Published on 2022-12-30 in project-188908.</summary>
+    <published>2022-12-30T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-188908/log-214803/</id>
+    <title>The OLED Face</title>
+    <updated>2022-12-31T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="the-oled-face"&gt;
+
+&lt;p&gt;Published on 2022-12-31 in &lt;a class="reference internal" href="../../../projects/project-188908/#project-188908"&gt;&lt;span class="std std-ref"&gt;Moo Bug&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The PCBs arrived right after the holidays, and I quickly assembled
+one, moved the whole legs from one of my fluffbugs, and here it is,
+all working as expected. I just had to update the pin names in my
+circuitpython code, that’s literally it. But then I decided to try and
+get to work one of the shields – the one with a display and a speaker.&lt;/p&gt;
+&lt;img alt="projects/project-188908/images/9751991672441425672.jpg" src="projects/project-188908/images/9751991672441425672.jpg" /&gt;
+&lt;p&gt;The display just worked. I used the SH1106 library for displayio, and
+I just had to rotate the display 180° and add a 2-pixel horizontal
+shift to adapt it to this particular display. I got really good with
+that working on all those handheld game consoles.&lt;/p&gt;
+&lt;p&gt;The speaker turned out to be a bit more challenging. I used a
+MAX98357A I2S amplifier, because I had that on a module earlier and I
+was confident it works well. Well, despite the schematic being
+practically the same with the module (minus some unnecessary caps, as
+usual), this one didn’t work. The chip is a bit small QFN package, but
+visually it looked soldered well. I tried a lot of different things,
+until at fifth re-soldering of the chip with the hot-air gun, it
+suddenly started working. I suppose looking good is not enough. Of
+course with such a tiny speaker the quality is questionable, but it
+does sound properly robotic, and it’s surprisingly loud (I hardwired
+the amplifier to maximum gain).&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-188908/log-214803/" rel="alternate"/>
+    <summary>Published on 2022-12-31 in project-188908.</summary>
+    <published>2022-12-31T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-188908/log-228292/</id>
+    <title>Going Smaller</title>
+    <updated>2024-03-18T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="going-smaller"&gt;
+
+&lt;p&gt;Published on 2024-03-18 in &lt;a class="reference internal" href="../../../projects/project-188908/#project-188908"&gt;&lt;span class="std std-ref"&gt;Moo Bug&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Smaller robots are easier. Mostly because of the cube law, which says
+that the weight of a thing grows proportionally to the third power of
+the size. A robot twice larger is 8 times heavier, and accordingly
+needs more power to move, bigger batteries, and more robust materials,
+which are in turn harder to shape. On the other hand a robot that is
+half the size could be 8 times lighter, needing proportionately less
+of everything. So if you are a beginner robot builder, you want to
+start small.&lt;/p&gt;
+&lt;p&gt;But not too small! You want to use off-the shelf components, and to be
+able to work with your hands, preferably without a need of a
+microscope or special processes. So there is a sweet spot in the size
+of the robots. When I started with &lt;a class="reference internal" href="../../../projects/project-180025/#project-180025"&gt;&lt;span class="std std-ref"&gt;Fluffbug&lt;/span&gt;&lt;/a&gt; , that size was mostly dictated by the size of the servos that were
+available. The 9g cheap blue hobby servos were basically the cheapest
+and easiest to source actuators for a robot that you could get, and
+the size of both Fluffbug and Moo Bug that is based on it were mostly
+based on the size and strength of those servos.&lt;/p&gt;
+&lt;p&gt;But situation changes, the popularity of super-small remote controlled
+models grows, and the sub-micro-servos used in them are becoming
+widely available. You can now buy 2g servos for only a little bit more
+than the 9g servos, and since they are later design, they actually
+have better features. They work with single LiPO voltages, and they
+often have larger rotation range. They also use much smaller
+connectors, which lets you save space on the PCB.&lt;/p&gt;
+&lt;p&gt;I have been exploring the use of those smaller servos with the &lt;a class="reference internal" href="../../../projects/project-188909/#project-188909"&gt;&lt;span class="std std-ref"&gt;Wee Bug&lt;/span&gt;&lt;/a&gt; , and I’m pretty happy with what you can do with them and a small
+board like the Xiao. However, sometimes you want to have more pins, so
+you can add a display, a speaker, maybe some extra servos for hands,
+additional sensors and so on. So I decided I need a Wee Bug with the
+pi pico footprint.&lt;/p&gt;
+&lt;p&gt;That’s how I came up with the version 3.0 of the Moo Bug. You might be
+surprised here, if you followed the logs of this project before: I
+never mentioned anything about the version 2.0! That’s true, I had
+that version designed, the main change was getting rid of the servo
+connectors and going back to the standard servo plugs. But I never
+made or published it, so it’s lost to history.&lt;/p&gt;
+&lt;img alt="projects/project-188908/images/7562251710800246631.png" src="projects/project-188908/images/7562251710800246631.png" /&gt;
+&lt;p&gt;Version 3 switches to through-hole pin headers for the pi pico, to
+save space, and moves the servo sockets under the microcontroller
+board. I used a sideways type of sockets this time, so they are pretty
+low profile. Cable management might be simplified, because you can
+just tuck the extra cables under the board.\&lt;/p&gt;
+&lt;p&gt;The electronics is pretty much the same as with the Xiao: battery
+protection, battery charging, and an accelerometer. The switch and the
+charging LED have been moved next to the servos, to make room for the
+servo sockets.&lt;/p&gt;
+&lt;img alt="projects/project-188908/images/9704591710800373247.jpg" src="projects/project-188908/images/9704591710800373247.jpg" /&gt;
+&lt;p&gt;The servos are connected to the pins on the bottom row, so that pi
+pico clones with a display or other extra features can be used. The
+mobility of the legs is slightly limited by the wider top of the body,
+but that doesn’t interfere with walking.&lt;/p&gt;
+&lt;p&gt;As with the Wee Bug, the legs are made of PCBs, not laser-cut acrylic
+– at this size the cost difference is negligible, especially when you
+need to find very thin acrylic sheet. Of course they could also be cut
+from MDF or 3D printed, at this weight the material doesn’t make much
+difference. I’m even thinking about a papercraft version of the robot.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-188908/log-228292/" rel="alternate"/>
+    <summary>Published on 2024-03-18 in project-188908.</summary>
+    <published>2024-03-18T00:00:00+01:00</published>
+  </entry>
+</feed>
