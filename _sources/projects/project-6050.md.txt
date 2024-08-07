@@ -207,21 +207,35 @@ make the following connections:
 Now, in your Arduino IDE go to Files→Examples→11.ArduinoISP and select
 that example. Then scroll to around line 68 and change this:
 
+
 ```cpp
-// Configure which pins to use:// The standard pin configuration.#ifndef ARDUINO_HOODLOADER2#define RESET     10// Use pin 10 to reset the target rather than SS#define LED_HB    9#define LED_ERR   8#define LED_PMODE 7```
+// Configure which pins to use:
 
-Into this:```vbscript
-// Configure which pins to use:// The standard pin configuration.#ifndef ARDUINO_HOODLOADER2#define RESET     0#define LED_HB    2#define LED_ERR   4#define LED_PMODE 5```
+// The standard pin configuration.
+#ifndef ARDUINO_HOODLOADER2 
 
-Then go to Tools→Board and select the Adafruit HUZZAH board, then do
-Sketch→Upload. You have your programmer ready.Then to program the chip, load the sketch with the servo controller,
-change the board to Arduino Uno, select Tools→Programmer→Arduino as
-ISP, and do Sketch→Upload Using Programmer. You should see some
-blinking lights on your Feather, and then your chip is programmed.
+#define RESET     10 // Use pin 10 to reset the target rather than SS
+#define LED_HB    9
+#define LED_ERR   8
+#define LED_PMODE 7
+```
 
-In the end, I will probably make a Makefile that does the equivalent
-of the above procedure automatically, to streamline the experience a
-bit.
+Into this:
+```vbscript
+// Configure which pins to use:
+
+// The standard pin configuration.
+#ifndef ARDUINO_HOODLOADER2 
+
+#define RESET     0
+#define LED_HB    2
+#define LED_ERR   4
+#define LED_PMODE 5
+```
+
+Then go to Tools→Board and select the Adafruit HUZZAH board, then do Sketch→Upload. You have your programmer ready.Then to program the chip, load the sketch with the servo controller, change the board to Arduino Uno, select Tools→Programmer→Arduino as ISP, and do Sketch→Upload Using Programmer. You should see some blinking lights on your Feather, and then your chip is programmed.
+
+In the end, I will probably make a Makefile that does the equivalent of the above procedure automatically, to streamline the experience a bit.
 
 
 
@@ -423,7 +437,7 @@ this. Can't wait for the boards to arrive.
 Created 2017-01-11.
 
 
-# Year's Summary
+## Year's Summary
 
 This is one of my oldest projects, and definitely one that I have put
 the most total work into so far. With the year's end, I decided to
@@ -461,7 +475,7 @@ platform to experiment with -- even if they do experiments and
 improvements, it's all for nothing if they don't share them.
 
 
-# Wrong Goals
+## Wrong Goals
 
 I think that part of the problem is that I have been focusing on the
 wrong parts of the project. I need to pause and re-evaluate some of
@@ -541,7 +555,7 @@ that yet. Perhaps I will need to team up with some other similar
 projects?
 
 
-# Future Plans
+## Future Plans
 
 I definitely want to continue working on Tote with the goal of
 crowdsourcing innovation in the area of quadruped robots. There will
@@ -576,91 +590,118 @@ play with the ranges some more.
 Here's a comparison of the values from those functions with the
 standard library:
 
+
 ```
-asin(-0.88)=-61.04 iasin(-7168)=-610 diff -0.04  asin(-0.75)=-48.59
-iasin(-6144)=-486 diff 0.01  asin(-0.63)=-38.68 iasin(-5120)=-388 diff
-0.12  asin(-0.50)=-30.00 iasin(-4096)=-302 diff 0.20
-asin(-0.37)=-22.02 iasin(-3072)=-220 diff -0.02  asin(-0.25)=-14.48
-iasin(-2048)=-144 diff -0.08  asin(-0.12)=-7.18 iasin(-1024)=-70 diff
--0.18  asin(0.00)=0.00 iasin(0)=0 diff 0.00  asin(0.12)=7.18
-iasin(1024)=72 diff -0.02  asin(0.25)=14.48 iasin(2048)=144 diff 0.08
-asin(0.37)=22.02 iasin(3072)=220 diff 0.02  asin(0.50)=30.00
-iasin(4096)=300 diff 0.00  asin(0.63)=38.68 iasin(5120)=388 diff -0.12
-asin(0.75)=48.59 iasin(6144)=486 diff -0.01  asin(0.88)=61.04
-iasin(7168)=610 diff 0.04  asin(1.00)=90.00 iasin(8192)=916 diff -1.60
-sqrt(0)=0.00 isqrt(0)=0 diff 0.00  sqrt(1024)=32.00 isqrt(1024)=32
-diff 0.00  sqrt(2048)=45.25 isqrt(2048)=45 diff 0.25  sqrt(3072)=55.43
-isqrt(3072)=55 diff 0.43  sqrt(4096)=64.00 isqrt(4096)=64 diff 0.00
-sqrt(5120)=71.55 isqrt(5120)=71 diff 0.55  sqrt(6144)=78.38
-isqrt(6144)=78 diff 0.38  sqrt(7168)=84.66 isqrt(7168)=84 diff 0.66
-sqrt(8192)=90.51 isqrt(8192)=90 diff 0.51    atan2(0, 0)=0.00
-iatan2(0, 0)=0 diff 0.00  atan2(0, 1024)=0.00 iatan2(0, 1024)=0 diff
-0.00  atan2(0, 2048)=0.00 iatan2(0, 2048)=0 diff 0.00  atan2(0,
-3072)=0.00 iatan2(0, 3072)=0 diff 0.00  atan2(0, 4096)=0.00 iatan2(0,
-4096)=0 diff 0.00  atan2(0, 5120)=0.00 iatan2(0, 5120)=0 diff 0.00
-atan2(0, 6144)=0.00 iatan2(0, 6144)=0 diff 0.00  atan2(0, 7168)=0.00
-iatan2(0, 7168)=0 diff 0.00  atan2(0, 8192)=0.00 iatan2(0, 8192)=0
-diff 0.00  atan2(1024, 0)=90.00 iatan2(1024, 0)=899 diff 0.10
-atan2(1024, 1024)=45.00 iatan2(1024, 1024)=449 diff 0.10  atan2(1024,
-2048)=26.57 iatan2(1024, 2048)=274 diff -0.83  atan2(1024, 3072)=18.43
-iatan2(1024, 3072)=183 diff 0.13  atan2(1024, 4096)=14.04 iatan2(1024,
-4096)=139 diff 0.14  atan2(1024, 5120)=11.31 iatan2(1024, 5120)=112
-diff 0.11  atan2(1024, 6144)=9.46 iatan2(1024, 6144)=95 diff -0.04
-atan2(1024, 7168)=8.13 iatan2(1024, 7168)=84 diff -0.27  atan2(1024,
-8192)=7.13 iatan2(1024, 8192)=70 diff 0.13  atan2(2048, 0)=90.00
-iatan2(2048, 0)=899 diff 0.10  atan2(2048, 1024)=63.43 iatan2(2048,
-1024)=633 diff 0.13  atan2(2048, 2048)=45.00 iatan2(2048, 2048)=449
-diff 0.10  atan2(2048, 3072)=33.69 iatan2(2048, 3072)=336 diff 0.09
-atan2(2048, 4096)=26.57 iatan2(2048, 4096)=274 diff -0.83  atan2(2048,
-5120)=21.80 iatan2(2048, 5120)=216 diff 0.20  atan2(2048, 6144)=18.43
-iatan2(2048, 6144)=183 diff 0.13  atan2(2048, 7168)=15.95 iatan2(2048,
-7168)=159 diff 0.05  atan2(2048, 8192)=14.04 iatan2(2048, 8192)=139
-diff 0.14  atan2(3072, 0)=90.00 iatan2(3072, 0)=899 diff 0.10
-atan2(3072, 1024)=71.57 iatan2(3072, 1024)=724 diff -0.83  atan2(3072,
-2048)=56.31 iatan2(3072, 2048)=562 diff 0.11  atan2(3072, 3072)=45.00
-iatan2(3072, 3072)=449 diff 0.10  atan2(3072, 4096)=36.87 iatan2(3072,
-4096)=370 diff -0.13  atan2(3072, 5120)=30.96 iatan2(3072, 5120)=309
-diff 0.06  atan2(3072, 6144)=26.57 iatan2(3072, 6144)=274 diff -0.83
-atan2(3072, 7168)=23.20 iatan2(3072, 7168)=232 diff -0.00  atan2(3072,
-8192)=20.56 iatan2(3072, 8192)=206 diff -0.04  atan2(4096, 0)=90.00
-iatan2(4096, 0)=899 diff 0.10  atan2(4096, 1024)=75.96 iatan2(4096,
-1024)=759 diff 0.06  atan2(4096, 2048)=63.43 iatan2(4096, 2048)=633
-diff 0.13  atan2(4096, 3072)=53.13 iatan2(4096, 3072)=534 diff -0.27
-atan2(4096, 4096)=45.00 iatan2(4096, 4096)=449 diff 0.10  atan2(4096,
-5120)=38.66 iatan2(4096, 5120)=388 diff -0.14  atan2(4096, 6144)=33.69
-iatan2(4096, 6144)=336 diff 0.09  atan2(4096, 7168)=29.74 iatan2(4096,
-7168)=299 diff -0.16  atan2(4096, 8192)=26.57 iatan2(4096, 8192)=274
-diff -0.83  atan2(5120, 0)=90.00 iatan2(5120, 0)=899 diff 0.10
-atan2(5120, 1024)=78.69 iatan2(5120, 1024)=786 diff 0.09  atan2(5120,
-2048)=68.20 iatan2(5120, 2048)=682 diff -0.00  atan2(5120, 3072)=59.04
-iatan2(5120, 3072)=589 diff 0.14  atan2(5120, 4096)=51.34 iatan2(5120,
-4096)=517 diff -0.36  atan2(5120, 5120)=45.00 iatan2(5120, 5120)=449
-diff 0.10  atan2(5120, 6144)=39.81 iatan2(5120, 6144)=398 diff 0.01
-atan2(5120, 7168)=35.54 iatan2(5120, 7168)=364 diff -0.86  atan2(5120,
-8192)=32.01 iatan2(5120, 8192)=329 diff -0.89  atan2(6144, 0)=90.00
-iatan2(6144, 0)=899 diff 0.10  atan2(6144, 1024)=80.54 iatan2(6144,
-1024)=814 diff -0.86  atan2(6144, 2048)=71.57 iatan2(6144, 2048)=724
-diff -0.83  atan2(6144, 3072)=63.43 iatan2(6144, 3072)=633 diff 0.13
-atan2(6144, 4096)=56.31 iatan2(6144, 4096)=562 diff 0.11  atan2(6144,
-5120)=50.19 iatan2(6144, 5120)=502 diff -0.01  atan2(6144, 6144)=45.00
-iatan2(6144, 6144)=449 diff 0.10  atan2(6144, 7168)=40.60 iatan2(6144,
-7168)=405 diff 0.10  atan2(6144, 8192)=36.87 iatan2(6144, 8192)=370
-diff -0.13  atan2(7168, 0)=90.00 iatan2(7168, 0)=899 diff 0.10
-atan2(7168, 1024)=81.87 iatan2(7168, 1024)=820 diff -0.13  atan2(7168,
-2048)=74.05 iatan2(7168, 2048)=741 diff -0.05  atan2(7168, 3072)=66.80
-iatan2(7168, 3072)=666 diff 0.20  atan2(7168, 4096)=60.26 iatan2(7168,
-4096)=602 diff 0.06  atan2(7168, 5120)=54.46 iatan2(7168, 5120)=545
-diff -0.04  atan2(7168, 6144)=49.40 iatan2(7168, 6144)=493 diff 0.10
-atan2(7168, 7168)=45.00 iatan2(7168, 7168)=449 diff 0.10  atan2(7168,
-8192)=41.19 iatan2(7168, 8192)=411 diff 0.09  atan2(8192, 0)=90.00
-iatan2(8192, 0)=899 diff 0.10  atan2(8192, 1024)=82.87 iatan2(8192,
-1024)=828 diff 0.07  atan2(8192, 2048)=75.96 iatan2(8192, 2048)=759
-diff 0.06  atan2(8192, 3072)=69.44 iatan2(8192, 3072)=693 diff 0.14
-atan2(8192, 4096)=63.43 iatan2(8192, 4096)=633 diff 0.13  atan2(8192,
-5120)=57.99 iatan2(8192, 5120)=581 diff -0.11  atan2(8192, 6144)=53.13
-iatan2(8192, 6144)=534 diff -0.27  atan2(8192, 7168)=48.81
-iatan2(8192, 7168)=489 diff -0.09  atan2(8192, 8192)=45.00
-iatan2(8192, 8192)=449 diff 0.10```
+asin(-0.88)=-61.04 iasin(-7168)=-610 diff -0.04
+asin(-0.75)=-48.59 iasin(-6144)=-486 diff 0.01
+asin(-0.63)=-38.68 iasin(-5120)=-388 diff 0.12
+asin(-0.50)=-30.00 iasin(-4096)=-302 diff 0.20
+asin(-0.37)=-22.02 iasin(-3072)=-220 diff -0.02
+asin(-0.25)=-14.48 iasin(-2048)=-144 diff -0.08
+asin(-0.12)=-7.18 iasin(-1024)=-70 diff -0.18
+asin(0.00)=0.00 iasin(0)=0 diff 0.00
+asin(0.12)=7.18 iasin(1024)=72 diff -0.02
+asin(0.25)=14.48 iasin(2048)=144 diff 0.08
+asin(0.37)=22.02 iasin(3072)=220 diff 0.02
+asin(0.50)=30.00 iasin(4096)=300 diff 0.00
+asin(0.63)=38.68 iasin(5120)=388 diff -0.12
+asin(0.75)=48.59 iasin(6144)=486 diff -0.01
+asin(0.88)=61.04 iasin(7168)=610 diff 0.04
+asin(1.00)=90.00 iasin(8192)=916 diff -1.60
+
+sqrt(0)=0.00 isqrt(0)=0 diff 0.00
+sqrt(1024)=32.00 isqrt(1024)=32 diff 0.00
+sqrt(2048)=45.25 isqrt(2048)=45 diff 0.25
+sqrt(3072)=55.43 isqrt(3072)=55 diff 0.43
+sqrt(4096)=64.00 isqrt(4096)=64 diff 0.00
+sqrt(5120)=71.55 isqrt(5120)=71 diff 0.55
+sqrt(6144)=78.38 isqrt(6144)=78 diff 0.38
+sqrt(7168)=84.66 isqrt(7168)=84 diff 0.66
+sqrt(8192)=90.51 isqrt(8192)=90 diff 0.51
+
+atan2(0, 0)=0.00 iatan2(0, 0)=0 diff 0.00
+atan2(0, 1024)=0.00 iatan2(0, 1024)=0 diff 0.00
+atan2(0, 2048)=0.00 iatan2(0, 2048)=0 diff 0.00
+atan2(0, 3072)=0.00 iatan2(0, 3072)=0 diff 0.00
+atan2(0, 4096)=0.00 iatan2(0, 4096)=0 diff 0.00
+atan2(0, 5120)=0.00 iatan2(0, 5120)=0 diff 0.00
+atan2(0, 6144)=0.00 iatan2(0, 6144)=0 diff 0.00
+atan2(0, 7168)=0.00 iatan2(0, 7168)=0 diff 0.00
+atan2(0, 8192)=0.00 iatan2(0, 8192)=0 diff 0.00
+atan2(1024, 0)=90.00 iatan2(1024, 0)=899 diff 0.10
+atan2(1024, 1024)=45.00 iatan2(1024, 1024)=449 diff 0.10
+atan2(1024, 2048)=26.57 iatan2(1024, 2048)=274 diff -0.83
+atan2(1024, 3072)=18.43 iatan2(1024, 3072)=183 diff 0.13
+atan2(1024, 4096)=14.04 iatan2(1024, 4096)=139 diff 0.14
+atan2(1024, 5120)=11.31 iatan2(1024, 5120)=112 diff 0.11
+atan2(1024, 6144)=9.46 iatan2(1024, 6144)=95 diff -0.04
+atan2(1024, 7168)=8.13 iatan2(1024, 7168)=84 diff -0.27
+atan2(1024, 8192)=7.13 iatan2(1024, 8192)=70 diff 0.13
+atan2(2048, 0)=90.00 iatan2(2048, 0)=899 diff 0.10
+atan2(2048, 1024)=63.43 iatan2(2048, 1024)=633 diff 0.13
+atan2(2048, 2048)=45.00 iatan2(2048, 2048)=449 diff 0.10
+atan2(2048, 3072)=33.69 iatan2(2048, 3072)=336 diff 0.09
+atan2(2048, 4096)=26.57 iatan2(2048, 4096)=274 diff -0.83
+atan2(2048, 5120)=21.80 iatan2(2048, 5120)=216 diff 0.20
+atan2(2048, 6144)=18.43 iatan2(2048, 6144)=183 diff 0.13
+atan2(2048, 7168)=15.95 iatan2(2048, 7168)=159 diff 0.05
+atan2(2048, 8192)=14.04 iatan2(2048, 8192)=139 diff 0.14
+atan2(3072, 0)=90.00 iatan2(3072, 0)=899 diff 0.10
+atan2(3072, 1024)=71.57 iatan2(3072, 1024)=724 diff -0.83
+atan2(3072, 2048)=56.31 iatan2(3072, 2048)=562 diff 0.11
+atan2(3072, 3072)=45.00 iatan2(3072, 3072)=449 diff 0.10
+atan2(3072, 4096)=36.87 iatan2(3072, 4096)=370 diff -0.13
+atan2(3072, 5120)=30.96 iatan2(3072, 5120)=309 diff 0.06
+atan2(3072, 6144)=26.57 iatan2(3072, 6144)=274 diff -0.83
+atan2(3072, 7168)=23.20 iatan2(3072, 7168)=232 diff -0.00
+atan2(3072, 8192)=20.56 iatan2(3072, 8192)=206 diff -0.04
+atan2(4096, 0)=90.00 iatan2(4096, 0)=899 diff 0.10
+atan2(4096, 1024)=75.96 iatan2(4096, 1024)=759 diff 0.06
+atan2(4096, 2048)=63.43 iatan2(4096, 2048)=633 diff 0.13
+atan2(4096, 3072)=53.13 iatan2(4096, 3072)=534 diff -0.27
+atan2(4096, 4096)=45.00 iatan2(4096, 4096)=449 diff 0.10
+atan2(4096, 5120)=38.66 iatan2(4096, 5120)=388 diff -0.14
+atan2(4096, 6144)=33.69 iatan2(4096, 6144)=336 diff 0.09
+atan2(4096, 7168)=29.74 iatan2(4096, 7168)=299 diff -0.16
+atan2(4096, 8192)=26.57 iatan2(4096, 8192)=274 diff -0.83
+atan2(5120, 0)=90.00 iatan2(5120, 0)=899 diff 0.10
+atan2(5120, 1024)=78.69 iatan2(5120, 1024)=786 diff 0.09
+atan2(5120, 2048)=68.20 iatan2(5120, 2048)=682 diff -0.00
+atan2(5120, 3072)=59.04 iatan2(5120, 3072)=589 diff 0.14
+atan2(5120, 4096)=51.34 iatan2(5120, 4096)=517 diff -0.36
+atan2(5120, 5120)=45.00 iatan2(5120, 5120)=449 diff 0.10
+atan2(5120, 6144)=39.81 iatan2(5120, 6144)=398 diff 0.01
+atan2(5120, 7168)=35.54 iatan2(5120, 7168)=364 diff -0.86
+atan2(5120, 8192)=32.01 iatan2(5120, 8192)=329 diff -0.89
+atan2(6144, 0)=90.00 iatan2(6144, 0)=899 diff 0.10
+atan2(6144, 1024)=80.54 iatan2(6144, 1024)=814 diff -0.86
+atan2(6144, 2048)=71.57 iatan2(6144, 2048)=724 diff -0.83
+atan2(6144, 3072)=63.43 iatan2(6144, 3072)=633 diff 0.13
+atan2(6144, 4096)=56.31 iatan2(6144, 4096)=562 diff 0.11
+atan2(6144, 5120)=50.19 iatan2(6144, 5120)=502 diff -0.01
+atan2(6144, 6144)=45.00 iatan2(6144, 6144)=449 diff 0.10
+atan2(6144, 7168)=40.60 iatan2(6144, 7168)=405 diff 0.10
+atan2(6144, 8192)=36.87 iatan2(6144, 8192)=370 diff -0.13
+atan2(7168, 0)=90.00 iatan2(7168, 0)=899 diff 0.10
+atan2(7168, 1024)=81.87 iatan2(7168, 1024)=820 diff -0.13
+atan2(7168, 2048)=74.05 iatan2(7168, 2048)=741 diff -0.05
+atan2(7168, 3072)=66.80 iatan2(7168, 3072)=666 diff 0.20
+atan2(7168, 4096)=60.26 iatan2(7168, 4096)=602 diff 0.06
+atan2(7168, 5120)=54.46 iatan2(7168, 5120)=545 diff -0.04
+atan2(7168, 6144)=49.40 iatan2(7168, 6144)=493 diff 0.10
+atan2(7168, 7168)=45.00 iatan2(7168, 7168)=449 diff 0.10
+atan2(7168, 8192)=41.19 iatan2(7168, 8192)=411 diff 0.09
+atan2(8192, 0)=90.00 iatan2(8192, 0)=899 diff 0.10
+atan2(8192, 1024)=82.87 iatan2(8192, 1024)=828 diff 0.07
+atan2(8192, 2048)=75.96 iatan2(8192, 2048)=759 diff 0.06
+atan2(8192, 3072)=69.44 iatan2(8192, 3072)=693 diff 0.14
+atan2(8192, 4096)=63.43 iatan2(8192, 4096)=633 diff 0.13
+atan2(8192, 5120)=57.99 iatan2(8192, 5120)=581 diff -0.11
+atan2(8192, 6144)=53.13 iatan2(8192, 6144)=534 diff -0.27
+atan2(8192, 7168)=48.81 iatan2(8192, 7168)=489 diff -0.09
+atan2(8192, 8192)=45.00 iatan2(8192, 8192)=449 diff 0.10
+
+```
 
 \
 
@@ -1178,40 +1219,101 @@ receive the positions and move the servos. For the moving servos part
 I just reused the servo.ino code I already had for Tote. For the I²C
 slave, I did something like this:
 
+
 ```cpp
-#include "servos.h"#include <Wire.h>constint SLAVE_ADDRESS =0x04;voidsetup(){      Wire.begin(SLAVE_ADDRESS);      Wire.onReceive(receiveEvent);
-servo_setup();  }voidloop(){      delay(100);  }voidreceiveEvent(int bytes){union {          byte bytes[4];float value;      } float2bytes;unsignedint servo = Wire.read() | Wire.read() <<8;for (int j =0; j <4; ++j) {if (!Wire.available()) {return; }          float2bytes.bytes[j] = Wire.read();      }
-servo_move(servo, float2bytes.value);  }```
+#include "servos.h"
 
-Nothing fancy or complicated, but it gets the job done. One thing I
-could have done easier -- I'm sending the positions as floats, because
-that's what the functions I already had were accepting. I could have
-instead make them work in µs, as most servo controllers out there, and
-use simple integers. I might still switch to that, if it turns out to
-be too slow, but for now this is good enough.
+#include <Wire.h>
 
-Next, I wrote some Python code on the Raspberry Pi side, to test if I
-can actually move the servos:
+
+const int SLAVE_ADDRESS = 0x04;
+
+
+void setup() {
+    Wire.begin(SLAVE_ADDRESS);
+    Wire.onReceive(receiveEvent);
+    servo_setup();
+}
+
+
+void loop() {
+    delay(100);
+}
+
+
+void receiveEvent(int bytes) {
+    union {
+        byte bytes[4];
+        float value;
+    } float2bytes;
+    unsigned int servo = Wire.read() | Wire.read() << 8;
+    for (int j = 0; j < 4; ++j) {
+        if (!Wire.available()) { return; }
+        float2bytes.bytes[j] = Wire.read();
+    }
+    servo_move(servo, float2bytes.value);
+}
+```
+
+Nothing fancy or complicated, but it gets the job done. One thing I could have done easier -- I'm sending the positions as floats, because that's what the functions I already had were accepting. I could have instead make them work in µs, as most servo controllers out there, and use simple integers. I might still switch to that, if it turns out to be too slow, but for now this is good enough.
+
+Next, I wrote some Python code on the Raspberry Pi side, to test if I can actually move the servos:
+
 
 
 
 ```python
-import smbusimport structimport math    bus = smbus.SMBus(1)  ADDRESS =0x04defservo_move(servo, radians=None, degrees=None):if radiansisNone:          radians = math.radians(degrees)
-bus.write_block_data(ADDRESS, servo,          [ord(b)for bin struct.pack('<f', radians)])```
+import smbus
+import struct
+import math
 
- After some small tweaks, it works. By the way, funny how
-write_block_data requires a list of integers, not a string of bytes,
-as the struct.pack() produces. Oh well.Once I had that tested, it's time to wrap it in a class and plug into
-my old Python gait code:
+bus = smbus.SMBus(1)
+ADDRESS = 0x04
+
+def servo_move(servo, radians=None, degrees=None):
+    if radians is None:
+        radians = math.radians(degrees)
+    bus.write_block_data(ADDRESS, servo,
+        [ord(b) for b in struct.pack('<f', radians)])
+```
+
+ After some small tweaks, it works. By the way, funny how write_block_data requires a list of integers, not a string of bytes, as the struct.pack() produces. Oh well.Once I had that tested, it's time to wrap it in a class and plug into my old Python gait code:
+
 
 
 
 ```python
-import smbusimport structimport mathclassServo(object):def__init__(self, servos, index):          self.servos = servos          self.index = indexdefmove(self, radians=None, degrees=None):          self.servos.move(self.index, radians, degrees)classServos(object):def__init__(self, address=0x04, bus=1):          self.address = address          self.bus = smbus.SMBus(bus)def__getitem__(self, index):return Servo(self, index)defmove(self, servo, radians=None, degrees=None):if radiansisNone:              radians = math.radians(degrees)
-self.bus.write_block_data(self.address, servo,              [ord(b)for bin struct.pack('<f', radians)])```
+import smbus
 
-Then I assembled all the parts of the robot together, and it's ready
-to start walking:
+import struct
+import math
+
+
+class Servo(object):
+    def __init__(self, servos, index):
+        self.servos = servos
+        self.index = index
+
+    def move(self, radians=None, degrees=None):
+        self.servos.move(self.index, radians, degrees)
+
+
+class Servos(object):
+    def __init__(self, address=0x04, bus=1):
+        self.address = address
+        self.bus = smbus.SMBus(bus)
+
+    def __getitem__(self, index):
+        return Servo(self, index)
+
+    def move(self, servo, radians=None, degrees=None):
+        if radians is None:
+            radians = math.radians(degrees)
+        self.bus.write_block_data(self.address, servo,
+            [ord(b) for b in struct.pack('<f', radians)])
+```
+
+Then I assembled all the parts of the robot together, and it's ready to start walking:
 
 
 :::{image} https://cdn.hackaday.io/images/1173681448136046223.jpg
@@ -1219,9 +1321,7 @@ to start walking:
 :::
 
 
-Except I decided to sit down and refactor the Python code a little bit
-(and I need to adjust it to a different servo configuration, etc.), so
-it's still some time until it actually walks.
+Except I decided to sit down and refactor the Python code a little bit (and I need to adjust it to a different servo configuration, etc.), so it's still some time until it actually walks.
 
 
 
@@ -1778,15 +1878,38 @@ from 0 to 1023. Perfect.
 Now, let's just modify our program a little, using the new values for
 the readings:
 
-```cpp
-voidsharp_loop(){int distance =0;for (unsignedchar i=0; i<10; ++i) {          distance += analogRead(A4);      }      distance /=10;if (distance >700) {          creep_dx =0;          creep_dy = -1;          creep_rotation =0;          beep(352,100);      }elseif(distance > 520){          creep_dx =0;          creep_dy =0;          creep_rotation =0;      }elseif(distance > 260){          creep_dx =0;          creep_dy =1;          creep_rotation =0;          beep(704,100);      }else {          creep_dx =0;          creep_dy =0;          creep_rotation = PI/45;          beep(1408,100);      }  }```
 
-And here we go:<iframe style="width: 500px; height: 281px;" width="500" height="281" src="//www.youtube.com/embed/1I-EeEPEjx8" frameborder="0" allowfullscreen="None"></iframe>There still can be a lot of improvements. Instead of rotating in one
-direction, the robot could first just rotate its body left and right
-to see if the target is still there. I could use some timeouts between
-switching into the "search" mode, so that it doesn't switch back and
-forth constantly. The speed could be adjusted depending on the actual
-distance, etc. I will leave those as homework, though.
+```cpp
+void sharp_loop() {
+    int distance = 0;
+    for (unsigned char i=0; i<10; ++i) {
+        distance += analogRead(A4);
+    }
+    distance /= 10;
+    if (distance > 700) {
+        creep_dx = 0;
+        creep_dy = -1;
+        creep_rotation = 0;
+        beep(352, 100);
+    } else if (distance > 520) {
+        creep_dx = 0;
+        creep_dy = 0;
+        creep_rotation = 0;
+    } else if (distance > 260) {
+        creep_dx = 0;
+        creep_dy = 1;
+        creep_rotation = 0;
+        beep(704, 100);
+    } else {
+        creep_dx = 0;
+        creep_dy = 0;
+        creep_rotation = PI/45;
+        beep(1408, 100);
+    }
+}
+```
+
+And here we go:<iframe style="width: 500px; height: 281px;" width="500" height="281" src="//www.youtube.com/embed/1I-EeEPEjx8" frameborder="0" allowfullscreen="None"></iframe>There still can be a lot of improvements. Instead of rotating in one direction, the robot could first just rotate its body left and right to see if the target is still there. I could use some timeouts between switching into the "search" mode, so that it doesn't switch back and forth constantly. The speed could be adjusted depending on the actual distance, etc. I will leave those as homework, though.
 
 
 
@@ -1811,12 +1934,34 @@ on what the distance sensor is telling it:
 
 This translates pretty easily into code:
 
-```cpp
-voidsharp_loop(){int distance = analogRead(A4);if (distance >660) {          creep_dx =0;          creep_dy = -1;          creep_rotation =0;          beep(352,100);      }elseif(distance > 480){          creep_dx =0;          creep_dy =0;          creep_rotation =0;      }elseif(distance > 420){          creep_dx =0;          creep_dy =1;          creep_rotation =0;          beep(704,100);      }else {          creep_dx =0;          creep_dy =0;          creep_rotation = PI/45;          beep(1408,100);      }  }```
 
----------- more ----------I also added some beeps in there, that will tell us what the current
-state is. Since the new PCB has a place for a piezo buzzer on pin 13,
-I also added it to the previous robots:
+```cpp
+void sharp_loop() {
+    int distance = analogRead(A4);
+    if (distance > 660) {
+        creep_dx = 0;
+        creep_dy = -1;
+        creep_rotation = 0;
+        beep(352, 100);
+    } else if (distance > 480) {
+        creep_dx = 0;
+        creep_dy = 0;
+        creep_rotation = 0;
+    } else if (distance > 420) {
+        creep_dx = 0;
+        creep_dy = 1;
+        creep_rotation = 0;
+        beep(704, 100);
+    } else {
+        creep_dx = 0;
+        creep_dy = 0;
+        creep_rotation = PI/45;
+        beep(1408, 100);
+    }
+}
+```
+
+---------- more ----------I also added some beeps in there, that will tell us what the current state is. Since the new PCB has a place for a piezo buzzer on pin 13, I also added it to the previous robots:
 
 
 :::{image} https://cdn.hackaday.io/images/9149541437741274409.jpg
@@ -1824,9 +1969,7 @@ I also added it to the previous robots:
 :::
 
 
-But how does our code work? Turns out, that it doesn't work very well.
-The problem comes from how our 5V sensor works when it's under-powered
-with 3.3V. Remember the plot of values from last time?
+But how does our code work? Turns out, that it doesn't work very well. The problem comes from how our 5V sensor works when it's under-powered with 3.3V. Remember the plot of values from last time?
 
 
 :::{image} https://cdn.hackaday.io/images/8548111437741395294.png
@@ -1834,19 +1977,11 @@ with 3.3V. Remember the plot of values from last time?
 :::
 
 
-It's U-shaped, and that means that we get the same reading both for
-20cm and for 50cm and more. That means that we have practically no way
-to tell if something is 20cm away or 50cm away, and that means that we
-can't reliably get the "no obstacle in sight" condition.
+It's U-shaped, and that means that we get the same reading both for 20cm and for 50cm and more. That means that we have practically no way to tell if something is 20cm away or 50cm away, and that means that we can't reliably get the "no obstacle in sight" condition.
 
-Even if we shorten our distances to where the curve is relatively
-straight, we are still going to get weird readings when nothing is
-that close.
+Even if we shorten our distances to where the curve is relatively straight, we are still going to get weird readings when nothing is that close.
 
-Oh well, the sensor was cheap so it was worth a try. I guess this is a
-lesson: don't try to use parts outside of their specified parameters.
-Now I ordered some distance sensors that work between 2.7 and 5.5V, so
-that should be better. I will try again when they arrive.
+Oh well, the sensor was cheap so it was worth a try. I guess this is a lesson: don't try to use parts outside of their specified parameters. Now I ordered some distance sensors that work between 2.7 and 5.5V, so that should be better. I will try again when they arrive.
 
 Finally, a video of Tote failing to follow my hand:
 
@@ -1970,37 +2105,63 @@ for walking around, and one for changing the body posture. For a quick
 test, I connected it to a Pro Mini and tested with this simple Arduino
 sketch:
 
-```cpp
-void setup() {      Serial.begin(115200);      pinMode(A0, INPUT);      pinMode(A2, INPUT);      pinMode(12, INPUT_PULLUP);  }voidloop() {      Serial.print(analogRead(A0));      Serial.print(", ");      Serial.print(analogRead(A2));      Serial.print(", ");      Serial.println(digitalRead(12));      delay(300);  }```
 
-It seems to be working perfectly. Next, I need an IR diode, for
-sending the signal to Tote. Quick rummaging through my parts box, and
-I found one, and a 100Ω resistor for it (the LED calculator says it
-should be 90Ω, but I couldn't find any).
+```cpp
+void setup() {
+    Serial.begin(115200);
+    pinMode(A0, INPUT);
+    pinMode(A2, INPUT);
+    pinMode(12, INPUT_PULLUP);
+}
+
+void loop() {
+    Serial.print(analogRead(A0));
+    Serial.print(", ");
+    Serial.print(analogRead(A2));
+    Serial.print(", ");
+    Serial.println(digitalRead(12));
+    delay(300);
+}
+```
+
+It seems to be working perfectly. Next, I need an IR diode, for sending the signal to Tote. Quick rummaging through my parts box, and I found one, and a 100Ω resistor for it (the LED calculator says it should be 90Ω, but I couldn't find any).
 :::{image} https://cdn.hackaday.io/images/2052811436629226337.jpg
 
 :::
 
 
- I also took another Pro Mini with an IR receiver and sample code to
-read the IR signals, for debugging. Now, my initial idea was to send
-the joystick position encoded as two bytes in the command (button
-code), and the state of the button would change the "address" part of
-the signal. Turns out it's not that simple.
+ I also took another Pro Mini with an IR receiver and sample code to read the IR signals, for debugging. Now, my initial idea was to send the joystick position encoded as two bytes in the command (button code), and the state of the button would change the "address" part of the signal. Turns out it's not that simple.
 
-The two bytes in the command code are not just arbitrary bytes. One
-has to be negation of the other. So effectively I only have one byte
-that I can send. So I decided to send two separate commands, with
-different addresses, one for the x, and one for the y. The code for
-that is quite simple:
+The two bytes in the command code are not just arbitrary bytes. One has to be negation of the other. So effectively I only have one byte that I can send. So I decided to send two separate commands, with different addresses, one for the x, and one for the y. The code for that is quite simple:
+
 
 ```cpp
-    switch (IRaddress) {case IR_ADDRESS:              tv_remote(IRcommand);              last = IRcommand;break;case0xFA10:              creep_dx = -(0.0 +                           (IRcommand &0xFF) -128) /42.5;break;case0xFA00:              creep_rotation = (0.0 +                                (IRcommand &0xFF) -128) /3652.605943958998;break;case0xFA11:              creep_height = min(TIBIA *1.25,                  max(TIBIA *0.25,                      creep_height + (0.0 + (IRcommand &0xFF) -128) /64));break;case0xFA01:              creep_dy = (0.0 + (IRcommand &0xFF) -128) /42.5;break;      }```
+    switch (IRaddress) {
+        case IR_ADDRESS:
+            tv_remote(IRcommand);
+            last = IRcommand;
+            break;
+        case 0xFA10:
+            creep_dx = -(0.0 +
+                         (IRcommand & 0xFF) - 128) / 42.5;
+            break;
+        case 0xFA00:
+            creep_rotation = (0.0 +
+                              (IRcommand & 0xFF) - 128) / 3652.605943958998;
+            break;
+        case 0xFA11:
+            creep_height = min(TIBIA * 1.25,
+                max(TIBIA * 0.25,
+                    creep_height + (0.0 + (IRcommand & 0xFF) - 128) / 64));
+            break;
+        case 0xFA01:
+            creep_dy = (0.0 + (IRcommand & 0xFF) - 128) / 42.5;
+            break;
+    }
 
-Additionally, if the button on the joystick is pressed, you get
-different functions -- walking sideways and changing the robot height.
-All this added to[ir.ino](https://bitbucket.org/thesheep/tote/src/22662daa9d26d7cddd83226e1e6ace775f2ed8c1/start/ir.ino?at=irjoy). All that was left was to put all the parts, together with a battery,
-in a box:
+```
+
+Additionally, if the button on the joystick is pressed, you get different functions -- walking sideways and changing the robot height. All this added to [ir.ino](https://bitbucket.org/thesheep/tote/src/22662daa9d26d7cddd83226e1e6ace775f2ed8c1/start/ir.ino?at=irjoy). All that was left was to put all the parts, together with a battery, in a box:
 
 
 :::{image} https://cdn.hackaday.io/images/1091771436629637404.jpg
@@ -2008,8 +2169,7 @@ in a box:
 :::
 
 
-Some stickers taken from LiPo cells complete the look. Here's the
-controller in action:
+Some stickers taken from LiPo cells complete the look. Here's the controller in action:
 
 <iframe style="width: 500px; height: 281px;" width="500" height="281" src="//www.youtube.com/embed/uX7K6_ChTmM" frameborder="0" allowfullscreen="None"></iframe>
 
@@ -2057,13 +2217,20 @@ sketch:
 
 
 
-```cpp
-voidsetup(){      Serial.begin(115200);      pinMode(A4, INPUT);  }voidloop(){      Serial.println(analogRead(A4));      delay(300);  }```
 
-It will basically repeatedly read the analog pin value and print it on
-the serial line. We can use the Arduino IDE's serial monitor to see
-those values. A quick test and yay, we are getting readings, and they
-are different depending on the distance. So far so good.
+```cpp
+void setup() {
+    Serial.begin(115200);
+    pinMode(A4, INPUT);
+}
+
+void loop() {
+    Serial.println(analogRead(A4));
+    delay(300);
+}
+```
+
+It will basically repeatedly read the analog pin value and print it on the serial line. We can use the Arduino IDE's serial monitor to see those values. A quick test and yay, we are getting readings, and they are different depending on the distance. So far so good.
 
 
 :::{image} https://cdn.hackaday.io/images/1619621436553858490.jpg
@@ -2071,12 +2238,7 @@ are different depending on the distance. So far so good.
 :::
 
 
-The photo above shows my testing rig. A long ruler, the sensor taped
-to one end, and a reasonably reflective white object. Note, that the
-power line from the USB2TTL is disconnected and the Pro Mini is
-running on the battery power, so that it gets to regulate its own 3.3V
-for the sensor, and doesn't rely on the power from the computer. Here
-are the measurements I did, plotted on a chart:
+The photo above shows my testing rig. A long ruler, the sensor taped to one end, and a reasonably reflective white object. Note, that the power line from the USB2TTL is disconnected and the Pro Mini is running on the battery power, so that it gets to regulate its own 3.3V for the sensor, and doesn't rely on the power from the computer. Here are the measurements I did, plotted on a chart:
 
 
 :::{image} https://cdn.hackaday.io/images/6856891436554041118.png
@@ -2084,13 +2246,7 @@ are the measurements I did, plotted on a chart:
 :::
 
 
-As you can see, the sensor has a much shorter useful range than the
-80cm it gets on 5V. At about 35cm it starts to break already. But
-that's fine, 35cm is a lot for our robot. We also won't need exact
-measurements, so no need to convert those numbers to centimeters -- we
-will just read the chart for setting our limits.Next, let's actually attach the sensor to our robot and make it do
-something. Of course, the simplest thing it can do is to stop before
-it hits an obstacle.
+As you can see, the sensor has a much shorter useful range than the 80cm it gets on 5V. At about 35cm it starts to break already. But that's fine, 35cm is a lot for our robot. We also won't need exact measurements, so no need to convert those numbers to centimeters -- we will just read the chart for setting our limits.Next, let's actually attach the sensor to our robot and make it do something. Of course, the simplest thing it can do is to stop before it hits an obstacle.
 
 
 :::{image} https://cdn.hackaday.io/images/3268571436554231854.jpg
@@ -2098,13 +2254,7 @@ it hits an obstacle.
 :::
 
 
-I used adhesive tape to attach the sensor to the front of the robot. I
-might come up with a better way of doing it in the future, but this is
-good enough for now. Now let's add some code that does the stopping.
-We just add a[_sharp.ino_](https://bitbucket.org/thesheep/tote/src/52697d7f12c87825ac4579f371ccd22bdd2151bc/start/sharp.ino?at=sharp) file, with corresponding_sharp.h_, and call it all from[_start.ino_](https://bitbucket.org/thesheep/tote/src/9aa456eb0395f03c488d6ef61da6a31f7e39ff4d/start/start.ino?at=sharp). And let's see the results:<iframe style="width: 500px; height: 281px;" width="500" height="281" src="//www.youtube.com/embed/WR_0yxW_Ba0" frameborder="0" allowfullscreen="None"></iframe>It works as expected, the robot consistently stops at about 15cm from
-the obstacle. That's it for today, in the future I will show how to
-code a simple obstacle-avoiding algorithm, and then how to make the
-robot follow you around.
+I used adhesive tape to attach the sensor to the front of the robot. I might come up with a better way of doing it in the future, but this is good enough for now. Now let's add some code that does the stopping. We just add a [_sharp.ino_](https://bitbucket.org/thesheep/tote/src/52697d7f12c87825ac4579f371ccd22bdd2151bc/start/sharp.ino?at=sharp) file, with corresponding _sharp.h_, and call it all from [_start.ino_](https://bitbucket.org/thesheep/tote/src/9aa456eb0395f03c488d6ef61da6a31f7e39ff4d/start/start.ino?at=sharp). And let's see the results:<iframe style="width: 500px; height: 281px;" width="500" height="281" src="//www.youtube.com/embed/WR_0yxW_Ba0" frameborder="0" allowfullscreen="None"></iframe>It works as expected, the robot consistently stops at about 15cm from the obstacle. That's it for today, in the future I will show how to code a simple obstacle-avoiding algorithm, and then how to make the robot follow you around.
 
 
 
@@ -2338,54 +2488,51 @@ and the echo is on pin 13 -- yes, I ran out of pins and had to reuse
 the LED pin for this. As a side effect, the LED blinks every time we
 read the distance. A quick sketch to test the sensor:
 
+
 ```cpp
-#define TRIG_PIN 3#define ECHO_PIN 13voidsetup(){    Serial.begin(115200);    pinMode(TRIG_PIN, OUTPUT);    pinMode(ECHO_PIN, INPUT);  }voidloop(){unsignedlongint duration, distance;      digitalWrite(TRIG_PIN, LOW);
-delayMicroseconds(2);    digitalWrite(TRIG_PIN, HIGH);    delayMicroseconds(10);    digitalWrite(TRIG_PIN, LOW);    duration = pulseIn(ECHO_PIN,
-HIGH);    distance = duration /58.2;    Serial.print(distance);    Serial.println(" cm");    delay(500);  }```
+#define TRIG_PIN 3
+#define ECHO_PIN 13
 
-And lo and behold, proper readings:<iframe style="width: 500px; height: 281px;" width="500" height="281" src="//www.youtube.com/embed/_Bw_2RLY4qY" frameborder="0" allowfullscreen=""></iframe>Yay, so that's it, right? Now just add[some basic logic to the code](https://bitbucket.org/thesheep/tote/src/eda3cc49cbb6e0774d22d0e6b12d5ccc45cfd3c9/start/ping.ino?at=ping) to make the robot stop when there is an obstacle in front, and we are
-ready to go, right? Wrong.
 
-For some reason, the robot stop immediately after the first step.
-What's happening?
+void setup() {
+  Serial.begin(115200);
+  pinMode(TRIG_PIN, OUTPUT);
+  pinMode(ECHO_PIN, INPUT);
+}
 
-OK, let's connect the serial and see. The distance readings are all 0.
-Why? Disconnect the battery, connect the Pro Mini to the USB and look
-again. Readings are all connect. Disconnect the USB power and run it
-from battery -- 0 again. Argh.
 
-Wait a minute. The Pro Mini actually has VCC at 5V while it's being
-powered from the USB cable, and 3.3V when it runs from the battery...
-What were the power requirements of that HC-SR04 sensor again? Where
-is the[datasheet](http://www.elecfreaks.com/store/download/HC-SR04.pdf)...
+void loop() {
+  unsigned long int duration, distance;
 
-Right, working voltage 5V. Sigh. Of curse I did check that before when
-I was designing the board, but back then I still wanted to use a 5V
-Pro Mini, and a voltage regulator. I later switched to 3.3V and
-completely forgot about the sensor. So what can be done?
+  digitalWrite(TRIG_PIN, LOW);
+  delayMicroseconds(2);
+  digitalWrite(TRIG_PIN, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(TRIG_PIN, LOW);
+  duration = pulseIn(ECHO_PIN, HIGH);
+  distance = duration / 58.2;
+  Serial.print(distance);
+  Serial.println(" cm");
+  delay(500);
+}
 
-Well, looking at what I have lying around I took a 5V Pro Mini, a 2S
-LiPo battery and a 5V voltage regulator, and quickly replaced Tote's
-guts.**Warning**: the 5V Pro Mini doesn't have the RAW pin separated from the VCC pin
-like the 3.3V version does, so don't connect it to the USB2TTL while
-it's in the robot -- the power draw will quickly fry the power
-regulator in Pro Mini. You have to remove it for programming.
+```
 
-<iframe style="width: 500px; height: 281px;" width="500" height="281" src="//www.youtube.com/embed/QjZ5rQOpvEw" frameborder="0" allowfullscreen=""></iframe>You can see that now it kinda works, except for random times when the
-sensor returns completely weird values. Maybe the sensor is broken?
-Replacing the sensor didn't help much. Taking three readings in a
-quick succession and taking maximum of them didn't help either -- it
-seems, that the sensor just has some moments when the readings are
-consistently bad. I can't think of a solution.
+And lo and behold, proper readings:<iframe style="width: 500px; height: 281px;" width="500" height="281" src="//www.youtube.com/embed/_Bw_2RLY4qY" frameborder="0" allowfullscreen=""></iframe>Yay, so that's it, right? Now just add [some basic logic to the code](https://bitbucket.org/thesheep/tote/src/eda3cc49cbb6e0774d22d0e6b12d5ccc45cfd3c9/start/ping.ino?at=ping) to make the robot stop when there is an obstacle in front, and we are ready to go, right? Wrong.
 
-While this is a failure, I thought that I will publish it anyways, as
-even the failures give us something to learn from -- often even more
-than the successes. And speaking of failures, remember how I promised
-to connect a Raspberry Pi to Tote? That's too cancelled for the moment
--- my A+ RPI suddenly stopped working, the power LED won't shine, the
-activity LED shines weakly when powered from USB, and not at all when
-powered through the pins. I guess I have a streak of bad luck. Oh
-well.
+For some reason, the robot stop immediately after the first step. What's happening?
+
+OK, let's connect the serial and see. The distance readings are all 0. Why? Disconnect the battery, connect the Pro Mini to the USB and look again. Readings are all connect. Disconnect the USB power and run it from battery -- 0 again. Argh.
+
+Wait a minute. The Pro Mini actually has VCC at 5V while it's being powered from the USB cable, and 3.3V when it runs from the battery... What were the power requirements of that HC-SR04 sensor again? Where is the [datasheet](http://www.elecfreaks.com/store/download/HC-SR04.pdf)...
+
+Right, working voltage 5V. Sigh. Of curse I did check that before when I was designing the board, but back then I still wanted to use a 5V Pro Mini, and a voltage regulator. I later switched to 3.3V and completely forgot about the sensor. So what can be done?
+
+Well, looking at what I have lying around I took a 5V Pro Mini, a 2S LiPo battery and a 5V voltage regulator, and quickly replaced Tote's guts. **Warning**: the 5V Pro Mini doesn't have the RAW pin separated from the VCC pin like the 3.3V version does, so don't connect it to the USB2TTL while it's in the robot -- the power draw will quickly fry the power regulator in Pro Mini. You have to remove it for programming.
+
+<iframe style="width: 500px; height: 281px;" width="500" height="281" src="//www.youtube.com/embed/QjZ5rQOpvEw" frameborder="0" allowfullscreen=""></iframe>You can see that now it kinda works, except for random times when the sensor returns completely weird values. Maybe the sensor is broken? Replacing the sensor didn't help much. Taking three readings in a quick succession and taking maximum of them didn't help either -- it seems, that the sensor just has some moments when the readings are consistently bad. I can't think of a solution.
+
+While this is a failure, I thought that I will publish it anyways, as even the failures give us something to learn from -- often even more than the successes. And speaking of failures, remember how I promised to connect a Raspberry Pi to Tote? That's too cancelled for the moment -- my A+ RPI suddenly stopped working, the power LED won't shine, the activity LED shines weakly when powered from USB, and not at all when powered through the pins. I guess I have a streak of bad luck. Oh well.
 
 
 
@@ -2457,27 +2604,39 @@ began by making a simple rig for programming them:
 
 Then I followed the excellent[Adafruit tutorial on flashing Micropython to ESP8266](https://learn.adafruit.com/building-and-running-micropython-on-the-esp8266) and got a working console. Yay! Now, diving into[recently added documentation](https://github.com/micropython/micropython/tree/master/docs/library), I figured out how to write a simple "repeater" server:
 
-```python
-import espimport sysdefrecv(socket, data):      sys.stdout.write(data)    socket = esp.socket()
-socket.onconnect(lambda s: s.onrecv(recv))  socket.bind(('0.0.0.0',2323))  socket.listen(1)```
-
-It just prints on the console anything it gets on port 2323. I saved
-that as_esp8266/scripts/main_._py_ and recompiled -- the ESP9266 port of Micropython doesn't yet have
-filesystem support, so you have to add all files to the firmware
-itself. Then restart, get to the console with_USB2TTL_, and make it connect to the WiFi:
 
 ```python
-import network  network.connect('your ssid','your password')```
+import esp
+import sys
 
-That gets remembered, so you don't have to do it every time. Quick
-test of the server using_netcat_:```ruby
-$nc192.168.0.132323  xxx  h  ddddd  x```
+def recv(socket, data):
+    sys.stdout.write(data)
 
-And we are finished on this side. Or so I thought. But we will get to
-that. Now, for the robot side, I flashed that "serial control" version of
-the Tote code to the Pro Mini, and made a simple connector for the
-ESP8266 using some female headers, two-sided tape and a bunch of
-wires:
+socket = esp.socket()
+socket.onconnect(lambda s: s.onrecv(recv))
+socket.bind(('0.0.0.0', 2323))
+socket.listen(1)
+```
+
+It just prints on the console anything it gets on port 2323. I saved that as _esp8266/scripts/main_._py_ and recompiled -- the ESP9266 port of Micropython doesn't yet have filesystem support, so you have to add all files to the firmware itself. Then restart, get to the console with _USB2TTL_, and make it connect to the WiFi:
+
+
+```python
+import network
+network.connect('your ssid', 'your password')
+```
+
+That gets remembered, so you don't have to do it every time. Quick test of the server using _netcat_:
+```ruby
+$ nc 192.168.0.13 2323
+xxx
+h
+ddddd
+x
+
+```
+
+And we are finished on this side. Or so I thought. But we will get to that. Now, for the robot side, I flashed that "serial control" version of the Tote code to the Pro Mini, and made a simple connector for the ESP8266 using some female headers, two-sided tape and a bunch of wires:
 
 
 :::{image} https://cdn.hackaday.io/images/6642121434528945481.jpg
@@ -2485,7 +2644,7 @@ wires:
 :::
 
 
-It fits nicely on the_FTDI_ connector on top of the robot:
+It fits nicely on the _FTDI_ connector on top of the robot:
 
 
 :::{image} https://cdn.hackaday.io/images/2532981434529049651.jpg
@@ -2493,29 +2652,13 @@ It fits nicely on the_FTDI_ connector on top of the robot:
 :::
 
 
-Now let's test it. I made it so that after powering on, the robot does
-nothing and waits for "xx" on the serial -- that's because many boards
-will print random stuff to serial while booting, and you don't want
-that to be interpreted as commands. So I switch the robot on, send
-"xx" and... nothing. What?
+Now let's test it. I made it so that after powering on, the robot does nothing and waits for "xx" on the serial -- that's because many boards will print random stuff to serial while booting, and you don't want that to be interpreted as commands. So I switch the robot on, send "xx" and... nothing. What?
 
-Fast forward four hours. I'm up to my ears in debugging. Tried 3
-different ESP8266 boards and 3 different Pro Minis, debugged it using_SoftwareSerial_ and by connecting the RX pin to the ESP and the TX one to the_USB2TTL_, one exceptionally helpful fellow on the_#arduino_ IRC channel even wrote a serial-forwarding code for me in low-level
-AVR C. The outcome? Both the Pro Mini and ESP8266 work perfectly fine
-when connected to the computer through_USB2TTL_. But as soon as you connect them to each other and try to transmit
-serial data at 115200 baud rate, half the data gets corrupted. That's
-over a 4mm long wire. Adding pullups, pulldowns, capacitors, etc.
-doesn't help. I sat over this until the small hours of the night, but
-didn't figure out a solution. I guess I will need to start saving for
-an osciloscpe.
+Fast forward four hours. I'm up to my ears in debugging. Tried 3 different ESP8266 boards and 3 different Pro Minis, debugged it using _SoftwareSerial_ and by connecting the RX pin to the ESP and the TX one to the _USB2TTL_, one exceptionally helpful fellow on the _#arduino_ IRC channel even wrote a serial-forwarding code for me in low-level AVR C. The outcome? Both the Pro Mini and ESP8266 work perfectly fine when connected to the computer through _USB2TTL_. But as soon as you connect them to each other and try to transmit serial data at 115200 baud rate, half the data gets corrupted. That's over a 4mm long wire. Adding pullups, pulldowns, capacitors, etc. doesn't help. I sat over this until the small hours of the night, but didn't figure out a solution. I guess I will need to start saving for an osciloscpe.
 
-After a night's sleep, I went back to that Micropython code, grepped
-for "115200", and changed it to "9600", recompiled, flashed, changed
-the speed on the Arduino side and what do you know, it works!
+After a night's sleep, I went back to that Micropython code, grepped for "115200", and changed it to "9600", recompiled, flashed, changed the speed on the Arduino side and what do you know, it works!
 
-<iframe style="width: 500px; height: 281px;" width="500" height="281" src="//www.youtube.com/embed/4HnUbrXEJcQ" frameborder="0" allowfullscreen="None"></iframe>Next I will try to get that SD card for the RPI and show you the more
-low-level control. Who knows, maybe by this time the picam also
-arrives, and we can have some OpenCV fun.
+<iframe style="width: 500px; height: 281px;" width="500" height="281" src="//www.youtube.com/embed/4HnUbrXEJcQ" frameborder="0" allowfullscreen="None"></iframe>Next I will try to get that SD card for the RPI and show you the more low-level control. Who knows, maybe by this time the picam also arrives, and we can have some OpenCV fun.
 
 
 
@@ -2669,7 +2812,7 @@ very pretty yet, but I'm sure I can tweak it to look better:
 terrain without additional endstop switches at the ends of the legs.
 
 
-# Update 2015-06-10:
+## Update 2015-06-10:
 
 A friend of mine ran some of those servos through an oscilloscope, to
 see how the voltage on both of the motor wires looks like. Here's the
