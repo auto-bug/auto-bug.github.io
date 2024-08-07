@@ -1,0 +1,30 @@
+---
+blogpost: true
+date: 2021-06-14
+category: project-180364
+---
+
+# Continuing from Previous Project
+Published on 2021-06-14 in {ref}`project-180364`.
+
+I haven't touched the {ref}`project-158701` project in a while, but I think it's really time to resurrect it now.
+CircuitPython has grown a lot in this time, and I also wrote a library
+that reads GIF files in Python, so there is much that can be improved
+on the software side.
+
+On the hardware side, I'm going to continue where I left off. I will
+use the new configuration, with the screen on one end, and the battery
+holder worn on your back, under the shirt:
+
+
+
+:::{image} images/5858851623676536271.jpg
+
+:::
+
+
+This allows the pendant itself to be much smaller, and the battery to
+be much larger. I will probably switch to a pair of regular alkaline
+AAA batteries, instead of rechargeable LiPO. They are safer and much
+easier to get. Also, I don't need to ship them with the device.
+

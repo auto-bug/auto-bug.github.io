@@ -1,0 +1,174 @@
+---
+blogpost: true
+date: 2023-10-29
+category: project-183834
+---
+
+# A Touchpad
+Published on 2023-10-29 in {ref}`project-183834`.
+
+I had this cirque touchpad thingy lying in my drawer for years now,
+planning to add it to the keyboard, but I never really had the time to
+look into it. It doesn't help that the way you interface with it is by
+using an FPC ribbon cable, so you have to find the correct cable and
+connector. And then you have to write the code to actually make it
+work. Turns out, once all the pcbs and parts arrive, you can do it in
+a weekend.
+
+
+
+:::{image} images/1768701698575117338.jpg
+
+:::
+
+
+The PCB is pretty basic, it's just the FPC connector and a pin header
+for plugging into the spare GPIO pins on my keyboard, together with
+three buttons for the mouse buttons. I made the hole for the fpc
+ribbon excessively large, just to be safe, but of course it doesn't
+matter, because it's covered by the touchpad anyways.
+
+
+
+:::{image} images/8454641698575290167.jpg
+
+:::
+
+
+I connected both the SPI and I2C pins, because I didn't know which
+mode will be best, but that left me one pin short, so I connected the
+CS pin to GND permanently, since the touchpad is going to be the only
+thing on the bus. This might by why I couldn't get the SPI mode to
+work, in retrospect. I also forgot to add the pull-up resistors on the
+I2C lines, but that was fortunately easily bodged.
+
+To work on the code more comfortably, without having to use a second
+keyboard, I made a debugging rig out of a spare half of a keyboard
+PCB.
+
+
+
+:::{image} images/9149801698575471288.jpg
+
+:::
+
+
+I used Adafruit Cirque Pinnacle CircuitPython library as the starting
+point, but it turned out to be way too big to fit on the tiny SAMD21
+chip I'm using on my keyboard, so I had to write a minimal version. It
+goes like this:
+
+
+```python
+from micropython import const
+import time
+from adafruit_bus_device.i2c_device import I2CDevice
+
+
+_STATUS = const(0x02)
+_SYS_CONFIG = const(0x03)
+_FEED_CONFIG_1 = const(0x04)
+_FEED_CONFIG_2 = const(0x05)
+_Z_IDLE = const(0x0A)
+_PACKET_BYTE_0 = const(0x12)
+_CAL_CONFIG = const(0x07)
+
+
+class Trackpad:
+    def __init__(self, i2c, address=0x2a):
+        self._i2c = I2CDevice(i2c, address)
+
+        self._write(_Z_IDLE, b'\x1e') # 30 idle packets
+        # config data mode, power, etc
+        self._write(_SYS_CONFIG, b'\x00\x00\x00')
+        while self.available():
+            self.clear()
+        # calibrate
+        self._write(_CAL_CONFIG, b'\x1f')
+        timeout = time.monotonic() + 1
+        while not self.available():
+            if time.monotonic() > timeout:
+                break
+        self.clear()
+        # rel mode config
+        self._write(_FEED_CONFIG_2, b'\x11')
+        # intellimouse
+        with self._i2c as i2c:
+            i2c.write(b'\xf3\xc8\xf3\x64\xf3\x50')
+        # feed enable
+        self._write(_FEED_CONFIG_1, b'\x01')
+
+    def available(self):
+        flags = self._read(_STATUS)[0]
+        return bool(flags & 0x0c)
+
+    def read(self):
+        data = self._read(_PACKET_BYTE_0, 4)
+        self.clear(False)
+        return data
+
+    def clear(self, post_delay=True):
+        self._write(_STATUS, b'\x00')
+        if post_delay:
+            time.sleep(0.00005)  # per official examples from Cirque
+
+    def _read(self, reg, count=1):
+        buf = bytearray(count)
+        buf[0] = reg | 0xa0
+        with self._i2c as i2c:
+            i2c.write_then_readinto(buf, buf, out_end=1, in_end=count)
+        return buf
+
+    def _write(self, reg, values):
+        buf = bytearray(len(values) * 2)
+        for index, byte in enumerate(values):
+            buf[index * 2] = (reg + index) | 0x80
+            buf[index * 2 + 1] = byte
+        with self._i2c as i2c:
+            i2c.write(buf)
+
+```
+
+Then I had to just connect it to the uKeeb library I'm using, like
+this:
+
+
+```python
+class Keeb(ukeeb.Keeb):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        try:
+            i2c = busio.I2C(pin.PA09, pin.PA08)
+            i2c.try_lock()
+            i2c.scan()
+            i2c.unlock()
+        except RuntimeError:
+            self.trackpad = None
+            return
+        for device in usb_hid.devices:
+            if device.usage == 0x02 and device.usage_page == 0x01:
+                break
+        else:
+            return
+        self.mouse_device = device
+        self.trackpad = trackpad.Trackpad(i2c)
+
+    def animate(self):
+        if self.trackpad is None:
+            return
+        while self.trackpad.available():
+            data = self.trackpad.read()
+            data[0] &= 0x07
+            data[1] ^= 0xff
+            self.mouse_device.send_report(data)
+```
+
+Note that I added fallback code – if the shield is not connected, the
+keyboard still works, without the touchpad. 
+
+Overall, it's much simpler than I expected and works very well. I
+might make another version of the shield, with the i2c resistors, a
+jumper to use one of the i2c as cs when in spi mode, and rearranged
+mouse buttons (right now the middle button is the left mouse button,
+which may be a bit confusing), but we will see.
+

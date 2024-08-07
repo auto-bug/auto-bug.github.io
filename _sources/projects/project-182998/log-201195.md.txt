@@ -1,0 +1,24 @@
+---
+blogpost: true
+date: 2021-12-10
+category: project-182998
+---
+
+# NKRO and BOOT
+Published on 2021-12-10 in {ref}`project-182998`.
+
+I took the opportunity with this new keyboard and worked a bit on my
+uKeeb CircuitPython library. With the custom HID descriptors we can
+have an NKRO keyboard, but there is a small problem: the bitmap device
+that this uses won't work in BIOS or with legacy KVM devices, as those
+expect a BOOT device. Fortunately there is a way around that: when the
+host expects a BOOT device, it must send you a special message telling
+you that, so we can switch to that protocol when needed.
+
+The support for receiving that message was recently added to
+CircuitPython in version 7.1.0, so we can now add the NKRO code to the
+library by default.
+
+If you are interested in the details, feel free to check the library
+code at  [https://github.com/deshipu/ukeeb](https://github.com/deshipu/ukeeb) 
+

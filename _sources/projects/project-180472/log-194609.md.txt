@@ -1,0 +1,34 @@
+---
+blogpost: true
+date: 2021-06-23
+category: project-180472
+---
+
+# Power On
+Published on 2021-06-23 in {ref}`project-180472`.
+
+I was right about motivation from the updating of the project logs —
+right after I finished the last log, I decided to continue the
+exploration. So I took a piece of paper and I figured out which pin is
+connected to which pad:
+
+
+
+:::{image} images/9789011624480643845.jpg
+
+:::
+
+
+Then I connected the power to the VCC and GND pins, and measured the
+voltages against GND and against VCC on all pins, hoping that maybe
+this will give me some insights. The results are a little bit weird,
+so I decided to also try and measure the resistance between all pins
+and VCC and GND — of course with the power disconnected.
+
+The results were even stranger, so I repeated the same procedure with
+the second module, and got completely different results.
+
+My suspicion so far is that it's indeed very hard to get those pads
+soldered properly without shorts and breaks, and that I did a poor job
+with it.
+

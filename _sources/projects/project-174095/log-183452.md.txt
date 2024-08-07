@@ -1,0 +1,146 @@
+---
+blogpost: true
+date: 2020-09-11
+category: project-174095
+---
+
+# Final Code
+Published on 2020-09-11 in {ref}`project-174095`.
+
+In the process of moving the shift keys around, I have simplified the
+code somewhat, made it better at handling some corner cases, and fixed
+some bugs. Just in case someone wants to make a similar build, I'm
+putting it below. In the future it might grow into a proper
+CircuitPython library perhaps – then it will get its own repository.
+
+---------- more ----------
+```python
+import board
+import digitalio
+import usb_hid
+import time
+
+
+COLS = (board.A6, board.A1, board.A4, board.A3, board.D6,
+        board.SCL, board.SDA, board.D12, board.D10, board.D13)
+ROWS = (board.MOSI, board.AREF, board.D11, board.D5)
+LEDS = (board.A2, board.A5, board.TX, board.RX, board.D9)
+
+
+class Keyboard:
+    def __init__(self, matrix, cols=COLS, rows=ROWS):
+        self.matrix = matrix
+        self.cols = [digitalio.DigitalInOut(pin) for pin in cols]
+        self.rows = [digitalio.DigitalInOut(pin) for pin in rows]
+        for col in self.cols:
+            col.switch_to_output(value=0)
+        for row in self.rows:
+            row.switch_to_input(pull=digitalio.Pull.DOWN)
+        for self.device in usb_hid.devices:
+            if self.device.usage == 0x06 and self.device.usage_page == 0x01:
+                break
+        else:
+            raise RuntimeError("no HID keyboard device")
+        self.debounce = bytearray(len(cols))
+        self.last_state = bytearray(len(cols))
+        self.current_layer = 0
+        self.pressed_keys = set()
+        self.last_held = 0
+        self.release_next = 0
+
+    def scan(self):
+        if self.release_next:
+            try:
+                self.pressed_keys.remove(self.release_next)
+            except KeyError:
+                pass
+            self.release_next = 0
+        for x, col in enumerate(self.cols):
+            col.value = 1
+            debounce_bits = 0
+            for y, row in enumerate(self.rows):
+                state = row.value
+                debounce_bits |= state << y
+                if state != bool(self.debounce[x] & (1 << y)):
+                    continue
+                last_state = bool(self.last_state[x] & (1 << y))
+                if state:
+                    self.last_state[x] |= 1 << y
+                else:
+                    self.last_state[x] &= ~(1 << y)
+                if state == last_state:
+                    continue
+                if state:
+                    self.press(x, y)
+                else:
+                    self.release(x, y)
+            col.value = 0
+            self.debounce[x] = debounce_bits
+
+    def press(self, x, y):
+        if self.last_held:
+            self.last_held = 0
+        code = self.matrix[self.current_layer][y][x]
+        if code & 0xff00:
+            if (code & 0xff) != 0:
+                self.last_held = code
+            if code & 0xff00 == 0x0800:
+                self.current_layer = 1
+            else:
+                self.pressed_keys.add(code & 0xff00)
+            return
+        code = self.matrix[self.current_layer][y][x]
+        self.pressed_keys.add(code)
+
+    def release_all(self, x, y):
+        for layer in 0, 1:
+            for mask in 0xffff, 0xff00, 0x00ff:
+                code = self.matrix[layer][y][x] & mask
+                try:
+                    self.pressed_keys.remove(code)
+                except KeyError:
+                    pass
+                if code & 0xff00 == 0x0800:
+                    self.current_layer = 0
+
+
+    def release(self, x, y):
+        for layer in 0, 1:
+            code = self.matrix[self.current_layer][y][x]
+            if self.last_held == code:
+                self.release_all(x, y)
+                self.pressed_keys.add(code & 0xff)
+                self.release_next = code & 0xff
+                self.last_held = 0
+                return
+        self.release_all(x, y)
+
+    def send_report(self, pressed_keys):
+        report = bytearray(8)
+        report_mod_keys = memoryview(report)[0:1]
+        report_no_mod_keys = memoryview(report)[2:]
+        keys = 0
+        for code in pressed_keys:
+            if code == 0:
+                continue
+            elif code == 0x0800:
+                continue
+            elif code & 0xff00 and code & 0xff == 0:
+                modifier = (code >> 8) - 1
+                report_mod_keys[0] |= 1 << modifier
+            elif keys < 6:
+                report_no_mod_keys[keys] = code
+                keys += 1
+        self.device.send_report(report)
+
+    def run(self):
+        last_pressed_keys = set()
+        while True:
+            self.scan()
+            if self.pressed_keys != last_pressed_keys:
+                self.send_report(self.pressed_keys)
+                last_pressed_keys = set(self.pressed_keys)
+            time.sleep(0.01)
+
+```
+

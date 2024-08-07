@@ -1,0 +1,271 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>http://deshipu.art/</id>
+  <title>deshipu.art - Posts in project-180309</title>
+  <updated>2024-08-07T20:34:13.126551+00:00</updated>
+  <link href="http://deshipu.art/"/>
+  <link href="http://deshipu.art/blog/category/project-180309/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-180309/log-194074/</id>
+    <title>Adding the board to CircuitPython</title>
+    <updated>2021-06-12T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="adding-the-board-to-circuitpython"&gt;
+
+&lt;p&gt;Published on 2021-06-12 in &lt;a class="reference internal" href="../../../projects/project-180309/#project-180309"&gt;&lt;span class="std std-ref"&gt;PewPew OLED&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Last time I went all the way up to flashing an UF2 bootloader on the
+SAMD21 chip, now we need to get CircuitPython running on it. Normally
+I would just use the firmware for &lt;a class="reference internal" href="../../../projects/project-171381/#project-171381"&gt;&lt;span class="std std-ref"&gt;Fluff M0&lt;/span&gt;&lt;/a&gt; — it has all the pins available, so it’s very convenient for such
+things, but this time we are going to need the displayio module
+compiled into the firmware, and later we will also add the display
+initialization, so that the display just works as soon as the device
+is switched on, without us having to initialize it in our own code.&lt;/p&gt;
+&lt;p&gt;To add a new SAMD board, the easiest way is to copy an existing board
+definition, like the fluff_m0 one, in ports/atmel-samd/boards, and
+rename it. Then we can edit the files to make our changes:&lt;/p&gt;
+&lt;p&gt;mpconfigboard.h&lt;/p&gt;
+&lt;div class="highlight-cpp notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;#define MICROPY_HW_BOARD_NAME &amp;quot;PewPew OLED&amp;quot;&lt;/span&gt;
+&lt;span class="cp"&gt;#define MICROPY_HW_MCU_NAME &amp;quot;samd21e18&amp;quot;&lt;/span&gt;
+
+&lt;span class="cp"&gt;#define MICROPY_PORT_A        (0)&lt;/span&gt;
+&lt;span class="cp"&gt;#define MICROPY_PORT_B        (0)&lt;/span&gt;
+&lt;span class="cp"&gt;#define MICROPY_PORT_C        (0)&lt;/span&gt;
+
+&lt;span class="cp"&gt;#define CIRCUITPY_INTERNAL_NVM_SIZE 0&lt;/span&gt;
+&lt;span class="cp"&gt;#define CIRCUITPY_INTERNAL_FLASH_FILESYSTEM_SIZE (48 * 1024)&lt;/span&gt;
+
+&lt;span class="c1"&gt;// USB is always used internally so skip the pin objects for it.&lt;/span&gt;
+&lt;span class="cp"&gt;#define IGNORE_PIN_PA24     1&lt;/span&gt;
+&lt;span class="cp"&gt;#define IGNORE_PIN_PA25     1&lt;/span&gt;
+
+&lt;span class="cp"&gt;#define SAMD21_BOD33_LEVEL (6)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;There are three noteworthy things here. We change the NVM size to 0
+(this is a part of the flash reserved for storing additional
+information,  we are not going to be using that), and the filesystem
+size to 48kB (from the default of 64kB). This is needed to make more
+room for the firmware in the flash, because we want to include
+displayio, which is quite big.&lt;/p&gt;
+&lt;p&gt;Finally, the SAMD21_BOD33_LEVEL variable controls the brown-out
+detection voltage level. We need to set it as low as practical, so
+that our device can work from a puny 3V battery without going into
+safe mode.&lt;/p&gt;
+&lt;p&gt;Later on we can add all the pins we are not using on the device, to
+save some RAM. It’s not important right now.&lt;/p&gt;
+&lt;p&gt;pins.c&lt;/p&gt;
+&lt;div class="highlight-cpp notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;#include&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="cpf"&gt;&amp;quot;shared-bindings/board/__init__.h&amp;quot;&lt;/span&gt;&lt;span class="cp"&gt;&lt;/span&gt;
+
+&lt;span class="n"&gt;STATIC&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;const&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;mp_rom_map_elem_t&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;board_global_dict_table&lt;/span&gt;&lt;span class="p"&gt;[]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;MP_ROM_QSTR&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;MP_QSTR_SCK&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;MP_ROM_PTR&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;pin_PA09&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;MP_ROM_QSTR&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;MP_QSTR_MOSI&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;MP_ROM_PTR&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;pin_PA08&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;MP_ROM_QSTR&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;MP_QSTR_OLED_DC&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;MP_ROM_PTR&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;pin_PA10&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;MP_ROM_QSTR&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;MP_QSTR_OLED_CS&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;MP_ROM_PTR&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;pin_PA01&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;MP_ROM_QSTR&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;MP_QSTR_OLED_RESET&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;MP_ROM_PTR&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;pin_PA00&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;MP_ROM_QSTR&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;MP_QSTR_TOUCH_UP&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;MP_ROM_PTR&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;pin_PA02&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;MP_ROM_QSTR&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;MP_QSTR_TOUCH_DOWN&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;MP_ROM_PTR&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;pin_PA05&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;MP_ROM_QSTR&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;MP_QSTR_TOUCH_LEFT&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;MP_ROM_PTR&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;pin_PA03&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;MP_ROM_QSTR&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;MP_QSTR_TOUCH_RIGHT&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;MP_ROM_PTR&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;pin_PA04&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;MP_ROM_QSTR&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;MP_QSTR_TOUCH_O&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;MP_ROM_PTR&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;pin_PA06&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;MP_ROM_QSTR&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;MP_QSTR_TOUCH_X&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;MP_ROM_PTR&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;pin_PA07&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+
+&lt;span class="p"&gt;};&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="n"&gt;MP_DEFINE_CONST_DICT&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;board_module_globals&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;board_global_dict_table&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;This defines which pins on the microcontroller are used for what.&lt;/p&gt;
+&lt;p&gt;mpconfigboard.mk&lt;/p&gt;
+&lt;div class="highlight-makefile notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nv"&gt;USB_VID&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; 0x239A
+&lt;span class="nv"&gt;USB_PID&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; 0x80B0
+&lt;span class="nv"&gt;USB_PRODUCT&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;PewPew OLED&amp;quot;&lt;/span&gt;
+&lt;span class="nv"&gt;USB_MANUFACTURER&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Radomir Dopieralski&amp;quot;&lt;/span&gt;
+
+&lt;span class="nv"&gt;CHIP_VARIANT&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; SAMD21E18A
+&lt;span class="nv"&gt;CHIP_FAMILY&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; samd21
+
+&lt;span class="nv"&gt;INTERNAL_FLASH_FILESYSTEM&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;
+&lt;span class="nv"&gt;LONGINT_IMPL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; NONE
+
+&lt;span class="nv"&gt;CIRCUITPY_FULL_BUILD&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;
+
+&lt;span class="nv"&gt;CIRCUITPY_DISPLAYIO&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;
+&lt;span class="nv"&gt;CIRCUITPY_TOUCHIO&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;
+
+&lt;span class="nv"&gt;CIRCUITPY_ANALOGIO&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;
+&lt;span class="nv"&gt;CIRCUITPY_AUDIOBUSIO&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;
+&lt;span class="nv"&gt;CIRCUITPY_AUDIOBUSIO_I2SOUT&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;
+&lt;span class="nv"&gt;CIRCUITPY_AUDIOCORE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;
+&lt;span class="nv"&gt;CIRCUITPY_AUDIOIO&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;
+&lt;span class="nv"&gt;CIRCUITPY_AUDIOMIXER&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;
+&lt;span class="nv"&gt;CIRCUITPY_AUDIOMP3&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;
+&lt;span class="nv"&gt;CIRCUITPY_AUDIOPWMIO&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;
+&lt;span class="nv"&gt;CIRCUITPY_BITBANG_APA102&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;
+&lt;span class="nv"&gt;CIRCUITPY_BITBANGIO&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;
+&lt;span class="nv"&gt;CIRCUITPY_BITBANGIO&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;
+&lt;span class="nv"&gt;CIRCUITPY_BITMAPTOOLS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;
+&lt;span class="nv"&gt;CIRCUITPY_BITMAPTOOLS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;
+&lt;span class="nv"&gt;CIRCUITPY_BLEIO&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;
+&lt;span class="nv"&gt;CIRCUITPY_BUSDEVICE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;
+&lt;span class="nv"&gt;CIRCUITPY_FRAMEBUFFERIO&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;
+&lt;span class="nv"&gt;CIRCUITPY_FREQUENCYIO&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;
+&lt;span class="nv"&gt;CIRCUITPY_GAMEPAD&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;
+&lt;span class="nv"&gt;CIRCUITPY_GAMEPADSHIFT&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;
+&lt;span class="nv"&gt;CIRCUITPY_I2CPERIPHERAL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;
+&lt;span class="nv"&gt;CIRCUITPY_MATH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;
+&lt;span class="nv"&gt;CIRCUITPY_MSGPACK&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;
+&lt;span class="nv"&gt;CIRCUITPY_NEOPIXEL_WRITE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;
+&lt;span class="nv"&gt;CIRCUITPY_NVM&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;
+&lt;span class="nv"&gt;CIRCUITPY_PIXELBUF&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;
+&lt;span class="nv"&gt;CIRCUITPY_PS2IO&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;
+&lt;span class="nv"&gt;CIRCUITPY_PULSEIO&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;
+&lt;span class="nv"&gt;CIRCUITPY_PWMIO&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;
+&lt;span class="nv"&gt;CIRCUITPY_RGBMATRIX&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;
+&lt;span class="nv"&gt;CIRCUITPY_ROTARYIO&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;
+&lt;span class="nv"&gt;CIRCUITPY_ROTARYIO&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;
+&lt;span class="nv"&gt;CIRCUITPY_RTC&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;
+&lt;span class="nv"&gt;CIRCUITPY_SAMD&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;
+&lt;span class="nv"&gt;CIRCUITPY_ULAB&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;
+&lt;span class="nv"&gt;CIRCUITPY_USB_HID&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;
+&lt;span class="nv"&gt;CIRCUITPY_USB_MIDI&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;
+&lt;span class="nv"&gt;CIRCUITPY_USB_VENDOR&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;
+&lt;span class="nv"&gt;CIRCUITPY_VECTORIO&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;
+
+&lt;span class="nv"&gt;CIRCUITPY_DISPLAY_FONT&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;TOP&lt;span class="k"&gt;)&lt;/span&gt;/ports/atmel-samd/boards/ugame10/brutalist-6.bdf
+&lt;span class="nv"&gt;OPTIMIZATION_FLAGS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; -Os
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;You can see a looooong list of disabled modules here. That’s because I
+was trying to reclaim as much space as possible for displayio, before
+I gave up and simply shrunk the filesystem. There is also a custom
+tiny font. For now I’m using the same VID/PID as the fluff_m0, I will
+need to ask for unique ones when I will be adding that board to
+CircuitPython repository.&lt;/p&gt;
+&lt;p&gt;And that’s it, the board.c file is not needed for us right now — we
+will use it for display initialization later on, though.&lt;/p&gt;
+&lt;p&gt;Next, I just looked for an SH1106 display driver for CircuitPython and
+displayio on the Adafruit Github, compiled the new board, and we have
+a working device:&lt;/p&gt;
+&lt;img alt="projects/project-180309/images/19751623522824210.jpg" src="projects/project-180309/images/19751623522824210.jpg" /&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-180309/log-194074/" rel="alternate"/>
+    <summary>Published on 2021-06-12 in project-180309.</summary>
+    <published>2021-06-12T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-180309/log-194000/</id>
+    <title>First Prototype Failure</title>
+    <updated>2021-06-12T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="first-prototype-failure"&gt;
+
+&lt;p&gt;Published on 2021-06-12 in &lt;a class="reference internal" href="../../../projects/project-180309/#project-180309"&gt;&lt;span class="std std-ref"&gt;PewPew OLED&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The boards finally arrived, and I got a chance to test the battery
+holder:&lt;/p&gt;
+&lt;img alt="projects/project-180309/images/6562041623448733527.jpg" src="projects/project-180309/images/6562041623448733527.jpg" /&gt;
+&lt;p&gt;The tabs can just barely be lifted enough to insert the coin cell in
+place, but it’s extremely easy to break them. On the other hand, they
+hold the battery in place quite well, so I think this will work, I
+just need to make the thin parts of the tabs much longer.&lt;/p&gt;
+&lt;p&gt;Having tested that part, I went ahead and assembled one board, with a
+regular battery holder this time:&lt;/p&gt;
+&lt;img alt="projects/project-180309/images/3694371623448864927.jpg" src="projects/project-180309/images/3694371623448864927.jpg" /&gt;
+&lt;p&gt;I have the bootloader flashed, now I need to prepare the board
+definition for CircuitPython and get display to work on it.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-180309/log-194000/" rel="alternate"/>
+    <summary>Published on 2021-06-12 in project-180309.</summary>
+    <published>2021-06-12T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-180309/log-194297/</id>
+    <title>The pew Library</title>
+    <updated>2021-06-15T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="the-pew-library"&gt;
+
+&lt;p&gt;Published on 2021-06-15 in &lt;a class="reference internal" href="../../../projects/project-180309/#project-180309"&gt;&lt;span class="std std-ref"&gt;PewPew OLED&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;At the heart of every PewPew device is the pew Python library, which
+gives you access to the 8x8 screen and buttons. That library is
+different on different devices, but gives your code a consistent
+interface, so that a PewPew game written on one device will work on
+any other. I already had a version of the pew library for the SH1106
+OLED screen, but it was written before displaio had support for those
+screens, and just talks to the screen directly over SPI.&lt;/p&gt;
+&lt;p&gt;This time I wanted to use the higher-level capabilities of displayio —
+mostly because then when your program raises an exception, you can see
+it on the screen and read the error without having to use the serial
+connection. Unfortunately, doing it the naive way, by using TileGrid,
+would be too slow. So I went for a kind of compromise — I still
+generate the data to be sent to the display myself, but then I use the
+FourWire bus object on the board.DISPLAY to send that data to the
+display:&lt;/p&gt;
+&lt;div class="highlight-default notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;show&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pix&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;pix_buffer&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pix&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;buffer&lt;/span&gt;
+    &lt;span class="n"&gt;bus&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DISPLAY&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;bus&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;pix_index&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pix&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;width&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;
+        &lt;span class="n"&gt;index&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+        &lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DISPLAY&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;bus&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;send&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mh"&gt;0x0a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="sa"&gt;b&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DISPLAY&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;bus&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;send&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mh"&gt;0x11&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="sa"&gt;b&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+            &lt;span class="n"&gt;bus&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;send&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mh"&gt;0xb0&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;_PATTERNS&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;pix_buffer&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;pix_index&lt;/span&gt;&lt;span class="p"&gt;]])&lt;/span&gt;
+            &lt;span class="n"&gt;index&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;
+            &lt;span class="n"&gt;pix_index&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;The 0x0a and 0x11 commands send the column to 24 (to center the
+image), and the 0xb0|y command sets the row to the value of y. Then I
+just keep sending the pre-defined pattern data for the current pixel,
+in chunks of 10 bytes. Simple yet effective.&lt;/p&gt;
+&lt;img alt="projects/project-180309/images/2488171623765477895.gif" src="projects/project-180309/images/2488171623765477895.gif" /&gt;
+&lt;p&gt;Of course now all the PewPew games will work on this device.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-180309/log-194297/" rel="alternate"/>
+    <summary>Published on 2021-06-15 in project-180309.</summary>
+    <published>2021-06-15T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-180309/log-194586/</id>
+    <title>Version 2</title>
+    <updated>2021-06-23T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="version-2"&gt;
+
+&lt;p&gt;Published on 2021-06-23 in &lt;a class="reference internal" href="../../../projects/project-180309/#project-180309"&gt;&lt;span class="std std-ref"&gt;PewPew OLED&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Second attempt, with longer battery tabs — so they will hopefully have
+enough flex in them to hold the battery without breaking. I also had
+to re-route some traces, as there wasn’t enough room around the holes
+anymore. Finally, I added fancier silkscreen on the front. I’m
+thinking this time I will use a red PCB, so that the traces are not so
+apparent on the front.&lt;/p&gt;
+&lt;img alt="projects/project-180309/images/2406521624441280998.png" src="projects/project-180309/images/2406521624441280998.png" /&gt;
+&lt;img alt="projects/project-180309/images/3518171624441293143.png" src="projects/project-180309/images/3518171624441293143.png" /&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-180309/log-194586/" rel="alternate"/>
+    <summary>Published on 2021-06-23 in project-180309.</summary>
+    <published>2021-06-23T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-180309/log-195125/</id>
+    <title>Great Success</title>
+    <updated>2021-07-08T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="great-success"&gt;
+
+&lt;p&gt;Published on 2021-07-08 in &lt;a class="reference internal" href="../../../projects/project-180309/#project-180309"&gt;&lt;span class="std std-ref"&gt;PewPew OLED&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Version two has the battery holder tabs longer, and they work just
+right without breaking!&lt;/p&gt;
+&lt;img alt="projects/project-180309/images/5986901625776545457.jpg" src="projects/project-180309/images/5986901625776545457.jpg" /&gt;
+&lt;p&gt;I also left out one of the capacitors — I guess the displays works
+without filtering its power.&lt;/p&gt;
+&lt;p&gt;The latest CircuitPython flashed, now time to write some sprite
+libraries.&lt;/p&gt;
+&lt;img alt="projects/project-180309/images/4673551625776643212.jpg" src="projects/project-180309/images/4673551625776643212.jpg" /&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-180309/log-195125/" rel="alternate"/>
+    <summary>Published on 2021-07-08 in project-180309.</summary>
+    <published>2021-07-08T00:00:00+02:00</published>
+  </entry>
+</feed>

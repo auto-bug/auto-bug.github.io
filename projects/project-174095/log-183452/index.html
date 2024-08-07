@@ -1,0 +1,193 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Final Code - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="final-code">
+<h1>Final Code<a class="headerlink" href="#final-code" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2020-09-11 in <a class="reference internal" href="../#project-174095"><span class="std std-ref">Dorsch 40k Keyboard</span></a>.</p>
+<p>In the process of moving the shift keys around, I have simplified the
+code somewhat, made it better at handling some corner cases, and fixed
+some bugs. Just in case someone wants to make a similar build, I’m
+putting it below. In the future it might grow into a proper
+CircuitPython library perhaps – then it will get its own repository.</p>
+<p>———- more ———-</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">board</span>
+<span class="kn">import</span> <span class="nn">digitalio</span>
+<span class="kn">import</span> <span class="nn">usb_hid</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+
+<span class="n">COLS</span> <span class="o">=</span> <span class="p">(</span><span class="n">board</span><span class="o">.</span><span class="n">A6</span><span class="p">,</span> <span class="n">board</span><span class="o">.</span><span class="n">A1</span><span class="p">,</span> <span class="n">board</span><span class="o">.</span><span class="n">A4</span><span class="p">,</span> <span class="n">board</span><span class="o">.</span><span class="n">A3</span><span class="p">,</span> <span class="n">board</span><span class="o">.</span><span class="n">D6</span><span class="p">,</span>
+        <span class="n">board</span><span class="o">.</span><span class="n">SCL</span><span class="p">,</span> <span class="n">board</span><span class="o">.</span><span class="n">SDA</span><span class="p">,</span> <span class="n">board</span><span class="o">.</span><span class="n">D12</span><span class="p">,</span> <span class="n">board</span><span class="o">.</span><span class="n">D10</span><span class="p">,</span> <span class="n">board</span><span class="o">.</span><span class="n">D13</span><span class="p">)</span>
+<span class="n">ROWS</span> <span class="o">=</span> <span class="p">(</span><span class="n">board</span><span class="o">.</span><span class="n">MOSI</span><span class="p">,</span> <span class="n">board</span><span class="o">.</span><span class="n">AREF</span><span class="p">,</span> <span class="n">board</span><span class="o">.</span><span class="n">D11</span><span class="p">,</span> <span class="n">board</span><span class="o">.</span><span class="n">D5</span><span class="p">)</span>
+<span class="n">LEDS</span> <span class="o">=</span> <span class="p">(</span><span class="n">board</span><span class="o">.</span><span class="n">A2</span><span class="p">,</span> <span class="n">board</span><span class="o">.</span><span class="n">A5</span><span class="p">,</span> <span class="n">board</span><span class="o">.</span><span class="n">TX</span><span class="p">,</span> <span class="n">board</span><span class="o">.</span><span class="n">RX</span><span class="p">,</span> <span class="n">board</span><span class="o">.</span><span class="n">D9</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">Keyboard</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">matrix</span><span class="p">,</span> <span class="n">cols</span><span class="o">=</span><span class="n">COLS</span><span class="p">,</span> <span class="n">rows</span><span class="o">=</span><span class="n">ROWS</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span> <span class="o">=</span> <span class="n">matrix</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="n">digitalio</span><span class="o">.</span><span class="n">DigitalInOut</span><span class="p">(</span><span class="n">pin</span><span class="p">)</span> <span class="k">for</span> <span class="n">pin</span> <span class="ow">in</span> <span class="n">cols</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rows</span> <span class="o">=</span> <span class="p">[</span><span class="n">digitalio</span><span class="o">.</span><span class="n">DigitalInOut</span><span class="p">(</span><span class="n">pin</span><span class="p">)</span> <span class="k">for</span> <span class="n">pin</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cols</span><span class="p">:</span>
+            <span class="n">col</span><span class="o">.</span><span class="n">switch_to_output</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">rows</span><span class="p">:</span>
+            <span class="n">row</span><span class="o">.</span><span class="n">switch_to_input</span><span class="p">(</span><span class="n">pull</span><span class="o">=</span><span class="n">digitalio</span><span class="o">.</span><span class="n">Pull</span><span class="o">.</span><span class="n">DOWN</span><span class="p">)</span>
+        <span class="k">for</span> <span class="bp">self</span><span class="o">.</span><span class="n">device</span> <span class="ow">in</span> <span class="n">usb_hid</span><span class="o">.</span><span class="n">devices</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="o">.</span><span class="n">usage</span> <span class="o">==</span> <span class="mh">0x06</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="o">.</span><span class="n">usage_page</span> <span class="o">==</span> <span class="mh">0x01</span><span class="p">:</span>
+                <span class="k">break</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;no HID keyboard device&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">debounce</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">cols</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">last_state</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">cols</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current_layer</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pressed_keys</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">last_held</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">release_next</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="nf">scan</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">release_next</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">pressed_keys</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">release_next</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                <span class="k">pass</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">release_next</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cols</span><span class="p">):</span>
+            <span class="n">col</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="n">debounce_bits</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">for</span> <span class="n">y</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rows</span><span class="p">):</span>
+                <span class="n">state</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">value</span>
+                <span class="n">debounce_bits</span> <span class="o">|=</span> <span class="n">state</span> <span class="o">&lt;&lt;</span> <span class="n">y</span>
+                <span class="k">if</span> <span class="n">state</span> <span class="o">!=</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">debounce</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">&amp;</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">y</span><span class="p">)):</span>
+                    <span class="k">continue</span>
+                <span class="n">last_state</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">last_state</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">&amp;</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">y</span><span class="p">))</span>
+                <span class="k">if</span> <span class="n">state</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">last_state</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">|=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">y</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">last_state</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">y</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">state</span> <span class="o">==</span> <span class="n">last_state</span><span class="p">:</span>
+                    <span class="k">continue</span>
+                <span class="k">if</span> <span class="n">state</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">press</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">release</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+            <span class="n">col</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">debounce</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">debounce_bits</span>
+
+    <span class="k">def</span> <span class="nf">press</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">last_held</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">last_held</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">code</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">current_layer</span><span class="p">][</span><span class="n">y</span><span class="p">][</span><span class="n">x</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">code</span> <span class="o">&amp;</span> <span class="mh">0xff00</span><span class="p">:</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">code</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">last_held</span> <span class="o">=</span> <span class="n">code</span>
+            <span class="k">if</span> <span class="n">code</span> <span class="o">&amp;</span> <span class="mh">0xff00</span> <span class="o">==</span> <span class="mh">0x0800</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">current_layer</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">pressed_keys</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">code</span> <span class="o">&amp;</span> <span class="mh">0xff00</span><span class="p">)</span>
+            <span class="k">return</span>
+        <span class="n">code</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">current_layer</span><span class="p">][</span><span class="n">y</span><span class="p">][</span><span class="n">x</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pressed_keys</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">release_all</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">mask</span> <span class="ow">in</span> <span class="mh">0xffff</span><span class="p">,</span> <span class="mh">0xff00</span><span class="p">,</span> <span class="mh">0x00ff</span><span class="p">:</span>
+                <span class="n">code</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span><span class="p">[</span><span class="n">layer</span><span class="p">][</span><span class="n">y</span><span class="p">][</span><span class="n">x</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">mask</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">pressed_keys</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
+                <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                    <span class="k">pass</span>
+                <span class="k">if</span> <span class="n">code</span> <span class="o">&amp;</span> <span class="mh">0xff00</span> <span class="o">==</span> <span class="mh">0x0800</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">current_layer</span> <span class="o">=</span> <span class="mi">0</span>
+
+
+    <span class="k">def</span> <span class="nf">release</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">code</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">current_layer</span><span class="p">][</span><span class="n">y</span><span class="p">][</span><span class="n">x</span><span class="p">]</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">last_held</span> <span class="o">==</span> <span class="n">code</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">release_all</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">pressed_keys</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">code</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">release_next</span> <span class="o">=</span> <span class="n">code</span> <span class="o">&amp;</span> <span class="mh">0xff</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">last_held</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="k">return</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">release_all</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">send_report</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pressed_keys</span><span class="p">):</span>
+        <span class="n">report</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+        <span class="n">report_mod_keys</span> <span class="o">=</span> <span class="nb">memoryview</span><span class="p">(</span><span class="n">report</span><span class="p">)[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">report_no_mod_keys</span> <span class="o">=</span> <span class="nb">memoryview</span><span class="p">(</span><span class="n">report</span><span class="p">)[</span><span class="mi">2</span><span class="p">:]</span>
+        <span class="n">keys</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">code</span> <span class="ow">in</span> <span class="n">pressed_keys</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="k">elif</span> <span class="n">code</span> <span class="o">==</span> <span class="mh">0x0800</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="k">elif</span> <span class="n">code</span> <span class="o">&amp;</span> <span class="mh">0xff00</span> <span class="ow">and</span> <span class="n">code</span> <span class="o">&amp;</span> <span class="mh">0xff</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">modifier</span> <span class="o">=</span> <span class="p">(</span><span class="n">code</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+                <span class="n">report_mod_keys</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">|=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">modifier</span>
+            <span class="k">elif</span> <span class="n">keys</span> <span class="o">&lt;</span> <span class="mi">6</span><span class="p">:</span>
+                <span class="n">report_no_mod_keys</span><span class="p">[</span><span class="n">keys</span><span class="p">]</span> <span class="o">=</span> <span class="n">code</span>
+                <span class="n">keys</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="o">.</span><span class="n">send_report</span><span class="p">(</span><span class="n">report</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">last_pressed_keys</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">scan</span><span class="p">()</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">pressed_keys</span> <span class="o">!=</span> <span class="n">last_pressed_keys</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">send_report</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pressed_keys</span><span class="p">)</span>
+                <span class="n">last_pressed_keys</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pressed_keys</span><span class="p">)</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+
+
+</div>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+---
+blogpost: true
+date: 2021-05-02
+category: project-179496
+---
+
+# The Keyboard
+Published on 2021-05-02 in {ref}`project-179496`.
+
+Once the switches arrived, I was ready to assemble the keyboard. It
+took a little bit of detective work to figure out which way to solder
+the diodes (I soldered them the wrong way, but fixed it in software,
+thankfully SAMD21 supports both pull-ups and pull-downs on its pins),
+and which set of holes to use on the left and right side for the
+microcontroller board.
+
+
+
+:::{image} images/3897781619907175766.jpg
+
+:::
+
+

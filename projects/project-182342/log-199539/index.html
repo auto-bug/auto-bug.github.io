@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Version 1 PCB - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="version-1-pcb">
+<h1>Version 1 PCB<a class="headerlink" href="#version-1-pcb" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2021-10-25 in <a class="reference internal" href="../#project-182342"><span class="std std-ref">Camera Shield for S2 Mini</span></a>.</p>
+<p>This is the first attempt at this shield, and it’s mostly based on
+guesswork, datasheet, schematic for the ESP32 Cam board, and some bad
+quality images of the pinouts I found online. I have absolutely no
+idea if it will work, but I can try. The design is pretty dense:</p>
+<img alt="projects/project-182342/images/9759071635197487623.png" src="projects/project-182342/images/9759071635197487623.png" />
+<p>I didn’t feel like fixing the angles of all the traces, so you will
+have to suffer. The render doesn’t look bad:</p>
+<img alt="projects/project-182342/images/4065201635197530946.png" src="projects/project-182342/images/4065201635197530946.png" />
+<img alt="projects/project-182342/images/6108781635197545443.png" src="projects/project-182342/images/6108781635197545443.png" />
+<p>There are two voltage regulators, each with its own capacitor, two
+resistors for I2C pull-ups, a resistor to pull-down the enable pin on
+the camera, and a 14pF capacitor on the PCLK line, no idea why, but
+ESP32 Cam had it, so I copied it. And of course the camera socket
+itself, which is a fun 0.5mm-pitch footprint.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

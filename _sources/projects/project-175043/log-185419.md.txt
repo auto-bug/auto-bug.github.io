@@ -1,0 +1,24 @@
+---
+blogpost: true
+date: 2020-10-24
+category: project-175043
+---
+
+# Original Layout
+Published on 2020-10-24 in {ref}`project-175043`.
+
+Now that I have the project tested and working, I added the gerbers
+and Fritzing design to the files, so that other can also build it. It
+uses the bootloader and CircuitPython firmware for {ref}`project-171381` , and I added an example with the original Atreus layout to the ukeeb
+library: [https://github.com/deshipu/ukeeb/blob/main/examples/flatreus.py](https://github.com/deshipu/ukeeb/blob/main/examples/flatreus.py) 
+
+
+
+:::{image} images/5680061603574970250.png
+
+:::
+
+
+Here's that layout, taken from the Atreus kickstarter page. Of course
+you can easily modify it for your own tastes.
+

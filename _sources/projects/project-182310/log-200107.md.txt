@@ -1,0 +1,43 @@
+---
+blogpost: true
+date: 2021-11-06
+category: project-182310
+---
+
+# Bodge, Bodge, Bodge
+Published on 2021-11-06 in {ref}`project-182310`.
+
+Finally the weekend is here, and I had some time to actually program
+and test this device. Right away I found this tiny little problem on
+the PCB:
+
+
+
+:::{image} images/5371421636231236144.png
+
+:::
+
+
+It's hard to see, but there is a trace between PA01 and PA02 pins. One
+is part of the key matrix, the other goes to the analog joystick, so
+this would give us some really interesting effects — fortunately I
+noticed it, so I could desolder the chip with hot air, cut that trace,
+and solder it back again.
+
+Next, I had some fun getting the D-pad and the mouse buttons to work.
+For some reason they were ignored. After about an hour of
+experimenting, replacing switches, replacing diodes, cutting traces,
+adding bodges and so on, I finally figured out what is happening. I
+made two footprints for buttons in there, both SMD and THT, so that I
+can experiment with different buttons. But I didn't notice, that the
+THT buttons I used this time, have some of the contacts sticking out
+on the sides. Those were making contact with the SMD pads, resulting
+in the switch always being on. Since the keypad module is event-based,
+and the switch was on even before the code started, so we never got a
+keypress event, and obviously it also never was released to generated
+a key release event, so the key was basically being ignored. To make
+it more interesting, those contacts are only one one side, so the
+problem was only present for about half of the buttons — depending how
+they were rotated. In the end, I just rotated the misbehaving buttons
+180° to fix this.
+

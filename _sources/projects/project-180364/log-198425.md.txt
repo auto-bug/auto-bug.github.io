@@ -1,0 +1,48 @@
+---
+blogpost: true
+date: 2021-10-01
+category: project-180364
+---
+
+# Some Progress
+Published on 2021-10-01 in {ref}`project-180364`.
+
+I had a friend visiting over the weekend, and they were interested in
+this project, so we sat down together and made some progress with it.
+I assembled a second unit, flashed the usual bootloader to it, and
+started to work on the CircuitPython firmware with the displayio
+library included.
+
+Right away I ran into a stumbling block: displayio is too large to fit
+on the SAMD21 flash by default, even with all the unneeded modules
+disabled. Fortunately I had a similar problem with {ref}`project-180309` before, and I knew that reducing the size of the filesystem from 64kB
+to 48kB solves that problem.
+
+Next problem took us some more time to resolve. I copied the display
+initialization code from {ref}`project-165032` , since both displays use the same ST7735, they just differ in size.
+But on the pendant this code was crashing the whole firmware. It took
+me some time to figure out that the PA10 pin I used as MOSI for the
+display can't in fact be used as MOSI, despite what my notes say.
+Instead, pin PA11 should be used. So we cut the trace, bodged the
+connection to one pin to the right, and this time got working
+firmware. But unfortunately with non-working display still.
+
+Two days later I finally figured out what was wrong. I typed the value
+I was writing to MADCTL register as binary value, with "0b" at the
+beginning, but I forgot this is C, not Python, and that means
+something else. After writing that in hex with "0x" the display
+magically started working:
+
+
+
+:::{image} images/1959431633121279247.jpg
+
+:::
+
+
+The next step is to write the code for decoding GIF images. I already
+have [working code for CircuitPython](https://github.com/deshipu/circuitpython-gif) , so I tried that. Unfortunately (but predictably), I ran out of
+memory. So next, I need to figure a way of sending the data straight
+to the display, without buffering it first in RAM. I might need to use
+a C library for reading that GIF file for this, we will see.
+

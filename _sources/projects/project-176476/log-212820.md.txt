@@ -1,0 +1,61 @@
+---
+blogpost: true
+date: 2022-10-23
+category: project-176476
+---
+
+# Boldly Going Forward
+Published on 2022-10-23 in {ref}`project-176476`.
+
+It has been some time since I last worked on this project, mostly
+because the tests now require actually playing some sounds, and that
+generally annoys people. But I have been home alone this past week, so
+I managed to push this a little bit forward. First of all, I had to
+figure out how the holes actually work. So I took the fingering chart,
+noted the frequencies of the notes, and compared how covering and
+uncovering of each hole affected the frequency.
+
+
+
+:::{image} images/9100031666560530162.jpg
+
+:::
+
+
+Turns out the frequency is roughly linear to the total surface area of
+the holes (as helpfully stated by [this Wikipedia article](https://en.wikipedia.org/wiki/Vessel_flute#Pitch_and_fingering) ), but not quite, as it also depends on the total volume of air and
+other details. Also, most ocarinas are not really tuned according to
+equally tempered scale, which is why makes them so interesting — each
+one has its own unique feel.
+
+So I decided to just go with very rough increments of frequency by
+200, 150, 100 and 50 Hz respectively for each of the four holes on the
+front (ignoring the holes on the back for now), and later I might just
+"snap" them to the nearest clear note, if that's needed.
+
+Immediately I discovered several problems with the current prototype.
+Since the traces for the touch pads pass under the speaker, and they
+are pretty sensitive, the speaker interferes with the touch sensing,
+giving a weird vibratto effect. Also, the traces for different pads
+are too close to each other, and it's very easy to touch ones you
+didn't mean to touch. And finally, the speaker was very quiet.
+
+I solved the first and last problem by removing the speaker from the
+PCB, adding a MOSFET, and making the speaker hang from some wires.
+Unfortunately the second problem will require a PCB redesign, and I
+decided to also add a battery holder, so that it can be used without a
+computer.
+
+I still have one more problem, which is a little bit weird, that I so
+far failed to diagnose properly. It seems that removing a finger from
+the pad is detected with some noticeable delay. I'm not entirely sure
+where that comes from, so I'm holding off on ordering a new PCB yet,
+in case the fix involves moving the traces again.
+
+
+
+:::{image} images/928271666561223373.jpg
+
+:::
+
+

@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Working on Version 3 - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="working-on-version-3">
+<h1>Working on Version 3<a class="headerlink" href="#working-on-version-3" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2023-12-12 in <a class="reference internal" href="../#project-175712"><span class="std std-ref">Kamina Keyboard</span></a>.</p>
+<p>We had recently a keyboard enthusiasts meetup in my city, and a
+surprising number of people were interested in the Kamina v2 keyboard
+– it seems to be a good stepping stone between a traditional keyboard
+and a proper ergo board. However, the fact that it uses a bare SAMD21
+chip, which was hard to obtain due to chip shortage, has a scary
+small-pitch QFN footprint and requires a special programmer to flash
+the bootloader makes it difficult to build by beginning electronics
+hobbyists. Or at least the less confident ones.</p>
+<p>I also noticed that if I made the extra column breakable, it could
+easily be converted into a proper ergo board, very similar to the Klap
+v4 keyboard I’m using as my main driver. Especially if I made the
+switches hot-swappable, it could be a very good intro into the world
+of ergonomic keyboards.</p>
+<p>But how to make it easier to assemble? Simple, just use the raspberry
+pi pico microcontroller board for the brains, similar to how I did it
+for the <a class="reference internal" href="../../project-10408/#project-10408"><span class="std std-ref">Steno Keyboard</span></a> project. It’s cheap, and there are easily enough pins. You can even
+get clones with additional features, like a USB-C connector or a small
+display! The rest is just soldering the hot-swap sockets, and all the
+diodes. Shouldn’t be too hard.</p>
+<p>I started with some mock-ups in Inkscape. I initially want to also
+make the top row breakable. Oh, and I forgot, I also want to make it
+so that you use two of the same PCBs, one flipped over, so that they
+are cheaper to manufacture. Here is one of the steps:</p>
+<img alt="projects/project-175712/images/7857011702341170895.png" src="projects/project-175712/images/7857011702341170895.png" />
+<p>I also decided to not use Fritzing this time, as the stupid “donation”
+thing makes it difficult for people to download and install it.
+Instead, I switched to EasyEDA, because it runs in the browser and so
+people don’t have to install anything. It also makes it very easy to
+order the boards, which is also a big plus. I spent a day fiddling
+with the design, and this is what I came up with:</p>
+<img alt="projects/project-175712/images/2432381702341390253.png" src="projects/project-175712/images/2432381702341390253.png" />
+<img alt="projects/project-175712/images/4041971702341390418.png" src="projects/project-175712/images/4041971702341390418.png" />
+<p>There is a bunch of 0Ω resistors, which should only be soldered on the
+bottom of the board, leaving the ones on the top open – to avoid
+shorting the pins of the microcontroller board that lie opposite each
+other. The five-pin header provides additional structural strength,
+and shares the row lines between the halves. The last column is
+breakable, and I even added two more keys in the center of the board,
+for those of us with exceptionally dexterous thumbs.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

@@ -1,0 +1,95 @@
+---
+blogpost: true
+date: 2021-07-25
+category: project-174095
+---
+
+# Shiny New Code
+Published on 2021-07-25 in {ref}`project-174095`.
+
+I fished this keyboard out of the proverbial drawer to try the new
+CircuitPython on it, with some of the new fancy features that have
+been added.
+
+First of all, there is now a [keypad](https://circuitpython.readthedocs.io/en/latest/shared-bindings/keypad/index.html)  module for scanning the key matrix in C — since it does it in the
+background using interrupts, it frees the Python code to display the
+LED animations much more smoothly.  And it will never miss a key
+stroke.
+
+Second, there is the new fancy way of enabling and disabling USB
+devices in boot.py, which means I can by default hide the CIRCUITPY
+drive and the serial console, and only show them if the upper left key
+was pressed while the keyboard was being connected. This makes it much
+easier to tweak the layouts and the code.
+
+Finally, I decided to also test the new custom USB HID descriptors —
+in particular a descriptor for a "bitmap" keyboard, that lets you
+report any number of pressed keys, so called NKRO (n-key rollover). I
+will not lie, I'm not smart enough to come up with my own descriptor,
+so I copied it from [the example](https://github.com/adafruit/Adafruit_Learning_System_Guides/pull/1620/files)  generously provided by Jeff Epler. The boot.py file looks like this:
+
+
+```python
+import board
+import digitalio
+import storage
+import usb_cdc
+import usb_hid
+
+
+bitmap_keyboard = usb_hid.Device(
+    report_descriptor = (
+        b'\x05\x01\t\x06\xa1\x01\x85\xffu\x01\x95\x08\x05\x07\x19\xe0)\xe7\x15'
+        b'\x00%\x01\x81\x02\x95\x05u\x01\x05\x08\x19\x01)\x05\x91\x02\x95\x01u'
+        b'\x03\x91\x03\x95xu\x01\x15\x00%\x01\x05\x07\x19\x00)w\x81\x02\xc0'
+    ),
+    usage_page = 0x1,
+    usage = 0x6,
+    in_report_length = 16,
+    out_report_length = 1,
+    report_id_index = 7,
+)
+
+row = digitalio.DigitalInOut(board.MOSI)
+col = digitalio.DigitalInOut(board.A6)
+col.switch_to_output(value=1)
+row.switch_to_input(pull=digitalio.Pull.DOWN)
+
+if not row.value:
+    storage.disable_usb_drive()
+    usb_cdc.disable()
+
+row.deinit()
+col.deinit()
+
+usb_hid.enable((bitmap_keyboard, usb_hid.Device.CONSUMER_CONTROL))
+```
+
+And the relevant piece of the keyboard handling code looks like this:
+
+
+```python
+    def send_nkro_report(self, pressed_keys):
+        """Sends the USB HID NKRO keyboard report."""
+
+        report = bytearray(16)
+        report_mod_keys = memoryview(report)[0:1]
+        report_bitmap = memoryview(report)[1:]
+        for code in pressed_keys:
+            if code == 0:
+                continue
+            if code & 0xff00:
+                report_mod_keys[0] |= (code & 0xff00) >> 8
+            if code & 0x00ff:
+                report_bitmap[code >> 3] |= 1 << (code & 0x7)
+        self.keyboard_device.send_report(report)
+```
+
+That's it. That's all it takes to make an NKRO keyboard in
+CircuitPython now.
+
+Further research is required to automatically switch to the
+traditional HID keyboard when the host doesn't support the bitmap HID
+device — like, for example, when you go to your BIOS settings. But
+there are some promising prototypes for this already.
+

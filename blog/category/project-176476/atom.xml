@@ -1,0 +1,246 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>http://deshipu.art/</id>
+  <title>deshipu.art - Posts in project-176476</title>
+  <updated>2024-08-07T20:34:13.027408+00:00</updated>
+  <link href="http://deshipu.art/"/>
+  <link href="http://deshipu.art/blog/category/project-176476/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-176476/log-187321/</id>
+    <title>PCBs</title>
+    <updated>2020-12-23T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="pcbs"&gt;
+
+&lt;p&gt;Published on 2020-12-23 in &lt;a class="reference internal" href="../../../projects/project-176476/#project-176476"&gt;&lt;span class="std std-ref"&gt;Electronic 6-hole Ocarina&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I could prototype this project now with some Adafruit Feathers and
+carboard and wires, using the breakout for the sensor and some tinfoil
+for the touch pads, but I decided that I’m lazy, and went right into
+the PCB design step. I came up with this:&lt;/p&gt;
+&lt;img alt="projects/project-176476/images/7315911608748861369.png" src="projects/project-176476/images/7315911608748861369.png" /&gt;
+&lt;img alt="projects/project-176476/images/8390971608748869274.png" src="projects/project-176476/images/8390971608748869274.png" /&gt;
+&lt;p&gt;The “antenna” thing on the top is where you attach a piece of a
+silicon hose, so that you can easily replace and wash it if you need
+to. There are also six pads for the “holes” — two on the back, and
+four on the front. Unfortunately that used up all the touch-capable
+pins on the SAMD21, so I can’t use the DAC pin anymore (it’s one of
+the touch pins), so at least this version is going to be only a MIDI
+controller, with no audio output of its own. There is also no battery
+necessary, since it’s going to have to be connected to USB anyways,
+taking power from there. Depending on how well that works, I might
+find ways of adding more features to it later.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-176476/log-187321/" rel="alternate"/>
+    <summary>Published on 2020-12-23 in project-176476.</summary>
+    <published>2020-12-23T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-176476/log-187832/</id>
+    <title>First Prototype Problems</title>
+    <updated>2021-01-05T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="first-prototype-problems"&gt;
+
+&lt;p&gt;Published on 2021-01-05 in &lt;a class="reference internal" href="../../../projects/project-176476/#project-176476"&gt;&lt;span class="std std-ref"&gt;Electronic 6-hole Ocarina&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The PCBs arrived from &lt;a class="reference external" href="https://hackaday.io/hacker/367545"&gt;&amp;#64;JLCPCB &lt;/a&gt; today.&lt;/p&gt;
+&lt;img alt="projects/project-176476/images/6378311609872232931.jpg" src="projects/project-176476/images/6378311609872232931.jpg" /&gt;
+&lt;p&gt;Assembling one and flashing CircuitPython on it only took a moment,
+but I had to wait until the evening with programming it.&lt;/p&gt;
+&lt;img alt="projects/project-176476/images/4145781609872295400.jpg" src="projects/project-176476/images/4145781609872295400.jpg" /&gt;
+&lt;p&gt;I wrote this simple test program that just displays the state of the
+“holes” and the pressure sensor reading on the USB serial:&lt;/p&gt;
+&lt;div class="highlight-default notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;board&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;time&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;struct&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;busio&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;touchio&lt;/span&gt;
+
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;BMP280&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;_buffer&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;bytearray&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;i2c&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;address&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mh"&gt;0x76&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_i2c&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;i2c&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_address&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;address&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_buffer&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mh"&gt;0xf4&lt;/span&gt; &lt;span class="c1"&gt;# ctrl_meas&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_buffer&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mb"&gt;0b001_001_11&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_i2c&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;try_lock&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_i2c&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;writeto&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_address&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_buffer&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;end&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;get_pressure&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_buffer&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mh"&gt;0xf7&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_i2c&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;writeto_then_readfrom&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_address&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_buffer&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_buffer&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="n"&gt;out_end&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;in_end&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;struct&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;unpack_from&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;gt;H&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_buffer&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+&lt;span class="n"&gt;holes&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;tuple&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;touchio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;TouchIn&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pin&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;pin&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AREF&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;A0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;A4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;A6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;A3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;A1&lt;/span&gt;
+    &lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;i2c&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;busio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;I2C&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;scl&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;D6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sda&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;MOSI&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;sensor&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;BMP280&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i2c&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;base&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sensor&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_pressure&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;time&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sleep&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;0.1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;base&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sensor&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_pressure&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sensor&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_pressure&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;base&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;mask&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;hole&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;holes&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;mask&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mask&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;hole&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt;
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;bin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mask&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+    &lt;span class="n"&gt;time&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sleep&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;0.1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;It’s very simple, but it already allowed me to see two potential
+problems.&lt;/p&gt;
+&lt;p&gt;First of all, I put traces to the two left-hand “holes” close to the
+left bottom “hole”, which means that you will sometimes touch those
+traces by mistake, and it’s enough to trigger it. The next version
+will have those traces on the other side of the board, safely shielded
+with a generous ground fill. Easy.&lt;/p&gt;
+&lt;p&gt;Second, my initial tests with the sensor were very brief, and I
+actually converted the value I was reading from the registers wrong,
+so I didn’t notice that the sensor actually “swings back” after I blow
+into it, and takes a good minute to stabilize back to the ambient
+pressure. That is a considerable problem if we want to be able to play
+faster than one note a minute.&lt;/p&gt;
+&lt;p&gt;For now I’m planning to make it trigger by observing the first
+derivative — the change in value, if you will — instead of the
+absolute value read from the sensor. This also solves the problem of
+the drift that the sensor has, and the challenge of being able to play
+while riding an elevator. It will complicate the code somewhat,
+unfortunately. If I can’t get it to work, I will probably switch to a
+microphone.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-176476/log-187832/" rel="alternate"/>
+    <summary>Published on 2021-01-05 in project-176476.</summary>
+    <published>2021-01-05T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-176476/log-201829/</id>
+    <title>Designing Second Prototype</title>
+    <updated>2021-12-30T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="designing-second-prototype"&gt;
+
+&lt;p&gt;Published on 2021-12-30 in &lt;a class="reference internal" href="../../../projects/project-176476/#project-176476"&gt;&lt;span class="std std-ref"&gt;Electronic 6-hole Ocarina&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;After several more attempts at fixing the pressure sensor in software
+somehow, I’ve given up on it, and decided to try a different approach.
+This time I want to use a microphone placed in the stream of air, and
+measure the acoustic energy that it picks from the noise of the air
+rushing by. This should have no problems with a lag or a long recovery
+time.&lt;/p&gt;
+&lt;p&gt;To avoid mucking about with analog circuits and amplifiers, I decided
+to use a PDM microphone — a very simple MEMS device, that takes a
+clock signal, and gives you back 0/1 pulses that correspond in their
+frequency to the shape of the waveform — a bit like doing sound output
+with PWM, only in reverse. Of course CircuitPython already has a
+audiobusio library that handles it, so it’s really easy to get it
+working:  &lt;a class="reference external" href="https://learn.adafruit.com/adafruit-pdm-microphone-breakout/circuitpython"&gt;https://learn.adafruit.com/adafruit-pdm-microphone-
+breakout/circuitpython&lt;/a&gt;&lt;/p&gt;
+&lt;img alt="projects/project-176476/images/4496311640896493044.jpg" src="projects/project-176476/images/4496311640896493044.jpg" /&gt;
+&lt;p&gt;After a test with a module on a breadborad to see if it will work well
+enough and to determine which pins to use, I went ahead and created a
+PCB for the new version. I had a moment of doubt when it came to
+creating the footprint, as the datasheet shows something like this:&lt;/p&gt;
+&lt;img alt="projects/project-176476/images/1492801640896584479.png" src="projects/project-176476/images/1492801640896584479.png" /&gt;
+&lt;p&gt;You see, there is no way to route the traces to those pads, unless you
+use some expensive via-in-pad setup. However, a few pages later they
+show the recommended footprint, which is a bit more reasonable:&lt;/p&gt;
+&lt;img alt="projects/project-176476/images/1929641640896643711.png" src="projects/project-176476/images/1929641640896643711.png" /&gt;
+&lt;p&gt;Using this, I created the PCBs and placed the order at JLCPCB. I
+should be able to continue the experiments in a week or two.&lt;/p&gt;
+&lt;img alt="projects/project-176476/images/99301640896699960.png" src="projects/project-176476/images/99301640896699960.png" /&gt;
+&lt;p&gt;Oh, I also added a footprint for a cheap piezo speaker, I will see if
+I can PWM the tones.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-176476/log-201829/" rel="alternate"/>
+    <summary>Published on 2021-12-30 in project-176476.</summary>
+    <published>2021-12-30T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-176476/log-202356/</id>
+    <title>Microphone Test</title>
+    <updated>2022-01-15T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="microphone-test"&gt;
+
+&lt;p&gt;Published on 2022-01-15 in &lt;a class="reference internal" href="../../../projects/project-176476/#project-176476"&gt;&lt;span class="std std-ref"&gt;Electronic 6-hole Ocarina&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The board has arrived, as well as the microphones. I moved all the
+components over, and added the microphone and speaker:&lt;/p&gt;
+&lt;img alt="projects/project-176476/images/9204351642279654700.jpg" src="projects/project-176476/images/9204351642279654700.jpg" /&gt;
+&lt;p&gt;A simple example confirms that the microphone works, and that it’s
+easy to see when it is being blown into:&lt;/p&gt;
+&lt;div class="highlight-python notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;board&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;array&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;audiobusio&lt;/span&gt;
+
+&lt;span class="n"&gt;mic&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;audiobusio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;PDMIn&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;TX&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;A2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sample_rate&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;16000&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;bit_depth&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;16&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;samples&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;array&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;H&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mi"&gt;160&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;mic&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;record&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;samples&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;samples&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+    &lt;span class="n"&gt;mean&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;sum&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;samples&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;samples&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;energy&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;sum&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;abs&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sample&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;mean&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;sample&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;samples&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;energy&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Now to program some output…&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-176476/log-202356/" rel="alternate"/>
+    <summary>Published on 2022-01-15 in project-176476.</summary>
+    <published>2022-01-15T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-176476/log-212820/</id>
+    <title>Boldly Going Forward</title>
+    <updated>2022-10-23T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="boldly-going-forward"&gt;
+
+&lt;p&gt;Published on 2022-10-23 in &lt;a class="reference internal" href="../../../projects/project-176476/#project-176476"&gt;&lt;span class="std std-ref"&gt;Electronic 6-hole Ocarina&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;It has been some time since I last worked on this project, mostly
+because the tests now require actually playing some sounds, and that
+generally annoys people. But I have been home alone this past week, so
+I managed to push this a little bit forward. First of all, I had to
+figure out how the holes actually work. So I took the fingering chart,
+noted the frequencies of the notes, and compared how covering and
+uncovering of each hole affected the frequency.&lt;/p&gt;
+&lt;img alt="projects/project-176476/images/9100031666560530162.jpg" src="projects/project-176476/images/9100031666560530162.jpg" /&gt;
+&lt;p&gt;Turns out the frequency is roughly linear to the total surface area of
+the holes (as helpfully stated by &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Vessel_flute#Pitch_and_fingering"&gt;this Wikipedia article&lt;/a&gt; ), but not quite, as it also depends on the total volume of air and
+other details. Also, most ocarinas are not really tuned according to
+equally tempered scale, which is why makes them so interesting — each
+one has its own unique feel.&lt;/p&gt;
+&lt;p&gt;So I decided to just go with very rough increments of frequency by
+200, 150, 100 and 50 Hz respectively for each of the four holes on the
+front (ignoring the holes on the back for now), and later I might just
+“snap” them to the nearest clear note, if that’s needed.&lt;/p&gt;
+&lt;p&gt;Immediately I discovered several problems with the current prototype.
+Since the traces for the touch pads pass under the speaker, and they
+are pretty sensitive, the speaker interferes with the touch sensing,
+giving a weird vibratto effect. Also, the traces for different pads
+are too close to each other, and it’s very easy to touch ones you
+didn’t mean to touch. And finally, the speaker was very quiet.&lt;/p&gt;
+&lt;p&gt;I solved the first and last problem by removing the speaker from the
+PCB, adding a MOSFET, and making the speaker hang from some wires.
+Unfortunately the second problem will require a PCB redesign, and I
+decided to also add a battery holder, so that it can be used without a
+computer.&lt;/p&gt;
+&lt;p&gt;I still have one more problem, which is a little bit weird, that I so
+far failed to diagnose properly. It seems that removing a finger from
+the pad is detected with some noticeable delay. I’m not entirely sure
+where that comes from, so I’m holding off on ordering a new PCB yet,
+in case the fix involves moving the traces again.&lt;/p&gt;
+&lt;img alt="projects/project-176476/images/928271666561223373.jpg" src="projects/project-176476/images/928271666561223373.jpg" /&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-176476/log-212820/" rel="alternate"/>
+    <summary>Published on 2022-10-23 in project-176476.</summary>
+    <published>2022-10-23T00:00:00+02:00</published>
+  </entry>
+</feed>

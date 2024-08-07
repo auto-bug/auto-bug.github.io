@@ -1,0 +1,40 @@
+---
+blogpost: true
+date: 2022-01-15
+category: project-176476
+---
+
+# Microphone Test
+Published on 2022-01-15 in {ref}`project-176476`.
+
+The board has arrived, as well as the microphones. I moved all the
+components over, and added the microphone and speaker:
+
+
+
+:::{image} images/9204351642279654700.jpg
+
+:::
+
+
+A simple example confirms that the microphone works, and that it's
+easy to see when it is being blown into:
+
+
+```python
+import board
+import array
+import audiobusio
+
+mic = audiobusio.PDMIn(board.TX, board.A2, sample_rate=16000, bit_depth=16)
+samples = array.array('H', [0] * 160)
+
+while True:
+    mic.record(samples, len(samples))
+    mean = sum(samples) / len(samples)
+    energy = sum(abs(sample - mean) for sample in samples)
+    print(energy)
+```
+
+Now to program some output... 
+

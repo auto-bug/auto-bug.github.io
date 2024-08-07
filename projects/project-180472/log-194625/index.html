@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Another Breakout - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="another-breakout">
+<h1>Another Breakout<a class="headerlink" href="#another-breakout" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2021-06-24 in <a class="reference internal" href="../#project-180472"><span class="std std-ref">Home Button for Keyboards</span></a>.</p>
+<p>I spent a little bit of time today to design another breakout PCB,
+this time for the Blackberry 8350 button:</p>
+<img alt="projects/project-180472/images/4794811624549252205.png" src="projects/project-180472/images/4794811624549252205.png" />
+<img alt="projects/project-180472/images/912871624549267214.png" src="projects/project-180472/images/912871624549267214.png" />
+<p>I took the labels from that pinout published it the Arduino forum, but
+comparing it with the schematic also published there, it seems to be a
+bit fishy… For example, a pin marked as “gnd” on the pinout is
+pulled-down to gnd with a 200k</p>
+<p>This is also an experiment with physical layout of the board — there
+is a cutout in the PCB where the flex cable is going through, and a
+pad where the button will be, so that I can put a drop of solder
+there, to provide the necessary raised bump for the tact switch on the
+back.</p>
+<p>I’m also not sure whether I should add a voltage regulator and some
+voltage dividers — the forum post says 2.85V, but I don’t actually
+know if it will work with 3.3V as well. The mouse sensors, which are
+supposed to be similar, run on 3.3V.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

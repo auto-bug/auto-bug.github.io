@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Double-function Modifier Keys - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="double-function-modifier-keys">
+<h1>Double-function Modifier Keys<a class="headerlink" href="#double-function-modifier-keys" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2020-08-08 in <a class="reference internal" href="../#project-174095"><span class="std std-ref">Dorsch 40k Keyboard</span></a>.</p>
+<p>The feasibility of this keyboard hinges on the ability to use the
+modifier keys both as modifier keys and as regular keys. How is this
+going to work? The basic idea seems very simple: if you use it with
+another key, it’s a modifier, otherwise it’s a regular key. But how
+exactly can we tell? There are a lot of details here.</p>
+<p>I got the whole idea from the QMK keyboard firmware, <a class="reference external" href="https://docs.qmk.fm/#/mod_tap">where this is called Mod-Tap</a> . However, it doesn’t work exactly how I wanted — the difference is in
+the time you keep the key pressed. If you press it and release it
+quickly (tap), it acts as a regular key, but if you hold it down
+longer, it acts as a modifier. This mostly works, except that
+sometimes I press a key too slow (especially when it’s a space,
+pressed with my thumb), and then there is no visible effect (modifier
+keys don’t usually do much on their own) and it seems like the switch
+is mechanically failing, which was very frustrating, at least until
+you realize what is happening (I replaced the switch before I did).</p>
+<p>So I want to do something a little bit smarter:</p>
+<ul class="simple">
+<li><p>When you first press a mod key, the fact is recorded, but no keycode
+is sent immediately. They keyboard waits to see what happens next.</p></li>
+<li><p>If you press any other key (regular or mod key), the recorded mod key
+is considered to be a modifier, and the internal status is updated
+accordingly.</p></li>
+<li><p>As soon as that mod key is released, the status is updated again to
+remove the modifier.</p></li>
+<li><p>You can chain modifiers like that indefinitely — only the last pressed
+mod key needs to be remembered and delayed, as it’s the only one that
+can have two functions.</p></li>
+<li><p>As soon as you press any regular, single-function key, the last mod
+key pressed is considered to be a modifier, and the keycode is sent
+immediately.</p></li>
+<li><p>If you release a mod key without pressing any other new keys, it is
+considered to be a regular key and its keycode is sent.</p></li>
+</ul>
+<p>This is, in my opinion, a little bit better, because no timings are
+involved, so you can do it as fast or as slow as you like. There is
+still the downside that you can’t hold down the key to make it repeat
+— though I could probably do that with a timeout, or something like a
+double-tap. You also can’t send the modifier key alone, so forget
+about using the ctrl key for shooting. It should still be easy to
+program, and the only extra memory needed is the variable holding the
+last pressed key, plus the modifier key status, which now has to be
+separate from the actual key status.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

@@ -1,0 +1,76 @@
+---
+blogpost: true
+date: 2020-09-17
+category: project-174095
+---
+
+# Revisions
+Published on 2020-09-17 in {ref}`project-174095`.
+
+After using the keyboard for a few weeks (and getting much better at
+touch-typing in the process) I got very much used to it, so I was
+hesitating if I should scavenge it and rebuild it with the new PCBs
+that just arrived. And if I should, then which one?
+
+In the end I decided to do it, and also to scavenge the {ref}`project-167897` , so that I can build both versions. The 48-key version went first:
+
+
+
+:::{image} images/8051961600342150241.jpg
+
+:::
+
+
+Nothing surprising in here, I just had to edit the layout matrix to
+include the two extra columns, and it just works. I'm using it right
+now, and it works great for me. It's definitely a keeper. I didn't
+even need to add a stabilizer under the space. Oh, of course I
+reversed the D+ and D- labels for the USB cable, but that's easily
+fixed.
+
+Then I came back to the smaller one, but with LEDs. Turns out that
+soldering by hand a string of 40 SMD APA102 LEDs is more work than I
+anticipated:
+
+
+
+:::{image} images/5514051600342361007.jpg
+
+:::
+
+
+After several hours of looking for shorts, re-soldering, fixing bad
+joints and generally having a bad time, I finally got them all to
+light up:
+
+
+
+:::{image} images/781111600342528664.jpg
+
+:::
+
+
+And no, I have no idea why the last 6 of them are brighter. Probably a
+glitch in the matrix. You get it? Hahahaha. Anyways...
+
+Adding the switches and some transparent key caps was just a
+formality:
+
+
+
+:::{image} images/7831071600342639417.jpg
+
+:::
+
+
+Right now I left it with the keyboard code, but I'm thinking I could
+use it as a macro keyboard instead, with each key just sending a
+unique key combination when pressed. And of course with some fancy LED
+animations. But that's just all code.
+
+I was considering putting those PCBs on Tindie as kits, with all the
+elements except switches and cable already soldered, but after
+debugging the LEDs, I think I will pass on that. I might do it with
+the bigger one without the LEDs, though. I wonder if there would be
+any interest in that?
+

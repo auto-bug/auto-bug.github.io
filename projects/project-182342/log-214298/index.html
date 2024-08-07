@@ -1,0 +1,151 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Great Success - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="great-success">
+<h1>Great Success<a class="headerlink" href="#great-success" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2022-12-15 in <a class="reference internal" href="../#project-182342"><span class="std std-ref">Camera Shield for S2 Mini</span></a>.</p>
+<p>Last time I gave up on the ESP32-S2, so today I decided to see how
+this camera works with the RP2040 instead. That uses a different
+library, called imagecapture, and since that library makes the master
+clock pin optional, I decided to first try with an off-the-shelf
+module that I have, which I couldn’t use previously, because it
+doesn’t expose the master clock pin – it has a crystal oscillator on
+board for this.</p>
+<img alt="projects/project-182342/images/5808101671062604773.jpg" src="projects/project-182342/images/5808101671062604773.jpg" />
+<p>I got everything connected, I copied the example code, and… it just
+works, as advertised. Wow.</p>
+<p>But wait, does that mean my shield is faulty? Let’s connect it and
+see!</p>
+<img alt="projects/project-182342/images/4460811671062674536.jpg" src="projects/project-182342/images/4460811671062674536.jpg" />
+<p>This time it didn’t work as great – I got some data from the JPEG
+mode, but when I saved it in a file, it wasn’t recognized as a JPEG
+file. So I looked closely. A normal JPEG file starts with bytes ff d8
+ff e0 00, but the data I got starts with ff e8 ff d0 00 – the e8 and
+d8 are swapped! But how? Well, e8 is 11101000 in binary, and d8 is
+11011000 – could it be I have two data pins swapped? I tried swapping
+them back, and lo and behold – a correct JPEG image file popped out!</p>
+<p>Could it be that was my problem all along? The diagram telling which
+pin is which on the camera was wrong? After all, datasheets have
+mistakes in them. So I quickly went back to the S2 Mini to see if my
+shield works after all if I swap the two pins. I connected everything
+back and… nothing. As before the 16MHz clock returns unintialized
+memory, and the 20MHz clock just sits there waiting for data
+indefinitely.</p>
+<p>So I went through the pins one more time, and I discovered that the
+stickers that I got with my S2 Mini boards, with pin numbers on them
+have the pins 12 and 13 swapped. And it just so happens I was using
+pin 12 as the pixel clock. Except I had it s pin 13 in my code,
+because of the mistake in the sticker. Changing it to 12 suddenly made
+everything work (with the 20MHz master clock, the 16MHz is still
+broken). Both the RGB565 and the JPEG modes work perfectly!</p>
+<img alt="projects/project-182342/images/5965751671063347687.jpg" src="projects/project-182342/images/5965751671063347687.jpg" />
+<p>I can’t even say how happy that makes me. This shield was a lot of
+frustration, and it the end it all turned out to be due to mistakes in
+pin numbering.</p>
+<p>Here is the working code, if anybody is interested:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">adafruit_ili9341</span>
+<span class="kn">import</span> <span class="nn">busio</span>
+<span class="kn">import</span> <span class="nn">digitalio</span>
+<span class="kn">import</span> <span class="nn">esp32_camera</span>
+
+
+<span class="n">displayio</span><span class="o">.</span><span class="n">release_displays</span><span class="p">()</span>
+<span class="n">display_bus</span> <span class="o">=</span> <span class="n">displayio</span><span class="o">.</span><span class="n">FourWire</span><span class="p">(</span>
+    <span class="n">busio</span><span class="o">.</span><span class="n">SPI</span><span class="p">(</span><span class="n">clock</span><span class="o">=</span><span class="n">board</span><span class="o">.</span><span class="n">IO7</span><span class="p">,</span> <span class="n">MOSI</span><span class="o">=</span><span class="n">board</span><span class="o">.</span><span class="n">IO5</span><span class="p">),</span>
+    <span class="n">command</span><span class="o">=</span><span class="n">board</span><span class="o">.</span><span class="n">IO9</span><span class="p">,</span>
+    <span class="n">chip_select</span><span class="o">=</span><span class="n">board</span><span class="o">.</span><span class="n">IO3</span><span class="p">,</span>
+    <span class="n">baudrate</span><span class="o">=</span><span class="mi">80_000_000</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">display</span> <span class="o">=</span> <span class="n">adafruit_ili9341</span><span class="o">.</span><span class="n">ILI9341</span><span class="p">(</span>
+    <span class="n">display_bus</span><span class="p">,</span>
+    <span class="n">width</span><span class="o">=</span><span class="mi">320</span><span class="p">,</span>
+    <span class="n">height</span><span class="o">=</span><span class="mi">240</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">i2c</span> <span class="o">=</span> <span class="n">busio</span><span class="o">.</span><span class="n">I2C</span><span class="p">(</span><span class="n">scl</span><span class="o">=</span><span class="n">board</span><span class="o">.</span><span class="n">IO35</span><span class="p">,</span> <span class="n">sda</span><span class="o">=</span><span class="n">board</span><span class="o">.</span><span class="n">IO33</span><span class="p">)</span>
+<span class="n">data_pins</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">board</span><span class="o">.</span><span class="n">IO21</span><span class="p">,</span> <span class="n">board</span><span class="o">.</span><span class="n">IO17</span><span class="p">,</span> <span class="n">board</span><span class="o">.</span><span class="n">IO16</span><span class="p">,</span> <span class="n">board</span><span class="o">.</span><span class="n">IO18</span><span class="p">,</span>
+    <span class="n">board</span><span class="o">.</span><span class="n">IO37</span><span class="p">,</span> <span class="n">board</span><span class="o">.</span><span class="n">IO34</span><span class="p">,</span> <span class="n">board</span><span class="o">.</span><span class="n">IO36</span><span class="p">,</span> <span class="n">board</span><span class="o">.</span><span class="n">IO39</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">esp32_camera</span><span class="o">.</span><span class="n">Camera</span><span class="p">(</span>
+    <span class="n">data_pins</span><span class="o">=</span><span class="n">data_pins</span><span class="p">,</span>
+    <span class="n">external_clock_pin</span><span class="o">=</span><span class="n">board</span><span class="o">.</span><span class="n">IO11</span><span class="p">,</span>
+    <span class="n">pixel_clock_pin</span><span class="o">=</span><span class="n">board</span><span class="o">.</span><span class="n">IO12</span><span class="p">,</span>
+    <span class="n">vsync_pin</span><span class="o">=</span><span class="n">board</span><span class="o">.</span><span class="n">IO40</span><span class="p">,</span>
+    <span class="n">href_pin</span><span class="o">=</span><span class="n">board</span><span class="o">.</span><span class="n">IO38</span><span class="p">,</span>
+    <span class="n">pixel_format</span><span class="o">=</span><span class="n">esp32_camera</span><span class="o">.</span><span class="n">PixelFormat</span><span class="o">.</span><span class="n">RGB565</span><span class="p">,</span>
+    <span class="n">frame_size</span><span class="o">=</span><span class="n">esp32_camera</span><span class="o">.</span><span class="n">FrameSize</span><span class="o">.</span><span class="n">QVGA</span><span class="p">,</span>
+    <span class="n">i2c</span><span class="o">=</span><span class="n">i2c</span><span class="p">,</span>
+    <span class="n">external_clock_frequency</span><span class="o">=</span><span class="mi">20_000_000</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">g</span> <span class="o">=</span> <span class="n">displayio</span><span class="o">.</span><span class="n">Group</span><span class="p">()</span>
+<span class="n">bitmap</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="k">while</span> <span class="ow">not</span> <span class="n">bitmap</span><span class="p">:</span>
+    <span class="n">bitmap</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">take</span><span class="p">()</span>
+<span class="n">shader</span> <span class="o">=</span> <span class="n">displayio</span><span class="o">.</span><span class="n">ColorConverter</span><span class="p">(</span>
+    <span class="n">input_colorspace</span><span class="o">=</span><span class="n">displayio</span><span class="o">.</span><span class="n">Colorspace</span><span class="o">.</span><span class="n">BGR565_SWAPPED</span>
+<span class="p">)</span>
+<span class="n">tg</span> <span class="o">=</span> <span class="n">displayio</span><span class="o">.</span><span class="n">TileGrid</span><span class="p">(</span><span class="n">bitmap</span><span class="p">,</span> <span class="n">pixel_shader</span><span class="o">=</span><span class="n">shader</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tg</span><span class="p">)</span>
+<span class="n">display</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="n">display</span><span class="o">.</span><span class="n">auto_refresh</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">bitmap</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">take</span><span class="p">()</span>
+    <span class="n">tg</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># make the grid dirty</span>
+    <span class="n">tg</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">display</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+
+
+</div>
+  </body>
+</html>

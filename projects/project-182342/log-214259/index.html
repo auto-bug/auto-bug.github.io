@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Pure Frustration - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="pure-frustration">
+<h1>Pure Frustration<a class="headerlink" href="#pure-frustration" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2022-12-13 in <a class="reference internal" href="../#project-182342"><span class="std std-ref">Camera Shield for S2 Mini</span></a>.</p>
+<p>I dug out this project recently, trying to see if I can get it
+working with the new esp32_camera module in CircuitPython. I managed
+to get the board to either just crash and hang, or crash into safe
+mode, but not to capture any images. Then I went looking at the source
+code, and noticed a mention that it uses edma mode when the master
+clock is set to 16MHz. So I changed it from the default of 20MHz, and
+lo and behold, I got some data coming in both the GREYSCALE and and
+RGB565 modes. The JPEG mode is still returning no frames, though,
+though it no longer crashes.</p>
+<p>So I thought: maybe I have the data pins in wrong order somehow, and
+that is why the JPEG mode doesn’t work – because there is a certain
+header expected by the code, and if the pins are in the wrong order,
+it never gets the right data. But how do I verify that? Maybe I could
+at least display the data I’m getting in the RGB565 mode to see if
+it’s correct, and then if it’s not, I would at least know the problem
+lies there and I could try changing the pin order or something.</p>
+<p>So I connected the display to the board with the camera shield, and
+added all the code that initializes it, and… nothing. White screen.</p>
+<img alt="projects/project-182342/images/6695411670969678458.jpg" src="projects/project-182342/images/6695411670969678458.jpg" />
+<p>Which is very strange, because this is CircuitPython, and so after the
+code finishes running it should display the REPL, not a white screen.
+So I started commenting out pieces of code, and it turns out I get
+white screen as soon as I create the camera object… And then it
+won’t go away until a hard reset. Just great.</p>
+<p>In the mean time I realized that even if I get this shield working, it
+will not work with the <a class="reference internal" href="../../project-180025/#project-180025"><span class="std std-ref">Fluffbug</span></a> robot, which was the main reason I was working on it in the first
+place. Why not? Because the esp32-s2 can only do up to 8 PWM channels,
+and I’m already using all of them for controlling the servos of the
+robot. And the camera driver uses at least one PWM channel to generate
+the master clock.</p>
+<p>So now I’m thinking about giving up on the esp32-s2 all together, and
+using the imagecapture library with rp2040 instead. I will be doing
+some further experiments to see if that works any better. At least it
+doesn’t have to deal with the horrible Espressif code.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

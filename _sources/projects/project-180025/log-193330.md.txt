@@ -1,0 +1,46 @@
+---
+blogpost: true
+date: 2021-05-26
+category: project-180025
+---
+
+# Configuration
+Published on 2021-05-26 in {ref}`project-180025`.
+
+While the {ref}`project-6050` robot was close to what I wanted to achieve back then, it had two
+major problems. First, the servos, even though relatively cheap
+individually, contribute to the total cost of the project
+considerably, because you need at least a dozen of them. Second,
+Arduino, while popular, is not the best coding environment for
+experimenting.
+
+I have long worked on making a version of Tote that could be
+programmed with Python — starting with {ref}`project-9927` , that had an additional ESP8266 on board, through {ref}`project-9065` that had a whole single-board computer, to the most recent {ref}`project-158981` , running CircuitPython. Unfortunately, with the last I ran into a
+problem with not enough PWM outputs available on the chip I choose.
+
+I have also experimented with robots that require fewer servos, but
+can still walk properly, without relying on the surface of the floor
+having the right friction. It started with {ref}`project-6321` ,  {ref}`project-8521`  and {ref}`project-10665` , and more recently some experiments with the {ref}`project-158981` . Turns out that it is possible to make a robot with only eight servos
+that still has an insect-like configuration of the legs. It can walk
+properly, keeping its feet firm on the ground, as long as it doesn't
+have to turn — because it can't move its legs sideways. But even for
+turning is not impossible, with some cheating.
+
+So this is how I came up with Fluffbug — a bug-like robot with
+Feather-compatible (or {ref}`project-171381` -compatible) shields. The tiny SAMD21 microcontroller has just enough
+PWM outputs to control the eight servos, and the small PCB works
+nicely as the body of the robot, with enough room for a 16340 battery,
+and s FeatherWing on the front.
+
+
+
+:::{image} images/598141622055225377.jpg
+
+:::
+
+
+The initial tests are promising, and I already have the basic code
+with inverse kinematics written in CircuitPython. The next prototype
+is going to have a little bit more useful components on the PCB, and
+an improved designs for the laser-cut legs.
+

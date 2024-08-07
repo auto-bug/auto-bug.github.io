@@ -1,0 +1,26 @@
+---
+blogpost: true
+date: 2022-07-19
+category: project-180025
+---
+
+# Better Gait
+Published on 2022-07-19 in {ref}`project-180025`.
+
+I took the robot with me to the EuroPython 2022 conference, hoping
+that I will have some time during the maker hacking sessions or during
+the sprints to work on the code further. And I did manage to improve
+the gait considerably:
+
+
+<iframe style="width: 500px; height: 281px;" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/hW6EStdQtWU"></iframe>
+
+There is of course still a lot of room for improvement. I need to
+rewrite the code to make it more modular and maybe make use of the
+async features of CircuitPython. I also need to think about how to
+move the servos more fluently, possibly along defined motion profiles,
+to give the robot a more organic look (and put less strain on the
+servos too).
+
+Then, I will work on a remote control program for the {ref}`project-178061` console, to control the robot over WiFi or ESPNow.
+

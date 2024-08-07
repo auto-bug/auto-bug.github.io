@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>The Design - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="the-design">
+<h1>The Design<a class="headerlink" href="#the-design" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2021-02-04 in <a class="reference internal" href="../#project-177306"><span class="std std-ref">PewPew Slim</span></a>.</p>
+<p>I always wanted to make a version of the PewPew with discrete LEDs,
+but it didn’t make much sense for many reasons. It looks worse, as you
+lose the diffuser that is built into the LED matrix, and it costs
+more, even if individual LEDs are cheaper, having to solder them all
+makes the costs grow. The resulting display is smaller, but PewPew’s
+display is already too small, and people prefer the versions with
+larger matrices. Finally I convinced myself of two advantages: first,
+it’s really slim, as the LED matrices are usually really thick, and
+individual LEDs aren’t, and second, I can use bi-color LEDs to get
+back to the original color display experience.</p>
+<p>Once I started to optimize for flatness, other decisions came
+naturally: touch pads in place of buttons, and USB socket cut out of
+the PCB itself.</p>
+<p>If we want to keep it thin, of course we need to drop the battery, and
+without the battery we don’t need the power switch (though I am
+leaving footprints for both of them on the back, so they can be added
+later by the user).</p>
+<p>The final touch is replacing the thickest part, the voltage regulator,
+with one in a slightly smaller (and thinner) package.</p>
+<img alt="projects/project-177306/images/2015481612474844010.png" src="projects/project-177306/images/2015481612474844010.png" />
+<img alt="projects/project-177306/images/244191612474855746.png" src="projects/project-177306/images/244191612474855746.png" />
+<p>The LEDs are connected in a cross-linked fashion, so that sending
+current one way will light up one color, and the other way the other
+color. I will be alternating that really fast, so you can get both
+colors too. This requires some custom C code to be added to the _pew
+library in CircuitPython, but it’s nothing complicated, and keeps the
+number of pins needed by the matrix the same.</p>
+<p>Routing the traces for the touch pads is a bit of a challenge, because
+you don’t want the user to touch the traces accidentally while
+playing. So I’ve hidden the vias under the microcontroller chip
+(removing the thermal pad and making sure the vias are tented), and
+routed everything at the top, as far away from fingers as possible.</p>
+<p>Finally, for easy programming, I broke out the SWD and SWC pins (which
+are also used to drive the LEDs) to a header of staggered holes on the
+side. You can insert a male pin header in there temporarily, and
+remove it when flashing the firmware is done.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

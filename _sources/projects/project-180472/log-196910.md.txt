@@ -1,0 +1,47 @@
+---
+blogpost: true
+date: 2021-08-22
+category: project-180472
+---
+
+# Another Failure
+Published on 2021-08-22 in {ref}`project-180472`.
+
+I finally had the time to try my new breakout. I was putting it off
+because deep inside I felt there is no chance it can work with the
+horribly inconsistent schematic and pinout I based this on. And sure
+enough, it doesn't. I wrote a very simple program to test it:
+
+
+```
+import board
+import digitalio
+import time
+
+rst = digitalio.DigitalInOut(board.A4)
+rst.switch_to_output(value=False)
+
+cs = digitalio.DigitalInOut(board.A5)
+cs.switch_to_output(value=False)
+
+spi = board.SPI()
+
+spi.try_lock()
+
+buffer = bytearray(1)
+while True:
+    spi.write(b"\x00")
+    spi.readinto(buffer)
+    print(buffer)
+    time.sleep(1)
+```
+
+This should, in theory, print a string of \x0d on the screen. But of
+course all it prints are \x00. I tried some combinations of pulling
+down or up various pins that were ambiguous in the schematic that was
+posted, but I didn't manage to make it return anything else than \x00
+or \xff.
+
+I might try some more experimenting with it still, but for now it's a
+huge disappointment.
+

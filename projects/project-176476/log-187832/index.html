@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>First Prototype Problems - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="first-prototype-problems">
+<h1>First Prototype Problems<a class="headerlink" href="#first-prototype-problems" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2021-01-05 in <a class="reference internal" href="../#project-176476"><span class="std std-ref">Electronic 6-hole Ocarina</span></a>.</p>
+<p>The PCBs arrived from <a class="reference external" href="https://hackaday.io/hacker/367545">&#64;JLCPCB </a> today.</p>
+<img alt="projects/project-176476/images/6378311609872232931.jpg" src="projects/project-176476/images/6378311609872232931.jpg" />
+<p>Assembling one and flashing CircuitPython on it only took a moment,
+but I had to wait until the evening with programming it.</p>
+<img alt="projects/project-176476/images/4145781609872295400.jpg" src="projects/project-176476/images/4145781609872295400.jpg" />
+<p>I wrote this simple test program that just displays the state of the
+“holes” and the pressure sensor reading on the USB serial:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">board</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">struct</span>
+<span class="kn">import</span> <span class="nn">busio</span>
+<span class="kn">import</span> <span class="nn">touchio</span>
+
+
+<span class="k">class</span> <span class="nc">BMP280</span><span class="p">:</span>
+    <span class="n">_buffer</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i2c</span><span class="p">,</span> <span class="n">address</span><span class="o">=</span><span class="mh">0x76</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_i2c</span> <span class="o">=</span> <span class="n">i2c</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_address</span> <span class="o">=</span> <span class="n">address</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mh">0xf4</span> <span class="c1"># ctrl_meas</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mb">0b001_001_11</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_i2c</span><span class="o">.</span><span class="n">try_lock</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_i2c</span><span class="o">.</span><span class="n">writeto</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_address</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">get_pressure</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mh">0xf7</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_i2c</span><span class="o">.</span><span class="n">writeto_then_readfrom</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_address</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span><span class="p">,</span>
+            <span class="n">out_end</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">in_end</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">struct</span><span class="o">.</span><span class="n">unpack_from</span><span class="p">(</span><span class="s1">&#39;&gt;H&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">holes</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">touchio</span><span class="o">.</span><span class="n">TouchIn</span><span class="p">(</span><span class="n">pin</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">pin</span> <span class="ow">in</span> <span class="p">(</span>
+        <span class="n">board</span><span class="o">.</span><span class="n">AREF</span><span class="p">,</span> <span class="n">board</span><span class="o">.</span><span class="n">A0</span><span class="p">,</span>
+        <span class="n">board</span><span class="o">.</span><span class="n">A4</span><span class="p">,</span> <span class="n">board</span><span class="o">.</span><span class="n">A6</span><span class="p">,</span>
+        <span class="n">board</span><span class="o">.</span><span class="n">A3</span><span class="p">,</span> <span class="n">board</span><span class="o">.</span><span class="n">A1</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+<span class="n">i2c</span> <span class="o">=</span> <span class="n">busio</span><span class="o">.</span><span class="n">I2C</span><span class="p">(</span><span class="n">scl</span><span class="o">=</span><span class="n">board</span><span class="o">.</span><span class="n">D6</span><span class="p">,</span> <span class="n">sda</span><span class="o">=</span><span class="n">board</span><span class="o">.</span><span class="n">MOSI</span><span class="p">)</span>
+<span class="n">sensor</span> <span class="o">=</span> <span class="n">BMP280</span><span class="p">(</span><span class="n">i2c</span><span class="p">)</span>
+<span class="n">base</span> <span class="o">=</span> <span class="n">sensor</span><span class="o">.</span><span class="n">get_pressure</span><span class="p">()</span>
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">base</span> <span class="o">=</span> <span class="n">sensor</span><span class="o">.</span><span class="n">get_pressure</span><span class="p">()</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">sensor</span><span class="o">.</span><span class="n">get_pressure</span><span class="p">()</span> <span class="o">-</span> <span class="n">base</span><span class="p">)</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">hole</span> <span class="ow">in</span> <span class="n">holes</span><span class="p">:</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">mask</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="n">hole</span><span class="o">.</span><span class="n">value</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">bin</span><span class="p">(</span><span class="n">mask</span><span class="p">))</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>It’s very simple, but it already allowed me to see two potential
+problems.</p>
+<p>First of all, I put traces to the two left-hand “holes” close to the
+left bottom “hole”, which means that you will sometimes touch those
+traces by mistake, and it’s enough to trigger it. The next version
+will have those traces on the other side of the board, safely shielded
+with a generous ground fill. Easy.</p>
+<p>Second, my initial tests with the sensor were very brief, and I
+actually converted the value I was reading from the registers wrong,
+so I didn’t notice that the sensor actually “swings back” after I blow
+into it, and takes a good minute to stabilize back to the ambient
+pressure. That is a considerable problem if we want to be able to play
+faster than one note a minute.</p>
+<p>For now I’m planning to make it trigger by observing the first
+derivative — the change in value, if you will — instead of the
+absolute value read from the sensor. This also solves the problem of
+the drift that the sensor has, and the challenge of being able to play
+while riding an elevator. It will complicate the code somewhat,
+unfortunately. If I can’t get it to work, I will probably switch to a
+microphone.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

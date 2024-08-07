@@ -1,0 +1,30 @@
+---
+blogpost: true
+date: 2020-10-02
+category: project-174095
+---
+
+# DotStars
+Published on 2020-10-02 in {ref}`project-174095`.
+
+Finally tonight I took a look at the lights on this keyboard. The
+Adafruit's DotStar library handles them very well, but for some reason
+the last 6 in a chain had different colors. After some experiments, I
+desoldered the switches, removed that LED, put a different one in its
+place and the problem magically disappeared.
+
+I also wrote some very simple code to make a pretty gradient. Static
+for now. I'm going to call it a day, but tomorrow I will probably try
+to make some nice effects, like a water ripple on each keystroke, or
+something like that.
+
+
+
+:::{image} images/7352931601590971709.jpg
+
+:::
+
+
+Oh, right, because both {ref}`project-167912` and {ref}`project-174982` are now dead and buried, I took the black double-shot key caps from
+them. I think they look quite pretty with the backlight.
+

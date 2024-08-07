@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>http://deshipu.art/</id>
+  <title>deshipu.art - Posts in project-182310</title>
+  <updated>2024-08-07T20:34:13.197717+00:00</updated>
+  <link href="http://deshipu.art/"/>
+  <link href="http://deshipu.art/blog/category/project-182310/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-182310/log-199384/</id>
+    <title>PCB Design</title>
+    <updated>2021-10-24T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="pcb-design"&gt;
+
+&lt;p&gt;Published on 2021-10-24 in &lt;a class="reference internal" href="../../../projects/project-182310/#project-182310"&gt;&lt;span class="std std-ref"&gt;NHYTGB Keyboard&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I’m going to start with just a very simple mechanical design, just a
+PCB with the switches on both sides. I can think about improvements if
+the basic idea proves workable. So after compiling the very latest
+version of Fritzing (the appimage they released doesn’t work on my
+system), I went to work and created this:&lt;/p&gt;
+&lt;img alt="projects/project-182310/images/9909721635033665885.png" src="projects/project-182310/images/9909721635033665885.png" /&gt;
+&lt;img alt="projects/project-182310/images/4102431635033678382.png" src="projects/project-182310/images/4102431635033678382.png" /&gt;
+&lt;p&gt;Yes, the traces have right angle bends. I don’t care. This is a
+prototype. I can clean it up some other time.&lt;/p&gt;
+&lt;p&gt;I also added a joystick and a d-pad on the front side, for those
+moments when you are not typing. The USB socket is on the bottom,
+because that’s where many devices have their socket as well — you can
+use a short OTG cable to connect them.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-182310/log-199384/" rel="alternate"/>
+    <summary>Published on 2021-10-24 in project-182310.</summary>
+    <published>2021-10-24T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-182310/log-199929/</id>
+    <title>Version One</title>
+    <updated>2021-11-02T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="version-one"&gt;
+
+&lt;p&gt;Published on 2021-11-02 in &lt;a class="reference internal" href="../../../projects/project-182310/#project-182310"&gt;&lt;span class="std std-ref"&gt;NHYTGB Keyboard&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I assembled the first version of the device, and tested it
+mechanically (I still need to write the code for it). As far as I can
+tell so far, mechanically it should work, though the thumb keys are
+pretty awkward, and the whole thing is really sensitive to the size of
+one’s palms.&lt;/p&gt;
+&lt;img alt="projects/project-182310/images/72101635878751504.jpg" src="projects/project-182310/images/72101635878751504.jpg" /&gt;
+&lt;img alt="projects/project-182310/images/6332761635878768772.jpg" src="projects/project-182310/images/6332761635878768772.jpg" /&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-182310/log-199929/" rel="alternate"/>
+    <summary>Published on 2021-11-02 in project-182310.</summary>
+    <published>2021-11-02T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-182310/log-200107/</id>
+    <title>Bodge, Bodge, Bodge</title>
+    <updated>2021-11-06T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="bodge-bodge-bodge"&gt;
+
+&lt;p&gt;Published on 2021-11-06 in &lt;a class="reference internal" href="../../../projects/project-182310/#project-182310"&gt;&lt;span class="std std-ref"&gt;NHYTGB Keyboard&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Finally the weekend is here, and I had some time to actually program
+and test this device. Right away I found this tiny little problem on
+the PCB:&lt;/p&gt;
+&lt;img alt="projects/project-182310/images/5371421636231236144.png" src="projects/project-182310/images/5371421636231236144.png" /&gt;
+&lt;p&gt;It’s hard to see, but there is a trace between PA01 and PA02 pins. One
+is part of the key matrix, the other goes to the analog joystick, so
+this would give us some really interesting effects — fortunately I
+noticed it, so I could desolder the chip with hot air, cut that trace,
+and solder it back again.&lt;/p&gt;
+&lt;p&gt;Next, I had some fun getting the D-pad and the mouse buttons to work.
+For some reason they were ignored. After about an hour of
+experimenting, replacing switches, replacing diodes, cutting traces,
+adding bodges and so on, I finally figured out what is happening. I
+made two footprints for buttons in there, both SMD and THT, so that I
+can experiment with different buttons. But I didn’t notice, that the
+THT buttons I used this time, have some of the contacts sticking out
+on the sides. Those were making contact with the SMD pads, resulting
+in the switch always being on. Since the keypad module is event-based,
+and the switch was on even before the code started, so we never got a
+keypress event, and obviously it also never was released to generated
+a key release event, so the key was basically being ignored. To make
+it more interesting, those contacts are only one one side, so the
+problem was only present for about half of the buttons — depending how
+they were rotated. In the end, I just rotated the misbehaving buttons
+180° to fix this.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-182310/log-200107/" rel="alternate"/>
+    <summary>Published on 2021-11-06 in project-182310.</summary>
+    <published>2021-11-06T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-182310/log-230631/</id>
+    <title>Results</title>
+    <updated>2024-06-20T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="results"&gt;
+
+&lt;p&gt;Published on 2024-06-20 in &lt;a class="reference internal" href="../../../projects/project-182310/#project-182310"&gt;&lt;span class="std std-ref"&gt;NHYTGB Keyboard&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I just realized that I never updated this project with the results of
+my experiment.&lt;/p&gt;
+&lt;p&gt;In short, I’m disappointed.&lt;/p&gt;
+&lt;p&gt;I was hoping the muscle memory and learning from a traditional split
+keyboard would transfer to this layout, but it turns out that our
+muscle memory seems to operate in terms of absolute positions, not
+relative movements, and that rotating the keyboard by 90° and flipping
+it completely defeats any learning you might have benefited from from
+use of a regular keyboard.&lt;/p&gt;
+&lt;p&gt;The keyboard is possible to use, but you basically have to learn to
+type on it from scratch.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-182310/log-230631/" rel="alternate"/>
+    <summary>Published on 2024-06-20 in project-182310.</summary>
+    <published>2024-06-20T00:00:00+02:00</published>
+  </entry>
+</feed>

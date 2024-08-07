@@ -1,0 +1,149 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>The Assembly - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="the-assembly">
+<h1>The Assembly<a class="headerlink" href="#the-assembly" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2021-02-04 in <a class="reference internal" href="../#project-177306"><span class="std std-ref">PewPew Slim</span></a>.</p>
+<p>You would think this is the perfect case for the SMT Assembly service
+offered by JLCPCB — all components on one side, no sockets, a lot of
+tiny parts that are best assembled by a machine. Unfortunately, they
+don’t do 0.6mm boards, and that’s a hard requirement here. Also, their
+service doesn’t accept Fritzing’s PNP files, so I would have to write
+one manually, specifying the placement of all the 64 LEDs. So I
+decided that I will try and assemble at least one prototype by hand,
+using a hot air gun.</p>
+<img alt="projects/project-177306/images/8332781612475525324.jpg" src="projects/project-177306/images/8332781612475525324.jpg" />
+<p>Even before I started the assembly, I noticed a small problem — there
+is an extra trace in the LED matrix on the bottom side, connecting two
+rows that should not be connected. Can you spot it? In any case, a
+quick cut with a knife solved that. The final version will have that
+fixed, of course.</p>
+<p>Another problem I noticed is that the footprint for those LEDs, which
+was recommended by the Aliexpress seller, is really a minimal
+footprint, with nothing sticking out from under the LED. That means
+that hot air is the only way I can solder it. Next version will have
+minimally larger pads, as much as space permits.</p>
+<p>I didn’t yet have the smaller LDO, so I made the footprint for it
+double, so that I can use either the larger or the smaller one. I’m
+using the larger one during the tests, later the smaller one arrived
+and I replaced it. The final version will only have the smaller
+footprint.</p>
+<p>Finally, I’m not happy with the vias inside the microcontroller
+footprint. This chip has a thermal pad, and the solder mask that
+JLCPCB uses is really thin and easy to scratch, so I’m worried about
+shorts in there. For now I put a bit of kapton tape there, but that
+makes the chip sit a bit higher than it should. I will have to see if
+I can somehow move that.</p>
+<img alt="projects/project-177306/images/2460431612476008497.jpg" src="projects/project-177306/images/2460431612476008497.jpg" />
+<p>My first approach to the assembly was optimistic. I just tinned the
+pads, heated the solder with the gun and placed each of the LEDs. I
+had two stripes of 50, that’s why you can see two different colors in
+there — whiter and more yellowish. I expected some of the LEDs to not
+work and have to be reworked, but I didn’t expect what actually
+happened.</p>
+<p>I flashed the firmware with the code for the old <a class="reference internal" href="../../project-159733/#project-159733"><span class="std std-ref">PewPew Standalone</span></a>  — it should work, it would just use only one side of the LEDs, with
+one color. Once I have that working, I can work on improved code that
+would handle both colors. Unfortunately what I got as a result is
+quite random. Multiple LEDs on both rows and columns seem to be
+shorted together, lighting up in groups and in random colors. I guess
+my soldering job was worse than I expected.</p>
+<p>So now I’m doing a second attempt.</p>
+<img alt="projects/project-177306/images/8734201612476384396.jpg" src="projects/project-177306/images/8734201612476384396.jpg" />
+<p>I wrote this simple test program, that lights up each LEDs in each
+color for a short moment:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">board</span>
+<span class="kn">import</span> <span class="nn">digitalio</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="n">_rows</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">digitalio</span><span class="o">.</span><span class="n">DigitalInOut</span><span class="p">(</span><span class="n">board</span><span class="o">.</span><span class="n">_R1</span><span class="p">),</span>
+    <span class="n">digitalio</span><span class="o">.</span><span class="n">DigitalInOut</span><span class="p">(</span><span class="n">board</span><span class="o">.</span><span class="n">_R2</span><span class="p">),</span>
+    <span class="n">digitalio</span><span class="o">.</span><span class="n">DigitalInOut</span><span class="p">(</span><span class="n">board</span><span class="o">.</span><span class="n">_R3</span><span class="p">),</span>
+    <span class="n">digitalio</span><span class="o">.</span><span class="n">DigitalInOut</span><span class="p">(</span><span class="n">board</span><span class="o">.</span><span class="n">_R4</span><span class="p">),</span>
+    <span class="n">digitalio</span><span class="o">.</span><span class="n">DigitalInOut</span><span class="p">(</span><span class="n">board</span><span class="o">.</span><span class="n">_R5</span><span class="p">),</span>
+    <span class="n">digitalio</span><span class="o">.</span><span class="n">DigitalInOut</span><span class="p">(</span><span class="n">board</span><span class="o">.</span><span class="n">_R6</span><span class="p">),</span>
+    <span class="n">digitalio</span><span class="o">.</span><span class="n">DigitalInOut</span><span class="p">(</span><span class="n">board</span><span class="o">.</span><span class="n">_R7</span><span class="p">),</span>
+    <span class="n">digitalio</span><span class="o">.</span><span class="n">DigitalInOut</span><span class="p">(</span><span class="n">board</span><span class="o">.</span><span class="n">_R8</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="n">_cols</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">digitalio</span><span class="o">.</span><span class="n">DigitalInOut</span><span class="p">(</span><span class="n">board</span><span class="o">.</span><span class="n">_C1</span><span class="p">),</span>
+    <span class="n">digitalio</span><span class="o">.</span><span class="n">DigitalInOut</span><span class="p">(</span><span class="n">board</span><span class="o">.</span><span class="n">_C2</span><span class="p">),</span>
+    <span class="n">digitalio</span><span class="o">.</span><span class="n">DigitalInOut</span><span class="p">(</span><span class="n">board</span><span class="o">.</span><span class="n">_C3</span><span class="p">),</span>
+    <span class="n">digitalio</span><span class="o">.</span><span class="n">DigitalInOut</span><span class="p">(</span><span class="n">board</span><span class="o">.</span><span class="n">_C4</span><span class="p">),</span>
+    <span class="n">digitalio</span><span class="o">.</span><span class="n">DigitalInOut</span><span class="p">(</span><span class="n">board</span><span class="o">.</span><span class="n">_C5</span><span class="p">),</span>
+    <span class="n">digitalio</span><span class="o">.</span><span class="n">DigitalInOut</span><span class="p">(</span><span class="n">board</span><span class="o">.</span><span class="n">_C6</span><span class="p">),</span>
+    <span class="n">digitalio</span><span class="o">.</span><span class="n">DigitalInOut</span><span class="p">(</span><span class="n">board</span><span class="o">.</span><span class="n">_C7</span><span class="p">),</span>
+    <span class="n">digitalio</span><span class="o">.</span><span class="n">DigitalInOut</span><span class="p">(</span><span class="n">board</span><span class="o">.</span><span class="n">_C8</span><span class="p">),</span>
+<span class="p">)</span>
+
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">_rows</span><span class="p">:</span>
+    <span class="n">row</span><span class="o">.</span><span class="n">switch_to_output</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">_cols</span><span class="p">:</span>
+        <span class="n">col</span><span class="o">.</span><span class="n">switch_to_output</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span>
+        <span class="n">col</span><span class="o">.</span><span class="n">switch_to_input</span><span class="p">()</span>
+    <span class="n">row</span><span class="o">.</span><span class="n">switch_to_output</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">_cols</span><span class="p">:</span>
+        <span class="n">col</span><span class="o">.</span><span class="n">switch_to_output</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span>
+        <span class="n">col</span><span class="o">.</span><span class="n">switch_to_input</span><span class="p">()</span>
+    <span class="n">row</span><span class="o">.</span><span class="n">switch_to_input</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Now I am soldering one LED at a time and running the test after each.
+Obviously this is taking much more time, and is much more work, but
+hopefully I only need to do it once to get the prototype to work. Once
+I have the firmware ready, the next version with larger pads can be
+assembled in a fab, with solder paste, stencil and a pnp machine.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

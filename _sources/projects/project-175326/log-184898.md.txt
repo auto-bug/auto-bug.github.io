@@ -1,0 +1,28 @@
+---
+blogpost: true
+date: 2020-10-11
+category: project-175326
+---
+
+# PCB Design
+Published on 2020-10-11 in {ref}`project-175326`.
+
+As usual, everything starts with the PCB design.
+
+
+
+:::{image} images/5690581602439846397.png
+
+:::
+
+
+Nothing fancy. The minimal SAMD21 schematic with USB, plus six keys
+with diodes, a LED and a programming header. As usual in my projects
+the header has staggered pins to allow plugging in a male header
+without soldering.
+
+The board will use choc switches, because I really like them. In
+hindsight, I should have designed some kind of a frankenfootprint so
+that any switch could be used — maybe I will do that in the next
+version.
+

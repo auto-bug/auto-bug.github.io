@@ -2,50 +2,63 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posts tagged completed project</title>
-  <updated>2024-08-07T20:33:06.015042+00:00</updated>
+  <updated>2024-08-07T20:34:17.199216+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/tag/completed-project/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
   <entry>
-    <id>http://deshipu.art/projects/project-27757/</id>
-    <title>Micro:Boy</title>
-    <updated>2017-10-15T00:00:00+02:00</updated>
-    <content type="html">&lt;section id="micro-boy"&gt;
+    <id>http://deshipu.art/projects/project-174095/</id>
+    <title>Dorsch 40k Keyboard</title>
+    <updated>2020-08-01T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="dorsch-40k-keyboard"&gt;
 
-&lt;p&gt;Arcade games on the Micro:bit&lt;/p&gt;
+&lt;p&gt;A 40-key chocolate-bar mechanical keyboard.&lt;/p&gt;
 &lt;div class="project-thumb"&gt;
-&lt;a class="reference external image-reference" href="/_images/7354261515360205991.jpg"&gt;&lt;img alt="projects/project-27757/images/7354261515360205991.jpg" src="projects/project-27757/images/7354261515360205991.jpg" /&gt;&lt;/a&gt;
-&lt;a class="reference external image-reference" href="/_images/3762871516221178379.jpg"&gt;&lt;img alt="projects/project-27757/images/3762871516221178379.jpg" src="projects/project-27757/images/3762871516221178379.jpg" /&gt;&lt;/a&gt;
-&lt;a class="reference external image-reference" href="/_images/9897221516920665977.jpg"&gt;&lt;img alt="projects/project-27757/images/9897221516920665977.jpg" src="projects/project-27757/images/9897221516920665977.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/9939221600695176768.jpg"&gt;&lt;img alt="projects/project-174095/images/9939221600695176768.jpg" src="projects/project-174095/images/9939221600695176768.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/5102761596234293815.png"&gt;&lt;img alt="projects/project-174095/images/5102761596234293815.png" src="projects/project-174095/images/5102761596234293815.png" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/3652331597248546262.jpg"&gt;&lt;img alt="projects/project-174095/images/3652331597248546262.jpg" src="projects/project-174095/images/3652331597248546262.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/1847401598618277704.jpg"&gt;&lt;img alt="projects/project-174095/images/1847401598618277704.jpg" src="projects/project-174095/images/1847401598618277704.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/6470121598646709846.jpg"&gt;&lt;img alt="projects/project-174095/images/6470121598646709846.jpg" src="projects/project-174095/images/6470121598646709846.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/6537831601590733975.jpg"&gt;&lt;img alt="projects/project-174095/images/6537831601590733975.jpg" src="projects/project-174095/images/6537831601590733975.jpg" /&gt;&lt;/a&gt;
 &lt;/div&gt;
-&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;The Micro:bit is a pretty decent platform for teaching kids to
+&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Continuing my quest for a usable low-profile mechanical keyboard.
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;p&gt;program, but you can’t really make arcade-style games for it. You only
-have two buttons and a 5x5 display. Perhaps enough for a very small
-snake game, but that’s pretty much it. That’s why I started working on &lt;a class="reference internal" href="../../../projects/project-21578/#project-21578"&gt;&lt;span class="std std-ref"&gt;PewPew FeatherWing&lt;/span&gt;&lt;/a&gt; as an alternative platform, but at some point I started wondering if
-it’s really impossible to do it on the micro:bit.&lt;/p&gt;
-&lt;p&gt;When the most recent version of micropython got the ability to use any
-pins for I2C, I realized that I can finally connect a display easily.
-I could use a HT16K33 and a 8x8 LED matrix like on the PewPew, but I
-decided to try something else — a monochrome OLED display, similar to
-the one used on many Arduino-based game consoles.&lt;/p&gt;
+&lt;p&gt;After making &lt;a class="reference internal" href="../../../projects/project-167912/#project-167912"&gt;&lt;span class="std std-ref"&gt;Flounder Keyboard&lt;/span&gt;&lt;/a&gt; I learned a little bit more, so this time I won’t make the same
+mistakes:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;the sunken Kailh choc switches have really bad feel, I will use
+regular choc switches this time,&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;no more messing with key spacing, use standard 0.75” key spacing this
+time,&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;smaller and cheaper by only having 40 keys,&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;no long keys, no problem with stabilizers,&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;grid layout, so all keys can use same size key caps,&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;But I wouldn’t be myself if I didn’t also use that opportunity to
+experiment a bit, so I’m going to use an experimental hold/tap system
+for the modifier keys.&lt;/p&gt;
+&lt;img alt="projects/project-174095/images/2342811601749811637.gif" src="projects/project-174095/images/2342811601749811637.gif" /&gt;
 &lt;section id="logs"&gt;
 &lt;h2&gt;Logs&lt;/h2&gt;
 &lt;ul class="postlist-style-none postlist simple"&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-01-25 - &lt;a class="reference internal" href="../../../projects/project-27757/log-84157/"&gt;MemoryError&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-01-20 - &lt;a class="reference internal" href="../../../projects/project-27757/log-78338/"&gt;Progress on a Game&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-01-18 - &lt;a class="reference internal" href="../../../projects/project-27757/log-77209/"&gt;Why Separate Button Controller?&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-01-17 - &lt;a class="reference internal" href="../../../projects/project-27757/log-77038/"&gt;Button Controller&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-01-09 - &lt;a class="reference internal" href="../../../projects/project-27757/log-72743/"&gt;Advanced Spriting&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-01-08 - &lt;a class="reference internal" href="../../../projects/project-27757/log-72667/"&gt;Blit&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-01-07 - &lt;a class="reference internal" href="../../../projects/project-27757/log-72626/"&gt;Some Progress&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-12-17 - &lt;a class="reference internal" href="../../../projects/project-27757/log-71654/"&gt;After All it Works!&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-12-15 - &lt;a class="reference internal" href="../../../projects/project-27757/log-71591/"&gt;Restart&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-11-30 - &lt;a class="reference internal" href="../../../projects/project-27757/log-71054/"&gt;Special Bolts&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-11-18 - &lt;a class="reference internal" href="../../../projects/project-27757/log-70648/"&gt;Shield Connectors&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-10-15 - &lt;a class="reference internal" href="../../../projects/project-27757/log-68977/"&gt;Quick and Dirty&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-10-15 - &lt;a class="reference internal" href="../../../projects/project-27757/log-68976/"&gt;Basic Display&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2021-07-25 - &lt;a class="reference internal" href="../../../projects/project-174095/log-195783/"&gt;Shiny New Code&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2020-10-09 - &lt;a class="reference internal" href="../../../projects/project-174095/log-184818/"&gt;Macros&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2020-10-03 - &lt;a class="reference internal" href="../../../projects/project-174095/log-184443/"&gt;Simple Effect&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2020-10-02 - &lt;a class="reference internal" href="../../../projects/project-174095/log-184378/"&gt;DotStars&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2020-09-21 - &lt;a class="reference internal" href="../../../projects/project-174095/log-183868/"&gt;Fork&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2020-09-17 - &lt;a class="reference internal" href="../../../projects/project-174095/log-183709/"&gt;Revisions&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2020-09-17 - &lt;a class="reference internal" href="../../../projects/project-174095/log-183713/"&gt;How Thicc is your Keeb?&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2020-09-11 - &lt;a class="reference internal" href="../../../projects/project-174095/log-183452/"&gt;Final Code&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2020-08-31 - &lt;a class="reference internal" href="../../../projects/project-174095/log-183019/"&gt;Better Shifts and More Variations&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2020-08-28 - &lt;a class="reference internal" href="../../../projects/project-174095/log-182874/"&gt;Small Fixes&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2020-08-28 - &lt;a class="reference internal" href="../../../projects/project-174095/log-182867/"&gt;Done&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2020-08-15 - &lt;a class="reference internal" href="../../../projects/project-174095/log-182247/"&gt;Code&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2020-08-12 - &lt;a class="reference internal" href="../../../projects/project-174095/log-182132/"&gt;The PCB and Bodges&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2020-08-12 - &lt;a class="reference internal" href="../../../projects/project-174095/log-182133/"&gt;Design Files and Schematic&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2020-08-11 - &lt;a class="reference internal" href="../../../projects/project-174095/log-182080/"&gt;Soon&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2020-08-08 - &lt;a class="reference internal" href="../../../projects/project-174095/log-181943/"&gt;Double-function Modifier Keys&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2020-08-01 - &lt;a class="reference internal" href="../../../projects/project-174095/log-181646/"&gt;It’s That Time of the Year Again&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/section&gt;
 &lt;section id="instructions"&gt;
@@ -53,150 +66,44 @@ the one used on many Arduino-based game consoles.&lt;/p&gt;
 &lt;/section&gt;
 &lt;/section&gt;
 </content>
-    <link href="http://deshipu.art/projects/project-27757/" rel="alternate"/>
-    <summary>Arcade games on the Micro:bit</summary>
-    <category term="CONSole" label="CONSole"/>
-    <category term="arcade" label="arcade"/>
-    <category term="completedproject" label="completed project"/>
-    <category term="game" label="game"/>
-    <category term="games" label="games"/>
-    <category term="hardware" label="hardware"/>
-    <category term="micro:bit" label="micro:bit"/>
-    <category term="microbit" label="microbit"/>
-    <category term="micropython" label="micropython"/>
-    <category term="python" label="python"/>
-    <published>2017-10-15T00:00:00+02:00</published>
-  </entry>
-  <entry>
-    <id>http://deshipu.art/projects/project-164929/</id>
-    <title>PyBadge Hacking</title>
-    <updated>2019-04-11T00:00:00+02:00</updated>
-    <content type="html">&lt;section id="pybadge-hacking"&gt;
-
-&lt;p&gt;Hacking on Adafruit’s PyBadge&lt;/p&gt;
-&lt;div class="project-thumb"&gt;
-&lt;a class="reference external image-reference" href="/_images/4208061554992232926.jpg"&gt;&lt;img alt="projects/project-164929/images/4208061554992232926.jpg" src="projects/project-164929/images/4208061554992232926.jpg" /&gt;&lt;/a&gt;
-&lt;a class="reference external image-reference" href="/_images/5699241554979302535.jpg"&gt;&lt;img alt="projects/project-164929/images/5699241554979302535.jpg" src="projects/project-164929/images/5699241554979302535.jpg" /&gt;&lt;/a&gt;
-&lt;a class="reference external image-reference" href="/_images/2592411555151890169.jpg"&gt;&lt;img alt="projects/project-164929/images/2592411555151890169.jpg" src="projects/project-164929/images/2592411555151890169.jpg" /&gt;&lt;/a&gt;
-&lt;/div&gt;
-&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Adafruit&amp;#39;s PyBadge is coming soon, and I got my hands on a prototype.
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;Now I will do science to it.&lt;/p&gt;
-&lt;p&gt;What is PyBadge? It’s a handheld device the size of a credit card with
-a display, a bunch of buttons, a microcontroller running CircuitPython
-and a bunch of extras (neopixels, accelerometer, speaker, flash
-storage, battery charging, light sensor). It is also a secretly a
-Feather, as you can connect FeatherWings to it.&lt;/p&gt;
-&lt;p&gt;It is similar to, but much more powerful than my earlier project &lt;a class="reference internal" href="../../../projects/project-27629/#project-27629"&gt;&lt;span class="std std-ref"&gt;µGame&lt;/span&gt;&lt;/a&gt; (and the reason why I paused work on &lt;span class="xref std std-ref"&gt;project-86818&lt;/span&gt; ). I should be able to get my libraries and games from µGame to run on
-it, but I hope that I can also do some other fun things with it.&lt;/p&gt;
-&lt;iframe style="width: 500px; height: 281px;" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/HT4XKfFpWoo"&gt;&lt;/iframe&gt;
-&lt;section id="logs"&gt;
-&lt;h2&gt;Logs&lt;/h2&gt;
-&lt;ul class="postlist-style-none postlist simple"&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-06-30 - &lt;a class="reference internal" href="../../../projects/project-164929/log-165222/"&gt;Adafruit Learn Guide&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-06-24 - &lt;a class="reference internal" href="../../../projects/project-164929/log-164989/"&gt;Jumper Wire with displayio for PyGamer&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-06-17 - &lt;a class="reference internal" href="../../../projects/project-164929/log-164760/"&gt;PyGamer&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-05-09 - &lt;a class="reference internal" href="../../../projects/project-164929/log-163168/"&gt;Finish&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-05-08 - &lt;a class="reference internal" href="../../../projects/project-164929/log-163117/"&gt;Bugs Bugs Bugs&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-04-24 - &lt;a class="reference internal" href="../../../projects/project-164929/log-162433/"&gt;On Sale&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-04-13 - &lt;a class="reference internal" href="../../../projects/project-164929/log-161767/"&gt;Stage Library&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-04-11 - &lt;a class="reference internal" href="../../../projects/project-164929/log-161661/"&gt;Buttons&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/section&gt;
-&lt;section id="instructions"&gt;
-&lt;h2&gt;Instructions&lt;/h2&gt;
-&lt;/section&gt;
-&lt;/section&gt;
-</content>
-    <link href="http://deshipu.art/projects/project-164929/" rel="alternate"/>
-    <summary>Hacking on Adafruit’s PyBadge</summary>
-    <category term="CONSole" label="CONSole"/>
-    <category term="Software" label="Software"/>
-    <category term="badge" label="badge"/>
-    <category term="circuitpython" label="circuitpython"/>
-    <category term="completedproject" label="completed project"/>
-    <category term="game" label="game"/>
-    <category term="gaming" label="gaming"/>
-    <category term="handheld" label="handheld"/>
-    <category term="micropython" label="micropython"/>
-    <category term="python" label="python"/>
-    <published>2019-04-11T00:00:00+02:00</published>
-  </entry>
-  <entry>
-    <id>http://deshipu.art/projects/project-167897/</id>
-    <title>5plit Keyboard Clone</title>
-    <updated>2019-10-04T00:00:00+02:00</updated>
-    <content type="html">&lt;section id="plit-keyboard-clone"&gt;
-
-&lt;p&gt;A minimal split keyboard build.&lt;/p&gt;
-&lt;div class="project-thumb"&gt;
-&lt;a class="reference external image-reference" href="/_images/8015281570187376724.JPG"&gt;&lt;img alt="projects/project-167897/images/8015281570187376724.JPG" src="projects/project-167897/images/8015281570187376724.JPG" /&gt;&lt;/a&gt;
-&lt;a class="reference external image-reference" href="/_images/6170791572611567464.jpg"&gt;&lt;img alt="projects/project-167897/images/6170791572611567464.jpg" src="projects/project-167897/images/6170791572611567464.jpg" /&gt;&lt;/a&gt;
-&lt;/div&gt;
-&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;On a recent Swiss mechanical keyboard meetup I found out about this
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;very nice, minimal split keyboard design. It consists of two identical
-10x10cm PCBs (designed so that one of them is flipped) and Kailh
-chockolate switches, plus two venerable Arduino Pro Micros. I bought a
-set of PCBs there and here I am now, assembling it.&lt;/p&gt;
-&lt;p&gt;The original credit goes to &lt;a class="reference external" href="https://www.reddit.com/r/MechanicalKeyboards/comments/7yewrx/form_following_function_split_w_kailh_lowprofile/"&gt;llarbogey&lt;/a&gt; .&lt;/p&gt;
-&lt;section id="logs"&gt;
-&lt;h2&gt;Logs&lt;/h2&gt;
-&lt;ul class="postlist-style-none postlist simple"&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-11-01 - &lt;a class="reference internal" href="../../../projects/project-167897/log-170457/"&gt;Programming and Layout&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-10-27 - &lt;a class="reference internal" href="../../../projects/project-167897/log-170331/"&gt;Waiting for Diodes&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-10-04 - &lt;a class="reference internal" href="../../../projects/project-167897/log-169614/"&gt;Up Side Down Handheld Keyboard&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-10-04 - &lt;a class="reference internal" href="../../../projects/project-167897/log-169613/"&gt;The Swiss Mechanical Keyboard Enthusiasts Meetup&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/section&gt;
-&lt;section id="instructions"&gt;
-&lt;h2&gt;Instructions&lt;/h2&gt;
-&lt;/section&gt;
-&lt;/section&gt;
-</content>
-    <link href="http://deshipu.art/projects/project-167897/" rel="alternate"/>
-    <summary>A minimal split keyboard build.</summary>
+    <link href="http://deshipu.art/projects/project-174095/" rel="alternate"/>
+    <summary>A 40-key chocolate-bar mechanical keyboard.</summary>
     <category term="completedproject" label="completed project"/>
     <category term="hardware" label="hardware"/>
-    <published>2019-10-04T00:00:00+02:00</published>
+    <published>2020-08-01T00:00:00+02:00</published>
   </entry>
   <entry>
-    <id>http://deshipu.art/projects/project-167912/</id>
-    <title>Flounder Keyboard</title>
-    <updated>2019-10-06T00:00:00+02:00</updated>
-    <content type="html">&lt;section id="flounder-keyboard"&gt;
+    <id>http://deshipu.art/projects/project-175043/</id>
+    <title>Flatreus Keyboard</title>
+    <updated>2020-09-27T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="flatreus-keyboard"&gt;
 
-&lt;p&gt;A low-profile mechanical keyboard&lt;/p&gt;
+&lt;p&gt;Atreus, just flat.&lt;/p&gt;
 &lt;div class="project-thumb"&gt;
-&lt;a class="reference external image-reference" href="/_images/4863631570361482681.png"&gt;&lt;img alt="projects/project-167912/images/4863631570361482681.png" src="projects/project-167912/images/4863631570361482681.png" /&gt;&lt;/a&gt;
-&lt;a class="reference external image-reference" href="/_images/701681573634991825.jpg"&gt;&lt;img alt="projects/project-167912/images/701681573634991825.jpg" src="projects/project-167912/images/701681573634991825.jpg" /&gt;&lt;/a&gt;
-&lt;a class="reference external image-reference" href="/_images/4931491573980185604.JPG"&gt;&lt;img alt="projects/project-167912/images/4931491573980185604.JPG" src="projects/project-167912/images/4931491573980185604.JPG" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/3745181601581501532.png"&gt;&lt;img alt="projects/project-175043/images/3745181601581501532.png" src="projects/project-175043/images/3745181601581501532.png" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/6575281603227922538.jpg"&gt;&lt;img alt="projects/project-175043/images/6575281603227922538.jpg" src="projects/project-175043/images/6575281603227922538.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/6300111603467996056.jpg"&gt;&lt;img alt="projects/project-175043/images/6300111603467996056.jpg" src="projects/project-175043/images/6300111603467996056.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/639201603816677106.jpg"&gt;&lt;img alt="projects/project-175043/images/639201603816677106.jpg" src="projects/project-175043/images/639201603816677106.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/8489171603483953639.jpg"&gt;&lt;img alt="projects/project-175043/images/8489171603483953639.jpg" src="projects/project-175043/images/8489171603483953639.jpg" /&gt;&lt;/a&gt;
 &lt;/div&gt;
-&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Ever since I saw the low-profile Kailh switches, I couldn&amp;#39;t stop
+&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Atreus is a very nice design for a single-piece, portable split-layout
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;p&gt;thinking about how thin a keyboard would be possible with them, and
-how it would feel. Now that I found out you can actually buy those
-switches in small quantities, I decided to try and design a keyboard
-with them.&lt;/p&gt;
+&lt;p&gt;keyboard, but I need it to be low-profile. So instead of waiting for
+someone to do it, I guess I will have to do it myself.&lt;/p&gt;
 &lt;section id="logs"&gt;
 &lt;h2&gt;Logs&lt;/h2&gt;
 &lt;ul class="postlist-style-none postlist simple"&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2020-09-16 - &lt;a class="reference internal" href="../../../projects/project-167912/log-183679/"&gt;A Year Later&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-12-17 - &lt;a class="reference internal" href="../../../projects/project-167912/log-172001/"&gt;Details&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-12-03 - &lt;a class="reference internal" href="../../../projects/project-167912/log-171496/"&gt;Firmware&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-12-03 - &lt;a class="reference internal" href="../../../projects/project-167912/log-171495/"&gt;A Moment of Truth&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-11-17 - &lt;a class="reference internal" href="../../../projects/project-167912/log-171022/"&gt;Wouldhavebeens&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-11-17 - &lt;a class="reference internal" href="../../../projects/project-167912/log-171019/"&gt;Paperclips!&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-11-13 - &lt;a class="reference internal" href="../../../projects/project-167912/log-170883/"&gt;My Space is Too Big&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-10-27 - &lt;a class="reference internal" href="../../../projects/project-167912/log-170332/"&gt;Low-profile Switches&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-10-10 - &lt;a class="reference internal" href="../../../projects/project-167912/log-169772/"&gt;PCB&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-10-10 - &lt;a class="reference internal" href="../../../projects/project-167912/log-169756/"&gt;Caps&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-10-09 - &lt;a class="reference internal" href="../../../projects/project-167912/log-169728/"&gt;Stabilizers&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-10-06 - &lt;a class="reference internal" href="../../../projects/project-167912/log-169650/"&gt;Mechanical Construction&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-10-06 - &lt;a class="reference internal" href="../../../projects/project-167912/log-169651/"&gt;Layout and Key Caps&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2021-09-08 - &lt;a class="reference internal" href="../../../projects/project-175043/log-197599/"&gt;Electra&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2021-04-01 - &lt;a class="reference internal" href="../../../projects/project-175043/log-191163/"&gt;Small Improvements&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2020-12-06 - &lt;a class="reference internal" href="../../../projects/project-175043/log-186772/"&gt;Can we go Flatter?&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2020-11-20 - &lt;a class="reference internal" href="../../../projects/project-175043/log-186252/"&gt;Scissors…&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2020-10-24 - &lt;a class="reference internal" href="../../../projects/project-175043/log-185419/"&gt;Original Layout&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2020-10-23 - &lt;a class="reference internal" href="../../../projects/project-175043/log-185374/"&gt;Done&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2020-10-21 - &lt;a class="reference internal" href="../../../projects/project-175043/log-185320/"&gt;Mouse Emulation&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2020-10-01 - &lt;a class="reference internal" href="../../../projects/project-175043/log-184326/"&gt;Joystick&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2020-10-01 - &lt;a class="reference internal" href="../../../projects/project-175043/log-184371/"&gt;DPI, How Does It Work?&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2020-09-27 - &lt;a class="reference internal" href="../../../projects/project-175043/log-184154/"&gt;Down the Rabbit Hole&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/section&gt;
 &lt;section id="instructions"&gt;
@@ -204,41 +111,58 @@ with them.&lt;/p&gt;
 &lt;/section&gt;
 &lt;/section&gt;
 </content>
-    <link href="http://deshipu.art/projects/project-167912/" rel="alternate"/>
-    <summary>A low-profile mechanical keyboard</summary>
+    <link href="http://deshipu.art/projects/project-175043/" rel="alternate"/>
+    <summary>Atreus, just flat.</summary>
     <category term="completedproject" label="completed project"/>
     <category term="hardware" label="hardware"/>
-    <published>2019-10-06T00:00:00+02:00</published>
+    <published>2020-09-27T00:00:00+02:00</published>
   </entry>
   <entry>
-    <id>http://deshipu.art/projects/project-168395/</id>
-    <title>Keys FeatherWing</title>
-    <updated>2019-11-10T00:00:00+01:00</updated>
-    <content type="html">&lt;section id="keys-featherwing"&gt;
+    <id>http://deshipu.art/projects/project-175712/</id>
+    <title>Kamina Keyboard</title>
+    <updated>2020-11-04T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="kamina-keyboard"&gt;
 
-&lt;p&gt;A FeatherWing with three keyboard keys.&lt;/p&gt;
+&lt;p&gt;A low-profile 65-key ergonomic keyboard&lt;/p&gt;
 &lt;div class="project-thumb"&gt;
-&lt;a class="reference external image-reference" href="/_images/4329431574092411385.jpg"&gt;&lt;img alt="projects/project-168395/images/4329431574092411385.jpg" src="projects/project-168395/images/4329431574092411385.jpg" /&gt;&lt;/a&gt;
-&lt;a class="reference external image-reference" href="/_images/5649011574092526769.jpg"&gt;&lt;img alt="projects/project-168395/images/5649011574092526769.jpg" src="projects/project-168395/images/5649011574092526769.jpg" /&gt;&lt;/a&gt;
-&lt;a class="reference external image-reference" href="/_images/2132591574095723606.jpg"&gt;&lt;img alt="projects/project-168395/images/2132591574095723606.jpg" src="projects/project-168395/images/2132591574095723606.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/5930071604523380427.jpg"&gt;&lt;img alt="projects/project-175712/images/5930071604523380427.jpg" src="projects/project-175712/images/5930071604523380427.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/3784301604527905686.jpg"&gt;&lt;img alt="projects/project-175712/images/3784301604527905686.jpg" src="projects/project-175712/images/3784301604527905686.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/6967141606314864406.jpg"&gt;&lt;img alt="projects/project-175712/images/6967141606314864406.jpg" src="projects/project-175712/images/6967141606314864406.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/8606591629380442865.jpg"&gt;&lt;img alt="projects/project-175712/images/8606591629380442865.jpg" src="projects/project-175712/images/8606591629380442865.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/6349251703284778806.jpg"&gt;&lt;img alt="projects/project-175712/images/6349251703284778806.jpg" src="projects/project-175712/images/6349251703284778806.jpg" /&gt;&lt;/a&gt;
 &lt;/div&gt;
-&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Many Adafruit Feather boards are capable of simulating USB HID
+&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;So how is this better/different than an off-the-shelf keyboard?
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;p&gt;devices, like keyboards and mice. So why not have a shield that makes
-it easy to add a small macro keyboard to your computer? Or, you know,
-a set or really nice buttons with color LEDs to your project.&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;Mechanical switches, but that’s not that special of course.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Low-profile, which is much rarer. You can (finally) buy some low-
+profile mechanical keyboards, but the have this extra height from the
+case and key caps. This one is as thin as possible, just the lowest
+key caps, the low-profile switches, the PCB and some rubberized
+stickers for good grip.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Ortholinear, which already makes it unique. As far as I can tell,
+there are currently no low-profile ortholinear keyboards you can buy.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;One-piece split layout. For that sweet ergonomy.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Narrow, for easy access to all keys without moving your hands.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Now with a number row.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Programmed with CircuitPython, for easy customization.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Otherwise there isn’t much experimental stuff going on in here, like
+in my previous keyboard projects. In fact, I simply took what I
+learned from them, and applied it in the simplest way possible.&lt;/p&gt;
+&lt;img alt="projects/project-175712/images/5557961703284745634.jpg" src="projects/project-175712/images/5557961703284745634.jpg" /&gt;
 &lt;section id="logs"&gt;
 &lt;h2&gt;Logs&lt;/h2&gt;
 &lt;ul class="postlist-style-none postlist simple"&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-11-19 - &lt;a class="reference internal" href="../../../projects/project-168395/log-171124/"&gt;The Popcorn Wing&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-11-19 - &lt;a class="reference internal" href="../../../projects/project-168395/log-171141/"&gt;Contest&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-11-18 - &lt;a class="reference internal" href="../../../projects/project-168395/log-171094/"&gt;You Shouldn’t Doesn’t Mean That You Can’t&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-11-18 - &lt;a class="reference internal" href="../../../projects/project-168395/log-171104/"&gt;Schematic and Design Files&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-11-18 - &lt;a class="reference internal" href="../../../projects/project-168395/log-171090/"&gt;Prototype&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-11-18 - &lt;a class="reference internal" href="../../../projects/project-168395/log-171084/"&gt;More Keys&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-11-11 - &lt;a class="reference internal" href="../../../projects/project-168395/log-170791/"&gt;Execution&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-11-10 - &lt;a class="reference internal" href="../../../projects/project-168395/log-170784/"&gt;Idea&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-12-22 - &lt;a class="reference internal" href="../../../projects/project-175712/log-226186/"&gt;Kamina 3.1&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-12-12 - &lt;a class="reference internal" href="../../../projects/project-175712/log-225929/"&gt;Working on Version 3&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2021-08-19 - &lt;a class="reference internal" href="../../../projects/project-175712/log-196749/"&gt;MBK Legend Glow Keycaps&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2021-07-28 - &lt;a class="reference internal" href="../../../projects/project-175712/log-195938/"&gt;Update&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2021-02-17 - &lt;a class="reference internal" href="../../../projects/project-175712/log-189430/"&gt;Module Code&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2021-02-08 - &lt;a class="reference internal" href="../../../projects/project-175712/log-189102/"&gt;First Module&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2020-11-25 - &lt;a class="reference internal" href="../../../projects/project-175712/log-186412/"&gt;Promises are Made to be Broken&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2020-11-04 - &lt;a class="reference internal" href="../../../projects/project-175712/log-185768/"&gt;Last One, Promise&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/section&gt;
 &lt;section id="instructions"&gt;
@@ -246,10 +170,91 @@ a set or really nice buttons with color LEDs to your project.&lt;/p&gt;
 &lt;/section&gt;
 &lt;/section&gt;
 </content>
-    <link href="http://deshipu.art/projects/project-168395/" rel="alternate"/>
-    <summary>A FeatherWing with three keyboard keys.</summary>
+    <link href="http://deshipu.art/projects/project-175712/" rel="alternate"/>
+    <summary>A low-profile 65-key ergonomic keyboard</summary>
     <category term="completedproject" label="completed project"/>
     <category term="hardware" label="hardware"/>
-    <published>2019-11-10T00:00:00+01:00</published>
+    <published>2020-11-04T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-179496/</id>
+    <title>Chocolad Keyboard Hacking</title>
+    <updated>2021-05-02T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="chocolad-keyboard-hacking"&gt;
+
+&lt;p&gt;Make it run CircuitPython&lt;/p&gt;
+&lt;div class="project-thumb"&gt;
+&lt;a class="reference external image-reference" href="/_images/2478881619906682379.jpg"&gt;&lt;img alt="projects/project-179496/images/2478881619906682379.jpg" src="projects/project-179496/images/2478881619906682379.jpg" /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Some time ago I traded a PCB for my {ref}`project-175043` for a kit for the Chocolad ( [https://mechdb.net/keyboards/chocolad](https://mechdb.net/keyboards/chocolad) ). That keyboard uses the standard Pro Micro dev boards running QMK,
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;but I really got used to my own CircuitPython code, so I decided to
+make it run CircuitPython instead.&lt;/p&gt;
+&lt;section id="logs"&gt;
+&lt;h2&gt;Logs&lt;/h2&gt;
+&lt;ul class="postlist-style-none postlist simple"&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2021-05-15 - &lt;a class="reference internal" href="../../../projects/project-179496/log-192866/"&gt;Dynamic USB Descriptors&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2021-05-02 - &lt;a class="reference internal" href="../../../projects/project-179496/log-192323/"&gt;The TRRS Cable&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2021-05-02 - &lt;a class="reference internal" href="../../../projects/project-179496/log-192321/"&gt;The Keyboard&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2021-05-02 - &lt;a class="reference internal" href="../../../projects/project-179496/log-192353/"&gt;The Code&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2021-05-02 - &lt;a class="reference internal" href="../../../projects/project-179496/log-192320/"&gt;Fluff M0 Micro&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section id="instructions"&gt;
+&lt;h2&gt;Instructions&lt;/h2&gt;
+&lt;/section&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-179496/" rel="alternate"/>
+    <summary>Make it run CircuitPython</summary>
+    <category term="completedproject" label="completed project"/>
+    <category term="hardware" label="hardware"/>
+    <published>2021-05-02T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-181971/</id>
+    <title>Nudge Keyboard</title>
+    <updated>2021-10-01T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="nudge-keyboard"&gt;
+
+&lt;p&gt;50% staggered low-profile keeb&lt;/p&gt;
+&lt;div class="project-thumb"&gt;
+&lt;a class="reference external image-reference" href="/_images/4383021633125260002.jpg"&gt;&lt;img alt="projects/project-181971/images/4383021633125260002.jpg" src="projects/project-181971/images/4383021633125260002.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/9546971633510953118.jpg"&gt;&lt;img alt="projects/project-181971/images/9546971633510953118.jpg" src="projects/project-181971/images/9546971633510953118.jpg" /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;As the name implies, this is a keyboard that is supposed to make it
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;easier to move from the traditional keyboards to the more ergonomic
+ones. I used a Planck in this role before, but I noticed that
+introducing both layers and ortholinear layout is too big of a step at
+once. So I decided to design a board that is minimal in terms of the
+size, but still uses a more traditional, staggered key layout. I also
+wanted to have at most 1.5U keys, so that I don’t have to muck about
+with stabilizers. So I came up with this layout:&lt;/p&gt;
+&lt;img alt="projects/project-181971/images/5654191633125566008.png" src="projects/project-181971/images/5654191633125566008.png" /&gt;
+&lt;p&gt;Then, when choosing what switches to use, I noticed that Kailh Choc
+Purpz are on sale. To match those, I also decided to make the PCB
+purple, and use transparent key caps.&lt;/p&gt;
+&lt;p&gt;The brains is still the good old SAMD21 chip, running CircuitPython
+and my uKeeb library.&lt;/p&gt;
+&lt;section id="logs"&gt;
+&lt;h2&gt;Logs&lt;/h2&gt;
+&lt;ul class="postlist-style-none postlist simple"&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2021-11-24 - &lt;a class="reference internal" href="../../../projects/project-181971/log-200641/"&gt;Cannibalised.&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2021-10-06 - &lt;a class="reference internal" href="../../../projects/project-181971/log-198607/"&gt;Parts Arrived&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section id="instructions"&gt;
+&lt;h2&gt;Instructions&lt;/h2&gt;
+&lt;/section&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-181971/" rel="alternate"/>
+    <summary>50% staggered low-profile keeb</summary>
+    <category term="completedproject" label="completed project"/>
+    <category term="hardware" label="hardware"/>
+    <published>2021-10-01T00:00:00+02:00</published>
   </entry>
 </feed>

@@ -1,0 +1,44 @@
+---
+blogpost: true
+date: 2021-10-25
+category: project-182342
+---
+
+# Version 1 PCB
+Published on 2021-10-25 in {ref}`project-182342`.
+
+This is the first attempt at this shield, and it's mostly based on
+guesswork, datasheet, schematic for the ESP32 Cam board, and some bad
+quality images of the pinouts I found online. I have absolutely no
+idea if it will work, but I can try. The design is pretty dense:
+
+
+
+:::{image} images/9759071635197487623.png
+
+:::
+
+
+I didn't feel like fixing the angles of all the traces, so you will
+have to suffer. The render doesn't look bad:
+
+
+
+:::{image} images/4065201635197530946.png
+
+:::
+
+
+
+
+:::{image} images/6108781635197545443.png
+
+:::
+
+
+There are two voltage regulators, each with its own capacitor, two
+resistors for I2C pull-ups, a resistor to pull-down the enable pin on
+the camera, and a 14pF capacitor on the PCLK line, no idea why, but
+ESP32 Cam had it, so I copied it. And of course the camera socket
+itself, which is a fun 0.5mm-pitch footprint.
+

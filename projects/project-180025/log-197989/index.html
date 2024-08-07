@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Rough Placement for the PCB - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="rough-placement-for-the-pcb">
+<h1>Rough Placement for the PCB<a class="headerlink" href="#rough-placement-for-the-pcb" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2021-09-21 in <a class="reference internal" href="../#project-180025"><span class="std std-ref">Fluffbug</span></a>.</p>
+<p>How do you deal with insomnia? I design PCBs when I can’t sleep.
+Tonight is such a night, so I decided to finally take a first stab at
+a new version of a PCB for Fluffbug.</p>
+<p>There are quite some changes required. The SAMD21 microcontroller and
+all the supporting passives, together with the Feather headers go
+away. They are replaced with headers for plugging in a Wemos S2 Mini
+development board. The servo sockets get replaced with sockets for the
+ribbon cable plugs — they have the same footprint, but physically they
+are much larger and will require more clearance. The power switch,
+battery charging, battery protection and piezo speaker stay. I decided
+to remove the IR sensor, since we will have WiFi (or ESP-now) for
+communication.</p>
+<p>Next, there is the problem of placing all the components in a
+physically possible arrangement. The placement of the S2 Mini is the
+greatest problem. On one hand we want it to be central, so that any
+shields plugged into it can act as the robot’s “face”. On the other
+hand, we want the USB socket to be accessible, the antenna to be as
+far away from the servo motors as possible, and the reset and boot
+buttons not completely covered. It’s a lot of constraints, and I came
+up with something like this:</p>
+<img alt="projects/project-180025/images/5355091632181347495.png" src="projects/project-180025/images/5355091632181347495.png" />
+<p>On the back of the PCB is the battery holder, and the two sockets for
+the ribbon cables for the servos. Since the battery is round, there
+should be enough clearance for the cables there. On the front we have
+the S2 Mini in the middle, with the USB socket to the side, and the
+antenna on the other side. Obviously a vertical arrangement would have
+been more convenient, but then the antenna practically touches the
+motors. The rest is just the power and the speaker. Since I have the
+room (the PCB has to be wide enough to fit the ribbon cable sockets
+anyways), I decided to place them all outside of the outline of the S2
+Mini — this way I might be able to make the front of the robot pretty
+thin, and have more room for shields.</p>
+<p>The reset button is a bit hard to reach, but I should be able to press
+it with a screwdriver or something like that. The boot button (which I
+can re-use in the code as a user button) is easily accessible at the
+top of the robot.</p>
+<p>I might add an additional socket just above the servos, for connecting
+any sensors from the legs — we will see about that.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

@@ -1,0 +1,19 @@
+---
+blogpost: true
+date: 2021-11-25
+category: project-180472
+---
+
+# Prior Art
+Published on 2021-11-25 in {ref}`project-180472`.
+
+Apparently someone had the same idea as me, but also had the skill and
+energy to pull it off:  [https://github.com/vlukash/corne-trackpad](https://github.com/vlukash/corne-trackpad) 
+
+I think I'm going to steal from that project.
+
+Looking at it, I see that I made a huge fundamental mistake, assuming
+a 2.8V device will work just fine with 3.3V. Turns out those optic
+sensors are very particular about their voltages, so time to invest in
+level shifters.
+

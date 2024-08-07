@@ -1,0 +1,167 @@
+---
+blogpost: true
+date: 2021-06-12
+category: project-180309
+---
+
+# Adding the board to CircuitPython
+Published on 2021-06-12 in {ref}`project-180309`.
+
+Last time I went all the way up to flashing an UF2 bootloader on the
+SAMD21 chip, now we need to get CircuitPython running on it. Normally
+I would just use the firmware for {ref}`project-171381` — it has all the pins available, so it's very convenient for such
+things, but this time we are going to need the displayio module
+compiled into the firmware, and later we will also add the display
+initialization, so that the display just works as soon as the device
+is switched on, without us having to initialize it in our own code.
+
+To add a new SAMD board, the easiest way is to copy an existing board
+definition, like the fluff_m0 one, in ports/atmel-samd/boards, and
+rename it. Then we can edit the files to make our changes:
+
+mpconfigboard.h
+
+
+```cpp
+#define MICROPY_HW_BOARD_NAME "PewPew OLED"
+#define MICROPY_HW_MCU_NAME "samd21e18"
+
+#define MICROPY_PORT_A        (0)
+#define MICROPY_PORT_B        (0)
+#define MICROPY_PORT_C        (0)
+
+#define CIRCUITPY_INTERNAL_NVM_SIZE 0
+#define CIRCUITPY_INTERNAL_FLASH_FILESYSTEM_SIZE (48 * 1024)
+
+// USB is always used internally so skip the pin objects for it.
+#define IGNORE_PIN_PA24     1
+#define IGNORE_PIN_PA25     1
+
+#define SAMD21_BOD33_LEVEL (6)
+```
+
+There are three noteworthy things here. We change the NVM size to 0
+(this is a part of the flash reserved for storing additional
+information,  we are not going to be using that), and the filesystem
+size to 48kB (from the default of 64kB). This is needed to make more
+room for the firmware in the flash, because we want to include
+displayio, which is quite big.
+
+Finally, the SAMD21_BOD33_LEVEL variable controls the brown-out
+detection voltage level. We need to set it as low as practical, so
+that our device can work from a puny 3V battery without going into
+safe mode.
+
+Later on we can add all the pins we are not using on the device, to
+save some RAM. It's not important right now.
+
+pins.c
+
+
+```cpp
+#include "shared-bindings/board/__init__.h"
+
+STATIC const mp_rom_map_elem_t board_global_dict_table[] = {
+    { MP_ROM_QSTR(MP_QSTR_SCK), MP_ROM_PTR(&pin_PA09) },
+    { MP_ROM_QSTR(MP_QSTR_MOSI), MP_ROM_PTR(&pin_PA08) },
+    { MP_ROM_QSTR(MP_QSTR_OLED_DC), MP_ROM_PTR(&pin_PA10) },
+    { MP_ROM_QSTR(MP_QSTR_OLED_CS), MP_ROM_PTR(&pin_PA01) },
+    { MP_ROM_QSTR(MP_QSTR_OLED_RESET), MP_ROM_PTR(&pin_PA00) },
+
+    { MP_ROM_QSTR(MP_QSTR_TOUCH_UP), MP_ROM_PTR(&pin_PA02) },
+    { MP_ROM_QSTR(MP_QSTR_TOUCH_DOWN), MP_ROM_PTR(&pin_PA05) },
+    { MP_ROM_QSTR(MP_QSTR_TOUCH_LEFT), MP_ROM_PTR(&pin_PA03) },
+    { MP_ROM_QSTR(MP_QSTR_TOUCH_RIGHT), MP_ROM_PTR(&pin_PA04) },
+    { MP_ROM_QSTR(MP_QSTR_TOUCH_O), MP_ROM_PTR(&pin_PA06) },
+    { MP_ROM_QSTR(MP_QSTR_TOUCH_X), MP_ROM_PTR(&pin_PA07) },
+
+};
+MP_DEFINE_CONST_DICT(board_module_globals, board_global_dict_table);
+```
+
+This defines which pins on the microcontroller are used for what.
+
+mpconfigboard.mk
+
+
+```makefile
+USB_VID = 0x239A
+USB_PID = 0x80B0
+USB_PRODUCT = "PewPew OLED"
+USB_MANUFACTURER = "Radomir Dopieralski"
+
+CHIP_VARIANT = SAMD21E18A
+CHIP_FAMILY = samd21
+
+INTERNAL_FLASH_FILESYSTEM = 1
+LONGINT_IMPL = NONE
+
+CIRCUITPY_FULL_BUILD = 0
+
+CIRCUITPY_DISPLAYIO = 1
+CIRCUITPY_TOUCHIO = 1
+
+CIRCUITPY_ANALOGIO = 0
+CIRCUITPY_AUDIOBUSIO = 0
+CIRCUITPY_AUDIOBUSIO_I2SOUT = 0
+CIRCUITPY_AUDIOCORE = 0
+CIRCUITPY_AUDIOIO = 0
+CIRCUITPY_AUDIOMIXER = 0
+CIRCUITPY_AUDIOMP3 = 0
+CIRCUITPY_AUDIOPWMIO = 0
+CIRCUITPY_BITBANG_APA102 = 0
+CIRCUITPY_BITBANGIO = 0
+CIRCUITPY_BITBANGIO = 0
+CIRCUITPY_BITMAPTOOLS = 0
+CIRCUITPY_BITMAPTOOLS = 0
+CIRCUITPY_BLEIO = 0
+CIRCUITPY_BUSDEVICE = 0
+CIRCUITPY_FRAMEBUFFERIO = 0
+CIRCUITPY_FREQUENCYIO = 0
+CIRCUITPY_GAMEPAD = 0
+CIRCUITPY_GAMEPADSHIFT = 0
+CIRCUITPY_I2CPERIPHERAL = 0
+CIRCUITPY_MATH = 0
+CIRCUITPY_MSGPACK = 0
+CIRCUITPY_NEOPIXEL_WRITE = 0
+CIRCUITPY_NVM = 0
+CIRCUITPY_PIXELBUF = 0
+CIRCUITPY_PS2IO = 0
+CIRCUITPY_PULSEIO = 0
+CIRCUITPY_PWMIO = 0
+CIRCUITPY_RGBMATRIX = 0
+CIRCUITPY_ROTARYIO = 0
+CIRCUITPY_ROTARYIO = 0
+CIRCUITPY_RTC = 0
+CIRCUITPY_SAMD = 0
+CIRCUITPY_ULAB = 0
+CIRCUITPY_USB_HID = 0
+CIRCUITPY_USB_MIDI = 0
+CIRCUITPY_USB_VENDOR = 0
+CIRCUITPY_VECTORIO = 0
+
+CIRCUITPY_DISPLAY_FONT = $(TOP)/ports/atmel-samd/boards/ugame10/brutalist-6.bdf
+OPTIMIZATION_FLAGS = -Os
+```
+
+You can see a looooong list of disabled modules here. That's because I
+was trying to reclaim as much space as possible for displayio, before
+I gave up and simply shrunk the filesystem. There is also a custom
+tiny font. For now I'm using the same VID/PID as the fluff_m0, I will
+need to ask for unique ones when I will be adding that board to
+CircuitPython repository.
+
+And that's it, the board.c file is not needed for us right now — we
+will use it for display initialization later on, though.
+
+Next, I just looked for an SH1106 display driver for CircuitPython and
+displayio on the Adafruit Github, compiled the new board, and we have
+a working device: 
+
+
+
+:::{image} images/19751623522824210.jpg
+
+:::
+
+

@@ -1,0 +1,66 @@
+---
+blogpost: true
+date: 2021-09-13
+category: project-180025
+---
+
+# Inverse Kinematics
+Published on 2021-09-13 in {ref}`project-180025`.
+
+While I'm working on re-doing the PCB to incorporate all the recent
+changes, we can talk about the hard part: programming. Obviously,
+without a program the robot is useless, and if you want the robot to
+do anything, most of the work is going to be writing the program for
+it. This is why I'm trying to make this part as hassle-free as
+possible, switching to a high-level language like Python, and using a
+variant of it, CircuitPython, that makes it especially easy to modify
+any code, by exposing it as an USB drive. Another thing I can do so
+simplify things is to provide libraries that handle the low-level
+details, and expose a higher-level interface to the user's code.
+
+One of the details I can handle is Inverse Kinematics — that is,
+translating between the desired positions of the robot's legs, to
+actual angles the servos need to move to. This is a little bit simpler
+with the eight servo configuration than it was with the twelve servos
+of Tote, but it's still a little bit of tricky trigonometry.
+
+Let's look at a side view of the robot:
+
+
+
+:::{image} images/6027081631568908068.jpg
+
+:::
+
+
+We can see that each leg forms several triangles: a right-angle
+triangle formed by the coordinates of the tip of the leg, that lets us
+calculate a part of the angle of the first servo and the distance of
+he tip of the leg from the first servo, and the triangle ABC, which we
+then know all the dimensions of, and which gives us the remaining
+angles.
+
+So basically we need the Pythagorean Theorem, and then the Law of
+Cosines. In code, it looks like this:
+
+
+```python
+        leg_length2 = x * x + y * y
+        leg_length = math.sqrt(leg_length2)
+
+        hip_leg_angle = math.acos(
+            (FEMUR2 + leg_length2 - TIBIA2) /
+            (2 * FEMUR * leg_length)
+        )
+        knee_angle = PI2 - math.acos(
+            (FEMUR2 + TIBIA2 - leg_length2) /
+            (2 * FEMUR * TIBIA)
+        )
+        hip_base_angle = math.atan2(y, x)
+        self.angles(hip_base_angle - hip_leg_angle, knee_angle)
+```
+
+We can add some error checking for out-of-reach points, some
+convenience code that lets us move by increments and flips the y
+coordinate, and we have a working leg. 
+

@@ -1,0 +1,36 @@
+---
+blogpost: true
+date: 2020-08-28
+category: project-174095
+---
+
+# Small Fixes
+Published on 2020-08-28 in {ref}`project-174095`.
+
+After using the keyboard for a little bit, I added a few little fixes.
+I already mentioned moving some of the symbols keys to make them
+easier to access — the apostrophe is more common in English than the
+question mark or slash, so it makes sense to make it its own key. I
+also played a bit with key caps, just to make it a little bit nicer:
+
+
+
+:::{image} images/675331598646894899.jpg
+
+:::
+
+
+The second fix is the ability to use modifier keys with your mouse.
+Previously, when you held down a top/hold key, it wouldn't do anything
+until you released it or pressed any other key with it — then it would
+decide whether to send the modifier key code or the regular key code.
+But that makes it impossible to use this keyboard for things like
+ctrl-clicking or shift-dragging with your mouse. I initially tried to
+add a timeout to the hold function, but that didn't work very well —
+too slow for fast mouse clicking. Finally I made it so that it sends
+the modifier key as soon as you press the hold/tap key down, but if it
+turns out that you meant to tap it, it will release the modifier key
+before sending anything else. That way you get some extra spurious
+modifier key presses, but they normally do nothing, so it should be
+fine.
+

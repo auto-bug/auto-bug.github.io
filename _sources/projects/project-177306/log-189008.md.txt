@@ -1,0 +1,38 @@
+---
+blogpost: true
+date: 2021-02-05
+category: project-177306
+---
+
+# The Prototype
+Published on 2021-02-05 in {ref}`project-177306`.
+
+It took longer than anticipated, but with checking after each diode, I
+finally managed to get all of them properly soldered without any
+shorts. Then I made a branch of CircuitPython with the right code, and
+here it is:
+
+
+
+:::{image} images/6281271612553002185.jpg
+
+:::
+
+
+I must say I'm not entirely happy about it. Due to changes in
+CircuitPython 5.x, the interrupts are not as stable as they used to
+be, and you can see the LEDs flickering a little, which is annoying.
+Lack of a diffuser also makes it look worse than the very first
+version of {ref}`project-21578` with the bi-color matrix.
+
+The touch pads are tricky. The direction pads are a bit too close
+together and it's hard to use them — it's expected, but there simply
+isn't more space on the PCB for it. At the same time, despite my
+efforts to route the traces for the touch pads out of the way, it's
+easy to accidentally touch them on them back of the PCB.
+
+Generally, considering the huge amount of work needed to get this
+working, and the rather mediocre end result, I think I will stop with
+this prototype and not pursue this more. It was a good experiment, but
+I think the end result is not great.
+

@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>A New Plan - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="a-new-plan">
+<h1>A New Plan<a class="headerlink" href="#a-new-plan" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2021-06-24 in <a class="reference internal" href="../#project-180472"><span class="std std-ref">Home Button for Keyboards</span></a>.</p>
+<p>I tried to fix the connection between the flex PCB and the PCB, but it
+looks hopeless. I ended up ripping the pad off of one of the sensors.
+I think I need to re-think this.</p>
+<p>At this point, the easiest way forward seems to be to find the correct
+mezzanine connector for the Blackberry 8520 sensor — after all I even
+have a ready pinout for it! After some searching, it seems that
+something called DF30FB-20DS-0.4V should fit. I have ordered it, and
+we will see.</p>
+<p>In the mean time, I can prepare the footprint for it. The datasheet
+gives me a recommended pattern:</p>
+<img alt="projects/project-180472/images/3939801624526368202.png" src="projects/project-180472/images/3939801624526368202.png" />
+<p>Replicating this in Inkscape just takes a few moments:</p>
+<img alt="projects/project-180472/images/5362061624526430300.png" src="projects/project-180472/images/5362061624526430300.png" />
+<p>Now I just need to quickly design a PCB, and hopefully the connector
+and the PCB will both arrive at about the same time.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

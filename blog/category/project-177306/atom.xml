@@ -1,0 +1,244 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>http://deshipu.art/</id>
+  <title>deshipu.art - Posts in project-177306</title>
+  <updated>2024-08-07T20:34:13.049551+00:00</updated>
+  <link href="http://deshipu.art/"/>
+  <link href="http://deshipu.art/blog/category/project-177306/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-177306/log-188981/</id>
+    <title>The Assembly</title>
+    <updated>2021-02-04T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="the-assembly"&gt;
+
+&lt;p&gt;Published on 2021-02-04 in &lt;a class="reference internal" href="../../../projects/project-177306/#project-177306"&gt;&lt;span class="std std-ref"&gt;PewPew Slim&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;You would think this is the perfect case for the SMT Assembly service
+offered by JLCPCB — all components on one side, no sockets, a lot of
+tiny parts that are best assembled by a machine. Unfortunately, they
+don’t do 0.6mm boards, and that’s a hard requirement here. Also, their
+service doesn’t accept Fritzing’s PNP files, so I would have to write
+one manually, specifying the placement of all the 64 LEDs. So I
+decided that I will try and assemble at least one prototype by hand,
+using a hot air gun.&lt;/p&gt;
+&lt;img alt="projects/project-177306/images/8332781612475525324.jpg" src="projects/project-177306/images/8332781612475525324.jpg" /&gt;
+&lt;p&gt;Even before I started the assembly, I noticed a small problem — there
+is an extra trace in the LED matrix on the bottom side, connecting two
+rows that should not be connected. Can you spot it? In any case, a
+quick cut with a knife solved that. The final version will have that
+fixed, of course.&lt;/p&gt;
+&lt;p&gt;Another problem I noticed is that the footprint for those LEDs, which
+was recommended by the Aliexpress seller, is really a minimal
+footprint, with nothing sticking out from under the LED. That means
+that hot air is the only way I can solder it. Next version will have
+minimally larger pads, as much as space permits.&lt;/p&gt;
+&lt;p&gt;I didn’t yet have the smaller LDO, so I made the footprint for it
+double, so that I can use either the larger or the smaller one. I’m
+using the larger one during the tests, later the smaller one arrived
+and I replaced it. The final version will only have the smaller
+footprint.&lt;/p&gt;
+&lt;p&gt;Finally, I’m not happy with the vias inside the microcontroller
+footprint. This chip has a thermal pad, and the solder mask that
+JLCPCB uses is really thin and easy to scratch, so I’m worried about
+shorts in there. For now I put a bit of kapton tape there, but that
+makes the chip sit a bit higher than it should. I will have to see if
+I can somehow move that.&lt;/p&gt;
+&lt;img alt="projects/project-177306/images/2460431612476008497.jpg" src="projects/project-177306/images/2460431612476008497.jpg" /&gt;
+&lt;p&gt;My first approach to the assembly was optimistic. I just tinned the
+pads, heated the solder with the gun and placed each of the LEDs. I
+had two stripes of 50, that’s why you can see two different colors in
+there — whiter and more yellowish. I expected some of the LEDs to not
+work and have to be reworked, but I didn’t expect what actually
+happened.&lt;/p&gt;
+&lt;p&gt;I flashed the firmware with the code for the old &lt;a class="reference internal" href="../../../projects/project-159733/#project-159733"&gt;&lt;span class="std std-ref"&gt;PewPew Standalone&lt;/span&gt;&lt;/a&gt;  — it should work, it would just use only one side of the LEDs, with
+one color. Once I have that working, I can work on improved code that
+would handle both colors. Unfortunately what I got as a result is
+quite random. Multiple LEDs on both rows and columns seem to be
+shorted together, lighting up in groups and in random colors. I guess
+my soldering job was worse than I expected.&lt;/p&gt;
+&lt;p&gt;So now I’m doing a second attempt.&lt;/p&gt;
+&lt;img alt="projects/project-177306/images/8734201612476384396.jpg" src="projects/project-177306/images/8734201612476384396.jpg" /&gt;
+&lt;p&gt;I wrote this simple test program, that lights up each LEDs in each
+color for a short moment:&lt;/p&gt;
+&lt;div class="highlight-default notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;board&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;digitalio&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;time&lt;/span&gt;
+
+&lt;span class="n"&gt;_rows&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="n"&gt;digitalio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DigitalInOut&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_R1&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="n"&gt;digitalio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DigitalInOut&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_R2&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="n"&gt;digitalio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DigitalInOut&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_R3&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="n"&gt;digitalio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DigitalInOut&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_R4&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="n"&gt;digitalio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DigitalInOut&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_R5&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="n"&gt;digitalio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DigitalInOut&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_R6&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="n"&gt;digitalio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DigitalInOut&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_R7&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="n"&gt;digitalio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DigitalInOut&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_R8&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;_cols&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="n"&gt;digitalio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DigitalInOut&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_C1&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="n"&gt;digitalio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DigitalInOut&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_C2&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="n"&gt;digitalio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DigitalInOut&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_C3&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="n"&gt;digitalio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DigitalInOut&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_C4&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="n"&gt;digitalio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DigitalInOut&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_C5&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="n"&gt;digitalio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DigitalInOut&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_C6&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="n"&gt;digitalio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DigitalInOut&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_C7&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="n"&gt;digitalio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DigitalInOut&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_C8&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;row&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;_rows&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;switch_to_output&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;col&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;_cols&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;col&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;switch_to_output&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;time&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sleep&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;0.25&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;col&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;switch_to_input&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;switch_to_output&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;col&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;_cols&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;col&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;switch_to_output&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;time&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sleep&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;0.25&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;col&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;switch_to_input&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;switch_to_input&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Now I am soldering one LED at a time and running the test after each.
+Obviously this is taking much more time, and is much more work, but
+hopefully I only need to do it once to get the prototype to work. Once
+I have the firmware ready, the next version with larger pads can be
+assembled in a fab, with solder paste, stencil and a pnp machine.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-177306/log-188981/" rel="alternate"/>
+    <summary>Published on 2021-02-04 in project-177306.</summary>
+    <published>2021-02-04T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-177306/log-188979/</id>
+    <title>The Design</title>
+    <updated>2021-02-04T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="the-design"&gt;
+
+&lt;p&gt;Published on 2021-02-04 in &lt;a class="reference internal" href="../../../projects/project-177306/#project-177306"&gt;&lt;span class="std std-ref"&gt;PewPew Slim&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I always wanted to make a version of the PewPew with discrete LEDs,
+but it didn’t make much sense for many reasons. It looks worse, as you
+lose the diffuser that is built into the LED matrix, and it costs
+more, even if individual LEDs are cheaper, having to solder them all
+makes the costs grow. The resulting display is smaller, but PewPew’s
+display is already too small, and people prefer the versions with
+larger matrices. Finally I convinced myself of two advantages: first,
+it’s really slim, as the LED matrices are usually really thick, and
+individual LEDs aren’t, and second, I can use bi-color LEDs to get
+back to the original color display experience.&lt;/p&gt;
+&lt;p&gt;Once I started to optimize for flatness, other decisions came
+naturally: touch pads in place of buttons, and USB socket cut out of
+the PCB itself.&lt;/p&gt;
+&lt;p&gt;If we want to keep it thin, of course we need to drop the battery, and
+without the battery we don’t need the power switch (though I am
+leaving footprints for both of them on the back, so they can be added
+later by the user).&lt;/p&gt;
+&lt;p&gt;The final touch is replacing the thickest part, the voltage regulator,
+with one in a slightly smaller (and thinner) package.&lt;/p&gt;
+&lt;img alt="projects/project-177306/images/2015481612474844010.png" src="projects/project-177306/images/2015481612474844010.png" /&gt;
+&lt;img alt="projects/project-177306/images/244191612474855746.png" src="projects/project-177306/images/244191612474855746.png" /&gt;
+&lt;p&gt;The LEDs are connected in a cross-linked fashion, so that sending
+current one way will light up one color, and the other way the other
+color. I will be alternating that really fast, so you can get both
+colors too. This requires some custom C code to be added to the _pew
+library in CircuitPython, but it’s nothing complicated, and keeps the
+number of pins needed by the matrix the same.&lt;/p&gt;
+&lt;p&gt;Routing the traces for the touch pads is a bit of a challenge, because
+you don’t want the user to touch the traces accidentally while
+playing. So I’ve hidden the vias under the microcontroller chip
+(removing the thermal pad and making sure the vias are tented), and
+routed everything at the top, as far away from fingers as possible.&lt;/p&gt;
+&lt;p&gt;Finally, for easy programming, I broke out the SWD and SWC pins (which
+are also used to drive the LEDs) to a header of staggered holes on the
+side. You can insert a male pin header in there temporarily, and
+remove it when flashing the firmware is done.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-177306/log-188979/" rel="alternate"/>
+    <summary>Published on 2021-02-04 in project-177306.</summary>
+    <published>2021-02-04T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-177306/log-189008/</id>
+    <title>The Prototype</title>
+    <updated>2021-02-05T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="the-prototype"&gt;
+
+&lt;p&gt;Published on 2021-02-05 in &lt;a class="reference internal" href="../../../projects/project-177306/#project-177306"&gt;&lt;span class="std std-ref"&gt;PewPew Slim&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;It took longer than anticipated, but with checking after each diode, I
+finally managed to get all of them properly soldered without any
+shorts. Then I made a branch of CircuitPython with the right code, and
+here it is:&lt;/p&gt;
+&lt;img alt="projects/project-177306/images/6281271612553002185.jpg" src="projects/project-177306/images/6281271612553002185.jpg" /&gt;
+&lt;p&gt;I must say I’m not entirely happy about it. Due to changes in
+CircuitPython 5.x, the interrupts are not as stable as they used to
+be, and you can see the LEDs flickering a little, which is annoying.
+Lack of a diffuser also makes it look worse than the very first
+version of &lt;a class="reference internal" href="../../../projects/project-21578/#project-21578"&gt;&lt;span class="std std-ref"&gt;PewPew FeatherWing&lt;/span&gt;&lt;/a&gt; with the bi-color matrix.&lt;/p&gt;
+&lt;p&gt;The touch pads are tricky. The direction pads are a bit too close
+together and it’s hard to use them — it’s expected, but there simply
+isn’t more space on the PCB for it. At the same time, despite my
+efforts to route the traces for the touch pads out of the way, it’s
+easy to accidentally touch them on them back of the PCB.&lt;/p&gt;
+&lt;p&gt;Generally, considering the huge amount of work needed to get this
+working, and the rather mediocre end result, I think I will stop with
+this prototype and not pursue this more. It was a good experiment, but
+I think the end result is not great.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-177306/log-189008/" rel="alternate"/>
+    <summary>Published on 2021-02-05 in project-177306.</summary>
+    <published>2021-02-05T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-177306/log-190308/</id>
+    <title>Going Bigger</title>
+    <updated>2021-03-11T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="going-bigger"&gt;
+
+&lt;p&gt;Published on 2021-03-11 in &lt;a class="reference internal" href="../../../projects/project-177306/#project-177306"&gt;&lt;span class="std std-ref"&gt;PewPew Slim&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I got a bunch of cheap rectangular pink LEDs, so I’m trying to do the
+same thing, but in the form factor of the original &lt;a class="reference internal" href="../../../projects/project-159733/#project-159733"&gt;&lt;span class="std std-ref"&gt;PewPew Standalone&lt;/span&gt;&lt;/a&gt; :&lt;/p&gt;
+&lt;img alt="projects/project-177306/images/5448231615465884461.png" src="projects/project-177306/images/5448231615465884461.png" /&gt;
+&lt;img alt="projects/project-177306/images/3352751615465891954.png" src="projects/project-177306/images/3352751615465891954.png" /&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-177306/log-190308/" rel="alternate"/>
+    <summary>Published on 2021-03-11 in project-177306.</summary>
+    <published>2021-03-11T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-177306/log-204673/</id>
+    <title>Bigger Version Done</title>
+    <updated>2022-04-06T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="bigger-version-done"&gt;
+
+&lt;p&gt;Published on 2022-04-06 in &lt;a class="reference internal" href="../../../projects/project-177306/#project-177306"&gt;&lt;span class="std std-ref"&gt;PewPew Slim&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;It only took me one year to finish the version from the previous log.
+Of course I assembled it as soon as the PCBs arrived, but I couldn’t
+get it to work, and I blamed bad soldering on the LEDs, which
+unfortunately couldn’t be easily corrected, as they have SMD
+footprints, and for practical reason of being arranged in a tight
+display, there is nothing sticking out.&lt;/p&gt;
+&lt;p&gt;After several attempts at getting it to work using my mini-hot plate,
+I mostly gave up on this.&lt;/p&gt;
+&lt;img alt="projects/project-177306/images/101451649271080880.jpg" src="projects/project-177306/images/101451649271080880.jpg" /&gt;
+&lt;p&gt;A few days ago I went and tried to assemble a second PCB, this time
+using a more common LED footprint, that could be soldered by hand and
+easily reworked. And of course it didn’t work either. So I desoldered
+all but one LEDs, and started investigating, and turns out this whole
+time I had the rows and columns switched. Duh.&lt;/p&gt;
+&lt;p&gt;So I went back to the original unit, switched the rows and columns,
+and what do you know, it worked, with only a few “bad pixels” due to
+soldering. But those were easy enough to fix using the hot plate, so
+now I have a fully working unit. I might also finish the second one
+with regular LEDs, but soldering them by hand is a bit of a chore, so
+we will see.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-177306/log-204673/" rel="alternate"/>
+    <summary>Published on 2022-04-06 in project-177306.</summary>
+    <published>2022-04-06T00:00:00+02:00</published>
+  </entry>
+</feed>

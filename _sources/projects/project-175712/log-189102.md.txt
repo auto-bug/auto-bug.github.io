@@ -1,0 +1,56 @@
+---
+blogpost: true
+date: 2021-02-08
+category: project-175712
+---
+
+# First Module
+Published on 2021-02-08 in {ref}`project-175712`.
+
+Remember how I tricked myself into not diving into the rabbit hole of
+what could be possibly placed in the middle of this keyboard by making
+an expansion module header in there? Well, it would be nice to
+actually have a module to place there. So I designed this:
+
+
+
+:::{image} images/200951612807891532.jpg
+
+:::
+
+
+It's a basic set: a joystick for mouse emulation, two buttons for
+mouse clicks, and an encoder knob for scrolling. The PCB was super-
+basic:
+
+
+
+:::{image} images/3278591612807952617.png
+
+:::
+
+
+I also placed some LEDs for "backlight" in there, but since I ran out
+of pins to control it, I just added a simple mechanical switch:
+
+
+
+:::{image} images/2272291612807998281.png
+
+:::
+
+
+It doesn't work too great:
+
+
+
+:::{image} images/4403561612808045082.jpg
+
+:::
+
+
+Probably side-mounted LEDs would have been better.
+
+I still need to write the code for the encoder, but since
+CircuitPython has a ready library for it, it shouldn't be too hard.
+

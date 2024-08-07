@@ -1,0 +1,47 @@
+---
+blogpost: true
+date: 2021-03-05
+category: project-178061
+---
+
+# Challenges
+Published on 2021-03-05 in {ref}`project-178061`.
+
+You might think that there is absolutely nothing challenging in simply
+connecting a screen and a bunch of buttons to a microcontroller
+development board, and you would be right. I have done it so many
+times by now, that it should be simple even for me. However, as the
+saying goes, the devil is in the details.
+
+First of all, this is the first time I'm using the Raspberry Pi Pico
+development board, and it's not like other development boards out
+there. On one hand, it has a build-in buck-boost converter, which
+makes it nice to use with the batteries, on the other hand it doesn't
+have the power switching circuitry that disables battery when USB is
+connected — so there is an extra bit of electronics with a MOSFET
+needed to be added. I'm worried about this, because I have always had
+bad experiences with power circuits like that.
+
+Next is the audio output. On my previous consoles, there simply was a
+DAC pin, where you connected the speaker or the amplifier and speaker,
+and you were done. Here the audio output is PWM-based, and I will need
+a low-pass filter to smooth it a bit before feeding to an amplifier.
+Plus, I want to have a volume control, but the only small sliding
+potentiometer I found is around 9kΩ, which is a bit low to just make
+it a simple voltage divider. Some experimenting will be needed, and
+again, analog circuits are scary.
+
+Then there is the display backlight. It uses four internal LEDs, and I
+could do what I did previously, just connect them straight to the
+battery with a current-limiting resistor. But it would be nice to have
+backlight control, and even a light sensor, to adjust the backlight
+brightness to the environment. More scary transistors and analog
+circuits to worry about.
+
+Finally, and that is going to actually take the most work, there is
+the question of design. Selecting the best (both in terms of
+functionality and price) components, and finding an arrangement of
+them that is both functional and aesthetically pleasing. Designing the
+shape of the device, its case and its controls. I have already done
+some work on this, much much more remains.
+

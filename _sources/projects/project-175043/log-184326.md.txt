@@ -1,0 +1,43 @@
+---
+blogpost: true
+date: 2020-10-01
+category: project-175043
+---
+
+# Joystick
+Published on 2020-10-01 in {ref}`project-175043`.
+
+There is a conveniently large empty area smack in the middle of this
+PCB, and it makes me have ideas. The most obvious one is to put a
+display there — then not only I can see any messages or exceptions
+from the CircuitPython code running on it, but I can also display
+things. Or, like, have menus and settings. A library of Unicode
+characters and emoticons. Fancy animations. Sky is the limit. But then
+I would probably also want an external flash storage and a SAMD51
+microcontroller with more memory, so I guess I will not do that.
+
+Another thing I could put there is something that would let me not
+have to take my hand off the keyboard to move the mouse. A trackball,
+for example. Or a touchpad. Or, you know, one of those cheap tiny
+joysticks they use in handheld consoles. That seems like a reasonable
+idea, and I can always simply not populate those footprints if I
+change my mind.
+
+I also added a pair of tact switches on both sides, for the mouse
+buttons. Still tempted to add an encoder wheel with a third button,
+but I only have the kind that is mounted flat on the edge of the PCB,
+and that doesn't work with this design.
+
+
+
+:::{image} images/4083771601503100301.png
+
+:::
+
+
+I'm still considering adding a few LEDs on the free pins, for things
+like CapsLock or layer switching indicators.
+
+I'm also closer to actually ordering the board and the switches,
+especially with the utter failure of the {ref}`project-174982` project, since that means I actually *need* this keyboard.
+

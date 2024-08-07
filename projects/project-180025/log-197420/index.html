@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Brain Replacement Again - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="brain-replacement-again">
+<h1>Brain Replacement Again<a class="headerlink" href="#brain-replacement-again" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2021-09-03 in <a class="reference internal" href="../#project-180025"><span class="std std-ref">Fluffbug</span></a>.</p>
+<p>Since I am working on a new revision of the PCB, to incorporate the
+improvements suggested during the mentoring session, and some of the
+ideas I had since, I’m also wondering whether the choice of the
+microcontroller for this robot is still optimal.</p>
+<p>I have chosen the SAMD21 for several reasons: it runs CircuitPython,
+which is important for me, because I want this robot to be easy to
+program; it’s a relatively cheap chip, and requires very few extra
+components; it has just enough peripherals to drive all the hardware
+that is needed; and, last but not least, I have become familiar with
+it through all the other projects I used it in.\</p>
+<p>However, several years have passed, and situation has changed
+considerably. We are in the middle of a chip shortage, which not only
+changed the prices of the chips, but also their availability — meaning
+that even with the higher prices there is no guarantee of getting the
+chip I need. Development of CircuitPython has progressed greatly, and
+it’s now available for many more platforms. New chips were released,
+alongside development boards for them. Perhaps it’s time to re-
+evaluate my options.</p>
+<p>There are in particular two new chips that are supported by
+CircuitPython, relatively cheap, and available despite the global
+shortage: the ESP32S2 and the RP2040.\</p>
+<p>There is one more change that is affecting hobby electronics worldwide
+— the European Union has started to crack down on the tax and
+certification regulations, which, while mostly unchanged, suddenly
+started to be enforced. Suddenly you can’t just sell your hobby
+projects, claiming it’s up to the buyer to ensure they fit whatever
+regulations apply — individual hobbyists are suddenly required to
+perform CE certification, register for VAT and WEEE, and conform to
+RoHS. All this taken together means that I will probably not be able
+to bring this project to users by simply producing a few dozen PCBs
+and selling them on Tindie. I will probably need to limit myself to
+just publishing the design files, and let the users order and assemble
+everything themselves. And this means that suddenly ready development
+boards look much more appealing than a bare chip in QFN form factor —
+not that it’s so hard to solder QFN by hand, but people tend to be
+scared of it. So I feel like I should be looking at development
+boards, and not bare chips here.</p>
+<img alt="projects/project-180025/images/7168161630621595306.jpg" src="projects/project-180025/images/7168161630621595306.jpg" />
+<p>Raspberry Pi Pico is of course one of the boards that I am
+considering. Produced by the Raspberry Pi Foundation in bulk, it’s
+actually cheaper than what I could make with a bare chip and required
+components. And unlike the Feathers, it has enough pins to drive all
+the servos and have a lot to spare for any additional hardware and
+expansions. Unfortunately, also unlike Feathers, it comes without a
+battery charging circuit, or even a power switching circuit, so the
+PCB for the robot would need to include both, in addition to the
+battery protection chip I already have there. The buck/boost converter
+is a nice touch, but it doesn’t help me in this case, where I need to
+power the servos directly from the LiPO battery anyways. Another
+downside is a lack of shields for this form factor — they basically
+came up with their own thing. So I would either need to make my own
+shields for anything extra I wanted to put on the robot, or put
+additional headers for shields on the PCB, effectively making an
+adapter board. Both options don’t sound so bad, but there is some
+extra consideration here.</p>
+<img alt="projects/project-180025/images/1388471630622043342.png" src="projects/project-180025/images/1388471630622043342.png" />
+<p>Another option to consider is the WEMOS S2 Mini. I really loved the D1
+Mini form factor, and I have made many shields for it. This board is
+compatible with that, but it adds another row of pins on both sides. I
+could make the robot make use of the inner pins internally, and leave
+the outer ones to be used by shields. It also comes with wireless
+capability, which could make it much easier to control the robot, and
+even send telemetry back. To make things even more interesting, there
+is a new  <a class="reference external" href="https://circuitpython.readthedocs.io/projects/ov2640/en/latest/index.html">adafruit_ov2640 module in CircuitPython</a> , allowing taking pictures, and possibly sending them over WiFi or
+even processing them on the chip. It can also be used with the Pico,
+but then what will I do with the image, without connectivity?</p>
+<p>I’m currently leaning towards the S2 Mini, even though I haven’t yet
+figured out how to place the board on the PCB so that the antenna is
+not next to the servo motors. I’m still waiting for the boards I
+ordered to arrive, though.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

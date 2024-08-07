@@ -1,0 +1,56 @@
+---
+blogpost: true
+date: 2021-06-15
+category: project-180309
+---
+
+# The pew Library
+Published on 2021-06-15 in {ref}`project-180309`.
+
+At the heart of every PewPew device is the pew Python library, which
+gives you access to the 8x8 screen and buttons. That library is
+different on different devices, but gives your code a consistent
+interface, so that a PewPew game written on one device will work on
+any other. I already had a version of the pew library for the SH1106
+OLED screen, but it was written before displaio had support for those
+screens, and just talks to the screen directly over SPI.
+
+This time I wanted to use the higher-level capabilities of displayio —
+mostly because then when your program raises an exception, you can see
+it on the screen and read the error without having to use the serial
+connection. Unfortunately, doing it the naive way, by using TileGrid,
+would be too slow. So I went for a kind of compromise — I still
+generate the data to be sent to the display myself, but then I use the
+FourWire bus object on the board.DISPLAY to send that data to the
+display:
+
+
+```
+def show(pix):
+    pix_buffer = pix.buffer
+    bus = board.DISPLAY.bus
+    for y in range(8):
+        pix_index = pix.width * y
+        index = 0
+        board.DISPLAY.bus.send(0x0a, b'')
+        board.DISPLAY.bus.send(0x11, b'')
+        for x in range(8):
+            bus.send(0xb0|y, _PATTERNS[pix_buffer[pix_index]])
+            index += 10
+            pix_index += 1
+```
+
+The 0x0a and 0x11 commands send the column to 24 (to center the
+image), and the 0xb0|y command sets the row to the value of y. Then I
+just keep sending the pre-defined pattern data for the current pixel,
+in chunks of 10 bytes. Simple yet effective.
+
+
+
+:::{image} images/2488171623765477895.gif
+
+:::
+
+
+Of course now all the PewPew games will work on this device.
+

@@ -1,0 +1,78 @@
+---
+blogpost: true
+date: 2020-09-30
+category: project-174982
+---
+
+# Friends Don't Let Friends Buy Kailh Sunken Switches
+Published on 2020-09-30 in {ref}`project-174982`.
+
+As promised, a detailed description of what is wrong with those
+switches and why both Flounder and Turbot are failures thank to them.
+I just want to say that this is a problem I only have with the sunken
+low-profile switches from Kailh specifically. I have used their other
+low-profile switches in a number of different keyboards, and only have
+good things to say about them. I don't know if this problem is
+specific to the batch I received or generally to all sunken switches
+they make. But after this, I don't think I will be getting any more of
+them any time soon.
+
+Let's start by introducing our culprit. It's the [Kailh CPG123201D01 switch](https://www.kailhswitch.com/mechanical-keyboard-switches/low-profile-key-switches/dip-brown-key-switches.html) .  It belongs to the family of so-called "chocolate" switches —
+mechanical keyboard switches that have short key travel and a low
+profile. They also differ from regular "box" switches with price —
+they are almost twice more expensive. But if you want your keyboard to
+be thin, it's the best you can get. Those particular ones allow you to
+make it even thinner by making the switch "sunken" — part of the
+mechanism actually goes into a hole in the PCB, making the whole
+assembly a millimetre or two thinner still. Of course it makes the PCB
+design a bit more complicated, as you have to include all those holes,
+and then route tracks around them, but I decided it was worth the
+effort.
+
+One interesting thing about all those "choc" switches is that the
+clicking mechanism (or tactile feedback, for the non-clicky ones) is
+separate from the contact mechanism. This animated GIF shows this
+nicely (it's for a non-sunken version):
+
+
+
+:::{image} images/8380251601500205421.gif
+
+:::
+
+
+The spring on the left (called "click bar") is responsible for the
+clicking, but the actual contacts are on the right. Now, if you look
+at the datasheet linked from the manufacturer's page, you will find,
+among the footprints and dimensions, this handy graph representing the
+force required to press the button versus the travel of the key:
+
+
+
+:::{image} images/4550761601500391232.png
+
+:::
+
+
+You can also see three points marked on that graph: the "pressure
+point" is when the click happens, the "operating point" is supposed to
+be where the contact happens, and "reset point" is where the contact
+stops. In theory, at least.
+
+The switches I have work quite differently to what this graph shows.
+They click when you press the key less than one millimetre — so far so
+good — but then the contact doesn't happen until they bottom out
+completely — that is, until the reach the maximum travel of 2.4mm.
+
+Sufficient to say that this makes the switches seem extremely
+unreliable. You are typing happily, hearing the satisfying clicks,
+only to discover that most of the keystrokes didn't register at all.
+You have to push the key all the way down to make it do anything. It's
+extremely annoying.
+
+I don't know if this is just a faulty batch, or if it's something I
+did with them that made them work this way. Or maybe there is some way
+to fix them (if you know any, please leave a comment). All I know that
+as it is this keyboard, and any other I might ever make with those
+switches, it's completely unusable.
+

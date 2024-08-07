@@ -1,0 +1,44 @@
+---
+blogpost: true
+date: 2022-02-24
+category: project
+tags:  ongoing project, hardware
+image: 1
+---
+
+# Vegemite Sandwich Keyboard
+
+Will ESP32-S3 work in a keyboard?
+
+<div class="project-thumb">
+
+:::{image} images/1075201645736111353.jpg
+:target: /_images/1075201645736111353.jpg
+:::
+
+</div>
+
+
+    The ESP32-S3 is the first Espressif board that has both true USB and
+Bluetooth, so naturally you have to wonder if it's any good for
+keyboards. I decided to try and see.
+
+I'm using [@Unexpected Maker](https://hackaday.io/hacker/264362) 's [TinyS3](https://tinys3.com)  boards that just arrived from Australia, hence the board's name. And
+the fact it's shaped a little bit like a sandwich, if you squint a
+little.
+
+It's also my first board where I'm using switch sockets, so you can
+rearrange and replace the switches on it as you like.
+
+
+
+
+
+## Logs
+
+:::{postlist}
+:category: project-184163
+:::
+
+## Instructions
+

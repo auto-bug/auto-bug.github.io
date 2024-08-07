@@ -1,0 +1,22 @@
+---
+blogpost: true
+date: 2022-03-13
+category: project-180025
+---
+
+# First Steps
+Published on 2022-03-13 in {ref}`project-180025`.
+
+Today I decided to make this robot walk, however awkward a walk it
+will be. I didn't write the code for smooth movement of the servos, so
+it's all jerky and crude, but it is something.
+
+
+<iframe style="width: 500px; height: 281px;" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/4im_sJio0rM"></iframe>
+
+The most important change now is to make the tiling of the body
+smoother. Right now it's really unacceptably sudden, and since it
+moves the whole robot, it puts a lot of strain on the servos. Next
+will come fine-tuning of the step size and movement speed. Once I have
+it all reasonably smooth, I will experiment with turning.
+

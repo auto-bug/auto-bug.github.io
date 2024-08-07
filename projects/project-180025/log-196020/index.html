@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Cable Management - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="cable-management">
+<h1>Cable Management<a class="headerlink" href="#cable-management" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2021-07-31 in <a class="reference internal" href="../#project-180025"><span class="std std-ref">Fluffbug</span></a>.</p>
+<p>Cable management is a big problem when you have a moving construction
+with eight servos. It doesn’t help that by default the servos come
+with relatively long cables, and this three-pin plug on the end, that
+is hard to replace without special tools:</p>
+<img alt="projects/project-180025/images/4831521627742089083.jpg" src="projects/project-180025/images/4831521627742089083.jpg" />
+<p>Of course it would be best if you could just take that plug and plug
+it into the PCB, but then you need to do something with good 20cm of
+extra cable.</p>
+<p>We brainstormed about this problem, among other things, during the
+hackaday prize mentoring session with Kliment Yanev, and he came up
+with an ingenious solution that just might work. Yes, you need to get
+rid of the default plug, and the spurious cable, but then you are left
+with the problem of either soldering the remaining cable directly to
+the PCB, or attaching a different plug. Turns out there are plugs out
+there that are very simple to attach, and quite popular and easy to
+get. Kliment suggested I can use the plug that is commonly used for
+the ribbon cables:</p>
+<img alt="projects/project-180025/images/4330411627742335917.jpg" src="projects/project-180025/images/4330411627742335917.jpg" />
+<p>They have those blades in them, that bite into the cable when you
+press the tab on top, and make a secure contact. Furthermore, we are
+not increasing the price a lot, because you can use a single plug for
+multiple servos. Sure, this makes them harder to replace, which is a
+downside, but I think I can live with that.</p>
+<p>Unfortunately, this also means we will need a PCB redesign — the way
+this plug connects with the cables, we will need a completely
+different pattern of pins for it. Oh, and we can’t put the sockets for
+those plugs in the same place on opposite sides of the pcb, not
+easily, anyways, so I will need to think about where to best place
+them. But I like the idea and I’m going to give it a try.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

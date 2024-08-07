@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Mouse Emulation - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="mouse-emulation">
+<h1>Mouse Emulation<a class="headerlink" href="#mouse-emulation" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2020-10-21 in <a class="reference internal" href="../#project-175043"><span class="std std-ref">Flatreus Keyboard</span></a>.</p>
+<p>I’ve got the boards, I have them assembled, all I am still waiting for
+are the switches, which are already in customs. With the board
+assembled, I have the joystick working, so I can as well write the
+code for that.</p>
+<img alt="projects/project-175043/images/1623111603304175305.jpg" src="projects/project-175043/images/1623111603304175305.jpg" />
+<p>For now, just for testing, I wrote this short program just to see how
+well it would work:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">board</span>
+<span class="kn">import</span> <span class="nn">analogio</span>
+<span class="kn">import</span> <span class="nn">digitalio</span>
+<span class="kn">import</span> <span class="nn">usb_hid</span>
+
+<span class="n">mx</span> <span class="o">=</span> <span class="n">analogio</span><span class="o">.</span><span class="n">AnalogIn</span><span class="p">(</span><span class="n">board</span><span class="o">.</span><span class="n">A6</span><span class="p">)</span>
+<span class="n">my</span> <span class="o">=</span> <span class="n">analogio</span><span class="o">.</span><span class="n">AnalogIn</span><span class="p">(</span><span class="n">board</span><span class="o">.</span><span class="n">A2</span><span class="p">)</span>
+<span class="n">lmb</span> <span class="o">=</span> <span class="n">digitalio</span><span class="o">.</span><span class="n">DigitalInOut</span><span class="p">(</span><span class="n">board</span><span class="o">.</span><span class="n">A1</span><span class="p">)</span>
+<span class="n">lmb</span><span class="o">.</span><span class="n">switch_to_input</span><span class="p">(</span><span class="n">pull</span> <span class="o">=</span> <span class="n">digitalio</span><span class="o">.</span><span class="n">Pull</span><span class="o">.</span><span class="n">UP</span><span class="p">)</span>
+<span class="n">rmb</span> <span class="o">=</span> <span class="n">digitalio</span><span class="o">.</span><span class="n">DigitalInOut</span><span class="p">(</span><span class="n">board</span><span class="o">.</span><span class="n">A5</span><span class="p">)</span>
+<span class="n">rmb</span><span class="o">.</span><span class="n">switch_to_input</span><span class="p">(</span><span class="n">pull</span> <span class="o">=</span> <span class="n">digitalio</span><span class="o">.</span><span class="n">Pull</span><span class="o">.</span><span class="n">UP</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">device</span> <span class="ow">in</span> <span class="n">usb_hid</span><span class="o">.</span><span class="n">devices</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">device</span><span class="o">.</span><span class="n">usage</span> <span class="o">==</span> <span class="mh">0x02</span> <span class="ow">and</span> <span class="n">device</span><span class="o">.</span><span class="n">usage_page</span> <span class="o">==</span> <span class="mh">0x01</span><span class="p">:</span>
+        <span class="k">break</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;no HID mouse device&quot;</span><span class="p">)</span>
+
+<span class="n">report</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">last_empty</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">value</span> <span class="o">-</span> <span class="mh">0x7fff</span> <span class="o">+</span> <span class="mi">2500</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="mh">0x7fff</span> <span class="o">-</span> <span class="n">my</span><span class="o">.</span><span class="n">value</span> <span class="o">-</span> <span class="mi">500</span>
+    <span class="n">report</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span><span class="ow">not</span> <span class="n">lmb</span><span class="o">.</span><span class="n">value</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">|</span> <span class="p">((</span><span class="ow">not</span> <span class="n">rmb</span><span class="o">.</span><span class="n">value</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="nb">abs</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">4500</span><span class="p">:</span>
+        <span class="n">report</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="o">-</span><span class="mi">127</span><span class="p">,</span> <span class="n">x</span> <span class="o">&gt;&gt;</span> <span class="mi">11</span><span class="p">),</span> <span class="mi">127</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xff</span>
+        <span class="n">report</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="o">-</span><span class="mi">127</span><span class="p">,</span> <span class="n">y</span> <span class="o">&gt;&gt;</span> <span class="mi">11</span><span class="p">),</span> <span class="mi">127</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xff</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">report</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">report</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">if</span> <span class="n">report</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">or</span> <span class="n">report</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">or</span> <span class="n">report</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span>
+        <span class="n">last_empty</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">device</span><span class="o">.</span><span class="n">send_report</span><span class="p">(</span><span class="n">report</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="ow">not</span> <span class="n">last_empty</span><span class="p">:</span>
+        <span class="n">last_empty</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">device</span><span class="o">.</span><span class="n">send_report</span><span class="p">(</span><span class="n">report</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>It’s very simple, almost self-explanatory. The only thing that
+complicates it is the addition of a “dead zone” — an area around the
+center where the mouse doesn’t move at all. Without it the cursor
+would be always slowly drifting one way or another, which would be
+pretty annoying.</p>
+<p>Unfortunately, the way I implemented the dead zone here is not very
+good, because it forces you to move the mouse cursor with a certain
+minimal speed — below that speed the cursor won’t move at all. A
+better solution would be to count the speed starting from the edge of
+the dead zone, but that is more math than I am ready for at the
+moment, as it would involve proportions. The horror.</p>
+<p>In any case, it seems to be working reasonably well, despite flooding
+USB with mouse events. I might also need to deal with that at some
+point — there is a lot of opportunity for tweaks here, including fancy
+stuff like logarithmic sensitivity.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

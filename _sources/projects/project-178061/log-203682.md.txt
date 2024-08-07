@@ -1,0 +1,37 @@
+---
+blogpost: true
+date: 2022-03-03
+category: project-178061
+---
+
+# It's Alive
+Published on 2022-03-03 in {ref}`project-178061`.
+
+I had some time to add the remaining resistors to the build, and to
+compile a version of CircuitPython with my _stage module included. It
+all went without too much problems.
+
+I quickly copied the screen initialization for displayio from
+Adafruit's ILI9341 driver, and copied all the other bits for the
+ugame.py file from other platforms, and voila, we have a working game
+console:
+
+
+
+:::{image} images/3986061646301283200.jpg
+
+:::
+
+
+What's still left to do:
+
+
+ 1. tweak the display registers to get rid of flickering
+ 1. compile firmware with the display initialization included in C
+ 1. get the pwm audio to work
+ 1. think about a case, perhaps?
+
+All in all, the large display is super-nice, and I'm also very happy
+with the light but clicky buttons. The position of the S2 Mini module
+is not great, but I can't think of any better way to place it.
+

@@ -1,0 +1,40 @@
+---
+blogpost: true
+date: 2021-12-03
+category: project-182342
+---
+
+# 1.2V and Version 2
+Published on 2021-12-03 in {ref}`project-182342`.
+
+Today the correct 1.2V LDO arrived, so I replaced it on the shield,
+replaced the camera sensor (in case I fried this one with the
+incorrect 1.5V) and tried again. And... nothing again.
+
+With the help of Jeff Epler, I checked the signals on various pins,
+and as far as my toy scope can tell, they are all correct. In other
+words, it should all work, but somehow doesn't.
+
+Next I'm going to look for a different example, not involving
+CircuitPython, to see if maybe that will work. I also have a Chinese
+module with the same camera, that I want to try.
+
+In any case, the shield doesn't seem to need any electrical fixes, so
+I went ahead and ordered the second version, with slightly nicer
+traces, and i2c pins in a more traditional place — so it can be used
+together with other shields.
+
+
+
+:::{image} images/922431638488001988.png
+
+:::
+
+
+
+
+:::{image} images/1098911638488015159.png
+
+:::
+
+

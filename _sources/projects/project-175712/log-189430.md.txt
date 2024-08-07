@@ -1,0 +1,52 @@
+---
+blogpost: true
+date: 2021-02-17
+category: project-175712
+---
+
+# Module Code
+Published on 2021-02-17 in {ref}`project-175712`.
+
+I finally sat down today and wrote the firmware for that first module.
+It's rather simple, the joystick does mouse movement, with some dead
+zone in the middle (I can still improve the dead zone calculation, but
+it's good enough), the knob does scrolling (and I should add the
+ability to change volume using it with some function key), and the
+buttons are mouse buttons.
+
+
+```
+    def send_mouse_report(self):
+        report = bytearray(4)
+        report[0] = ((not self.lmb.value) << 0) | ((not self.rmb.value) << 1)
+        knob = self.knob.position
+        if self.last_knob != knob:
+            report[3] = max(-127, min(127, knob - self.last_knob)) & 0xff
+        self.last_knob = knob
+
+        x = self.mx.value - 0x7fff + 200
+        y = 0x7fff - self.my.value + 500
+        if x * x + y * y > 4000 * 4000:
+            if x > 0:
+                x = max(0, x - 4000)
+            else:
+                x = min(0, x + 4000)
+            if y > 0:
+                y = max(0, y - 4000)
+            else:
+                y = min(0, y + 4000)
+            report[1] = min(max(-127, x >> 10), 127) & 0xff
+            report[2] = min(max(-127, y >> 10), 127) & 0xff
+        else:
+            report[2] = 0
+            report[1] = 0
+        if report[0] or report[1] or report[2] or report[3]:
+            self.mouse_move = False
+            self.mouse_device.send_report(report)
+        elif not self.mouse_move:
+            self.mouse_move = True
+            self.mouse_device.send_report(report)
+```
+
+Not much to say, really. 
+

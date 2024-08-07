@@ -1,0 +1,193 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>A Touchpad - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="a-touchpad">
+<h1>A Touchpad<a class="headerlink" href="#a-touchpad" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2023-10-29 in <a class="reference internal" href="../#project-183834"><span class="std std-ref">Klap Keyboard</span></a>.</p>
+<p>I had this cirque touchpad thingy lying in my drawer for years now,
+planning to add it to the keyboard, but I never really had the time to
+look into it. It doesn’t help that the way you interface with it is by
+using an FPC ribbon cable, so you have to find the correct cable and
+connector. And then you have to write the code to actually make it
+work. Turns out, once all the pcbs and parts arrive, you can do it in
+a weekend.</p>
+<img alt="projects/project-183834/images/1768701698575117338.jpg" src="projects/project-183834/images/1768701698575117338.jpg" />
+<p>The PCB is pretty basic, it’s just the FPC connector and a pin header
+for plugging into the spare GPIO pins on my keyboard, together with
+three buttons for the mouse buttons. I made the hole for the fpc
+ribbon excessively large, just to be safe, but of course it doesn’t
+matter, because it’s covered by the touchpad anyways.</p>
+<img alt="projects/project-183834/images/8454641698575290167.jpg" src="projects/project-183834/images/8454641698575290167.jpg" />
+<p>I connected both the SPI and I2C pins, because I didn’t know which
+mode will be best, but that left me one pin short, so I connected the
+CS pin to GND permanently, since the touchpad is going to be the only
+thing on the bus. This might by why I couldn’t get the SPI mode to
+work, in retrospect. I also forgot to add the pull-up resistors on the
+I2C lines, but that was fortunately easily bodged.</p>
+<p>To work on the code more comfortably, without having to use a second
+keyboard, I made a debugging rig out of a spare half of a keyboard
+PCB.</p>
+<img alt="projects/project-183834/images/9149801698575471288.jpg" src="projects/project-183834/images/9149801698575471288.jpg" />
+<p>I used Adafruit Cirque Pinnacle CircuitPython library as the starting
+point, but it turned out to be way too big to fit on the tiny SAMD21
+chip I’m using on my keyboard, so I had to write a minimal version. It
+goes like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">micropython</span> <span class="kn">import</span> <span class="n">const</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">adafruit_bus_device.i2c_device</span> <span class="kn">import</span> <span class="n">I2CDevice</span>
+
+
+<span class="n">_STATUS</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x02</span><span class="p">)</span>
+<span class="n">_SYS_CONFIG</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x03</span><span class="p">)</span>
+<span class="n">_FEED_CONFIG_1</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x04</span><span class="p">)</span>
+<span class="n">_FEED_CONFIG_2</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x05</span><span class="p">)</span>
+<span class="n">_Z_IDLE</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x0A</span><span class="p">)</span>
+<span class="n">_PACKET_BYTE_0</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x12</span><span class="p">)</span>
+<span class="n">_CAL_CONFIG</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mh">0x07</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">Trackpad</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i2c</span><span class="p">,</span> <span class="n">address</span><span class="o">=</span><span class="mh">0x2a</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_i2c</span> <span class="o">=</span> <span class="n">I2CDevice</span><span class="p">(</span><span class="n">i2c</span><span class="p">,</span> <span class="n">address</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_write</span><span class="p">(</span><span class="n">_Z_IDLE</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x1e</span><span class="s1">&#39;</span><span class="p">)</span> <span class="c1"># 30 idle packets</span>
+        <span class="c1"># config data mode, power, etc</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_write</span><span class="p">(</span><span class="n">_SYS_CONFIG</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x00\x00\x00</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">while</span> <span class="bp">self</span><span class="o">.</span><span class="n">available</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+        <span class="c1"># calibrate</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_write</span><span class="p">(</span><span class="n">_CAL_CONFIG</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x1f</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">timeout</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">while</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">available</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">timeout</span><span class="p">:</span>
+                <span class="k">break</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+        <span class="c1"># rel mode config</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_write</span><span class="p">(</span><span class="n">_FEED_CONFIG_2</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x11</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="c1"># intellimouse</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_i2c</span> <span class="k">as</span> <span class="n">i2c</span><span class="p">:</span>
+            <span class="n">i2c</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;</span><span class="se">\xf3\xc8\xf3\x64\xf3\x50</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="c1"># feed enable</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_write</span><span class="p">(</span><span class="n">_FEED_CONFIG_1</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x01</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">available</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">flags</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read</span><span class="p">(</span><span class="n">_STATUS</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="n">flags</span> <span class="o">&amp;</span> <span class="mh">0x0c</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read</span><span class="p">(</span><span class="n">_PACKET_BYTE_0</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">clear</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">data</span>
+
+    <span class="k">def</span> <span class="nf">clear</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">post_delay</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_write</span><span class="p">(</span><span class="n">_STATUS</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x00</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">post_delay</span><span class="p">:</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.00005</span><span class="p">)</span>  <span class="c1"># per official examples from Cirque</span>
+
+    <span class="k">def</span> <span class="nf">_read</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reg</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">buf</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+        <span class="n">buf</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">reg</span> <span class="o">|</span> <span class="mh">0xa0</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_i2c</span> <span class="k">as</span> <span class="n">i2c</span><span class="p">:</span>
+            <span class="n">i2c</span><span class="o">.</span><span class="n">write_then_readinto</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="n">out_end</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">in_end</span><span class="o">=</span><span class="n">count</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">buf</span>
+
+    <span class="k">def</span> <span class="nf">_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reg</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
+        <span class="n">buf</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">byte</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
+            <span class="n">buf</span><span class="p">[</span><span class="n">index</span> <span class="o">*</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">reg</span> <span class="o">+</span> <span class="n">index</span><span class="p">)</span> <span class="o">|</span> <span class="mh">0x80</span>
+            <span class="n">buf</span><span class="p">[</span><span class="n">index</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">byte</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_i2c</span> <span class="k">as</span> <span class="n">i2c</span><span class="p">:</span>
+            <span class="n">i2c</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">buf</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>Then I had to just connect it to the uKeeb library I’m using, like
+this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Keeb</span><span class="p">(</span><span class="n">ukeeb</span><span class="o">.</span><span class="n">Keeb</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">i2c</span> <span class="o">=</span> <span class="n">busio</span><span class="o">.</span><span class="n">I2C</span><span class="p">(</span><span class="n">pin</span><span class="o">.</span><span class="n">PA09</span><span class="p">,</span> <span class="n">pin</span><span class="o">.</span><span class="n">PA08</span><span class="p">)</span>
+            <span class="n">i2c</span><span class="o">.</span><span class="n">try_lock</span><span class="p">()</span>
+            <span class="n">i2c</span><span class="o">.</span><span class="n">scan</span><span class="p">()</span>
+            <span class="n">i2c</span><span class="o">.</span><span class="n">unlock</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">RuntimeError</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">trackpad</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">return</span>
+        <span class="k">for</span> <span class="n">device</span> <span class="ow">in</span> <span class="n">usb_hid</span><span class="o">.</span><span class="n">devices</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">device</span><span class="o">.</span><span class="n">usage</span> <span class="o">==</span> <span class="mh">0x02</span> <span class="ow">and</span> <span class="n">device</span><span class="o">.</span><span class="n">usage_page</span> <span class="o">==</span> <span class="mh">0x01</span><span class="p">:</span>
+                <span class="k">break</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mouse_device</span> <span class="o">=</span> <span class="n">device</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">trackpad</span> <span class="o">=</span> <span class="n">trackpad</span><span class="o">.</span><span class="n">Trackpad</span><span class="p">(</span><span class="n">i2c</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">animate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">trackpad</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="k">while</span> <span class="bp">self</span><span class="o">.</span><span class="n">trackpad</span><span class="o">.</span><span class="n">available</span><span class="p">():</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">trackpad</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+            <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&amp;=</span> <span class="mh">0x07</span>
+            <span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">^=</span> <span class="mh">0xff</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">mouse_device</span><span class="o">.</span><span class="n">send_report</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Note that I added fallback code – if the shield is not connected, the
+keyboard still works, without the touchpad.</p>
+<p>Overall, it’s much simpler than I expected and works very well. I
+might make another version of the shield, with the i2c resistors, a
+jumper to use one of the i2c as cs when in spi mode, and rearranged
+mouse buttons (right now the middle button is the left mouse button,
+which may be a bit confusing), but we will see.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

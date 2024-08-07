@@ -1,0 +1,29 @@
+---
+blogpost: true
+date: 2021-06-14
+category: project-180364
+---
+
+# Reading GIFs in CircuitPython
+Published on 2021-06-14 in {ref}`project-180364`.
+
+This is not advertised very much, but CircuitPython can now load GIF
+files using the Adafruit's Image Load library — I have added GIF
+support to it a while ago, based on the example code a wrote here:  [https://github.com/deshipu/circuitpython-gif](https://github.com/deshipu/circuitpython-gif) 
+
+However, there is one small technicality: that library doesn't handle
+animated GIFs.
+
+An animaterd GIF image actually contains multiple images inside, each
+representing one frame of the animation. They can contain the whole
+frame, or just the differences from the previous frame, with
+everything else transparent.
+
+I will need to modify my code to make it read one frame at a time —
+the SAMD21 microcontroller I'm using probably doesn't have enough
+memory to read all the frames at once. Hopefully the code will be fast
+enough to animate the image reasonably well.
+
+If that fails, I might need to include a library written in C to read
+and display the animations.
+

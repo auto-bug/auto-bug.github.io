@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Streaming - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="streaming">
+<h1>Streaming<a class="headerlink" href="#streaming" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2023-01-11 in <a class="reference internal" href="../#project-182342"><span class="std std-ref">Camera Shield for S2 Mini</span></a>.</p>
+<p>It doesn’t help much to have a camera on your robot, if you don’t do
+anything with the video. Displaying it on a display is cool, but not
+really that useful when it has to be attached to the same device.
+Vision algorithms are still a bit too advanced to me, so I decided to
+try the other useful option: streaming it into a browser.</p>
+<p>Displaying a single jpeg image taken with the camera was easy enough,
+but we want live video - can we do that? Turns out that we can, by
+using something called M-JPEG (for motion jpeg), and the
+multipart/x-mixed-replace MIME type. All we have to do is send the
+JPEG images separated with a boundary, each with its own http header.
+After a few hours of tinkering, I finally got something like this
+working:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">board</span>
+<span class="kn">import</span> <span class="nn">busio</span>
+<span class="kn">import</span> <span class="nn">esp32_camera</span>
+<span class="kn">import</span> <span class="nn">asyncio</span>
+<span class="kn">import</span> <span class="nn">socketpool</span>
+<span class="kn">import</span> <span class="nn">wifi</span>
+
+<span class="kn">from</span> <span class="nn">adafruit_httpserver.server</span> <span class="kn">import</span> <span class="n">HTTPServer</span>
+<span class="kn">from</span> <span class="nn">adafruit_httpserver.response</span> <span class="kn">import</span> <span class="n">HTTPResponse</span>
+
+
+<span class="n">server</span> <span class="o">=</span> <span class="n">HTTPServer</span><span class="p">(</span><span class="n">socketpool</span><span class="o">.</span><span class="n">SocketPool</span><span class="p">(</span><span class="n">wifi</span><span class="o">.</span><span class="n">radio</span><span class="p">))</span>
+<span class="n">PORT</span> <span class="o">=</span> <span class="mi">80</span>
+<span class="n">BOUNDARY</span> <span class="o">=</span> <span class="s2">&quot;FRAME&quot;</span>
+
+<span class="n">i2c</span> <span class="o">=</span> <span class="n">busio</span><span class="o">.</span><span class="n">I2C</span><span class="p">(</span><span class="n">scl</span><span class="o">=</span><span class="n">board</span><span class="o">.</span><span class="n">IO35</span><span class="p">,</span> <span class="n">sda</span><span class="o">=</span><span class="n">board</span><span class="o">.</span><span class="n">IO33</span><span class="p">)</span>
+<span class="n">data_pins</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">board</span><span class="o">.</span><span class="n">IO21</span><span class="p">,</span> <span class="n">board</span><span class="o">.</span><span class="n">IO17</span><span class="p">,</span> <span class="n">board</span><span class="o">.</span><span class="n">IO16</span><span class="p">,</span> <span class="n">board</span><span class="o">.</span><span class="n">IO18</span><span class="p">,</span>
+    <span class="n">board</span><span class="o">.</span><span class="n">IO37</span><span class="p">,</span> <span class="n">board</span><span class="o">.</span><span class="n">IO34</span><span class="p">,</span> <span class="n">board</span><span class="o">.</span><span class="n">IO36</span><span class="p">,</span> <span class="n">board</span><span class="o">.</span><span class="n">IO39</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">cam</span> <span class="o">=</span> <span class="n">esp32_camera</span><span class="o">.</span><span class="n">Camera</span><span class="p">(</span>
+    <span class="n">data_pins</span><span class="o">=</span><span class="n">data_pins</span><span class="p">,</span>
+    <span class="n">pixel_clock_pin</span><span class="o">=</span><span class="n">board</span><span class="o">.</span><span class="n">IO12</span><span class="p">,</span>
+    <span class="n">vsync_pin</span><span class="o">=</span><span class="n">board</span><span class="o">.</span><span class="n">IO40</span><span class="p">,</span>
+    <span class="n">href_pin</span><span class="o">=</span><span class="n">board</span><span class="o">.</span><span class="n">IO38</span><span class="p">,</span>
+    <span class="n">pixel_format</span><span class="o">=</span><span class="n">esp32_camera</span><span class="o">.</span><span class="n">PixelFormat</span><span class="o">.</span><span class="n">JPEG</span><span class="p">,</span>
+    <span class="n">frame_size</span><span class="o">=</span><span class="n">esp32_camera</span><span class="o">.</span><span class="n">FrameSize</span><span class="o">.</span><span class="n">QVGA</span><span class="p">,</span>
+    <span class="n">i2c</span><span class="o">=</span><span class="n">i2c</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="nd">@server</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">base</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">HTTPResponse</span><span class="p">(</span><span class="n">request</span><span class="p">)</span> <span class="k">as</span> <span class="n">response</span><span class="p">:</span>
+        <span class="n">response</span><span class="o">.</span><span class="n">_send_headers</span><span class="p">(</span><span class="n">content_type</span><span class="o">=</span><span class="s1">&#39;multipart/x-mixed-replace; boundary=</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">BOUNDARY</span><span class="p">)</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">jpeg</span> <span class="o">=</span> <span class="n">cam</span><span class="o">.</span><span class="n">take</span><span class="p">()</span>
+            <span class="n">response</span><span class="o">.</span><span class="n">_send_bytes</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">connection</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;--</span><span class="si">%s</span><span class="se">\r\n</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">BOUNDARY</span><span class="p">)</span>
+            <span class="n">response</span><span class="o">.</span><span class="n">_send_bytes</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">connection</span><span class="p">,</span>
+    <span class="sa">b</span><span class="s1">&#39;Content-Type: image/jpeg</span><span class="se">\r\n</span><span class="s1">Content-Length: </span><span class="si">%d</span><span class="se">\r\n\r\n</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">jpeg</span><span class="p">))</span>
+            <span class="n">response</span><span class="o">.</span><span class="n">_send_bytes</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">connection</span><span class="p">,</span> <span class="n">jpeg</span><span class="p">)</span>
+            <span class="n">response</span><span class="o">.</span><span class="n">_send_bytes</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">connection</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\r\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">poll</span><span class="p">(</span><span class="n">interval</span><span class="p">):</span>
+    <span class="n">server</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">wifi</span><span class="o">.</span><span class="n">radio</span><span class="o">.</span><span class="n">ipv4_address</span><span class="p">),</span> <span class="n">port</span><span class="o">=</span><span class="n">PORT</span><span class="p">)</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">server</span><span class="o">.</span><span class="n">poll</span><span class="p">()</span>
+        <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">interval</span><span class="p">)</span>
+
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">poll_task</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">poll</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+    <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="n">poll_task</span><span class="p">)</span>
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>This works, but there is a small problem. As soon as we start
+streaming, the server stops responding to any other requests, and our
+robot would stop waking or doing anything else, because the loop that
+sends the video frames is not async.</p>
+<p>I will need to modify how this particular http server works to make
+the endpoints into async functions, so that we can add an await
+command in the loop that sends the frames. But that is something for
+another day.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

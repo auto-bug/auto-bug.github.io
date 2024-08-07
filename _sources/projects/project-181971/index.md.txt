@@ -1,0 +1,60 @@
+---
+blogpost: true
+date: 2021-10-01
+category: project
+tags:  completed project, hardware
+image: 1
+---
+
+# Nudge Keyboard
+
+50% staggered low-profile keeb
+
+<div class="project-thumb">
+
+:::{image} images/4383021633125260002.jpg
+:target: /_images/4383021633125260002.jpg
+:::
+
+:::{image} images/9546971633510953118.jpg
+:target: /_images/9546971633510953118.jpg
+:::
+
+</div>
+
+
+    As the name implies, this is a keyboard that is supposed to make it
+easier to move from the traditional keyboards to the more ergonomic
+ones. I used a Planck in this role before, but I noticed that
+introducing both layers and ortholinear layout is too big of a step at
+once. So I decided to design a board that is minimal in terms of the
+size, but still uses a more traditional, staggered key layout. I also
+wanted to have at most 1.5U keys, so that I don't have to muck about
+with stabilizers. So I came up with this layout:
+
+
+
+:::{image} images/5654191633125566008.png
+
+:::
+
+
+Then, when choosing what switches to use, I noticed that Kailh Choc
+Purpz are on sale. To match those, I also decided to make the PCB
+purple, and use transparent key caps.
+
+The brains is still the good old SAMD21 chip, running CircuitPython
+and my uKeeb library.
+
+
+
+
+
+## Logs
+
+:::{postlist}
+:category: project-181971
+:::
+
+## Instructions
+

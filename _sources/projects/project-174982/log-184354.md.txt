@@ -1,0 +1,30 @@
+---
+blogpost: true
+date: 2020-10-01
+category: project-174982
+---
+
+# The Tricky DPI
+Published on 2020-10-01 in {ref}`project-174982`.
+
+Remember how I mentioned that I like this layout, but the keys could
+be a bit closer together, and blamed the angles of the columns for
+them being too far apart? Turns out the columns are perfectly fine,
+the keyboard is just scaled up roughly 10%.
+
+How did that happen?
+
+Well, for designing the PCB outline, and for marking the desired
+locations of the switches I used Inkscape. I made sure all dimensions
+were correct in that program, using the handy unit switching options
+that program has. But as it turns out, Inkscape was recently updated
+on my computer, and the new version uses different DPI in the SVG
+files it saves than the older one, and than what Fritzing assumes on
+import. But it was consistent, so the part outlines exported from
+Fritzing didn't get resized, thus the holes for the switches fit fine.
+The whole keyboard is just larger than it was supposed to be. The
+angled keys only made it difficult to confirm.
+
+I only discovered this just now, while working on the {ref}`project-175043` design. Sure enough, the same thing happened there, so I had to
+practically re-do all the routing. Thanks Obama.
+

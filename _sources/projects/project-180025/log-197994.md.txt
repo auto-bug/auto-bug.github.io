@@ -1,0 +1,44 @@
+---
+blogpost: true
+date: 2021-09-21
+category: project-180025
+---
+
+# Special Legs
+Published on 2021-09-21 in {ref}`project-180025`.
+
+In the previous versions of this robot I experimented with the
+mechanical leg segments made out of PCB, simply included in the
+design, with mouse-bite holes so that you can break them off easily.
+That made sense before there was easy and cheap access to laser-
+cutting: after all, the PCBs are being cut with a CNC router anyways,
+why not take advantage of it. Unfortunately today it makes less sense,
+as PCB fabs usually want you to pay extra for multiple projects in one
+design, and such a leg segment will count as a separate project for
+them. Laser cutting parts make more sense and look better. And the
+material can be less toxic.
+
+On the other hand, the PCB legs had one big advantage: you could put
+components on them. In particular, you could put switches at the ends
+of the legs, to give the robot a primitive sense of touch. Then you
+can program it to stop and turn around when it reaches the edge of
+your desk. Of course you need switches with very light springs in
+them, and relatively short travel — turns out that the switches that
+are normally used to detect if an SD card is inserted are perfect for
+this.
+
+So I designed an alternate leg segment, made of PCB, with a switch
+footprint at the end, and some traces going up to the knee. It won't
+be included in the main body PCB of the robot, I will simply order it
+as a separate order. It looks like this:
+
+
+
+:::{image} images/7427661632255162817.png
+
+:::
+
+
+Of course this is completely optional, but I think it's a nice option
+to have.
+

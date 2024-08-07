@@ -1,0 +1,54 @@
+---
+blogpost: true
+date: 2021-05-15
+category: project-179496
+---
+
+# Dynamic USB Descriptors
+Published on 2021-05-15 in {ref}`project-179496`.
+
+A new [feature landed in CircuitPython recently](https://github.com/adafruit/circuitpython/pull/4689) , that allows us to do a neat little trick: we can show the CIRCUITPY
+disk and Python REPL console, or not, depending on whether a certain
+key is pressed when the keyboard is powered up or reset.
+
+Why is this important?
+
+I find it rather distracting when my keyboard shows up as a disk and
+serial device, especially when I'm working with other CircuitPython
+devices — it's sometimes hard to tell which is which. On the other
+hand, the way you could disable the disk and console previously
+involved compiling and flashing a special CircuitPython image, as this
+was a compile-time option. Having to re-flash your firmware to see the
+disk again every time you want to make some small change or tweak is
+not very convenient.
+
+So now we can make it so that it's just a keypress away.
+
+All I needed to do is to create the following boot.py file:
+
+
+```ruby
+import board
+import digitalio
+import storage
+import usb_cdc
+import usb_hid
+
+row = digitalio.DigitalInOut(board.D4)
+col = digitalio.DigitalInOut(board.A2)
+col.switch_to_output(value=0)
+row.switch_to_input(pull=digitalio.Pull.UP)
+
+if row.value:
+    storage.disable_usb_drive()
+    usb_cdc.disable()
+
+usb_hid.enable(devices=(usb_hid.KEYBOARD,))
+
+row.deinit()
+col.deinit()
+```
+
+The board.D4 and board.A2 are the row and column of the key that I
+want to use for the check. The rest is pretty self-explanatory. 
+

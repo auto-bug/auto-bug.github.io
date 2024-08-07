@@ -1,0 +1,39 @@
+---
+blogpost: true
+date: 2020-12-23
+category: project-176476
+---
+
+# PCBs
+Published on 2020-12-23 in {ref}`project-176476`.
+
+I could prototype this project now with some Adafruit Feathers and
+carboard and wires, using the breakout for the sensor and some tinfoil
+for the touch pads, but I decided that I'm lazy, and went right into
+the PCB design step. I came up with this:
+
+
+
+:::{image} images/7315911608748861369.png
+
+:::
+
+
+
+
+:::{image} images/8390971608748869274.png
+
+:::
+
+
+The "antenna" thing on the top is where you attach a piece of a
+silicon hose, so that you can easily replace and wash it if you need
+to. There are also six pads for the "holes" — two on the back, and
+four on the front. Unfortunately that used up all the touch-capable
+pins on the SAMD21, so I can't use the DAC pin anymore (it's one of
+the touch pins), so at least this version is going to be only a MIDI
+controller, with no audio output of its own. There is also no battery
+necessary, since it's going to have to be connected to USB anyways,
+taking power from there. Depending on how well that works, I might
+find ways of adding more features to it later.
+

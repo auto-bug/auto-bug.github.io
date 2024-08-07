@@ -1,0 +1,192 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Adding the board to CircuitPython - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="adding-the-board-to-circuitpython">
+<h1>Adding the board to CircuitPython<a class="headerlink" href="#adding-the-board-to-circuitpython" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2021-06-12 in <a class="reference internal" href="../#project-180309"><span class="std std-ref">PewPew OLED</span></a>.</p>
+<p>Last time I went all the way up to flashing an UF2 bootloader on the
+SAMD21 chip, now we need to get CircuitPython running on it. Normally
+I would just use the firmware for <a class="reference internal" href="../../project-171381/#project-171381"><span class="std std-ref">Fluff M0</span></a> — it has all the pins available, so it’s very convenient for such
+things, but this time we are going to need the displayio module
+compiled into the firmware, and later we will also add the display
+initialization, so that the display just works as soon as the device
+is switched on, without us having to initialize it in our own code.</p>
+<p>To add a new SAMD board, the easiest way is to copy an existing board
+definition, like the fluff_m0 one, in ports/atmel-samd/boards, and
+rename it. Then we can edit the files to make our changes:</p>
+<p>mpconfigboard.h</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#define MICROPY_HW_BOARD_NAME &quot;PewPew OLED&quot;</span>
+<span class="cp">#define MICROPY_HW_MCU_NAME &quot;samd21e18&quot;</span>
+
+<span class="cp">#define MICROPY_PORT_A        (0)</span>
+<span class="cp">#define MICROPY_PORT_B        (0)</span>
+<span class="cp">#define MICROPY_PORT_C        (0)</span>
+
+<span class="cp">#define CIRCUITPY_INTERNAL_NVM_SIZE 0</span>
+<span class="cp">#define CIRCUITPY_INTERNAL_FLASH_FILESYSTEM_SIZE (48 * 1024)</span>
+
+<span class="c1">// USB is always used internally so skip the pin objects for it.</span>
+<span class="cp">#define IGNORE_PIN_PA24     1</span>
+<span class="cp">#define IGNORE_PIN_PA25     1</span>
+
+<span class="cp">#define SAMD21_BOD33_LEVEL (6)</span>
+</pre></div>
+</div>
+<p>There are three noteworthy things here. We change the NVM size to 0
+(this is a part of the flash reserved for storing additional
+information,  we are not going to be using that), and the filesystem
+size to 48kB (from the default of 64kB). This is needed to make more
+room for the firmware in the flash, because we want to include
+displayio, which is quite big.</p>
+<p>Finally, the SAMD21_BOD33_LEVEL variable controls the brown-out
+detection voltage level. We need to set it as low as practical, so
+that our device can work from a puny 3V battery without going into
+safe mode.</p>
+<p>Later on we can add all the pins we are not using on the device, to
+save some RAM. It’s not important right now.</p>
+<p>pins.c</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;shared-bindings/board/__init__.h&quot;</span><span class="cp"></span>
+
+<span class="n">STATIC</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">mp_rom_map_elem_t</span><span class="w"> </span><span class="n">board_global_dict_table</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="n">MP_ROM_QSTR</span><span class="p">(</span><span class="n">MP_QSTR_SCK</span><span class="p">),</span><span class="w"> </span><span class="n">MP_ROM_PTR</span><span class="p">(</span><span class="o">&amp;</span><span class="n">pin_PA09</span><span class="p">)</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="n">MP_ROM_QSTR</span><span class="p">(</span><span class="n">MP_QSTR_MOSI</span><span class="p">),</span><span class="w"> </span><span class="n">MP_ROM_PTR</span><span class="p">(</span><span class="o">&amp;</span><span class="n">pin_PA08</span><span class="p">)</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="n">MP_ROM_QSTR</span><span class="p">(</span><span class="n">MP_QSTR_OLED_DC</span><span class="p">),</span><span class="w"> </span><span class="n">MP_ROM_PTR</span><span class="p">(</span><span class="o">&amp;</span><span class="n">pin_PA10</span><span class="p">)</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="n">MP_ROM_QSTR</span><span class="p">(</span><span class="n">MP_QSTR_OLED_CS</span><span class="p">),</span><span class="w"> </span><span class="n">MP_ROM_PTR</span><span class="p">(</span><span class="o">&amp;</span><span class="n">pin_PA01</span><span class="p">)</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="n">MP_ROM_QSTR</span><span class="p">(</span><span class="n">MP_QSTR_OLED_RESET</span><span class="p">),</span><span class="w"> </span><span class="n">MP_ROM_PTR</span><span class="p">(</span><span class="o">&amp;</span><span class="n">pin_PA00</span><span class="p">)</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="n">MP_ROM_QSTR</span><span class="p">(</span><span class="n">MP_QSTR_TOUCH_UP</span><span class="p">),</span><span class="w"> </span><span class="n">MP_ROM_PTR</span><span class="p">(</span><span class="o">&amp;</span><span class="n">pin_PA02</span><span class="p">)</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="n">MP_ROM_QSTR</span><span class="p">(</span><span class="n">MP_QSTR_TOUCH_DOWN</span><span class="p">),</span><span class="w"> </span><span class="n">MP_ROM_PTR</span><span class="p">(</span><span class="o">&amp;</span><span class="n">pin_PA05</span><span class="p">)</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="n">MP_ROM_QSTR</span><span class="p">(</span><span class="n">MP_QSTR_TOUCH_LEFT</span><span class="p">),</span><span class="w"> </span><span class="n">MP_ROM_PTR</span><span class="p">(</span><span class="o">&amp;</span><span class="n">pin_PA03</span><span class="p">)</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="n">MP_ROM_QSTR</span><span class="p">(</span><span class="n">MP_QSTR_TOUCH_RIGHT</span><span class="p">),</span><span class="w"> </span><span class="n">MP_ROM_PTR</span><span class="p">(</span><span class="o">&amp;</span><span class="n">pin_PA04</span><span class="p">)</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="n">MP_ROM_QSTR</span><span class="p">(</span><span class="n">MP_QSTR_TOUCH_O</span><span class="p">),</span><span class="w"> </span><span class="n">MP_ROM_PTR</span><span class="p">(</span><span class="o">&amp;</span><span class="n">pin_PA06</span><span class="p">)</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="n">MP_ROM_QSTR</span><span class="p">(</span><span class="n">MP_QSTR_TOUCH_X</span><span class="p">),</span><span class="w"> </span><span class="n">MP_ROM_PTR</span><span class="p">(</span><span class="o">&amp;</span><span class="n">pin_PA07</span><span class="p">)</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+
+<span class="p">};</span><span class="w"></span>
+<span class="n">MP_DEFINE_CONST_DICT</span><span class="p">(</span><span class="n">board_module_globals</span><span class="p">,</span><span class="w"> </span><span class="n">board_global_dict_table</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>This defines which pins on the microcontroller are used for what.</p>
+<p>mpconfigboard.mk</p>
+<div class="highlight-makefile notranslate"><div class="highlight"><pre><span></span><span class="nv">USB_VID</span> <span class="o">=</span> 0x239A
+<span class="nv">USB_PID</span> <span class="o">=</span> 0x80B0
+<span class="nv">USB_PRODUCT</span> <span class="o">=</span> <span class="s2">&quot;PewPew OLED&quot;</span>
+<span class="nv">USB_MANUFACTURER</span> <span class="o">=</span> <span class="s2">&quot;Radomir Dopieralski&quot;</span>
+
+<span class="nv">CHIP_VARIANT</span> <span class="o">=</span> SAMD21E18A
+<span class="nv">CHIP_FAMILY</span> <span class="o">=</span> samd21
+
+<span class="nv">INTERNAL_FLASH_FILESYSTEM</span> <span class="o">=</span> <span class="m">1</span>
+<span class="nv">LONGINT_IMPL</span> <span class="o">=</span> NONE
+
+<span class="nv">CIRCUITPY_FULL_BUILD</span> <span class="o">=</span> <span class="m">0</span>
+
+<span class="nv">CIRCUITPY_DISPLAYIO</span> <span class="o">=</span> <span class="m">1</span>
+<span class="nv">CIRCUITPY_TOUCHIO</span> <span class="o">=</span> <span class="m">1</span>
+
+<span class="nv">CIRCUITPY_ANALOGIO</span> <span class="o">=</span> <span class="m">0</span>
+<span class="nv">CIRCUITPY_AUDIOBUSIO</span> <span class="o">=</span> <span class="m">0</span>
+<span class="nv">CIRCUITPY_AUDIOBUSIO_I2SOUT</span> <span class="o">=</span> <span class="m">0</span>
+<span class="nv">CIRCUITPY_AUDIOCORE</span> <span class="o">=</span> <span class="m">0</span>
+<span class="nv">CIRCUITPY_AUDIOIO</span> <span class="o">=</span> <span class="m">0</span>
+<span class="nv">CIRCUITPY_AUDIOMIXER</span> <span class="o">=</span> <span class="m">0</span>
+<span class="nv">CIRCUITPY_AUDIOMP3</span> <span class="o">=</span> <span class="m">0</span>
+<span class="nv">CIRCUITPY_AUDIOPWMIO</span> <span class="o">=</span> <span class="m">0</span>
+<span class="nv">CIRCUITPY_BITBANG_APA102</span> <span class="o">=</span> <span class="m">0</span>
+<span class="nv">CIRCUITPY_BITBANGIO</span> <span class="o">=</span> <span class="m">0</span>
+<span class="nv">CIRCUITPY_BITBANGIO</span> <span class="o">=</span> <span class="m">0</span>
+<span class="nv">CIRCUITPY_BITMAPTOOLS</span> <span class="o">=</span> <span class="m">0</span>
+<span class="nv">CIRCUITPY_BITMAPTOOLS</span> <span class="o">=</span> <span class="m">0</span>
+<span class="nv">CIRCUITPY_BLEIO</span> <span class="o">=</span> <span class="m">0</span>
+<span class="nv">CIRCUITPY_BUSDEVICE</span> <span class="o">=</span> <span class="m">0</span>
+<span class="nv">CIRCUITPY_FRAMEBUFFERIO</span> <span class="o">=</span> <span class="m">0</span>
+<span class="nv">CIRCUITPY_FREQUENCYIO</span> <span class="o">=</span> <span class="m">0</span>
+<span class="nv">CIRCUITPY_GAMEPAD</span> <span class="o">=</span> <span class="m">0</span>
+<span class="nv">CIRCUITPY_GAMEPADSHIFT</span> <span class="o">=</span> <span class="m">0</span>
+<span class="nv">CIRCUITPY_I2CPERIPHERAL</span> <span class="o">=</span> <span class="m">0</span>
+<span class="nv">CIRCUITPY_MATH</span> <span class="o">=</span> <span class="m">0</span>
+<span class="nv">CIRCUITPY_MSGPACK</span> <span class="o">=</span> <span class="m">0</span>
+<span class="nv">CIRCUITPY_NEOPIXEL_WRITE</span> <span class="o">=</span> <span class="m">0</span>
+<span class="nv">CIRCUITPY_NVM</span> <span class="o">=</span> <span class="m">0</span>
+<span class="nv">CIRCUITPY_PIXELBUF</span> <span class="o">=</span> <span class="m">0</span>
+<span class="nv">CIRCUITPY_PS2IO</span> <span class="o">=</span> <span class="m">0</span>
+<span class="nv">CIRCUITPY_PULSEIO</span> <span class="o">=</span> <span class="m">0</span>
+<span class="nv">CIRCUITPY_PWMIO</span> <span class="o">=</span> <span class="m">0</span>
+<span class="nv">CIRCUITPY_RGBMATRIX</span> <span class="o">=</span> <span class="m">0</span>
+<span class="nv">CIRCUITPY_ROTARYIO</span> <span class="o">=</span> <span class="m">0</span>
+<span class="nv">CIRCUITPY_ROTARYIO</span> <span class="o">=</span> <span class="m">0</span>
+<span class="nv">CIRCUITPY_RTC</span> <span class="o">=</span> <span class="m">0</span>
+<span class="nv">CIRCUITPY_SAMD</span> <span class="o">=</span> <span class="m">0</span>
+<span class="nv">CIRCUITPY_ULAB</span> <span class="o">=</span> <span class="m">0</span>
+<span class="nv">CIRCUITPY_USB_HID</span> <span class="o">=</span> <span class="m">0</span>
+<span class="nv">CIRCUITPY_USB_MIDI</span> <span class="o">=</span> <span class="m">0</span>
+<span class="nv">CIRCUITPY_USB_VENDOR</span> <span class="o">=</span> <span class="m">0</span>
+<span class="nv">CIRCUITPY_VECTORIO</span> <span class="o">=</span> <span class="m">0</span>
+
+<span class="nv">CIRCUITPY_DISPLAY_FONT</span> <span class="o">=</span> <span class="k">$(</span>TOP<span class="k">)</span>/ports/atmel-samd/boards/ugame10/brutalist-6.bdf
+<span class="nv">OPTIMIZATION_FLAGS</span> <span class="o">=</span> -Os
+</pre></div>
+</div>
+<p>You can see a looooong list of disabled modules here. That’s because I
+was trying to reclaim as much space as possible for displayio, before
+I gave up and simply shrunk the filesystem. There is also a custom
+tiny font. For now I’m using the same VID/PID as the fluff_m0, I will
+need to ask for unique ones when I will be adding that board to
+CircuitPython repository.</p>
+<p>And that’s it, the board.c file is not needed for us right now — we
+will use it for display initialization later on, though.</p>
+<p>Next, I just looked for an SH1106 display driver for CircuitPython and
+displayio on the Adafruit Github, compiled the new board, and we have
+a working device:</p>
+<img alt="projects/project-180309/images/19751623522824210.jpg" src="projects/project-180309/images/19751623522824210.jpg" />
+</section>
+
+
+</div>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+---
+blogpost: true
+date: 2021-06-14
+category: project-180364
+---
+
+# The Screen
+Published on 2021-06-14 in {ref}`project-180364`.
+
+I'm still using the same tiny ST7735 color TFT screen, with a new PCB
+added to the back of it, containing just the microcontroller and a
+micro-USB socket made of the PCB itself — to make the whole thing as
+thin as possible. I will probably need to cast it in resin eventually,
+so it's a sturdy, one-piece thing. For now, for ease of debugging, I'm
+keeping it separate.
+
+
+
+:::{image} images/6385221623676797318.jpg
+
+:::
+
+
+I will need to make at least one more version of that PCB, to include
+touch pads for switching the image on the pendant.
+

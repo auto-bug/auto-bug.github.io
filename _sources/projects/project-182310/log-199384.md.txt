@@ -1,0 +1,37 @@
+---
+blogpost: true
+date: 2021-10-24
+category: project-182310
+---
+
+# PCB Design
+Published on 2021-10-24 in {ref}`project-182310`.
+
+I'm going to start with just a very simple mechanical design, just a
+PCB with the switches on both sides. I can think about improvements if
+the basic idea proves workable. So after compiling the very latest
+version of Fritzing (the appimage they released doesn't work on my
+system), I went to work and created this:
+
+
+
+:::{image} images/9909721635033665885.png
+
+:::
+
+
+
+
+:::{image} images/4102431635033678382.png
+
+:::
+
+
+Yes, the traces have right angle bends. I don't care. This is a
+prototype. I can clean it up some other time.
+
+I also added a joystick and a d-pad on the front side, for those
+moments when you are not typing. The USB socket is on the bottom,
+because that's where many devices have their socket as well — you can
+use a short OTG cable to connect them.
+

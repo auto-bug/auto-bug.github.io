@@ -1,0 +1,45 @@
+---
+blogpost: true
+date: 2021-05-02
+category: project-179496
+---
+
+# The Code
+Published on 2021-05-02 in {ref}`project-179496`.
+
+I'm using my uKeeb library as usual, but some small modifications were
+needed to make the split keyboard work. On the left hand side I
+removed all the key handling logic, leaving just the matrix scanning
+and debouncing, and two methods:
+
+
+```ruby
+    def press(self, x, y):
+        self.buf[0] = x | (y << 4) | 128
+        self.uart.write(self.buf)
+
+    def release(self, x, y):
+        self.buf[0] = x | (y << 4)
+        self.uart.write(self.buf)
+```
+
+(Of course I also create the UART object earlier.)
+
+Then on the left hand side I added a method to be always called right
+after scanning:
+
+
+```ruby
+    def read_uart(self):
+        while self.uart.in_waiting:
+            self.uart.readinto(self.buf)
+            x = self.buf[0] & 0x0f
+            y = (self.buf[0] & 0x70) >> 4
+            if self.buf[0] & 0x80:
+                self.press(9 - x, y)
+            else:
+                self.release(9 - x, y)
+```
+
+And that's it.  
+

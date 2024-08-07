@@ -1,0 +1,38 @@
+---
+blogpost: true
+date: 2022-12-14
+category: project-182342
+---
+
+# More Frustration
+Published on 2022-12-14 in {ref}`project-182342`.
+
+So I figured out the display problem – I connected the (unused) reset
+pin to the camera's master clock pin by mistake, so the display was
+being reset at 16MHz... After fixing that, I finally got an image on
+the screen:
+
+
+
+:::{image} images/2789761670972544097.jpg
+
+:::
+
+
+That... doesn't look like any swapped pins. To my untrained eye it
+looks like simply empty unintialized memory. Could it be that it
+"works" in the 16MHz mode simply because it does nothing? I tried
+switching it back to 20MHz, and now I'm getting a suspicious
+exception:
+
+
+```
+Traceback (most recent call last):
+  File "code.py", line 45, in 
+TypeError: unsupported bitmap type
+
+```
+
+So it looks like the bitmap type changes depending on the clock
+frequency? How does that even make any sense? Madness! 
+

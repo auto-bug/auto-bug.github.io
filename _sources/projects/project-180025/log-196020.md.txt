@@ -1,0 +1,55 @@
+---
+blogpost: true
+date: 2021-07-31
+category: project-180025
+---
+
+# Cable Management
+Published on 2021-07-31 in {ref}`project-180025`.
+
+Cable management is a big problem when you have a moving construction
+with eight servos. It doesn't help that by default the servos come
+with relatively long cables, and this three-pin plug on the end, that
+is hard to replace without special tools:
+
+
+
+:::{image} images/4831521627742089083.jpg
+
+:::
+
+
+Of course it would be best if you could just take that plug and plug
+it into the PCB, but then you need to do something with good 20cm of
+extra cable.
+
+We brainstormed about this problem, among other things, during the
+hackaday prize mentoring session with Kliment Yanev, and he came up
+with an ingenious solution that just might work. Yes, you need to get
+rid of the default plug, and the spurious cable, but then you are left
+with the problem of either soldering the remaining cable directly to
+the PCB, or attaching a different plug. Turns out there are plugs out
+there that are very simple to attach, and quite popular and easy to
+get. Kliment suggested I can use the plug that is commonly used for
+the ribbon cables:
+
+
+
+:::{image} images/4330411627742335917.jpg
+
+:::
+
+
+They have those blades in them, that bite into the cable when you
+press the tab on top, and make a secure contact. Furthermore, we are
+not increasing the price a lot, because you can use a single plug for
+multiple servos. Sure, this makes them harder to replace, which is a
+downside, but I think I can live with that.
+
+Unfortunately, this also means we will need a PCB redesign — the way
+this plug connects with the cables, we will need a completely
+different pattern of pins for it. Oh, and we can't put the sockets for
+those plugs in the same place on opposite sides of the pcb, not
+easily, anyways, so I will need to think about where to best place
+them. But I like the idea and I'm going to give it a try.
+

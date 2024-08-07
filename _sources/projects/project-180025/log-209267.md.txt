@@ -1,0 +1,88 @@
+---
+blogpost: true
+date: 2022-07-29
+category: project-180025
+---
+
+# Put a Face to a Robot
+Published on 2022-07-29 in {ref}`project-180025`.
+
+Everything is better with eyes. Putting goggly eyes on things makes
+them instantly relatable and cute or creepy. We simply can't remain
+emotionally neutral to something that looks at us. So I decided that
+the robots need faces.
+
+Of course I could have used one of the many Wemos D1 shields available
+on the market to add an OLED screen, a TFT screen or even just a LED
+matrix, but where is the fun in that? I recently got a new round
+screen to work, so I decided to make a shield for it, and to design it
+so it works well with those robots.
+
+
+:::{image} images/1206761659128902785.png
+
+:::
+
+
+The back side has a lot of free space for a silkscreen, so what should
+I put behind a face? Of course!
+
+
+
+:::{image} images/2621491659128916260.png
+
+:::
+
+
+This way I can use the spare PCBs without a display to decorate other
+robots. That was a week ago, now the PCBs have arrived, so I got it
+all assembled and working:
+
+
+
+:::{image} images/7285641659129033744.jpg
+
+:::
+
+
+My work here is done. Here is the code I used:
+
+
+```
+
+import board
+import displayio
+import busio
+
+
+_INIT = (
+    b"\xFE\x00"  # Inter Register Enable 1
+    b"\xEF\x00"  # Inter Register Enable 2
+    b"\xB6\x02\x00\x00"  # DFC S1>S360 source G1>G32 gate
+    b'\x36\x01\x48'  # MADCTL
+    b'\x3a\x01\x05'  # COLMOD
+    b"\xC3\x01\x13"  # PWRCTL2 VREG1A=5.06 VREG1B=0.68
+    b"\xC4\x01\x13"  # PWRCTL3 VREG2A=-3.7 VREG2B=0.68
+    b"\xC9\x01\x22"  # PWRCTL4
+    b"\x66\x0a\x3c\x00\xcd\x67\x45\x45\x10\x00\x00\x00"
+    b"\x67\x0a\x00\x3c\x00\x00\x00\x01\x54\x10\x32\x98"
+    b"\x74\x07\x10\x85\x80\x00\x00\x4e\x00"
+    b"\x98\x02\x3e\x07"
+    b'\x21\x00'  # INVON
+    b'\x11\x80\x78'  # SLEEPOUT
+    b'\x29\x80\x14'  # DISPLAYON
+)
+displayio.release_displays()
+spi = busio.SPI(clock=board.IO7, MOSI=board.IO11)
+bus = displayio.FourWire(spi, chip_select=board.IO12, baudrate=40_000_000,
+        reset=board.IO5, command=board.IO9)
+display = displayio.Display(bus, _INIT, width=240, height=240)
+display.root_group.scale = 6
+display.root_group[1].x = 0
+display.root_group[1].y = 0
+print("\x1b[2J")
+print(" O w O")
+```
+
+I might come up with something more complex later... 
+

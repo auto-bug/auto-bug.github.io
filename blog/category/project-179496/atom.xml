@@ -1,0 +1,165 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>http://deshipu.art/</id>
+  <title>deshipu.art - Posts in project-179496</title>
+  <updated>2024-08-07T20:34:13.087444+00:00</updated>
+  <link href="http://deshipu.art/"/>
+  <link href="http://deshipu.art/blog/category/project-179496/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-179496/log-192320/</id>
+    <title>Fluff M0 Micro</title>
+    <updated>2021-05-02T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="fluff-m0-micro"&gt;
+
+&lt;p&gt;Published on 2021-05-02 in &lt;a class="reference internal" href="../../../projects/project-179496/#project-179496"&gt;&lt;span class="std std-ref"&gt;Chocolad Keyboard Hacking&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Since I wanted to program this keyboard in CircuitPython, I needed a
+development board that would be compatible pin-wise with the Pro
+Micro, but use a bit more powerful microcontroller. So I designed this
+version of &lt;a class="reference internal" href="../../../projects/project-171381/#project-171381"&gt;&lt;span class="std std-ref"&gt;Fluff M0&lt;/span&gt;&lt;/a&gt; :&lt;/p&gt;
+&lt;img alt="projects/project-179496/images/5898261619906969912.jpg" src="projects/project-179496/images/5898261619906969912.jpg" /&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-179496/log-192320/" rel="alternate"/>
+    <summary>Published on 2021-05-02 in project-179496.</summary>
+    <published>2021-05-02T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-179496/log-192353/</id>
+    <title>The Code</title>
+    <updated>2021-05-02T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="the-code"&gt;
+
+&lt;p&gt;Published on 2021-05-02 in &lt;a class="reference internal" href="../../../projects/project-179496/#project-179496"&gt;&lt;span class="std std-ref"&gt;Chocolad Keyboard Hacking&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I’m using my uKeeb library as usual, but some small modifications were
+needed to make the split keyboard work. On the left hand side I
+removed all the key handling logic, leaving just the matrix scanning
+and debouncing, and two methods:&lt;/p&gt;
+&lt;div class="highlight-ruby notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;press&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="nb"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;buf&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="mi"&gt;128&lt;/span&gt;
+        &lt;span class="nb"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;uart&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;write&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;buf&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;release&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="nb"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;buf&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="nb"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;uart&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;write&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;buf&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;(Of course I also create the UART object earlier.)&lt;/p&gt;
+&lt;p&gt;Then on the left hand side I added a method to be always called right
+after scanning:&lt;/p&gt;
+&lt;div class="highlight-ruby notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;read_uart&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="nb"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;uart&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;in_waiting&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="nb"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;uart&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;readinto&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;buf&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+            &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;buf&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt; &lt;span class="mh"&gt;0x0f&lt;/span&gt;
+            &lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;buf&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt; &lt;span class="mh"&gt;0x70&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;
+            &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;buf&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt; &lt;span class="mh"&gt;0x80&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+                &lt;span class="nb"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;press&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;9&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+            &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+                &lt;span class="nb"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;release&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;9&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;And that’s it.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-179496/log-192353/" rel="alternate"/>
+    <summary>Published on 2021-05-02 in project-179496.</summary>
+    <published>2021-05-02T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-179496/log-192321/</id>
+    <title>The Keyboard</title>
+    <updated>2021-05-02T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="the-keyboard"&gt;
+
+&lt;p&gt;Published on 2021-05-02 in &lt;a class="reference internal" href="../../../projects/project-179496/#project-179496"&gt;&lt;span class="std std-ref"&gt;Chocolad Keyboard Hacking&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Once the switches arrived, I was ready to assemble the keyboard. It
+took a little bit of detective work to figure out which way to solder
+the diodes (I soldered them the wrong way, but fixed it in software,
+thankfully SAMD21 supports both pull-ups and pull-downs on its pins),
+and which set of holes to use on the left and right side for the
+microcontroller board.&lt;/p&gt;
+&lt;img alt="projects/project-179496/images/3897781619907175766.jpg" src="projects/project-179496/images/3897781619907175766.jpg" /&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-179496/log-192321/" rel="alternate"/>
+    <summary>Published on 2021-05-02 in project-179496.</summary>
+    <published>2021-05-02T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-179496/log-192323/</id>
+    <title>The TRRS Cable</title>
+    <updated>2021-05-02T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="the-trrs-cable"&gt;
+
+&lt;p&gt;Published on 2021-05-02 in &lt;a class="reference internal" href="../../../projects/project-179496/#project-179496"&gt;&lt;span class="std std-ref"&gt;Chocolad Keyboard Hacking&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I already had my code for the keyboard, but I had to modify it
+slightly, so that it would communicate over the TRRS cable with the
+other half, to receive the keypresses from it. Initially I assumed
+that the TRRS cable just connects the TX and RX pins, crossed — since
+there are 4 wires, two used for power. Only after some head scratching
+and probing the connections I noticed that something is wrong. I asked
+the author for a schematic, and turns out that only the RX pins are
+connected, and one wire is just left unused.&lt;/p&gt;
+&lt;p&gt;This turned out to be a bit of a problem, because the SAMD21 can’t use
+the RX pin for sending data using the hardware UART, and CircuitPython
+doesn’t have a software UART in the bitbangio module. Eventually I
+just ended up cutting the trace on the right hand side of the
+keyboard, and bodging it to TX.&lt;/p&gt;
+&lt;img alt="projects/project-179496/images/4542941619907536132.jpg" src="projects/project-179496/images/4542941619907536132.jpg" /&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-179496/log-192323/" rel="alternate"/>
+    <summary>Published on 2021-05-02 in project-179496.</summary>
+    <published>2021-05-02T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-179496/log-192866/</id>
+    <title>Dynamic USB Descriptors</title>
+    <updated>2021-05-15T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="dynamic-usb-descriptors"&gt;
+
+&lt;p&gt;Published on 2021-05-15 in &lt;a class="reference internal" href="../../../projects/project-179496/#project-179496"&gt;&lt;span class="std std-ref"&gt;Chocolad Keyboard Hacking&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;A new &lt;a class="reference external" href="https://github.com/adafruit/circuitpython/pull/4689"&gt;feature landed in CircuitPython recently&lt;/a&gt; , that allows us to do a neat little trick: we can show the CIRCUITPY
+disk and Python REPL console, or not, depending on whether a certain
+key is pressed when the keyboard is powered up or reset.&lt;/p&gt;
+&lt;p&gt;Why is this important?&lt;/p&gt;
+&lt;p&gt;I find it rather distracting when my keyboard shows up as a disk and
+serial device, especially when I’m working with other CircuitPython
+devices — it’s sometimes hard to tell which is which. On the other
+hand, the way you could disable the disk and console previously
+involved compiling and flashing a special CircuitPython image, as this
+was a compile-time option. Having to re-flash your firmware to see the
+disk again every time you want to make some small change or tweak is
+not very convenient.&lt;/p&gt;
+&lt;p&gt;So now we can make it so that it’s just a keypress away.&lt;/p&gt;
+&lt;p&gt;All I needed to do is to create the following boot.py file:&lt;/p&gt;
+&lt;div class="highlight-ruby notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;board&lt;/span&gt;
+&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;digitalio&lt;/span&gt;
+&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;storage&lt;/span&gt;
+&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;usb_cdc&lt;/span&gt;
+&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;usb_hid&lt;/span&gt;
+
+&lt;span class="n"&gt;row&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;digitalio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DigitalInOut&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;D4&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;col&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;digitalio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DigitalInOut&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;A2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;col&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;switch_to_output&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;switch_to_input&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pull&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;digitalio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Pull&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;UP&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;storage&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;disable_usb_drive&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="n"&gt;usb_cdc&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;disable&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="n"&gt;usb_hid&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;enable&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;devices&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;usb_hid&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;KEYBOARD&lt;/span&gt;&lt;span class="p"&gt;,))&lt;/span&gt;
+
+&lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;deinit&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;col&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;deinit&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;The board.D4 and board.A2 are the row and column of the key that I
+want to use for the check. The rest is pretty self-explanatory.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-179496/log-192866/" rel="alternate"/>
+    <summary>Published on 2021-05-15 in project-179496.</summary>
+    <published>2021-05-15T00:00:00+02:00</published>
+  </entry>
+</feed>

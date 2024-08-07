@@ -1,0 +1,82 @@
+---
+blogpost: true
+date: 2020-10-21
+category: project-175043
+---
+
+# Mouse Emulation
+Published on 2020-10-21 in {ref}`project-175043`.
+
+I've got the boards, I have them assembled, all I am still waiting for
+are the switches, which are already in customs. With the board
+assembled, I have the joystick working, so I can as well write the
+code for that.
+
+
+
+:::{image} images/1623111603304175305.jpg
+
+:::
+
+
+For now, just for testing, I wrote this short program just to see how
+well it would work:
+
+
+```
+import board
+import analogio
+import digitalio
+import usb_hid
+
+mx = analogio.AnalogIn(board.A6)
+my = analogio.AnalogIn(board.A2)
+lmb = digitalio.DigitalInOut(board.A1)
+lmb.switch_to_input(pull = digitalio.Pull.UP)
+rmb = digitalio.DigitalInOut(board.A5)
+rmb.switch_to_input(pull = digitalio.Pull.UP)
+
+for device in usb_hid.devices:
+    if device.usage == 0x02 and device.usage_page == 0x01:
+        break
+else:
+    raise RuntimeError("no HID mouse device")
+
+report = bytearray(4)
+last_empty = False
+while True:
+    x = mx.value - 0x7fff + 2500
+    y = 0x7fff - my.value - 500
+    report[0] = ((not lmb.value) << 0) | ((not rmb.value) << 1)
+    if abs(x) + abs(y) > 4500:
+        report[1] = min(max(-127, x >> 11), 127) & 0xff
+        report[2] = min(max(-127, y >> 11), 127) & 0xff
+    else:
+        report[2] = 0
+        report[1] = 0
+    if report[0] or report[1] or report[2]:
+        last_empty = False
+        device.send_report(report)
+    elif not last_empty:
+        last_empty = True
+        device.send_report(report)
+```
+
+It's very simple, almost self-explanatory. The only thing that
+complicates it is the addition of a "dead zone" — an area around the
+center where the mouse doesn't move at all. Without it the cursor
+would be always slowly drifting one way or another, which would be
+pretty annoying.
+
+Unfortunately, the way I implemented the dead zone here is not very
+good, because it forces you to move the mouse cursor with a certain
+minimal speed — below that speed the cursor won't move at all. A
+better solution would be to count the speed starting from the edge of
+the dead zone, but that is more math than I am ready for at the
+moment, as it would involve proportions. The horror.
+
+ In any case, it seems to be working reasonably well, despite flooding
+USB with mouse events. I might also need to deal with that at some
+point — there is a lot of opportunity for tweaks here, including fancy
+stuff like logarithmic sensitivity.
+

@@ -1,0 +1,38 @@
+---
+blogpost: true
+date: 2021-05-26
+category: project-180025
+---
+
+# Version 3
+Published on 2021-05-26 in {ref}`project-180025`.
+
+The previous two versions of this projects were kinda done on the side
+of {ref}`project-158981` to see if this approach even makes any sense. I finally decided to go
+for it, so here is a version three, with a new PCB:
+
+
+
+:::{image} images/658301622056016611.png
+
+:::
+
+
+and an improved design of the legs (to make them use less acrylic, so
+you can fit more of them on a sheet):
+
+
+
+:::{image} images/4567411622056070104.png
+
+:::
+
+
+The PCB now includes, apart from the previous microcontroller, battery
+protection, battery charging and battery holder, also a tiny buzzer
+and a place to install an IR sensor — this way I can report the status
+of the robot with beeps, and control it with a TV remote.
+
+Any further sensors and other hardware can be added as FeatherWing
+shields to the front of the robot.
+

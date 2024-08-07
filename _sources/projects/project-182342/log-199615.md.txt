@@ -1,0 +1,33 @@
+---
+blogpost: true
+date: 2021-10-26
+category: project-182342
+---
+
+# What is this for?
+Published on 2021-10-26 in {ref}`project-182342`.
+
+A bit of explanation is needed here. Obviously an ESP32-S2 is not
+going to be able to do much with a camera, lacking the processing
+power and memory. I hope to make it stream low-resolution video over
+WiFi, and maybe, if in the right light conditions, find color blobs at
+one frame per 10 seconds.
+
+Oh, of course I want to put it on my robot, here's a mockup:
+
+
+
+:::{image} images/9809441635256532726.jpg
+
+:::
+
+
+Since both the robot and the shield are waiting for the PCBs, I used
+the previous version of the robot and some random shield I had lying
+around, but you get the idea.
+
+Ideally, if I have a lot of time, and can understand enough of the
+code, I might be able to port the Apriltags code from OpenMV and use
+it with the robot — that would be an awesome thing to do, but I doubt
+if my skills are sufficient.
+

@@ -1,0 +1,48 @@
+---
+blogpost: true
+date: 2021-07-28
+category: project-175712
+---
+
+# Update
+Published on 2021-07-28 in {ref}`project-175712`.
+
+I'm still using this keyboard as my everyday main keyboard, and of
+course there has been some development in the mean time.
+
+
+
+:::{image} images/8491911627497573905.jpg
+
+:::
+
+
+I've made two more modules for the center, and a "blank" one to just
+make it look better. I also replaced the buttons on those modules with
+buttons specifically made for mice, so they have the exact feel and
+click you know from clicking your mouse button. It seems like a small
+thing, but actually it's a huge improvement. The module with the
+silver knobs is a joystick and a scrollwheel, and both can be pushed
+down for clicking too. They are not particularly convenient.
+
+The last thing is a "trackpad" module from a smartphone that I am
+working on at {ref}`project-180472` project — when I get it working, it will be another module for this
+keyboard.
+
+There have also been some other changes. I swapped the Ins and Del
+keys with the bracket keys eventually, so that they are on the same
+hand as on regular keyboard — that works better for me for copying and
+pasting. I also moved around the media keys (used witth the Fn key) to
+make them easier to remember. Oh, and Fn+Tab is now Compose.
+
+I also added the improvements that came with the [new version of CircuitPython](https://hackaday.io/project/174095-dorsch-40k-keyboard/log/195783-shiny-new-code)  — matrix scanning done in C using the keypad module, boot.py
+disabling the USB drive and UART console unless a key was pressed when
+booting, and custom HID bitmap NKRO reports.
+
+Finally, I've also sent one spare PCB to a person interested in
+building this — haven't heard what they built with it yet.
+
+One thing that I hoped to do was replacing the keycaps with the [MBK Legend](https://boardsource.xyz/store/5ffa403622bbb0151bfef66d)  ones, alas, the group buy is delayed and they are still working on
+producing them — the current estimate is shipping by the end of the
+year.
+

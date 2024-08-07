@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Inverse Kinematics - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="inverse-kinematics">
+<h1>Inverse Kinematics<a class="headerlink" href="#inverse-kinematics" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2021-09-13 in <a class="reference internal" href="../#project-180025"><span class="std std-ref">Fluffbug</span></a>.</p>
+<p>While I’m working on re-doing the PCB to incorporate all the recent
+changes, we can talk about the hard part: programming. Obviously,
+without a program the robot is useless, and if you want the robot to
+do anything, most of the work is going to be writing the program for
+it. This is why I’m trying to make this part as hassle-free as
+possible, switching to a high-level language like Python, and using a
+variant of it, CircuitPython, that makes it especially easy to modify
+any code, by exposing it as an USB drive. Another thing I can do so
+simplify things is to provide libraries that handle the low-level
+details, and expose a higher-level interface to the user’s code.</p>
+<p>One of the details I can handle is Inverse Kinematics — that is,
+translating between the desired positions of the robot’s legs, to
+actual angles the servos need to move to. This is a little bit simpler
+with the eight servo configuration than it was with the twelve servos
+of Tote, but it’s still a little bit of tricky trigonometry.</p>
+<p>Let’s look at a side view of the robot:</p>
+<img alt="projects/project-180025/images/6027081631568908068.jpg" src="projects/project-180025/images/6027081631568908068.jpg" />
+<p>We can see that each leg forms several triangles: a right-angle
+triangle formed by the coordinates of the tip of the leg, that lets us
+calculate a part of the angle of the first servo and the distance of
+he tip of the leg from the first servo, and the triangle ABC, which we
+then know all the dimensions of, and which gives us the remaining
+angles.</p>
+<p>So basically we need the Pythagorean Theorem, and then the Law of
+Cosines. In code, it looks like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>        <span class="n">leg_length2</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">*</span> <span class="n">y</span>
+        <span class="n">leg_length</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">leg_length2</span><span class="p">)</span>
+
+        <span class="n">hip_leg_angle</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">acos</span><span class="p">(</span>
+            <span class="p">(</span><span class="n">FEMUR2</span> <span class="o">+</span> <span class="n">leg_length2</span> <span class="o">-</span> <span class="n">TIBIA2</span><span class="p">)</span> <span class="o">/</span>
+            <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">FEMUR</span> <span class="o">*</span> <span class="n">leg_length</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="n">knee_angle</span> <span class="o">=</span> <span class="n">PI2</span> <span class="o">-</span> <span class="n">math</span><span class="o">.</span><span class="n">acos</span><span class="p">(</span>
+            <span class="p">(</span><span class="n">FEMUR2</span> <span class="o">+</span> <span class="n">TIBIA2</span> <span class="o">-</span> <span class="n">leg_length2</span><span class="p">)</span> <span class="o">/</span>
+            <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">FEMUR</span> <span class="o">*</span> <span class="n">TIBIA</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="n">hip_base_angle</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">atan2</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">angles</span><span class="p">(</span><span class="n">hip_base_angle</span> <span class="o">-</span> <span class="n">hip_leg_angle</span><span class="p">,</span> <span class="n">knee_angle</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We can add some error checking for out-of-reach points, some
+convenience code that lets us move by increments and flips the y
+coordinate, and we have a working leg.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

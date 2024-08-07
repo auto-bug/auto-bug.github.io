@@ -1,0 +1,166 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>http://deshipu.art/</id>
+  <title>deshipu.art - Posts in project-175043</title>
+  <updated>2024-08-07T20:34:12.983698+00:00</updated>
+  <link href="http://deshipu.art/"/>
+  <link href="http://deshipu.art/blog/category/project-175043/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-175043/log-185419/</id>
+    <title>Original Layout</title>
+    <updated>2020-10-24T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="original-layout"&gt;
+
+&lt;p&gt;Published on 2020-10-24 in &lt;a class="reference internal" href="../../../projects/project-175043/#project-175043"&gt;&lt;span class="std std-ref"&gt;Flatreus Keyboard&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Now that I have the project tested and working, I added the gerbers
+and Fritzing design to the files, so that other can also build it. It
+uses the bootloader and CircuitPython firmware for &lt;a class="reference internal" href="../../../projects/project-171381/#project-171381"&gt;&lt;span class="std std-ref"&gt;Fluff M0&lt;/span&gt;&lt;/a&gt; , and I added an example with the original Atreus layout to the ukeeb
+library: &lt;a class="reference external" href="https://github.com/deshipu/ukeeb/blob/main/examples/flatreus.py"&gt;https://github.com/deshipu/ukeeb/blob/main/examples/flatreus.py&lt;/a&gt;&lt;/p&gt;
+&lt;img alt="projects/project-175043/images/5680061603574970250.png" src="projects/project-175043/images/5680061603574970250.png" /&gt;
+&lt;p&gt;Here’s that layout, taken from the Atreus kickstarter page. Of course
+you can easily modify it for your own tastes.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-175043/log-185419/" rel="alternate"/>
+    <summary>Published on 2020-10-24 in project-175043.</summary>
+    <published>2020-10-24T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-175043/log-186252/</id>
+    <title>Scissors…</title>
+    <updated>2020-11-20T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="scissors"&gt;
+
+&lt;p&gt;Published on 2020-11-20 in &lt;a class="reference internal" href="../../../projects/project-175043/#project-175043"&gt;&lt;span class="std std-ref"&gt;Flatreus Keyboard&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;So this project is finished and works fine. But I recently found in my
+drawer those Kailh scissor switches that I ordered a year ago to test,
+and forgot about them. So why not test them by making another Atreus-
+like keyboard? This switch of course has different footprint again,
+and with a hole in the PCB too, so a new design for the PCB is called
+for. And since I don’t like to do the same thing twice, I removed the
+column stagger this time, and only included two keys in the middle.&lt;/p&gt;
+&lt;img alt="projects/project-175043/images/8883901605828094532.png" src="projects/project-175043/images/8883901605828094532.png" /&gt;
+&lt;p&gt;I will also need the special key caps for this. Kailh has some super-
+ugly ones, but that will do for now, I suppose. As usual, the PCB is
+ordered and should arrive within a week or two, then I can assemble it
+all and try it.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-175043/log-186252/" rel="alternate"/>
+    <summary>Published on 2020-11-20 in project-175043.</summary>
+    <published>2020-11-20T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-175043/log-186772/</id>
+    <title>Can we go Flatter?</title>
+    <updated>2020-12-06T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="can-we-go-flatter"&gt;
+
+&lt;p&gt;Published on 2020-12-06 in &lt;a class="reference internal" href="../../../projects/project-175043/#project-175043"&gt;&lt;span class="std std-ref"&gt;Flatreus Keyboard&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The Kailh scoissors and keycaps arrived, and I mostly assembled this
+small keyboard, which I tentatively dubbed Edward:&lt;/p&gt;
+&lt;img alt="projects/project-175043/images/2158551607279764858.jpg" src="projects/project-175043/images/2158551607279764858.jpg" /&gt;
+&lt;p&gt;(I’m still missing a few switches in there, they will arrive in a
+separate package.)&lt;/p&gt;
+&lt;p&gt;So how are the switches? Honestly, not great. On the positive side,
+they are really low. Like, this is Edward against Kamina, which is my
+everyday low-profile keyboard now:&lt;/p&gt;
+&lt;img alt="projects/project-175043/images/8638211607279893431.jpg" src="projects/project-175043/images/8638211607279893431.jpg" /&gt;
+&lt;p&gt;The key travel is 2mm, compared to the 3mm of the choc switches, and
+because of the way the spring is attached in there, you are bottoming
+out every single time. The keys are supposed to be clicky, but they
+are only sometimes — because of the way the click bar is constructed,
+and huge play between the “stem” and the switch case, this is
+completely random. For the same reason the contact is not very
+reliable, and some of the switches are basically stuck in the always
+open or always closed position. It seems like they have pretty bad QE
+problems with them.&lt;/p&gt;
+&lt;p&gt;While I soldered and re-soldered parts to make sure the problems are
+indeed with the switches and not with my soldering, I accidentally got
+one of the switches too close to the hot air gun:&lt;/p&gt;
+&lt;img alt="projects/project-175043/images/3236411607280607993.jpg" src="projects/project-175043/images/3236411607280607993.jpg" /&gt;
+&lt;p&gt;That fused the transparent “scissors” together, making the switch
+unusable, so I decided to disassemble it, to see what makes it…
+click.&lt;/p&gt;
+&lt;p&gt;Aside from and interesting rocker mechanism for the spring, the
+scissors and the “stem”, there are two separate mechanisms inside for
+the click bar and the contacts:&lt;/p&gt;
+&lt;img alt="projects/project-175043/images/7356481607280718276.jpg" src="projects/project-175043/images/7356481607280718276.jpg" /&gt;
+&lt;p&gt;As you can see, the blue stem has quite a lot of leeway on the sides,
+so it’s possible for it to not touch the click bar or the contacts at
+all, in extreme cases — that is what makes the switch so unreliable.
+Apart from better tolerances I can’t think about any workaround to
+make it better.&lt;/p&gt;
+&lt;p&gt;In conclusion, the Edward keyboard is very cute and small, super-thin,
+but too unreliable to be practical.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-175043/log-186772/" rel="alternate"/>
+    <summary>Published on 2020-12-06 in project-175043.</summary>
+    <published>2020-12-06T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-175043/log-191163/</id>
+    <title>Small Improvements</title>
+    <updated>2021-04-01T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="small-improvements"&gt;
+
+&lt;p&gt;Published on 2021-04-01 in &lt;a class="reference internal" href="../../../projects/project-175043/#project-175043"&gt;&lt;span class="std std-ref"&gt;Flatreus Keyboard&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I made some small improvements to the Flatreus recently. I replaced
+the tact switches I originally used for the mouse buttons with actual
+switches for a mouse. They require much less actuation force, and are
+much more clicky. They feel exactly right, even though they are a bit
+harder to reach due to being lower.&lt;/p&gt;
+&lt;img alt="projects/project-175043/images/6225441617289105308.jpg" src="projects/project-175043/images/6225441617289105308.jpg" /&gt;
+&lt;p&gt;As you can see, I’m using leftover keycaps with it now. They fit
+surprisingly well my new layout:&lt;/p&gt;
+&lt;img alt="projects/project-175043/images/5888231617289243875.png" src="projects/project-175043/images/5888231617289243875.png" /&gt;
+&lt;p&gt;It was originally designed for a smaller keyboard, so 8 keys are
+unused, but they were hard to reach anyways.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-175043/log-191163/" rel="alternate"/>
+    <summary>Published on 2021-04-01 in project-175043.</summary>
+    <published>2021-04-01T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-175043/log-197599/</id>
+    <title>Electra</title>
+    <updated>2021-09-08T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="electra"&gt;
+
+&lt;p&gt;Published on 2021-09-08 in &lt;a class="reference internal" href="../../../projects/project-175043/#project-175043"&gt;&lt;span class="std std-ref"&gt;Flatreus Keyboard&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;When I first built Flatreus, it seemed pretty nice, but way too small
+for me. I wasn’t yet used to using layers, and I wanted to at least
+have all the navigation and control keys (Esc, Enter, Backspace, Del,
+etc.) easily accessible. So I designed a version of Flatreus with an
+extra column of keys added on each side. The idea was to make it work
+more like a Planck or &lt;a class="reference internal" href="../../../projects/project-174917/#project-174917"&gt;&lt;span class="std std-ref"&gt;Dorsch 48k Keyboard&lt;/span&gt;&lt;/a&gt; . I ordered the PCBs, but I never assembled them, because by the time
+they arrived I was already experimenting with &lt;a class="reference internal" href="../../../projects/project-175712/#project-175712"&gt;&lt;span class="std std-ref"&gt;Kamina Keyboard&lt;/span&gt;&lt;/a&gt; , and moved on from there.&lt;/p&gt;
+&lt;p&gt;Recently, I impulse-bought some Kailh Purpz switches (there is a sale
+on Aliexpress), and wanted to try them on something — so I dug out the
+PCBs and finally assembled them:&lt;/p&gt;
+&lt;img alt="projects/project-175043/images/8535551631135673357.jpg" src="projects/project-175043/images/8535551631135673357.jpg" /&gt;
+&lt;p&gt;Of course in the mean time I learned a lot more about layers and
+minimalist keyboards, and I figured out a system for making my own
+layout on any new keyboard. So the layout I ended up with is a bit
+different than I initially had in mind when designing this.&lt;/p&gt;
+&lt;img alt="projects/project-175043/images/897791631135777909.png" src="projects/project-175043/images/897791631135777909.png" /&gt;
+&lt;p&gt;I used the keychron keycaps, because I have them lying around all the
+time, since they are so bad, that I always replace them with something
+else whenever I can. The switches are pretty nice — they are linears
+with 25g springs, very light in touch. Switching back to my Kamina
+with clicky Choc Whites makes me really feel how strong I have to push
+on the keys! Of course, as always, there is a trade-off: it’s much
+easier to make mistakes and typos on the lighter switches.&lt;/p&gt;
+&lt;img alt="projects/project-175043/images/8736971631135948794.jpg" src="projects/project-175043/images/8736971631135948794.jpg" /&gt;
+&lt;p&gt;All in all, I’m pretty happy with this one, and I’m using it to type
+right now, just for some variety.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-175043/log-197599/" rel="alternate"/>
+    <summary>Published on 2021-09-08 in project-175043.</summary>
+    <published>2021-09-08T00:00:00+02:00</published>
+  </entry>
+</feed>

@@ -1,0 +1,87 @@
+---
+blogpost: true
+date: 2020-11-04
+category: project-175712
+---
+
+# Last One, Promise
+Published on 2020-11-04 in {ref}`project-175712`.
+
+So I finished {ref}`project-174982` and while it is a fine keyboard, it turned out to be less convenient
+to me than the {ref}`project-174917` . The reason for that is that it's too big, meaning that I have to
+move my hands to reach keys like Esc or Backspace. Turns out that a
+large part of the magical touch-typing improvement I got with the
+Planck layout is not from it being ortholinear (though it certainly
+helps a lot), but from it being so small, that you don't move your
+hands sideways.
+
+Once I realized that, the solution is obvious: I need to take the
+Planck, break it in two so that I can have my hands farther apart, and
+add a number row, so that it's easier to program with it. So I went to
+the keyboard layout editor and made this:
+
+
+
+:::{image} images/7667371604524629931.png
+
+:::
+
+
+From there it was the usual process, I made a PCB with a SAMD21 MCU on
+it, and ordered it:
+
+
+
+:::{image} images/6743081604524677595.png
+
+:::
+
+
+The switches were on order already. I also found another set of
+keycaps that are compatible with the low-profile switches, and ordered
+them too. Today everything arrived all once, so I began assembling.
+
+The keycaps turned out to be a little bit too high and too small for
+my preference:
+
+
+
+:::{image} images/4486221604524794359.jpg
+
+:::
+
+
+So I swapped them with the PBT keycaps I had on my {ref}`project-175043` :
+
+
+
+:::{image} images/4675481604524843123.jpg
+
+:::
+
+
+Then I had to use a few transparent key caps I had lying around,
+because I didn't have enough of the PBT ones:
+
+
+
+:::{image} images/120481604524903285.jpg
+
+:::
+
+
+Once I had the keyboard all programmed and working, and I knew it's
+going to replace my Planck as my daily driver, I decided to swap the
+key caps with the Planck, so that now both of them have consistent
+keycaps:
+
+
+
+:::{image} images/7632841604524976811.jpg
+
+:::
+
+
+And that's pretty much it. I'm using that keyboard right now and it's
+great so far. I will probably keep it for a long time.
+

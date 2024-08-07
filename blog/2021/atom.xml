@@ -2,274 +2,167 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posted in 2021</title>
-  <updated>2024-08-07T20:33:03.289999+00:00</updated>
+  <updated>2024-08-07T20:34:14.185589+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/2021/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
   <entry>
-    <id>http://deshipu.art/projects/project-80626/log-197278/</id>
-    <title>Meowbit</title>
-    <updated>2021-08-30T00:00:00+02:00</updated>
-    <content type="html">&lt;section id="meowbit"&gt;
+    <id>http://deshipu.art/projects/project-182998/log-201153/</id>
+    <title>Programming</title>
+    <updated>2021-12-09T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="programming"&gt;
 
-&lt;p&gt;Published on 2021-08-30 in &lt;a class="reference internal" href="../../projects/project-80626/#project-80626"&gt;&lt;span class="std std-ref"&gt;Stage, a Tile and Sprite Engine&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Today I finally sat down and got Stage running on the Meowbit. I had
-this very neat little console in my drawer for years now, and
-CircuitPython has been ported to the STM32 chip that it uses, but
-there was &lt;a class="reference external" href="https://github.com/adafruit/circuitpython/issues/3873"&gt;a bug preventing me from re-initializing the display to the settings
-that Stage expects&lt;/a&gt; . A few days ago I got reminded about Meowbit, and realized that I
-don’t have to re-initialize the display to make it work, I can change
-the default display settings, since I have to recompile CircuitPython
-firmware for it anyways to include the parts of Stage written in C.&lt;/p&gt;
-&lt;p&gt;So here it is:&lt;/p&gt;
-&lt;img alt="projects/project-80626/images/4843771630351947086.jpg" src="projects/project-80626/images/4843771630351947086.jpg" /&gt;
-&lt;p&gt;As an addition, I also modified to Stage library to allow using
-different sound output than the audioio module it defaults to. The
-Meowbit, for example, uses audiopwmio, but you could also use
-audiobusio for a device that uses I2S.&lt;/p&gt;
-&lt;p&gt;If the pull request is accepted, the support should be available in
-CircuitPython 7.0 to be released soonish.&lt;/p&gt;
+&lt;p&gt;Published on 2021-12-09 in &lt;a class="reference internal" href="../../projects/project-182998/#project-182998"&gt;&lt;span class="std std-ref"&gt;Kleks Keyboard&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;All that is left is to program it. As usual, I wanted to use
+CircuitPython, with my &lt;a class="reference external" href="https://github.com/deshipu/ukeeb"&gt;ukeeb&lt;/a&gt;  library. I flashed the bootloader with a JLink through a header I
+temporarily soldered to the stitches in the middle, and then I flashed
+the most recent CircuitPython. I’m using the board definition I made
+for &lt;a class="reference internal" href="../../projects/project-171381/#project-171381"&gt;&lt;span class="std std-ref"&gt;Fluff M0&lt;/span&gt;&lt;/a&gt; , because it exposes all the pins of the SAMD21.&lt;/p&gt;
+&lt;p&gt;Next it’s time to decide on the layout. For now I am using something
+like this:&lt;/p&gt;
+&lt;img alt="projects/project-182998/images/8992751639080387066.png" src="projects/project-182998/images/8992751639080387066.png" /&gt;
+&lt;p&gt;The labels on the bottom of the keys is what happens when you hold the
+key and press another one. There are two traditional layers, switched
+with the Raise and Lower keys. One thing I added compared to my
+previous keyboard, is that if you press Raise and Backspace, you get
+Lower, and if you press Lower and Space you get Raise — this way you
+can type with one hand with access to both layers. This helps when
+playing games.&lt;/p&gt;
+&lt;p&gt;I’m not entirely happy with the modifier keys yet, I will probably
+reshuffle them somewhat, and I will probably swap the arrows keys and
+the home/end and pgup/pgdn layers. Otherwise it works for me.&lt;/p&gt;
 &lt;/section&gt;
 </content>
-    <link href="http://deshipu.art/projects/project-80626/log-197278/" rel="alternate"/>
-    <summary>Published on 2021-08-30 in project-80626.</summary>
-    <published>2021-08-30T00:00:00+02:00</published>
+    <link href="http://deshipu.art/projects/project-182998/log-201153/" rel="alternate"/>
+    <summary>Published on 2021-12-09 in project-182998.</summary>
+    <published>2021-12-09T00:00:00+01:00</published>
   </entry>
   <entry>
-    <id>http://deshipu.art/projects/project-80626/log-198670/</id>
-    <title>PicoSystem</title>
-    <updated>2021-10-07T00:00:00+02:00</updated>
-    <content type="html">&lt;section id="picosystem"&gt;
+    <id>http://deshipu.art/projects/project-182998/log-201151/</id>
+    <title>The PCBs</title>
+    <updated>2021-12-09T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="the-pcbs"&gt;
 
-&lt;p&gt;Published on 2021-10-07 in &lt;a class="reference internal" href="../../projects/project-80626/#project-80626"&gt;&lt;span class="std std-ref"&gt;Stage, a Tile and Sprite Engine&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Pimoroni has released their PicoSystem, which is a handheld game
-console with an RP2040 microcontroller — and since it runs
-CircuitPython, of course I had to make it run the Stage library as
-well. I received a beta unit from Pimoroni, and with help from
-Gadgetoid, we got everything working:&lt;/p&gt;
-&lt;img alt="projects/project-80626/images/7357901633616631400.jpg" src="projects/project-80626/images/7357901633616631400.jpg" /&gt;
-&lt;img alt="projects/project-80626/images/9064631633616648503.jpg" src="projects/project-80626/images/9064631633616648503.jpg" /&gt;
-&lt;img alt="projects/project-80626/images/8006731633616664688.jpg" src="projects/project-80626/images/8006731633616664688.jpg" /&gt;
-&lt;p&gt;The changes are getting merged into CircuitPython even as we speak, so
-they should be available in any version greater than 7.0.0 (not in
-7.0.0 itself, though, too late for that).&lt;/p&gt;
-&lt;p&gt;I had to fix screen scaling, because I forgot to implement it in the
-CircuitPython version — I only had it working in MicroPython. I also
-improved the menu program, so that it adjusts to the screen size.&lt;/p&gt;
+&lt;p&gt;Published on 2021-12-09 in &lt;a class="reference internal" href="../../projects/project-182998/#project-182998"&gt;&lt;span class="std std-ref"&gt;Kleks Keyboard&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I designed the PCB for this keyboard the same way as the two-part
+split keyboards are often designed: the same PCB is used as the left
+and right part, with switch footprints on both sides, so that it can
+be flipped. However, in this case I only have a microcontroller on one
+side, so all the connections from the other half need to be brought
+over thorough a connector joining the two sides.&lt;/p&gt;
+&lt;img alt="projects/project-182998/images/7937791639079594678.png" src="projects/project-182998/images/7937791639079594678.png" /&gt;
+&lt;img alt="projects/project-182998/images/5529981639079604993.png" src="projects/project-182998/images/5529981639079604993.png" /&gt;
+&lt;p&gt;Logically the board has three rows and a dozen columns, which means
+that I need at least nine traces to cross to the other side. I made it
+12 by also adding the connectors for power, ground and reset — they
+are not needed on the other side of the board, but they are useful for
+programming the board, and this way I didn’t have to add a separate
+connector for this.&lt;/p&gt;
+&lt;p&gt;And before you ask, yes, the holes are purely decorative. I just like
+how they look, and that part of the PCB was empty anyways.&lt;/p&gt;
 &lt;/section&gt;
 </content>
-    <link href="http://deshipu.art/projects/project-80626/log-198670/" rel="alternate"/>
-    <summary>Published on 2021-10-07 in project-80626.</summary>
-    <published>2021-10-07T00:00:00+02:00</published>
+    <link href="http://deshipu.art/projects/project-182998/log-201151/" rel="alternate"/>
+    <summary>Published on 2021-12-09 in project-182998.</summary>
+    <published>2021-12-09T00:00:00+01:00</published>
   </entry>
   <entry>
-    <id>http://deshipu.art/projects/project-10408/log-200589/</id>
-    <title>Real Steno</title>
-    <updated>2021-11-22T00:00:00+01:00</updated>
-    <content type="html">&lt;section id="real-steno"&gt;
+    <id>http://deshipu.art/projects/project-182998/log-201195/</id>
+    <title>NKRO and BOOT</title>
+    <updated>2021-12-10T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="nkro-and-boot"&gt;
 
-&lt;p&gt;Published on 2021-11-22 in &lt;a class="reference internal" href="../../projects/project-10408/#project-10408"&gt;&lt;span class="std std-ref"&gt;Steno Keyboard&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;I finally got back to this project and rewrote the code for it, so
-that it now acts the same as commercial stenotypes, one called “Gemini
-PR” to be specific. It turned out to be much easier than I
-anticipated, mostly because CircuitPython has grown a lot of the
-features needed for it in the mean time. The code looks basically like
-this:&lt;/p&gt;
-&lt;div class="highlight-default notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;keypad&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;usb_cdc&lt;/span&gt;
-
-
-&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Steno&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;matrix&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;cols&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;rows&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;matrix&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;matrix&lt;/span&gt;
-        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;keypad&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;keypad&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;KeyMatrix&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;rows&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;cols&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;width&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;cols&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;run&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-        &lt;span class="n"&gt;report&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;bytearray&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-        &lt;span class="n"&gt;report&lt;/span&gt;&lt;span class="p"&gt;[:]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="sa"&gt;b&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\x80\x00\x00\x00\x00\x00&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
-        &lt;span class="n"&gt;pressed_count&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
-        &lt;span class="n"&gt;event&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;keypad&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Event&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-        &lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-            &lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;keypad&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;events&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_into&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;event&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-                &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;divmod&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;event&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;key_number&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;width&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-                &lt;span class="n"&gt;key&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;matrix&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-                &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;event&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pressed&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-                    &lt;span class="n"&gt;byte&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;bit&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;divmod&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;key&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-                    &lt;span class="n"&gt;report&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;byte&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;|=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;6&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;bit&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-                    &lt;span class="n"&gt;pressed_count&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
-                &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-                    &lt;span class="n"&gt;pressed_count&lt;/span&gt; &lt;span class="o"&gt;-=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
-                    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;pressed_count&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-                        &lt;span class="n"&gt;usb_cdc&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;write&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;report&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-                        &lt;span class="n"&gt;report&lt;/span&gt;&lt;span class="p"&gt;[:]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="sa"&gt;b&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\x80\x00\x00\x00\x00\x00&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;That’s it.  There is also a boot.py to enable the second serial for
-data (and disable the REPL and disk unless a key is pressed when
-connecting it):&lt;/p&gt;
-&lt;div class="highlight-default notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;usb_cdc&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;usb_hid&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;storage&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;board&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;digitalio&lt;/span&gt;
-
-
-&lt;span class="n"&gt;row&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;digitalio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DigitalInOut&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SCL&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;col&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;digitalio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DigitalInOut&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;MOSI&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;col&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;switch_to_output&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;switch_to_input&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pull&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;digitalio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Pull&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DOWN&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="n"&gt;storage&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;disable_usb_drive&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-    &lt;span class="n"&gt;usb_cdc&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;enable&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;console&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;False&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="n"&gt;usb_cdc&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;enable&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;console&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;usb_hid&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;disable&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-
-&lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;deinit&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;span class="n"&gt;col&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;deinit&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;And of course the key matrix definition:&lt;/p&gt;
-&lt;div class="highlight-default notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;board&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;usteno&lt;/span&gt;
-&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;micropython&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;const&lt;/span&gt;
-
-
-&lt;span class="n"&gt;ROWS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SCL&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AREF&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;D6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;A4&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;COLS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;MOSI&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SCK&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;A0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;MISO&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;A3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;A5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;TX&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;A2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;A6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;A1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-
-&lt;span class="n"&gt;_FN&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;const&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;_N1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;const&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;_N2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;const&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;_N3&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;const&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;_N4&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;const&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;_N5&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;const&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;_N6&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;const&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="n"&gt;_S1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;const&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;_S2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;const&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;_TX&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;const&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;_KX&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;const&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;_PX&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;const&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;11&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;_WX&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;const&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;_HX&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;const&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;13&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="n"&gt;_RX&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;const&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;14&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;_AX&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;const&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;15&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;_OX&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;const&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;16&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;_X1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;const&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;17&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;_X2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;const&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;18&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;_R1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;const&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;19&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;_R2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;const&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="n"&gt;_PW&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;const&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;21&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;_X3&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;const&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;22&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;_X4&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;const&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;23&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;_XE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;const&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;24&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;_XU&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;const&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;25&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;_XF&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;const&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;26&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;_XR&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;const&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;27&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="n"&gt;_XP&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;const&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;28&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;_XB&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;const&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;29&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;_XL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;const&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;30&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;_XG&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;const&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;31&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;_XT&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;const&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;32&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;_XS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;const&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;33&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;_XD&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;const&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;34&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="n"&gt;_N7&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;const&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;35&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;_N8&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;const&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;36&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;_N9&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;const&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;37&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;_NA&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;const&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;38&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;_NB&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;const&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;39&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;_NC&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;const&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;40&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;_XZ&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;const&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;41&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-
-&lt;span class="n"&gt;MATRIX&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
-    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;_N1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;_N2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;   &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;_N3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;     &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;   &lt;span class="n"&gt;_N4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;   &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;_N8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;_N9&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;_NA&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
-    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;_S1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;_TX&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;_PX&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;_HX&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;   &lt;span class="n"&gt;_X1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;   &lt;span class="n"&gt;_XF&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;_XP&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;_XL&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;_XT&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;_XD&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
-    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;_S2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;_KX&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;_WX&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;_RX&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;   &lt;span class="n"&gt;_X2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;   &lt;span class="n"&gt;_XR&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;_XB&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;_XG&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;_XS&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;_XZ&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
-    &lt;span class="p"&gt;(&lt;/span&gt;  &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;   &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;_AX&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;_OX&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;     &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;   &lt;span class="n"&gt;_XE&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;_XU&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;   &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;   &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;   &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
-&lt;span class="p"&gt;)&lt;/span&gt;
-
-
-&lt;span class="n"&gt;usteno&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Steno&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;MATRIX&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;COLS&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ROWS&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;Then you just need to start Plover, configure the right serial port in
-settings/machine (it was /dev/ttyACM0 for me), select Gemini GP as the
-machine type, and you are ready to steno!&lt;/p&gt;
+&lt;p&gt;Published on 2021-12-10 in &lt;a class="reference internal" href="../../projects/project-182998/#project-182998"&gt;&lt;span class="std std-ref"&gt;Kleks Keyboard&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I took the opportunity with this new keyboard and worked a bit on my
+uKeeb CircuitPython library. With the custom HID descriptors we can
+have an NKRO keyboard, but there is a small problem: the bitmap device
+that this uses won’t work in BIOS or with legacy KVM devices, as those
+expect a BOOT device. Fortunately there is a way around that: when the
+host expects a BOOT device, it must send you a special message telling
+you that, so we can switch to that protocol when needed.&lt;/p&gt;
+&lt;p&gt;The support for receiving that message was recently added to
+CircuitPython in version 7.1.0, so we can now add the NKRO code to the
+library by default.&lt;/p&gt;
+&lt;p&gt;If you are interested in the details, feel free to check the library
+code at  &lt;a class="reference external" href="https://github.com/deshipu/ukeeb"&gt;https://github.com/deshipu/ukeeb&lt;/a&gt;&lt;/p&gt;
 &lt;/section&gt;
 </content>
-    <link href="http://deshipu.art/projects/project-10408/log-200589/" rel="alternate"/>
-    <summary>Published on 2021-11-22 in project-10408.</summary>
-    <published>2021-11-22T00:00:00+01:00</published>
+    <link href="http://deshipu.art/projects/project-182998/log-201195/" rel="alternate"/>
+    <summary>Published on 2021-12-10 in project-182998.</summary>
+    <published>2021-12-10T00:00:00+01:00</published>
   </entry>
   <entry>
-    <id>http://deshipu.art/projects/project-10408/log-200640/</id>
-    <title>Stenotyping in Polish</title>
-    <updated>2021-11-24T00:00:00+01:00</updated>
-    <content type="html">&lt;section id="stenotyping-in-polish"&gt;
+    <id>http://deshipu.art/projects/project-182998/log-201706/</id>
+    <title>Thinking about V2</title>
+    <updated>2021-12-27T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="thinking-about-v2"&gt;
 
-&lt;p&gt;Published on 2021-11-24 in &lt;a class="reference internal" href="../../projects/project-10408/#project-10408"&gt;&lt;span class="std std-ref"&gt;Steno Keyboard&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Stenotyping somehow never caught up in Poland, and while there are
-several systems of stenography, there is none for stenotypy. But that
-just means there is an opportunity!&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="https://www.stenografia.pl/"&gt;Krzysztof Smirnow&lt;/a&gt;  describes his quest to bring Polish to Plover, the open source
-stenography engine. However, because Slavic languages tend to have a
-lot of sounds, a regular stenotype, like the one I made, is not up to
-the task. More keys are required.&lt;/p&gt;
-&lt;p&gt;So after a short exchange of e-mails, I sat down and tried to design a
-PCB for a stenotype that would be suitable for Polish, and at the same
-time not too expensive and easy to assemble at home. I came up with
-this:&lt;/p&gt;
-&lt;img alt="projects/project-10408/images/4517251637791568911.png" src="projects/project-10408/images/4517251637791568911.png" /&gt;
-&lt;img alt="projects/project-10408/images/2639531637791578153.png" src="projects/project-10408/images/2639531637791578153.png" /&gt;
-&lt;p&gt;The idea is that, since you have to order multiple PCBs anyways, I can
-save on the PCB size by only designing half of it, and then designing
-the other half on the back side. Then you take two of the, join
-together, solder a Pro Micro on top, add the diodes and switches, and
-you are ready to go!&lt;/p&gt;
-&lt;p&gt;Unfortunately, a back-of-the-envelope calculation shows that even if
-you make two of them at once (which saves you some money, because the
-keycaps come in packs of 60, enough for two), they still cost about
-$45. Sure, that’s not the $3000 you would pay for a commercial
-stenotype, but still more han you’d spend on something you try and
-discard.&lt;/p&gt;
-&lt;p&gt;I’m still going to make one, just to see if I made any mistakes.&lt;/p&gt;
+&lt;p&gt;Published on 2021-12-27 in &lt;a class="reference internal" href="../../projects/project-182998/#project-182998"&gt;&lt;span class="std std-ref"&gt;Kleks Keyboard&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I’ve been using this keyboard some time, and it’s close to perfect,
+but there are several things that could be still improved in my
+opinion, so I went ahead and re-designed the PCB a little bit.&lt;/p&gt;
+&lt;img alt="projects/project-182998/images/6801821640559279267.png" src="projects/project-182998/images/6801821640559279267.png" /&gt;
+&lt;img alt="projects/project-182998/images/9579491640559291480.png" src="projects/project-182998/images/9579491640559291480.png" /&gt;
+&lt;p&gt;I added a little stagger to the inner columns, because it was a bit
+hard to reach the T and Y keys. I also lowered the middle finger
+column a bit, because the stagger there was a bit much. The pinky
+cluster stays as it is, because it is perfect — I didn’t even move it
+the 3mm needed to align it with the new keys.&lt;/p&gt;
+&lt;p&gt;I added a cluster for the cursor keys, because having them on a layer
+is not convenient, and I’m not touch-typing when I’m cursoring
+anyways. Since the board is by necessity symmetric, I will also have
+some extra keys on the other side — I will put the rarely used
+modifier keys there.&lt;/p&gt;
+&lt;p&gt;Finally, I added a place for a CapsLock LED, though I never use it.
+But there were free pins, so why not.&lt;/p&gt;
+&lt;p&gt;The layout will look something like this:&lt;/p&gt;
+&lt;img alt="projects/project-182998/images/8332081640559601607.png" src="projects/project-182998/images/8332081640559601607.png" /&gt;
 &lt;/section&gt;
 </content>
-    <link href="http://deshipu.art/projects/project-10408/log-200640/" rel="alternate"/>
-    <summary>Published on 2021-11-24 in project-10408.</summary>
-    <published>2021-11-24T00:00:00+01:00</published>
+    <link href="http://deshipu.art/projects/project-182998/log-201706/" rel="alternate"/>
+    <summary>Published on 2021-12-27 in project-182998.</summary>
+    <published>2021-12-27T00:00:00+01:00</published>
   </entry>
   <entry>
-    <id>http://deshipu.art/projects/project-10408/log-200980/</id>
-    <title>Kos v1.0</title>
-    <updated>2021-12-06T00:00:00+01:00</updated>
-    <content type="html">&lt;section id="kos-v1-0"&gt;
+    <id>http://deshipu.art/projects/project-176476/log-201829/</id>
+    <title>Designing Second Prototype</title>
+    <updated>2021-12-30T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="designing-second-prototype"&gt;
 
-&lt;p&gt;Published on 2021-12-06 in &lt;a class="reference internal" href="../../projects/project-10408/#project-10408"&gt;&lt;span class="std std-ref"&gt;Steno Keyboard&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;We have the first version of Kos working!&lt;/p&gt;
-&lt;img alt="projects/project-10408/images/2863491638810763321.jpg" src="projects/project-10408/images/2863491638810763321.jpg" /&gt;
-&lt;p&gt;This time, instead of my favorite SAMD21 I userd a standard Pro Micro
-with Atmega32u4, and programmed it with QMK. This is to make this as
-easy to reproduce as possible, because the goal is to have an
-affordable steno machine with enough keys to do stenotyping in Polish.&lt;/p&gt;
-&lt;p&gt;The back has some nice foam stickers, so that it won’t scratch the
-desk:&lt;/p&gt;
-&lt;img alt="projects/project-10408/images/3767021638810900060.jpg" src="projects/project-10408/images/3767021638810900060.jpg" /&gt;
-&lt;p&gt;The design files and QMK configuration are at  &lt;a class="reference external" href="https://github.com/deshipu/kos-steno"&gt;https://github.com/deshipu/kos-steno&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Published on 2021-12-30 in &lt;a class="reference internal" href="../../projects/project-176476/#project-176476"&gt;&lt;span class="std std-ref"&gt;Electronic 6-hole Ocarina&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;After several more attempts at fixing the pressure sensor in software
+somehow, I’ve given up on it, and decided to try a different approach.
+This time I want to use a microphone placed in the stream of air, and
+measure the acoustic energy that it picks from the noise of the air
+rushing by. This should have no problems with a lag or a long recovery
+time.&lt;/p&gt;
+&lt;p&gt;To avoid mucking about with analog circuits and amplifiers, I decided
+to use a PDM microphone — a very simple MEMS device, that takes a
+clock signal, and gives you back 0/1 pulses that correspond in their
+frequency to the shape of the waveform — a bit like doing sound output
+with PWM, only in reverse. Of course CircuitPython already has a
+audiobusio library that handles it, so it’s really easy to get it
+working:  &lt;a class="reference external" href="https://learn.adafruit.com/adafruit-pdm-microphone-breakout/circuitpython"&gt;https://learn.adafruit.com/adafruit-pdm-microphone-
+breakout/circuitpython&lt;/a&gt;&lt;/p&gt;
+&lt;img alt="projects/project-176476/images/4496311640896493044.jpg" src="projects/project-176476/images/4496311640896493044.jpg" /&gt;
+&lt;p&gt;After a test with a module on a breadborad to see if it will work well
+enough and to determine which pins to use, I went ahead and created a
+PCB for the new version. I had a moment of doubt when it came to
+creating the footprint, as the datasheet shows something like this:&lt;/p&gt;
+&lt;img alt="projects/project-176476/images/1492801640896584479.png" src="projects/project-176476/images/1492801640896584479.png" /&gt;
+&lt;p&gt;You see, there is no way to route the traces to those pads, unless you
+use some expensive via-in-pad setup. However, a few pages later they
+show the recommended footprint, which is a bit more reasonable:&lt;/p&gt;
+&lt;img alt="projects/project-176476/images/1929641640896643711.png" src="projects/project-176476/images/1929641640896643711.png" /&gt;
+&lt;p&gt;Using this, I created the PCBs and placed the order at JLCPCB. I
+should be able to continue the experiments in a week or two.&lt;/p&gt;
+&lt;img alt="projects/project-176476/images/99301640896699960.png" src="projects/project-176476/images/99301640896699960.png" /&gt;
+&lt;p&gt;Oh, I also added a footprint for a cheap piezo speaker, I will see if
+I can PWM the tones.&lt;/p&gt;
 &lt;/section&gt;
 </content>
-    <link href="http://deshipu.art/projects/project-10408/log-200980/" rel="alternate"/>
-    <summary>Published on 2021-12-06 in project-10408.</summary>
-    <published>2021-12-06T00:00:00+01:00</published>
+    <link href="http://deshipu.art/projects/project-176476/log-201829/" rel="alternate"/>
+    <summary>Published on 2021-12-30 in project-176476.</summary>
+    <published>2021-12-30T00:00:00+01:00</published>
   </entry>
 </feed>

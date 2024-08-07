@@ -1,0 +1,31 @@
+---
+blogpost: true
+date: 2021-05-02
+category: project-179496
+---
+
+# The TRRS Cable
+Published on 2021-05-02 in {ref}`project-179496`.
+
+I already had my code for the keyboard, but I had to modify it
+slightly, so that it would communicate over the TRRS cable with the
+other half, to receive the keypresses from it. Initially I assumed
+that the TRRS cable just connects the TX and RX pins, crossed — since
+there are 4 wires, two used for power. Only after some head scratching
+and probing the connections I noticed that something is wrong. I asked
+the author for a schematic, and turns out that only the RX pins are
+connected, and one wire is just left unused.
+
+This turned out to be a bit of a problem, because the SAMD21 can't use
+the RX pin for sending data using the hardware UART, and CircuitPython
+doesn't have a software UART in the bitbangio module. Eventually I
+just ended up cutting the trace on the right hand side of the
+keyboard, and bodging it to TX.
+
+
+
+:::{image} images/4542941619907536132.jpg
+
+:::
+
+

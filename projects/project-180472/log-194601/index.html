@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>My Way - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="my-way">
+<h1>My Way<a class="headerlink" href="#my-way" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2021-06-23 in <a class="reference internal" href="../#project-180472"><span class="std std-ref">Home Button for Keyboards</span></a>.</p>
+<p>I decided that the sensor from a Blackberry 8520 has too fancy a
+connector, which would be difficult to source and to solder (with a
+0.4mm pitch), so I looked at other similar sensors, and picked one
+from a Blackberry 9300. Originally it no doubt uses even fancier
+connector, but the sensor-side is just a piece of flex PCB with a
+bunch of pads on it — something that should be easy enough to solder
+directly to a PCB.</p>
+<img alt="projects/project-180472/images/2660071624475346774.jpg" src="projects/project-180472/images/2660071624475346774.jpg" />
+<p>So I got a pair of those, and got to work on them. The initial probing
+yielded me this:</p>
+<img alt="projects/project-180472/images/1103321624475402648.jpg" src="projects/project-180472/images/1103321624475402648.jpg" />
+<p>GND was easy to find, because it is connected with the ground fill on
+the flex PCB. The VCC was easy too, because it’s the only track that
+is thicker than all the others. And finally pin 10 is not connected,
+which was easy to figure out by visual inspection — there are no
+traces going to it!</p>
+<p>Next, I got out an ohmmeter and found that pins 12 and 13 are
+connected to the tact switch on the bottom of the sensor. That is 6
+out of 13 pins out of the way, 7 more left to go.</p>
+<p>Those remaining pins should be, if this sensor is similar to the other
+one, CS, SCK, MISO, MOSI, RESET, SHUTDOWN, and INTERRUPT (aka
+MOVEMENT). There are lots of possible combinations here, but if you
+look carefully at the traces, you will note that they are in fact
+bundled in two distinct groups.  My bet is that one of those groups is
+going to be all the SPI pins, and the other — the rest.</p>
+<p>Well, we won’t know until we try. So the next step was soldering some
+wires to those pads, to connect them to a microcontroller and try
+sending some signals. Unfortunately, it turns out that the pads are
+way to small to do that, and soldering to a flex PCB is way too hard.
+After a few failed attempts, I decided to make a custom PCB with a
+footprint matching those pads. That delays the project a little bit.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

@@ -1,0 +1,170 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Adding Display Initialization to the Firmware - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="adding-display-initialization-to-the-firmware">
+<h1>Adding Display Initialization to the Firmware<a class="headerlink" href="#adding-display-initialization-to-the-firmware" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2021-06-12 in <a class="reference internal" href="../#project-180309"><span class="std std-ref">PewPew OLED</span></a>.</p>
+<p>Last time we got the CircuitPython firmware running on the device, but
+the display initialization code was all in Python. Today we are going
+to move it all into the firmware, so the device starts with the
+display initialized.</p>
+<p>We will be putting our initialization code into the board.c file, and
+it looks like this:</p>
+<div class="highlight-hljs notranslate"><div class="highlight"><pre><span></span>#include &quot;supervisor/board.h&quot;
+
+#include &quot;shared-bindings/board/__init__.h&quot;
+#include &quot;shared-bindings/displayio/FourWire.h&quot;
+#include &quot;shared-module/displayio/__init__.h&quot;
+#include &quot;shared-module/displayio/mipi_constants.h&quot;
+#include &quot;shared-bindings/busio/SPI.h&quot;
+
+displayio_fourwire_obj_t board_display_obj;
+
+#define DELAY 0x80
+
+uint8_t display_init_sequence[] = {
+    0xae, 0, // sleep
+    0xd5, 1, 0x80, // fOsc divide by 2
+    0xa8, 1, 0x3f, // multiplex 64
+    0xd3, 1, 0x00, // offset 0
+    0x40, 1, 0x00, // start line 0
+    0xad, 1, 0x8b, // dc/dc on
+    0xa0, 0, // segment remap = 0
+    0xc0, 0, // scan incr
+    0xda, 1, 0x12, // com pins
+    0x81, 1, 0xff, // contrast 255
+    0xd9, 1, 0x1f, // pre/dis-charge 2DCLKs/2CLKs
+    0xdb, 1, 0x20, // VCOM deslect 0.770
+    0x20, 1, 0x20,
+    0x33, 0, // VPP 9V
+    0xa6, 0, // not inverted
+    0xa4, 0, // normal
+    0xaf, 0, // on
+};
+
+void board_init(void) {
+    busio_spi_obj_t *spi = &amp;displays[0].fourwire_bus.inline_bus;
+    common_hal_busio_spi_construct(spi, &amp;pin_PA09, &amp;pin_PA08, NULL);
+    common_hal_busio_spi_never_reset(spi);
+
+    displayio_fourwire_obj_t *bus = &amp;displays[0].fourwire_bus;
+    bus-&gt;base.type = &amp;displayio_fourwire_type;
+    common_hal_displayio_fourwire_construct(bus,
+        spi,
+        &amp;pin_PA10, // Command or data
+        &amp;pin_PA01, // Chip select
+        &amp;pin_PA00, // Reset
+        1000000, // Baudrate
+        0, // Polarity
+        0); // Phase
+
+    displayio_display_obj_t *display = &amp;displays[0].display;
+    display-&gt;base.type = &amp;displayio_display_type;
+    common_hal_displayio_display_construct(display,
+        bus,
+        128, // Width
+        64, // Height
+        2, // column start
+        0, // row start
+        0, // rotation
+        1, // Color depth
+        true, // grayscale
+        false, // pixels in byte share row. Only used with depth &lt; 8
+        1, // bytes per cell. Only valid for depths &lt; 8
+        false, // reverse_pixels_in_byte. Only valid for depths &lt; 8
+        true, // reverse_pixels_in_word
+        0, // Set column command
+        0, // Set row command
+        0, // Write memory command
+        0xd3, // set vertical scroll command
+        display_init_sequence,
+        sizeof(display_init_sequence),
+        NULL,
+        0x81,
+        1.0f, // brightness
+        false, // auto_brightness
+        true, // single_byte_bounds
+        true, // data as commands
+        true, // auto_refresh
+        60, // native_frames_per_second
+        true, // backlight_on_high
+        true); // SH1107_addressing
+}
+
+bool board_requests_safe_mode(void) {
+    return false;
+}
+
+void reset_board(void) {
+}
+</pre></div>
+</div>
+<p>This is basically copied from pygamer’s board.c, with the
+initialization sequence and the display arguments copied from the
+SH1106 driver code. There are, however, three changes I made.</p>
+<p>First of all, of course I had to change which pins are being used —
+this is pretty straightforward.</p>
+<p>Then, I had to rotate my display up-side-down. I could have done this
+with the “rotation” argument of the display, but I want to write some
+code that writes to the display directly, so I really wanted to rotate
+it in its initialization. This is what the “segment remap” and “scan
+direction” registers are for, and I changed them both to 0.</p>
+<p>Finally, the way the displays I got are constructed, the first two
+columns are not connected, so I set “column start” to 2, to compensate
+for that.</p>
+<p>After compiling and flashing this, and removing the Python code from
+the last time, I get a working display. I also tested that it works
+powered from a CR2032 battery.</p>
+<img alt="projects/project-180309/images/5628131623523551797.jpg" src="projects/project-180309/images/5628131623523551797.jpg" />
+</section>
+
+
+</div>
+  </body>
+</html>

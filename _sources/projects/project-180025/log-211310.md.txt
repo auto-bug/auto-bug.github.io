@@ -1,0 +1,35 @@
+---
+blogpost: true
+date: 2022-09-25
+category: project-180025
+---
+
+# Version Six Assembled
+Published on 2022-09-25 in {ref}`project-180025`.
+
+The PCBs arrived, and I assembled everything. One thing that didn't
+work was plugging the S2 Mini into the staggered holes directly - you
+need headers for solid connection. Oh well. Another problem was the
+overcurrent protection of the new chip, that triggered whenever all
+the servos moved. Replacing one of the resistors with a bigger value
+one fixed this.
+
+
+
+:::{image} images/3750431664106416826.jpg
+
+:::
+
+
+Sadly, I still didn't get the camera module working correctly, even
+with the new shield. Oh well.
+
+
+
+:::{image} images/1335991664106467892.jpg
+
+:::
+
+
+I used the PCB legs with switches, but I didn't connect them yet.
+

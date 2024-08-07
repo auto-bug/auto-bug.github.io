@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Special Legs - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="special-legs">
+<h1>Special Legs<a class="headerlink" href="#special-legs" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2021-09-21 in <a class="reference internal" href="../#project-180025"><span class="std std-ref">Fluffbug</span></a>.</p>
+<p>In the previous versions of this robot I experimented with the
+mechanical leg segments made out of PCB, simply included in the
+design, with mouse-bite holes so that you can break them off easily.
+That made sense before there was easy and cheap access to laser-
+cutting: after all, the PCBs are being cut with a CNC router anyways,
+why not take advantage of it. Unfortunately today it makes less sense,
+as PCB fabs usually want you to pay extra for multiple projects in one
+design, and such a leg segment will count as a separate project for
+them. Laser cutting parts make more sense and look better. And the
+material can be less toxic.</p>
+<p>On the other hand, the PCB legs had one big advantage: you could put
+components on them. In particular, you could put switches at the ends
+of the legs, to give the robot a primitive sense of touch. Then you
+can program it to stop and turn around when it reaches the edge of
+your desk. Of course you need switches with very light springs in
+them, and relatively short travel — turns out that the switches that
+are normally used to detect if an SD card is inserted are perfect for
+this.</p>
+<p>So I designed an alternate leg segment, made of PCB, with a switch
+footprint at the end, and some traces going up to the knee. It won’t
+be included in the main body PCB of the robot, I will simply order it
+as a separate order. It looks like this:</p>
+<img alt="projects/project-180025/images/7427661632255162817.png" src="projects/project-180025/images/7427661632255162817.png" />
+<p>Of course this is completely optional, but I think it’s a nice option
+to have.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

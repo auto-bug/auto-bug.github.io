@@ -1,0 +1,42 @@
+---
+blogpost: true
+date: 2020-09-23
+category: project-174982
+---
+
+# The PCB
+Published on 2020-09-23 in {ref}`project-174982`.
+
+After exporting the layout as an SVG image, I started to work on a PCB
+for it. Putting a 0.75" square on top of some keys to see how they
+should actually reach, I got the basic shape:
+
+
+
+:::{image} images/9723151600888801080.png
+
+:::
+
+
+Then I imported it in Fritzng, and put a switch footprint into each
+square, rotating them as needed. Then I exported it to SVG once more,
+to get all the holes for the sunken switches included in the board
+outline. Added diodes, SAMD21, and after roughly a day of routing we
+have the PCB:
+
+
+
+:::{image} images/33061600888966698.png
+
+:::
+
+
+
+
+:::{image} images/4991571600888977500.png
+
+:::
+
+
+This is now ordered, so we will see in one week how well it came out.
+

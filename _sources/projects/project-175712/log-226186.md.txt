@@ -1,0 +1,48 @@
+---
+blogpost: true
+date: 2023-12-22
+category: project-175712
+---
+
+# Kamina 3.1
+Published on 2023-12-22 in {ref}`project-175712`.
+
+As mentioned in the previous log, I decided to do one more version of
+this keyboard. The main change is that in place of a SAMD21 bare
+microcontroller, I'm now using a Raspberry Pi Pico or compatible
+microcontroller developer board. This makes this keyboard much easier
+to assemble and program by people who are not comfortable soldering
+tiny QFN footprints or flashing a bootloader over DAP.
+
+Other changes include optional hot-swap sockets, breakable last
+column, and four additional keys at the middle of the board. There is
+also a technical change: it's no longer a single PCB, but instead you
+need two identical PCBs, one half flipped, to make the full keyboard.
+This way it's much cheaper to fabricate the PCB.
+
+I did this, because I've seen a lot of interest in this kind of a
+middle ground between traditional keyboards and fully ergonomic ones.
+
+
+
+:::{image} images/3092651703285154227.jpg
+
+:::
+
+
+Note however, that because of the hot-swap sockets, you can easily
+turn this into a proper ergonomic board when you feel braver:
+
+
+
+:::{image} images/370261703285285895.jpg
+
+:::
+
+
+To assemble the board, you still need to solder all those SMD diodes
+and hot-swap sockets, and to solder the dev board in place (or pins
+and a socket, if you want it to be removable, like in my examples).
+Version 3.0 also needs a bodge between the top jumpers on both sides,
+but the version 3.1 that I'm publishing already has that fixed.
+

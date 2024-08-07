@@ -1,0 +1,67 @@
+---
+blogpost: true
+date: 2020-09-30
+category: project-174982
+---
+
+# Assembled
+Published on 2020-09-30 in {ref}`project-174982`.
+
+A week has passed, and it's time to see the fruits of my design work
+and assemble the prototype.
+
+
+
+:::{image} images/9795781601498527185.jpg
+
+:::
+
+
+I started with the electronics, so that it will be easier to bodge
+anything with switches not mounted. It's not complex, so there isn't
+much work required. This time I re-used a chip with a bootloader
+already flashed, so I didn't even need to muck about with connecting a
+programmer (the programming pins are connected to some of the
+switches, so it's not ideal). I spent an hour or so debugging a faulty
+USB connector, but finally got it sorted out and it seems the whole
+board works as supposed.
+
+When I soldered the diodes, I put them in the opposite direction than
+intended, but they are consistent, so I can fix that in software, no
+problem. Just scan rows first instead of columns.
+
+Then I soldered the switches with the key caps, and for the first time
+I could actually try this layout:
+
+
+
+:::{image} images/1631791601498803303.jpg
+
+:::
+
+
+It took me a short while to adapt the code I have used for the
+previous keyboards, because I had to fill in the pins for rows and
+columns, and account for the reversed diodes. I got it to work, but
+somehow it felt really unreliable. So I sat down and started debugging
+it, and in the process I figured out why those switches feel so bad,
+and why both Flounder and this keyboard are unusable. I will write
+about this in detail in the next log.
+
+Other than the really bad switches, the layout is actually very nice.
+I would prefer to make the horizontal spacing a little bit tighter —
+right now in places it's a bit more than the traditional 0.75",
+because the columns are angled at different angles. If I were redoing
+it, I would bring them together a bit, so that sometimes the distance
+is bigger and sometimes smaller (and not always bigger like now), so
+the difference was smaller overall. But it's not a big deal.
+
+I also assumed that the large shift keys are 2.75U like on normal
+keyboards, but of course those Kailh keycaps are 2.5U, so there is a
+little bit more gap for them, but it doesn't affect convenience.
+
+I didn't make the stabilizers — at this point, with those switches,
+that's pointless. The keyboard is unusable anyways, and I only sunk
+more money into that project, instead of accepting that those switches
+are trash and moving on.
+

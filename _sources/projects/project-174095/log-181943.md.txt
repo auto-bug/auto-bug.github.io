@@ -1,0 +1,54 @@
+---
+blogpost: true
+date: 2020-08-08
+category: project-174095
+---
+
+# Double-function Modifier Keys
+Published on 2020-08-08 in {ref}`project-174095`.
+
+The feasibility of this keyboard hinges on the ability to use the
+modifier keys both as modifier keys and as regular keys. How is this
+going to work? The basic idea seems very simple: if you use it with
+another key, it's a modifier, otherwise it's a regular key. But how
+exactly can we tell? There are a lot of details here.
+
+I got the whole idea from the QMK keyboard firmware, [where this is called Mod-Tap](https://docs.qmk.fm/#/mod_tap) . However, it doesn't work exactly how I wanted — the difference is in
+the time you keep the key pressed. If you press it and release it
+quickly (tap), it acts as a regular key, but if you hold it down
+longer, it acts as a modifier. This mostly works, except that
+sometimes I press a key too slow (especially when it's a space,
+pressed with my thumb), and then there is no visible effect (modifier
+keys don't usually do much on their own) and it seems like the switch
+is mechanically failing, which was very frustrating, at least until
+you realize what is happening (I replaced the switch before I did).
+
+So I want to do something a little bit smarter:
+
+
+ * When you first press a mod key, the fact is recorded, but no keycode
+is sent immediately. They keyboard waits to see what happens next.
+ * If you press any other key (regular or mod key), the recorded mod key
+is considered to be a modifier, and the internal status is updated
+accordingly.
+ * As soon as that mod key is released, the status is updated again to
+remove the modifier.
+ * You can chain modifiers like that indefinitely — only the last pressed
+mod key needs to be remembered and delayed, as it's the only one that
+can have two functions.
+ * As soon as you press any regular, single-function key, the last mod
+key pressed is considered to be a modifier, and the keycode is sent
+immediately.
+ * If you release a mod key without pressing any other new keys, it is
+considered to be a regular key and its keycode is sent.
+
+This is, in my opinion, a little bit better, because no timings are
+involved, so you can do it as fast or as slow as you like. There is
+still the downside that you can't hold down the key to make it repeat
+— though I could probably do that with a timeout, or something like a
+double-tap. You also can't send the modifier key alone, so forget
+about using the ctrl key for shooting. It should still be easy to
+program, and the only extra memory needed is the variable holding the
+last pressed key, plus the modifier key status, which now has to be
+separate from the actual key status.
+

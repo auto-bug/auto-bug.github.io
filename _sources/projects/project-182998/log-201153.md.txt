@@ -1,0 +1,37 @@
+---
+blogpost: true
+date: 2021-12-09
+category: project-182998
+---
+
+# Programming
+Published on 2021-12-09 in {ref}`project-182998`.
+
+All that is left is to program it. As usual, I wanted to use
+CircuitPython, with my [ukeeb](https://github.com/deshipu/ukeeb)  library. I flashed the bootloader with a JLink through a header I
+temporarily soldered to the stitches in the middle, and then I flashed
+the most recent CircuitPython. I'm using the board definition I made
+for {ref}`project-171381` , because it exposes all the pins of the SAMD21.
+
+Next it's time to decide on the layout. For now I am using something
+like this:
+
+
+
+:::{image} images/8992751639080387066.png
+
+:::
+
+
+The labels on the bottom of the keys is what happens when you hold the
+key and press another one. There are two traditional layers, switched
+with the Raise and Lower keys. One thing I added compared to my
+previous keyboard, is that if you press Raise and Backspace, you get
+Lower, and if you press Lower and Space you get Raise — this way you
+can type with one hand with access to both layers. This helps when
+playing games.
+
+I'm not entirely happy with the modifier keys yet, I will probably
+reshuffle them somewhat, and I will probably swap the arrows keys and
+the home/end and pgup/pgdn layers. Otherwise it works for me.
+

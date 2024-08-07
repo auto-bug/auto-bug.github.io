@@ -1,0 +1,44 @@
+---
+blogpost: true
+date: 2022-03-03
+category: project-184163
+---
+
+# Wired Mode
+Published on 2022-03-03 in {ref}`project-184163`.
+
+For starters, I decided to do something I already have well rehearsed:
+a wired keyboard. There is already support for the TinyS3 in
+CircuitPython, so I thought it would be easy. Just use my ukeeb
+library, with the small modification for UART communication between
+the halves, and I'm done. Well, not quite.
+
+
+
+:::{image} images/5508811646300725818.jpg
+
+:::
+
+
+I got the first half to work pretty quickly — the only snag was that I
+didn't rotate the diodes when I moved them to the other side of the
+PCB, so now they were all in the wrong direction — but that is easily
+fixed in software. Then I moved on to get the other half to work, and
+that's where I wasted several hours of debugging time before giving up
+for a week. Long story short, the UART communication was broken on the
+ESP32-S3 with that version of CircuitPython, and I basically received
+random bytes. I gave the project a pause, and today, I flashed version
+7.2.0, which seems to have this issue solved (I just had to add
+clearing the input buffer).
+
+So I have a working keyboard now. One more modification I had to do is
+adding a sleep in the main loop, to limit the polling speed — without
+that the chip was getting noticeably warm.
+
+Now, about wireless. While there is some basic BLE support in
+CircuitPython for this chip right now, the services are not
+implemented yet. And I need services for the HID. However, I decided
+to be lazy and just take my time and wait for this to be implemented
+by people who know what they are doing (hopefully), instead of rushing
+head-first myself. So there is going to be another pause here.
+

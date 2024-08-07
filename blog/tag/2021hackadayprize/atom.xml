@@ -1,0 +1,318 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>http://deshipu.art/</id>
+  <title>deshipu.art - Posts tagged 2021hackadayprize</title>
+  <updated>2024-08-07T20:34:14.406770+00:00</updated>
+  <link href="http://deshipu.art/"/>
+  <link href="http://deshipu.art/blog/tag/2021hackadayprize/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-180025/</id>
+    <title>Fluffbug</title>
+    <updated>2021-05-26T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="fluffbug"&gt;
+
+&lt;p&gt;Cheap four-legged insect robot&lt;/p&gt;
+&lt;div class="project-thumb"&gt;
+&lt;a class="reference external image-reference" href="/_images/699141665927521334.jpg"&gt;&lt;img alt="projects/project-180025/images/699141665927521334.jpg" src="projects/project-180025/images/699141665927521334.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/4871271622052087533.jpg"&gt;&lt;img alt="projects/project-180025/images/4871271622052087533.jpg" src="projects/project-180025/images/4871271622052087533.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/1049221629754308611.jpg"&gt;&lt;img alt="projects/project-180025/images/1049221629754308611.jpg" src="projects/project-180025/images/1049221629754308611.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/2179101674149187718.JPG"&gt;&lt;img alt="projects/project-180025/images/2179101674149187718.JPG" src="projects/project-180025/images/2179101674149187718.JPG" /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;This is a continuation of the journey started with {ref}`project-6050` to create an affordable walking desktop robot.
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;section id="id1"&gt;
+&lt;h2&gt;&lt;/h2&gt;
+&lt;img alt="projects/project-180025/images/4876491664647086881.gif" src="projects/project-180025/images/4876491664647086881.gif" /&gt;
+&lt;/section&gt;
+&lt;section id="what-is-this"&gt;
+&lt;h2&gt;What is this?&lt;/h2&gt;
+&lt;p&gt;It’s a four-legged walking robot that fits on your desk, can be
+programmed with an USB cable without installing any special software
+on your computer, can be built on a budget of less than $30, and that
+can be easily expanded or modified, to try out new ideas. Those are
+the basic requirements I have set myself for this. But why?&lt;/p&gt;
+&lt;/section&gt;
+&lt;section id="why-am-i-doing-this"&gt;
+&lt;h2&gt;Why am I doing this?&lt;/h2&gt;
+&lt;p&gt;Because I think that the details about how such robots are able to
+walk, without crawling or dragging on the floor, are very interesting,
+and that making a physical robot work is the best possible way of
+learning about it—fun and rewarding. There is a big hurdle in getting
+into this—most of the robots you could get are either super-expensive
+or simple toys with hard-wired gaits. There are now some reasonable
+kits out there, such as those robots made by Petoi, but I think I can
+still do better than that in terms of both affordability and removing
+other barriers.&lt;/p&gt;
+&lt;/section&gt;
+&lt;section id="why-is-this-hard"&gt;
+&lt;h2&gt;Why is this hard?&lt;/h2&gt;
+&lt;p&gt;Building a walking quadruped is surprisingly easy—once you know how.
+You literally just need any microcontroller development board,
+battery, a bunch of servos, ice cream sticks and hot glue. A few hours
+of work, and a few weeks of banging your head against a wall while
+trying to get it all to work, and you are done. That’s the easy part.&lt;/p&gt;
+&lt;p&gt;The challenging part is designing and documenting it all so that it
+can be repeated or modified and expanded, without wasting time, and
+with as little frustration as possible, and on a budget. This means I
+don’t only need to get it to work, I need to think about the best ways
+of getting it to work, and then about the best ways of explaining
+them.&lt;/p&gt;
+&lt;/section&gt;
+&lt;section id="when-will-it-be-finished"&gt;
+&lt;h2&gt;When will it be finished?&lt;/h2&gt;
+&lt;p&gt;Probably never. That doesn’t mean it won’t be usable. I hope to get it
+to a point where it can be built by others as soon as possible. But
+it’s one of those projects that are never completely finished, because
+the context in which they work keeps changing. New parts become
+available, such as new microcontrollers, sensors or even servos and
+batteries. Others become obsolete or otherwise hard to obtain. New
+fabrication techniques, such as laser-cutting or 3D-printing become
+feasible for an average hobbyist. There might even be new materials on
+the horizon! And the fastest changes are in the software tools
+available—a few years ago the only ways you could program a
+microcontroller was assembly, or maybe, if you were lucky, some
+limited version of C. Today we have Python code running on them in
+real time, with a lot of ready libraries, and new capabilities appear
+every month. I probably won’t be able to incorporate it all in the
+design, but I fully intend to update it as new possibilities emerge.&lt;/p&gt;
+&lt;/section&gt;
+&lt;section id="logs"&gt;
+&lt;h2&gt;Logs&lt;/h2&gt;
+&lt;ul class="postlist-style-none postlist simple"&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-03-16 - &lt;a class="reference internal" href="../../../projects/project-180025/log-216776/"&gt;Another Workshop&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-03-05 - &lt;a class="reference internal" href="../../../projects/project-180025/log-216508/"&gt;After the Workshop&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-02-20 - &lt;a class="reference internal" href="../../../projects/project-180025/log-216161/"&gt;Bits’n’Bolts Robot Workshop&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-01-30 - &lt;a class="reference internal" href="../../../projects/project-180025/log-215664/"&gt;Assembly Instructions&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-01-19 - &lt;a class="reference internal" href="../../../projects/project-180025/log-215361/"&gt;Version 8.2 of the PCB&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2022-11-18 - &lt;a class="reference internal" href="../../../projects/project-180025/log-213534/"&gt;Can We Make It Simpler?&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2022-10-13 - &lt;a class="reference internal" href="../../../projects/project-180025/log-212186/"&gt;Asynchronous Face&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2022-10-04 - &lt;a class="reference internal" href="../../../projects/project-180025/log-211715/"&gt;OpenSCAD&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2022-10-02 - &lt;a class="reference internal" href="../../../projects/project-180025/log-211655/"&gt;EasyEDA&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2022-10-01 - &lt;a class="reference internal" href="../../../projects/project-180025/log-211617/"&gt;asyncio&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2022-09-25 - &lt;a class="reference internal" href="../../../projects/project-180025/log-211310/"&gt;Version Six Assembled&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2022-09-16 - &lt;a class="reference internal" href="../../../projects/project-180025/log-210975/"&gt;Version 6&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2022-09-15 - &lt;a class="reference internal" href="../../../projects/project-180025/log-210952/"&gt;Maker Faire&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2022-07-29 - &lt;a class="reference internal" href="../../../projects/project-180025/log-209267/"&gt;Put a Face to a Robot&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2022-07-19 - &lt;a class="reference internal" href="../../../projects/project-180025/log-208707/"&gt;Better Gait&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2022-03-13 - &lt;a class="reference internal" href="../../../projects/project-180025/log-204014/"&gt;First Steps&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2022-01-13 - &lt;a class="reference internal" href="../../../projects/project-180025/log-202310/"&gt;Legs&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2021-11-07 - &lt;a class="reference internal" href="../../../projects/project-180025/log-200168/"&gt;Assembled and Programmed&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2021-11-02 - &lt;a class="reference internal" href="../../../projects/project-180025/log-199928/"&gt;PCB Physical Fit&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2021-10-24 - &lt;a class="reference internal" href="../../../projects/project-180025/log-199408/"&gt;Version 4 of the PCB Routed&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2021-09-23 - &lt;a class="reference internal" href="../../../projects/project-180025/log-198040/"&gt;Selecting Pins&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2021-09-21 - &lt;a class="reference internal" href="../../../projects/project-180025/log-197994/"&gt;Special Legs&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2021-09-21 - &lt;a class="reference internal" href="../../../projects/project-180025/log-197989/"&gt;Rough Placement for the PCB&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2021-09-13 - &lt;a class="reference internal" href="../../../projects/project-180025/log-197769/"&gt;Inverse Kinematics&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2021-09-03 - &lt;a class="reference internal" href="../../../projects/project-180025/log-197420/"&gt;Brain Replacement Again&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2021-07-31 - &lt;a class="reference internal" href="../../../projects/project-180025/log-196020/"&gt;Cable Management&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2021-06-12 - &lt;a class="reference internal" href="../../../projects/project-180025/log-194001/"&gt;Yellow&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2021-05-26 - &lt;a class="reference internal" href="../../../projects/project-180025/log-193332/"&gt;Version 3&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2021-05-26 - &lt;a class="reference internal" href="../../../projects/project-180025/log-193330/"&gt;Configuration&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section id="instructions"&gt;
+&lt;h2&gt;Instructions&lt;/h2&gt;
+&lt;/section&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-180025/" rel="alternate"/>
+    <summary>Cheap four-legged insect robot</summary>
+    <category term="2021hackadayprize" label="2021hackadayprize"/>
+    <category term="hardware" label="hardware"/>
+    <category term="ongoingproject" label="ongoing project"/>
+    <published>2021-05-26T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-180309/</id>
+    <title>PewPew OLED</title>
+    <updated>2021-06-11T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="pewpew-oled"&gt;
+
+&lt;p&gt;They just keep on coming!&lt;/p&gt;
+&lt;div class="project-thumb"&gt;
+&lt;a class="reference external image-reference" href="/_images/5751571623764946666.jpg"&gt;&lt;img alt="projects/project-180309/images/5751571623764946666.jpg" src="projects/project-180309/images/5751571623764946666.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/1937131623446221467.jpg"&gt;&lt;img alt="projects/project-180309/images/1937131623446221467.jpg" src="projects/project-180309/images/1937131623446221467.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/9591521625776349509.jpg"&gt;&lt;img alt="projects/project-180309/images/9591521625776349509.jpg" src="projects/project-180309/images/9591521625776349509.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/2785161625776339735.jpg"&gt;&lt;img alt="projects/project-180309/images/2785161625776339735.jpg" src="projects/project-180309/images/2785161625776339735.jpg" /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Black-and-white graphics for games has its appeal, so I decided to
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;revisit &lt;a class="reference external" href="https://hackaday.io/project/100853-circuitpython-badge/log/142400-mark-ii"&gt;a prototype that I first made back in 2018&lt;/a&gt;  and a year later even &lt;a class="reference external" href="https://hackaday.io/project/165032-pewpew-m4/log/162474-pewpew-pew"&gt;managed to get the PewPew games to run on it&lt;/a&gt; .&lt;/p&gt;
+&lt;p&gt;But of course there needs to be some innovation and a challenge, so I
+decided to change two things:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;&lt;p&gt;make the hardware design even more minimal, with most parts, such as
+the buttons, the USB socket or the battery holder simply made out of
+the PCB itself, and&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;develop a CircuitPython library for the OLED displays similar to &lt;a class="reference internal" href="../../../projects/project-80626/#project-80626"&gt;&lt;span class="std std-ref"&gt;Stage, a Tile and Sprite Engine&lt;/span&gt;&lt;/a&gt; , but optimized for monochromatic games.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;And of course that also means some new games will need to be written,
+to make sure that the library is usable.&lt;/p&gt;
+&lt;section id="logs"&gt;
+&lt;h2&gt;Logs&lt;/h2&gt;
+&lt;ul class="postlist-style-none postlist simple"&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2021-07-08 - &lt;a class="reference internal" href="../../../projects/project-180309/log-195125/"&gt;Great Success&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2021-06-23 - &lt;a class="reference internal" href="../../../projects/project-180309/log-194586/"&gt;Version 2&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2021-06-15 - &lt;a class="reference internal" href="../../../projects/project-180309/log-194297/"&gt;The pew Library&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2021-06-12 - &lt;a class="reference internal" href="../../../projects/project-180309/log-194000/"&gt;First Prototype Failure&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2021-06-12 - &lt;a class="reference internal" href="../../../projects/project-180309/log-194074/"&gt;Adding the board to CircuitPython&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2021-06-12 - &lt;a class="reference internal" href="../../../projects/project-180309/log-194078/"&gt;Adding Display Initialization to the Firmware&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2021-06-11 - &lt;a class="reference internal" href="../../../projects/project-180309/log-193999/"&gt;Designing the Battery Holder&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section id="instructions"&gt;
+&lt;h2&gt;Instructions&lt;/h2&gt;
+&lt;/section&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-180309/" rel="alternate"/>
+    <summary>They just keep on coming!</summary>
+    <category term="2021hackadayprize" label="2021hackadayprize"/>
+    <category term="hardware" label="hardware"/>
+    <category term="ongoingproject" label="ongoing project"/>
+    <published>2021-06-11T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-180364/</id>
+    <title>Gif Pendant</title>
+    <updated>2021-06-14T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="gif-pendant"&gt;
+
+&lt;p&gt;A necklace that plays animated GIF images&lt;/p&gt;
+&lt;div class="project-thumb"&gt;
+&lt;a class="reference external image-reference" href="/_images/6827311623676221369.jpg"&gt;&lt;img alt="projects/project-180364/images/6827311623676221369.jpg" src="projects/project-180364/images/6827311623676221369.jpg" /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;This is continuing the work from {ref}`project-158701`  — I had to create a new project page to submit it to the contests.
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;The idea is to use one of those tiny TFT screens to build a piece of
+jewelry that you wear on your neck, to which you can save any animated
+GIF file of the right size, to have it displayed on the screen.&lt;/p&gt;
+&lt;section id="logs"&gt;
+&lt;h2&gt;Logs&lt;/h2&gt;
+&lt;ul class="postlist-style-none postlist simple"&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-09-11 - &lt;a class="reference internal" href="../../../projects/project-180364/log-223063/"&gt;Goodbye&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2021-10-01 - &lt;a class="reference internal" href="../../../projects/project-180364/log-198425/"&gt;Some Progress&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2021-06-14 - &lt;a class="reference internal" href="../../../projects/project-180364/log-194241/"&gt;The Screen&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2021-06-14 - &lt;a class="reference internal" href="../../../projects/project-180364/log-194242/"&gt;Reading GIFs in CircuitPython&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2021-06-14 - &lt;a class="reference internal" href="../../../projects/project-180364/log-194240/"&gt;Continuing from Previous Project&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2021-06-14 - &lt;a class="reference internal" href="../../../projects/project-180364/log-194243/"&gt;Battery Holder&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section id="instructions"&gt;
+&lt;h2&gt;Instructions&lt;/h2&gt;
+&lt;/section&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-180364/" rel="alternate"/>
+    <summary>A necklace that plays animated GIF images</summary>
+    <category term="2021hackadayprize" label="2021hackadayprize"/>
+    <category term="hardware" label="hardware"/>
+    <category term="scrappedproject" label="scrapped project"/>
+    <published>2021-06-14T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-180472/</id>
+    <title>Home Button for Keyboards</title>
+    <updated>2021-06-22T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="home-button-for-keyboards"&gt;
+
+&lt;p&gt;Use phone’s trackpad as a pointing device.&lt;/p&gt;
+&lt;div class="project-thumb"&gt;
+&lt;a class="reference external image-reference" href="/_images/2246631624364847469.jpg"&gt;&lt;img alt="projects/project-180472/images/2246631624364847469.jpg" src="projects/project-180472/images/2246631624364847469.jpg" /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;It&amp;#39;s a common practice in custom keyboards to include some kind of a
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;pointing device on them, so that we can move the mouse cursor without
+having to take the hands off the home row. A variety of devices are
+used: analog joysticks, thinkpad trackpoints, small trackballs. But
+some phones have a device that would be ideal for this: the “home”
+button with a built-in optical trackpad.&lt;/p&gt;
+&lt;p&gt;Unfortunately, even though you can easily get those buttons as
+replacement parts, nobody seems to be using them — and that is
+probably because there seems to be very little documentation.&lt;/p&gt;
+&lt;p&gt;I decided to try and reverse-engineer one particular model of such a
+button, document it, and use it to build a module for my &lt;a class="reference internal" href="../../../projects/project-175712/#project-175712"&gt;&lt;span class="std std-ref"&gt;Kamina Keyboard&lt;/span&gt;&lt;/a&gt; .&lt;/p&gt;
+&lt;section id="logs"&gt;
+&lt;h2&gt;Logs&lt;/h2&gt;
+&lt;ul class="postlist-style-none postlist simple"&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2021-11-25 - &lt;a class="reference internal" href="../../../projects/project-180472/log-200664/"&gt;Prior Art&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2021-08-22 - &lt;a class="reference internal" href="../../../projects/project-180472/log-196910/"&gt;Another Failure&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2021-07-19 - &lt;a class="reference internal" href="../../../projects/project-180472/log-195536/"&gt;Second PCB&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2021-06-24 - &lt;a class="reference internal" href="../../../projects/project-180472/log-194625/"&gt;Another Breakout&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2021-06-24 - &lt;a class="reference internal" href="../../../projects/project-180472/log-194617/"&gt;A New Plan&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2021-06-23 - &lt;a class="reference internal" href="../../../projects/project-180472/log-194609/"&gt;Power On&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2021-06-23 - &lt;a class="reference internal" href="../../../projects/project-180472/log-194601/"&gt;My Way&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2021-06-23 - &lt;a class="reference internal" href="../../../projects/project-180472/log-194602/"&gt;Breakout&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2021-06-22 - &lt;a class="reference internal" href="../../../projects/project-180472/log-194564/"&gt;Prior Art&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section id="instructions"&gt;
+&lt;h2&gt;Instructions&lt;/h2&gt;
+&lt;/section&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-180472/" rel="alternate"/>
+    <summary>Use phone’s trackpad as a pointing device.</summary>
+    <category term="2021hackadayprize" label="2021hackadayprize"/>
+    <category term="hardware" label="hardware"/>
+    <category term="ongoingproject" label="ongoing project"/>
+    <published>2021-06-22T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-182342/</id>
+    <title>Camera Shield for S2 Mini</title>
+    <updated>2021-10-25T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="camera-shield-for-s2-mini"&gt;
+
+&lt;p&gt;OV2640 shield for the S2 Mini ESP32-S2 board.&lt;/p&gt;
+&lt;div class="project-thumb"&gt;
+&lt;a class="reference external image-reference" href="/_images/9326271635197046152.jpg"&gt;&lt;img alt="projects/project-182342/images/9326271635197046152.jpg" src="projects/project-182342/images/9326271635197046152.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/9068561637862711810.jpg"&gt;&lt;img alt="projects/project-182342/images/9068561637862711810.jpg" src="projects/project-182342/images/9068561637862711810.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/6151791637862725826.jpg"&gt;&lt;img alt="projects/project-182342/images/6151791637862725826.jpg" src="projects/project-182342/images/6151791637862725826.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/6753511671064034693.jpg"&gt;&lt;img alt="projects/project-182342/images/6753511671064034693.jpg" src="projects/project-182342/images/6753511671064034693.jpg" /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;With CircuitPython now supporting a camera, it would be nice to have a
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;camera shield to use with my robot &lt;a class="reference internal" href="../../../projects/project-180025/#project-180025"&gt;&lt;span class="std std-ref"&gt;Fluffbug&lt;/span&gt;&lt;/a&gt; . The OV2640 camera module is pretty powerful (it can create JPEG data
+to stream), and the S2 Mini has enough pins to drive it, so the only
+inconvenience left are three voltages need for powering the camera.
+The shield takes care of that.&lt;/p&gt;
+&lt;section id="logs"&gt;
+&lt;h2&gt;Logs&lt;/h2&gt;
+&lt;ul class="postlist-style-none postlist simple"&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-01-11 - &lt;a class="reference internal" href="../../../projects/project-182342/log-215147/"&gt;Streaming&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2022-12-31 - &lt;a class="reference internal" href="../../../projects/project-182342/log-214837/"&gt;Everything Works!&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2022-12-18 - &lt;a class="reference internal" href="../../../projects/project-182342/log-214420/"&gt;Version 4 and MooCam&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2022-12-15 - &lt;a class="reference internal" href="../../../projects/project-182342/log-214332/"&gt;Next Steps&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2022-12-15 - &lt;a class="reference internal" href="../../../projects/project-182342/log-214298/"&gt;Great Success&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2022-12-14 - &lt;a class="reference internal" href="../../../projects/project-182342/log-214260/"&gt;More Frustration&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2022-12-13 - &lt;a class="reference internal" href="../../../projects/project-182342/log-214259/"&gt;Pure Frustration&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2022-09-15 - &lt;a class="reference internal" href="../../../projects/project-182342/log-210950/"&gt;Version 3&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2022-08-28 - &lt;a class="reference internal" href="../../../projects/project-182342/log-210248/"&gt;The Big Cap Conspiracy&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2021-12-03 - &lt;a class="reference internal" href="../../../projects/project-182342/log-200848/"&gt;1.2V and Version 2&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2021-11-27 - &lt;a class="reference internal" href="../../../projects/project-182342/log-200709/"&gt;Testing&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2021-10-29 - &lt;a class="reference internal" href="../../../projects/project-182342/log-199762/"&gt;Pinout&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2021-10-29 - &lt;a class="reference internal" href="../../../projects/project-182342/log-199761/"&gt;Camera in CircuitPython&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2021-10-26 - &lt;a class="reference internal" href="../../../projects/project-182342/log-199615/"&gt;What is this for?&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2021-10-25 - &lt;a class="reference internal" href="../../../projects/project-182342/log-199539/"&gt;Version 1 PCB&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section id="instructions"&gt;
+&lt;h2&gt;Instructions&lt;/h2&gt;
+&lt;/section&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-182342/" rel="alternate"/>
+    <summary>OV2640 shield for the S2 Mini ESP32-S2 board.</summary>
+    <category term="2021hackadayprize" label="2021hackadayprize"/>
+    <category term="hardware" label="hardware"/>
+    <category term="ongoingproject" label="ongoing project"/>
+    <published>2021-10-25T00:00:00+02:00</published>
+  </entry>
+</feed>

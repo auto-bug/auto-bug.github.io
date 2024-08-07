@@ -1,0 +1,60 @@
+---
+blogpost: true
+date: 2021-06-11
+category: project
+tags:  2021hackadayprize, ongoing project, hardware
+image: 1
+---
+
+# PewPew OLED
+
+They just keep on coming!
+
+<div class="project-thumb">
+
+:::{image} images/5751571623764946666.jpg
+:target: /_images/5751571623764946666.jpg
+:::
+
+:::{image} images/1937131623446221467.jpg
+:target: /_images/1937131623446221467.jpg
+:::
+
+:::{image} images/9591521625776349509.jpg
+:target: /_images/9591521625776349509.jpg
+:::
+
+:::{image} images/2785161625776339735.jpg
+:target: /_images/2785161625776339735.jpg
+:::
+
+</div>
+
+
+    Black-and-white graphics for games has its appeal, so I decided to
+revisit [a prototype that I first made back in 2018](https://hackaday.io/project/100853-circuitpython-badge/log/142400-mark-ii)  and a year later even [managed to get the PewPew games to run on it](https://hackaday.io/project/165032-pewpew-m4/log/162474-pewpew-pew) .
+
+But of course there needs to be some innovation and a challenge, so I
+decided to change two things:
+
+
+ 1. make the hardware design even more minimal, with most parts, such as
+the buttons, the USB socket or the battery holder simply made out of
+the PCB itself, and
+ 1. develop a CircuitPython library for the OLED displays similar to {ref}`project-80626` , but optimized for monochromatic games.
+
+And of course that also means some new games will need to be written,
+to make sure that the library is usable.
+
+
+
+
+
+## Logs
+
+:::{postlist}
+:category: project-180309
+:::
+
+## Instructions
+

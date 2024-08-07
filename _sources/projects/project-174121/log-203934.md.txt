@@ -1,0 +1,38 @@
+---
+blogpost: true
+date: 2022-03-11
+category: project-174121
+---
+
+# RP2040
+Published on 2022-03-11 in {ref}`project-174121`.
+
+I didn't really do much with this project for a year, but recently I
+wanted to order some more {ref}`project-165032` boards for a workshop, and realized that with the current chip
+shortage, the SAMD51 chips I used are impossible to get. So I think I
+need to now make a version of PewPew M4 with the RP2040 chip on board.
+I already had one attempt at it, doing research for  {ref}`project-178061` , but what I need now is not a bigger and better device, but exactly
+the same as PewPew M4, but with a chip that you can buy. So I dug out
+this project to try it with the RP2040 Feather, and see if there are
+any traps lurking for me.
+
+In short, there don't seem to be any. I added the missing resistors,
+plugged in the feather, wrote a ugame.py for it, and it just works.
+
+
+
+:::{image} images/6820061647028627828.jpg
+
+:::
+
+
+However, the next step will be to design a PCB similar to that of
+PewPew M4, but with the RP2040 chip on it, and that is going to be
+some more work. You see, the SAMD51 only needed two capacitors and a
+resistor. The RP2040 needs that, plus a flash chip, a crystal
+oscillator with its own capacitors, and possibly more. So now I need
+to figure out what is needed exactly, and design the PCB for it.
+
+Alternatively, I could simply use a Pi PIco, but that would mean I
+have to give up on he expansion header.
+

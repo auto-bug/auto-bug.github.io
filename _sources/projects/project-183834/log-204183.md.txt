@@ -1,0 +1,56 @@
+---
+blogpost: true
+date: 2022-03-20
+category: project-183834
+---
+
+# Mistakes Have Been Made
+Published on 2022-03-20 in {ref}`project-183834`.
+
+The sockets arrived, and I assembled the keyboard. I used a double-row
+female header to bind together the two parts, in a way that lets me
+disconnect them for transport — it was an experiment, and I don't like
+it very much. The mechanical connection is pretty wobbly and feels
+fragile, and it doesn't look great. But it's workable, so I went ahead
+with the rest.
+
+I spent several hours trying to flash the chip and failing, only to
+finally discover that I soldered the two capacitors rotated by 90° —
+serves me right to put them so close together. Fortunately that was an
+easy fix.
+
+A worse problem is the fact that the holes for the plastic parts of
+the switches are too loose. It wasn't a problem when I soldered the
+switches to the board, but when using the sockets, the mechanical
+stability of the switches suffers. I already amended the footprint I
+used, and the next version will not have this problem. And there will
+have to be a next version, because of one more mistake...
+
+When I went to program this board, I couldn't get a reading from any
+of the keys. The program works fine, but no key presses would ever
+register. I went through the schematic many times to verify it, I went
+through the physical board to check the connections. Turns out I made
+a tiny little mistake when I moved the diodes to the back of the board
+— I swapped which columns are connected directly to the
+microcontroller on the same half, and which go through the connector.
+Of course the solution is simple: just solder the chip on the other
+half, on the bottom of the board, and that is exactly what I did to
+get it finally all working. However, that also makes the USB port go
+on the bottom side of the board, and there is not enough clearance for
+the USB plug to not hit the desk. I have one USB cable where I
+whittled down the plug a bit to make it fit in such situations, so I
+could use it like that, but it's not a good solution.
+
+Oh, and of course there were some diodes soldered the wrong way, but
+that's so normal that I don't even mention it.
+
+So due to the above mistakes, I won't be publishing version two of
+this project, and will go straight to version three.
+
+
+
+:::{image} images/5795201647799857192.jpg
+
+:::
+
+

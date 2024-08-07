@@ -1,0 +1,39 @@
+---
+blogpost: true
+date: 2022-04-06
+category: project-177306
+---
+
+# Bigger Version Done
+Published on 2022-04-06 in {ref}`project-177306`.
+
+It only took me one year to finish the version from the previous log.
+Of course I assembled it as soon as the PCBs arrived, but I couldn't
+get it to work, and I blamed bad soldering on the LEDs, which
+unfortunately couldn't be easily corrected, as they have SMD
+footprints, and for practical reason of being arranged in a tight
+display, there is nothing sticking out.
+
+After several attempts at getting it to work using my mini-hot plate,
+I mostly gave up on this.
+
+
+
+:::{image} images/101451649271080880.jpg
+
+:::
+
+
+A few days ago I went and tried to assemble a second PCB, this time
+using a more common LED footprint, that could be soldered by hand and
+easily reworked. And of course it didn't work either. So I desoldered
+all but one LEDs, and started investigating, and turns out this whole
+time I had the rows and columns switched. Duh.
+
+So I went back to the original unit, switched the rows and columns,
+and what do you know, it worked, with only a few "bad pixels" due to
+soldering. But those were easy enough to fix using the hot plate, so
+now I have a fully working unit. I might also finish the second one
+with regular LEDs, but soldering them by hand is a bit of a chore, so
+we will see.
+

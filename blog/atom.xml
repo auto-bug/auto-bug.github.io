@@ -2,227 +2,277 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art</title>
-  <updated>2024-08-07T20:33:02.068245+00:00</updated>
+  <updated>2024-08-07T20:34:12.483926+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
   <entry>
-    <id>http://deshipu.art/projects/project-80626/log-209169/</id>
-    <title>PNG Support</title>
-    <updated>2022-07-27T00:00:00+02:00</updated>
-    <content type="html">&lt;section id="png-support"&gt;
+    <id>http://deshipu.art/projects/project-175712/log-226186/</id>
+    <title>Kamina 3.1</title>
+    <updated>2023-12-22T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="kamina-3-1"&gt;
 
-&lt;p&gt;Published on 2022-07-27 in &lt;a class="reference internal" href="../projects/project-80626/#project-80626"&gt;&lt;span class="std std-ref"&gt;Stage, a Tile and Sprite Engine&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;img alt="projects/project-80626/images/192731658873601053.jpg" src="projects/project-80626/images/192731658873601053.jpg" /&gt;
-&lt;p&gt;When I just started with the Stage library, I used BMP files for the
-graphics, mostly because they were uncompressed, so it seemed the
-easiest way. And it was good enough for a prototype, to confirm this
-is possible. But there are a lot of problems with BMP files, starting
-with their size, end ending with the fact that there isn’t really any
-official spec of them, and they have a lot of incompatible variants
-and versions. So while my code worked fine with images saved with
-GIMP, it didn’t with those created with other programs. And honestly,
-forcing people to use GIMP is just too cruel.&lt;/p&gt;
-&lt;p&gt;So for easier use, I decided to add GIF support. I took some work, as
-the compression algorithm is pretty tricky, but I got it done in pure
-Python, and with some restrictions, included it in the Stage library.
-GIF files are pretty much the same no matter what saves them, so that
-makes things a little bit easier for everyone. Or so I thought.&lt;/p&gt;
-&lt;p&gt;Unfortunately, when I looked at how people try to use this library at
-the recent EuroPython conference, I had to revise my conclusions. You
-see, for most people GIF is animated format. That means that most
-sprite-making software, when asked to save as GIF, will create an
-animation of your sprite’s frames, instead of an atlas. And that is
-very much not what Stage expects. The fact that you need to have at
-most 16 colors is also a problem, as many programs will happily add
-colors to your palette while handling or converting your GIFs,
-resulting in files that used to work stopping working when you edit
-them.&lt;/p&gt;
-&lt;p&gt;So what format should I be using? PNG is the most popular format for
-static pixel-art in the community, and most tools support exporting
-atlases of frames to that format. It’s also pretty well specified, so
-all the tools generate the same format. But the compression algorithm
-for PNG is even more complicated than for GIF, so what can I do? Turns
-out that the compression algorithm used by PNG, zlib deflate, is
-actually built-in into Python! And CircuitPython has an efficient C
-implementation of it available as a module too! So I don’t have to
-worry about the compression at all, I just need to handle the file
-structure, which is even simpler than in GIF.&lt;/p&gt;
-&lt;p&gt;So today I sat down, read the PNG specification, and wrote the ~50
-lines of code needed to load the images. And it works! I even managed
-to fit the extra code and the zlib module on the PewPew M4 boards (I
-just had to nudge a bit the Japanese translation). Once the pull
-request merges, we will be able to use PNG images, and I will try to
-write a detailed tutorial.&lt;/p&gt;
-&lt;p&gt;Update: I had to remove the GIF support after all, to make room.&lt;/p&gt;
+&lt;p&gt;Published on 2023-12-22 in &lt;a class="reference internal" href="../projects/project-175712/#project-175712"&gt;&lt;span class="std std-ref"&gt;Kamina Keyboard&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;As mentioned in the previous log, I decided to do one more version of
+this keyboard. The main change is that in place of a SAMD21 bare
+microcontroller, I’m now using a Raspberry Pi Pico or compatible
+microcontroller developer board. This makes this keyboard much easier
+to assemble and program by people who are not comfortable soldering
+tiny QFN footprints or flashing a bootloader over DAP.&lt;/p&gt;
+&lt;p&gt;Other changes include optional hot-swap sockets, breakable last
+column, and four additional keys at the middle of the board. There is
+also a technical change: it’s no longer a single PCB, but instead you
+need two identical PCBs, one half flipped, to make the full keyboard.
+This way it’s much cheaper to fabricate the PCB.&lt;/p&gt;
+&lt;p&gt;I did this, because I’ve seen a lot of interest in this kind of a
+middle ground between traditional keyboards and fully ergonomic ones.&lt;/p&gt;
+&lt;img alt="projects/project-175712/images/3092651703285154227.jpg" src="projects/project-175712/images/3092651703285154227.jpg" /&gt;
+&lt;p&gt;Note however, that because of the hot-swap sockets, you can easily
+turn this into a proper ergonomic board when you feel braver:&lt;/p&gt;
+&lt;img alt="projects/project-175712/images/370261703285285895.jpg" src="projects/project-175712/images/370261703285285895.jpg" /&gt;
+&lt;p&gt;To assemble the board, you still need to solder all those SMD diodes
+and hot-swap sockets, and to solder the dev board in place (or pins
+and a socket, if you want it to be removable, like in my examples).
+Version 3.0 also needs a bodge between the top jumpers on both sides,
+but the version 3.1 that I’m publishing already has that fixed.&lt;/p&gt;
 &lt;/section&gt;
 </content>
-    <link href="http://deshipu.art/projects/project-80626/log-209169/" rel="alternate"/>
-    <summary>Published on 2022-07-27 in project-80626.</summary>
-    <published>2022-07-27T00:00:00+02:00</published>
+    <link href="http://deshipu.art/projects/project-175712/log-226186/" rel="alternate"/>
+    <summary>Published on 2023-12-22 in project-175712.</summary>
+    <published>2023-12-22T00:00:00+01:00</published>
   </entry>
   <entry>
-    <id>http://deshipu.art/projects/project-158701/log-213092/</id>
-    <title>Where Are We?</title>
-    <updated>2022-11-01T00:00:00+01:00</updated>
-    <content type="html">&lt;section id="where-are-we"&gt;
+    <id>http://deshipu.art/projects/project-178061/log-230354/</id>
+    <title>S3</title>
+    <updated>2024-06-07T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="s3"&gt;
 
-&lt;p&gt;Published on 2022-11-01 in &lt;a class="reference internal" href="../projects/project-158701/#project-158701"&gt;&lt;span class="std std-ref"&gt;Video Pendant&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Hardware-wise, I think I’m reasonably happy with what I have – at
-least it’s more than sufficient as a prototype for testing. What I
-need now is the software. I have tested the device with CircuitPython
-– I have even written a GIF decoding library in pure Python specially
-for this – and I’m confident this can work, but not with
-CircuitPython. So the next step is to get the the firmware for this
-working.&lt;/p&gt;
-&lt;p&gt;I can use the TinyUSB library to expose the filesystem over USB – it’s
-the same library that CircuitPython is using, in fact. And I can use a
-super-optimized GIF library written by &lt;a class="reference external" href="https://hackaday.io/hacker/269676"&gt;&amp;#64;Larry Bank&lt;/a&gt; . That should get me the minimal functionality. I can then also
-experiment with sleep modes and touch and all that stuff.&lt;/p&gt;
-&lt;p&gt;The problem I am facing right now is setting up an environment for
-development for the SAMD21. I will probably start with Arduino,
-because that is already mostly ready out of the box, but there is
-still some work with that, that I currently just can’t get myself
-started on. So until I get that going, the project is on hold.&lt;/p&gt;
+&lt;p&gt;Published on 2024-06-07 in &lt;a class="reference internal" href="../projects/project-178061/#project-178061"&gt;&lt;span class="std std-ref"&gt;PewPew S2&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;New microcontrollers keep coming out, and each one looks like an
+interesting choice for a game console. I have been working a little
+bit on the Xiao S3, so I decided to try and make a PCB for it with the
+same display and buttons. I also used it as a test for the solderable
+nuts that I wrote about in &lt;span class="xref std std-ref"&gt;project-186921&lt;/span&gt; .&lt;/p&gt;
+&lt;img alt="projects/project-178061/images/1846391717777136617.png" src="projects/project-178061/images/1846391717777136617.png" /&gt;
+&lt;p&gt;I started with the latest PCB for uGame 22, and removed the RP2)40
+chip and all related components. That left me with the power and audio
+citcuits, which I moved to the other side of the board. I then placed
+the Xiao footprint in a cutout, so that it can be flush with the PCB
+from the bottom. The rendering doesn’t show it, because it assumes the
+module will go on the bottom of the PCB, when in fact it’s supposed to
+go on the top, partially fitting in that cutout.&lt;/p&gt;
+&lt;p&gt;I also had to change how the buttons are handled, because Xiao only
+has 11 usable GPIO pins. So I added a shift register, knowing that
+CircuitPython already has a keypad library that handles it in the
+background. Unfortunately that also meant adding explicit pull-up
+resistors for each button.&lt;/p&gt;
+&lt;p&gt;Finally, I added the solderable nut footprints. I already got some
+samples, so I knew what to expect from them. The render shows hex
+nuts, but the ones I ended up using are actually round. But they are
+still 3mm high, the same as the middle layer of acrylic was supposed
+to be. I placed them in the same spots as the screw holes were, so I
+can reuse the acrylic parts I already have.&lt;/p&gt;
+&lt;img alt="projects/project-178061/images/940871717777594030.jpg" src="projects/project-178061/images/940871717777594030.jpg" /&gt;
+&lt;p&gt;When the PCBs arrived, I assembled one, skipping the power circuit – I
+didn’t feel like looking for the parts in the drawers, and I already
+know that circuit works fine. I had to compile my own version of the
+firmware, because the support for that board in CircuitPython is still
+not merged, due to Seeed Studio not providing a VID/PID to use. I also
+had to add the &lt;a class="reference internal" href="../projects/project-80626/#project-80626"&gt;&lt;span class="std std-ref"&gt;Stage, a Tile and Sprite Engine&lt;/span&gt;&lt;/a&gt; to the firmware, to have all my games working – it’s not usually
+enabled for boards that don’t have a built-in display.&lt;/p&gt;
+&lt;p&gt;Overall, I’m very happy about how this microcontroller performs and
+about how the solderable nuts came out mechanically. I’m now thinking
+about repeating my experiment with the parallel display, but with the
+ESP32-S3 this time. Who knows, maybe it was something about the RP2040
+implementation that made things so slow? If the parallel display works
+well, I might use a WROOM module for the next version of this console.&lt;/p&gt;
 &lt;/section&gt;
 </content>
-    <link href="http://deshipu.art/projects/project-158701/log-213092/" rel="alternate"/>
-    <summary>Published on 2022-11-01 in project-158701.</summary>
-    <published>2022-11-01T00:00:00+01:00</published>
+    <link href="http://deshipu.art/projects/project-178061/log-230354/" rel="alternate"/>
+    <summary>Published on 2024-06-07 in project-178061.</summary>
+    <published>2024-06-07T00:00:00+02:00</published>
   </entry>
   <entry>
-    <id>http://deshipu.art/projects/project-10408/log-213614/</id>
-    <title>Kos v2.0</title>
-    <updated>2022-11-21T00:00:00+01:00</updated>
-    <content type="html">&lt;section id="kos-v2-0"&gt;
+    <id>http://deshipu.art/projects/project-178061/log-230360/</id>
+    <title>The Return of the Parallel Display</title>
+    <updated>2024-06-07T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="the-return-of-the-parallel-display"&gt;
 
-&lt;p&gt;Published on 2022-11-21 in &lt;a class="reference internal" href="../projects/project-10408/#project-10408"&gt;&lt;span class="std std-ref"&gt;Steno Keyboard&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;In Kos 1.0 I used a pro mini board for the microcontroller, because
-that was the traditional way at the time, and it had the most
-widespread support. But it’s an old microcontroller and the board is
-hard to get and expensive during the chip shortage, when the chip fabs
-are busy churning out chips for the missiles, so I decided to revisit
-this design and this time use something modern – the Raspberry Pi
-Pico, which is both cheap and available, at least until the military
-designs catch up with the new chip technology.&lt;/p&gt;
-&lt;p&gt;With more pins available on each side, and with the board being mostly
-symmetrical, I could simplify the design greatly. I no longer need to
-connect the rows across the two halves, and I can simply have all
-horizontal traces on one side, and all vertical traces on the other.&lt;/p&gt;
-&lt;img alt="projects/project-10408/images/7478231669027498191.png" src="projects/project-10408/images/7478231669027498191.png" /&gt;
-&lt;img alt="projects/project-10408/images/4817741669027510528.png" src="projects/project-10408/images/4817741669027510528.png" /&gt;
-&lt;p&gt;As with the previous versions, you need two of the PCBs to make one
-keyboard, and you connect them by soldering a pro micro in the middle.
-Since QMK now supports RP2040, there shouldn’t be any problem with the
-firmware, but I will probably use the CircuitPython code I already
-wrote for the other stenotype, or maybe try and get the USB HID steno
-protocol working. The Pi Pico opens a lot of possibilities, even
-putting a simplified version of Plover together with the dictionary on
-the board itself, and emulating a HID keyboard should be doable.&lt;/p&gt;
-&lt;p&gt;As usual, the PCBs and parts should arrive within two weeks.&lt;/p&gt;
-&lt;/section&gt;
-</content>
-    <link href="http://deshipu.art/projects/project-10408/log-213614/" rel="alternate"/>
-    <summary>Published on 2022-11-21 in project-10408.</summary>
-    <published>2022-11-21T00:00:00+01:00</published>
-  </entry>
-  <entry>
-    <id>http://deshipu.art/projects/project-9927/log-216775/</id>
-    <title>This is not the robot you are looking for</title>
-    <updated>2023-03-16T00:00:00+01:00</updated>
-    <content type="html">&lt;section id="this-is-not-the-robot-you-are-looking-for"&gt;
-
-&lt;p&gt;Published on 2023-03-16 in &lt;a class="reference internal" href="../projects/project-9927/#project-9927"&gt;&lt;span class="std std-ref"&gt;Tote HaD&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Apparently there are some rumors that this is a robot we are going to
-be building at a workshop in Berlin during the 2023 Hackaday
-conference. That is not true.&lt;/p&gt;
-&lt;p&gt;This is the robot we were building back in 2016 in Belgrade.&lt;/p&gt;
-&lt;p&gt;Yes, there is going to be a robot-building robot in Berlin, but we are
-going to be building &lt;span class="xref std std-ref"&gt;project-180025&lt;/span&gt; , which is a newer design with many improvements.&lt;/p&gt;
-&lt;/section&gt;
-</content>
-    <link href="http://deshipu.art/projects/project-9927/log-216775/" rel="alternate"/>
-    <summary>Published on 2023-03-16 in project-9927.</summary>
-    <published>2023-03-16T00:00:00+01:00</published>
-  </entry>
-  <entry>
-    <id>http://deshipu.art/projects/project-158701/log-223060/</id>
-    <title>Goodbye</title>
-    <updated>2023-09-11T00:00:00+02:00</updated>
-    <content type="html">&lt;section id="goodbye"&gt;
-
-&lt;p&gt;Published on 2023-09-11 in &lt;a class="reference internal" href="../projects/project-158701/#project-158701"&gt;&lt;span class="std std-ref"&gt;Video Pendant&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;I decided to stop pretending I will ever finish this project, and put
-it out of its misery.&lt;/p&gt;
-&lt;p&gt;I still believe it’s generally possible to get the exact hardware I
-used to display animated GIF that you can easily upload to an USB
-drive. However, it would require a bit of work to write the firmware
-that does it, and I find that I no longer am interested in doing that
-work.&lt;/p&gt;
-&lt;p&gt;While I was procrastinating, CircuitPython grew a gifio library, that
-displays animated GIFs straight from the filesystem. It’s as simple to
-use as:&lt;/p&gt;
-&lt;div class="highlight-default notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;board&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;gifio&lt;/span&gt;
+&lt;p&gt;Published on 2024-06-07 in &lt;a class="reference internal" href="../projects/project-178061/#project-178061"&gt;&lt;span class="std std-ref"&gt;PewPew S2&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;As I mentioned in the previous log, while the parallel display
+protocol doesn’t help much with the RP2040 chip, it might be a
+different story with the ESP32-S2 and S3. So it would be nice to check
+it, because we have a chance of having really smooth updates if it
+does work better. Unfortunately, the Xiao has too few pins to drive
+such a display, so we will need to use a Lolin S3 Mini for our tests,
+and eventually a WROOM module for the console itself.&lt;/p&gt;
+&lt;p&gt;Since I already tried that display with the RP2040, I know it has some
+caveats: you have to move a resistor on it to switch it from 16-bit
+mode to 8-bit mode, and the data pins are actually numbered backwards.
+So I connected the display remembering those things:&lt;/p&gt;
+&lt;img alt="projects/project-178061/images/71021717795809955.jpg" src="projects/project-178061/images/71021717795809955.jpg" /&gt;
+&lt;p&gt;Then I wrote a simple example program that should start the display.
+Note that the program is slightly different from what I used last
+time, because some stuff has been moved to individual modules in
+version 9 of CircuitPython.&lt;/p&gt;
+&lt;div class="highlight-default notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;paralleldisplaybus&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;board&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;displayio&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;time&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;struct&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;busdisplay&lt;/span&gt;
 
+&lt;span class="n"&gt;_INIT_SEQUENCE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="sa"&gt;b&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\x01\x80\x80&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;  &lt;span class="c1"&gt;# Software reset then delay 0x80 (128ms)&lt;/span&gt;
+    &lt;span class="sa"&gt;b&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\xEF\x03\x03\x80\x02&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+    &lt;span class="sa"&gt;b&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\xCF\x03\x00\xC1\x30&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+    &lt;span class="sa"&gt;b&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\xED\x04\x64\x03\x12\x81&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+    &lt;span class="sa"&gt;b&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\xE8\x03\x85\x00\x78&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+    &lt;span class="sa"&gt;b&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\xCB\x05\x39\x2C\x00\x34\x02&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+    &lt;span class="sa"&gt;b&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\xF7\x01\x20&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+    &lt;span class="sa"&gt;b&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\xEA\x02\x00\x00&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+    &lt;span class="sa"&gt;b&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\xc0\x01\x23&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;  &lt;span class="c1"&gt;# Power control VRH[5:0]&lt;/span&gt;
+    &lt;span class="sa"&gt;b&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\xc1\x01\x10&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;  &lt;span class="c1"&gt;# Power control SAP[2:0];BT[3:0]&lt;/span&gt;
+    &lt;span class="sa"&gt;b&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\xc5\x02\x3e\x28&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;  &lt;span class="c1"&gt;# VCM control&lt;/span&gt;
+    &lt;span class="sa"&gt;b&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\xc7\x01\x86&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;  &lt;span class="c1"&gt;# VCM control2&lt;/span&gt;
+    &lt;span class="sa"&gt;b&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\x36\x01\x38&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;  &lt;span class="c1"&gt;# Memory Access Control&lt;/span&gt;
+    &lt;span class="sa"&gt;b&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\x37\x01\x00&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;  &lt;span class="c1"&gt;# Vertical scroll zero&lt;/span&gt;
+    &lt;span class="sa"&gt;b&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\x3a\x01\x55&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;  &lt;span class="c1"&gt;# COLMOD: Pixel Format Set&lt;/span&gt;
+    &lt;span class="sa"&gt;b&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\xb1\x02\x00\x18&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;  &lt;span class="c1"&gt;# Frame Rate Control (In Normal Mode/Full Colors)&lt;/span&gt;
+    &lt;span class="sa"&gt;b&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\xb6\x03\x08\x82\x27&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;  &lt;span class="c1"&gt;# Display Function Control&lt;/span&gt;
+    &lt;span class="sa"&gt;b&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\xF2\x01\x00&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;  &lt;span class="c1"&gt;# 3Gamma Function Disable&lt;/span&gt;
+    &lt;span class="sa"&gt;b&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\x26\x01\x01&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;  &lt;span class="c1"&gt;# Gamma curve selected&lt;/span&gt;
+    &lt;span class="sa"&gt;b&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\xe0\x0f\x0F\x31\x2B\x0C\x0E\x08\x4E\xF1\x37\x07\x10\x03\x0E\x09\x00&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;  &lt;span class="c1"&gt;# Set Gamma&lt;/span&gt;
+    &lt;span class="sa"&gt;b&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\xe1\x0f\x00\x0E\x14\x03\x11\x07\x31\xC1\x48\x08\x0F\x0C\x31\x36\x0F&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;  &lt;span class="c1"&gt;# Set Gamma&lt;/span&gt;
+    &lt;span class="sa"&gt;b&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\x11\x80\x78&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;  &lt;span class="c1"&gt;# Exit Sleep then delay 0x78 (120ms)&lt;/span&gt;
+    &lt;span class="sa"&gt;b&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\x29\x80\x78&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;  &lt;span class="c1"&gt;# Display on then delay 0x78 (120ms)&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
 
-&lt;span class="n"&gt;display&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DISPLAY&lt;/span&gt;
-&lt;span class="n"&gt;odg&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;gifio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;OnDiskGif&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;sample.gif&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="n"&gt;start&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;time&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;monotonic&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;span class="n"&gt;next_delay&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;odg&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;next_frame&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="c1"&gt;# Load the first frame&lt;/span&gt;
-&lt;span class="n"&gt;end&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;time&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;monotonic&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;span class="n"&gt;overhead&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;end&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;start&lt;/span&gt;
-&lt;span class="n"&gt;display&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;auto_refresh&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;False&lt;/span&gt;
-&lt;span class="n"&gt;display_bus&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;display&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;bus&lt;/span&gt;
-
-&lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="n"&gt;time&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sleep&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;max&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;next_delay&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;overhead&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-    &lt;span class="n"&gt;next_delay&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;odg&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;next_frame&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-
-    &lt;span class="n"&gt;display_bus&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;send&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;42&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;struct&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pack&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&amp;gt;hh&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;odg&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;bitmap&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;width&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-    &lt;span class="n"&gt;display_bus&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;send&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;43&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;struct&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pack&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&amp;gt;hh&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;odg&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;bitmap&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;height&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-    &lt;span class="n"&gt;display_bus&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;send&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;44&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;odg&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;bitmap&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
+&lt;span class="n"&gt;displayio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;release_displays&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;bus&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;paralleldisplaybus&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ParallelBus&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="n"&gt;chip_select&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IO35&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="c1"&gt;# CS&lt;/span&gt;
+    &lt;span class="n"&gt;command&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IO36&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="c1"&gt;# RS&lt;/span&gt;
+    &lt;span class="n"&gt;write&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IO44&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="c1"&gt;# WR&lt;/span&gt;
+    &lt;span class="n"&gt;reset&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IO43&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="c1"&gt;# REST&lt;/span&gt;
+    &lt;span class="n"&gt;frequency&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;2_000_000&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;data_pins&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;
+        &lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IO18&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IO16&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IO2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IO4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IO12&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IO13&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IO11&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IO10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="p"&gt;],&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;display&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;busdisplay&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;BusDisplay&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="n"&gt;bus&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;_INIT_SEQUENCE&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;width&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;320&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;height&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;240&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;p&gt;That’s it. It works. But of course not on the SAMD21, which has way
-too little flash and memory to fit it all. I have built a custom
-version of CircuitPython that has almost everything disabled to fit
-gifio, and it kinda works, except of course:&lt;/p&gt;
-&lt;div class="highlight-default notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Auto&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;reload&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="n"&gt;on&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="n"&gt;Simply&lt;/span&gt; &lt;span class="n"&gt;save&lt;/span&gt; &lt;span class="n"&gt;files&lt;/span&gt; &lt;span class="n"&gt;over&lt;/span&gt; &lt;span class="n"&gt;USB&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;run&lt;/span&gt; &lt;span class="n"&gt;them&lt;/span&gt; &lt;span class="ow"&gt;or&lt;/span&gt; &lt;span class="n"&gt;enter&lt;/span&gt; &lt;span class="n"&gt;REPL&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;disable&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
-&lt;span class="n"&gt;code&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="n"&gt;output&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-&lt;span class="n"&gt;Traceback&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;most&lt;/span&gt; &lt;span class="n"&gt;recent&lt;/span&gt; &lt;span class="n"&gt;call&lt;/span&gt; &lt;span class="n"&gt;last&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-  &lt;span class="n"&gt;File&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;code.py&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt; &lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; 
-&lt;span class="ne"&gt;MemoryError&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;memory&lt;/span&gt; &lt;span class="n"&gt;allocation&lt;/span&gt; &lt;span class="n"&gt;failed&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;allocating&lt;/span&gt; &lt;span class="mi"&gt;24024&lt;/span&gt; &lt;span class="nb"&gt;bytes&lt;/span&gt;
-
-&lt;span class="n"&gt;Code&lt;/span&gt; &lt;span class="n"&gt;done&lt;/span&gt; &lt;span class="n"&gt;running&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
-
-&lt;span class="n"&gt;Press&lt;/span&gt; &lt;span class="nb"&gt;any&lt;/span&gt; &lt;span class="n"&gt;key&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;enter&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;REPL&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="n"&gt;Use&lt;/span&gt; &lt;span class="n"&gt;CTRL&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;D&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;reload&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
-
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;I’m sure I could tweak the gifio library to make it use smaller
-buffers and make it fit in that RAM. But I don’t want to.&lt;/p&gt;
-&lt;p&gt;I also don’t want to write the whole thing in C, using tinyUSB and a
-gif library. It just feels too much like work, and very little like
-fun exploration.&lt;/p&gt;
-&lt;p&gt;Note that I will probably get back to the idea of a pendant with a
-display showing animated GIFs. Especially since it’s now literally
-just a few lines of code in CircuitPython. But I will probably use a
-different displays and definitely a more powerful microcontroller. And
-I will possibly just use a ready development board, such as the
-Seeedstudio Xiao, because there is very little I would gain doing a
-bare chip thing from scratch at this point (and because I got spoiled
-by SAMD21’s minimal component count, and any other microcontroller
-feels like too much work now). \&lt;/p&gt;
+&lt;p&gt;And… nothing. The display doesn’t work, all you can see is the white
+screen of death.&lt;/p&gt;
+&lt;p&gt;I spent the next few hours trying different combinations of pins,
+making sure the connections are correct and solid, replacing wires and
+re-soldering the display to the breakout. I even replaced it with a
+new display, in case I somehow broke the old one. Nothing helped. When
+you hit such a spot, it’s time break out the heavy guns: the logic
+analyzer.&lt;/p&gt;
+&lt;img alt="projects/project-178061/images/2830001717796098266.jpg" src="projects/project-178061/images/2830001717796098266.jpg" /&gt;
+&lt;p&gt;Unfortunately my analyzer only has 8 channels, so I could only monitor
+the clock and 7 data lines at a time. But I looked at all the signals
+(CS, RS, WR) and the first 7 bits of data, and they all look correct.
+The display should be working.&lt;/p&gt;
+&lt;p&gt;I even tried replacing the S3 with an S2, in case this version has
+something broken, but still no joy.&lt;/p&gt;
+&lt;p&gt;At this point I’m out of ideas for things to try. I’m going to leave
+this on my desk for a couple of days and see if any new ideas present
+themselves. I might even dig out the RP2040  to make sure it still
+works with that chip. We will see.&lt;/p&gt;
 &lt;/section&gt;
 </content>
-    <link href="http://deshipu.art/projects/project-158701/log-223060/" rel="alternate"/>
-    <summary>Published on 2023-09-11 in project-158701.</summary>
-    <published>2023-09-11T00:00:00+02:00</published>
+    <link href="http://deshipu.art/projects/project-178061/log-230360/" rel="alternate"/>
+    <summary>Published on 2024-06-07 in project-178061.</summary>
+    <published>2024-06-07T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-182310/log-230631/</id>
+    <title>Results</title>
+    <updated>2024-06-20T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="results"&gt;
+
+&lt;p&gt;Published on 2024-06-20 in &lt;a class="reference internal" href="../projects/project-182310/#project-182310"&gt;&lt;span class="std std-ref"&gt;NHYTGB Keyboard&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I just realized that I never updated this project with the results of
+my experiment.&lt;/p&gt;
+&lt;p&gt;In short, I’m disappointed.&lt;/p&gt;
+&lt;p&gt;I was hoping the muscle memory and learning from a traditional split
+keyboard would transfer to this layout, but it turns out that our
+muscle memory seems to operate in terms of absolute positions, not
+relative movements, and that rotating the keyboard by 90° and flipping
+it completely defeats any learning you might have benefited from from
+use of a regular keyboard.&lt;/p&gt;
+&lt;p&gt;The keyboard is possible to use, but you basically have to learn to
+type on it from scratch.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-182310/log-230631/" rel="alternate"/>
+    <summary>Published on 2024-06-20 in project-182310.</summary>
+    <published>2024-06-20T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-178061/log-231499/</id>
+    <title>S3 with a Module</title>
+    <updated>2024-07-25T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="s3-with-a-module"&gt;
+
+&lt;p&gt;Published on 2024-07-25 in &lt;a class="reference internal" href="../projects/project-178061/#project-178061"&gt;&lt;span class="std std-ref"&gt;PewPew S2&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I finally gave up on the parallel display. It seems that something in
+IDF is broken again, and since it’s broken now, even if it gets fixed,
+chances are that it will break again. I can instead stick to what is
+working reliably, especially since the ESP32 can do very fast SPI
+clocks, and that might be even faster than the parallel protocol.&lt;/p&gt;
+&lt;p&gt;In any case, I designed that board with a WROOM module, using the SPI
+display, a LiPo battery with a charging circuit, and a bunch of other
+extra features: backlight control, battery monitoring, a light sensor,
+and all the unused pins broken out to a connector on the back.&lt;/p&gt;
+&lt;img alt="projects/project-178061/images/9536251721943151898.png" src="projects/project-178061/images/9536251721943151898.png" /&gt;
+&lt;p&gt;I assumed the popular Nokia BL-5C battery, but I also found some very
+thin (3mm) pouch batteries of the same size, so I’m going to use those
+in my prototypes. I still need to figure out some way to hold the
+battery in place, and maybe some pogo pins for the battery connector.
+For now it’s held by some masking tape.&lt;/p&gt;
+&lt;img alt="projects/project-178061/images/4568981721943341933.jpg" src="projects/project-178061/images/4568981721943341933.jpg" /&gt;
+&lt;p&gt;I like the thin pouch battery, because it makes the whole console
+almost completely flat:&lt;/p&gt;
+&lt;img alt="projects/project-178061/images/4266341721943388017.jpg" src="projects/project-178061/images/4266341721943388017.jpg" /&gt;
+&lt;p&gt;As for the software, there were no problems. I prepared a board
+definition for CircuitPython, with 16MB flash and 8MB of PSRAM, and
+the Stage library enabled. I even added the display initialization to
+the firmware. Flashing is easy, because the BOOT button is the X
+button, like in the previous version. It worked at the first try.&lt;/p&gt;
+&lt;img alt="projects/project-178061/images/573811721943533443.jpg" src="projects/project-178061/images/573811721943533443.jpg" /&gt;
+&lt;p&gt;The power switch is only for the battery power — connecting the USB
+always turns the device on, and always charges the battery. It was
+easier to do it that way, though it might be annoying if you wanted to
+just charge it without switching it on.&lt;/p&gt;
+&lt;p&gt;As I said, I still don’t know how I will solve the battery cover. For
+now I attached the PCB of one of the old prototypes on the back, and
+that seems to work pretty well. I might do something similar in the
+final version.&lt;/p&gt;
+&lt;img alt="projects/project-178061/images/6974671721943780003.jpg" src="projects/project-178061/images/6974671721943780003.jpg" /&gt;
+&lt;p&gt;I still have some nicer machine screws and washers on order – I should
+be able to control the spacing of the layers better with those.&lt;/p&gt;
+&lt;p&gt;I’m also still not entirely happy with the buttons and the d-pad. I
+want to experiment with 3D printing them, but for that I would have to
+refresh my OpenSCAD skills a bit, and possibly order a whole bunch of
+prototypes to be printed, since I don’t have a 3D printer myself. It
+might take a lot of back-and-forth to get the spacing right.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-178061/log-231499/" rel="alternate"/>
+    <summary>Published on 2024-07-25 in project-178061.</summary>
+    <published>2024-07-25T00:00:00+02:00</published>
   </entry>
 </feed>

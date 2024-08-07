@@ -1,0 +1,47 @@
+---
+blogpost: true
+date: 2020-08-12
+category: project-174095
+---
+
+# The PCB and Bodges
+Published on 2020-08-12 in {ref}`project-174095`.
+
+I have now assembled and programmed the PCB:\
+
+
+
+
+:::{image} images/5339301597247546591.jpg
+
+:::
+
+
+There are only two problems with it: the diode next to the "shift" key
+is shorted (because I moved it and forgot to move the trace), and the
+cathodes of LEDs are not connected to GND (because I forgot). Nothing
+a few bodges couldn't fix, though:\
+
+
+
+
+:::{image} images/10511597247580714.jpg
+
+:::
+
+
+I have the basic firmware copied from the {ref}`project-167912` , and it works. Now I only need to implement the mod key magic, as
+described in the previous log, and it should be ready to be used. Oh,
+and of course I'm still waiting for the switches, but I'm confident
+they will fit because I have one left over from previous projects.
+
+Finally, I decided to not try to carve up the switches to make the USB
+socket fit, and instead opted for a fixed cable.
+
+
+
+:::{image} images/8941821597247783628.jpg
+
+:::
+
+

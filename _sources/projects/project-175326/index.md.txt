@@ -1,0 +1,59 @@
+---
+blogpost: true
+date: 2020-10-11
+category: project
+tags:  ongoing project, hardware
+image: 1
+---
+
+# Keeblet
+
+Minimal macro keyboard
+
+<div class="project-thumb">
+
+:::{image} images/4401401602438733404.jpg
+:target: /_images/4401401602438733404.jpg
+:::
+
+:::{image} images/3105011605355837354.jpg
+:target: /_images/3105011605355837354.jpg
+:::
+
+:::{image} images/6769091603722977719.jpg
+:target: /_images/6769091603722977719.jpg
+:::
+
+</div>
+
+
+    Designing and building your own keyboards is great fun and usually
+results in better keyboards than money can buy, but the fact that
+mechanical switches are rather expensive and an average keyboard
+contains a lot of them makes the prospect a little bit scary for
+beginners. That's why I decided to make a "minimal viable prototype"
+keyboard that demonstrates most of the challenges and lets you try
+your skills without breaking the bank.
+
+As you can see, there are only six keys. That means you probably won't
+be able to type with it, unless you invent some aggressive chording
+scheme, but you can use it for things like volume keys, switching
+workspaces, switching keyboard layouts or dedicated arrow keys.
+
+The board runs CircuitPython, so that it is easy to program it and to
+explain how the programs work. Of course nothing stops anybody from
+programming it in C or Arduino or anything else, it's just a regular
+SAMD21 microcontroller.
+
+
+
+
+
+## Logs
+
+:::{postlist}
+:category: project-175326
+:::
+
+## Instructions
+

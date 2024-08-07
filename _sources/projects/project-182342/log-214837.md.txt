@@ -1,0 +1,46 @@
+---
+blogpost: true
+date: 2022-12-31
+category: project-182342
+---
+
+# Everything Works!
+Published on 2022-12-31 in {ref}`project-182342`.
+
+The PCBs arrived in the break between holidays, and I got to assemble
+one of each. First the Raspberry Pi Pico shield:
+
+
+
+:::{image} images/2751821672516614090.jpg
+
+:::
+
+
+
+
+:::{image} images/8828861672516640197.jpg
+
+:::
+
+
+I tried it without the crystal first, with a bodge wire to a free pin
+to generate the master clock with PWM. Once I had it verified working
+that way, I removed the bodge and soldered the 24MHz crystal, and it
+works flawlessly. Then I moved on to the S2 Mini shield:
+
+
+
+:::{image} images/4149041672516738780.jpg
+
+:::
+
+
+I tested the previous version of this with the crystal connected with
+bodge wires, and it didn't work, so I had very little hope for this,
+but turns out it was the fault of the bodge wires, and it works
+perfectly fine with the crystal soldered on the PCB.
+
+I think that this pretty much concludes the project. I will make the
+design files available, and that's it.
+

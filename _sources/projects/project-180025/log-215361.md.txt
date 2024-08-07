@@ -1,0 +1,27 @@
+---
+blogpost: true
+date: 2023-01-19
+category: project-180025
+---
+
+# Version 8.2 of the PCB
+Published on 2023-01-19 in {ref}`project-180025`.
+
+Along with migrating to all-SMD components (except for the battery
+holder), I also migrated with my PCB designs from Fritzing to EasyEDA.
+It's not as conductive to experimenting and just playing with things,
+but at least it's not openly hostile to it like KiCad is, and comes
+with a huge library of footprints.
+
+Because of that, the latest version of the PCB is published at  [https://u.easyeda.com/account/user/projects/index/detail?project=ec4ce
+18f172848fc80a110ab474689c6](https://u.easyeda.com/account/user/projects/index/detail?project=ec4ce18f172848fc80a110ab474689c6)  together with the schematic and the BOM. However, be careful about
+the female pin headers, you probably want to get some low-profile ones
+instead of those used in the footprint.
+
+
+
+:::{image} images/2931101674149525751.png
+
+:::
+
+

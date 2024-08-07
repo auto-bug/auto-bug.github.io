@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Bodge, Bodge, Bodge - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="bodge-bodge-bodge">
+<h1>Bodge, Bodge, Bodge<a class="headerlink" href="#bodge-bodge-bodge" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2021-11-06 in <a class="reference internal" href="../#project-182310"><span class="std std-ref">NHYTGB Keyboard</span></a>.</p>
+<p>Finally the weekend is here, and I had some time to actually program
+and test this device. Right away I found this tiny little problem on
+the PCB:</p>
+<img alt="projects/project-182310/images/5371421636231236144.png" src="projects/project-182310/images/5371421636231236144.png" />
+<p>It’s hard to see, but there is a trace between PA01 and PA02 pins. One
+is part of the key matrix, the other goes to the analog joystick, so
+this would give us some really interesting effects — fortunately I
+noticed it, so I could desolder the chip with hot air, cut that trace,
+and solder it back again.</p>
+<p>Next, I had some fun getting the D-pad and the mouse buttons to work.
+For some reason they were ignored. After about an hour of
+experimenting, replacing switches, replacing diodes, cutting traces,
+adding bodges and so on, I finally figured out what is happening. I
+made two footprints for buttons in there, both SMD and THT, so that I
+can experiment with different buttons. But I didn’t notice, that the
+THT buttons I used this time, have some of the contacts sticking out
+on the sides. Those were making contact with the SMD pads, resulting
+in the switch always being on. Since the keypad module is event-based,
+and the switch was on even before the code started, so we never got a
+keypress event, and obviously it also never was released to generated
+a key release event, so the key was basically being ignored. To make
+it more interesting, those contacts are only one one side, so the
+problem was only present for about half of the buttons — depending how
+they were rotated. In the end, I just rotated the misbehaving buttons
+180° to fix this.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

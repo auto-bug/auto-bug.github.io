@@ -1,0 +1,225 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>http://deshipu.art/</id>
+  <title>deshipu.art - Posts in project-175712</title>
+  <updated>2024-08-07T20:34:13.003570+00:00</updated>
+  <link href="http://deshipu.art/"/>
+  <link href="http://deshipu.art/blog/category/project-175712/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-175712/log-189430/</id>
+    <title>Module Code</title>
+    <updated>2021-02-17T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="module-code"&gt;
+
+&lt;p&gt;Published on 2021-02-17 in &lt;a class="reference internal" href="../../../projects/project-175712/#project-175712"&gt;&lt;span class="std std-ref"&gt;Kamina Keyboard&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I finally sat down today and wrote the firmware for that first module.
+It’s rather simple, the joystick does mouse movement, with some dead
+zone in the middle (I can still improve the dead zone calculation, but
+it’s good enough), the knob does scrolling (and I should add the
+ability to change volume using it with some function key), and the
+buttons are mouse buttons.&lt;/p&gt;
+&lt;div class="highlight-default notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;send_mouse_report&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;report&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;bytearray&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;report&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;lmb&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;rmb&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;knob&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;knob&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;position&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;last_knob&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="n"&gt;knob&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;report&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;max&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;127&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;min&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;127&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;knob&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;last_knob&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt; &lt;span class="mh"&gt;0xff&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;last_knob&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;knob&lt;/span&gt;
+
+        &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mx&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="mh"&gt;0x7fff&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;200&lt;/span&gt;
+        &lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mh"&gt;0x7fff&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;my&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;500&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;4000&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mi"&gt;4000&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+                &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;max&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="mi"&gt;4000&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+            &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+                &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;min&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;4000&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+            &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+                &lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;max&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="mi"&gt;4000&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+            &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+                &lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;min&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;4000&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+            &lt;span class="n"&gt;report&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;min&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;max&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;127&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="mi"&gt;127&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt; &lt;span class="mh"&gt;0xff&lt;/span&gt;
+            &lt;span class="n"&gt;report&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;min&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;max&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;127&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="mi"&gt;127&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt; &lt;span class="mh"&gt;0xff&lt;/span&gt;
+        &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;report&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+            &lt;span class="n"&gt;report&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;report&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="ow"&gt;or&lt;/span&gt; &lt;span class="n"&gt;report&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="ow"&gt;or&lt;/span&gt; &lt;span class="n"&gt;report&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="ow"&gt;or&lt;/span&gt; &lt;span class="n"&gt;report&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
+            &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mouse_move&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;False&lt;/span&gt;
+            &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mouse_device&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;send_report&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;report&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;elif&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mouse_move&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mouse_move&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;True&lt;/span&gt;
+            &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mouse_device&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;send_report&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;report&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Not much to say, really.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-175712/log-189430/" rel="alternate"/>
+    <summary>Published on 2021-02-17 in project-175712.</summary>
+    <published>2021-02-17T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-175712/log-195938/</id>
+    <title>Update</title>
+    <updated>2021-07-28T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="update"&gt;
+
+&lt;p&gt;Published on 2021-07-28 in &lt;a class="reference internal" href="../../../projects/project-175712/#project-175712"&gt;&lt;span class="std std-ref"&gt;Kamina Keyboard&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I’m still using this keyboard as my everyday main keyboard, and of
+course there has been some development in the mean time.&lt;/p&gt;
+&lt;img alt="projects/project-175712/images/8491911627497573905.jpg" src="projects/project-175712/images/8491911627497573905.jpg" /&gt;
+&lt;p&gt;I’ve made two more modules for the center, and a “blank” one to just
+make it look better. I also replaced the buttons on those modules with
+buttons specifically made for mice, so they have the exact feel and
+click you know from clicking your mouse button. It seems like a small
+thing, but actually it’s a huge improvement. The module with the
+silver knobs is a joystick and a scrollwheel, and both can be pushed
+down for clicking too. They are not particularly convenient.&lt;/p&gt;
+&lt;p&gt;The last thing is a “trackpad” module from a smartphone that I am
+working on at &lt;a class="reference internal" href="../../../projects/project-180472/#project-180472"&gt;&lt;span class="std std-ref"&gt;Home Button for Keyboards&lt;/span&gt;&lt;/a&gt; project — when I get it working, it will be another module for this
+keyboard.&lt;/p&gt;
+&lt;p&gt;There have also been some other changes. I swapped the Ins and Del
+keys with the bracket keys eventually, so that they are on the same
+hand as on regular keyboard — that works better for me for copying and
+pasting. I also moved around the media keys (used witth the Fn key) to
+make them easier to remember. Oh, and Fn+Tab is now Compose.&lt;/p&gt;
+&lt;p&gt;I also added the improvements that came with the &lt;a class="reference external" href="https://hackaday.io/project/174095-dorsch-40k-keyboard/log/195783-shiny-new-code"&gt;new version of CircuitPython&lt;/a&gt;  — matrix scanning done in C using the keypad module, boot.py
+disabling the USB drive and UART console unless a key was pressed when
+booting, and custom HID bitmap NKRO reports.&lt;/p&gt;
+&lt;p&gt;Finally, I’ve also sent one spare PCB to a person interested in
+building this — haven’t heard what they built with it yet.&lt;/p&gt;
+&lt;p&gt;One thing that I hoped to do was replacing the keycaps with the &lt;a class="reference external" href="https://boardsource.xyz/store/5ffa403622bbb0151bfef66d"&gt;MBK Legend&lt;/a&gt;  ones, alas, the group buy is delayed and they are still working on
+producing them — the current estimate is shipping by the end of the
+year.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-175712/log-195938/" rel="alternate"/>
+    <summary>Published on 2021-07-28 in project-175712.</summary>
+    <published>2021-07-28T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-175712/log-196749/</id>
+    <title>MBK Legend Glow Keycaps</title>
+    <updated>2021-08-19T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="mbk-legend-glow-keycaps"&gt;
+
+&lt;p&gt;Published on 2021-08-19 in &lt;a class="reference internal" href="../../../projects/project-175712/#project-175712"&gt;&lt;span class="std std-ref"&gt;Kamina Keyboard&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;While I still wait for the group buy for the regular MBK Legend key
+caps to finalize (they are now estimated somewhere around the end of
+this year), I noticed that MBK Legend Glow became available — not as a
+group buy, but as a product you can simply buy. So I went ahead and
+bought them as soon as they appeared in any European shop. They just
+arrived today.&lt;/p&gt;
+&lt;img alt="projects/project-175712/images/7983981629380645447.jpg" src="projects/project-175712/images/7983981629380645447.jpg" /&gt;
+&lt;p&gt;Very nice box and all that, but what about the key caps? As all MBK
+key caps, they are very nice, low-profile, with spherical profile for
+your fingers. The homing keys have a bit of a straight edge on the
+bottom, instead of a nub, but you can identify them by touch all the
+same. This set is called “glow”, because it’s doule-shot keys, with
+translucent legends, so that if your keyboard has backlight, you can
+see the legends glowing. Kamina doesn’t, but they are decent keys, so
+I’m going to use them anyways.&lt;/p&gt;
+&lt;img alt="projects/project-175712/images/6639051629380857576.jpg" src="projects/project-175712/images/6639051629380857576.jpg" /&gt;
+&lt;p&gt;Apart from the usual alphanumeric keys and a bunch of modifiers both
+in text and symbol versions, you are also get individual digits (for a
+number pad?) and a bunch of 1.5U and 2U keys. There is also a set of
+alternate homing keys for weird layouts. A little bit of surprise was
+the lack for caps for “+” and “-” keys (both regular and number pad),
+as well as the “Ins” key. For now I replaced them with other random
+keys.&lt;/p&gt;
+&lt;img alt="projects/project-175712/images/2988601629381056858.jpg" src="projects/project-175712/images/2988601629381056858.jpg" /&gt;
+&lt;p&gt;I’m still getting used to the new shape, but they feel pretty good!&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-175712/log-196749/" rel="alternate"/>
+    <summary>Published on 2021-08-19 in project-175712.</summary>
+    <published>2021-08-19T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-175712/log-225929/</id>
+    <title>Working on Version 3</title>
+    <updated>2023-12-12T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="working-on-version-3"&gt;
+
+&lt;p&gt;Published on 2023-12-12 in &lt;a class="reference internal" href="../../../projects/project-175712/#project-175712"&gt;&lt;span class="std std-ref"&gt;Kamina Keyboard&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;We had recently a keyboard enthusiasts meetup in my city, and a
+surprising number of people were interested in the Kamina v2 keyboard
+– it seems to be a good stepping stone between a traditional keyboard
+and a proper ergo board. However, the fact that it uses a bare SAMD21
+chip, which was hard to obtain due to chip shortage, has a scary
+small-pitch QFN footprint and requires a special programmer to flash
+the bootloader makes it difficult to build by beginning electronics
+hobbyists. Or at least the less confident ones.&lt;/p&gt;
+&lt;p&gt;I also noticed that if I made the extra column breakable, it could
+easily be converted into a proper ergo board, very similar to the Klap
+v4 keyboard I’m using as my main driver. Especially if I made the
+switches hot-swappable, it could be a very good intro into the world
+of ergonomic keyboards.&lt;/p&gt;
+&lt;p&gt;But how to make it easier to assemble? Simple, just use the raspberry
+pi pico microcontroller board for the brains, similar to how I did it
+for the &lt;a class="reference internal" href="../../../projects/project-10408/#project-10408"&gt;&lt;span class="std std-ref"&gt;Steno Keyboard&lt;/span&gt;&lt;/a&gt; project. It’s cheap, and there are easily enough pins. You can even
+get clones with additional features, like a USB-C connector or a small
+display! The rest is just soldering the hot-swap sockets, and all the
+diodes. Shouldn’t be too hard.&lt;/p&gt;
+&lt;p&gt;I started with some mock-ups in Inkscape. I initially want to also
+make the top row breakable. Oh, and I forgot, I also want to make it
+so that you use two of the same PCBs, one flipped over, so that they
+are cheaper to manufacture. Here is one of the steps:&lt;/p&gt;
+&lt;img alt="projects/project-175712/images/7857011702341170895.png" src="projects/project-175712/images/7857011702341170895.png" /&gt;
+&lt;p&gt;I also decided to not use Fritzing this time, as the stupid “donation”
+thing makes it difficult for people to download and install it.
+Instead, I switched to EasyEDA, because it runs in the browser and so
+people don’t have to install anything. It also makes it very easy to
+order the boards, which is also a big plus. I spent a day fiddling
+with the design, and this is what I came up with:&lt;/p&gt;
+&lt;img alt="projects/project-175712/images/2432381702341390253.png" src="projects/project-175712/images/2432381702341390253.png" /&gt;
+&lt;img alt="projects/project-175712/images/4041971702341390418.png" src="projects/project-175712/images/4041971702341390418.png" /&gt;
+&lt;p&gt;There is a bunch of 0Ω resistors, which should only be soldered on the
+bottom of the board, leaving the ones on the top open – to avoid
+shorting the pins of the microcontroller board that lie opposite each
+other. The five-pin header provides additional structural strength,
+and shares the row lines between the halves. The last column is
+breakable, and I even added two more keys in the center of the board,
+for those of us with exceptionally dexterous thumbs.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-175712/log-225929/" rel="alternate"/>
+    <summary>Published on 2023-12-12 in project-175712.</summary>
+    <published>2023-12-12T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-175712/log-226186/</id>
+    <title>Kamina 3.1</title>
+    <updated>2023-12-22T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="kamina-3-1"&gt;
+
+&lt;p&gt;Published on 2023-12-22 in &lt;a class="reference internal" href="../../../projects/project-175712/#project-175712"&gt;&lt;span class="std std-ref"&gt;Kamina Keyboard&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;As mentioned in the previous log, I decided to do one more version of
+this keyboard. The main change is that in place of a SAMD21 bare
+microcontroller, I’m now using a Raspberry Pi Pico or compatible
+microcontroller developer board. This makes this keyboard much easier
+to assemble and program by people who are not comfortable soldering
+tiny QFN footprints or flashing a bootloader over DAP.&lt;/p&gt;
+&lt;p&gt;Other changes include optional hot-swap sockets, breakable last
+column, and four additional keys at the middle of the board. There is
+also a technical change: it’s no longer a single PCB, but instead you
+need two identical PCBs, one half flipped, to make the full keyboard.
+This way it’s much cheaper to fabricate the PCB.&lt;/p&gt;
+&lt;p&gt;I did this, because I’ve seen a lot of interest in this kind of a
+middle ground between traditional keyboards and fully ergonomic ones.&lt;/p&gt;
+&lt;img alt="projects/project-175712/images/3092651703285154227.jpg" src="projects/project-175712/images/3092651703285154227.jpg" /&gt;
+&lt;p&gt;Note however, that because of the hot-swap sockets, you can easily
+turn this into a proper ergonomic board when you feel braver:&lt;/p&gt;
+&lt;img alt="projects/project-175712/images/370261703285285895.jpg" src="projects/project-175712/images/370261703285285895.jpg" /&gt;
+&lt;p&gt;To assemble the board, you still need to solder all those SMD diodes
+and hot-swap sockets, and to solder the dev board in place (or pins
+and a socket, if you want it to be removable, like in my examples).
+Version 3.0 also needs a bodge between the top jumpers on both sides,
+but the version 3.1 that I’m publishing already has that fixed.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-175712/log-226186/" rel="alternate"/>
+    <summary>Published on 2023-12-22 in project-175712.</summary>
+    <published>2023-12-22T00:00:00+01:00</published>
+  </entry>
+</feed>

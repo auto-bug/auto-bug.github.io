@@ -1,0 +1,158 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>http://deshipu.art/</id>
+  <title>deshipu.art - Posts in project-180472</title>
+  <updated>2024-08-07T20:34:13.162116+00:00</updated>
+  <link href="http://deshipu.art/"/>
+  <link href="http://deshipu.art/blog/category/project-180472/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-180472/log-194617/</id>
+    <title>A New Plan</title>
+    <updated>2021-06-24T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="a-new-plan"&gt;
+
+&lt;p&gt;Published on 2021-06-24 in &lt;a class="reference internal" href="../../../projects/project-180472/#project-180472"&gt;&lt;span class="std std-ref"&gt;Home Button for Keyboards&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I tried to fix the connection between the flex PCB and the PCB, but it
+looks hopeless. I ended up ripping the pad off of one of the sensors.
+I think I need to re-think this.&lt;/p&gt;
+&lt;p&gt;At this point, the easiest way forward seems to be to find the correct
+mezzanine connector for the Blackberry 8520 sensor — after all I even
+have a ready pinout for it! After some searching, it seems that
+something called DF30FB-20DS-0.4V should fit. I have ordered it, and
+we will see.&lt;/p&gt;
+&lt;p&gt;In the mean time, I can prepare the footprint for it. The datasheet
+gives me a recommended pattern:&lt;/p&gt;
+&lt;img alt="projects/project-180472/images/3939801624526368202.png" src="projects/project-180472/images/3939801624526368202.png" /&gt;
+&lt;p&gt;Replicating this in Inkscape just takes a few moments:&lt;/p&gt;
+&lt;img alt="projects/project-180472/images/5362061624526430300.png" src="projects/project-180472/images/5362061624526430300.png" /&gt;
+&lt;p&gt;Now I just need to quickly design a PCB, and hopefully the connector
+and the PCB will both arrive at about the same time.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-180472/log-194617/" rel="alternate"/>
+    <summary>Published on 2021-06-24 in project-180472.</summary>
+    <published>2021-06-24T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-180472/log-194625/</id>
+    <title>Another Breakout</title>
+    <updated>2021-06-24T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="another-breakout"&gt;
+
+&lt;p&gt;Published on 2021-06-24 in &lt;a class="reference internal" href="../../../projects/project-180472/#project-180472"&gt;&lt;span class="std std-ref"&gt;Home Button for Keyboards&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I spent a little bit of time today to design another breakout PCB,
+this time for the Blackberry 8350 button:&lt;/p&gt;
+&lt;img alt="projects/project-180472/images/4794811624549252205.png" src="projects/project-180472/images/4794811624549252205.png" /&gt;
+&lt;img alt="projects/project-180472/images/912871624549267214.png" src="projects/project-180472/images/912871624549267214.png" /&gt;
+&lt;p&gt;I took the labels from that pinout published it the Arduino forum, but
+comparing it with the schematic also published there, it seems to be a
+bit fishy… For example, a pin marked as “gnd” on the pinout is
+pulled-down to gnd with a 200k&lt;/p&gt;
+&lt;p&gt;This is also an experiment with physical layout of the board — there
+is a cutout in the PCB where the flex cable is going through, and a
+pad where the button will be, so that I can put a drop of solder
+there, to provide the necessary raised bump for the tact switch on the
+back.&lt;/p&gt;
+&lt;p&gt;I’m also not sure whether I should add a voltage regulator and some
+voltage dividers — the forum post says 2.85V, but I don’t actually
+know if it will work with 3.3V as well. The mouse sensors, which are
+supposed to be similar, run on 3.3V.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-180472/log-194625/" rel="alternate"/>
+    <summary>Published on 2021-06-24 in project-180472.</summary>
+    <published>2021-06-24T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-180472/log-195536/</id>
+    <title>Second PCB</title>
+    <updated>2021-07-19T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="second-pcb"&gt;
+
+&lt;p&gt;Published on 2021-07-19 in &lt;a class="reference internal" href="../../../projects/project-180472/#project-180472"&gt;&lt;span class="std std-ref"&gt;Home Button for Keyboards&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The PCB breakout for the 8350 sensor arrived from &lt;a class="reference external" href="https://hackaday.io/hacker/131216"&gt;&amp;#64;oshpark &lt;/a&gt; and as always it looks great:&lt;/p&gt;
+&lt;img alt="projects/project-180472/images/3860161626646205232.jpg" src="projects/project-180472/images/3860161626646205232.jpg" /&gt;
+&lt;p&gt;Unfortunately I miscalculated the distance between the socket and the
+slot, not taking into consideration the thickness of the PCB, so I had
+to use a file to make the slot a bit bigger:&lt;/p&gt;
+&lt;img alt="projects/project-180472/images/5886311626646272528.jpg" src="projects/project-180472/images/5886311626646272528.jpg" /&gt;
+&lt;p&gt;That is fine, because this breakout is just for experimenting — the
+final one will have correct dimensions and only the pins that are
+needed.&lt;/p&gt;
+&lt;p&gt;I have everything soldered up and prepared, but I didn’t yet have time
+to actually try this sensor yet — hopefully I can do it tomorrow.&lt;/p&gt;
+&lt;img alt="projects/project-180472/images/8356391626646392384.jpg" src="projects/project-180472/images/8356391626646392384.jpg" /&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-180472/log-195536/" rel="alternate"/>
+    <summary>Published on 2021-07-19 in project-180472.</summary>
+    <published>2021-07-19T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-180472/log-196910/</id>
+    <title>Another Failure</title>
+    <updated>2021-08-22T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="another-failure"&gt;
+
+&lt;p&gt;Published on 2021-08-22 in &lt;a class="reference internal" href="../../../projects/project-180472/#project-180472"&gt;&lt;span class="std std-ref"&gt;Home Button for Keyboards&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I finally had the time to try my new breakout. I was putting it off
+because deep inside I felt there is no chance it can work with the
+horribly inconsistent schematic and pinout I based this on. And sure
+enough, it doesn’t. I wrote a very simple program to test it:&lt;/p&gt;
+&lt;div class="highlight-default notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;board&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;digitalio&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;time&lt;/span&gt;
+
+&lt;span class="n"&gt;rst&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;digitalio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DigitalInOut&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;A4&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;rst&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;switch_to_output&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;False&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;cs&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;digitalio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DigitalInOut&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;A5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;cs&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;switch_to_output&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;False&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;spi&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;board&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SPI&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="n"&gt;spi&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;try_lock&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="n"&gt;buffer&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;bytearray&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;spi&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;write&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;b&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\x00&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;spi&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;readinto&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;buffer&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;buffer&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;time&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sleep&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;This should, in theory, print a string of \x0d on the screen. But of
+course all it prints are \x00. I tried some combinations of pulling
+down or up various pins that were ambiguous in the schematic that was
+posted, but I didn’t manage to make it return anything else than \x00
+or \xff.&lt;/p&gt;
+&lt;p&gt;I might try some more experimenting with it still, but for now it’s a
+huge disappointment.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-180472/log-196910/" rel="alternate"/>
+    <summary>Published on 2021-08-22 in project-180472.</summary>
+    <published>2021-08-22T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-180472/log-200664/</id>
+    <title>Prior Art</title>
+    <updated>2021-11-25T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="prior-art"&gt;
+
+&lt;p&gt;Published on 2021-11-25 in &lt;a class="reference internal" href="../../../projects/project-180472/#project-180472"&gt;&lt;span class="std std-ref"&gt;Home Button for Keyboards&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Apparently someone had the same idea as me, but also had the skill and
+energy to pull it off:  &lt;a class="reference external" href="https://github.com/vlukash/corne-trackpad"&gt;https://github.com/vlukash/corne-trackpad&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;I think I’m going to steal from that project.&lt;/p&gt;
+&lt;p&gt;Looking at it, I see that I made a huge fundamental mistake, assuming
+a 2.8V device will work just fine with 3.3V. Turns out those optic
+sensors are very particular about their voltages, so time to invest in
+level shifters.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-180472/log-200664/" rel="alternate"/>
+    <summary>Published on 2021-11-25 in project-180472.</summary>
+    <published>2021-11-25T00:00:00+01:00</published>
+  </entry>
+</feed>

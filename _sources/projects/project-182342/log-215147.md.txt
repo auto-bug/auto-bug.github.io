@@ -1,0 +1,92 @@
+---
+blogpost: true
+date: 2023-01-11
+category: project-182342
+---
+
+# Streaming
+Published on 2023-01-11 in {ref}`project-182342`.
+
+It doesn't help much to have a camera on your robot, if you don't do
+anything with the video. Displaying it on a display is cool, but not
+really that useful when it has to be attached to the same device.
+Vision algorithms are still a bit too advanced to me, so I decided to
+try the other useful option: streaming it into a browser.
+
+Displaying a single jpeg image taken with the camera was easy enough,
+but we want live video - can we do that? Turns out that we can, by
+using something called M-JPEG (for motion jpeg), and the
+multipart/x-mixed-replace MIME type. All we have to do is send the
+JPEG images separated with a boundary, each with its own http header.
+After a few hours of tinkering, I finally got something like this
+working:
+
+
+```
+import board
+import busio
+import esp32_camera
+import asyncio
+import socketpool
+import wifi
+
+from adafruit_httpserver.server import HTTPServer
+from adafruit_httpserver.response import HTTPResponse
+
+
+server = HTTPServer(socketpool.SocketPool(wifi.radio))
+PORT = 80
+BOUNDARY = "FRAME"
+
+i2c = busio.I2C(scl=board.IO35, sda=board.IO33)
+data_pins = (
+    board.IO21, board.IO17, board.IO16, board.IO18,
+    board.IO37, board.IO34, board.IO36, board.IO39,
+)
+cam = esp32_camera.Camera(
+    data_pins=data_pins,
+    pixel_clock_pin=board.IO12,
+    vsync_pin=board.IO40,
+    href_pin=board.IO38,
+    pixel_format=esp32_camera.PixelFormat.JPEG,
+    frame_size=esp32_camera.FrameSize.QVGA,
+    i2c=i2c,
+)
+
+@server.route("/")
+def base(request):
+    with HTTPResponse(request) as response:
+        response._send_headers(content_type='multipart/x-mixed-replace; boundary=%s' % BOUNDARY)
+        while True:
+            jpeg = cam.take()
+            response._send_bytes(request.connection, b'--%s\r\n' % BOUNDARY)
+            response._send_bytes(request.connection,
+    b'Content-Type: image/jpeg\r\nContent-Length: %d\r\n\r\n' % len(jpeg))
+            response._send_bytes(request.connection, jpeg)
+            response._send_bytes(request.connection, b'\r\n')
+
+
+async def poll(interval):
+    server.start(str(wifi.radio.ipv4_address), port=PORT)
+    while True:
+        server.poll()
+        await asyncio.sleep(interval)
+
+
+async def main():
+    poll_task = asyncio.create_task(poll(0))
+    await asyncio.gather(poll_task)
+
+asyncio.run(main())
+```
+
+This works, but there is a small problem. As soon as we start
+streaming, the server stops responding to any other requests, and our
+robot would stop waking or doing anything else, because the loop that
+sends the video frames is not async.
+
+I will need to modify how this particular http server works to make
+the endpoints into async functions, so that we can add an await
+command in the loop that sends the frames. But that is something for
+another day.
+

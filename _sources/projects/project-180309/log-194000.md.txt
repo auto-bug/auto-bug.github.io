@@ -1,0 +1,37 @@
+---
+blogpost: true
+date: 2021-06-12
+category: project-180309
+---
+
+# First Prototype Failure
+Published on 2021-06-12 in {ref}`project-180309`.
+
+The boards finally arrived, and I got a chance to test the battery
+holder:
+
+
+
+:::{image} images/6562041623448733527.jpg
+
+:::
+
+
+The tabs can just barely be lifted enough to insert the coin cell in
+place, but it's extremely easy to break them. On the other hand, they
+hold the battery in place quite well, so I think this will work, I
+just need to make the thin parts of the tabs much longer.
+
+Having tested that part, I went ahead and assembled one board, with a
+regular battery holder this time:
+
+
+
+:::{image} images/3694371623448864927.jpg
+
+:::
+
+
+I have the bootloader flashed, now I need to prepare the board
+definition for CircuitPython and get display to work on it.
+

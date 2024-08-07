@@ -1,0 +1,37 @@
+---
+blogpost: true
+date: 2022-09-16
+category: project-180025
+---
+
+# Version 6
+Published on 2022-09-16 in {ref}`project-180025`.
+
+When I recently started looking for parts to make more of those
+robots, I had an unpleasant surprise: the battery protection chip that
+I used, HT3062E, can no longer be easily bought. That is a big
+problem, so I went to look for another chip instead. Unfortunately,
+there don't seem to be very many integrated solutions out there – most
+chips require separate mosfets, which is something I would rather like
+to avoid. So this time I went for the DW07D, which is for a bit lower
+current, but should still work. Unfortunately it comes in a different
+package and requires different connections, so a new PCB design is
+required.
+
+
+
+:::{image} images/5430461663345110601.png
+
+:::
+
+
+
+
+:::{image} images/5823831663345122732.png
+
+:::
+
+
+I also added a mosfet for the speaker, and some handles at the top of
+the PCB, to make it easier to attach things to the robot.
+

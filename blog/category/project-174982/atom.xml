@@ -1,0 +1,220 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>http://deshipu.art/</id>
+  <title>deshipu.art - Posts in project-174982</title>
+  <updated>2024-08-07T20:34:12.960519+00:00</updated>
+  <link href="http://deshipu.art/"/>
+  <link href="http://deshipu.art/blog/category/project-174982/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-174982/log-184354/</id>
+    <title>The Tricky DPI</title>
+    <updated>2020-10-01T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="the-tricky-dpi"&gt;
+
+&lt;p&gt;Published on 2020-10-01 in &lt;a class="reference internal" href="../../../projects/project-174982/#project-174982"&gt;&lt;span class="std std-ref"&gt;Turbot Keyboard&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Remember how I mentioned that I like this layout, but the keys could
+be a bit closer together, and blamed the angles of the columns for
+them being too far apart? Turns out the columns are perfectly fine,
+the keyboard is just scaled up roughly 10%.&lt;/p&gt;
+&lt;p&gt;How did that happen?&lt;/p&gt;
+&lt;p&gt;Well, for designing the PCB outline, and for marking the desired
+locations of the switches I used Inkscape. I made sure all dimensions
+were correct in that program, using the handy unit switching options
+that program has. But as it turns out, Inkscape was recently updated
+on my computer, and the new version uses different DPI in the SVG
+files it saves than the older one, and than what Fritzing assumes on
+import. But it was consistent, so the part outlines exported from
+Fritzing didn’t get resized, thus the holes for the switches fit fine.
+The whole keyboard is just larger than it was supposed to be. The
+angled keys only made it difficult to confirm.&lt;/p&gt;
+&lt;p&gt;I only discovered this just now, while working on the &lt;a class="reference internal" href="../../../projects/project-175043/#project-175043"&gt;&lt;span class="std std-ref"&gt;Flatreus Keyboard&lt;/span&gt;&lt;/a&gt; design. Sure enough, the same thing happened there, so I had to
+practically re-do all the routing. Thanks Obama.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-174982/log-184354/" rel="alternate"/>
+    <summary>Published on 2020-10-01 in project-174982.</summary>
+    <published>2020-10-01T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-174982/log-184987/</id>
+    <title>One More Try</title>
+    <updated>2020-10-13T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="one-more-try"&gt;
+
+&lt;p&gt;Published on 2020-10-13 in &lt;a class="reference internal" href="../../../projects/project-174982/#project-174982"&gt;&lt;span class="std std-ref"&gt;Turbot Keyboard&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This project has been a bit unlucky from the beginning. Not only it is
+a continuation of a failed project, which brought its own problems,
+but I’ve been really sloppy with the execution as well. I decided to
+get mu stuff together a little bit more and give this layout a fair
+chance this time. So I’m going to make this keyboard, at a proper
+scale and with known good switches. It will be 2mm higher because of
+that, but it will be comfortable.&lt;/p&gt;
+&lt;p&gt;This keyboard is driven by three main goals:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;a reasonably complete keyboard with digits and arrows that is low-
+profile,&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;with an ergonomic, one-piece split layout,&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;ortholinear.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This project was most inspired with something called the TGR Alice
+keyboard, designed by Yuk Tsi:&lt;/p&gt;
+&lt;img alt="projects/project-174982/images/723351602617205799.jpg" src="projects/project-174982/images/723351602617205799.jpg" /&gt;
+&lt;p&gt;There is simply something very elegant in the way he compromised
+between the available keycaps, the traditional layout, and the needs
+of ergonomy. I love how this looks, however, I learned that layouts
+with staggered rows like this make it harder for me to touch-type. I
+want an ortholinear layout, where the keys are arranged in a grid, or
+at least into columns for each of the fingers. The original Turbot
+layout was an attempt to create something like that, mostly based on
+the Atreus layout and some other ergonomic keyboards, trying to make
+the gaps between keys manageable by angling each column at a different
+angle. But if you look carefully at that Alice keyboard, that is not
+what they did there. Instead, you have three sections of the keyboard,
+each angled differently, but otherwise following the traditional
+layout.&lt;/p&gt;
+&lt;p&gt;So what if I took an ortholinear keyboard instead, but then repeated
+the operations they did with Alice on that? I came up with something
+like this:&lt;/p&gt;
+&lt;img alt="projects/project-174982/images/7548101602617589288.png" src="projects/project-174982/images/7548101602617589288.png" /&gt;
+&lt;p&gt;It’s a little busier than Alice, mostly because there are more keys on
+the bottom row, and because the grids of the ortholinear parts are
+very strong visual cues, so it is not as elegant, but it should be
+equally or even more convenient. This time I didn’t stagger the
+columns—except for the ones for the little fingers, which are
+naturally about half a key lower, due to the angling. That should work
+well with the fact that the little finger is shorter in most people.&lt;/p&gt;
+&lt;p&gt;I also removed some of the extra keys Turbot originally had on the
+sides—since I need a “function” key anyways for Fn keys, I can as well
+put them on a separate layer, together with all the media keys and
+such. Thanks to that the PCB also has a much more “normal” shape:&lt;/p&gt;
+&lt;img alt="projects/project-174982/images/6515131602618201989.png" src="projects/project-174982/images/6515131602618201989.png" /&gt;
+&lt;img alt="projects/project-174982/images/495111602618211309.png" src="projects/project-174982/images/495111602618211309.png" /&gt;
+&lt;p&gt;You can tell that I didn’t really take my time to route the traces
+nicely and make them all bend at 45° angle, as they should. The reason
+is that with the modern fabrication methods it doesn’t really matter,
+and I was in a hurry to add this PCB to an already ongoing order at
+JLCPCB, so that they can be shipped together. You see, they let you do
+that, and since there was a National day, my order didn’t ship yet, so
+I used the chance.&lt;/p&gt;
+&lt;p&gt;I have now made a version of that PCB with nicer traces and with some
+holes for mounting stabilizers, I will make it available if this PCB
+works.&lt;/p&gt;
+&lt;p&gt;I still had some free pins, so I added a single LED and a joystick,
+with some extra keys in the middle — maybe I will make it emulate
+mouse too, we will see. In the worst case I will leave those
+unpopulated.&lt;/p&gt;
+&lt;p&gt;Note about key caps: I am going to use the same key caps I initially
+got for Flounder, and they are a bit of a strange set. This layout is
+designed specially for those key caps. All keys are either 1U, 1.5U or
+2U, except for the Ctrl keys, which for some reason are 1.25U. More
+common key caps usually have more of the .25U keys, since the two
+bottom alphanumeric rows are staggered by 0.25U, but not on the
+keyboard those key caps were made for. I have no idea why they did
+that. The short version is, that if you plan to use any key caps from
+a normal keyboard, you will have to modify this design somewhat.&lt;/p&gt;
+&lt;p&gt;Then, since I’m waiting for the PCB anyways, I also took some time one
+evening to think about the precise location of the keys on the other
+layer. I came up with something like this:&lt;/p&gt;
+&lt;img alt="projects/project-174982/images/5913311602618854663.png" src="projects/project-174982/images/5913311602618854663.png" /&gt;
+&lt;p&gt;I might still move the arrow cluster on the left hand side, to make it
+a more standard WASD, but I’m not sure.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-174982/log-184987/" rel="alternate"/>
+    <summary>Published on 2020-10-13 in project-174982.</summary>
+    <published>2020-10-13T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-174982/log-185055/</id>
+    <title>Stab Stab Stab</title>
+    <updated>2020-10-16T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="stab-stab-stab"&gt;
+
+&lt;p&gt;Published on 2020-10-16 in &lt;a class="reference internal" href="../../../projects/project-174982/#project-174982"&gt;&lt;span class="std std-ref"&gt;Turbot Keyboard&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Stabs, or what normal people call stabilizers, are special levers
+added under any key longer than 1.5U to make sure that the key goes
+down evenly no matter which part of it you are pressing. Many keyboard
+designs avoid longer keys just to avoid dealing with stabs, but here
+we don’t really have much choice: Turbot has 4 keys that are 2U long,
+and that is already long enough to warrant stabs.&lt;/p&gt;
+&lt;p&gt;In Flounder I tested several commercially available types of
+stabilizers, but they were all either incompatible with low-profile
+keys, or required space on the underside of the PCB — which doesn’t
+work when the PCB is supposed to lie flat on the desk. So I went ahead
+and made my own stabilizers out of paperclips, using the holes in the
+PCB to mount them.&lt;/p&gt;
+&lt;p&gt;This time I didn’t make any holes for attaching the stabilizers and I
+plan to do something else.&lt;/p&gt;
+&lt;p&gt;Commercial keyboards that use the Kailh choc switches have a very neat
+solution for this problem:&lt;/p&gt;
+&lt;img alt="projects/project-174982/images/2998901602854753868.jpg" src="projects/project-174982/images/2998901602854753868.jpg" /&gt;
+&lt;p&gt;The tops of the switches have a special groove to hold the lever.
+Unfortunately, you can’t easily buy switches like that, so I decided
+to try and make my own. I started by using a bad PCB from another
+project to make a drilling jig:&lt;/p&gt;
+&lt;img alt="projects/project-174982/images/8687651602854866117.jpg" src="projects/project-174982/images/8687651602854866117.jpg" /&gt;
+&lt;p&gt;Using that jig I can drill holes in the case of the switch on both
+sides, and then put a paperclip through it. Since I only have 2U keys
+at most, I will not need those extra bits on the sides. I still need
+something for the paperclip to hook onto, though, but that was already
+a solved problem in Flounder:&lt;/p&gt;
+&lt;img alt="projects/project-174982/images/7843951602855055027.jpg" src="projects/project-174982/images/7843951602855055027.jpg" /&gt;
+&lt;p&gt;Simply glue some pieces of wire to underside of the key caps, and
+done.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-174982/log-185055/" rel="alternate"/>
+    <summary>Published on 2020-10-16 in project-174982.</summary>
+    <published>2020-10-16T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-174982/log-185271/</id>
+    <title>Only Missing Switches</title>
+    <updated>2020-10-20T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="only-missing-switches"&gt;
+
+&lt;p&gt;Published on 2020-10-20 in &lt;a class="reference internal" href="../../../projects/project-174982/#project-174982"&gt;&lt;span class="std std-ref"&gt;Turbot Keyboard&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The PCBs came, and they seem fine. I decided to add some diagonal
+strips to one, with a can of spray paint, just for the kicks. Also
+soldered all the diodes and the chip, so all that is missing are the
+switches, which are still on the boat from China somewhere.&lt;/p&gt;
+&lt;img alt="projects/project-174982/images/2954841603197999004.jpg" src="projects/project-174982/images/2954841603197999004.jpg" /&gt;
+&lt;p&gt;Also, happy to report that the scale is correct this time.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-174982/log-185271/" rel="alternate"/>
+    <summary>Published on 2020-10-20 in project-174982.</summary>
+    <published>2020-10-20T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-174982/log-185474/</id>
+    <title>First Tests</title>
+    <updated>2020-10-27T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="first-tests"&gt;
+
+&lt;p&gt;Published on 2020-10-27 in &lt;a class="reference internal" href="../../../projects/project-174982/#project-174982"&gt;&lt;span class="std std-ref"&gt;Turbot Keyboard&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I have the switches, I assembled the keyboard and testing can now
+begin.&lt;/p&gt;
+&lt;img alt="projects/project-174982/images/9221811603756753975.jpg" src="projects/project-174982/images/9221811603756753975.jpg" /&gt;
+&lt;p&gt;First of all, after about a month of using a Planck keyboard, this
+feels huge. I can no longer reach the backspace or esc keys without
+moving my hands, which is going to affect my touch-typing a bit, I
+suppose, unless I remap them to those extra keys in the middle, maybe?&lt;/p&gt;
+&lt;p&gt;The switches are great, the proportions of the keyboard are fine, and
+the layout seems to be working fine. All the keys are where I expect
+them. The right shift could be a bit bigger, but then there would be
+no room for the arrow keys.&lt;/p&gt;
+&lt;p&gt;I’m going to use this keyboard for a while now, and see how well it
+works for text, code, computer games and graphics programs.&lt;/p&gt;
+&lt;p&gt;I’m also uploading the design files and the ukeeb example for it, in
+case someone wants to try it themselves. The design files are updated,
+with nicer, less angular traces and with one missing connection for
+the center keys added.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-174982/log-185474/" rel="alternate"/>
+    <summary>Published on 2020-10-27 in project-174982.</summary>
+    <published>2020-10-27T00:00:00+01:00</published>
+  </entry>
+</feed>

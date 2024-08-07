@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Designing Second Prototype - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="designing-second-prototype">
+<h1>Designing Second Prototype<a class="headerlink" href="#designing-second-prototype" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2021-12-30 in <a class="reference internal" href="../#project-176476"><span class="std std-ref">Electronic 6-hole Ocarina</span></a>.</p>
+<p>After several more attempts at fixing the pressure sensor in software
+somehow, I’ve given up on it, and decided to try a different approach.
+This time I want to use a microphone placed in the stream of air, and
+measure the acoustic energy that it picks from the noise of the air
+rushing by. This should have no problems with a lag or a long recovery
+time.</p>
+<p>To avoid mucking about with analog circuits and amplifiers, I decided
+to use a PDM microphone — a very simple MEMS device, that takes a
+clock signal, and gives you back 0/1 pulses that correspond in their
+frequency to the shape of the waveform — a bit like doing sound output
+with PWM, only in reverse. Of course CircuitPython already has a
+audiobusio library that handles it, so it’s really easy to get it
+working:  <a class="reference external" href="https://learn.adafruit.com/adafruit-pdm-microphone-breakout/circuitpython">https://learn.adafruit.com/adafruit-pdm-microphone-
+breakout/circuitpython</a></p>
+<img alt="projects/project-176476/images/4496311640896493044.jpg" src="projects/project-176476/images/4496311640896493044.jpg" />
+<p>After a test with a module on a breadborad to see if it will work well
+enough and to determine which pins to use, I went ahead and created a
+PCB for the new version. I had a moment of doubt when it came to
+creating the footprint, as the datasheet shows something like this:</p>
+<img alt="projects/project-176476/images/1492801640896584479.png" src="projects/project-176476/images/1492801640896584479.png" />
+<p>You see, there is no way to route the traces to those pads, unless you
+use some expensive via-in-pad setup. However, a few pages later they
+show the recommended footprint, which is a bit more reasonable:</p>
+<img alt="projects/project-176476/images/1929641640896643711.png" src="projects/project-176476/images/1929641640896643711.png" />
+<p>Using this, I created the PCBs and placed the order at JLCPCB. I
+should be able to continue the experiments in a week or two.</p>
+<img alt="projects/project-176476/images/99301640896699960.png" src="projects/project-176476/images/99301640896699960.png" />
+<p>Oh, I also added a footprint for a cheap piezo speaker, I will see if
+I can PWM the tones.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

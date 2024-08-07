@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>S3 with a Module - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="s3-with-a-module">
+<h1>S3 with a Module<a class="headerlink" href="#s3-with-a-module" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2024-07-25 in <a class="reference internal" href="../#project-178061"><span class="std std-ref">PewPew S2</span></a>.</p>
+<p>I finally gave up on the parallel display. It seems that something in
+IDF is broken again, and since it’s broken now, even if it gets fixed,
+chances are that it will break again. I can instead stick to what is
+working reliably, especially since the ESP32 can do very fast SPI
+clocks, and that might be even faster than the parallel protocol.</p>
+<p>In any case, I designed that board with a WROOM module, using the SPI
+display, a LiPo battery with a charging circuit, and a bunch of other
+extra features: backlight control, battery monitoring, a light sensor,
+and all the unused pins broken out to a connector on the back.</p>
+<img alt="projects/project-178061/images/9536251721943151898.png" src="projects/project-178061/images/9536251721943151898.png" />
+<p>I assumed the popular Nokia BL-5C battery, but I also found some very
+thin (3mm) pouch batteries of the same size, so I’m going to use those
+in my prototypes. I still need to figure out some way to hold the
+battery in place, and maybe some pogo pins for the battery connector.
+For now it’s held by some masking tape.</p>
+<img alt="projects/project-178061/images/4568981721943341933.jpg" src="projects/project-178061/images/4568981721943341933.jpg" />
+<p>I like the thin pouch battery, because it makes the whole console
+almost completely flat:</p>
+<img alt="projects/project-178061/images/4266341721943388017.jpg" src="projects/project-178061/images/4266341721943388017.jpg" />
+<p>As for the software, there were no problems. I prepared a board
+definition for CircuitPython, with 16MB flash and 8MB of PSRAM, and
+the Stage library enabled. I even added the display initialization to
+the firmware. Flashing is easy, because the BOOT button is the X
+button, like in the previous version. It worked at the first try.</p>
+<img alt="projects/project-178061/images/573811721943533443.jpg" src="projects/project-178061/images/573811721943533443.jpg" />
+<p>The power switch is only for the battery power — connecting the USB
+always turns the device on, and always charges the battery. It was
+easier to do it that way, though it might be annoying if you wanted to
+just charge it without switching it on.</p>
+<p>As I said, I still don’t know how I will solve the battery cover. For
+now I attached the PCB of one of the old prototypes on the back, and
+that seems to work pretty well. I might do something similar in the
+final version.</p>
+<img alt="projects/project-178061/images/6974671721943780003.jpg" src="projects/project-178061/images/6974671721943780003.jpg" />
+<p>I still have some nicer machine screws and washers on order – I should
+be able to control the spacing of the layers better with those.</p>
+<p>I’m also still not entirely happy with the buttons and the d-pad. I
+want to experiment with 3D printing them, but for that I would have to
+refresh my OpenSCAD skills a bit, and possibly order a whole bunch of
+prototypes to be printed, since I don’t have a 3D printer myself. It
+might take a lot of back-and-forth to get the spacing right.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

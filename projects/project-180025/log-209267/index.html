@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Put a Face to a Robot - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="put-a-face-to-a-robot">
+<h1>Put a Face to a Robot<a class="headerlink" href="#put-a-face-to-a-robot" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2022-07-29 in <a class="reference internal" href="../#project-180025"><span class="std std-ref">Fluffbug</span></a>.</p>
+<p>Everything is better with eyes. Putting goggly eyes on things makes
+them instantly relatable and cute or creepy. We simply can’t remain
+emotionally neutral to something that looks at us. So I decided that
+the robots need faces.</p>
+<p>Of course I could have used one of the many Wemos D1 shields available
+on the market to add an OLED screen, a TFT screen or even just a LED
+matrix, but where is the fun in that? I recently got a new round
+screen to work, so I decided to make a shield for it, and to design it
+so it works well with those robots.</p>
+<img alt="projects/project-180025/images/1206761659128902785.png" src="projects/project-180025/images/1206761659128902785.png" />
+<p>The back side has a lot of free space for a silkscreen, so what should
+I put behind a face? Of course!</p>
+<img alt="projects/project-180025/images/2621491659128916260.png" src="projects/project-180025/images/2621491659128916260.png" />
+<p>This way I can use the spare PCBs without a display to decorate other
+robots. That was a week ago, now the PCBs have arrived, so I got it
+all assembled and working:</p>
+<img alt="projects/project-180025/images/7285641659129033744.jpg" src="projects/project-180025/images/7285641659129033744.jpg" />
+<p>My work here is done. Here is the code I used:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="kn">import</span> <span class="nn">board</span>
+<span class="kn">import</span> <span class="nn">displayio</span>
+<span class="kn">import</span> <span class="nn">busio</span>
+
+
+<span class="n">_INIT</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\xFE\x00</span><span class="s2">&quot;</span>  <span class="c1"># Inter Register Enable 1</span>
+    <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\xEF\x00</span><span class="s2">&quot;</span>  <span class="c1"># Inter Register Enable 2</span>
+    <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\xB6\x02\x00\x00</span><span class="s2">&quot;</span>  <span class="c1"># DFC S1&gt;S360 source G1&gt;G32 gate</span>
+    <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x36\x01\x48</span><span class="s1">&#39;</span>  <span class="c1"># MADCTL</span>
+    <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x3a\x01\x05</span><span class="s1">&#39;</span>  <span class="c1"># COLMOD</span>
+    <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\xC3\x01\x13</span><span class="s2">&quot;</span>  <span class="c1"># PWRCTL2 VREG1A=5.06 VREG1B=0.68</span>
+    <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\xC4\x01\x13</span><span class="s2">&quot;</span>  <span class="c1"># PWRCTL3 VREG2A=-3.7 VREG2B=0.68</span>
+    <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\xC9\x01\x22</span><span class="s2">&quot;</span>  <span class="c1"># PWRCTL4</span>
+    <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\x66\x0a\x3c\x00\xcd\x67\x45\x45\x10\x00\x00\x00</span><span class="s2">&quot;</span>
+    <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\x67\x0a\x00\x3c\x00\x00\x00\x01\x54\x10\x32\x98</span><span class="s2">&quot;</span>
+    <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\x74\x07\x10\x85\x80\x00\x00\x4e\x00</span><span class="s2">&quot;</span>
+    <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\x98\x02\x3e\x07</span><span class="s2">&quot;</span>
+    <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x21\x00</span><span class="s1">&#39;</span>  <span class="c1"># INVON</span>
+    <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x11\x80\x78</span><span class="s1">&#39;</span>  <span class="c1"># SLEEPOUT</span>
+    <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x29\x80\x14</span><span class="s1">&#39;</span>  <span class="c1"># DISPLAYON</span>
+<span class="p">)</span>
+<span class="n">displayio</span><span class="o">.</span><span class="n">release_displays</span><span class="p">()</span>
+<span class="n">spi</span> <span class="o">=</span> <span class="n">busio</span><span class="o">.</span><span class="n">SPI</span><span class="p">(</span><span class="n">clock</span><span class="o">=</span><span class="n">board</span><span class="o">.</span><span class="n">IO7</span><span class="p">,</span> <span class="n">MOSI</span><span class="o">=</span><span class="n">board</span><span class="o">.</span><span class="n">IO11</span><span class="p">)</span>
+<span class="n">bus</span> <span class="o">=</span> <span class="n">displayio</span><span class="o">.</span><span class="n">FourWire</span><span class="p">(</span><span class="n">spi</span><span class="p">,</span> <span class="n">chip_select</span><span class="o">=</span><span class="n">board</span><span class="o">.</span><span class="n">IO12</span><span class="p">,</span> <span class="n">baudrate</span><span class="o">=</span><span class="mi">40_000_000</span><span class="p">,</span>
+        <span class="n">reset</span><span class="o">=</span><span class="n">board</span><span class="o">.</span><span class="n">IO5</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">board</span><span class="o">.</span><span class="n">IO9</span><span class="p">)</span>
+<span class="n">display</span> <span class="o">=</span> <span class="n">displayio</span><span class="o">.</span><span class="n">Display</span><span class="p">(</span><span class="n">bus</span><span class="p">,</span> <span class="n">_INIT</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">240</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">240</span><span class="p">)</span>
+<span class="n">display</span><span class="o">.</span><span class="n">root_group</span><span class="o">.</span><span class="n">scale</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="n">display</span><span class="o">.</span><span class="n">root_group</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">display</span><span class="o">.</span><span class="n">root_group</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\x1b</span><span class="s2">[2J&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; O w O&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>I might come up with something more complex later…</p>
+</section>
+
+
+</div>
+  </body>
+</html>

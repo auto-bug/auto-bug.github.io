@@ -1,0 +1,53 @@
+---
+blogpost: true
+date: 2021-06-11
+category: project-180309
+---
+
+# Designing the Battery Holder
+Published on 2021-06-11 in {ref}`project-180309`.
+
+Touch buttons and a USB socket are relatively easy to make, and I did
+them before. But a battery holder is a new thing, and it requires some
+thought. I made a number of sketches:
+
+
+
+:::{image} images/3545321623448404464.jpg
+
+:::
+
+
+But eventually I decided to got with the simplest possible design that
+just might work:
+
+
+
+:::{image} images/9811471623448454979.png
+
+:::
+
+
+
+
+:::{image} images/1510441623448468964.png
+
+:::
+
+
+Here is how it's supposed to work:
+
+
+
+:::{image} images/6831121623448531996.jpg
+
+:::
+
+
+I'm not entirely sure how elastic the PCB will be, and how much I will
+need to bend it, so I assume some experimenting will be needed. I
+started with relatively short but thin tabs. I also included a
+footprint for a regular battery holder on top of it, so that if my
+first design doesn't work, I can still use the boards to test and
+prototype other parts.
+

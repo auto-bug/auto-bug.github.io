@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Assembled - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="assembled">
+<h1>Assembled<a class="headerlink" href="#assembled" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2020-09-30 in <a class="reference internal" href="../#project-174982"><span class="std std-ref">Turbot Keyboard</span></a>.</p>
+<p>A week has passed, and it’s time to see the fruits of my design work
+and assemble the prototype.</p>
+<img alt="projects/project-174982/images/9795781601498527185.jpg" src="projects/project-174982/images/9795781601498527185.jpg" />
+<p>I started with the electronics, so that it will be easier to bodge
+anything with switches not mounted. It’s not complex, so there isn’t
+much work required. This time I re-used a chip with a bootloader
+already flashed, so I didn’t even need to muck about with connecting a
+programmer (the programming pins are connected to some of the
+switches, so it’s not ideal). I spent an hour or so debugging a faulty
+USB connector, but finally got it sorted out and it seems the whole
+board works as supposed.</p>
+<p>When I soldered the diodes, I put them in the opposite direction than
+intended, but they are consistent, so I can fix that in software, no
+problem. Just scan rows first instead of columns.</p>
+<p>Then I soldered the switches with the key caps, and for the first time
+I could actually try this layout:</p>
+<img alt="projects/project-174982/images/1631791601498803303.jpg" src="projects/project-174982/images/1631791601498803303.jpg" />
+<p>It took me a short while to adapt the code I have used for the
+previous keyboards, because I had to fill in the pins for rows and
+columns, and account for the reversed diodes. I got it to work, but
+somehow it felt really unreliable. So I sat down and started debugging
+it, and in the process I figured out why those switches feel so bad,
+and why both Flounder and this keyboard are unusable. I will write
+about this in detail in the next log.</p>
+<p>Other than the really bad switches, the layout is actually very nice.
+I would prefer to make the horizontal spacing a little bit tighter —
+right now in places it’s a bit more than the traditional 0.75”,
+because the columns are angled at different angles. If I were redoing
+it, I would bring them together a bit, so that sometimes the distance
+is bigger and sometimes smaller (and not always bigger like now), so
+the difference was smaller overall. But it’s not a big deal.</p>
+<p>I also assumed that the large shift keys are 2.75U like on normal
+keyboards, but of course those Kailh keycaps are 2.5U, so there is a
+little bit more gap for them, but it doesn’t affect convenience.</p>
+<p>I didn’t make the stabilizers — at this point, with those switches,
+that’s pointless. The keyboard is unusable anyways, and I only sunk
+more money into that project, instead of accepting that those switches
+are trash and moving on.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

@@ -1,0 +1,53 @@
+---
+blogpost: true
+date: 2022-12-18
+category: project-182342
+---
+
+# Version 4 and MooCam
+Published on 2022-12-18 in {ref}`project-182342`.
+
+Since I was ordering PCBs anyways, I went ahead and added the version
+4 of the shield, with the footprint fot the oscillator added, to the
+order:
+
+
+
+:::{image} images/2212091671404004214.png
+
+:::
+
+
+Nothing really exciting there. I also ordered the oscillators, and
+they should arrive shortly, so we will see how well this works.
+
+The pull request for making the xclk pin optional got merged to
+CircuitPython, so that should work once version 8.0 is released.
+
+I also had a stab at a similar shield for the Raspberry Pi Pico and
+Pico W. It's an excellent moment for it, since the Raspberry Pi
+Foundation loves surveillance so much – they should be more than happy
+that their corrupted government is getting more tools to make sure
+nobody harbors Unapproved Opinions.
+
+
+
+:::{image} images/8534841671404202083.png
+
+:::
+
+
+Since there was room, and since extra storage might be useful with a
+camera, I also added a microSD card socket in there, and a button for
+the shutter on the front side, together with a police star.
+
+
+
+:::{image} images/6588411671404265113.png
+
+:::
+
+
+We will see how all that works, but unless I made some horrible
+mistakes, it should work.
+

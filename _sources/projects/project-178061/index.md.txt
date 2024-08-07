@@ -1,0 +1,50 @@
+---
+blogpost: true
+date: 2021-03-04
+category: project
+tags:  researching project, hardware
+image: 1
+---
+
+# PewPew S2
+
+Even better PewPew
+
+<div class="project-thumb">
+
+:::{image} images/8606631614861714942.jpg
+:target: /_images/8606631614861714942.jpg
+:::
+
+:::{image} images/4320101645739470163.jpg
+:target: /_images/4320101645739470163.jpg
+:::
+
+:::{image} images/62441660864559830.jpg
+:target: /_images/62441660864559830.jpg
+:::
+
+</div>
+
+
+    I'm still working on improving the PewPew series of devices. {ref}`project-165032` is pretty close to my ideal, but it would be nice to have something
+with a little bit more luxury: larger screen, volume control, more RAM
+memory. The Raspberry Pi Pico module seems to be a good vehicle for
+this: it has enough pins to use parallel interface to drive a bigger
+screen fast, and it has a lot of memory for such a tiny chip.
+
+It won't be as cheap, of course — the screen alone is three times more
+expensive — but I think I can still keep the price reasonable.
+
+
+
+
+
+## Logs
+
+:::{postlist}
+:category: project-178061
+:::
+
+## Instructions
+

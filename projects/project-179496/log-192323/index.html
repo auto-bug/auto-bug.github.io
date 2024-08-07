@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>The TRRS Cable - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="the-trrs-cable">
+<h1>The TRRS Cable<a class="headerlink" href="#the-trrs-cable" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2021-05-02 in <a class="reference internal" href="../#project-179496"><span class="std std-ref">Chocolad Keyboard Hacking</span></a>.</p>
+<p>I already had my code for the keyboard, but I had to modify it
+slightly, so that it would communicate over the TRRS cable with the
+other half, to receive the keypresses from it. Initially I assumed
+that the TRRS cable just connects the TX and RX pins, crossed — since
+there are 4 wires, two used for power. Only after some head scratching
+and probing the connections I noticed that something is wrong. I asked
+the author for a schematic, and turns out that only the RX pins are
+connected, and one wire is just left unused.</p>
+<p>This turned out to be a bit of a problem, because the SAMD21 can’t use
+the RX pin for sending data using the hardware UART, and CircuitPython
+doesn’t have a software UART in the bitbangio module. Eventually I
+just ended up cutting the trace on the right hand side of the
+keyboard, and bodging it to TX.</p>
+<img alt="projects/project-179496/images/4542941619907536132.jpg" src="projects/project-179496/images/4542941619907536132.jpg" />
+</section>
+
+
+</div>
+  </body>
+</html>

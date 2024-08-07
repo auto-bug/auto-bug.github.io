@@ -1,0 +1,64 @@
+---
+blogpost: true
+date: 2020-10-16
+category: project-174982
+---
+
+# Stab Stab Stab
+Published on 2020-10-16 in {ref}`project-174982`.
+
+Stabs, or what normal people call stabilizers, are special levers
+added under any key longer than 1.5U to make sure that the key goes
+down evenly no matter which part of it you are pressing. Many keyboard
+designs avoid longer keys just to avoid dealing with stabs, but here
+we don't really have much choice: Turbot has 4 keys that are 2U long,
+and that is already long enough to warrant stabs.
+
+In Flounder I tested several commercially available types of
+stabilizers, but they were all either incompatible with low-profile
+keys, or required space on the underside of the PCB — which doesn't
+work when the PCB is supposed to lie flat on the desk. So I went ahead
+and made my own stabilizers out of paperclips, using the holes in the
+PCB to mount them.
+
+This time I didn't make any holes for attaching the stabilizers and I
+plan to do something else.
+
+Commercial keyboards that use the Kailh choc switches have a very neat
+solution for this problem:
+
+
+
+:::{image} images/2998901602854753868.jpg
+
+:::
+
+
+The tops of the switches have a special groove to hold the lever.
+Unfortunately, you can't easily buy switches like that, so I decided
+to try and make my own. I started by using a bad PCB from another
+project to make a drilling jig:
+
+
+
+:::{image} images/8687651602854866117.jpg
+
+:::
+
+
+Using that jig I can drill holes in the case of the switch on both
+sides, and then put a paperclip through it. Since I only have 2U keys
+at most, I will not need those extra bits on the sides. I still need
+something for the paperclip to hook onto, though, but that was already
+a solved problem in Flounder:
+
+
+
+:::{image} images/7843951602855055027.jpg
+
+:::
+
+
+Simply glue some pieces of wire to underside of the key caps, and
+done.
+

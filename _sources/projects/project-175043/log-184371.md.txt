@@ -1,0 +1,44 @@
+---
+blogpost: true
+date: 2020-10-01
+category: project-175043
+---
+
+# DPI, How Does It Work?
+Published on 2020-10-01 in {ref}`project-175043`.
+
+After looking at the PCBs for {ref}`project-174982` a little bit closer, taking some measurements, and then checking the
+gerbers and the design I realized that I have made a horrible mistake.
+That keyboard is almost 10% larger than intended! And then I checked
+the designs for Flatreus, and they have the same problem. No wonder
+there seemed to be so much room.
+
+Turns out that I have recently upgraded Inkscape and it has changed
+the default DPI it uses to calculate units. Fritzing assumes the old
+DPI, so all PCB outlines I imported were bigger than designed. And
+then I placed all components within the outline, proportionally
+spaced. Of course for something like a keyboard this won't work. So I
+had to basically re-do the Atreus PCB from scratch.
+
+
+
+:::{image} images/9749491601581207606.png
+
+:::
+
+
+
+
+:::{image} images/8809791601581221084.png
+
+:::
+
+
+It's more tightly packed now, of course. Also, the chip is no longer
+at a 45° angle, as there is no room for that. On the other hand, I re-
+arranged the pins a bit and added two more LEDs, for debugging and
+status. There is still a joystick and two tact buttons for mouse
+emulation.
+
+I think this is good enough for now, so I have ordered that PCB.
+

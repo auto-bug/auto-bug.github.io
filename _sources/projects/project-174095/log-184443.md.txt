@@ -1,0 +1,53 @@
+---
+blogpost: true
+date: 2020-10-03
+category: project-174095
+---
+
+# Simple Effect
+Published on 2020-10-03 in {ref}`project-174095`.
+
+Finally got some time to program the most basic keystroke effect:
+
+
+
+:::{image} images/1441561601749690792.gif
+
+:::
+
+
+The code for it is rather simple:
+
+
+```
+    def update_lights(self):
+        i = 0
+        y = 0
+        dt = time.monotonic() - self.key_time
+        for x in range(10):
+            self.leds[i] = self.light(x, y, dt)
+            i += 1
+        y += 1
+        for x in range(9, -1, -1):
+            self.leds[i] = self.light(x, y, dt)
+            i += 1
+        y += 1
+        for x in range(10):
+            self.leds[i] = self.light(x, y, dt)
+            i += 1
+        y += 1
+        for x in range(9, -1, -1):
+            self.leds[i] = self.light(x, y, dt)
+            i += 1
+        self.leds.show()
+
+    def light(self, x, y, dt):
+        r2 = (x - self.key_x) ** 2 + (y - self.key_y) ** 2
+        c = 255 - min(255, r2 * 30 + (dt * 10) ** 2)
+        return c, x * 25, min(255, y * 50)
+
+```
+
+The key_x, key_y and key_time are getting saved in the matrix scan
+routine when a key is detected to be pressed.
+

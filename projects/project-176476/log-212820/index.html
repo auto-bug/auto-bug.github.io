@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Boldly Going Forward - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="boldly-going-forward">
+<h1>Boldly Going Forward<a class="headerlink" href="#boldly-going-forward" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2022-10-23 in <a class="reference internal" href="../#project-176476"><span class="std std-ref">Electronic 6-hole Ocarina</span></a>.</p>
+<p>It has been some time since I last worked on this project, mostly
+because the tests now require actually playing some sounds, and that
+generally annoys people. But I have been home alone this past week, so
+I managed to push this a little bit forward. First of all, I had to
+figure out how the holes actually work. So I took the fingering chart,
+noted the frequencies of the notes, and compared how covering and
+uncovering of each hole affected the frequency.</p>
+<img alt="projects/project-176476/images/9100031666560530162.jpg" src="projects/project-176476/images/9100031666560530162.jpg" />
+<p>Turns out the frequency is roughly linear to the total surface area of
+the holes (as helpfully stated by <a class="reference external" href="https://en.wikipedia.org/wiki/Vessel_flute#Pitch_and_fingering">this Wikipedia article</a> ), but not quite, as it also depends on the total volume of air and
+other details. Also, most ocarinas are not really tuned according to
+equally tempered scale, which is why makes them so interesting — each
+one has its own unique feel.</p>
+<p>So I decided to just go with very rough increments of frequency by
+200, 150, 100 and 50 Hz respectively for each of the four holes on the
+front (ignoring the holes on the back for now), and later I might just
+“snap” them to the nearest clear note, if that’s needed.</p>
+<p>Immediately I discovered several problems with the current prototype.
+Since the traces for the touch pads pass under the speaker, and they
+are pretty sensitive, the speaker interferes with the touch sensing,
+giving a weird vibratto effect. Also, the traces for different pads
+are too close to each other, and it’s very easy to touch ones you
+didn’t mean to touch. And finally, the speaker was very quiet.</p>
+<p>I solved the first and last problem by removing the speaker from the
+PCB, adding a MOSFET, and making the speaker hang from some wires.
+Unfortunately the second problem will require a PCB redesign, and I
+decided to also add a battery holder, so that it can be used without a
+computer.</p>
+<p>I still have one more problem, which is a little bit weird, that I so
+far failed to diagnose properly. It seems that removing a finger from
+the pad is detected with some noticeable delay. I’m not entirely sure
+where that comes from, so I’m holding off on ordering a new PCB yet,
+in case the fix involves moving the traces again.</p>
+<img alt="projects/project-176476/images/928271666561223373.jpg" src="projects/project-176476/images/928271666561223373.jpg" />
+</section>
+
+
+</div>
+  </body>
+</html>

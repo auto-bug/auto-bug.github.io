@@ -1,0 +1,55 @@
+---
+blogpost: true
+date: 2022-12-13
+category: project-182342
+---
+
+# Pure Frustration
+Published on 2022-12-13 in {ref}`project-182342`.
+
+ I dug out this project recently, trying to see if I can get it
+working with the new esp32_camera module in CircuitPython. I managed
+to get the board to either just crash and hang, or crash into safe
+mode, but not to capture any images. Then I went looking at the source
+code, and noticed a mention that it uses edma mode when the master
+clock is set to 16MHz. So I changed it from the default of 20MHz, and
+lo and behold, I got some data coming in both the GREYSCALE and and
+RGB565 modes. The JPEG mode is still returning no frames, though,
+though it no longer crashes.
+
+So I thought: maybe I have the data pins in wrong order somehow, and
+that is why the JPEG mode doesn't work – because there is a certain
+header expected by the code, and if the pins are in the wrong order,
+it never gets the right data. But how do I verify that? Maybe I could
+at least display the data I'm getting in the RGB565 mode to see if
+it's correct, and then if it's not, I would at least know the problem
+lies there and I could try changing the pin order or something.
+
+So I connected the display to the board with the camera shield, and
+added all the code that initializes it, and... nothing. White screen.
+
+
+
+:::{image} images/6695411670969678458.jpg
+
+:::
+
+
+Which is very strange, because this is CircuitPython, and so after the
+code finishes running it should display the REPL, not a white screen.
+So I started commenting out pieces of code, and it turns out I get
+white screen as soon as I create the camera object... And then it
+won't go away until a hard reset. Just great.
+
+In the mean time I realized that even if I get this shield working, it
+will not work with the {ref}`project-180025` robot, which was the main reason I was working on it in the first
+place. Why not? Because the esp32-s2 can only do up to 8 PWM channels,
+and I'm already using all of them for controlling the servos of the
+robot. And the camera driver uses at least one PWM channel to generate
+the master clock.
+
+So now I'm thinking about giving up on the esp32-s2 all together, and
+using the imagecapture library with rp2040 instead. I will be doing
+some further experiments to see if that works any better. At least it
+doesn't have to deal with the horrible Espressif code.
+

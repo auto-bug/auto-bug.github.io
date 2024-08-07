@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Selecting Pins - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="selecting-pins">
+<h1>Selecting Pins<a class="headerlink" href="#selecting-pins" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2021-09-23 in <a class="reference internal" href="../#project-180025"><span class="std std-ref">Fluffbug</span></a>.</p>
+<p>Before I finish the new PCB I need to make some decisions. In
+particular, I need to decide which pins of the microcontroller are
+going to be used for what. At the minimum I will need eight pins for
+controlling the servos, so let’s start with that and see which ones
+are suitable for that.</p>
+<img alt="projects/project-180025/images/9278501632396600658.jpg" src="projects/project-180025/images/9278501632396600658.jpg" />
+<p>I connected a servo to he development board, and created a PWM object
+on one of the pins, with 50Hz signal and duty cycle of about 4000 —
+that is close to the center of the servo position. It worked at first
+try. Some more tests let me conclude that I an use any of the pins for
+the servos, but I can only create eight PWM objects at a time, which
+is just enough, but which means I won’t be able to use PWM for the
+speaker or for any LED fading or things like that, which is a bit of a
+shame. I might reconsider adding the speaker.</p>
+<p>But there is one more constraint that I need to consider: I would
+really want to have a camera shield for this robot, with the OV2640
+camera. And it would be bad if any of the pins I picked for the servos
+were required for the camera. So I need to figure out which pins are
+needed for the camera. For this I have turned to <a class="reference external" href="https://learn.adafruit.com/capturing-camera-images-with-circuitpython/espressif-kaluga-setup#adapting-to-other-esp32-s2-boards-3098327-18">Adafruit’s Learn Guide on the subject</a> . And again, it looks like I can use pretty much any pins there, as
+long as there are enough of them available.  Unfortunately, it needs a
+lot of them — from 14 to 16, depending on whether I want to have
+control over the reset and shutdown pins. The S2 Mini exposes 26 pins,
+27 counting the LED. Let’s see, I will need 8 pins for the servos, 4
+for the leg switches, 14 for the camera, that’s 26 exactly already.
+Ouch.</p>
+<p>It seems that it is just doable. We will see.</p>
+<p>In the process of this research I also collected the documentation for
+the OV2640 camera sensor and what is required for building a camera
+shield for the S2 Mini — but that is going to be a separate project.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

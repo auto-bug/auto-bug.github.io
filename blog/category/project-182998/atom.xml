@@ -1,0 +1,143 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>http://deshipu.art/</id>
+  <title>deshipu.art - Posts in project-182998</title>
+  <updated>2024-08-07T20:34:13.231360+00:00</updated>
+  <link href="http://deshipu.art/"/>
+  <link href="http://deshipu.art/blog/category/project-182998/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-182998/log-201153/</id>
+    <title>Programming</title>
+    <updated>2021-12-09T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="programming"&gt;
+
+&lt;p&gt;Published on 2021-12-09 in &lt;a class="reference internal" href="../../../projects/project-182998/#project-182998"&gt;&lt;span class="std std-ref"&gt;Kleks Keyboard&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;All that is left is to program it. As usual, I wanted to use
+CircuitPython, with my &lt;a class="reference external" href="https://github.com/deshipu/ukeeb"&gt;ukeeb&lt;/a&gt;  library. I flashed the bootloader with a JLink through a header I
+temporarily soldered to the stitches in the middle, and then I flashed
+the most recent CircuitPython. I’m using the board definition I made
+for &lt;a class="reference internal" href="../../../projects/project-171381/#project-171381"&gt;&lt;span class="std std-ref"&gt;Fluff M0&lt;/span&gt;&lt;/a&gt; , because it exposes all the pins of the SAMD21.&lt;/p&gt;
+&lt;p&gt;Next it’s time to decide on the layout. For now I am using something
+like this:&lt;/p&gt;
+&lt;img alt="projects/project-182998/images/8992751639080387066.png" src="projects/project-182998/images/8992751639080387066.png" /&gt;
+&lt;p&gt;The labels on the bottom of the keys is what happens when you hold the
+key and press another one. There are two traditional layers, switched
+with the Raise and Lower keys. One thing I added compared to my
+previous keyboard, is that if you press Raise and Backspace, you get
+Lower, and if you press Lower and Space you get Raise — this way you
+can type with one hand with access to both layers. This helps when
+playing games.&lt;/p&gt;
+&lt;p&gt;I’m not entirely happy with the modifier keys yet, I will probably
+reshuffle them somewhat, and I will probably swap the arrows keys and
+the home/end and pgup/pgdn layers. Otherwise it works for me.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-182998/log-201153/" rel="alternate"/>
+    <summary>Published on 2021-12-09 in project-182998.</summary>
+    <published>2021-12-09T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-182998/log-201151/</id>
+    <title>The PCBs</title>
+    <updated>2021-12-09T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="the-pcbs"&gt;
+
+&lt;p&gt;Published on 2021-12-09 in &lt;a class="reference internal" href="../../../projects/project-182998/#project-182998"&gt;&lt;span class="std std-ref"&gt;Kleks Keyboard&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I designed the PCB for this keyboard the same way as the two-part
+split keyboards are often designed: the same PCB is used as the left
+and right part, with switch footprints on both sides, so that it can
+be flipped. However, in this case I only have a microcontroller on one
+side, so all the connections from the other half need to be brought
+over thorough a connector joining the two sides.&lt;/p&gt;
+&lt;img alt="projects/project-182998/images/7937791639079594678.png" src="projects/project-182998/images/7937791639079594678.png" /&gt;
+&lt;img alt="projects/project-182998/images/5529981639079604993.png" src="projects/project-182998/images/5529981639079604993.png" /&gt;
+&lt;p&gt;Logically the board has three rows and a dozen columns, which means
+that I need at least nine traces to cross to the other side. I made it
+12 by also adding the connectors for power, ground and reset — they
+are not needed on the other side of the board, but they are useful for
+programming the board, and this way I didn’t have to add a separate
+connector for this.&lt;/p&gt;
+&lt;p&gt;And before you ask, yes, the holes are purely decorative. I just like
+how they look, and that part of the PCB was empty anyways.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-182998/log-201151/" rel="alternate"/>
+    <summary>Published on 2021-12-09 in project-182998.</summary>
+    <published>2021-12-09T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-182998/log-201195/</id>
+    <title>NKRO and BOOT</title>
+    <updated>2021-12-10T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="nkro-and-boot"&gt;
+
+&lt;p&gt;Published on 2021-12-10 in &lt;a class="reference internal" href="../../../projects/project-182998/#project-182998"&gt;&lt;span class="std std-ref"&gt;Kleks Keyboard&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I took the opportunity with this new keyboard and worked a bit on my
+uKeeb CircuitPython library. With the custom HID descriptors we can
+have an NKRO keyboard, but there is a small problem: the bitmap device
+that this uses won’t work in BIOS or with legacy KVM devices, as those
+expect a BOOT device. Fortunately there is a way around that: when the
+host expects a BOOT device, it must send you a special message telling
+you that, so we can switch to that protocol when needed.&lt;/p&gt;
+&lt;p&gt;The support for receiving that message was recently added to
+CircuitPython in version 7.1.0, so we can now add the NKRO code to the
+library by default.&lt;/p&gt;
+&lt;p&gt;If you are interested in the details, feel free to check the library
+code at  &lt;a class="reference external" href="https://github.com/deshipu/ukeeb"&gt;https://github.com/deshipu/ukeeb&lt;/a&gt;&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-182998/log-201195/" rel="alternate"/>
+    <summary>Published on 2021-12-10 in project-182998.</summary>
+    <published>2021-12-10T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-182998/log-201706/</id>
+    <title>Thinking about V2</title>
+    <updated>2021-12-27T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="thinking-about-v2"&gt;
+
+&lt;p&gt;Published on 2021-12-27 in &lt;a class="reference internal" href="../../../projects/project-182998/#project-182998"&gt;&lt;span class="std std-ref"&gt;Kleks Keyboard&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I’ve been using this keyboard some time, and it’s close to perfect,
+but there are several things that could be still improved in my
+opinion, so I went ahead and re-designed the PCB a little bit.&lt;/p&gt;
+&lt;img alt="projects/project-182998/images/6801821640559279267.png" src="projects/project-182998/images/6801821640559279267.png" /&gt;
+&lt;img alt="projects/project-182998/images/9579491640559291480.png" src="projects/project-182998/images/9579491640559291480.png" /&gt;
+&lt;p&gt;I added a little stagger to the inner columns, because it was a bit
+hard to reach the T and Y keys. I also lowered the middle finger
+column a bit, because the stagger there was a bit much. The pinky
+cluster stays as it is, because it is perfect — I didn’t even move it
+the 3mm needed to align it with the new keys.&lt;/p&gt;
+&lt;p&gt;I added a cluster for the cursor keys, because having them on a layer
+is not convenient, and I’m not touch-typing when I’m cursoring
+anyways. Since the board is by necessity symmetric, I will also have
+some extra keys on the other side — I will put the rarely used
+modifier keys there.&lt;/p&gt;
+&lt;p&gt;Finally, I added a place for a CapsLock LED, though I never use it.
+But there were free pins, so why not.&lt;/p&gt;
+&lt;p&gt;The layout will look something like this:&lt;/p&gt;
+&lt;img alt="projects/project-182998/images/8332081640559601607.png" src="projects/project-182998/images/8332081640559601607.png" /&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-182998/log-201706/" rel="alternate"/>
+    <summary>Published on 2021-12-27 in project-182998.</summary>
+    <published>2021-12-27T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-182998/log-202338/</id>
+    <title>Version Two</title>
+    <updated>2022-01-14T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="version-two"&gt;
+
+&lt;p&gt;Published on 2022-01-14 in &lt;a class="reference internal" href="../../../projects/project-182998/#project-182998"&gt;&lt;span class="std std-ref"&gt;Kleks Keyboard&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Select all, cut.&lt;/p&gt;
+&lt;img alt="projects/project-182998/images/5116031642169677634.jpg" src="projects/project-182998/images/5116031642169677634.jpg" /&gt;
+&lt;p&gt;Paste.&lt;/p&gt;
+&lt;img alt="projects/project-182998/images/2208221642169698038.jpg" src="projects/project-182998/images/2208221642169698038.jpg" /&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-182998/log-202338/" rel="alternate"/>
+    <summary>Published on 2022-01-14 in project-182998.</summary>
+    <published>2022-01-14T00:00:00+01:00</published>
+  </entry>
+</feed>
