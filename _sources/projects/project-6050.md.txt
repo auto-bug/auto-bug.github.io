@@ -43,7 +43,9 @@ Affordable spider robot
 
 
 
-    :::{iframe} https://www.youtube.com/embed/XXotn-8DPQo
+    
+
+:::{iframe} https://www.youtube.com/embed/XXotn-8DPQo
 :width:100%
 :::
 
@@ -843,6 +845,8 @@ result:
 
 And here's a short video:
 
+
+
 :::{iframe} https://www.youtube.com/embed/sBmQx8Rb05I
 :width:100%
 :::
@@ -1183,6 +1187,8 @@ it's an equally frustrating process of figuring out why the leg is
 moving in the direction opposite to expected. It took me several
 hours, but I finally did it.
 
+
+
 :::{iframe} https://www.youtube.com/embed/VZ7vxIEno0o
 :width:100%
 :::
@@ -1194,6 +1200,8 @@ that I ran out of memory and stack space. I had to do a few unpythonic
 things to my code to make it fit on this small board, but finally I
 got a (very bad) gait working. So I strapped the micro:bit on top of
 Tote, and let it walk:
+
+
 
 :::{iframe} https://www.youtube.com/embed/SMqX_yPnfVI
 :width:100%
@@ -1447,6 +1455,8 @@ Since the magnets seemed to be small and weak, I used two of them on
 every foot initially. The effect wasn't very good -- they turned out
 to be too strong, and Tote couldn't lift any of its feet:
 
+
+
 :::{iframe} https://www.youtube.com/embed/4jt5LtwM7lM
 :width:100%
 :::
@@ -1454,6 +1464,8 @@ to be too strong, and Tote couldn't lift any of its feet:
 Fine, let's try with fewer magnets then. That turned out to be just
 strong enough to hold the robot when all four feet are touching the
 metal surface, but not strong enough when on of the feet is raised:
+
+
 
 :::{iframe} https://www.youtube.com/embed/ECNVdPBbJJM
 :width:100%
@@ -1719,6 +1731,8 @@ Of course we also need software to make use of those sensors. For now
 I went with something really simple -- just keep lowering the leg
 slowly until it touches the ground. You can see the code in[the "switches" branch](https://bitbucket.org/thesheep/tote/src/80f55d5a512f389c991f28f3e281c279de9f15d6/start/creep.ino?at=switches#creep.ino-102). And the effect? See for yourself:
 
+
+
 :::{iframe} https://www.youtube.com/embed/-KoazMHrplg
 :width:100%
 :::
@@ -1738,6 +1752,8 @@ the reader, though (or a future experiment log).
 
 ### Hackaday Prize Quaterfinals Video
 Created 2015-08-15.
+
+
 
 :::{iframe} https://www.youtube.com/embed/_RqtMg66i5g
 :width:100%
@@ -1979,7 +1995,9 @@ void sharp_loop() {
 }
 ```
 
-And here we go::::{iframe} https://www.youtube.com/embed/1I-EeEPEjx8
+And here we go:
+
+:::{iframe} https://www.youtube.com/embed/1I-EeEPEjx8
 :width:100%
 :::
 
@@ -2078,6 +2096,8 @@ that should be better. I will try again when they arrive.
 
 Finally, a video of Tote failing to follow my hand:
 
+
+
 :::{iframe} https://www.youtube.com/embed/u7CzJw-UeYg
 :width:100%
 :::
@@ -2164,6 +2184,8 @@ But how do I program it? Do I need a JTAG programmer, a complex setup
 for cross-compiling to ARM and a complicated GDB configuration? Turns
 out that I don't, because there is the[stm32duino](http://www.stm32duino.com/) project! And they even have a step-by-step YouTube video on how to
 program that board:
+
+
 
 :::{iframe} https://www.youtube.com/embed/Ze6q6NidS5w
 :width:100%
@@ -2293,6 +2315,8 @@ in a box:
 Some stickers taken from LiPo cells complete the look. Here's the
 controller in action:
 
+
+
 :::{iframe} https://www.youtube.com/embed/uX7K6_ChTmM
 :width:100%
 :::
@@ -2399,7 +2423,9 @@ it hits an obstacle.
 I used adhesive tape to attach the sensor to the front of the robot. I
 might come up with a better way of doing it in the future, but this is
 good enough for now. Now let's add some code that does the stopping.
-We just add a[_sharp.ino_](https://bitbucket.org/thesheep/tote/src/52697d7f12c87825ac4579f371ccd22bdd2151bc/start/sharp.ino?at=sharp) file, with corresponding_sharp.h_, and call it all from[_start.ino_](https://bitbucket.org/thesheep/tote/src/9aa456eb0395f03c488d6ef61da6a31f7e39ff4d/start/start.ino?at=sharp). And let's see the results::::{iframe} https://www.youtube.com/embed/WR_0yxW_Ba0
+We just add a[_sharp.ino_](https://bitbucket.org/thesheep/tote/src/52697d7f12c87825ac4579f371ccd22bdd2151bc/start/sharp.ino?at=sharp) file, with corresponding_sharp.h_, and call it all from[_start.ino_](https://bitbucket.org/thesheep/tote/src/9aa456eb0395f03c488d6ef61da6a31f7e39ff4d/start/start.ino?at=sharp). And let's see the results:
+
+:::{iframe} https://www.youtube.com/embed/WR_0yxW_Ba0
 :width:100%
 :::
 
@@ -2445,11 +2471,15 @@ to just order ready servos.
 For now, just for testing, I have two separate programs, one for just
 driving forward:
 
+
+
 :::{iframe} https://www.youtube.com/embed/WvPRhwA7Aa0
 :width:100%
 :::
 
 And one for walking forward:
+
+
 
 :::{iframe} https://www.youtube.com/embed/2LjSKvdbtPk
 :width:100%
@@ -2546,6 +2576,8 @@ the robot went crazy.
 
 After replacing the chars with ints, everything went more or less
 smoothly:
+
+
 
 :::{iframe} https://www.youtube.com/embed/7N34Yd2vMS0
 :width:100%
@@ -2655,6 +2687,8 @@ has.
 \
 
 
+
+
 :::{iframe} https://www.youtube.com/embed/qmuZv3mmvRI
 :width:100%
 :::
@@ -2694,7 +2728,9 @@ void loop() {
 
 ```
 
-And lo and behold, proper readings::::{iframe} https://www.youtube.com/embed/_Bw_2RLY4qY
+And lo and behold, proper readings:
+
+:::{iframe} https://www.youtube.com/embed/_Bw_2RLY4qY
 :width:100%
 :::
 
@@ -2725,6 +2761,8 @@ guts.**Warning**: the 5V Pro Mini doesn't have the RAW pin separated from the VC
 like the 3.3V version does, so don't connect it to the USB2TTL while
 it's in the robot -- the power draw will quickly fry the power
 regulator in Pro Mini. You have to remove it for programming.
+
+
 
 :::{iframe} https://www.youtube.com/embed/QjZ5rQOpvEw
 :width:100%
@@ -2802,6 +2840,8 @@ But the code is the same. This gives you a lot of control on the
 Python side.
 
 The other way is to leave all the[Arduino code from original Tote](https://bitbucket.org/thesheep/tote/src/tip/start/), but replace the TV remote part with[code that simply reads the key presses from the serial](https://bitbucket.org/thesheep/tote/src/460f15fa2da489125bb3ade9d76b81fb3b1b60ad/start/serial.ino?at=serial-control). That's the route we are going to take, and it looks like this:
+
+
 
 :::{iframe} https://www.youtube.com/embed/Da69xJNugLQ
 :width:100%
@@ -2898,6 +2938,8 @@ After a night's sleep, I went back to that Micropython code, grepped
 for "115200", and changed it to "9600", recompiled, flashed, changed
 the speed on the Arduino side and what do you know, it works!
 
+
+
 :::{iframe} https://www.youtube.com/embed/4HnUbrXEJcQ
 :width:100%
 :::
@@ -2993,6 +3035,8 @@ in the air, knowing if there is something blocking its movement. If we
 got smart with programming, we could even make it "obedient" and go in
 the direction you push it, just like this robot:
 
+
+
 :::{iframe} https://www.youtube.com/embed/AMVO6rI5mL4
 :width:100%
 :::
@@ -3027,6 +3071,8 @@ read the voltage that the servo is applying to its motor? Turns out
 that this works quite well, at least with the SG90 servos that I have.
 Here's an experiment that I performed to test a "compliant motion"
 servo:
+
+
 
 :::{iframe} https://www.youtube.com/embed/Ms8yTKYebaI
 :width:100%
@@ -3063,6 +3109,8 @@ force from it. If the force is too small, stop. I also made all the
 other legs move up slightly just before the reading, to shift the
 weight more to the leg that we are interested in. The result is not
 very pretty yet, but I'm sure I can tweak it to look better:
+
+
 
 :::{iframe} https://www.youtube.com/embed/Q08YaEeYNSg
 :width:100%
@@ -3134,6 +3182,8 @@ also the current you can draw from them is almost nothing, and they
 will discharge pretty quickly, after which you can simply throw them
 away. So can Tote be powered with alkaline batteries? Let's find out!
 
+
+
 :::{iframe} https://www.youtube.com/embed/SZiQHDCJas0
 :width:100%
 :::
@@ -3141,6 +3191,8 @@ away. So can Tote be powered with alkaline batteries? Let's find out!
 As you can see, you can, but not for very long. But it's nice to see
 that Tote can actually lift them. That means that I could probably
 swap them for some**NiMH** or**NiCd** rechargeable batteries, and it would be all good. Let's see!
+
+
 
 :::{iframe} https://www.youtube.com/embed/7EXs-lPbF28
 :width:100%
@@ -3151,6 +3203,8 @@ problems, I would probably need to find a better way of attaching
 them. Also, using AAA cells instead of AA would improve the weight,
 but unfortunately I don't have any AAA rechargeable batteries on me at
 the moment. Finally, a**LiPo** battery salvaged from a broken power bank, for comparison.
+
+
 
 :::{iframe} https://www.youtube.com/embed/2oY1tgPdmVQ
 :width:100%
