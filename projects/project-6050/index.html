@@ -89,7 +89,7 @@ a base for experimenting with robot gaits and related problems.</p>
 <h3>Reviving the Skull Tote<a class="headerlink" href="#reviving-the-skull-tote" title="Permalink to this heading">¶</a></h3>
 <p>Created 2018-06-07.</p>
 <p>I have a number of prototypes of Tote that I have built over the
-years, but the most presentable one is the one I pimped up in <a class="reference external" href="https://hackaday.io/project/6050-tote/log/48853-pimp-your-bot">https://hackaday.io/project/6050-tote/log/48853-pimp-your-bot</a></p>
+years, but the most presentable one is the one I pimped up in  <a class="reference external" href="https://hackaday.io/project/6050-tote/log/48853-pimp-your-bot">https://hackaday.io/project/6050-tote/log/48853-pimp-your-bot</a></p>
 <p>Unfortunately, that robot had a number of problems. Unlike all other
 Totes, it was powered with a 2S lipo battery, with a buck converter
 bringing to voltage down to 5V. That tiny buck converter would only
@@ -217,7 +217,7 @@ console to program and debug it very conveniently. There is also a
 LiPo shield, which makes it possible to recharge the battery from the
 USB. So I spent some hours making this:</p>
 <img alt="https://cdn.hackaday.io/images/5545441484170063244.png" src="https://cdn.hackaday.io/images/5545441484170063244.png" />
-<p>The base is just the<a class="reference external" href="https://hackaday.io/project/13278">#Servo Breakout for WeMos D1 Mini</a> with 20 channels for the servos. I tried to make it easier to
+<p>The base is just the <a class="reference external" href="https://hackaday.io/project/13278">#Servo Breakout for WeMos D1 Mini</a>  with 20 channels for the servos. I tried to make it easier to
 reprogram by including the ISP header. There are no Tote-specific
 markings about leg servos and so on there – just channel numbers, so
 it makes it easier to see which servo is which inside your program,
@@ -346,7 +346,7 @@ the most total work into so far. With the year’s end, I decided to
 reflect a bit about the progress made so far and the way forward.\</p>
 <p>There wasn’t a lot of activity, but some interesting things did happen
 last year.</p>
-<p>We had a workshop in Belgrade, where we built 20<a class="reference external" href="https://hackaday.io/project/9927">#Tote HaD</a>s. I have learned a lot about how (not) to source parts for such an
+<p>We had a workshop in Belgrade, where we built 20 <a class="reference external" href="https://hackaday.io/project/9927">#Tote HaD</a> s. I have learned a lot about how (not) to source parts for such an
 event, how to run it, what parts are actually hard for people, etc.
 There were also some improvements to the construction itself
 contributed by the participants – but only during the workshop. I’m a
@@ -357,7 +357,7 @@ think this is an important point to consider.\</p>
 build at least two of them. There are even more unfinished projects,
 but I guess that’s normal.</p>
 <p>On my side, I released another version of the PCB, experimented with
-some alternate brains (including the<a class="reference external" href="https://hackaday.io/project/9065">#Tote Zero</a> with a Raspberry Pi), and made one of my prototypes look much better
+some alternate brains (including the <a class="reference external" href="https://hackaday.io/project/9065">#Tote Zero</a>  with a Raspberry Pi), and made one of my prototypes look much better
 by giving it a chassis and some LED eyes, and a coat of paint. There
 has been practically no progress on the software side, despite some
 research on the CORDIC algorithms and servo PWM code. I also didn’t
@@ -398,14 +398,14 @@ programming, the main code written in C++, no easy way to update and
 debug the code. I think I should start putting more effort into making
 it easier to actually program this robot, and encourage it more. Fast
 iteration is the key to good progress. I have become painfully aware
-of that recently when working on the recent version<a class="reference external" href="https://hackaday.io/project/3736">#µBob biped robot</a>, where I had to physically unscrew and detach the legs to access the
+of that recently when working on the recent version <a class="reference external" href="https://hackaday.io/project/3736">#µBob biped robot</a> , where I had to physically unscrew and detach the legs to access the
 chip for programming. That’s the best way to make sure nobody ever
 changes anything in the program unless they absolutely must. So I need
 to try and remove all the obstacles for programming. And also finally
 finish the programming tutorial for it.</p>
 <p>Simplicity was another design goal (it always is), but I kinda lost
 track of it in my pursuit of squeezing as much as possible from the
-small budget. It especially shows in my<a class="reference external" href="https://hackaday.io/project/6050/log/30979-the-way-forward">The Way Forward</a> log a few months ago and<a class="reference external" href="https://hackaday.io/project/9065-tote-zero/log/31747-everything-in-one">the crazy PCB design for Tote Zero</a>. Something definitely went wrong there. I really need to break up the
+small budget. It especially shows in my <a class="reference external" href="https://hackaday.io/project/6050/log/30979-the-way-forward">The Way Forward</a>  log a few months ago and <a class="reference external" href="https://hackaday.io/project/9065-tote-zero/log/31747-everything-in-one">the crazy PCB design for Tote Zero</a> . Something definitely went wrong there. I really need to break up the
 whole design into independent, single-function modules, and I need to
 work on lowering the complexity of each of them – preferably using
 ready off-the-shelf parts and modules. I also need to look into making
@@ -461,7 +461,7 @@ same time, but I finally have a library with three basic functions,<em>iasin</em
 returned in the range of -1800 to 1800, and the input to asin is
 -1&lt;&lt;13 +1 to 1&lt;&lt;13. The whole library is around 700 bytes (644 at the
 last compile) and should be relatively fast on the AVR (although I
-didn’t really time it). Oh, and the code is at<a class="reference external" href="https://bitbucket.org/thesheep/imath/src/tip/imath.c">https://bitbucket.org/thesheep/imath/src/tip/imath.c</a></p>
+didn’t really time it). Oh, and the code is at <a class="reference external" href="https://bitbucket.org/thesheep/imath/src/tip/imath.c">https://bitbucket.org/thesheep/imath/src/tip/imath.c</a></p>
 <p>If you see any opportunity to shrink it even more, please tell me!</p>
 <p>Unfortunately, this is still way too large to make Tote fit in the
 magical kilobyte. I might try with int8 versions next, but those are
@@ -592,7 +592,7 @@ some free time to explore some coding ideas that you didn’t bother
 with before. One of such things on my to do list is rewriting Tote’s
 inverse kinematics code to use only integer math, and I found a
 marvelous family of algorithms that can let me do it.</p>
-<p>If you look at my explanation of Tote’s inverse kinematics at<a class="reference external" href="http://tote.readthedocs.io/en/latest/ik.html">http://tote.readthedocs.io/en/latest/ik.html</a>, you will see that I’m using two trigonometric functions (actually
+<p>If you look at my explanation of Tote’s inverse kinematics at <a class="reference external" href="http://tote.readthedocs.io/en/latest/ik.html">http://tote.readthedocs.io/en/latest/ik.html</a> , you will see that I’m using two trigonometric functions (actually
 inverse trigonometric functions) in there: atan2 and acos. They both
 return an angle – in the case of the standard library functions, in
 form of a number between -PI and PI (or was it 0 and 2PI? I can’t
@@ -657,9 +657,9 @@ extra capacitor, but by default they are not used. I also switched
 some pins around, so now using the serial pins for servos – but all
 the analog pins are free, and broken out close to each of the legs.
 That should make it easier to use them for sensors.</p>
-<p>There is also a new step-by-step assembly tutorial for this version at<a class="reference external" href="http://tote.readthedocs.io/en/latest/assembly_v5.html">http://tote.readthedocs.io/en/latest/assembly_v5.html</a> and slightly modified code at<a class="reference external" href="https://bitbucket.org/thesheep/tote/src/tip/v5">https://bitbucket.org/thesheep/tote/src/tip/v5</a>.</p>
+<p>There is also a new step-by-step assembly tutorial for this version at <a class="reference external" href="http://tote.readthedocs.io/en/latest/assembly_v5.html">http://tote.readthedocs.io/en/latest/assembly_v5.html</a>  and slightly modified code at <a class="reference external" href="https://bitbucket.org/thesheep/tote/src/tip/v5">https://bitbucket.org/thesheep/tote/src/tip/v5</a> .</p>
 <img alt="https://cdn.hackaday.io/images/7428001481143601250.jpg" src="https://cdn.hackaday.io/images/7428001481143601250.jpg" />
-<p>And I still have the other 9 boards to give away.Oh, right and a DirtyPCB link:<a class="reference external" href="http://dirtypcbs.com/store/user/preview/1154">http://dirtypcbs.com/store/user/preview/1154</a>\</p>
+<p>And I still have the other 9 boards to give away.Oh, right and a DirtyPCB link: <a class="reference external" href="http://dirtypcbs.com/store/user/preview/1154">http://dirtypcbs.com/store/user/preview/1154</a> \</p>
 </section>
 <section id="pimp-your-robot-ii">
 <h3>Pimp Your Robot II<a class="headerlink" href="#pimp-your-robot-ii" title="Permalink to this heading">¶</a></h3>
@@ -735,7 +735,7 @@ random rambling on the subject, just to clear it out of my head.</p>
 <ol class="arabic simple">
 <li><p>A Raspberry Pi Zero was released, and it’s small and cheap enough to
 fit in Tote and provide some more advanced features, like a Python
-interpreter and possibly w WiFi camera. I forked<span class="xref myst">#Tote Zero</span> to explore that possibility, but it does makes things more
+interpreter and possibly w WiFi camera. I forked <span class="xref myst">#Tote Zero</span>  to explore that possibility, but it does makes things more
 complicated. An operating system, the need to shut it down cleanly,
 the need to keep it updated and properly configured, is a pain. Not to
 mention the booting time. Powering the Raspberry Pi is also much more
@@ -810,26 +810,26 @@ EEPROM.</p>
 <section id="tote-zero">
 <h3>Tote Zero<a class="headerlink" href="#tote-zero" title="Permalink to this heading">¶</a></h3>
 <p>Created 2016-01-07.</p>
-<p>So the boards have arrived and I started working on the<span class="xref myst">#Tote Zero</span>, an older brother of Tote, powered by the Pi Zero board. That doesn’t
+<p>So the boards have arrived and I started working on the <span class="xref myst">#Tote Zero</span> , an older brother of Tote, powered by the Pi Zero board. That doesn’t
 mean Tote is dead or deprecated or anything, of course. I will
 continue working on all my project in the same erratic and chaotic
 manner I did before.</p>
-<p>For instance, one thing I will definitely want to put on Tote is the<span class="xref myst">#OpenMV</span> board – once they are ready, hopefully sometime this year.</p>
+<p>For instance, one thing I will definitely want to put on Tote is the <span class="xref myst">#OpenMV</span>  board – once they are ready, hopefully sometime this year.</p>
 </section>
 <section id="pyboard">
 <h3>PyBoard<a class="headerlink" href="#pyboard" title="Permalink to this heading">¶</a></h3>
 <p>Created 2015-12-20.</p>
-<p>There is a version of Tote using PyBoard as its brains:<span class="xref myst">#Micropython Quadruped Robot</span></p>
+<p>There is a version of Tote using PyBoard as its brains: <span class="xref myst">#Micropython Quadruped Robot</span></p>
 <p>But the code for that was translated from Tote’s Arduino code, and
 didn’t work too well for some reason. I promised to try and fix that
 some time ago, but somehow I never got the time for it. Last night I
-finally got myself to remove the PyBoard from<span class="xref myst">#Henk hexapod robot</span>, put it on Tote and program.</p>
+finally got myself to remove the PyBoard from <span class="xref myst">#Henk hexapod robot</span> , put it on Tote and program.</p>
 <p>As the base, I used the micro:bit version of Tote’s code, since it’s
-MicroPython too. I just added the servo-handling code that<span class="xref myst">&#64;wagner</span> wrote for his robot. I also used the same pins, timers and channels.
+MicroPython too. I just added the servo-handling code that <span class="xref myst">&#64;wagner</span>  wrote for his robot. I also used the same pins, timers and channels.
 Since I didn’t want to make a custom PCB, I just used the old trick
 and connected the PyBoard using dupont cables:</p>
 <img alt="https://cdn.hackaday.io/images/8629801450613484223.jpg" src="https://cdn.hackaday.io/images/8629801450613484223.jpg" />
-<p>The resulting code is available at<a class="reference external" href="https://bitbucket.org/thesheep/pyb_tote/src">https://bitbucket.org/thesheep/pyb_tote/src</a></p>
+<p>The resulting code is available at <a class="reference external" href="https://bitbucket.org/thesheep/pyb_tote/src">https://bitbucket.org/thesheep/pyb_tote/src</a></p>
 </section>
 <section id="pi-zero">
 <h3>Pi Zero<a class="headerlink" href="#pi-zero" title="Permalink to this heading">¶</a></h3>
@@ -852,12 +852,12 @@ better than on this photo. We will see how that works.</p>
 <p>Created 2015-12-02.</p>
 <p>I almost had the Raspberry Pi thing working last time, and I promised
 to get it to work, but not just yet. The last two weeks I had a
-different project on my mind. I was participating in the<a class="reference external" href="http://microworldtour.github.io/microbit/monifa.html">Micro World Tour</a>, a program that gets a couple of the micro:bit boards into the hands
+different project on my mind. I was participating in the <a class="reference external" href="http://microworldtour.github.io/microbit/monifa.html">Micro World Tour</a> , a program that gets a couple of the micro:bit boards into the hands
 of Python hackers to do something nice with its Micropython
 implementation. So, obviously, I had to put it on Tote. Just imagine
 every kid in UK building their own quadruped robot and doing amazing
 stuff with it!</p>
-<p>But yeah, there were some hurdles. First, we had to write<a class="reference external" href="http://microbit-micropython.readthedocs.org/">some documentation for it</a>, because it’s all just being created as we go. Then I had to use an
+<p>But yeah, there were some hurdles. First, we had to write <a class="reference external" href="http://microbit-micropython.readthedocs.org/">some documentation for it</a> , because it’s all just being created as we go. Then I had to use an
 edge connector, which I received separately, to get access to the I²C
 pins:</p>
 <img alt="https://cdn.hackaday.io/images/3065641449081853661.jpg" src="https://cdn.hackaday.io/images/3065641449081853661.jpg" />
@@ -1137,7 +1137,7 @@ servos and all the other parts. And it’s not like you won’t find a use
 for the other 9 boards, as they are pretty much generic servo breakout
 boards. They are just shaped in a way that makes it easy to attach the
 legs. Anyways, I decided to explain how you can build Tote with just a
-proto-board, like<span class="xref myst">#Tote in the Wild</span> and<span class="xref myst">#Micropython Quadruped Robot</span>. Let’s start with the connections (note that the connections for your
+proto-board, like <span class="xref myst">#Tote in the Wild</span>  and <span class="xref myst">#Micropython Quadruped Robot</span> . Let’s start with the connections (note that the connections for your
 IR sensor may be different):</p>
 <img alt="https://cdn.hackaday.io/images/4140411441297670400.png" src="https://cdn.hackaday.io/images/4140411441297670400.png" />
 <hr class="docutils" />
@@ -1154,7 +1154,7 @@ have to comment that section in the code, or your robot will keep on
 shutting down randomly for no reason.</p>
 <p>Next comes the mechanical part. You need to drill (or otherwise make)
 the holes for mounting the servos. You can use an electric drill, a
-dremel (like me), or even simply a metal file.<a class="reference external" href="https://bitbucket.org/thesheep/tote/downloads/tote-body.pdf">I made a handy template</a> that you can print out and glue to your board to get the holes right,
+dremel (like me), or even simply a metal file. <a class="reference external" href="https://bitbucket.org/thesheep/tote/downloads/tote-body.pdf">I made a handy template</a>  that you can print out and glue to your board to get the holes right,
 but it’s really quite simple. Four 7mm holes in the corners, and eight
 small holes for the screws:</p>
 <img alt="https://cdn.hackaday.io/images/11441298191321.jpg" src="https://cdn.hackaday.io/images/11441298191321.jpg" />
@@ -1174,17 +1174,17 @@ recently.</p>
 <p>I got e-mails from at least two people who are now working on their
 robots more or less based on Tote.</p>
 <hr class="docutils" />
-<p>The first one is<span class="xref myst">#Micropython Quadruped Robot</span> built by<span class="xref myst">&#64;wagner</span>. He used a permaboard instead of a PCB for the body, and translated
+<p>The first one is <span class="xref myst">#Micropython Quadruped Robot</span>  built by <span class="xref myst">&#64;wagner</span> . He used a permaboard instead of a PCB for the body, and translated
 the walking code from C++ into Micropython, to use with his pyBoard.
 Last time I heard from him he still had some problems with the code,
 but I hope he will get them resolved.</p>
-<p>The second robot,<span class="xref myst">#Tote in the Wild</span>, made by<span class="xref myst">&#64;Over.Unity</span>, also uses a permaboard for its body, but uses a Pro Mini just like
-Tote. I got permission to show you<a class="reference external" href="http://s1257.photobucket.com/user/over_unity123/library/Tote?sort=3&amp;page=1">a gallery of photos of the robot</a>. It walks around pretty well now!</p>
-<p>I’ve also seen some comments under the<a class="reference external" href="http://hackaday.com/2015/06/03/hackaday-prize-entry-solving-the-shortage-of-walking-robots/">post on Hackaday.com</a> from people thinking about building their robots, but I’ve never
+<p>The second robot, <span class="xref myst">#Tote in the Wild</span> , made by <span class="xref myst">&#64;Over.Unity</span> , also uses a permaboard for its body, but uses a Pro Mini just like
+Tote. I got permission to show you <a class="reference external" href="http://s1257.photobucket.com/user/over_unity123/library/Tote?sort=3&amp;page=1">a gallery of photos of the robot</a> . It walks around pretty well now!</p>
+<p>I’ve also seen some comments under the <a class="reference external" href="http://hackaday.com/2015/06/03/hackaday-prize-entry-solving-the-shortage-of-walking-robots/">post on Hackaday.com</a>  from people thinking about building their robots, but I’ve never
 heard from them again. If you are building a robot based on or even
 just inspired by Tote, please let me know! I’d love to hear about it,
 and see photos and videos of it.</p>
-<p>Update:<span class="xref myst">#Tote in the Wild</span> has its project page now and is finished.</p>
+<p>Update: <span class="xref myst">#Tote in the Wild</span>  has its project page now and is finished.</p>
 </section>
 <section id="out-of-the-prize">
 <h3>Out of the Prize<a class="headerlink" href="#out-of-the-prize" title="Permalink to this heading">¶</a></h3>
@@ -1203,7 +1203,7 @@ started with a walking robot and to finally get those robots into our
 homes.</p>
 <hr class="docutils" />
 <p>If you like this project and its goals, there is a similar one that
-qualified, that you can track and support:<span class="xref myst">#The Kasei Initiative</span>. It’s on a little earlier stage, but the goals are even more
+qualified, that you can track and support: <span class="xref myst">#The Kasei Initiative</span> . It’s on a little earlier stage, but the goals are even more
 ambitious!</p>
 <p>There are also other robotics projects:</p>
 <ul class="simple">
@@ -1267,7 +1267,7 @@ robot with a sense of touch:</p>
 <img alt="https://cdn.hackaday.io/images/1721441439652461744.jpg" src="https://cdn.hackaday.io/images/1721441439652461744.jpg" />
 <p>Of course we also need software to make use of those sensors. For now
 I went with something really simple – just keep lowering the leg
-slowly until it touches the ground. You can see the code in<a class="reference external" href="https://bitbucket.org/thesheep/tote/src/80f55d5a512f389c991f28f3e281c279de9f15d6/start/creep.ino?at=switches#creep.ino-102">the “switches” branch</a>. And the effect? See for yourself:</p>
+slowly until it touches the ground. You can see the code in <a class="reference external" href="https://bitbucket.org/thesheep/tote/src/80f55d5a512f389c991f28f3e281c279de9f15d6/start/creep.ino?at=switches#creep.ino-102">the “switches” branch</a> . And the effect? See for yourself:</p>
 <p>If you look closely you will notice, that even after the robot extends
 the leg far down because it didn’t find the floor, it moves it back to
 its default position anyways – that’s why the robot’s body stays at
@@ -1287,7 +1287,7 @@ development of this robot and how it reached the current form. Enjoy!</p>
 <h3>Version 4 of PCB Documented<a class="headerlink" href="#version-4-of-pcb-documented" title="Permalink to this heading">¶</a></h3>
 <p>Created 2015-08-15.</p>
 <p>After building two prototypes and testing them, I decided to make the
-version 4 of the PCB the default in<a class="reference external" href="http://tote.readthedocs.org/">the documentation</a>. There are also<a class="reference external" href="http://tote.readthedocs.org/en/latest/assembly_v4.html">updated assembly instructions</a> with lots of photos. Don’t worry, the<a class="reference external" href="http://tote.readthedocs.org/en/latest/assembly_v2.html">instructions for the old boards are still there</a>.</p>
+version 4 of the PCB the default in <a class="reference external" href="http://tote.readthedocs.org/">the documentation</a> . There are also <a class="reference external" href="http://tote.readthedocs.org/en/latest/assembly_v4.html">updated assembly instructions</a>  with lots of photos. Don’t worry, the <a class="reference external" href="http://tote.readthedocs.org/en/latest/assembly_v2.html">instructions for the old boards are still there</a> .</p>
 </section>
 <section id="licenses">
 <h3>Licenses<a class="headerlink" href="#licenses" title="Permalink to this heading">¶</a></h3>
@@ -1295,9 +1295,9 @@ version 4 of the PCB the default in<a class="reference external" href="http://to
 <p>To be eligible for the Hackaday Prize, I have to explicitly document
 the licenses for everything. So here it goes.</p>
 <ul class="simple">
-<li><p>All the work I did myself, including the guide at<a class="reference external" href="http://tote.rtfd.org">http://tote.rtfd.org</a>, the source code for the base and all the experiments, and the PCB
+<li><p>All the work I did myself, including the guide at <a class="reference external" href="http://tote.rtfd.org">http://tote.rtfd.org</a> , the source code for the base and all the experiments, and the PCB
 designs, is licensed under a Creative Commons Attribution-
-NonCommercial 4.0 International License. See<a class="reference external" href="http://creativecommons.org/licenses/by-nc/4.0/">http://creativecommons.org/licenses/by-nc/4.0/</a> for details.</p></li>
+NonCommercial 4.0 International License. See <a class="reference external" href="http://creativecommons.org/licenses/by-nc/4.0/">http://creativecommons.org/licenses/by-nc/4.0/</a>  for details.</p></li>
 <li><p>The Arduino libraries which I depend upon are licensed under the LGPL
 license.</p></li>
 <li><p>The IRLRemote library by Nicohood, which I use for remote control, is
@@ -1316,7 +1316,7 @@ situation:</p>
 paper. Anyways, there are three “input” components. First are the
 detailed build instructions for the robot, that account for most of
 the hurdles and traps waiting for a beginner roboticist. I’m working
-on them at<a class="reference external" href="http://tote.rtfd.org">http://tote.rtfd.org</a> and I keep improving them. Then there are the example experiments and
+on them at <a class="reference external" href="http://tote.rtfd.org">http://tote.rtfd.org</a>  and I keep improving them. Then there are the example experiments and
 hacks that I publish here at Hackaday.io, that are supposed to inspire
 and get people started. And finally we also need a source of
 affordable parts, that part is mostly covered by China, but on our
@@ -1401,7 +1401,7 @@ inside their robots.</p>
 <p>Created 2015-07-30.</p>
 <p>I didn’t have much time to work on Tote this week, but since the
 sensors arrived, I will at least finish the “follow me” log.</p>
-<p>This time the sensors I got<a class="reference external" href="https://www.pololu.com/product/2474">GP2Y0A60SZLF Pololu modules</a>,  which are specified to work from 2.7V. Hacks like the previous two
+<p>This time the sensors I got <a class="reference external" href="https://www.pololu.com/product/2474">GP2Y0A60SZLF Pololu modules</a> ,  which are specified to work from 2.7V. Hacks like the previous two
 attempts will sometimes work, but as you can see, often not, and you
 shouldn’t rely on them.</p>
 <p>This sensor works beautifully though. Here’s my testing rig:</p>
@@ -1452,7 +1452,7 @@ distance, etc. I will leave those as homework, though.</p>
 <section id="follow-me">
 <h3>Follow Me!<a class="headerlink" href="#follow-me" title="Permalink to this heading">¶</a></h3>
 <p>Created 2015-07-24.</p>
-<p>Some time ago I got the<a class="reference external" href="https://hackaday.io/project/6050-tote-affordable-spider-robot/log/20790-distance-sensor-second-try">Sharp distance sensor to work with Tote</a> (somewhat), and I promised we will do something interesting with it.
+<p>Some time ago I got the <a class="reference external" href="https://hackaday.io/project/6050-tote-affordable-spider-robot/log/20790-distance-sensor-second-try">Sharp distance sensor to work with Tote</a>  (somewhat), and I promised we will do something interesting with it.
 Obstacle avoidance is old, so let’s try to make the robot follow us
 instead. The idea is actually very similar to obstacle avoidance,
 except that instead of avoiding obstacles, you go toward them.</p>
@@ -1515,7 +1515,7 @@ that should be better. I will try again when they arrive.</p>
 <section id="testing-the-new-printed-circuit-board">
 <h3>Testing The New Printed Circuit Board<a class="headerlink" href="#testing-the-new-printed-circuit-board" title="Permalink to this heading">¶</a></h3>
 <p>Created 2015-07-21.</p>
-<p>The<a class="reference external" href="http://dirtypcbs.com/view.php?share=8923&amp;accesskey=8b094bbc0000d8c4912eef9a90965aac">new PCBs</a> just arrived from<a class="reference external" href="http://dirtypcbs.com">Dirtypcbs</a> and I started to test them. This is version three of the board, and<a class="reference external" href="https://hackaday.io/project/6050-tote-affordable-spider-robot/log/20019-pcb-redesign">most of the improvements are really just for convenience or aesthetics</a>.</p>
+<p>The <a class="reference external" href="http://dirtypcbs.com/view.php?share=8923&amp;accesskey=8b094bbc0000d8c4912eef9a90965aac">new PCBs</a>  just arrived from <a class="reference external" href="http://dirtypcbs.com">Dirtypcbs</a>  and I started to test them. This is version three of the board, and <a class="reference external" href="https://hackaday.io/project/6050-tote-affordable-spider-robot/log/20019-pcb-redesign">most of the improvements are really just for convenience or aesthetics</a> .</p>
 <img alt="https://cdn.hackaday.io/images/8269681437488977992.jpg" src="https://cdn.hackaday.io/images/8269681437488977992.jpg" />
 <hr class="docutils" />
 <p>So, this time there seem to be no errors on the board (last time I got
@@ -1558,16 +1558,16 @@ right pins.</p>
 <hr class="docutils" />
 <p>But how do I program it? Do I need a JTAG programmer, a complex setup
 for cross-compiling to ARM and a complicated GDB configuration? Turns
-out that I don’t, because there is the<a class="reference external" href="http://www.stm32duino.com/">stm32duino</a> project! And they even have a step-by-step YouTube video on how to
+out that I don’t, because there is the <a class="reference external" href="http://www.stm32duino.com/">stm32duino</a>  project! And they even have a step-by-step YouTube video on how to
 program that board:</p>
 <p>Turns out it’s very simple and works like a charm. They also have the
-pinout of that board<a class="reference external" href="http://www.stm32duino.com/viewtopic.php?f=28&amp;t=117">on their forum</a>:</p>
+pinout of that board <a class="reference external" href="http://www.stm32duino.com/viewtopic.php?f=28&amp;t=117">on their forum</a> :</p>
 <img alt="https://cdn.hackaday.io/images/1925191437063394286.png" src="https://cdn.hackaday.io/images/1925191437063394286.png" />
 <p>That should make it all much easier. Unfortunately, that pinout
 doesn’t say which pins support PWM and thus are suitable for use with
 the Servo library. I had to get them by trial and error, which is what
 I spent the bulk of my time on. But ultimately I came up with a
-working set of pins, which I put in the<a class="reference external" href="https://bitbucket.org/thesheep/tote/commits/162ec23c4fbeadc1ddd0feea622ca22ff2a53662">servo.ino</a> of the code that worked for Teensy 3.1. And it works. I will skip the
+working set of pins, which I put in the <a class="reference external" href="https://bitbucket.org/thesheep/tote/commits/162ec23c4fbeadc1ddd0feea622ca22ff2a53662">servo.ino</a>  of the code that worked for Teensy 3.1. And it works. I will skip the
 video this time, because it looks exactly the same as the one with
 Teensy, so you can go and watch that one instead.</p>
 </section>
@@ -1643,7 +1643,7 @@ that is quite simple:</p>
 </div>
 <p>Additionally, if the button on the joystick is pressed, you get
 different functions – walking sideways and changing the robot height.
-All this added to<a class="reference external" href="https://bitbucket.org/thesheep/tote/src/22662daa9d26d7cddd83226e1e6ace775f2ed8c1/start/ir.ino?at=irjoy">ir.ino</a>. All that was left was to put all the parts, together with a battery,
+All this added to <a class="reference external" href="https://bitbucket.org/thesheep/tote/src/22662daa9d26d7cddd83226e1e6ace775f2ed8c1/start/ir.ino?at=irjoy">ir.ino</a> . All that was left was to put all the parts, together with a battery,
 in a box:</p>
 <img alt="https://cdn.hackaday.io/images/1091771436629637404.jpg" src="https://cdn.hackaday.io/images/1091771436629637404.jpg" />
 <p>Some stickers taken from LiPo cells complete the look. Here’s the
@@ -1657,7 +1657,7 @@ of the most useful ones that you can install, as it gives the robot an
 approximation of vision. I tried to use an ultrasound distance sensor
 with Tote before, and failed miserably. This time I’m going to use an
 infra-red distance sensor.</p>
-<p>The<a class="reference external" href="http://sharp-world.com/products/device/lineup/data/pdf/datasheet/gp2y0a21yk_e.pdf">Sharp 2Y0A21</a><a class="reference external" href="http://sharp-world.com/products/device/lineup/data/pdf/datasheet/gp2y0a21yk_e.pdf"></a> [pdf] sensor is probably one of the most popular hobby robot sensors
+<p>The <a class="reference external" href="http://sharp-world.com/products/device/lineup/data/pdf/datasheet/gp2y0a21yk_e.pdf">Sharp 2Y0A21</a>  <a class="reference external" href="http://sharp-world.com/products/device/lineup/data/pdf/datasheet/gp2y0a21yk_e.pdf"></a>  [pdf] sensor is probably one of the most popular hobby robot sensors
 out there, right after the ultrasonic one. But it takes 5V as the
 power supply. Will it work at our robot’s 3.3V? Let’s find out!</p>
 <img alt="https://cdn.hackaday.io/images/716781436553286513.jpg" src="https://cdn.hackaday.io/images/716781436553286513.jpg" />
@@ -1714,7 +1714,7 @@ it hits an obstacle.</p>
 <p>I used adhesive tape to attach the sensor to the front of the robot. I
 might come up with a better way of doing it in the future, but this is
 good enough for now. Now let’s add some code that does the stopping.
-We just add a<a class="reference external" href="https://bitbucket.org/thesheep/tote/src/52697d7f12c87825ac4579f371ccd22bdd2151bc/start/sharp.ino?at=sharp"><em>sharp.ino</em></a> file, with corresponding_sharp.h_, and call it all from<a class="reference external" href="https://bitbucket.org/thesheep/tote/src/9aa456eb0395f03c488d6ef61da6a31f7e39ff4d/start/start.ino?at=sharp"><em>start.ino</em></a>. And let’s see the results:</p>
+We just add a <a class="reference external" href="https://bitbucket.org/thesheep/tote/src/52697d7f12c87825ac4579f371ccd22bdd2151bc/start/sharp.ino?at=sharp"><em>sharp.ino</em></a>  file, with corresponding_sharp.h_, and call it all from <a class="reference external" href="https://bitbucket.org/thesheep/tote/src/9aa456eb0395f03c488d6ef61da6a31f7e39ff4d/start/start.ino?at=sharp"><em>start.ino</em></a> . And let’s see the results:</p>
 <p>It works as expected, the robot consistently stops at about 15cm from
 the obstacle. That’s it for today, in the future I will show how to
 code a simple obstacle-avoiding algorithm, and then how to make the
@@ -1724,7 +1724,7 @@ robot follow you around.</p>
 <h3>Logicoma-kun<a class="headerlink" href="#logicoma-kun" title="Permalink to this heading">¶</a></h3>
 <p>Created 2015-07-07.</p>
 <p>The continuous-rotation servos arrived, and I got to finish another of
-my experiments,<a class="reference external" href="https://hackaday.io/project/6321-katka-a-mammalian-robot/log/20293-spider-mode">which I mentioned previously</a> over at the<span class="xref myst">#Katka, a mammalian robot</span> project. Since I’m re-using parts and experience between all those
+my experiments, <a class="reference external" href="https://hackaday.io/project/6321-katka-a-mammalian-robot/log/20293-spider-mode">which I mentioned previously</a>  over at the <span class="xref myst">#Katka, a mammalian robot</span>  project. Since I’m re-using parts and experience between all those
 projects, it becomes harder to separate them. This one might even grow
 out into its own project, but for now I will publish it here, as it’s
 basically Tote with a slightly different leg configuration and
@@ -1738,8 +1738,8 @@ thought that I might be able to build a model of it out of Tote.</p>
 <hr class="docutils" />
 <p>Since with the Arduino Pro Mini I’m limited to 12 servos, I had to
 find a way to reduce the number of servos and still get proper
-walking. My experiments with<span class="xref myst">#Katka, a mammalian robot</span> allowed me to do that, so I used the 4 free servo slots for 4
-continuous-rotation servos placed at the ends of the legs.<a class="reference external" href="http://letsmakerobots.com/content/how-modify-micro-servo-continuous-rotation">I could actually have converted the SG90 servos instead</a>, but I didn’t have the round servo horns for the wheels, so I decided
+walking. My experiments with <span class="xref myst">#Katka, a mammalian robot</span>  allowed me to do that, so I used the 4 free servo slots for 4
+continuous-rotation servos placed at the ends of the legs. <a class="reference external" href="http://letsmakerobots.com/content/how-modify-micro-servo-continuous-rotation">I could actually have converted the SG90 servos instead</a> , but I didn’t have the round servo horns for the wheels, so I decided
 to just order ready servos.</p>
 <p>For now, just for testing, I have two separate programs, one for just
 driving forward:</p>
@@ -1778,7 +1778,7 @@ cables:\</p>
 <p>Then it simply plugs into the Tote socket. Looks a little bit weird,
 but should work just fine:</p>
 <img alt="https://cdn.hackaday.io/images/5006831435843968794.jpg" src="https://cdn.hackaday.io/images/5006831435843968794.jpg" />
-<p>Now just adjust the pin numbers in<a class="reference external" href="https://bitbucket.org/thesheep/tote/src/806a193584f9e4653414de2dd4f55ba884f0502d/start/servos.ino?at=teensy31#cl-9">servos.ino</a>, remove the IR code (it’s based on AVR interrupts, so probably won’t
+<p>Now just adjust the pin numbers in <a class="reference external" href="https://bitbucket.org/thesheep/tote/src/806a193584f9e4653414de2dd4f55ba884f0502d/start/servos.ino?at=teensy31#cl-9">servos.ino</a> , remove the IR code (it’s based on AVR interrupts, so probably won’t
 work on Teensy), and we are ready to go. Another super-easy
 conversion.Except that it doesn’t work. As soon as the robot is witched on, it
 gets an attack of epilepsy, twitching its legs randomly. Why?<strong>Why?</strong></p>
@@ -1802,7 +1802,7 @@ strategically planned print statements, a pattern started to emerge.
 It seemed that sometimes a value would suddenly be multiplied by 255.
 How come? Add more print statement to also display the constants and
 tables I used, and I found the problem.</p>
-<p>Turns out that the<a class="reference external" href="http://blog.cdleary.com/2012/11/arm-chars-are-unsigned-by-default/">char type is unsigned by default on ARM</a>. And I had some tables with just values like 1 and -1 for tuning
+<p>Turns out that the <a class="reference external" href="http://blog.cdleary.com/2012/11/arm-chars-are-unsigned-by-default/">char type is unsigned by default on ARM</a> . And I had some tables with just values like 1 and -1 for tuning
 various parameters. And of course all those -1s have become 255s, and
 the robot went crazy.</p>
 <p>After replacing the chars with ints, everything went more or less
@@ -1831,7 +1831,7 @@ monitoring.</p>
 <p>Created 2015-06-26.</p>
 <p>After the recent failures and after using the Tote’s PCB in a couple
 of different projects, I decided that some changes are needed to the
-design. Here is<a class="reference external" href="https://bitbucket.org/thesheep/tote/src/tip/fritzing/pcb3.fzz">the new PCB</a>:</p>
+design. Here is <a class="reference external" href="https://bitbucket.org/thesheep/tote/src/tip/fritzing/pcb3.fzz">the new PCB</a> :</p>
 <img alt="https://cdn.hackaday.io/images/6927631435323642206.png" src="https://cdn.hackaday.io/images/6927631435323642206.png" />
 <hr class="docutils" />
 <p>There are several changes compared to the previous one:</p>
@@ -1865,7 +1865,7 @@ and then order them.</p>
 <p>Created 2015-06-23.</p>
 <p>What is a robot without sensors? Just a remote-controlled toy! It’s
 time to add some external sensors to Tote.</p>
-<p>If you looked at the<a class="reference external" href="http://tote.readthedocs.org/en/latest/_images/pcb2a.png">PCB</a>, you probably noticed the four pins broken out at the bottom. Yes,
+<p>If you looked at the <a class="reference external" href="http://tote.readthedocs.org/en/latest/_images/pcb2a.png">PCB</a> , you probably noticed the four pins broken out at the bottom. Yes,
 they match the pinout of a cheap HC-SR04 ultrasonic range finder. It
 should be a great way to add some obstacle avoidance or person
 following capabilities to Tote, just like its older brother µKubik
@@ -1904,7 +1904,7 @@ read the distance. A quick sketch to test the sensor:</p>
 </pre></div>
 </div>
 <p>And lo and behold, proper readings:</p>
-<p>Yay, so that’s it, right? Now just add<a class="reference external" href="https://bitbucket.org/thesheep/tote/src/eda3cc49cbb6e0774d22d0e6b12d5ccc45cfd3c9/start/ping.ino?at=ping">some basic logic to the code</a> to make the robot stop when there is an obstacle in front, and we are
+<p>Yay, so that’s it, right? Now just add <a class="reference external" href="https://bitbucket.org/thesheep/tote/src/eda3cc49cbb6e0774d22d0e6b12d5ccc45cfd3c9/start/ping.ino?at=ping">some basic logic to the code</a>  to make the robot stop when there is an obstacle in front, and we are
 ready to go, right? Wrong.</p>
 <p>For some reason, the robot stop immediately after the first step.
 What’s happening?</p>
@@ -1915,7 +1915,7 @@ from battery – 0 again. Argh.</p>
 <p>Wait a minute. The Pro Mini actually has VCC at 5V while it’s being
 powered from the USB cable, and 3.3V when it runs from the battery…
 What were the power requirements of that HC-SR04 sensor again? Where
-is the<a class="reference external" href="http://www.elecfreaks.com/store/download/HC-SR04.pdf">datasheet</a>…</p>
+is the <a class="reference external" href="http://www.elecfreaks.com/store/download/HC-SR04.pdf">datasheet</a> …</p>
 <p>Right, working voltage 5V. Sigh. Of curse I did check that before when
 I was designing the board, but back then I still wanted to use a 5V
 Pro Mini, and a voltage regulator. I later switched to 3.3V and
@@ -1951,7 +1951,7 @@ well.</p>
 with additional boards. I was planning to show examples of connecting
 the Raspberry Pi, Teensy 3.1, ESP8266 and anything else I could find,
 all running different kinds of Python. That would also let me score
-more points in the “<a class="reference external" href="http://hackaday.com/2015/06/08/a-mountain-of-prizes-for-projects-using-these-parts/">mountain of prizes</a>” as those boards use chips from all kinds of manufacturers, and I
+more points in the “ <a class="reference external" href="http://hackaday.com/2015/06/08/a-mountain-of-prizes-for-projects-using-these-parts/">mountain of prizes</a> “ as those boards use chips from all kinds of manufacturers, and I
 could claim then that Tote “uses” them. But reality as always
 interferes.<a class="headerlink" href="#since-some-time-i-was-planning-to-write-a-log-about-how-to-extend-tote-with-additional-boards-i-was-planning-to-show-examples-of-connecting-the-raspberry-pi-teensy-3-1-esp8266-and-anything-else-i-could-find-all-running-different-kinds-of-python-that-would-also-let-me-score-more-points-in-the-mountain-of-prizes-as-those-boards-use-chips-from-all-kinds-of-manufacturers-and-i-could-claim-then-that-tote-uses-them-but-reality-as-always-interferes" title="Permalink to this heading">¶</a></h2>
 <p>Raspberry Pi now requires at least 3GB SD card for its system image,
@@ -1982,10 +1982,10 @@ following way:</p>
 you can print stuff to the serial console and verify that the program
 does what you think it should. Anyways, you will need some extra code
 on your Pro Mini too. There are two ways to go about this.</p>
-<p>You can just have a very simple<a class="reference external" href="https://bitbucket.org/thesheep/ukubik/src/tip/ukubik/">servo controller</a> on the Arduino side, and feed it servo positions every frame from the<a class="reference external" href="https://bitbucket.org/thesheep/ukubik/src/tip/creep.py">Python code for the gaits</a>. That’s exactly what the<span class="xref myst">#µKubik quadruped robot</span> does, except instead of a serial cable it uses serial over Bluetooth.
+<p>You can just have a very simple <a class="reference external" href="https://bitbucket.org/thesheep/ukubik/src/tip/ukubik/">servo controller</a>  on the Arduino side, and feed it servo positions every frame from the <a class="reference external" href="https://bitbucket.org/thesheep/ukubik/src/tip/creep.py">Python code for the gaits</a> . That’s exactly what the <span class="xref myst">#µKubik quadruped robot</span>  does, except instead of a serial cable it uses serial over Bluetooth.
 But the code is the same. This gives you a lot of control on the
 Python side.</p>
-<p>The other way is to leave all the<a class="reference external" href="https://bitbucket.org/thesheep/tote/src/tip/start/">Arduino code from original Tote</a>, but replace the TV remote part with<a class="reference external" href="https://bitbucket.org/thesheep/tote/src/460f15fa2da489125bb3ade9d76b81fb3b1b60ad/start/serial.ino?at=serial-control">code that simply reads the key presses from the serial</a>. That’s the route we are going to take, and it looks like this:</p>
+<p>The other way is to leave all the <a class="reference external" href="https://bitbucket.org/thesheep/tote/src/tip/start/">Arduino code from original Tote</a> , but replace the TV remote part with <a class="reference external" href="https://bitbucket.org/thesheep/tote/src/460f15fa2da489125bb3ade9d76b81fb3b1b60ad/start/serial.ino?at=serial-control">code that simply reads the key presses from the serial</a> . That’s the route we are going to take, and it looks like this:</p>
 <p>Now, let’s replace that cable with something a little bit more modern.
 ESP8266 is all the rage these days, and there is a highly experimental
 port of Micropython for it, so why not? Those ESP-01 boards are not
@@ -1993,7 +1993,7 @@ too useful anyways, because they have hardly any pins broken out, but
 they are enough for our purpose, as the RX and TX pins are there. I
 began by making a simple rig for programming them:</p>
 <img alt="https://cdn.hackaday.io/images/9500271434528311364.jpg" src="https://cdn.hackaday.io/images/9500271434528311364.jpg" />
-<p>Then I followed the excellent<a class="reference external" href="https://learn.adafruit.com/building-and-running-micropython-on-the-esp8266">Adafruit tutorial on flashing Micropython to ESP8266</a> and got a working console. Yay! Now, diving into<a class="reference external" href="https://github.com/micropython/micropython/tree/master/docs/library">recently added documentation</a>, I figured out how to write a simple “repeater” server:</p>
+<p>Then I followed the excellent <a class="reference external" href="https://learn.adafruit.com/building-and-running-micropython-on-the-esp8266">Adafruit tutorial on flashing Micropython to ESP8266</a>  and got a working console. Yay! Now, diving into <a class="reference external" href="https://github.com/micropython/micropython/tree/master/docs/library">recently added documentation</a> , I figured out how to write a simple “repeater” server:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">esp</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 
@@ -2084,7 +2084,7 @@ involved, or there is a bug in the IRLremote library that I’m using.</p>
 <section id="dirty-pcbs-are-dirty">
 <h3>Dirty PCBs are dirty<a class="headerlink" href="#dirty-pcbs-are-dirty" title="Permalink to this heading">¶</a></h3>
 <p>Created 2015-06-09.</p>
-<p>For everyone who have ordered the PCB for Tote from<a class="reference external" href="http://dirtypcbs.com/view.php?share=6918&amp;accesskey=97f6a684899c11fcc50da07808869f5d">Dirty PCBs</a> just a quick note. Remember, that it’s the cut-throat cheap
+<p>For everyone who have ordered the PCB for Tote from <a class="reference external" href="http://dirtypcbs.com/view.php?share=6918&amp;accesskey=97f6a684899c11fcc50da07808869f5d">Dirty PCBs</a>  just a quick note. Remember, that it’s the cut-throat cheap
 prototyping boards, and mistakes do happen. They are often simple to
 work around, but do test your boards for shorts before soldering
 anything or, especially, connecting a battery to the soldered board. I
@@ -2100,7 +2100,7 @@ want to have battery voltage monitoring, that is.</p>
 <p>Remember that time when you sat on your leg for some time, and it got
 numb, and when you got up, it felt all wooden and walking was like
 walking on stilts? That’s how most walking robots feel. What happened
-is your nerves got squished and blocked a little, and you lost your<a class="reference external" href="https://en.wikipedia.org/wiki/Proprioception">sense of proprioception</a> – the position and forces of your limbs. Now you know why robots
+is your nerves got squished and blocked a little, and you lost your <a class="reference external" href="https://en.wikipedia.org/wiki/Proprioception">sense of proprioception</a>  – the position and forces of your limbs. Now you know why robots
 that don’t have force and position sensors on them have such a hard
 time walking!</p>
 <p>What if we could add this sense to our robot? It would still be blind
@@ -2121,7 +2121,7 @@ checked the parts – they are either expensive or problematic to mount
 on such a robot. But wait, doesn’t the hobby servo already know its
 position? Why not use that?</p>
 <p>The first approach was to use an additional wire added to the servo’s
-potentiometer to read its position. I used this<a class="reference external" href="http://letsmakerobots.com/content/sensing-your-servos-position">excellent guide on modifying the servo</a>. It worked. Kinda. But not as well as I hoped. The problem is that to
+potentiometer to read its position. I used this <a class="reference external" href="http://letsmakerobots.com/content/sensing-your-servos-position">excellent guide on modifying the servo</a> . It worked. Kinda. But not as well as I hoped. The problem is that to
 deduce what force is applied on the leg, I need to calculate the
 difference between the desired position of the servo and the actual
 position. This difference is going to be small, because the servo’s
@@ -2144,7 +2144,7 @@ the extra wire:</p>
 Pro Mini:</p>
 <img alt="https://cdn.hackaday.io/images/407621433409552947.jpg" src="https://cdn.hackaday.io/images/407621433409552947.jpg" />
 <p>As you can see, the robot also uses a voltage regulator that I
-described in<a class="reference external" href="https://hackaday.io/project/6050-tote-affordable-spider-robot/log/18738-different-power-sources">the previous log</a>. That’s because I need the voltage readings from the motors to be
+described in <a class="reference external" href="https://hackaday.io/project/6050-tote-affordable-spider-robot/log/18738-different-power-sources">the previous log</a> . That’s because I need the voltage readings from the motors to be
 consistent, and not depend on how much juice is left in the battery.Now just a simple addition to the walking algorithm. Every time you
 put your leg down, wait for the servo to get there, and then read the
 force from it. If the force is too small, stop. I also made all the
@@ -2229,7 +2229,7 @@ have a lot of choices.</p>
 <section id="hacking-on-tote">
 <h3>Hacking on Tote<a class="headerlink" href="#hacking-on-tote" title="Permalink to this heading">¶</a></h3>
 <p>Created 2015-05-31.</p>
-<p>Since Tote evolved from<a class="reference external" href="https://hackaday.io/project/3300-kubik-quadruped-robot">µKubik</a>, I put all updates about it there. But now that it is pretty much
+<p>Since Tote evolved from <a class="reference external" href="https://hackaday.io/project/3300-kubik-quadruped-robot">µKubik</a> , I put all updates about it there. But now that it is pretty much
 ready, I’m going to do some experimenting and extending and hacking on
 it, and I think it makes sense to have a separate project page for
 that, and leave the Python-powered µKubik alone.</p>
