@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posted in 2015</title>
-  <updated>2024-08-07T19:28:15.338719+00:00</updated>
+  <updated>2024-08-07T19:30:30.108776+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/2015/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -271,7 +271,7 @@ didn’t work too well for some reason. I promised to try and fix that
 some time ago, but somehow I never got the time for it. Last night I
 finally got myself to remove the PyBoard from &lt;span class="xref std std-ref"&gt;project-3694&lt;/span&gt; , put it on Tote and program.&lt;/p&gt;
 &lt;p&gt;As the base, I used the micro:bit version of Tote’s code, since it’s
-MicroPython too. I just added the servo-handling code that &lt;strong&gt;&amp;#64;wagner&lt;/strong&gt;  wrote for his robot. I also used the same pins, timers and channels.
+MicroPython too. I just added the servo-handling code that &lt;a class="reference external" href="https://hackaday.io/hacker/38882"&gt;&amp;#64;wagner&lt;/a&gt;  wrote for his robot. I also used the same pins, timers and channels.
 Since I didn’t want to make a custom PCB, I just used the old trick
 and connected the PyBoard using dupont cables:&lt;/p&gt;
 &lt;img alt="https://cdn.hackaday.io/images/8629801450613484223.jpg" src="https://cdn.hackaday.io/images/8629801450613484223.jpg" /&gt;
