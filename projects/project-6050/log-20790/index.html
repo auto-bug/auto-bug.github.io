@@ -58,7 +58,7 @@ infra-red distance sensor.</p>
 <p>The <a class="reference external" href="http://sharp-world.com/products/device/lineup/data/pdf/datasheet/gp2y0a21yk_e.pdf">Sharp 2Y0A21</a>  <a class="reference external" href="http://sharp-world.com/products/device/lineup/data/pdf/datasheet/gp2y0a21yk_e.pdf"></a>  [pdf] sensor is probably one of the most popular hobby robot sensors
 out there, right after the ultrasonic one. But it takes 5V as the
 power supply. Will it work at our robot’s 3.3V? Let’s find out!</p>
-<img alt="projects/project-6050/images/716781436553286513.jpg" src="projects/project-6050/images/716781436553286513.jpg" />
+<img alt="../../../_images/716781436553286513.jpg" src="../../../_images/716781436553286513.jpg" />
 <hr class="docutils" />
 <p>Connecting this sensor is easy. There are three cables: red for power,
 black for ground and yellow for the sensor output. The voltage on the
@@ -93,14 +93,14 @@ sketch:</p>
 the serial line. We can use the Arduino IDE’s serial monitor to see
 those values. A quick test and yay, we are getting readings, and they
 are different depending on the distance. So far so good.</p>
-<img alt="projects/project-6050/images/1619621436553858490.jpg" src="projects/project-6050/images/1619621436553858490.jpg" />
+<img alt="../../../_images/1619621436553858490.jpg" src="../../../_images/1619621436553858490.jpg" />
 <p>The photo above shows my testing rig. A long ruler, the sensor taped
 to one end, and a reasonably reflective white object. Note, that the
 power line from the USB2TTL is disconnected and the Pro Mini is
 running on the battery power, so that it gets to regulate its own 3.3V
 for the sensor, and doesn’t rely on the power from the computer. Here
 are the measurements I did, plotted on a chart:</p>
-<img alt="projects/project-6050/images/6856891436554041118.png" src="projects/project-6050/images/6856891436554041118.png" />
+<img alt="../../../_images/6856891436554041118.png" src="../../../_images/6856891436554041118.png" />
 <p>As you can see, the sensor has a much shorter useful range than the
 80cm it gets on 5V. At about 35cm it starts to break already. But
 that’s fine, 35cm is a lot for our robot. We also won’t need exact
@@ -108,7 +108,7 @@ measurements, so no need to convert those numbers to centimeters – we
 will just read the chart for setting our limits.Next, let’s actually attach the sensor to our robot and make it do
 something. Of course, the simplest thing it can do is to stop before
 it hits an obstacle.</p>
-<img alt="projects/project-6050/images/3268571436554231854.jpg" src="projects/project-6050/images/3268571436554231854.jpg" />
+<img alt="../../../_images/3268571436554231854.jpg" src="../../../_images/3268571436554231854.jpg" />
 <p>I used adhesive tape to attach the sensor to the front of the robot. I
 might come up with a better way of doing it in the future, but this is
 good enough for now. Now let’s add some code that does the stopping.

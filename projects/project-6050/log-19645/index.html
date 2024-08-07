@@ -97,7 +97,7 @@ port of Micropython for it, so why not? Those ESP-01 boards are not
 too useful anyways, because they have hardly any pins broken out, but
 they are enough for our purpose, as the RX and TX pins are there. I
 began by making a simple rig for programming them:</p>
-<img alt="projects/project-6050/images/9500271434528311364.jpg" src="projects/project-6050/images/9500271434528311364.jpg" />
+<img alt="../../../_images/9500271434528311364.jpg" src="../../../_images/9500271434528311364.jpg" />
 <p>Then I followed the excellent <a class="reference external" href="https://learn.adafruit.com/building-and-running-micropython-on-the-esp8266">Adafruit tutorial on flashing Micropython to ESP8266</a>  and got a working console. Yay! Now, diving into <a class="reference external" href="https://github.com/micropython/micropython/tree/master/docs/library">recently added documentation</a> , I figured out how to write a simple “repeater” server:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">esp</span>
 <span class="kn">import</span> <span class="nn">sys</span>
@@ -134,9 +134,9 @@ that. Now, for the robot side, I flashed that “serial control” version of
 the Tote code to the Pro Mini, and made a simple connector for the
 ESP8266 using some female headers, two-sided tape and a bunch of
 wires:</p>
-<img alt="projects/project-6050/images/6642121434528945481.jpg" src="projects/project-6050/images/6642121434528945481.jpg" />
+<img alt="../../../_images/6642121434528945481.jpg" src="../../../_images/6642121434528945481.jpg" />
 <p>It fits nicely on the_FTDI_ connector on top of the robot:</p>
-<img alt="projects/project-6050/images/2532981434529049651.jpg" src="projects/project-6050/images/2532981434529049651.jpg" />
+<img alt="../../../_images/2532981434529049651.jpg" src="../../../_images/2532981434529049651.jpg" />
 <p>Now let’s test it. I made it so that after powering on, the robot does
 nothing and waits for “xx” on the serial – that’s because many boards
 will print random stuff to serial while booting, and you don’t want

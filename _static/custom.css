@@ -219,6 +219,7 @@ div.project-list li p.ablog-post-excerpt {
     position: absolute;
     bottom: -1px;
     left: 0;
+    text-shadow: #051a36 1px 1px 4px;
 }
 div.project-list li p.ablog-post-title {
     position: absolute;
@@ -242,4 +243,8 @@ div.project-list img {
     top: 0;
     left: 0;
     z-index: -1;
+}
+
+span.highlighted {
+    background: #358;
 }
