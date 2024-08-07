@@ -1,0 +1,47 @@
+---
+blogpost: true
+date: 2017-03-18
+category: project-20379
+---
+
+# Z is Required
+Published on 2017-03-18 in {ref}`project-20379`.
+
+After a whole day of debugging I finally found the error in mu
+routines that made the circle too small, and generally bad positions.
+Turns out that to compute the angle of the arm, you need more than
+just the distance to the target point -- because the arm+rod combo
+also need to be pointing towards that point. So you need to know the
+distance and the height.
+
+I couldn't spot the mistake, because in all the pictures I drew, I
+drew the arm in approximately the same position, in which, by
+coincidence, the height was just right. But in the general case it
+won't work. So here are the corrected inverse kinematics routines:
+
+
+
+
+```python
+    def arm_ik(self, distance, z):
+        alpha = math.asin(z / distance)
+        beta = math.acos(
+            (distance ** 2 + self.ARM2ROD2) / (2 * self.ARM_LENGTH * distance)
+        )
+        return math.pi - alpha - beta
+
+    def robot_ik(self, x, y, z):
+        return tuple(math.sqrt(
+            (self.BASE_X[arm] - x) ** 2 +
+            (self.BASE_Y[arm] - y) ** 2 +
+            z ** 2
+        ) for arm in (0, 1, 2))
+
+    def move_to(self, x, y, z):
+        for arm, distance in enumerate(self.robot_ik(x, y, z)):
+            self.move(arm, self.arm_ik(distance, z))
+
+
+```
+
+Oh, I also separated the_ARM2ROD2 = ARM_LENGTH ** 2 - ROD_LENGTH ** 2_ constant, so we don't have to recompute it each time.

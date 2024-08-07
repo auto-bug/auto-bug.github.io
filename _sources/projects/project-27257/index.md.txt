@@ -1,0 +1,64 @@
+---
+blogpost: true
+date: 2017-09-12
+category: project
+tags:  ongoing project, MISC
+image: 1
+---
+
+# Fritzing Tricks
+
+Some techniques for designing PCBs using Fritzing
+
+<div class="project-thumb">
+
+:::{image} images/7921431505306260287.jpg
+:target: /_images/7921431505306260287.jpg
+:::
+
+</div>
+
+
+    Fritzing is a really underappreciated piece of software. Because it is
+easy to use, it is being used by a lot of people who don't necessarily
+yet know what they are doing. And since the graphics generated with
+Fritzing are easily recognizable (there is often even a logo on them),
+it has become associated with horrible designs. Which is really
+unfair, because being easy to use is an advantage, and it really lets
+you do great stuff.
+
+More than that, Fritzing is the only PCB CAD software I know that
+actually uses open standards, instead of inventing its own formats. It
+works natively with SVG, lets you import and export SVGs, the saved
+projects are simply ZIP files with SVGs inside, as well as the custom
+parts and pretty much anything else. Thanks to that, it also lets you
+do stuff like curved traces without any extra hassle.
+
+Thanks to its "breadboard" view, it's also very good for planning your
+designs for protoboards and veroboards, and even for things like dead
+bug circuits or Manhattan-style PCBs.
+
+Unfortunately, with all this awesomeness comes also a great deal of
+problems. Let's say it straight: Fritzing is buggy. Because it doesn't
+get much love from its target audience, it also doesn't get much love
+from the developers. It's not easy to select the part you want,
+especially when it's under another part that obscures it. Connecting
+the trace to just the right leg of a chip takes some patience. The
+ground fill sometimes creates pretty unexpected results. Oh, and
+forget autorouter, it's simply useless.
+
+But you can still create very good designs very fast with it,
+especially if you learn a couple of tricks.
+
+
+
+
+
+## Logs
+
+:::{postlist}
+:category: project-27257
+:::
+
+## Instructions
+

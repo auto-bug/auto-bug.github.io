@@ -1,0 +1,36 @@
+---
+blogpost: true
+date: 2017-07-19
+category: project-25256
+---
+
+# Power Button
+Published on 2017-07-19 in {ref}`project-25256`.
+
+Independently from hacking the LiFePO4 power module, I decided to try
+and make a small module with a soft power button on it — the same I
+linked two logs ago. I will use a thin PCB, so that it can be inserted
+between shields.
+
+
+:::{image} https://644db4de3505c40a0444-327723bce298e3ff5813fb42baeefbaa.ssl.cf1.rackcdn.com/d454a77d40b39efe53f67d91cc78e32c.png
+
+:::
+
+
+The schematic is based on several designs from various forums — I'm
+not smart enough to figure it out myself. Pressing the button switches
+the power on and latches it. Subsequent pressing of the button does
+noting, except pulling the GPIO4 down to let the Raspberry Pi know
+that we want to shut down. A long press (or pulling the GPIO4 low)
+forces it off.
+
+
+:::{image} images/4635311500417505751.png
+
+:::
+
+
+It's a little bit more complex than I'm comfortable with, but we will
+see how well it works.
+

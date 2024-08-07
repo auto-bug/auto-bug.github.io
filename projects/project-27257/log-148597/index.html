@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Custom PCB Outline - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="custom-pcb-outline">
+<h1>Custom PCB Outline<a class="headerlink" href="#custom-pcb-outline" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2018-07-01 in <a class="reference internal" href="../#project-27257"><span class="std std-ref">Fritzing Tricks</span></a>.</p>
+<p>One of the greatest advantages of Fritzing over other PCB software
+currently on the market is its ability to SVG files directly, without
+any need of converting or tracing them. Since it uses SVG internally
+for anything, it’s only natural that the PCB outline is also an SVG
+file. I’m going to tell you here how I go about making custom PCB
+outlines.</p>
+<p>Usually I start by designing everything on a standard rectangular PCB,
+keeping in mind the rough shape that I am going to need. Here’s an
+improved design for the <a class="reference internal" href="../../project-9769/#project-9769"><span class="std std-ref">Mechatronic Ears</span></a>  with a power switch added:</p>
+<img alt="projects/project-27257/images/4296261530465949010.png" src="projects/project-27257/images/4296261530465949010.png" />
+<p>Next, I export the design as an SVG image:</p>
+<img alt="projects/project-27257/images/1906711530466066806.png" src="projects/project-27257/images/1906711530466066806.png" />
+<p>Then I open it in Inkscape, where I can easily draw my desired board
+outline:</p>
+<img alt="projects/project-27257/images/3724381530466194782.png" src="projects/project-27257/images/3724381530466194782.png" />
+<p>Usually I pick some nice, partially transparent color (green, blue and
+purple work well) and draw the shape of the PCB I want with it:</p>
+<img alt="projects/project-27257/images/6047871530466476852.png" src="projects/project-27257/images/6047871530466476852.png" />
+<p>You can also add some silkscreen:</p>
+<img alt="projects/project-27257/images/490381530466625269.png" src="projects/project-27257/images/490381530466625269.png" />
+<p>Next, I remove all the Fritzing stuff from the image, and leave only
+the board outline and the silkscreen:</p>
+<img alt="projects/project-27257/images/7048951530466741327.png" src="projects/project-27257/images/7048951530466741327.png" />
+<p>Now create a new layer in Inkscape using_Layer→Add Layer…_ menu option, and name it “board”. Select the board outline, and then
+select_Layer→Move Selection to Layer…_, then select the newly created layer “board”. Repeat that with the
+silkscreen, except call it “silkscreen0” for the bottom, or
+“silkscreen1” for the top (you can have both).</p>
+<p>We are almost done. Unfortunately, Inkscape doesn’t call the layers
+the way you tell it — it only adds labels to them with your names. We
+will need to go a little bit deeper to actually modify the layer IDs.
+Open the XML Editor, you should see something like this:</p>
+<img alt="projects/project-27257/images/6197001530467275980.png" src="projects/project-27257/images/6197001530467275980.png" />
+<p>Now you can select each of the layers, select the “id” attribute on
+the right side, and enter new value for it on the bottom. Change the
+IDs to “board”, “silkscreen0”, “silkscreen1”, etc. so that they match
+the labels. Don’t forget to click Set each time, or it won’t get
+saved.</p>
+<p>You are done. Now you can save your board as “Plain SVG”, and go back
+to Fritzing. In Fritzing, select the PCB, and in the properties click
+on the_load image file_ button:</p>
+<img alt="projects/project-27257/images/3061981530467466742.png" src="projects/project-27257/images/3061981530467466742.png" />
+<p>Select your saved SVG image. You should see a summary telling you how
+many cutouts (slots) your PCB has — make sure that number is correct.
+Finally, you will need to adjust the position of your PCB to match the
+components, and you are done:</p>
+<img alt="projects/project-27257/images/4986671530467729063.png" src="projects/project-27257/images/4986671530467729063.png" />
+<p>Now, when you export the board as gerbers, I recommend to do one more
+step before you send it to fabrication: open the board outline in a
+gerber viewer, such as “gerbv” and verify that the generated shape is
+indeed correct. Fritzing has some very annoying bugs around the gerber
+generation, and you might be unpleasantly surprised if you skip this
+step.</p>
+<img alt="projects/project-27257/images/1155181530467888431.png" src="projects/project-27257/images/1155181530467888431.png" />
+<p>This time everything is correct. If it wasn’t, I would go back to
+Inkscape and add a couple of nodes to the shape, around the places
+where something went wrong, to make sure it’s correct.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

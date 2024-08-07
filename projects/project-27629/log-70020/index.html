@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>The Stage Library - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="the-stage-library">
+<h1>The Stage Library<a class="headerlink" href="#the-stage-library" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2017-11-03 in <a class="reference internal" href="../#project-27629"><span class="std std-ref">µGame</span></a>.</p>
+<p>The hardware is just a very small part of a project like this one. Of
+course in the game console the most important part are the games that
+you can play on it. And the most important part for the games is the
+development environment and libraries available for the game makers.
+The better and the easier to use the libraries, the more games you can
+make with the same effort, and the better they are. So software is
+actually more important here.</p>
+<p>I’m basing my software on the CircuitPython project, which is itself
+based on MicroPython. But I need to add the parts that are specific to
+game development to it. One of the most important parts in this case
+is the tile and sprite engine. There is only so much you can do by
+drawing pixels directly on the screen, after all.</p>
+<p>The library for that is now published at  <a class="reference external" href="https://github.com/pewpew-game/circuitpython-stage">https://github.com/pewpew-game/circuitpython-stage</a>  and the part of it that needs to be compiled into CircuitPython is
+waiting to be merged into the main repository — you will still need to
+build your own firmware to enable it, as it’s not generally useful on
+other boards, of course.</p>
+<p>This is just the first version, that supports tile grids and sprites.
+There is a lot more to add there — advanced dirty rectangles handling,
+collisions, text layers, menus, etc. I will work on that gradually, as
+I’m working on the example games.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

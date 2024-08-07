@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Displays Are Hard - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="displays-are-hard">
+<h1>Displays Are Hard<a class="headerlink" href="#displays-are-hard" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2017-08-10 in <a class="reference internal" href="../#project-21578"><span class="std std-ref">PewPew FeatherWing</span></a>.</p>
+<p>Yesterday the breakout board I made for those tiny displays arrived,
+so today I soldered one and tried to get it to work. So far
+unsuccessfully, but we will see what the future brings.</p>
+<p>The datasheet at the seller’s Aliexpress page only has this image as
+the information:</p>
+<img alt="projects/project-21578/images/9152111502315255100.jpg" src="projects/project-21578/images/9152111502315255100.jpg" />
+<p>And then this table:</p>
+<img alt="projects/project-21578/images/414981502315277587.jpg" src="projects/project-21578/images/414981502315277587.jpg" />
+<p>The product page has ST7735S in the title, so I’m working under the
+assumption that it is indeed a ST7735-series chip. Assuming that, and
+looking at the datasheet, I’m guessing the following pins:</p>
+<table ><thead ><tr ><th >Image</th><th >Datasheet</th></tr></thead><tbody ><tr ><td >GND</td><td >GND</td></tr><tr ><td >IOVCC (1.8/2.8V)</td><td >VDDI\
+</td></tr><tr ><td >SPI</td><td >SPI4W</td></tr><tr ><td >IM2</td><td >IM2</td></tr><tr ><td >CS</td><td >CSX</td></tr><tr ><td >RESET</td><td >RESX</td></tr><tr ><td >RS/SCL</td><td >D/CX (SCL)</td></tr><tr ><td >WR/A0</td><td >WRX (D/CX)</td></tr><tr ><td >E/RD</td><td >RDX</td></tr><tr ><td >D0/SDA</td><td >D0 (SDA)</td></tr><tr ><td >D1-7</td><td >D1-7</td></tr><tr ><td >VDD-2.8V</td><td >VDD</td></tr><tr ><td >LEDA</td><td >Backlight LED Anode</td></tr><tr ><td >LEDK</td><td >Backlight LED Cathode</td></tr></tbody></table>The first test was connecting power to the LED anode and cathode pins,
+and sure enough, I got the backlight going. Yay, that means I know the
+direction in which the pins are numbered.
+<p>Then I tried wiring it for the 4-wire SPI mode, since that’s what I
+already have the drivers for. I connected VDD, VDDI, LEDA, and SPI to
+power, GND, LEDK and IM2 to ground, and all the SPI pins, and tried
+the driver. Nothing, white screen. Tried a second display just to be
+sure. Same. Hmmm…</p>
+<img alt="projects/project-21578/images/7496611502316229603.jpg" src="projects/project-21578/images/7496611502316229603.jpg" />
+<p>(By the way, when you are making a breakout like this, and make it
+exactly the size of the display, like I did, then make sure that: 1.
+the pins are a multiple of 2.54mm apart, so that you can insert it
+into the breadboard, and 2. you put the pin markings on the side that
+is not covered by the display.)</p>
+</section>
+
+
+</div>
+  </body>
+</html>

@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Delays are Inevitable - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="delays-are-inevitable">
+<h1>Delays are Inevitable<a class="headerlink" href="#delays-are-inevitable" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2017-11-03 in <a class="reference internal" href="../#project-27629"><span class="std std-ref">µGame</span></a>.</p>
+<p>Both of my prototypes stopped working. Just like that. And that
+happened just as I was going to show them off in Adafruit’s show-and-
+tell. Oh well, bad luck I guess. I decided it must be the flex ribbon
+connecting the displays to the PCBs, and I re-did the connection with
+my soldering iron, inspecting it carefully for shorts, etc. They
+started to work again. For a moment. Then the newer one stopped
+responding completely, and no amount of re-soldering helped. So I de-
+soldered the display from both, and put the one from the old prototype
+on the new one. It worked for two hours, and then stopped again. This
+time I decided it must be broken traces on the flex ribbon, because I
+bent it too much. Since I don’t have any more displays with 14 pins,
+but I have a couple of modules with the same display but with a
+different connector, I decided to continue work by using one of those
+modules and a Trinket M0.</p>
+<p>The displays stopped working with the Trinket too, even though I
+didn’t touch the flex ribbon or the connections at all.</p>
+<p>So I began to poke at the non-working display, trying slower SPI
+speeds, different commands, etc. At some point I got it to work — I
+was sure then that the problem is not with the display module, but
+with my code.</p>
+<p>Turns out that the display working or not was a completely random
+thing. The problem is that some of the SPI commands, such as reset or
+wake up from sleep, require a lot of time for the display to perform,
+and delays are needed. I added those, and also lowered the SPI speed
+during the initialization sequence, and it works on the Trinket every
+time. So I compiled the firmware for the “dead” prototype, uploaded it
+— and it works too! I bet that when I solder the other display it will
+also work.</p>
+<p>One more obstacle out of the way.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

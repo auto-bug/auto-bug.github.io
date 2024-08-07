@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Buttons Shield - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="buttons-shield">
+<h1>Buttons Shield<a class="headerlink" href="#buttons-shield" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2017-09-25 in <a class="reference internal" href="../#project-27161"><span class="std std-ref">Trinket Shields</span></a>.</p>
+<p>With the nice small display, it would be nice to also have some
+buttons, so that you could at least navigate a menu. So I decided to
+make a shield with three buttons. The problem is, we only have one
+free pin left with the display shield on. I didn’t want to muck with
+reusing the SPI pins for other functions while the CS pin is high, and
+other trickery, but I noticed that the free pin is an analog pin.
+Great, we can do the resistor ladder trick!</p>
+<p>Basically, we will need a voltage divider, with different ratio of
+resistors switched by different buttons. Something like this:</p>
+<img alt="projects/project-27161/images/9774231506374817325.png" src="projects/project-27161/images/9774231506374817325.png" />
+<p>When no button is pressed, the analog pin is pulled up to 3.3V with
+the 20kΩ resistor, and the analog pin reads its maxium value. When
+button A is pressed, half of that voltage is redirected to ground, and
+the analog pin only reads 1.65V. When B is pressed, ⅓ of the voltage
+is redirected, and the pin should read 2.2V. When both A and B are
+pressed, ⅗ of voltage gets redirected, and the pin reads 1.32V. And so
+on, adding button C for ⅕.</p>
+<p>Now, looking at the voltage we can figure out exactly what combination
+of buttons has been pressed. It gets even easier if you only look at
+the top 3 bits of the reading.</p>
+<p>The shield itself is designed to go on the bottom of the trinket —
+because the display goes on top, of course.</p>
+<img alt="projects/project-27161/images/5335011506375258991.jpg" src="projects/project-27161/images/5335011506375258991.jpg" />
+</section>
+
+
+</div>
+  </body>
+</html>

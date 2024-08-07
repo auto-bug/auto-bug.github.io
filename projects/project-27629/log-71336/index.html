@@ -1,0 +1,237 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Design Decisions - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="design-decisions">
+<h1>Design Decisions<a class="headerlink" href="#design-decisions" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2017-12-08 in <a class="reference internal" href="../#project-27629"><span class="std std-ref">µGame</span></a>.</p>
+<p>Or why did I decide to build this thing the way I did. And how I could
+have built it differently — or maybe I will. Warning: long and
+somewhat rambling.</p>
+<p>I have been thinking about building a handheld game console running
+Python ever since I saw the PyBoard for the first time. You know,
+there are not that many good choices for writing games in Python, even
+though it’s an excellent beginner language. Somehow either there is no
+interest, or it’s too much work with the way all of the Python’s
+community is organized. I did some attempts of my own to scratch my
+own itch and fix some of the worst problems with PyGame — especially
+distributing the games you wrote — but with little success. Here we
+have a brand new community and no previous work in this area — so
+building something reasonable for MicroPython seeemed possible.</p>
+<p>———- more ———-Unfortunately, at the time I could barely afford a single board, not
+to mention any kind of production of boards — that board was simply
+too expensive for my purposes. Things changed when MicroPython got
+ported to ESP8266 — finally a cheap and powerful platform — but I
+quickly saw the problems when I ran a couple of workshops with those
+boards. It’s simply too difficult to get them running, with serial
+drivers, sending files over serial, the ridiculous webrepl thing, etc.
+Nevertheless I started working towards the goal of being able to write
+games for it: I implemented the missing hardware SPI for ESP8266, a
+number of display drivers, a number of improvements for the framebuf
+module. But the progress was painfully slow, mostly due to the
+hostility of the lead developer of that port. I quickly became
+discouraged.</p>
+<p>The port of CircuitPython to the SAMD21 microcontroller gave me new
+hope. Finally you can just see the thing as an USB drive, copy files
+over normally, no need for some silly drivers, and you can even have
+some extra memory storage. But the Adafruit boards were not cheap, and
+all the drivers and tools had to be written again. I still started to
+use them in my robots, and started working on the <a class="reference internal" href="../../project-21578/#project-21578"><span class="std std-ref">PewPew FeatherWing</span></a> — not really yet thinking about “real” games, just about some
+educational tool. I got seed funding for it from the Hackaday Prize,
+and I decided to spend that money trying to drive the cost of the
+whole device down. The most expensive component, by far, was the
+Feather board it required — so I looked into integrating it into a
+single device. I have built a lot of prototypes, initially copying the
+Adafruit schematics for the Trinket M0, and then extending and
+modifying that. You can follow most of that process on PewPew’s
+project logs. But in the process I became familiar with that
+microcontroller, I realized that the microcontroller itself is
+relatively cheap (around $3), and that there will be absolutely no
+problem adding the C code I need to the CircuitPython repositiories.
+In fact, I already added a “gamepad” module there, which I needed for
+proper handling of buttons.</p>
+<p>So I revived my old dream, and when I saw a number of different
+handhelds here on <a class="reference external" href="http://hackaday.io">hackaday.io</a> , including the <span class="xref std std-ref">project-26823</span> , <span class="xref std std-ref">project-26094</span> and especially <span class="xref std std-ref">project-26198</span> , I decided to give it a try. The prize has ended and I needed some
+break from PewPew anyways (but I’m not abandoning it).</p>
+<p>I decided on a number of constraints:</p>
+<ul class="simple">
+<li><p>has to use commonly available components,</p></li>
+<li><p>has to be smaller than 5×5cm, for cheap PCB manufacturing,</p></li>
+<li><p>has to use a color display,</p></li>
+<li><p>possibly cheap,</p></li>
+<li><p>four direction buttons and at least two fire buttons (accept, back),</p></li>
+<li><p>USB interface,</p></li>
+<li><p>using the SAMD21 microcontroller,</p></li>
+<li><p>running a basic sprites-and-tiles engine,</p></li>
+<li><p>nice to have: sound, battery charging,</p></li>
+</ul>
+<p>For display, I basically had three choices among the commonly
+available modules: ST7735S, SSD1331 and SSD1351. The last two are very
+nice OLED displays — which gives me good angles and low power
+consumption — but they are relatively expensive, and require some
+scary electonics like voltage booster, so I would need to use them as
+modules with all the stuff already included — around $20 a piece. The
+ST7735 display, on the other hand, can be found for less than $3, has
+reasonable angles if mounted correctly, and can be driven quite fast
+over the SPI. And doesn’t require any extra parts, except maybe for a
+current-limiting resistor for the backlight. So I went with that.</p>
+<p>The choice of display pretty much determined the shape of the console.
+It was too big to try to go with the horizontal orientation — that
+left me with the Game Boy layout, with width of the display and height
+of the 5cm maximum. I used the smallest buttons I had available at the
+time — same as the ones used for reset on Pro Mini boards — and I had
+to arrange them in a swastika shape to make them fit in the limited
+space. But I also realized that I can fit most of the SMD parts on the
+same side of the board, so I tried hard to do that. I almost
+succeeded, with just the speaker and the power and reset switches
+being on the back. I never actually fabricated the first version of
+the PCB — I let it sit there for a few days, and I was still wondering
+whether I’m ready for this project.</p>
+<p>Then I got some more inspiration, cleaned up a few things and created
+version 2, which I ordered from OSHPark. A big part in this had the
+fact that I just received another coupon from OSHPark, and they
+promised to upgrade the shipping on my order. If not the generosity of
+OSHPark, I would be probably still sitting on the board designs.</p>
+<p>The board arrived, and I assembled it. There were some problems with
+it, like the power shorted to the ground by a button pad, but nothing
+a sharp knife and some wire couldn’t fix. I had a first working board,
+and I needed some way to test it. Since I already had some games for
+PewPew, I quickly adapted its library to use the display, and had
+Snake and Tetris running on it!</p>
+<p>But even this initial code showed a problem that I will be probably
+struggling with in this project for a while. The SPI peripheral on the
+SAMD21 chip runs at most with a 12MHz clock. Image data requires 2
+bytes per pixel, and the display has resolution of 128×128. That means
+that updating the whole screen takes considerable time — enough to be
+noticeable, especially since there is not double-buffering, so you see
+all the screen updates as they happen, pixel-by-pixel. My previous
+test were done on the ESP8266, which had a 80MHz SPI, with the
+possibility to switch it to 160MHz — that was already too fast for
+this display, though.</p>
+<p>But I decided to give it a try anyways, and tried to write a software
+library that would give me the sprites and tiles I wanted, with the
+possibility of only updating small parts of the screen, as needed. I
+initially wrote it in Python, using all the tricks I could think of.
+And it worked reasonably well with a few 16×16 pixel sprites on the
+screen. Updating the whole screen took some time, but once that was
+drawn, you didn’t have to update it — at least for the games that I
+had in mind. When I rewrote the important parts in C, even the whole-
+screen updates became reasonably fast — not instant, but also not very
+bad.</p>
+<p>Here’s an opportunity for potential improvement: I’m using the display
+in 8-bit SPI mode, because that’s the easiest to program and also the
+modules that I had only had those pins broken out. But it is possible
+to use a 20-pin version of this display, and use the 8-bit parallel
+mode to send the data. With the same clock that would be 8× faster.
+And I think that the SAMD21 might even have some DMA mode for this
+kind of thing. Of course that would mean a considerable modification
+both to the software and the hardware, at a level that I’m not yet
+very comfortable with. I still have the 20-pin version of the module
+in my drawer, and I just ordered an adapter for it, so I might give it
+a try at some point.</p>
+<p>After testing the first (second) version of the device, I started
+designing the third.  The actual viewport of the screen wasn’t
+centered, so I made the board a little wider at 42×50mm — exactly the
+same dimensions as the Micro:bit. I moved the power and reset buttons
+to that narrow strip by the display, which allowed me to fit
+everything on one side finally (except for the battery, of course). I
+used the coupon and upgraded shipping again, which means I had the
+board next week.</p>
+<p>Version four followed shortly. The speaker I used turned to be too
+weak, so I stole the amplifier circuit from the CircuitPlayground
+Express schematic, and moved the fire buttons to make room for it.
+Also, the tiny 4×4mm speakers arrived, so I used them. I did some
+experimenting with the battery charging circuit, trying to make it
+possible to charge the battery while the device was switched off but
+connected to USB. That backfired on me, since the charging LED was now
+always on, even with the switch off and device disconnected from USB —
+which didn’t bode well for the battery. However, I was happy enough
+with this version, that after just reverting the charging to
+Adafruit’s original schematic, I ordered ten boards of the version
+five.\</p>
+<p>Version five PCB was ordered in China, and it took some time for it to
+arrive — but that is fine, because I had a two-week vacation in the
+mean time. I only did some little work on the firmware during that
+time. Finally the boards arrived, and within a few days also all the
+parts needed for them. So I assembled six of them (scavenging displays
+from the old versions) and I sent them to some people who I wanted to
+give me their opinion on this. The packages are still in transit.</p>
+<p>I have a version six PCB ordered right now. It has a few improvements
+with fabrication in mind: better mounting holes, more distance between
+components, buttons all aligned at the same angle. It also has the
+audio circuit moved in place of the charging circuit, and vice versa,
+because turns out that touching the amplifier input with your fingers
+is not good for sound quality for some reason. The board also has
+doodles on it, inspired by some designs I saw in the mean time. Oh,
+and this version actually connects the CS pin of the display, because
+it turns out to be necessary for some of them (but not all, weirdly
+enough).</p>
+<p>There has been some improvements in software too, mostly driven by the
+game I wrote for the 40th Ludum Dare challenge. I also hit another
+limitation of the SAMD21 chip here: limited RAM. I had to compile the
+game into bytecode to make it fit.</p>
+<p>Which leads to the next possible improvement: SAMD51. That’s an ARM
+Cortex-m4 microcontroller, freshly released by Atmel, with whooping
+256MB of RAM, and only $2 more expensive than the SAMD21. And
+CircuitPython is getting ported on that even as we speak. No 32-pin
+TQFP package, though, so I might need to redesign the board completely
+if I decide to switch. Together with the parallel protocol for the
+display, that would make the perfect console for me — I might even be
+able to do scrolling. But this is potentially a lot of work and
+unknown unknowns, so who knows when it might happen.</p>
+<p>This is also one of the reasons why I’m hesitating from fabricating
+and selling this. I know that a lot of people would love to get their
+hands on it, especially if I managed to keep it cheap, but I don’t
+want to be stuck with a stock of obsolete devices when a new version
+comes.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

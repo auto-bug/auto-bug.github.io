@@ -1,0 +1,39 @@
+---
+blogpost: true
+date: 2017-09-13
+category: project-27257
+---
+
+# Vero and Proto Boards
+Published on 2017-09-13 in {ref}`project-27257`.
+
+One unique use case for Fritzing that is not well supported by other
+CAD software is designing your prototypes. You are probably familiar
+with the breadboard view that Fritzing presents to you by default. But
+did you know that you can delete the breadboard from it, and instead
+drag a perfboard (protoboard) or a stripboard (veroboard) from the
+palette, and use that?
+
+
+:::{image} images/5603411505305802498.png
+
+:::
+\
+
+
+The stripboard object also lets you make connections and gaps between
+the individual holes by clicking on the space between them. That's
+perfect for planning where to cut the copper strip. You can also re-
+create any custom layout of a prototype board that you happen to have
+— there is even a Radio Shack 276-150 layout available in the drop-
+down menu.\
+
+
+You don't like to use the prototyping boards, and instead prefer to do
+stuff dead-bug style? No problem, you can do that too! Well, maybe not
+in 3D, but at least you can plan your work a little. The fact that
+Fritzing has graphics for how the parts_actually_ look like helps with that greatly.
+
+You can even have several breadboards, perfboards and stripboards in
+your project at the same time!
+

@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Power Problems Solved - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="power-problems-solved">
+<h1>Power Problems Solved<a class="headerlink" href="#power-problems-solved" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2017-06-23 in <a class="reference internal" href="../#project-25256"><span class="std std-ref">Ye Olde Nowt</span></a>.</p>
+<p>A quick PCB surgery, and I cut the trace from near the pin 1 of the pi
+connector from display’s vcc, and connected that to the nearby 5V
+connector that I left there for power. That solved the weird behavior
+of the display and the restarts, but it’s still making chirping
+noises. The images below show the changes:</p>
+<img alt="projects/project-25256/images/2720011498236853161.jpg" src="projects/project-25256/images/2720011498236853161.jpg" />
+<img alt="projects/project-25256/images/4320891498236882790.jpg" src="projects/project-25256/images/4320891498236882790.jpg" />
+<p>In other news, I managed to move the whole configuration of the
+display into an overlay, and also got the keys work with gpio-keys
+driver – except one of the fire buttons, which uses gpio 7, and which
+is a second CS pin for the SPI controller. The SPI driver just won’t
+give that pin up.</p>
+<p>I already started designing second version of the PCB that would use
+other pins – tested working – but I’m still not entirely sure if I’m
+going to be ordering that. De-soldering this display now would be a
+little tricky without hot air. I guess it all depends on whether there
+are more mistakes to be found in the audio system, which I didn’t test
+yet.</p>
+<p>I’m also still thinking about bet option for powering this. Right now
+I’m leaning towards a flat lipo sandwitched between the two boards,
+because that would be small, but it’s really getting hot in there, so
+I’m not sure.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

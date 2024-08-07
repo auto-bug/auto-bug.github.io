@@ -1,0 +1,329 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>PewPew FeatherWing - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="pewpew-featherwing">
+<h1>PewPew FeatherWing<a class="headerlink" href="#pewpew-featherwing" title="Permalink to this heading">¶</a></h1>
+<p>A shield for Adafruit Feather boards with buttons and a LED matrix display, for simple games.</p>
+<div class="project-thumb">
+<a class="reference external image-reference" href="/_images/5291871493471689331.jpg"><img alt="projects/project-21578/images/5291871493471689331.jpg" src="projects/project-21578/images/5291871493471689331.jpg" /></a>
+<a class="reference external image-reference" href="/_images/1414571501003318561.jpg"><img alt="projects/project-21578/images/1414571501003318561.jpg" src="projects/project-21578/images/1414571501003318561.jpg" /></a>
+<a class="reference external image-reference" href="/_images/238851494965557079.jpg"><img alt="projects/project-21578/images/238851494965557079.jpg" src="projects/project-21578/images/238851494965557079.jpg" /></a>
+<a class="reference external image-reference" href="/_images/1671981524002657232.jpg"><img alt="projects/project-21578/images/1671981524002657232.jpg" src="projects/project-21578/images/1671981524002657232.jpg" /></a>
+<a class="reference external image-reference" href="/_images/1734091525792538997.jpg"><img alt="projects/project-21578/images/1734091525792538997.jpg" src="projects/project-21578/images/1734091525792538997.jpg" /></a>
+<a class="reference external image-reference" href="/_images/8067841525792523707.jpg"><img alt="projects/project-21578/images/8067841525792523707.jpg" src="projects/project-21578/images/8067841525792523707.jpg" /></a>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Game programming is hard. Sure, you can easily throw together
+</pre></div>
+</div>
+<p>something in RPGMaker, RenPy or Unity3D, and it’s great – but you
+don’t actually know how it works inside. There is a certain skill
+required to go from scratch, write your own main loop, handle events,
+push the pixels, etc.  Incidentally, the same exact skills are
+required when programming any other interactive system, such as a
+graphical user interface, an automatic appliance, a mobile art
+installation or… a robot! Those are going to be much more common in
+our lives soon. If we want to stay in control, we need to be able to
+program them ourselves, and for that we need those skills. They
+empower us and give us back the control over the technology.\</p>
+<p>One great tool for teaching it is PyGame – which is a library, and
+not a game engine, so it forces you to attend to all those pesky
+details of game engine internals yourself. Which is a bit difficult,
+of course, but ultimately very useful. But even if you play with
+PyGame on the Raspberry Pi, it’s still a very complicated and
+difficult to understand system. The learning curve is steep, and
+debugging is hell.</p>
+<p>Enter MicroPython, and one of its flavors, CircuitPython. It’s written
+by the people at Adafruit with the education in mind, but it runs on
+infinitely simpler devices than your average computer. Devices which
+you can’t break easily, because reflashing the program will reset them
+to a known good state. Devices which run on batteries for hours, and
+which you can carry in your pocket. Devices, for which there is a
+plethora of add-ons and sensors that you could make use of in your
+game.</p>
+<p>However, as of yet, there is no game library and/or add-on that would
+allow to easily create games in CircuitPython. This project is an
+attempt to fix this.\</p>
+<iframe style="width: 500px; height: 281px;" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/Ad4hccVy9C8"></iframe>
+<section id="logs">
+<h2>Logs<a class="headerlink" href="#logs" title="Permalink to this heading">¶</a></h2>
+<ul class="postlist-style-none postlist simple">
+<li class="ablog-post"><p class="ablog-post-title">2019-07-18 - <a class="reference internal" href="log-165851/">Buttons</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2019-07-15 - <a class="reference internal" href="log-165753/">D1 Mini Shield</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2018-10-23 - <a class="reference internal" href="log-155174/">Replaced by PewPew Standalone</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2018-07-14 - <a class="reference internal" href="log-149325/">Making it Cheaper Again</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2018-05-08 - <a class="reference internal" href="log-145952/">PewPew Lite Version 4.2</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2018-04-18 - <a class="reference internal" href="log-144381/">Version 5.1</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2018-02-23 - <a class="reference internal" href="log-100304/">LAMEBOY Playing PewPew Games</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-12-06 - <a class="reference internal" href="log-71294/">The Aisler Saga, Part 2</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-11-02 - <a class="reference internal" href="log-69951/">Sanity Check</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-10-24 - <a class="reference internal" href="log-69616/">Version 4.2</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-10-22 - <a class="reference internal" href="log-69580/">PyWeek Failure</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-10-15 - <a class="reference internal" href="log-68872/">PyWeek, Here I Come</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-10-15 - <a class="reference internal" href="log-68839/">PewPew 4.1</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-10-14 - <a class="reference internal" href="log-68755/">Boards from Aisler</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-10-13 - <a class="reference internal" href="log-68671/">Contest Video</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-10-03 - <a class="reference internal" href="log-68179/">Struggling with BOM</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-10-03 - <a class="reference internal" href="log-68189/">GamePad module and Trinket M0 Haxpress</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-10-02 - <a class="reference internal" href="log-68146/">Replicating the Trinket M0 Express Hack</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-09-29 - <a class="reference internal" href="log-67973/">Custom CircuitPython</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-09-26 - <a class="reference internal" href="log-67808/">License</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-09-24 - <a class="reference internal" href="log-67692/">Some Fixes</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-09-23 - <a class="reference internal" href="log-67618/">PewPew 3.0 Standalone</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-09-17 - <a class="reference internal" href="log-67292/">Tetris</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-09-15 - <a class="reference internal" href="log-67200/">Homebrew Trinket M0</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-09-11 - <a class="reference internal" href="log-66939/">Maker Faire Zürich</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-09-07 - <a class="reference internal" href="log-66813/">The Store is Live</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-09-07 - <a class="reference internal" href="log-66778/">More Quality Control</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-09-06 - <a class="reference internal" href="log-66752/">First Production Boards</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-08-30 - <a class="reference internal" href="log-66069/">Documentation</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-08-29 - <a class="reference internal" href="log-66034/">Quality Control</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-08-15 - <a class="reference internal" href="log-65171/">Final version for the PewPew Lite</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-08-10 - <a class="reference internal" href="log-64925/">Displays Are Hard</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-08-07 - <a class="reference internal" href="log-64774/">PewPew Lite Version 4.0</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-08-06 - <a class="reference internal" href="log-64737/">Why not Raspberry Pi?</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-08-06 - <a class="reference internal" href="log-64741/">The Library</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-08-05 - <a class="reference internal" href="log-64667/">Thinking about PewPew 2</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-07-25 - <a class="reference internal" href="log-64205/">Prototypes</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-07-24 - <a class="reference internal" href="log-64091/">BOM Updated for PewPew Lite</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-07-23 - <a class="reference internal" href="log-63758/">Scrolling and Text</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-07-23 - <a class="reference internal" href="log-63767/">Business Plan</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-07-21 - <a class="reference internal" href="log-63612/">The Challenge</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-07-19 - <a class="reference internal" href="log-63466/">First CircuitPython Program</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-07-17 - <a class="reference internal" href="log-63230/">PewPew Lite Assembled</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-07-05 - <a class="reference internal" href="log-62595/">PewPew Lite Schematic</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-07-03 - <a class="reference internal" href="log-62471/">PewPew Lite</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-06-18 - <a class="reference internal" href="log-61802/">Version 1.5</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-05-31 - <a class="reference internal" href="log-60531/">Sound</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-05-16 - <a class="reference internal" href="log-59690/">ESP8266 GPIOs Suck</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-05-13 - <a class="reference internal" href="log-59512/">Version 1.4</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-05-10 - <a class="reference internal" href="log-59296/">Prototyping</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-05-01 - <a class="reference internal" href="log-58739/">The Display</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-05-01 - <a class="reference internal" href="log-58783/">The Concept</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-05-01 - <a class="reference internal" href="log-58741/">The Buttons</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-05-01 - <a class="reference internal" href="log-58784/">Ghosting</a></p></li>
+</ul>
+</section>
+<section id="instructions">
+<h2>Instructions<a class="headerlink" href="#instructions" title="Permalink to this heading">¶</a></h2>
+<section id="trim-the-matrix">
+<h3>Trim the matrix<a class="headerlink" href="#trim-the-matrix" title="Permalink to this heading">¶</a></h3>
+<p>Use wire cutters to cut off the excess pins, as flat against the board
+as possible.</p>
+<img alt="projects/project-21578/images/6292041502800678061.jpg" src="projects/project-21578/images/6292041502800678061.jpg" />
+</section>
+<hr class="docutils" />
+<section id="add-a-battery-optional">
+<h3>Add a battery (optional)<a class="headerlink" href="#add-a-battery-optional" title="Permalink to this heading">¶</a></h3>
+<p>If you have a small battery (I used 110mAh), you can add it on the
+back of the board.</p>
+<img alt="projects/project-21578/images/1304421502800738814.jpg" src="projects/project-21578/images/1304421502800738814.jpg" />
+</section>
+<hr class="docutils" />
+<section id="cut-the-wires">
+<h3>Cut the wires<a class="headerlink" href="#cut-the-wires" title="Permalink to this heading">¶</a></h3>
+<p>Cut the battery wires to about 0.5cm. Be careful to cut them one at a
+time, otherwise your cutters will short the battery and make sparks
+fly.</p>
+<img alt="projects/project-21578/images/4215711502800798345.jpg" src="projects/project-21578/images/4215711502800798345.jpg" />
+</section>
+<hr class="docutils" />
+<section id="prepare-wires">
+<h3>Prepare wires<a class="headerlink" href="#prepare-wires" title="Permalink to this heading">¶</a></h3>
+<p>Carefully remove the insulation and tin the ends of the wires. Be
+careful to not short them.</p>
+<img alt="projects/project-21578/images/5447851502800878302.jpg" src="projects/project-21578/images/5447851502800878302.jpg" />
+</section>
+<hr class="docutils" />
+<section id="solder-battery">
+<h3>Solder battery<a class="headerlink" href="#solder-battery" title="Permalink to this heading">¶</a></h3>
+<p>Solder the wires to the holes marked + (red wire) and - (black wire).</p>
+<img alt="projects/project-21578/images/7973941502800944466.jpg" src="projects/project-21578/images/7973941502800944466.jpg" />
+</section>
+<hr class="docutils" />
+<section id="add-tape">
+<h3>Add tape<a class="headerlink" href="#add-tape" title="Permalink to this heading">¶</a></h3>
+<p>Use a piece of two-sided tape to hold the battery in place, to prevent
+it from shorting the matrix pins, and to protect it from being damaged
+by the sharp pin leftovers sticking from the board.</p>
+<img alt="projects/project-21578/images/8300181502801002830.jpg" src="projects/project-21578/images/8300181502801002830.jpg" />
+</section>
+<hr class="docutils" />
+<section id="more-tape">
+<h3>More tape<a class="headerlink" href="#more-tape" title="Permalink to this heading">¶</a></h3>
+<p>Also add some tape on top, to prevent shorts on the Feather side.</p>
+<img alt="projects/project-21578/images/2308801502801085535.jpg" src="projects/project-21578/images/2308801502801085535.jpg" />
+</section>
+<hr class="docutils" />
+<section id="finished">
+<h3>Finished<a class="headerlink" href="#finished" title="Permalink to this heading">¶</a></h3>
+<p>The board is finished and ready to be programmed.</p>
+<img alt="projects/project-21578/images/7638691502801149553.jpg" src="projects/project-21578/images/7638691502801149553.jpg" />
+</section>
+<hr class="docutils" />
+<section id="solder-paste-for-the-buttons">
+<h3>Solder paste for the buttons<a class="headerlink" href="#solder-paste-for-the-buttons" title="Permalink to this heading">¶</a></h3>
+<p>Heat the board a little bit with your hot-air station, and then apply
+the soldering paste on all the button pads.\</p>
+<img alt="projects/project-21578/images/8859541502799266028.jpg" src="projects/project-21578/images/8859541502799266028.jpg" />
+</section>
+<hr class="docutils" />
+<section id="place-buttons">
+<h3>Place buttons<a class="headerlink" href="#place-buttons" title="Permalink to this heading">¶</a></h3>
+<p>Place the buttons in they correct positions. Be careful to align them
+properly, as the surface tension of the solder will not be enough to
+move them.</p>
+<img alt="projects/project-21578/images/852401502799357886.jpg" src="projects/project-21578/images/852401502799357886.jpg" />
+</section>
+<hr class="docutils" />
+<section id="solder-buttons">
+<h3>Solder buttons<a class="headerlink" href="#solder-buttons" title="Permalink to this heading">¶</a></h3>
+<p>Apply the hot air to solder the buttons. Be careful to not melt the
+plastic caps.</p>
+<img alt="projects/project-21578/images/60381502799483071.jpg" src="projects/project-21578/images/60381502799483071.jpg" />
+</section>
+<hr class="docutils" />
+<section id="solder-paste-for-the-components">
+<h3>Solder paste for the components<a class="headerlink" href="#solder-paste-for-the-components" title="Permalink to this heading">¶</a></h3>
+<p>Flip the board, and apply the solder paste to all the pads on the
+other side.</p>
+<img alt="projects/project-21578/images/1689841502799551428.jpg" src="projects/project-21578/images/1689841502799551428.jpg" />
+</section>
+<hr class="docutils" />
+<section id="place-components">
+<h3>Place components<a class="headerlink" href="#place-components" title="Permalink to this heading">¶</a></h3>
+<p>Place the components. Make sure to align the chip properly — it is
+also too big to move with the surface tension. Pay attention to the
+resistor values.</p>
+<img alt="projects/project-21578/images/1868381502799628098.jpg" src="projects/project-21578/images/1868381502799628098.jpg" />
+</section>
+<hr class="docutils" />
+<section id="solder-components">
+<h3>Solder components<a class="headerlink" href="#solder-components" title="Permalink to this heading">¶</a></h3>
+<p>Apply the hot air. Be careful to not blow the resistors away.</p>
+<img alt="projects/project-21578/images/5189601502799684142.jpg" src="projects/project-21578/images/5189601502799684142.jpg" />
+</section>
+<hr class="docutils" />
+<section id="remove-bridges">
+<h3>Remove bridges<a class="headerlink" href="#remove-bridges" title="Permalink to this heading">¶</a></h3>
+<p>Use a suction tool or a copper wick to remove any solder bridges you
+might have gotten, like in this case between the first and second pins
+of the chip.</p>
+<img alt="projects/project-21578/images/9291301502799748592.jpg" src="projects/project-21578/images/9291301502799748592.jpg" />
+</section>
+<hr class="docutils" />
+<section id="insert-headers">
+<h3>Insert headers<a class="headerlink" href="#insert-headers" title="Permalink to this heading">¶</a></h3>
+<p>We are going for a low profile look, so we will solder the headers in
+reverse. Insert the male headers from the top, long side down.</p>
+<img alt="projects/project-21578/images/8653911502799855822.jpg" src="projects/project-21578/images/8653911502799855822.jpg" />
+</section>
+<hr class="docutils" />
+<section id="solder-headers">
+<h3>Solder headers<a class="headerlink" href="#solder-headers" title="Permalink to this heading">¶</a></h3>
+<p>Now flip the board and solder each pin in place. Make sure to not use
+too much solder and make the joint as flat as possible. Use a suction
+tool or a wick to remove excess solder.</p>
+<img alt="projects/project-21578/images/8757581502799952286.jpg" src="projects/project-21578/images/8757581502799952286.jpg" />
+</section>
+<hr class="docutils" />
+<section id="remove-plastic-from-headers">
+<h3>Remove plastic from headers<a class="headerlink" href="#remove-plastic-from-headers" title="Permalink to this heading">¶</a></h3>
+<p>Once the headers are all soldered, you can remove the plastic that
+held them together. Use wire cutters or tweezers to pry it off. Be
+careful to not damage the buttons in the process.</p>
+<img alt="projects/project-21578/images/9162981502800043770.jpg" src="projects/project-21578/images/9162981502800043770.jpg" />
+</section>
+<hr class="docutils" />
+<section id="trim-the-headers">
+<h3>Trim the headers<a class="headerlink" href="#trim-the-headers" title="Permalink to this heading">¶</a></h3>
+<p>Trim the pins, so that the top of the board is completely flat.</p>
+<img alt="projects/project-21578/images/8829621502800133375.jpg" src="projects/project-21578/images/8829621502800133375.jpg" />
+</section>
+<hr class="docutils" />
+<section id="put-the-plastic-back-on-optional">
+<h3>Put the plastic back on (optional)<a class="headerlink" href="#put-the-plastic-back-on-optional" title="Permalink to this heading">¶</a></h3>
+<p>If you are going to use the low-profile female headers on your Feather
+boards, you can put the plastic back on the pins, since they only need
+to stick out very little. If you are using regular headers, leave the
+plastic off, this way the pins can go deeper into the female headers
+and the whole thing will be thinner.</p>
+<img alt="projects/project-21578/images/3474201502800214697.jpg" src="projects/project-21578/images/3474201502800214697.jpg" />
+</section>
+<hr class="docutils" />
+<section id="insert-the-matrix">
+<h3>Insert the matrix<a class="headerlink" href="#insert-the-matrix" title="Permalink to this heading">¶</a></h3>
+<p>Insert the bi-color LED matrix into the holes. Make sure to make the
+text on the matrix face down, as pictured here. You will need to use
+your tweezers to make every pin fit into its hole. It takes some
+patience.</p>
+<img alt="projects/project-21578/images/8546931502800346621.jpg" src="projects/project-21578/images/8546931502800346621.jpg" />
+</section>
+<hr class="docutils" />
+<section id="push-the-matrix">
+<h3>Push the matrix<a class="headerlink" href="#push-the-matrix" title="Permalink to this heading">¶</a></h3>
+<p>Push the matrix against a soft surface until it’s flush with the
+board. Don’t use too much force, or you will break the board or
+scratch the matrix.</p>
+<img alt="projects/project-21578/images/5439921502800449941.jpg" src="projects/project-21578/images/5439921502800449941.jpg" />
+</section>
+<hr class="docutils" />
+<section id="solder-the-matrix">
+<h3>Solder the matrix<a class="headerlink" href="#solder-the-matrix" title="Permalink to this heading">¶</a></h3>
+<p>Solder all of the pins on the back side. Start with the side ones, and
+then do the middle.</p>
+<img alt="projects/project-21578/images/5438501502800560205.jpg" src="projects/project-21578/images/5438501502800560205.jpg" />
+</section>
+</section>
+<hr class="docutils" />
+</section>
+
+
+</div>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+---
+blogpost: true
+date: 2017-10-17
+category: project-27161
+---
+
+# Audio Shield Done
+Published on 2017-10-17 in {ref}`project-27161`.
+
+After the problems I described in my last log, I added the PAM8301
+chips to the order at Mouser that I was making. I got the chips
+yesterday, but didn't really have time to try anything. Today I
+finally replaced the Chinese chip with the one from Mouser, and lo and
+behold — it works! Well, I also got better speakers in the same order,
+and I also replaced that. They are quite loud!
+
+
+
+:::{image} images/7558911508272917956.jpg
+
+:::
+
+
+By the way, if you want to use CircuitPython with that shield, you
+have to compile your own — the default doesn't have the_audioio_ module included, due to space restrictions. But if you remove some
+other module you are not using (like the_analogio_ in my case), it will fit.
+
+Now I only have one shield left to get to work — it's assembled and
+the I²C address enumerates, but I need to write a driver for
+CircuitPython for it.
+
+Update: there was still one trivial problem left with the audio shield
+— the mirrored footprint for the amplifier chip. So if you don't want
+to solder yours up-side-down, Like I did, then better use the
+corrected PCB available here:  [https://oshpark.com/projects/OatupN72](https://oshpark.com/projects/OatupN72) 
+

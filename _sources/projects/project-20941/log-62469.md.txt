@@ -1,0 +1,71 @@
+---
+blogpost: true
+date: 2017-07-03
+category: project-20941
+---
+
+# A Quick Tour Around the IS31FL373x Chips
+Published on 2017-07-03 in {ref}`project-20941`.
+
+There is a whole family of those, and they are all controlled in a
+similar way. Of course all the details are in the datasheets, and in
+theory this is all the information you need, but in practice I think
+it's useful to have a general bird's-eye view of the whole thing.
+
+The chips are controlled over I2C and I'm not going to explain that.
+Uncharacteristically, it has two additional pins related to the I2C
+protocol, apart from the usual SDA and SCL: those are the IIC-RST,
+which can be used to reset the part of the chip that handles
+communication, in case your bus gets stuck in some weird state
+preventing communication, and VIO, which sets the voltage that you
+want to use for the communication. I usually just pull the IIC-RST
+down and the VIO up.
+
+The higher-level protocol is also quite simple. You have 8-bit
+registers with b-bit addresses, divided into pages. To read or write a
+register from the current page, you simply write that register's
+number, and then either read with a repeated start or write. That's
+pretty much standard.  Changing a page is bit more involved, because
+it's apparently potentially dangerous: first you need to unlock the
+page register by writing the magic value 0xc5 to the register 0xfe,
+and then you can write the page number to the register 0xfd.
+
+There are four pages.
+
+Page 0 is dedicated to configuring which LEDs are being used, and to
+reading results of the open/short detection. At the minimum you need
+to write 1s to the bits corresponding to the LEDs that are actually
+connected to the chip (your matrix may be smaller than the chip's
+maximum). You only do it once at the beginning.\
+
+
+Page 1 contains information about brightness of each individual LED.
+That's where you actually draw your pixels. Of course, the default
+brightness is 0, so you need to write something there to actually see
+anything.
+
+Page 2 controls blinking, or rather "breathing", as they call the
+fade-in fade-out animation that you can set on any of the individual
+LEDs, in 3 different variations of timing. You don't need to touch
+anything here. Oh, and for this to have any effect, you need to set
+the B_EN bit in the register 0x00 on page 3.
+
+And finally page 3 is configuration. At the minimum, you need to write
+0x01 to the register 0x00 here to enable the chip, and some value to
+the register 0x01 setting the global brightness (because of course it
+defaults to 0 and you wouldn't see anything). The rest is about
+configuring the blink timings, pull-up and pull-down resistors on the
+LEDs, and a software reset -- not that interesting.
+
+So the workflow of the driver is usually as follows:
+
+
+ 1. Set which LEDs you are using by writing to registers on page 0.
+ 1. Switch to page 3.
+ 1. Enable the chip and set the global brightness.
+ 1. Switch to page 1.
+ 1. Actually draw your graphics by writing to the registers on page 1.
+
+That should get you started. Of course, there are lots more small
+details and possibilities there.
+

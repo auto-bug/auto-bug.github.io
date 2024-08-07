@@ -1,0 +1,51 @@
+---
+blogpost: true
+date: 2017-09-07
+category: project-21578
+---
+
+# More Quality Control
+Published on 2017-09-07 in {ref}`project-21578`.
+
+I decided to assemble one of the "production" boards I made — that is,
+solder the pin headers and the matrix and plug it into a feather. Sure
+enough, there are problems. The left button doesn't work, and one of
+the columns doesn't have the red color.
+
+So I started debugging.
+
+The button problem turned out to be due to a broken trace on the board
+— they claim they do continuity testing at Seeed, but apparently this
+one somehow slipped through. Adding a wire solved that.
+
+The column must be a short somewhere, because adding wires doesn't
+help. I suspect it's a short with a via under one of the buttons. I
+will try to remove the buttons tomorrow, and see.
+
+But that made me realize that I really have to test the assembled
+boards somehow before I send them. The hot air soldering is very fast
+and convenient, but it's not as reliable as doing it with a soldering
+iron, and sometimes I have to touch it up a bit afterwards.
+
+There isn't really much I can do with the matrices without soldering
+them (and I can't solder them before the headers are soldered, and I
+can't solder the headers because that would make the whole thing hard
+to ship), but I have already tested them separately, and there is very
+little chance of a problem with those connections. But I can at least
+test that the chip is properly powered, that the I²C communication
+works, and that all the buttons work. So I made a small testing jig
+for this:
+
+
+:::{image} images/6419051504742989435.jpg
+
+:::
+Out of 8 boards that I have soldered so far, one had a broken trace,
+two had a cold joint that had to be touched up with a hand soldering
+iron, and one had a short between two of the buttons (the new buttons
+have a bit wider legs and barely fit in their space). Except for the
+first one, all of them were easily fixed.
+
+I'm still thinking about some way of possibly testing the matrix
+connections — maybe I will build something with pogo pins.
+

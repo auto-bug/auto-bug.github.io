@@ -1,0 +1,157 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>http://deshipu.art/</id>
+  <title>deshipu.art - Posts in project-25256</title>
+  <updated>2024-08-07T20:31:58.656506+00:00</updated>
+  <link href="http://deshipu.art/"/>
+  <link href="http://deshipu.art/blog/category/project-25256/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-25256/log-62543/</id>
+    <title>Power</title>
+    <updated>2017-07-04T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="power"&gt;
+
+&lt;p&gt;Published on 2017-07-04 in &lt;a class="reference internal" href="../../../projects/project-25256/#project-25256"&gt;&lt;span class="std std-ref"&gt;Ye Olde Nowt&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The ZeroLiPO module doesn’t work very well with this power-hungry
+display. Adding a big capacitor across the power helped somewhat, but
+you can still see problems when the display has a lot of white to
+show.&lt;/p&gt;
+&lt;p&gt;For now I’m just powering the whole thing from a 1S LiPO battery
+directly, without any boost converter or other circuit. That works
+well, due to reasons described in &lt;a class="reference external" href="https://hackaday.io/project/9461-lifepo4weredpi/log/32161-3v-or-5v-thats-the-question"&gt;this project log&lt;/a&gt; , and I’m actually quite happy with this. However, there is no
+overdischarge protection, and I need to manually switch the power off
+after the raspberry pi shuts down – there should be a better way to do
+it.&lt;/p&gt;
+&lt;p&gt;So I started looking around for a ready module for that – what can I
+say, I’m lazy – and was quite surprised that I couldn’t find anything
+like that. OK, fine, I will just have to build my own. I looked around
+a bit for similar projects to steal from, and found this one: &lt;a class="reference external" href="http://www.mosaic-industries.com/embedded-systems/microcontroller-projects/raspberry-pi/on-off-power-controller"&gt;http://www.mosaic-industries.com/embedded-systems/microcontroller-
+projects/raspberry-pi/on-off-power-controller&lt;/a&gt;  – it’s a very nice schematic, and it only uses one GPIO pin to both
+signal the pi to shutdown, and see when it finished. I might still
+make this, because it’s generally useful, but for now I have a better
+idea.&lt;/p&gt;
+&lt;p&gt;That project log I linked, it’s for a project that exactly fits my
+needs. &lt;a class="reference external" href="https://www.tindie.com/products/xorbit/lifepo4weredpi/"&gt;And that project is available to buy on Tindie.&lt;/a&gt;  It’s a battery, a charger, a touch pad button for switching it on and
+off, and I2C for battery monitoring and low power shutdown. It does
+everything I need. I will probably try to put a smaller battery in it,
+so that it fits the size of the pi zero better, but that’s it.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-25256/log-62543/" rel="alternate"/>
+    <summary>Published on 2017-07-04 in project-25256.</summary>
+    <published>2017-07-04T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-25256/log-63232/</id>
+    <title>Honey, I Shrunk Our LiFePO4</title>
+    <updated>2017-07-17T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="honey-i-shrunk-our-lifepo4"&gt;
+
+&lt;p&gt;Published on 2017-07-17 in &lt;a class="reference internal" href="../../../projects/project-25256/#project-25256"&gt;&lt;span class="std std-ref"&gt;Ye Olde Nowt&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Both the new PCB and the &lt;span class="xref std std-ref"&gt;project-9461&lt;/span&gt;  arrived while I was away, so I can now get back to hacking. But what
+is this? It’s too long for the the Raspberry Pi Zero, as it was
+originally designed for the Raspberry Pi B, which is a little bit
+longer. But fear not, I anticipated that problem and ordered a smaller
+LiFePO4 battery, that should be just the right size. Now it’s just a
+matter of replacement of the battery basket:&lt;/p&gt;
+&lt;img alt="projects/project-25256/images/9626621500311268597.jpg" src="projects/project-25256/images/9626621500311268597.jpg" /&gt;
+&lt;p&gt;I guess I will need to cut that PCB a little bit too. Oh well. I also
+removed the female headers from the power module, in order to solder
+it flat on top of the hat. Unfortunately, there is one pesky SMD
+resistor getting in the way there, so it won’t be completely flat.&lt;/p&gt;
+&lt;p&gt;In other news, I’m really happy with the through-hole buttons, they
+are much easier to solder and fit in that tight space – although I
+didn’t find color ones.&lt;/p&gt;
+&lt;p&gt;I still need to get a display for this – either order another one, or
+desolder one from the first prototype.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-25256/log-63232/" rel="alternate"/>
+    <summary>Published on 2017-07-17 in project-25256.</summary>
+    <published>2017-07-17T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-25256/log-63366/</id>
+    <title>Power Button</title>
+    <updated>2017-07-19T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="power-button"&gt;
+
+&lt;p&gt;Published on 2017-07-19 in &lt;a class="reference internal" href="../../../projects/project-25256/#project-25256"&gt;&lt;span class="std std-ref"&gt;Ye Olde Nowt&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Independently from hacking the LiFePO4 power module, I decided to try
+and make a small module with a soft power button on it — the same I
+linked two logs ago. I will use a thin PCB, so that it can be inserted
+between shields.&lt;/p&gt;
+&lt;img alt="https://644db4de3505c40a0444-327723bce298e3ff5813fb42baeefbaa.ssl.cf1.rackcdn.com/d454a77d40b39efe53f67d91cc78e32c.png" src="https://644db4de3505c40a0444-327723bce298e3ff5813fb42baeefbaa.ssl.cf1.rackcdn.com/d454a77d40b39efe53f67d91cc78e32c.png" /&gt;
+&lt;p&gt;The schematic is based on several designs from various forums — I’m
+not smart enough to figure it out myself. Pressing the button switches
+the power on and latches it. Subsequent pressing of the button does
+noting, except pulling the GPIO4 down to let the Raspberry Pi know
+that we want to shut down. A long press (or pulling the GPIO4 low)
+forces it off.&lt;/p&gt;
+&lt;img alt="projects/project-25256/images/4635311500417505751.png" src="projects/project-25256/images/4635311500417505751.png" /&gt;
+&lt;p&gt;It’s a little bit more complex than I’m comfortable with, but we will
+see how well it works.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-25256/log-63366/" rel="alternate"/>
+    <summary>Published on 2017-07-19 in project-25256.</summary>
+    <published>2017-07-19T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-25256/log-64434/</id>
+    <title>Version 2.0</title>
+    <updated>2017-07-31T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="version-2-0"&gt;
+
+&lt;p&gt;Published on 2017-07-31 in &lt;a class="reference internal" href="../../../projects/project-25256/#project-25256"&gt;&lt;span class="std std-ref"&gt;Ye Olde Nowt&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The second version of the PCB arrived some time ago already, but I was
+struggling with the ways to power the raspberry pi and didn’t really
+try them. Now I confirmed that the new layout of the buttons works
+perfectly fine with just the device tree overlay. I didn’t test the
+memory for storing that overlay yet — there will be a separate update
+log for that.&lt;/p&gt;
+&lt;p&gt;I assembled all three of the PCBs I got from OSHPark this time, and
+with the second display I used a low-profile female header, instead of
+soldering the module’s pins directly into the board — so now I can
+unplug the display. I also experimented with two kinds of switches:
+the standard through-hole clicky switches, and a weird SMD switch with
+very soft and springy action. I’m not yet entirely sure which ones I
+like better, to be honest.&lt;/p&gt;
+&lt;img alt="projects/project-25256/images/1769581501512137788.jpg" src="projects/project-25256/images/1769581501512137788.jpg" /&gt;
+&lt;p&gt;Oh, and I still didn’t try the audio amplifier either.&lt;/p&gt;
+&lt;p&gt;Either way, the PCBs work, they mostly use through-hole components for
+the basic functionality (minus the sound and the memory), and you can
+order them from OSHPark here:  &lt;a class="reference external" href="https://oshpark.com/projects/TfXEKJ7T"&gt;https://oshpark.com/projects/TfXEKJ7T&lt;/a&gt;&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-25256/log-64434/" rel="alternate"/>
+    <summary>Published on 2017-07-31 in project-25256.</summary>
+    <published>2017-07-31T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-25256/log-64912/</id>
+    <title>Power Button Fail</title>
+    <updated>2017-08-09T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="power-button-fail"&gt;
+
+&lt;p&gt;Published on 2017-08-09 in &lt;a class="reference internal" href="../../../projects/project-25256/#project-25256"&gt;&lt;span class="std std-ref"&gt;Ye Olde Nowt&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The PCB for the power button arrived some time ago, and recently the
+last of the parts made it into my mailbox — the pair of mosfets in a
+single package. So I went and assembled everything, and powered it up,
+and what do you know, it didn’t release blue smoke. But it also didn’t
+work — it was always on. So I went through the schematic again, and
+then asked on the hack chat channel for help. Rubber-ducking helped
+and I noticed that I have swapped the P and N mosfets in my design.
+Ugh. I also tried the PCB on the zero, and turns out it doesn’t fit
+quite right — the HDMI socket is a little bigger than I thought and
+needs a deeper cut out. So here’s a new version of the PCB:&lt;/p&gt;
+&lt;img alt="projects/project-25256/images/5858491502295919000.png" src="projects/project-25256/images/5858491502295919000.png" /&gt;
+&lt;p&gt;Hopefully that one will work better.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-25256/log-64912/" rel="alternate"/>
+    <summary>Published on 2017-08-09 in project-25256.</summary>
+    <published>2017-08-09T00:00:00+02:00</published>
+  </entry>
+</feed>

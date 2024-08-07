@@ -1,0 +1,52 @@
+---
+blogpost: true
+date: 2017-09-29
+category: project-21578
+---
+
+# Custom CircuitPython
+Published on 2017-09-29 in {ref}`project-21578`.
+
+Having played a little bit with the prototype of the standalone
+version, I realized that I really need better button handling. The
+PewPew Lite did handling on the LED driver chip — the chip would scan
+the whole matrix every 25ms, and if a button came up as pressed in at
+least two consecutive scans, would set the corresponding bit in its
+registers. Reading the registers resets them, so you get a simple
+"what buttons has been pressed since the last time I checked"
+behavior, which works quite well for most games.
+
+But the IS31FL3733 chip I'm using the PewPew can't do that, so I had
+to connect the buttons to the GPIO pins of the microcontroller, and
+poll them myself from CircuitPython. But since the games have pretty
+slow frame rate (about 6FPS), and they only poll once per frame, it's
+very easy to skip a fast key press. So I need a better way to read
+them.
+
+An immediate answer that comes to mind is external interrupts. Problem
+is, CircuitPython doesn't support them — they are an advanced feature,
+and since the callback code has its own limitations, they were skipped
+in the current implementation. But I can always add my own C code
+there, and implement a button-handling module. Since I need to compile
+my own CircuitPython firmware anyways (because I'm using more pins
+than the Trinket M0 has), this should be doable. So I started reading
+about the interrupts on the SAMD21 and looking at the CircuitPython
+code for the best place to fit it.
+
+But then I thought about de-bouncing. Remember that "two consecutive
+scans" part in the PewPew Lite? That's the de-bouncing. I should
+really do it too here, or the users will get too many key presses. To
+do that, I will need a timer. Timers are also an advanced feature that
+CircuitPython doesn't yet implement. So I started reading about timers
+and looking at CircuitPython code to see which timers are already used
+and where I could plug in my own code...
+
+And then I realized that if I have a timer that is firing relatively
+fast (say, every 16ms), I don't need the interrupts — I can do the
+same thing that the chip on PewPew Lite did. And I also found a
+function that CircuitPython calls every millisecond, where I can plug
+my own code that would poll the keys once every 16 ticks. Then I just
+need a function to get the current button status, and I'm done.
+
+Now all that is left is to just write the code...
+

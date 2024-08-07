@@ -1,0 +1,80 @@
+---
+blogpost: true
+date: 2017-12-13
+category: project-27629
+---
+
+# Version 6
+Published on 2017-12-13 in {ref}`project-27629`.
+
+The PCBs for version 6 arrived about a week ago, but I didn't have
+time to work on it, between the day job and being sick. This evening I
+finally tested it properly:
+
+
+
+:::{image} images/5886841513202019440.jpg
+
+:::
+
+
+The good things:
+
+
+ * moving the audio circuit was a good move, it's now completely out of
+reach of fingers, and I think it also seems a bit louder when the LOS
+is not obscured by hands,
+ * using straight switch instead of angled one for reset also works well
+— I can have a hole in the case (if I have a case) for pressing it
+with a pin,
+ * straight buttons are easier to solder,
+ * adding a CS pin made the displays all work consistently,
+ * moving the LDO away from the buttons also made it easier to solder.
+
+There are still some rough edges, though, that I only found out after
+actually testing a physical prototype.
+
+The bad things:
+
+
+ * the CS pin uses a via, and touching that via with your fingers makes
+the display stop updating — I need to route that trace on front side
+entirely,
+ * the charging LED still shines whenever USB is connected, even if the
+battery is disconnected  — it does go off when the battery is fully
+charged, though,
+
+So I scrapped the version 7 which was basically just a cleanup of
+version 6 ready for ordering a larger number of them, and prepared
+version 8. I moved practically all parts around, including the
+microcontroller and the flash chip, but now:
+
+
+ * the reset button is next to the direction buttons, not on the edge of
+the pcb,
+ * all components, except for the audio circuit, are together in the
+middle of the board,
+ * the signals for audio and for the display are routed on one side
+without any vias,
+ * there are no parts under the fingers anymore,
+ * the top fire button got moved to the edge to make room for the parts,
+so now the layout looks more like gameboy,
+ * all the parts are better spaced and have shorter traces between them,
+ * there are more mounting holes (some are under the display, but with
+flat heads that could still be useful),
+ * I have broken out four unused pins on the back, for possible hacking,
+ * I moved the battery connector to the other side of the board, so it
+now matches the layout of Nokia phone (dumb) batteries.
+
+I know I said that about the previous version, but this is really to
+be the last one I'm making (at least with this microcontroller and
+display) — if everything works, that is. I'm going to order this one
+at Aisler again, to see how they improved (and to get a stencil).
+
+
+
+:::{image} images/8228351513205717693.png
+
+:::
+
+

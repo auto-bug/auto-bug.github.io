@@ -1,0 +1,36 @@
+---
+blogpost: true
+date: 2017-07-04
+category: project-25256
+---
+
+# Power
+Published on 2017-07-04 in {ref}`project-25256`.
+
+The ZeroLiPO module doesn't work very well with this power-hungry
+display. Adding a big capacitor across the power helped somewhat, but
+you can still see problems when the display has a lot of white to
+show.
+
+For now I'm just powering the whole thing from a 1S LiPO battery
+directly, without any boost converter or other circuit. That works
+well, due to reasons described in [this project log](https://hackaday.io/project/9461-lifepo4weredpi/log/32161-3v-or-5v-thats-the-question) , and I'm actually quite happy with this. However, there is no
+overdischarge protection, and I need to manually switch the power off
+after the raspberry pi shuts down – there should be a better way to do
+it.
+
+So I started looking around for a ready module for that – what can I
+say, I'm lazy – and was quite surprised that I couldn't find anything
+like that. OK, fine, I will just have to build my own. I looked around
+a bit for similar projects to steal from, and found this one: [http://www.mosaic-industries.com/embedded-systems/microcontroller-
+projects/raspberry-pi/on-off-power-controller](http://www.mosaic-industries.com/embedded-systems/microcontroller-projects/raspberry-pi/on-off-power-controller)  – it's a very nice schematic, and it only uses one GPIO pin to both
+signal the pi to shutdown, and see when it finished. I might still
+make this, because it's generally useful, but for now I have a better
+idea.
+
+That project log I linked, it's for a project that exactly fits my
+needs. [And that project is available to buy on Tindie.](https://www.tindie.com/products/xorbit/lifepo4weredpi/)  It's a battery, a charger, a touch pad button for switching it on and
+off, and I2C for battery monitoring and low power shutdown. It does
+everything I need. I will probably try to put a smaller battery in it,
+so that it fits the size of the pi zero better, but that's it.
+

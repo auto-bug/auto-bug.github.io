@@ -1,0 +1,36 @@
+---
+blogpost: true
+date: 2017-03-07
+category: project-19936
+---
+
+# The Base
+Published on 2017-03-07 in {ref}`project-19936`.
+
+So this is a successor of the {ref}`project-8643`  robot, that would be a little less "gangsta". I designed a PCB for
+attaching everything together -- the micro:bit, the servos and the
+battery -- so that you don't have an ungodly mess of wires held
+together with two-sided tape. I also left some extra holes in the PCB
+to which you can solder paperclips, to build on top of it and make it
+a little more interesting.
+
+
+:::{image} images/629561488904598462.jpg
+
+:::
+
+
+I found a nice method of mounting the micro:bit to the PCB without
+using the bulky edge connection -- just use loops of wire made out of
+paperclips, and plastic bolts (to not damage the micro:bit). The
+servos fit right into the slots -- I just made the screw holes a bit
+too tight, had to enlarge them a bit later. The battery holder is
+still attached to the backs of the servos with a two-sided tape --
+there is no room on the board for a different way of attaching it,
+unfortunately.
+
+In hindsight, I should have made more sockets for the servos --
+letting you to plug several servos to the same pin, so they move
+together, so that you can make hands that move together with the legs,
+etc. -- maybe in the next version.
+

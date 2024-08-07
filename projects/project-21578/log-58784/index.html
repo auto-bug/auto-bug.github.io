@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Ghosting - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="ghosting">
+<h1>Ghosting<a class="headerlink" href="#ghosting" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2017-05-01 in <a class="reference internal" href="../#project-21578"><span class="std std-ref">PewPew FeatherWing</span></a>.</p>
+<p>When I realized that the IS31FL3733 chip is not going to handle the
+button scanning well enough for this use case, I decided to design a
+new prototype board, with the buttons connected directly to the GPIO
+pins of the Feather.</p>
+<p>However, I want this to work with all Feather boards, including the
+ESP8266-based Feather HUZZAH, which means that I only have a few GPIO
+pins to work with. A quick count gave me 7 pins: GPIO0, GPIO2, GPIO12,
+GPIO13, GPIO14, GPIO15 and GPIO16. However, there are some caveats.
+The GPIO15 pin has to be pulled low at boot, otherwise the ESP8266
+will boot into some weird mode. The same with GPIO0 and GPIO2 being
+pulled high. And finally the GPIO16 is a bit special and doesn’t have
+an internal pull-up.</p>
+<p>I have 6 buttons, so with the naive approach I will need 6 of the GPIO
+pins. I made a quick go at the PCB for that, together with six
+external pull-down resistors. That turned out to be much more complex
+than anticipated. Also, I really can’t leave those pull-down resistors
+on GPIO2 or GPIO0, so I’m one pin short.</p>
+<p>I considered my options. I could ditch the resistors (which would
+simplify the design a lot) and use internal pull-ups (which would also
+solve the problem of the pin state at boot). Hmmm… a quick redesign,
+and it already looks much better. But I can’t use GPIO16 (no pull-up),
+and the GPIO2 has a LED on it, which lights when you press the button.
+It would be nice to at least leave that one free…</p>
+<p>Fortunately there other ways of connecting buttons. I can make a key
+matrix and scan it. Let’s see, I have 6 buttons, so the best matrix I
+can make is 3x2, requiring a total of 5 pins. Not much, but progress.
+I quickly made another PCB design using that, leaving the GPIO16 and
+GPIO2 pins free. Perfect! At this point I was pretty late, so I saved
+the design, generated the gerber files and ordered the prototype PCB
+at OSHPark. And went to bed.</p>
+<p>And then, lying in the bed, I realized that my design has a fatal
+flaw: ghosting. It’s a game console, and people are not going to just
+press one button at a time like the cultured citizens they are. They
+are going to be mashing all the buttons at once, trying to beat the
+game. And the simple key matrices, the kind that I used in this
+design, have a problem when several keys are pressed at once: the keys
+connect together several rows and columns of the matrix, and in effect
+the microcontroller thinks that more buttons are pressed than actually
+are. A simple solution for that problem is to add diodes to every
+button, so that it won’t connect the columns and rows in both ways –
+this way preventing the columns that are not currently selected by the
+scanning algorithm from getting power. However, at this point the PCB
+was ordered and there was simply no room to add 6 additional diodes to
+it anyways.</p>
+<p>For now I decided to just test the prototype when it arrives and work
+on the software and the games a little bit, ignoring the ghosting
+problem, and later I will look for a separate I²C chip that will
+handle the keys for me.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

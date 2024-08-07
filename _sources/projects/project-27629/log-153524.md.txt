@@ -1,0 +1,27 @@
+---
+blogpost: true
+date: 2018-09-30
+category: project-27629
+---
+
+# Updated Firmware with CircuitPython 3.2.0
+Published on 2018-09-30 in {ref}`project-27629`.
+
+CircuitPython 3.2.0 has been released a while ago, and brings a lot of
+bug fixes and some performance improvements. It would be nice to use
+it for µGame. Unfortunately, it also had some changes in how audio is
+handled, and since that interacted with available memory in ways that
+made the example games not work, it required more work on my part than
+just rebasing the repository.
+
+However, I managed to work around the problems, and a new version of
+the firmware is now available at [https://github.com/python-
+ugame/circuitpython/releases/tag/ugame10-3.2.0](https://github.com/python-ugame/circuitpython/releases/tag/ugame10-3.2.0) . There is also a release of the Vacuum Invaders game specially
+updated for that version of firmware: [https://github.com/python-ugame/vacuum-invaders/releases/tag/3.2.0](https://github.com/python-ugame/vacuum-invaders/releases/tag/3.2.0) . The other example games, as well as the tutorial, should work
+without any changes.
+
+In order to upgrade your device, you need to download the .uf2 file,
+and copy it to the TRINKETBOOT disk that appears when you press the
+"reset" button (located next to the direction buttons) twice. Once the
+file is copied, the device will reboot with the new firmware in place.
+

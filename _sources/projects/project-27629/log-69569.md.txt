@@ -1,0 +1,42 @@
+---
+blogpost: true
+date: 2017-10-22
+category: project-27629
+---
+
+# Notes for the Next Version
+Published on 2017-10-22 in {ref}`project-27629`.
+
+I finished up the second PCB — added the switches, the battery
+charging, the speaker, and even added a LIR2032 battery on the back. I
+will be developing my sprite library now.
+
+
+
+:::{image} images/3189381508668723591.jpg
+
+:::
+
+
+Of course the first (well, second, but first physical) prototype has a
+number of problems. I will write them down, so that I can fix them
+when I make the next version:
+
+
+ * Make it wider.
+ * Center the actual display part of the screen, leaving some margin on
+one side.
+ * Use smaller buttons and arrange them better.
+ * Use a smaller reset switch.
+ * Make proper pads for the battery holder, or consider a battery
+connector.
+ * The parts that have to go on the back should be in the center of the
+board, not where you put your fingers. The power and reset switches
+can go on top or bottom.
+ * Mounting holes under the display make no sense.
+ * The pads for the display need to be longer, for more convenient
+soldering.
+ * Don't cram everything so close to each other.
+ * Add analog pin and a voltage divider for monitoring the battery
+voltage. Maybe even consider battery protection circuit.
+

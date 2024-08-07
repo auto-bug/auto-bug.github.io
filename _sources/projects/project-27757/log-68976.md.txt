@@ -1,0 +1,55 @@
+---
+blogpost: true
+date: 2017-10-15
+category: project-27757
+---
+
+# Basic Display
+Published on 2017-10-15 in {ref}`project-27757`.
+
+So here's basic code for the Micro:bit for handling a SH1106 display,
+just in case anybody needs it:
+
+
+```python
+import microbit
+class SH1106:
+    move = bytearray(b'\x00\xb0\x02\x10')
+    def __init__(self):
+        self.buffer = bytearray(1024)
+        microbit.i2c.init(freq=400000, scl=microbit.pin2, sda=microbit.pin1)
+        for i in range(2):
+            # First two transaction after init always fail.
+            try:
+                microbit.i2c.write(0x3c, b'')
+            except OSError:
+                pass
+        microbit.i2c.write(0x3c, b'\x00\xae\xd5\x80\xa8\x3f\xd3\x00\x40\x80\x14'
+                b'\x20\x00\xa1\xc0\xa0\xda\x12\x81\xcf\xd9\xf1\xdb\x40\xa4\xa6\xaf')
+        
+    def show(self):
+        index = 0
+        buf = self.buffer
+        for page in range(8):
+            self.move[1] = 0xb0 | page
+            microbit.i2c.write(0x3c, self.move)
+            microbit.i2c.write(0x3c, b'\x40' + buf[index:index + 128])
+            index += 128
+
+    def pixel(self, x, y, color=None):
+        if not 0 <= x < 128 or not 0 <= y < 64:
+            return
+        page = y // 8
+        index = x + page * 128
+        mask = 1 << (y % 8)
+        if color is None:
+            return bool(self.buffer[index] & mask)
+        elif color:
+            self.buffer[index] |= mask
+        else:
+            self.buffer[index] &= ~mask
+```
+
+ This is the naive approach of updating the whole screen every time.
+It's probably fast enough for most use cases.
+

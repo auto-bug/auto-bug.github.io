@@ -1,0 +1,268 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>http://deshipu.art/</id>
+  <title>deshipu.art - Posts in project-27257</title>
+  <updated>2024-08-07T20:31:58.731390+00:00</updated>
+  <link href="http://deshipu.art/"/>
+  <link href="http://deshipu.art/blog/category/project-27257/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-27257/log-67341/</id>
+    <title>Rotating Everything</title>
+    <updated>2017-09-17T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="rotating-everything"&gt;
+
+&lt;p&gt;Published on 2017-09-17 in &lt;a class="reference internal" href="../../../projects/project-27257/#project-27257"&gt;&lt;span class="std std-ref"&gt;Fritzing Tricks&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Rotating elements is easy. You just use the “rotate” button in the
+bottom left corner of the screen, right?&lt;/p&gt;
+&lt;img alt="projects/project-27257/images/720671505666678552.png" src="projects/project-27257/images/720671505666678552.png" /&gt;
+&lt;p&gt;Well, yes, you can do that and that works fine most of the time. But
+there are limitations. By default, that button rotates things by 90°.
+Some objects can be rotated by 45° by clicking on the small arrow on
+that button, and selecting the appropriate option for the pop-up menu.
+But some things, such as vias and holes, can’t be rotated at all.
+Initially that makes sense. After all, why would you want to rotate a
+round hole or via — they look the same no matter how they are rotated!
+However, you might still need to rotate a set of holes or vias, or a
+mix of parts (like your whole design, for example) that includes holes
+and vias in it. And Fritzing won’t let you do that.&lt;/p&gt;
+&lt;p&gt;I had this problem with an Adafruit Feather shield that I was
+designing — it’s slightly longer than 5cm, but my board house would
+only make 5×5cm boards cheaply, anything larger costs extra. But I
+figured out that I can fit this shield into the 5×5cm outline if only
+I rotate it by 45°. But how can I do that when it contains vias and
+holes?&lt;/p&gt;
+&lt;p&gt;Looking for a way to do this, I found this “rotation” property in the
+side pane:&lt;/p&gt;
+&lt;img alt="projects/project-27257/images/5683771505667163031.png" src="projects/project-27257/images/5683771505667163031.png" /&gt;
+&lt;p&gt;This lets you rotate a single object by pretty much any angle, not
+just multiplies of 45° or 90°. In particular, you can rotate your PCB
+by any amount, even though that red button only lets you do 90° for
+the PCBs. Neat! But I can’t use that when I have multiple objects
+selected, so it doesn’t solve the problem.&lt;/p&gt;
+&lt;p&gt;I wish I could also figure out the next piece of the puzzle myself,
+but I actually found it on the Fritzing’s user forum. You see, the PCB
+has one property that other objects don’t have — the “sticky”
+checkbox, right under that rotation property:&lt;/p&gt;
+&lt;img alt="projects/project-27257/images/3913921505667409946.png" src="projects/project-27257/images/3913921505667409946.png" /&gt;
+&lt;p&gt;When an object is sticky, whenever you move it, it will also take with
+it all other objects that touch it. And rotation counts as movement
+here. So all I had to do is make my PCB sticky and set its rotation,
+and everything on it rotated together with it. Presto!&lt;/p&gt;
+&lt;p&gt;Of course, sometimes you want to just rotate a few selected parts.
+Then you can drag a second PCB onto your design, make it sticky, put
+all the parts you need rotated on it, rotate it, and then delete the
+PCB and move the parts back where you need them. A bit hacky, but
+workable.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-27257/log-67341/" rel="alternate"/>
+    <summary>Published on 2017-09-17 in project-27257.</summary>
+    <published>2017-09-17T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-27257/log-67389/</id>
+    <title>Trace Aesthetics</title>
+    <updated>2017-09-18T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="trace-aesthetics"&gt;
+
+&lt;p&gt;Published on 2017-09-18 in &lt;a class="reference internal" href="../../../projects/project-27257/#project-27257"&gt;&lt;span class="std std-ref"&gt;Fritzing Tricks&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I’ve been putting this post off for some time now, but we need to talk
+about this sooner or later. Fritzing became infamous in the
+electronics community for the characteristic ugly traces that are
+often done with it. People new to the whole thing just connect the
+holes and pads in straight lines, adding a bend sometimes when
+necessary, and call it a day. It looks something like this:&lt;/p&gt;
+&lt;img alt="projects/project-27257/images/4729141505729345377.png" src="projects/project-27257/images/4729141505729345377.png" /&gt;
+&lt;p&gt;What’s wrong with this, you ask? All the connections are there, so it
+will work fine, after all, no?&lt;/p&gt;
+&lt;p&gt;Well, there is a number of things wrong. First of all, you are just
+being lazy, and that’s a sure warning sign that most likely there will
+be other problems with this design. Second, this is not pleasant to
+look at, and more importantly, to work with. It’s not easy to see what
+is connected where and to modify this design. It’s also easy to miss
+shorts between the traces. Finally, there are actual technical reasons
+why this design is sub-optimal.&lt;/p&gt;
+&lt;p&gt;You probably have heard about radio-frequency emissions from traces.
+Turns out that every trace is basically a small antenna, and it will
+waste energy by emitting radio waves. Most traces are not particularly
+good antennas, but the ones that have a lot of sharp angles and are
+not surrounded by copper fill are better at emitting noise. Unless you
+are working with gigahertz signal, this is not the technical reason
+for worrying about sharp angles, though.&lt;/p&gt;
+&lt;p&gt;If you are etching your own boards, you have to be very careful about
+all the nooks and crannies in your design. The etchant will tend to
+pool int them, and eat out much more copper in those places, leading
+to possible faulty boards. This is not the technical reason for
+worrying about sharp angles if you send your design to a professional
+board house for fabrication, though. Neither is the fact that because
+of the lack of a copper fill, a lot of copper has to be etched away
+and a lot of the etchant wasted on that, and the etching process will
+take a lot of time.&lt;/p&gt;
+&lt;p&gt;Finally, the sharp corners are more likely to peel off the board,
+especially if it’s subject to any mechanical stresses or bad storage.
+Again, not much of an issue with professionally made boards.&lt;/p&gt;
+&lt;p&gt;But it still looks very bad, and all the people who ate their teeth on
+the above-mentioned limitations will shudder at the sight of it. So
+please, be a nice person and spend the minimal extra effort to
+actually make it look good. Start by aligning all the traces so that
+you only have horizontal, vertical and diagonal lines (you can hold
+ctrl+shift while moving the trace for Fritzing to help you with it):&lt;/p&gt;
+&lt;img alt="projects/project-27257/images/6087081505730301267.png" src="projects/project-27257/images/6087081505730301267.png" /&gt;
+&lt;p&gt;&lt;br /&gt;
+Much better already, don’t you think? Now let’s get rid of those sharp
+angles:&lt;/p&gt;
+&lt;img alt="projects/project-27257/images/7798151505730730947.png" src="projects/project-27257/images/7798151505730730947.png" /&gt;
+&lt;p&gt;It’s starting to look right, doesn’t it? Note that I actually left a
+couple of right angles in there — in the T-junctions, and also for the
+traces that are too close together to actually do a nice gradual turn.
+Personally I think this is fine, but for the reasons I listed above,
+opinions vary. Finally, let’s add a copper fill:&lt;/p&gt;
+&lt;img alt="projects/project-27257/images/3810631505730903031.png" src="projects/project-27257/images/3810631505730903031.png" /&gt;
+&lt;p&gt;Et voila! A decent looking PCB design. It wasn’t so difficult after
+all, was it?&lt;/p&gt;
+&lt;p&gt;Of course there is much more to it than just the horizontal and
+vertical lines and sharp angles. But this is already a start. If you
+keep practicing, looking at other people’s designs, etc. you will come
+up with your own set of good habits that make the designs nicer,
+easier to read, less likely to contain mistakes, and more pleasant to
+work with.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-27257/log-67389/" rel="alternate"/>
+    <summary>Published on 2017-09-18 in project-27257.</summary>
+    <published>2017-09-18T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-27257/log-67721/</id>
+    <title>Net Labels</title>
+    <updated>2017-09-24T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="net-labels"&gt;
+
+&lt;p&gt;Published on 2017-09-24 in &lt;a class="reference internal" href="../../../projects/project-27257/#project-27257"&gt;&lt;span class="std std-ref"&gt;Fritzing Tricks&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Let’s talk a little bit about schematics. I know that you rarely visit
+that tab, but if you want other people to actually make sense of your
+project, you have to document it. Like I did with my &lt;a class="reference internal" href="../../../projects/project-18120/#project-18120"&gt;&lt;span class="std std-ref"&gt;D1 Mini Matrix Shield&lt;/span&gt;&lt;/a&gt; :&lt;/p&gt;
+&lt;img alt="projects/project-27257/images/2448341506280430055.png" src="projects/project-27257/images/2448341506280430055.png" /&gt;
+&lt;p&gt;\&lt;/p&gt;
+&lt;p&gt;I really tried to make it readable. However, the LED matrix has such
+ridiculously random pinout, and there are so many connections, that
+it’s really difficult to make sense of it.&lt;/p&gt;
+&lt;p&gt;Today I’m a little bit wiser and I use the net labels, which you can
+find in your parts pane under schematic view:&lt;/p&gt;
+&lt;img alt="projects/project-27257/images/4687771506280554982.png" src="projects/project-27257/images/4687771506280554982.png" /&gt;
+&lt;p&gt;\&lt;/p&gt;
+&lt;p&gt;The way you use it, you connect it in place of a wire, and at the
+other end you make another one, with the same name. Fritzing considers
+all the labels with the same network name on them connected. The
+resulting schematic is much easier to read, like the way I made for &lt;a class="reference internal" href="../../../projects/project-21578/#project-21578"&gt;&lt;span class="std std-ref"&gt;PewPew FeatherWing&lt;/span&gt;&lt;/a&gt; :&lt;/p&gt;
+&lt;img alt="projects/project-27257/images/7132411506280998450.png" src="projects/project-27257/images/7132411506280998450.png" /&gt;
+&lt;p&gt;Of course, this is not a silver bullet. If you overdo it, and all your
+connections are just some random labels, your schematic will be even
+harder to read. But if you can think of a name for a given connection,
+it’s probably a good idea to use a label for it.\&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-27257/log-67721/" rel="alternate"/>
+    <summary>Published on 2017-09-24 in project-27257.</summary>
+    <published>2017-09-24T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-27257/log-148597/</id>
+    <title>Custom PCB Outline</title>
+    <updated>2018-07-01T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="custom-pcb-outline"&gt;
+
+&lt;p&gt;Published on 2018-07-01 in &lt;a class="reference internal" href="../../../projects/project-27257/#project-27257"&gt;&lt;span class="std std-ref"&gt;Fritzing Tricks&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;One of the greatest advantages of Fritzing over other PCB software
+currently on the market is its ability to SVG files directly, without
+any need of converting or tracing them. Since it uses SVG internally
+for anything, it’s only natural that the PCB outline is also an SVG
+file. I’m going to tell you here how I go about making custom PCB
+outlines.&lt;/p&gt;
+&lt;p&gt;Usually I start by designing everything on a standard rectangular PCB,
+keeping in mind the rough shape that I am going to need. Here’s an
+improved design for the &lt;a class="reference internal" href="../../../projects/project-9769/#project-9769"&gt;&lt;span class="std std-ref"&gt;Mechatronic Ears&lt;/span&gt;&lt;/a&gt;  with a power switch added:&lt;/p&gt;
+&lt;img alt="projects/project-27257/images/4296261530465949010.png" src="projects/project-27257/images/4296261530465949010.png" /&gt;
+&lt;p&gt;Next, I export the design as an SVG image:&lt;/p&gt;
+&lt;img alt="projects/project-27257/images/1906711530466066806.png" src="projects/project-27257/images/1906711530466066806.png" /&gt;
+&lt;p&gt;Then I open it in Inkscape, where I can easily draw my desired board
+outline:&lt;/p&gt;
+&lt;img alt="projects/project-27257/images/3724381530466194782.png" src="projects/project-27257/images/3724381530466194782.png" /&gt;
+&lt;p&gt;Usually I pick some nice, partially transparent color (green, blue and
+purple work well) and draw the shape of the PCB I want with it:&lt;/p&gt;
+&lt;img alt="projects/project-27257/images/6047871530466476852.png" src="projects/project-27257/images/6047871530466476852.png" /&gt;
+&lt;p&gt;You can also add some silkscreen:&lt;/p&gt;
+&lt;img alt="projects/project-27257/images/490381530466625269.png" src="projects/project-27257/images/490381530466625269.png" /&gt;
+&lt;p&gt;Next, I remove all the Fritzing stuff from the image, and leave only
+the board outline and the silkscreen:&lt;/p&gt;
+&lt;img alt="projects/project-27257/images/7048951530466741327.png" src="projects/project-27257/images/7048951530466741327.png" /&gt;
+&lt;p&gt;Now create a new layer in Inkscape using_Layer→Add Layer…_ menu option, and name it “board”. Select the board outline, and then
+select_Layer→Move Selection to Layer…_, then select the newly created layer “board”. Repeat that with the
+silkscreen, except call it “silkscreen0” for the bottom, or
+“silkscreen1” for the top (you can have both).&lt;/p&gt;
+&lt;p&gt;We are almost done. Unfortunately, Inkscape doesn’t call the layers
+the way you tell it — it only adds labels to them with your names. We
+will need to go a little bit deeper to actually modify the layer IDs.
+Open the XML Editor, you should see something like this:&lt;/p&gt;
+&lt;img alt="projects/project-27257/images/6197001530467275980.png" src="projects/project-27257/images/6197001530467275980.png" /&gt;
+&lt;p&gt;Now you can select each of the layers, select the “id” attribute on
+the right side, and enter new value for it on the bottom. Change the
+IDs to “board”, “silkscreen0”, “silkscreen1”, etc. so that they match
+the labels. Don’t forget to click Set each time, or it won’t get
+saved.&lt;/p&gt;
+&lt;p&gt;You are done. Now you can save your board as “Plain SVG”, and go back
+to Fritzing. In Fritzing, select the PCB, and in the properties click
+on the_load image file_ button:&lt;/p&gt;
+&lt;img alt="projects/project-27257/images/3061981530467466742.png" src="projects/project-27257/images/3061981530467466742.png" /&gt;
+&lt;p&gt;Select your saved SVG image. You should see a summary telling you how
+many cutouts (slots) your PCB has — make sure that number is correct.
+Finally, you will need to adjust the position of your PCB to match the
+components, and you are done:&lt;/p&gt;
+&lt;img alt="projects/project-27257/images/4986671530467729063.png" src="projects/project-27257/images/4986671530467729063.png" /&gt;
+&lt;p&gt;Now, when you export the board as gerbers, I recommend to do one more
+step before you send it to fabrication: open the board outline in a
+gerber viewer, such as “gerbv” and verify that the generated shape is
+indeed correct. Fritzing has some very annoying bugs around the gerber
+generation, and you might be unpleasantly surprised if you skip this
+step.&lt;/p&gt;
+&lt;img alt="projects/project-27257/images/1155181530467888431.png" src="projects/project-27257/images/1155181530467888431.png" /&gt;
+&lt;p&gt;This time everything is correct. If it wasn’t, I would go back to
+Inkscape and add a couple of nodes to the shape, around the places
+where something went wrong, to make sure it’s correct.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-27257/log-148597/" rel="alternate"/>
+    <summary>Published on 2018-07-01 in project-27257.</summary>
+    <published>2018-07-01T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-27257/log-148636/</id>
+    <title>Tented Vias</title>
+    <updated>2018-07-02T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="tented-vias"&gt;
+
+&lt;p&gt;Published on 2018-07-02 in &lt;a class="reference internal" href="../../../projects/project-27257/#project-27257"&gt;&lt;span class="std std-ref"&gt;Fritzing Tricks&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This trick was originally described by &lt;a class="reference external" href="https://hackaday.io/hacker/72667"&gt;&amp;#64;Arduino Enigma &lt;/a&gt; in the &lt;span class="xref std std-ref"&gt;project-91895&lt;/span&gt; . Tented vias are vias that are covered with soldermask. If you think
+about it for a moment, there is really no reason for a via to be
+exposed (unless you re-use it as a test point). Its job is to connect
+the layers, and it does it as well when it is covered. On the other
+hand, when it’s covered, the risk of shorting it is smaller, and the
+board can look much better.&lt;/p&gt;
+&lt;p&gt;Unfortunately Fritzing doesn’t normally give you the option to have
+the vias tented. But there is a simple trick to add the soldermask
+over them when you are generating the gerbers. Start by generating
+your gerber files as usual, and once you do that, select_Routing→Select All Vias_ from the menu, and press the Del key to delete them. It will also
+delete some of the traces, but don’t worry about it. Now generate
+another set of gerber files, in a separate directory, and close
+Fritzing without saving the file.&lt;/p&gt;
+&lt;p&gt;Now all you have to do is to copy the_maskTop, maskBottom, silkTop_ and_silkBottom_ files from the latter directory to the former, and voila, your vias
+are now covered with soldermask. You can also only copy only some of
+those files to only have the vias covered on one side of the board.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-27257/log-148636/" rel="alternate"/>
+    <summary>Published on 2018-07-02 in project-27257.</summary>
+    <published>2018-07-02T00:00:00+02:00</published>
+  </entry>
+</feed>

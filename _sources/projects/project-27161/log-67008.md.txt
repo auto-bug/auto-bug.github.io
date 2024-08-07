@@ -1,0 +1,42 @@
+---
+blogpost: true
+date: 2017-09-12
+category: project-27161
+---
+
+# Trinket M0 TFT — Mirrors, how do they work?
+Published on 2017-09-12 in {ref}`project-27161`.
+
+The first of the PCBs I ordered for the {ref}`project-27033` just came, and I started assembling it:
+
+
+:::{image} images/2570931505230656977.jpg
+
+:::
+I can get a really low profile with the narrow headers and with male
+headers that have the plastic removed, so this is nice. There is
+however a slight problem. Even though the display is the only
+component that goes onto that PCB, I still managed to get it wrong: I
+used a mirrored footprint, copied from my previous design that had the
+connector on the underside of the board. But this board has the
+connector on the top, so it's rotated 180°. And it's too far from the
+other edge of the PCB for me to just rotate the whole display and use
+it like that.
+
+And of course, I used the same connector design in the next two
+versions that I ordered, so they are also going to be wrong. So I
+quickly went and ordered a fixed version:
+
+
+:::{image} https://644db4de3505c40a0444-327723bce298e3ff5813fb42baeefbaa.ssl.cf1.rackcdn.com/a9f02c18578138d877b33c527e54363e.png
+
+:::
+Even the routing was simpler with the mirrored display. I ordered this
+one with Super-Swift service, so hopefully I will have it this month.
+In the mean time, I still soldered one display to the board I have, to
+make sure there are no further surprises. It works as expected:
+
+
+:::{image} images/4786941505231013269.jpg
+
+:::

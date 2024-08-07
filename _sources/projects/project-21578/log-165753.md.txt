@@ -1,0 +1,54 @@
+---
+blogpost: true
+date: 2019-07-15
+category: project-21578
+---
+
+# D1 Mini Shield
+Published on 2019-07-15 in {ref}`project-21578`.
+
+I have been mostly working on the {ref}`project-159733` recently, but some people still prefer the PewPew Lite version, mostly
+for its color display and ability to work with the ESP8266 Feather. So
+after I finally found reasonably tiny buttons for {ref}`project-165983` , I decided to also make a version of the PewPew Lite in form of a D1
+Mini shield. As an additional challenge I wanted to make it
+electrically identical to the FeatherWing. After two nights, I had the
+design:
+
+
+
+:::{image} images/3869751563223148383.png
+
+:::
+
+
+
+
+:::{image} images/4679431563223184652.png
+
+:::
+
+
+It's not perfect. Ideally, all the resistors would be under the LED
+matrix, but there simply wasn't enough room to fit all the traces
+there. But I managed to do it, even if it required a thousand vias. [I ordered the PCB from OSHPark](https://oshpark.com/shared_projects/i3DM7Qay) , and promptly forgot about the whole thing.
+
+Today the boards came, so I assembled one. I found a bi-color matrix
+in my drawer, but I only found 3 of the buttons — I'm still waiting
+for the package with more of them. So I only soldered what I had, to
+test how the menu works:
+
+
+
+:::{image} images/2511091563223374398.JPG
+
+:::
+
+
+Since CircuitPython no longer supports ESP8266, I had to port the Pew
+library to MicroPython — that was easy enough, with just changing all
+the timing functions to use utime, and all i2c calls to use the
+machine module. After I did that, I wanted to upload the code to
+GitHub, [but discovered that it's already there](https://github.com/pewpew-game/pew-pewpewlite-4.x-micropython)  — I have ported it once already and forgot about it.
+
+Once the missing button arrive I will finish this.
+

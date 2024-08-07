@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Fritzing Tricks - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="fritzing-tricks">
+<h1>Fritzing Tricks<a class="headerlink" href="#fritzing-tricks" title="Permalink to this heading">¶</a></h1>
+<p>Some techniques for designing PCBs using Fritzing</p>
+<div class="project-thumb">
+<a class="reference external image-reference" href="/_images/7921431505306260287.jpg"><img alt="projects/project-27257/images/7921431505306260287.jpg" src="projects/project-27257/images/7921431505306260287.jpg" /></a>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Fritzing is a really underappreciated piece of software. Because it is
+</pre></div>
+</div>
+<p>easy to use, it is being used by a lot of people who don’t necessarily
+yet know what they are doing. And since the graphics generated with
+Fritzing are easily recognizable (there is often even a logo on them),
+it has become associated with horrible designs. Which is really
+unfair, because being easy to use is an advantage, and it really lets
+you do great stuff.</p>
+<p>More than that, Fritzing is the only PCB CAD software I know that
+actually uses open standards, instead of inventing its own formats. It
+works natively with SVG, lets you import and export SVGs, the saved
+projects are simply ZIP files with SVGs inside, as well as the custom
+parts and pretty much anything else. Thanks to that, it also lets you
+do stuff like curved traces without any extra hassle.</p>
+<p>Thanks to its “breadboard” view, it’s also very good for planning your
+designs for protoboards and veroboards, and even for things like dead
+bug circuits or Manhattan-style PCBs.</p>
+<p>Unfortunately, with all this awesomeness comes also a great deal of
+problems. Let’s say it straight: Fritzing is buggy. Because it doesn’t
+get much love from its target audience, it also doesn’t get much love
+from the developers. It’s not easy to select the part you want,
+especially when it’s under another part that obscures it. Connecting
+the trace to just the right leg of a chip takes some patience. The
+ground fill sometimes creates pretty unexpected results. Oh, and
+forget autorouter, it’s simply useless.</p>
+<p>But you can still create very good designs very fast with it,
+especially if you learn a couple of tricks.</p>
+<section id="logs">
+<h2>Logs<a class="headerlink" href="#logs" title="Permalink to this heading">¶</a></h2>
+<ul class="postlist-style-none postlist simple">
+<li class="ablog-post"><p class="ablog-post-title">2018-07-02 - <a class="reference internal" href="log-148636/">Tented Vias</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2018-07-01 - <a class="reference internal" href="log-148597/">Custom PCB Outline</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-09-24 - <a class="reference internal" href="log-67721/">Net Labels</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-09-18 - <a class="reference internal" href="log-67389/">Trace Aesthetics</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-09-17 - <a class="reference internal" href="log-67341/">Rotating Everything</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-09-17 - <a class="reference internal" href="log-67344/">Part Libraries</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-09-15 - <a class="reference internal" href="log-67166/">The Grid</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-09-15 - <a class="reference internal" href="log-67165/">Ratsnest Lines</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-09-14 - <a class="reference internal" href="log-67111/">Mystery Part</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-09-14 - <a class="reference internal" href="log-67110/">Hole Sizes</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-09-13 - <a class="reference internal" href="log-67053/">Vero and Proto Boards</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2017-09-13 - <a class="reference internal" href="log-67052/">Learn Inkscape</a></p></li>
+</ul>
+</section>
+<section id="instructions">
+<h2>Instructions<a class="headerlink" href="#instructions" title="Permalink to this heading">¶</a></h2>
+</section>
+</section>
+
+
+</div>
+  </body>
+</html>

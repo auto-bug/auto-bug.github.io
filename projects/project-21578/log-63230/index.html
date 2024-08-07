@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>PewPew Lite Assembled - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="pewpew-lite-assembled">
+<h1>PewPew Lite Assembled<a class="headerlink" href="#pewpew-lite-assembled" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2017-07-17 in <a class="reference internal" href="../#project-21578"><span class="std std-ref">PewPew FeatherWing</span></a>.</p>
+<p>The PCBs for the PewPew Lite arrived from <a class="reference external" href="https://hackaday.iohttps://hackaday.io/hacker/131216">&#64;oshpark</a> , so I assembled one and I’m really happy with it:</p>
+<img alt="projects/project-21578/images/2381751500309273685.jpg" src="projects/project-21578/images/2381751500309273685.jpg" />
+<p>I didn’t have an SMD diode at hand, so I just put a THT one there, and
+connected it to the correct pin (there was a mistake in the PCB, if
+you remember the previous log). I also quickly extended my HT16K33
+drivers with a class for this board:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">PewPewLite</span><span class="p">(</span><span class="n">Matrix8x8x2</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_copy_buf</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">pixel</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">framebuffer</span><span class="o">.</span><span class="n">pixel</span>
+        <span class="n">_buffer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span>
+        <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">):</span>
+            <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">):</span>
+                <span class="n">color</span> <span class="o">=</span> <span class="n">pixel</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">color</span> <span class="o">&amp;</span> <span class="mh">0x01</span><span class="p">:</span>
+                    <span class="n">b</span> <span class="o">|=</span> <span class="mh">0x01</span> <span class="o">&lt;&lt;</span> <span class="n">x</span>
+                <span class="k">if</span> <span class="n">color</span> <span class="o">&amp;</span> <span class="mh">0x02</span><span class="p">:</span>
+                    <span class="n">b</span> <span class="o">|=</span> <span class="mh">0x01</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="mi">15</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span>
+            <span class="n">_buffer</span><span class="p">[</span><span class="mi">14</span> <span class="o">-</span> <span class="n">y</span> <span class="o">*</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">b</span> <span class="o">&amp;</span> <span class="mh">0xff</span>
+            <span class="n">_buffer</span><span class="p">[</span><span class="mi">15</span> <span class="o">-</span> <span class="n">y</span> <span class="o">*</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xff</span>
+
+    <span class="k">def</span> <span class="nf">keys</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">int</span><span class="o">.</span><span class="n">from_bytes</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">i2c</span><span class="o">.</span><span class="n">readfrom_mem</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">address</span><span class="p">,</span> <span class="mh">0x40</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+                              <span class="s1">&#39;little&#39;</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">5</span>
+</pre></div>
+</div>
+<p>Nothing too fancy, just had to adjust the rotation and add a method
+for reading the keys.</p>
+<p>I also received the PCB for <a class="reference internal" href="../../project-25256/#project-25256"><span class="std std-ref">Ye Olde Nowt</span></a>  with the THT buttons, and now I’m thinking about how to use those
+buttons also with this project, as they are much more compact.
+Probably won’t work, since I really need stuff on both sides of the
+PCB. There is one more type of buttons that I might try – they are
+SMD, but use pads under the buttons, and not legs, like the ones here.</p>
+<p>And of course I <em>really</em> need to start writing the games for this. I
+already have ideas of a dozen of them.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

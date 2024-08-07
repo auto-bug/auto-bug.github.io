@@ -1,0 +1,45 @@
+---
+blogpost: true
+date: 2017-06-23
+category: project-25256
+---
+
+# Power Problems Solved
+Published on 2017-06-23 in {ref}`project-25256`.
+
+A quick PCB surgery, and I cut the trace from near the pin 1 of the pi
+connector from display's vcc, and connected that to the nearby 5V
+connector that I left there for power. That solved the weird behavior
+of the display and the restarts, but it's still making chirping
+noises. The images below show the changes:
+
+
+:::{image} images/2720011498236853161.jpg
+
+:::
+
+
+
+:::{image} images/4320891498236882790.jpg
+
+:::
+
+
+In other news, I managed to move the whole configuration of the
+display into an overlay, and also got the keys work with gpio-keys
+driver -- except one of the fire buttons, which uses gpio 7, and which
+is a second CS pin for the SPI controller. The SPI driver just won't
+give that pin up.
+
+I already started designing second version of the PCB that would use
+other pins -- tested working -- but I'm still not entirely sure if I'm
+going to be ordering that. De-soldering this display now would be a
+little tricky without hot air. I guess it all depends on whether there
+are more mistakes to be found in the audio system, which I didn't test
+yet.
+
+I'm also still thinking about bet option for powering this. Right now
+I'm leaning towards a flat lipo sandwitched between the two boards,
+because that would be small, but it's really getting hot in there, so
+I'm not sure.
+

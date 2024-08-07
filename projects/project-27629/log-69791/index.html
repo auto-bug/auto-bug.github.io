@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Inside a Tile Engine - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="inside-a-tile-engine">
+<h1>Inside a Tile Engine<a class="headerlink" href="#inside-a-tile-engine" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2017-10-28 in <a class="reference internal" href="../#project-27629"><span class="std std-ref">µGame</span></a>.</p>
+<p>So how does all that work? It’s simple, really, apart from all the
+book-keeping code for loading graphics and palettes from BMP files,
+accessing individual pixels in 4bpp data, and so on.</p>
+<p>The heart of the whole thing is this method:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">render</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">buffer</span><span class="p">):</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">y0</span><span class="p">,</span> <span class="n">y1</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">x1</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="p">:</span>
+                    <span class="n">c</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">pixel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">c</span> <span class="o">!=</span> <span class="mh">0x1ff8</span><span class="p">:</span>
+                        <span class="n">buffer</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">c</span>
+                        <span class="k">break</span>
+                <span class="n">index</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>It takes the coordinates of two corners of a rectangle and a buffer,
+and fills the buffer with pixel data to be sent to the display. It
+does that by iterating over all the pixels, and for each checking all
+the layers and sprites for non-transparent pixels. As soon as it finds
+one, it sets its color in the buffer, and goes to the next pixel.
+Simple.</p>
+<p>Of course all the complexity is actually hidden in that pixel method
+of the layer/sprite, which needs to figure out how those coordinates
+map to the coordinates of the given layer, find the right square on
+it, get the graphic for that square, find which pixel in that graphic
+we want, convert it from 4-bit to 16-bit color using the correct
+palette, and return the color. That’s where probably 80% of the time,
+or more, is being spent. Fortunately, that’s all rather simple
+additions, bit shifts and table look-ups, so I hope that I can make it
+really, really fast in C.</p>
+<p>On a side note, this is not the optimal way for doing it speed-wise.
+Using a blit function that would transfer whole blocks of memory would
+be much more efficient in terms of speed. But not in terms of memory,
+and I care for memory more in here than for the raw speed, which is
+limited by the speed of the SPI interface anyways.</p>
+<img alt="projects/project-27629/images/890521509222134245.jpg" src="projects/project-27629/images/890521509222134245.jpg" />
+</section>
+
+
+</div>
+  </body>
+</html>

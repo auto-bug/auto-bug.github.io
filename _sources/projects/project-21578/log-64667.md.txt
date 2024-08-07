@@ -1,0 +1,50 @@
+---
+blogpost: true
+date: 2017-08-05
+category: project-21578
+---
+
+# Thinking about PewPew 2
+Published on 2017-08-05 in {ref}`project-21578`.
+
+PewPew FeatherWing qualified for the finals of the Best Product
+category of the Hackaday Prize. That makes me very happy, as it means
+that I'm not the only one who thinks this is actually doable. Sure, I
+started simple, and then I simplified the project further along the
+way. But the hard part is writing the actual library and its
+documentation, together with the games and their tutorials.
+
+On the library front, I started to rewrite the whole thing to make
+everything work on images, similar to PyGame's Surface objects. There
+will no longer be commands for changing the colors of individual
+pixels of the display, instead you are going to send an image to it.
+The image class itself will have all the operations.
+
+I also have some ideas about how to make the documentation fun to read
+and interesting. I'm drawing some inspiration from the famous [Why's Poignant Guide to Ruby.](http://poignant.guide/)  Only less poignant. And more, you know, actually useful. The second
+part of my inspiration comes from the [Earth Destruction Advisory Board](https://qntm.org/board) , which is a very important resource in this day and age.
+
+But qualifying to the next round also made me start thinking a little
+more bravely about the next iteration on the idea. One with a screen.
+And a dedicated microcontroller to handle it. I got some more of those
+tiny ST7735 screens – this time horizontal, not vertical, as those
+only had the SPI pins broken out, and I will need parallel interface
+to make the display refresh fast enough. Here's a mock-up of the
+feather with that screen:
+
+
+:::{image} images/7343071501884007016.jpg
+
+:::
+\
+
+
+The buttons are going to have to be through-hole, as there is no way I
+can fit those SMD buttons so tight, but their spacing seems to look
+fine. I also haven't decided what microcontroller to use — I will be
+testing several different possibilities, and I will probably pick the
+cheapest one that is fast enough. I'm now waiting for the breakout PCB
+for that display, so that I can breadboard it conveniently.
+
+Hopefully I will have some games to show after the weekend.
+

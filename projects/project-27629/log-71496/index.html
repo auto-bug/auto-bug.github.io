@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Version 6 - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="version-6">
+<h1>Version 6<a class="headerlink" href="#version-6" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2017-12-13 in <a class="reference internal" href="../#project-27629"><span class="std std-ref">µGame</span></a>.</p>
+<p>The PCBs for version 6 arrived about a week ago, but I didn’t have
+time to work on it, between the day job and being sick. This evening I
+finally tested it properly:</p>
+<img alt="projects/project-27629/images/5886841513202019440.jpg" src="projects/project-27629/images/5886841513202019440.jpg" />
+<p>The good things:</p>
+<ul class="simple">
+<li><p>moving the audio circuit was a good move, it’s now completely out of
+reach of fingers, and I think it also seems a bit louder when the LOS
+is not obscured by hands,</p></li>
+<li><p>using straight switch instead of angled one for reset also works well
+— I can have a hole in the case (if I have a case) for pressing it
+with a pin,</p></li>
+<li><p>straight buttons are easier to solder,</p></li>
+<li><p>adding a CS pin made the displays all work consistently,</p></li>
+<li><p>moving the LDO away from the buttons also made it easier to solder.</p></li>
+</ul>
+<p>There are still some rough edges, though, that I only found out after
+actually testing a physical prototype.</p>
+<p>The bad things:</p>
+<ul class="simple">
+<li><p>the CS pin uses a via, and touching that via with your fingers makes
+the display stop updating — I need to route that trace on front side
+entirely,</p></li>
+<li><p>the charging LED still shines whenever USB is connected, even if the
+battery is disconnected  — it does go off when the battery is fully
+charged, though,</p></li>
+</ul>
+<p>So I scrapped the version 7 which was basically just a cleanup of
+version 6 ready for ordering a larger number of them, and prepared
+version 8. I moved practically all parts around, including the
+microcontroller and the flash chip, but now:</p>
+<ul class="simple">
+<li><p>the reset button is next to the direction buttons, not on the edge of
+the pcb,</p></li>
+<li><p>all components, except for the audio circuit, are together in the
+middle of the board,</p></li>
+<li><p>the signals for audio and for the display are routed on one side
+without any vias,</p></li>
+<li><p>there are no parts under the fingers anymore,</p></li>
+<li><p>the top fire button got moved to the edge to make room for the parts,
+so now the layout looks more like gameboy,</p></li>
+<li><p>all the parts are better spaced and have shorter traces between them,</p></li>
+<li><p>there are more mounting holes (some are under the display, but with
+flat heads that could still be useful),</p></li>
+<li><p>I have broken out four unused pins on the back, for possible hacking,</p></li>
+<li><p>I moved the battery connector to the other side of the board, so it
+now matches the layout of Nokia phone (dumb) batteries.</p></li>
+</ul>
+<p>I know I said that about the previous version, but this is really to
+be the last one I’m making (at least with this microcontroller and
+display) — if everything works, that is. I’m going to order this one
+at Aisler again, to see how they improved (and to get a stencil).</p>
+<img alt="projects/project-27629/images/8228351513205717693.png" src="projects/project-27629/images/8228351513205717693.png" />
+</section>
+
+
+</div>
+  </body>
+</html>

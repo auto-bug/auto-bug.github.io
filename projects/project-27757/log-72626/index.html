@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Some Progress - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="some-progress">
+<h1>Some Progress<a class="headerlink" href="#some-progress" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2018-01-07 in <a class="reference internal" href="../#project-27757"><span class="std std-ref">Micro:Boy</span></a>.</p>
+<p>The PCBs with the horizontal layout and display module arrived, so I
+assembled the new version:</p>
+<img alt="projects/project-27757/images/1283961515359542650.jpg" src="projects/project-27757/images/1283961515359542650.jpg" />
+<p>I’m happy with it mechanically. You don’t touch the contacts when you
+hold it, and the two buttons on the micro:bit are right under your
+index fingers. It’s wide enough to hold comfortably. The flattened
+d-pad is a bit less convenient than it could be if it was full-size,
+but I can’t have everything. The coin battery fits inside the
+sandwich, and the whole thing the right thickness. I had to add some
+spacers to the bolts that hold the thing together, to make sure the
+spacing is right. You can both use through-hole bolts, or solder them
+to the pads — here I soldered them, but I think I will go with
+through-hole in the future.</p>
+<p>I’m still missing one crucial part — the attiny that will be handling
+the buttons is still on the slow boat from China. Seems like the
+holiday season was really tough on the post offices around the world,
+because everything takes longer now. I guess I won’t be able to get
+this to work before the contest deadline.</p>
+<p>On an unrelated note, I think I figured out why I couldn’t get that
+display to work reliably without a module. Turns out that after
+powering it, it requires to be reset by the physical reset pin. The
+datasheet’s example schematics don’t show it, but those modules have
+an R-C circuit on the reset pin to do that. Mine didn’t, hence the
+problems. But I think I will stay with the modules for now anyways.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

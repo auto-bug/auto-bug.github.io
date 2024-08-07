@@ -1,0 +1,22 @@
+---
+blogpost: true
+date: 2019-06-21
+category: project-27629
+---
+
+# Suddenly:  A Speedup
+Published on 2019-06-21 in {ref}`project-27629`.
+
+The SAMD21 powering the µGame consoles is not a daemon of speed. With
+48MHz clock and software floating point operations, not to mention the
+overhead from CircuitPython interpreter, it's barely enough for a
+dozen frames per second in a relatively simple game. But there is good
+news: a recently released beta version of CircuitPython, 4.1.0, has
+enabled an optimization option which has been so far disabled to save
+on firmware size. It had been re-enabled, because it turns out that it
+provides a five time speedup of the CircuitPython virtual machine, and
+the size savings weren't that big anyways.
+
+So now suddenly all µGames are going to be 5x faster as soon as you
+upgrade their firmware with 4.1.0 that you can download from [http://circuitpython.org](http://circuitpython.org) .
+

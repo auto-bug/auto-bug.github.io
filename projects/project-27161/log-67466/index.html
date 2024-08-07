@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Trinket PWM Shield - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="trinket-pwm-shield">
+<h1>Trinket PWM Shield<a class="headerlink" href="#trinket-pwm-shield" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2017-09-19 in <a class="reference internal" href="../#project-27161"><span class="std std-ref">Trinket Shields</span></a>.</p>
+<p>This is the standard thing for controlling servos, which I already
+made for <a class="reference external" href="https://hackaday.io/project/13278-servo-breakout-for-wemos-d1-mini">D1 Mini</a>  and for <a class="reference external" href="https://hackaday.io/project/21038-servo-shield-for-openmv">OpenMV</a> . Now it’s time for the same thing for the Trinket. Except there isn’t
+that much space there, so I’m going to do it with 1.27mm servo plugs
+(good for some of the sub-micro servos). Shortly after I ordered the
+PCBs I realized that I swapped the SDA and SCL lines_again_. So I made a fixed design, but this time I spaced the servo sockets a
+bit, to make sure I can use those pico-blade sockets for them, and
+made the whole thing into a robot base – 1×1 inch.</p>
+<img alt="https://644db4de3505c40a0444-327723bce298e3ff5813fb42baeefbaa.ssl.cf1.rackcdn.com/a47294c6c1cf300f1cb791e94430bd37.png" src="https://644db4de3505c40a0444-327723bce298e3ff5813fb42baeefbaa.ssl.cf1.rackcdn.com/a47294c6c1cf300f1cb791e94430bd37.png" />
+<p>This came today, and I assembled two boards. One is for the <a class="reference internal" href="../../project-10665/#project-10665"><span class="std std-ref">Pony Bot</span></a> , and there will be a separate update for it, and the second is for a
+new spider robot that I’m considering:</p>
+<img alt="projects/project-27161/images/763311505857030552.jpg" src="projects/project-27161/images/763311505857030552.jpg" />
+<p>I am not sure yet how it will look or whether I will keep this battery
+on top — probably not. Anyways, once that’s done, I decided to redo
+the PWM shield in the small version, but try to fit all 16 outputs.</p>
+<img alt="https://644db4de3505c40a0444-327723bce298e3ff5813fb42baeefbaa.ssl.cf1.rackcdn.com/81e79a11c5bd66c4c5bbdc9a13d1cd72.png" src="https://644db4de3505c40a0444-327723bce298e3ff5813fb42baeefbaa.ssl.cf1.rackcdn.com/81e79a11c5bd66c4c5bbdc9a13d1cd72.png" />
+<p>It’s a little bit tight, but should work. I could even probably fit
+the address-selection jumpers on the back, but decided against it. 16
+servos should be enough for a small Trinket.</p>
+<p>By the way, the servos for that robot? Turns out that HobbyKing
+changed their connectors, they now use a JST 1.0 instead of a pico-
+blade. Which have 1mm pitch, not 1.27mm. Sigh.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

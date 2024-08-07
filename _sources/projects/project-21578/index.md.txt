@@ -1,0 +1,445 @@
+---
+blogpost: true
+date: 2017-04-29
+category: project
+tags:  adafruit, featherwing, game, hardware, Feather, matrix, blinkenlighten, led, play, CONSole, wing, ongoing project, gaming, 2017HackadayPrize, ESP8266
+image: 1
+---
+
+# PewPew FeatherWing
+
+A shield for Adafruit Feather boards with buttons and a LED matrix display, for simple games.
+
+<div class="project-thumb">
+
+:::{image} images/5291871493471689331.jpg
+:target: /_images/5291871493471689331.jpg
+:::
+
+:::{image} images/1414571501003318561.jpg
+:target: /_images/1414571501003318561.jpg
+:::
+
+:::{image} images/238851494965557079.jpg
+:target: /_images/238851494965557079.jpg
+:::
+
+:::{image} images/1671981524002657232.jpg
+:target: /_images/1671981524002657232.jpg
+:::
+
+:::{image} images/1734091525792538997.jpg
+:target: /_images/1734091525792538997.jpg
+:::
+
+:::{image} images/8067841525792523707.jpg
+:target: /_images/8067841525792523707.jpg
+:::
+
+</div>
+
+
+    Game programming is hard. Sure, you can easily throw together
+something in RPGMaker, RenPy or Unity3D, and it's great -- but you
+don't actually know how it works inside. There is a certain skill
+required to go from scratch, write your own main loop, handle events,
+push the pixels, etc.  Incidentally, the same exact skills are
+required when programming any other interactive system, such as a
+graphical user interface, an automatic appliance, a mobile art
+installation or... a robot! Those are going to be much more common in
+our lives soon. If we want to stay in control, we need to be able to
+program them ourselves, and for that we need those skills. They
+empower us and give us back the control over the technology.\
+
+
+One great tool for teaching it is PyGame -- which is a library, and
+not a game engine, so it forces you to attend to all those pesky
+details of game engine internals yourself. Which is a bit difficult,
+of course, but ultimately very useful. But even if you play with
+PyGame on the Raspberry Pi, it's still a very complicated and
+difficult to understand system. The learning curve is steep, and
+debugging is hell.
+
+Enter MicroPython, and one of its flavors, CircuitPython. It's written
+by the people at Adafruit with the education in mind, but it runs on
+infinitely simpler devices than your average computer. Devices which
+you can't break easily, because reflashing the program will reset them
+to a known good state. Devices which run on batteries for hours, and
+which you can carry in your pocket. Devices, for which there is a
+plethora of add-ons and sensors that you could make use of in your
+game.
+
+However, as of yet, there is no game library and/or add-on that would
+allow to easily create games in CircuitPython. This project is an
+attempt to fix this.\
+
+
+
+<iframe style="width: 500px; height: 281px;" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/Ad4hccVy9C8"></iframe>
+
+
+
+
+
+## Logs
+
+:::{postlist}
+:category: project-21578
+:::
+
+## Instructions
+
+
+
+
+### Trim the matrix
+
+
+Use wire cutters to cut off the excess pins, as flat against the board
+as possible.
+
+
+:::{image} images/6292041502800678061.jpg
+
+:::
+
+---
+
+
+
+### Add a battery (optional)
+
+
+If you have a small battery (I used 110mAh), you can add it on the
+back of the board.
+
+
+:::{image} images/1304421502800738814.jpg
+
+:::
+
+---
+
+
+
+### Cut the wires
+
+
+Cut the battery wires to about 0.5cm. Be careful to cut them one at a
+time, otherwise your cutters will short the battery and make sparks
+fly.
+
+
+:::{image} images/4215711502800798345.jpg
+
+:::
+
+---
+
+
+
+### Prepare wires
+
+
+Carefully remove the insulation and tin the ends of the wires. Be
+careful to not short them.
+
+
+:::{image} images/5447851502800878302.jpg
+
+:::
+
+---
+
+
+
+### Solder battery
+
+
+Solder the wires to the holes marked + (red wire) and - (black wire).
+
+
+:::{image} images/7973941502800944466.jpg
+
+:::
+
+---
+
+
+
+### Add tape
+
+
+Use a piece of two-sided tape to hold the battery in place, to prevent
+it from shorting the matrix pins, and to protect it from being damaged
+by the sharp pin leftovers sticking from the board.
+
+
+:::{image} images/8300181502801002830.jpg
+
+:::
+
+---
+
+
+
+### More tape
+
+
+Also add some tape on top, to prevent shorts on the Feather side.
+
+
+:::{image} images/2308801502801085535.jpg
+
+:::
+
+---
+
+
+
+### Finished
+
+
+The board is finished and ready to be programmed.
+
+
+:::{image} images/7638691502801149553.jpg
+
+:::
+
+---
+
+
+
+### Solder paste for the buttons
+
+
+Heat the board a little bit with your hot-air station, and then apply
+the soldering paste on all the button pads.\
+
+
+
+:::{image} images/8859541502799266028.jpg
+
+:::
+
+---
+
+
+
+### Place buttons
+
+
+Place the buttons in they correct positions. Be careful to align them
+properly, as the surface tension of the solder will not be enough to
+move them.
+
+
+:::{image} images/852401502799357886.jpg
+
+:::
+
+---
+
+
+
+### Solder buttons
+
+
+Apply the hot air to solder the buttons. Be careful to not melt the
+plastic caps.
+
+
+:::{image} images/60381502799483071.jpg
+
+:::
+
+---
+
+
+
+### Solder paste for the components
+
+
+Flip the board, and apply the solder paste to all the pads on the
+other side.
+
+
+:::{image} images/1689841502799551428.jpg
+
+:::
+
+---
+
+
+
+### Place components
+
+
+Place the components. Make sure to align the chip properly — it is
+also too big to move with the surface tension. Pay attention to the
+resistor values.
+
+
+:::{image} images/1868381502799628098.jpg
+
+:::
+
+---
+
+
+
+### Solder components
+
+
+Apply the hot air. Be careful to not blow the resistors away.
+
+
+:::{image} images/5189601502799684142.jpg
+
+:::
+
+---
+
+
+
+### Remove bridges
+
+
+Use a suction tool or a copper wick to remove any solder bridges you
+might have gotten, like in this case between the first and second pins
+of the chip.
+
+
+:::{image} images/9291301502799748592.jpg
+
+:::
+
+---
+
+
+
+### Insert headers
+
+
+We are going for a low profile look, so we will solder the headers in
+reverse. Insert the male headers from the top, long side down.
+
+
+:::{image} images/8653911502799855822.jpg
+
+:::
+
+---
+
+
+
+### Solder headers
+
+
+Now flip the board and solder each pin in place. Make sure to not use
+too much solder and make the joint as flat as possible. Use a suction
+tool or a wick to remove excess solder.
+
+
+:::{image} images/8757581502799952286.jpg
+
+:::
+
+---
+
+
+
+### Remove plastic from headers
+
+
+Once the headers are all soldered, you can remove the plastic that
+held them together. Use wire cutters or tweezers to pry it off. Be
+careful to not damage the buttons in the process.
+
+
+:::{image} images/9162981502800043770.jpg
+
+:::
+
+---
+
+
+
+### Trim the headers
+
+
+Trim the pins, so that the top of the board is completely flat.
+
+
+:::{image} images/8829621502800133375.jpg
+
+:::
+
+---
+
+
+
+### Put the plastic back on (optional)
+
+
+If you are going to use the low-profile female headers on your Feather
+boards, you can put the plastic back on the pins, since they only need
+to stick out very little. If you are using regular headers, leave the
+plastic off, this way the pins can go deeper into the female headers
+and the whole thing will be thinner.
+
+
+:::{image} images/3474201502800214697.jpg
+
+:::
+
+---
+
+
+
+### Insert the matrix
+
+
+Insert the bi-color LED matrix into the holes. Make sure to make the
+text on the matrix face down, as pictured here. You will need to use
+your tweezers to make every pin fit into its hole. It takes some
+patience.
+
+
+:::{image} images/8546931502800346621.jpg
+
+:::
+
+---
+
+
+
+### Push the matrix
+
+
+Push the matrix against a soft surface until it's flush with the
+board. Don't use too much force, or you will break the board or
+scratch the matrix.
+
+
+:::{image} images/5439921502800449941.jpg
+
+:::
+
+---
+
+
+
+### Solder the matrix
+
+
+Solder all of the pins on the back side. Start with the side ones, and
+then do the middle.
+
+
+:::{image} images/5438501502800560205.jpg
+
+:::
+
+---

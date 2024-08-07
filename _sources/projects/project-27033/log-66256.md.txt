@@ -1,0 +1,34 @@
+---
+blogpost: true
+date: 2017-09-01
+category: project-27033
+---
+
+# To do it, to do it, to do it...
+Published on 2017-09-01 in {ref}`project-27033`.
+
+After a hint from [@limor ](https://hackaday.io/hacker/45459) about a reset pin and some experimenting, I decided to re-do this PCB,
+this time properly, following all the rules.
+
+
+:::{image} https://644db4de3505c40a0444-327723bce298e3ff5813fb42baeefbaa.ssl.cf1.rackcdn.com/d7c85fa4a0d7e5c30330c34cf3e96692.png
+
+:::
+\
+
+
+So the reset pin is now tied to the board's reset. That frees up one
+digital pin, which I can now use for chip select, instead of having it
+pulled down permanently. Because the Trinket M0 doesn't have a pull-up
+resistor on its reset pin, I had to add one.
+
+The second resistor is for the LED back-light, so you can pick the
+right one for the brightness you desire.
+
+Finally, I added a filter capacitor to the display's power, for good
+measure.
+
+I also fixed the mounting holes and added a logo. The logo is up-side-
+down in relation to the text on the board, but I only noticed it now
+and who looks at those things anyways.
+

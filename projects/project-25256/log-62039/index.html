@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Display Power Problems - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="display-power-problems">
+<h1>Display Power Problems<a class="headerlink" href="#display-power-problems" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2017-06-23 in <a class="reference internal" href="../#project-25256"><span class="std std-ref">Ye Olde Nowt</span></a>.</p>
+<p>As I’m getting more of it to work and testing with Pico8, I’m starting
+to see that I have a serious problem with the display. As soon as
+there are white vertical lines on it, it starts making high-pitched
+noises and do “tv noise” for some frames, and then the whole Raspberry
+Pi hangs.</p>
+<p>Looking at the schematic, I think I made a big mistake connecting the
+display’s power to pi’s 3.3V pin. Sure, the display can run both on
+3.3V and 5V, and since there is no communication from the display to
+the pi, there is no problem with voltage incompatibility. I suspect
+that this display takes a bit too much juice for the pi’s regulator.</p>
+<p>The solution? I will try to un-solder the VCC pin of the display, and
+use a wire to connect it to the 5V pins. We will see how that works.
+One downside is that won’t look so good anymore.</p>
+<p>If that doesn’t help, there is one more possibility – the display
+drivers in the kernel may be simply buggy, sending to the display some
+weird commands that trip it up.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

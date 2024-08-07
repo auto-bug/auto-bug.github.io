@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Advanced Spriting - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="advanced-spriting">
+<h1>Advanced Spriting<a class="headerlink" href="#advanced-spriting" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2018-01-09 in <a class="reference internal" href="../#project-27757"><span class="std std-ref">Micro:Boy</span></a>.</p>
+<p>After a nightfull of sleep, I realized that I don’t need a separate
+method with “or” for proper non-transparent sprites, since if I’m
+masking the place with black anyways, “xor” works just as well. As an
+added bonus, I can have also parts of the sprite sticking out of the
+mask outline, which then will be xor-ed, which could be a nice effect.
+I also decided to use “nand” for the mask, not “and”, since then the
+outline of the sprite is white and the background is black, and that
+works better with the shifting operators. Finally, I made the mask
+just an optional argument to the blit function, since you are not
+likely to use it alone. So I have this:</p>
+<img alt="projects/project-27757/images/7406811515505670407.gif" src="projects/project-27757/images/7406811515505670407.gif" />
+<p>I had to add one more thing, of which I didn’t think before. When not
+using “xor” for the sprite, I need some way to restore the previous
+background when the sprite moves away. Right now I’m using an
+inefficient method of simply keeping a copy of the background in a
+separate buffer, and simply copying the few bytes where the sprite
+used to be from it to the actual frame buffer (and updating the dirty
+numbers accordingly). A more efficient way could be imagined.</p>
+<p>———- more ———-Anyways, the new code looks like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">blit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="sa">b</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="o">-</span><span class="mi">8</span> <span class="o">&lt;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">128</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="o">-</span><span class="n">x</span><span class="p">:]</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">elif</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">120</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:</span><span class="mi">120</span> <span class="o">-</span> <span class="n">x</span><span class="p">]</span>
+        <span class="n">page</span> <span class="o">=</span> <span class="n">y</span> <span class="o">//</span> <span class="mi">8</span>
+        <span class="n">shift</span> <span class="o">=</span> <span class="n">y</span> <span class="o">%</span> <span class="mi">8</span>
+        <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">page</span> <span class="o">&lt;=</span> <span class="mi">7</span><span class="p">:</span>
+            <span class="n">index</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">128</span> <span class="o">*</span> <span class="n">page</span>
+            <span class="k">for</span> <span class="n">byte</span> <span class="ow">in</span> <span class="n">mask</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">buffer</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="p">(</span><span class="n">byte</span> <span class="o">&lt;&lt;</span> <span class="n">shift</span><span class="p">)</span>
+                <span class="n">index</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">index</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">128</span> <span class="o">*</span> <span class="n">page</span>
+            <span class="k">for</span> <span class="n">byte</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">buffer</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">^=</span> <span class="n">byte</span> <span class="o">&lt;&lt;</span> <span class="n">shift</span>
+                <span class="n">index</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dirty_min</span><span class="p">[</span><span class="n">page</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dirty_min</span><span class="p">[</span><span class="n">page</span><span class="p">],</span> <span class="n">x</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dirty_max</span><span class="p">[</span><span class="n">page</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dirty_max</span><span class="p">[</span><span class="n">page</span><span class="p">],</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">8</span><span class="p">)</span>
+        <span class="n">page</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">page</span> <span class="o">&lt;=</span> <span class="mi">7</span> <span class="ow">and</span> <span class="n">shift</span><span class="p">:</span>
+            <span class="n">shift</span> <span class="o">=</span> <span class="mi">8</span> <span class="o">-</span> <span class="n">shift</span>
+            <span class="n">index</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">128</span> <span class="o">*</span> <span class="n">page</span>
+            <span class="k">for</span> <span class="n">byte</span> <span class="ow">in</span> <span class="n">mask</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">buffer</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="p">(</span><span class="n">byte</span> <span class="o">&gt;&gt;</span> <span class="n">shift</span><span class="p">)</span>
+                <span class="n">index</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">index</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">128</span> <span class="o">*</span> <span class="n">page</span>
+            <span class="k">for</span> <span class="n">byte</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">buffer</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">^=</span> <span class="n">byte</span> <span class="o">&gt;&gt;</span> <span class="n">shift</span>
+                <span class="n">index</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dirty_min</span><span class="p">[</span><span class="n">page</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dirty_min</span><span class="p">[</span><span class="n">page</span><span class="p">],</span> <span class="n">x</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dirty_max</span><span class="p">[</span><span class="n">page</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dirty_max</span><span class="p">[</span><span class="n">page</span><span class="p">],</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">8</span><span class="p">)</span>
+            
+    <span class="k">def</span> <span class="nf">clear</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">background</span><span class="p">):</span>
+        <span class="n">buf</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">buffer</span>
+        <span class="k">for</span> <span class="n">page</span> <span class="ow">in</span> <span class="p">(</span><span class="n">y</span> <span class="o">//</span> <span class="mi">8</span><span class="p">,</span> <span class="n">y</span> <span class="o">//</span> <span class="mi">8</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">page</span> <span class="o">&gt;</span> <span class="mi">7</span><span class="p">:</span>
+                <span class="k">break</span>
+            <span class="n">index</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">128</span> <span class="o">*</span> <span class="n">page</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">):</span>
+                <span class="n">buf</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">background</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+                <span class="n">index</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dirty_min</span><span class="p">[</span><span class="n">page</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dirty_min</span><span class="p">[</span><span class="n">page</span><span class="p">],</span> <span class="n">x</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dirty_max</span><span class="p">[</span><span class="n">page</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dirty_max</span><span class="p">[</span><span class="n">page</span><span class="p">],</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">8</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>I still need to work on making the clear function more robust, so that
+you can use it with coordinates outside of the screen.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

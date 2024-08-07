@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Creeping Back to Life - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="creeping-back-to-life">
+<h1>Creeping Back to Life<a class="headerlink" href="#creeping-back-to-life" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2018-09-12 in <a class="reference internal" href="../#project-27853"><span class="std std-ref">H-Cam</span></a>.</p>
+<p>Yes, this project spent quite a bit of time in a drawer. I got the
+AMG8833 sensor to play with, but I didn’t really have a good idea
+about what I want to do with it. Then I designed this PCB with a
+footprint for that sensor, an atmega and a LED matrix, hoping that
+with enough magic I can make it into a kind of thermal camera. Then
+the PCB arrived together with a bunch of other PCBs, and got put into
+a drawer.</p>
+<p>Fast forward a few months, and the <span class="xref std std-ref">project-7813</span> is back. I looked through my projects, and noticed that hey, this PCB
+is 2cm on a side to fit the LED matrix, and that’s less than an inch,
+so why not. So I submitted it to the contest and promptly forgot about
+it.</p>
+<p>Now the deadline is looming, and it would be nice to at least start on
+this. So I took the PCB and soldered it up, and also found all the
+components that I will need:</p>
+<img alt="projects/project-27853/images/1328911536744914663.jpg" src="projects/project-27853/images/1328911536744914663.jpg" />
+<p>I used the female pin headers in the prototype so that I can remove
+the led matrix. The final version will not have them, and the led
+matrix will be soldered directly – at least that’s the plan.</p>
+<p>There will also be a lipo battery in there.</p>
+<p>Now I need to write the code for the atmega to handle the led matrix.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

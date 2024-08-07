@@ -1,0 +1,39 @@
+---
+blogpost: true
+date: 2017-11-04
+category: project-27629
+---
+
+# Text Layers
+Published on 2017-11-04 in {ref}`project-27629`.
+
+Today I spent practically whole day coding, and added support for text
+layers to the tile engine. Behold:
+
+
+
+:::{image} images/2967861509822110359.jpg
+
+:::
+
+
+Initially I didn't want to add another kind of layer just for this —
+it would have to be quite different than the grid layer, as the
+squares would be 8x8 pixels and the tile selection would need to be a
+whole byte, not 4 bits, plus I only need 4 colors in the font, so 2
+bits per pixel...
+
+So I got this idea: what if I make it a standard grid layer, with
+16x16 tiles, but then generate a bank that has the text rendered on
+the tiles, and just display that. I quickly coded the proof of concept
+for that, and it worked, except it was horrendously slow and used a
+lot of memory.
+
+So I decided to go for a new layer type after all. Since I only use
+128 charcters from ASCII, I made the highest bit switch between two
+parts of the palette — so I can have text in two colors. I'm also not
+using the 32 control charcters at the beginning of ASCII right now,
+but I could put some extra characters in there, things like symbols
+for weapons and armor, arrows and buttons, HP and MP, hearts, stars,
+cat paws, etc.
+

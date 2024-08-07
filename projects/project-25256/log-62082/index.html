@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Audio - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="audio">
+<h1>Audio<a class="headerlink" href="#audio" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2017-06-24 in <a class="reference internal" href="../#project-25256"><span class="std std-ref">Ye Olde Nowt</span></a>.</p>
+<p>Leaving the struggles with device tree overlays on the side for a
+moment, I decided to try and get the audio to work. When designing the
+board, I followed <a class="reference external" href="https://learn.adafruit.com/adding-basic-audio-ouput-to-raspberry-pi-zero/pi-zero-pwm-audio#low-pass-filter-wiring">instructions by Adafruit on how to get PWM Audio on the Pi Zero</a> . Except that instead of headphones I have two tiny SMD speakers in
+there.</p>
+<p>Of course the device tree method didn’t work – results in a
+Segmentation Fault as soon as audio is used. Poking around a bit, I
+found this tutorial that lets you do it by only editing the
+config.txt, without your own overlay, and this worked: <a class="reference external" href="https://www.raspberrypi.org/forums/viewtopic.php?f=38&amp;t=168084">https://www.raspberrypi.org/forums/viewtopic.php?f=38&amp;t=168084</a></p>
+<p>Of course, without an amplifier I expect the sound to be very quiet.
+It is in fact barely audible. What’s worse, the noise from the
+display, and the noise from the display signal induced in the speaker,
+are orders of magnitude louder!\</p>
+<p>I think I will either need an amplifier module for this, or just give
+up on the sound. For now I ordered an amplifier and will see how it
+will work.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

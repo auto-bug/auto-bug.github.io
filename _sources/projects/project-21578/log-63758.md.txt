@@ -1,0 +1,31 @@
+---
+blogpost: true
+date: 2017-07-23
+category: project-21578
+---
+
+# Scrolling and Text
+Published on 2017-07-23 in {ref}`project-21578`.
+
+While most games will be simple enough to just use the individual
+pixels on the matrix, we still need a way to display text to the
+player — to show errors, to list the available games, to show the
+"game over" text, etc. So today I worked on that.
+
+I designed my own 4×6 4-color font specially for this. The effect of
+using the 4 available colors for shading when they actually have very
+different hues is a bit strange, but you get used to it and I think
+it's actually quite readable:
+
+
+:::{image} https://j.gifs.com/76EDky.gif
+
+:::
+I might add an option of displaying the text in just a single color —
+the font is designed so that it's still readable if you "round" the
+half tones.
+
+The scrolling is actually quite slow on the SAMD feathers (the maximum
+speed is about twice as on the gif above), but I think it's quite
+sufficient for text.
+

@@ -1,0 +1,56 @@
+---
+blogpost: true
+date: 2017-07-17
+category: project-21578
+---
+
+# PewPew Lite Assembled
+Published on 2017-07-17 in {ref}`project-21578`.
+
+The PCBs for the PewPew Lite arrived from [@oshpark](https://hackaday.iohttps://hackaday.io/hacker/131216) , so I assembled one and I'm really happy with it:
+
+
+:::{image} images/2381751500309273685.jpg
+
+:::
+
+
+I didn't have an SMD diode at hand, so I just put a THT one there, and
+connected it to the correct pin (there was a mistake in the PCB, if
+you remember the previous log). I also quickly extended my HT16K33
+drivers with a class for this board:
+
+
+```python
+class PewPewLite(Matrix8x8x2):
+    def _copy_buf(self):
+        pixel = self.framebuffer.pixel
+        _buffer = self._buffer
+        for y in range(8):
+            b = 0
+            for x in range(8):
+                color = pixel(y, x)
+                if color & 0x01:
+                    b |= 0x01 << x
+                if color & 0x02:
+                    b |= 0x01 << (15 - x)
+            _buffer[14 - y * 2] = b & 0xff
+            _buffer[15 - y * 2] = (b >> 8) & 0xff
+
+    def keys(self):
+        return int.from_bytes(self.i2c.readfrom_mem(self.address, 0x40, 2),
+                              'little') >> 5
+```
+
+Nothing too fancy, just had to adjust the rotation and add a method
+for reading the keys.
+
+I also received the PCB for {ref}`project-25256`  with the THT buttons, and now I'm thinking about how to use those
+buttons also with this project, as they are much more compact.
+Probably won't work, since I really need stuff on both sides of the
+PCB. There is one more type of buttons that I might try -- they are
+SMD, but use pads under the buttons, and not legs, like the ones here.
+
+And of course I *really* need to start writing the games for this. I
+already have ideas of a dozen of them.
+

@@ -1,0 +1,65 @@
+---
+blogpost: true
+date: 2017-06-23
+category: project-25256
+---
+
+# Buttons
+Published on 2017-06-23 in {ref}`project-25256`.
+
+Pretty much every GPIO pin not used for the display or audio is used
+for the buttons. I decided to make it simple and just use a separate
+pin for every button. The list looks like this:
+
+
+ * UP 20
+ * DOWN 26
+ * LEFT 16
+ * RIGHT 6
+ * A 23
+ * B 7
+ * L1 12
+ * L2 5
+ * R1 4
+ * R2 17
+ * START 22
+ * SELECT 27
+
+In addition, pins 13 and 18 are used for audio, and pins 8, 10, 11,
+24, 25 are used by the display. I didn't plan the pins for the keys
+too much -- I just connected whatever was closest to the physical
+button. That means that, for example, L1 is using the same pin as the
+ZeroLiPO module uses to signal shutdown... but I think I can move
+that.
+
+In any case, initially I planned to use [Adafruit's RetroGame](https://learn.adafruit.com/retro-gaming-with-raspberry-pi/adding-controls-software)  daemon that constantly polls the pins and then generates keypress
+events. But someone on the #raspberrypi channel on Freenode suggested
+that I can use Device Tree Overlays instead. I got interested and
+decided to try it.
+
+As with all the Linux Kernel stuff, there is practically no
+documentation, you have to read the source code. Fortunately I found a
+pretty nice [example for configuring a GPIO keyboard](http://blog.gegg.us/2017/01/setting-up-a-gpio-button-keyboard-on-a-raspberry-pi/) . I tested it on a few of my keys, and it worked great! Awesome, that
+was easier than expected! I quickly added the rest of my keys to the
+overlay file, compiled it and restarted, expecting it to work. Of
+course it didn't. Checking dmesg let me see error messages suggesting
+that the kernel driver can't claim pins 7 and 20, because they are
+being used by the SPI peripheral. Of course I can't disable SPI,
+because that's how my display is connected. But I'm not using all
+those pins. How can I tell the driver that?
+
+After a few hours of searching the Internet, trawling through source
+files, trying various things, etc. I finally realized that I'm wasting
+my time. I just deleted all this overlay nonsense, installed the
+Adafruit demon, configured it quickly and that's it. Somehow the demon
+doesn't have any problems with any pins being used by something else.
+
+But there is one more thing I learned, which might make me re-thing
+the pin mapping and actually try to get this to work. Apparently Pi
+HATs can have on them a small EEPROM memory chip, to which we can
+record the overlays that this shield needs. That means that with a
+little work (and fixing some bugs in the kernel, I'm sure), it would
+be possible to build a shield that would require no manual
+configuration: just connect it switch it on, and it just works. That
+would be great, *if* it worked.
+

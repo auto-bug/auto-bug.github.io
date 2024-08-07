@@ -1,0 +1,41 @@
+---
+blogpost: true
+date: 2017-10-28
+category: project-27629
+---
+
+# Basic Tile Engine
+Published on 2017-10-28 in {ref}`project-27629`.
+
+This took me less time than I anticipated — I started today at night,
+and in the evening I already have a basic tile and sprite engine with
+support for multiple layers and transparency, reading graphics from
+bmp files or from strings, and dirty rectangles.
+
+
+
+:::{image} images/5268971509216445013.jpg
+
+:::
+
+
+There is only one tiny problem: it's all written in Python, and so
+it's really, really slow. Drawing the whole screen (one 16x16 square
+at a time) takes good 45 seconds. This is not so tragic when you
+realize that normally during the game you will update only 4 or 5 such
+squares every frame, and not 128, but still I need it a bit faster — 2
+seconds per frame is not acceptable.
+
+Fortunately, there is an easy way to make it faster: re-write it all
+in C (at least the one slow function that does the rendering), and
+compile into CircuitPython itself. That will require some more work,
+but should give me the speedup I need, especially since most of those
+operations are bit juggling, and C is really good at it.
+
+Memory-wise, I can barely hold 2 banks of 16 tiles, each with its own
+palette, and 2 layers in memory. Of course that is easily solved by
+moving the graphics and the palettes into the flash, by freezing and
+compiling it into CircuitPython too. If I run out of memory there, I
+can always disable some modules I'm not using, like touchio or
+analogio.
+

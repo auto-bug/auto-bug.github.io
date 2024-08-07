@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>The Aisler Saga, Part 2 - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="the-aisler-saga-part-2">
+<h1>The Aisler Saga, Part 2<a class="headerlink" href="#the-aisler-saga-part-2" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2017-12-06 in <a class="reference internal" href="../#project-21578"><span class="std std-ref">PewPew FeatherWing</span></a>.</p>
+<p>A few weeks ago I found in my mailbox a strange box from Aisler I was
+a little bit surprised, as I didn’t order anything from them since the
+last time, <a class="reference external" href="https://hackaday.io/project/21578/log/68755-boards-from-aisler">when I tried their service for the first time</a> . The box contained another 3 PCBs of version 4.1, and a steel stencil
+for one side. A few days later another parcel arrived, with another 3
+PCBs and a stencil for the other side. This would have been great,
+except at the moment I was already two versions further into the
+design, and the boards just added to the pile of the trash PCBs I will
+never use. Sigh.</p>
+<p>So I wrote <a class="reference external" href="https://hackaday.io/hacker/147192">&#64;Felix Plitzko </a> an e-mail, explaining that I don’t really have the time right now to
+try those boards, that they are wrong version anyways, and that they
+should not send me anything without asking. I never got any answer to
+that e-mail, but no further packages arrived, so I guess I am good. I
+also promised to look at those boards and stencils at some point in
+the future, just to see how the service improved. So let’s look at
+them.</p>
+<img alt="projects/project-21578/images/7678901512594032006.jpg" src="projects/project-21578/images/7678901512594032006.jpg" />
+<p>This is the back of the board, and the corresponding stencil. I have
+to admit that all the dense thin pads for the ISSI chip are exactly
+the same, and generally I can’t see any problems with the solder mask
+or copper. The silkscreen is still a little low-res, but it’s somehow
+much more readable. There outline of the ISSI chip is a bit broken on
+the silkscreen, but that might as well be a Fritzing bug — it has a
+lot.</p>
+<p>You can also see that the drunk German who is cutting out those boards
+with a hatchet got over his hangover from Octoberfest, but is still
+not very precise. What’s worse, each of the PCB has those leftover
+tabs different — which I will get back to in a moment.</p>
+<p>As for the stencil, it looks correct at first, but if you look
+closely, there are three strange things. First, there are no pads for
+the USB socket. I suppose they got confused by all the vias I placed
+there for mechanical support, and skipped them. Second, there is no
+hole for the ISSI chip’s heatsink. To be frank, I don’t know if there
+is supposed to be one or not — I’m not familiar with stencil practice.
+Third strange thing is that there are holes in the stencil for the
+power switch’s mounting holes. Am I supposed to put solder paste into
+them?</p>
+<p>Let’s look at the other stencil:</p>
+<img alt="projects/project-21578/images/878691512594632225.jpg" src="projects/project-21578/images/878691512594632225.jpg" />
+<p>This one is much simpler and less mysterious. There is only one
+problem here, which is the missing pad for the “up” button.
+Interestingly, no holes for the power switch this time, even though,
+being holes, they are present on both sides of the PCB. I guess it’s
+enough to fill them with solder paste from one side.</p>
+<p>Fine, so there are some mistakes in there. That happens, especially
+since I had no idea they are going to be making stencils out of my
+design, and so I didn’t pay attention to take care of any details
+relevant to that. You would still think that they would put more care
+into checking their “demo” work.</p>
+<p>So let’s try and actually use a stencil. I never tried one before, so
+I was curious. I choose the top one, with the buttons, because that
+part of my design didn’t change much and I wouldn’t be wasting parts
+soldering an old version of the project. Also, buttons are easier to
+recover.</p>
+<p>So first I had to somehow align the PCB with the stencil. On the
+movies I saw that you usually have your stencil taped by one side to
+something, then tape some stuff around your PCB to fix it in place in
+an aligned position. I couldn’t get that to work, it was just too
+difficult to move the PCB under the template to align it. It would
+have been much easier if the template also had the mounting holes or
+something — but I guess then the solder paste would get into them.</p>
+<p>Eventually I untaped the stencil, aligned the PCB by holding both in
+my hands, and taped some stuff around the PCB to the template to fix
+the position. Success.</p>
+<p>Now try a second PCB, and… it doesn’t fit. Because those hacked tabs
+are uneven, and give different spacing. So I would need to manually
+align every single PCB I wanted to use with this stencil, or find a
+different way of securing the PCBs in place (tape the stuff around it
+so as to avoid the tabs).</p>
+<img alt="projects/project-21578/images/5884161512595279976.jpg" src="projects/project-21578/images/5884161512595279976.jpg" />
+<p>All in all, in summary:</p>
+<ul class="simple">
+<li><p>the boards are good quality, and even improved,</p></li>
+<li><p>the board outline still has leftovers from the tabs they added for
+panelization, but you can’t just remove them with sharp knife as you
+can with every other PCB fab, because they don’t have the holes,</p></li>
+<li><p>those tabs are uneven and make it difficult to align the boards with
+the stencils,</p></li>
+<li><p>the stencils have a number of mistakes on them.</p></li>
+</ul>
+<p>I will most likely use Aisler again, especially if I have a project
+where I don’t much care about the board outline.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

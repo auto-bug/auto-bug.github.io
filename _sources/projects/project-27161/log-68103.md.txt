@@ -1,0 +1,39 @@
+---
+blogpost: true
+date: 2017-10-02
+category: project-27161
+---
+
+# Pretty Pictures
+Published on 2017-10-02 in {ref}`project-27161`.
+
+I realized that all I have been showing on the TFT shield screen are
+some random pixels — that doesn't really prove that it works
+correctly, does it? So I made a quick demo, displaying the
+CircuitPython's mascot, Blinka:
+
+
+:::{image} images/6721141506896156822.jpg
+
+:::
+
+
+And the code:
+
+
+```python
+import board
+import digitalio
+import busio
+from adafruit_rgb_display import st7735
+dc = digitalio.DigitalInOut(board.D0)
+cs = digitalio.DigitalInOut(board.D1)
+spi = busio.SPI(clock=board.SCK, MOSI=board.MOSI)
+d = st7735.ST7735R(spi, cs=cs, dc=dc)
+d.fill(0)
+with open("blinka.raw", "rb") as f:
+    for y in range(80):
+        buf = f.read(320)
+        d._block(y + 24, 0, y + 24, 159, buf)
+```
+

@@ -1,0 +1,39 @@
+---
+blogpost: true
+date: 2017-10-15
+category: project-21578
+---
+
+# PewPew 4.1
+Published on 2017-10-15 in {ref}`project-21578`.
+
+I assembled one of the boards for the PewPew 4.1 and got it to work.
+It's really close to what I want ultimately, at least feature-wise.
+
+
+
+:::{image} images/123841508026717713.jpg
+
+:::
+
+
+It has the IS31FL3733 chip for handling the LED matrix,
+an ATSAMD21E18A-AU microcontroller for running CircuitPython, and
+extra S25FL216K0PMFI011 flash memory for more disk space, a battery
+charging circuit, and a piezo speaker. I should have an amplifier for
+the speaker in there too, but I didn't get it to work yet — I have
+parts for it on order. Oh, and I'm using a rectifier diode in place of
+a shottky diode, because I'm waiting for those too.
+
+I have made a custom board definition for CircuitPython, and built
+custom firmware for it — so that I can make use of all the pins I need
+and the extra flash memory. Once I finalize the hardware, I will
+submit the board definition to the CircuitPython upstream.
+
+I'm still not happy with three things: the position of the speaker,
+the connectors for the battery and the fact that the board is pretty
+difficult to assemble manually. I would definitely not want to have to
+assemble 10 of them. So now it's time for optimization of the layout,
+possibly moving a few parts around. I also considered replacing the
+piezo speaker with a headphone jack — we will see about that.
+

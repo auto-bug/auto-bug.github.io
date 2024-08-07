@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Display - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="display">
+<h1>Display<a class="headerlink" href="#display" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2017-06-22 in <a class="reference internal" href="../#project-25256"><span class="std std-ref">Ye Olde Nowt</span></a>.</p>
+<p>The display is a 128×128 1.5” RGB OLED module, with a SSD1351 chip
+that communicates with the Pi over the SPI interface. I’m using the
+fbtft Linux driver for driving it, together with fbcp utility to copy
+the framebuffers. I have rotated the display 90° to make it fit with
+the dimensions of the Pi Zero better – it only sticks a few
+millimeters on either side. Since this is an OLED, and not an LCD, the
+viewing angles are excellent and don’t really change with the
+display’s orientation.</p>
+<p>I’m using a module and not a bare display, even though I’m making a
+custom PCB. That’s because the OLED display needs quite a lot of
+components, including a voltage boost, and I’m not trusting myself to
+get all that right. It’s also because I already have the module.</p>
+<p>The size of this display, while a bit small, is perfect for the pico8
+fantasy game console.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

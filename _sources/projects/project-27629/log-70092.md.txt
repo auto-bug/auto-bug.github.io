@@ -1,0 +1,35 @@
+---
+blogpost: true
+date: 2017-11-05
+category: project-27629
+---
+
+# Extra Characters
+Published on 2017-11-05 in {ref}`project-27629`.
+
+Initially, my font file contained only 96 characters, ignoring the
+"control characters" that appear in the first 32 entries of the ASCII
+table. I realized that this is a waste, and decided to extend my font
+file to cover all 128 characters, and put some special things in the
+first 32 glyphs. Here's what I came up with:
+
+
+
+:::{image} images/3768661509903056311.png
+
+:::
+
+
+The first four are arrows — always useful. Then there are icons for
+the two fire buttons this console has — useful when asking the player
+to press them. Then there is a number of random stuff that you might
+want to display on a status bar or in the inventory. Finally, some
+extra punctuation.
+
+I'm not sure how useful this will turn out to be and if I wouldn't be
+much better off if I used that space for accented characters from a
+few European languages — but I can never cover all the languages
+anyways. In the worst case I can change it, and the users can always
+provide their own custom fonts too — there is a script in the
+repository for generating the script data from a BMP file.
+

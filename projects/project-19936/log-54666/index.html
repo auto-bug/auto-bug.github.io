@@ -1,0 +1,174 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Walking - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="walking">
+<h1>Walking<a class="headerlink" href="#walking" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2017-03-09 in <a class="reference internal" href="../#project-19936"><span class="std std-ref">Marvin</span></a>.</p>
+<p>After a few tests with walking, I decided to not give it a huge head
+after all. I tried a number of different heads (including several
+acrylic globes from a crafts store, a doll’s head and a lightbulb) and
+finally settled on a cardboard outline. This is something that an
+11-years old can see and say “I could do that!”</p>
+<p>For now I used the same code for walking as the <a class="reference internal" href="../../project-8643/#project-8643"><span class="std std-ref">Micro:Bob</span></a>  (I just had to swap some pins and adjust trims), but I want to make
+it controlled from a second Micro:bit.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">microbit</span>
+
+
+<span class="k">class</span> <span class="nc">Servo</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pin</span><span class="p">,</span> <span class="n">trim</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pin</span> <span class="o">=</span> <span class="n">pin</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">trim</span> <span class="o">=</span> <span class="n">trim</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="mi">90</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_period</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">set_period</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pin</span><span class="o">.</span><span class="n">set_analog_period</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">)</span>
+        <span class="n">microbit</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">80</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pin</span><span class="o">.</span><span class="n">set_analog_period</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">)</span>
+        <span class="n">microbit</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">80</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pin</span><span class="o">.</span><span class="n">write_analog</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">degrees</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pin</span><span class="o">.</span><span class="n">write_analog</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="mi">25</span> <span class="o">+</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">degrees</span> <span class="o">/</span> <span class="mi">180</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">trim</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="n">degrees</span>
+
+    <span class="k">def</span> <span class="nf">move</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">degrees</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">degrees</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">:</span>
+            <span class="n">step</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">step</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="k">for</span> <span class="n">position</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">,</span> <span class="n">degrees</span><span class="p">,</span> <span class="n">step</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">position</span><span class="p">)</span>
+            <span class="n">microbit</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">delay</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">Robot</span><span class="p">:</span>
+    <span class="n">NORMAL_FACE</span> <span class="o">=</span> <span class="n">microbit</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span>
+        <span class="s2">&quot;42024</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="s2">&quot;90009</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="s2">&quot;00000</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="s2">&quot;61016</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="s2">&quot;27972</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="p">)</span>
+    <span class="n">RIGHT_FACE</span> <span class="o">=</span> <span class="n">microbit</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span>
+        <span class="s2">&quot;24024</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="s2">&quot;09009</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="s2">&quot;00000</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="s2">&quot;81001</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="s2">&quot;28952</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="p">)</span>
+    <span class="n">LEFT_FACE</span> <span class="o">=</span> <span class="n">microbit</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span>
+        <span class="s2">&quot;42042</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="s2">&quot;90090</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="s2">&quot;00000</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="s2">&quot;10018</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="s2">&quot;25983</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">feet_servo</span> <span class="o">=</span> <span class="n">Servo</span><span class="p">(</span><span class="n">microbit</span><span class="o">.</span><span class="n">pin2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">left_servo</span> <span class="o">=</span> <span class="n">Servo</span><span class="p">(</span><span class="n">microbit</span><span class="o">.</span><span class="n">pin1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">right_servo</span> <span class="o">=</span> <span class="n">Servo</span><span class="p">(</span><span class="n">microbit</span><span class="o">.</span><span class="n">pin0</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+        <span class="n">microbit</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">NORMAL_FACE</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">right_step</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">microbit</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">RIGHT_FACE</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">feet_servo</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="mi">120</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">left_servo</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">right_servo</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">feet_servo</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">left_step</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">microbit</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">LEFT_FACE</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">feet_servo</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">right_servo</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="mi">120</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">left_servo</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="mi">120</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">feet_servo</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">right_half_step</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">microbit</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">NOLRMAL_FACE</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">feet_servo</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="mi">120</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">left_servo</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">right_servo</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">feet_servo</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">left_half_step</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">microbit</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">NORMAL_FACE</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">feet_servo</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">right_servo</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">left_servo</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">feet_servo</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
+
+
+    <span class="k">def</span> <span class="nf">walk</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">steps</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">step</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">steps</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">step</span> <span class="o">%</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">left_step</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">right_step</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">step</span> <span class="o">%</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">right_half_step</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">left_half_step</span><span class="p">()</span>
+
+
+<span class="n">robot</span> <span class="o">=</span> <span class="n">Robot</span><span class="p">()</span>
+<span class="n">robot</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+
+
+</div>
+  </body>
+</html>

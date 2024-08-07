@@ -1,0 +1,71 @@
+---
+blogpost: true
+date: 2017-10-26
+category: project-27629
+---
+
+# Reading BMP
+Published on 2017-10-26 in {ref}`project-27629`.
+
+This thing has a real color display for real graphics — so you will
+need graphics in your games. I could create my own format, and some
+utility program to convert common image formats to it, but that's
+always an additional step — it would be so much nicer to be able to
+edit the images directly on the USB drive. So I looked around for a
+file format that would be easy to parse, uncompressed, capable of
+storing 16-color indexed images, and understood by common graphics
+formats. And what do you know, the stupidest raster file format, BMP!
+
+So I took a tile sheet from one of my games, converted it to 16 colors
+and saved as BMP in GIMP. Then I poked around the file in Python until
+I had it displaying, with this code:
+
+
+```python
+import busio
+
+from adafruit_rgb_display import st7735
+from adafruit_rgb_display.rgb import color565
+
+
+rst = digitalio.DigitalInOut(board.D0)
+dc = digitalio.DigitalInOut(board.D2)
+cs = digitalio.DigitalInOut(board.D1)
+spi = busio.SPI(clock=board.SCK, MOSI=board.MOSI)
+d = st7735.ST7735R(spi, cs=cs, dc=dc, rst=rst)
+
+with open('walls.bmp', 'rb') as f:
+    f.seek(18)
+    width = int.from_bytes(f.read(4), 'little')
+    height = int.from_bytes(f.read(4), 'little')
+    buffer = bytearray(width * 2)
+    f.seek(46)
+    colors = int.from_bytes(f.read(4), 'little')
+    f.seek(54)
+    p = f.read(colors * 4)
+    for y in range(height):
+        for x in range(width // 2):
+            b = f.read(1)[0]
+            c = (b & 0x0f) * 4
+            z = color565(p[c + 2], p[c + 1], p[c])
+            buffer[x * 4 + 3] = z & 0xff
+            buffer[x * 4 + 2] = z >> 8
+            c = (b >> 4) * 4
+            z = color565(p[c + 2], p[c + 1], p[c])
+            buffer[x * 4 + 1] = z & 0xff
+            buffer[x * 4 + 0] = z >> 8
+        d._block(0, height-y, width, y + 1, buffer)
+```
+
+I had to draw it one line at a time, instead of one large buffer,
+because of not enough memory. There is a lot more work required before
+this turns into a tiles and sprites engine, but the first step is
+done.
+
+
+
+:::{image} images/2712881508979135162.jpg
+
+:::
+
+

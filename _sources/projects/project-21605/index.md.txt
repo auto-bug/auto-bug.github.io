@@ -1,0 +1,56 @@
+---
+blogpost: true
+date: 2017-04-30
+category: project
+tags:  LiPo, adafruit, Feather, hardware, completed project, Battery
+image: 1
+---
+
+# Battery FeatherWing
+
+A shield for powering Adafruit Feather board.
+
+<div class="project-thumb">
+
+:::{image} images/5816811493563165036.jpg
+:target: /_images/5816811493563165036.jpg
+:::
+
+:::{image} images/2011171493563172374.jpg
+:target: /_images/2011171493563172374.jpg
+:::
+
+</div>
+
+
+    This is a quick and simple hack, using the parts that I had at hand to
+make a shield for the Adafruit Feather boards for providing power for
+them conveniently.
+
+The Feather boards have a battery charging circuit on them, and you
+can buy LiPo batteries to plug into them. However, there is no power
+switch, and the battery just dangles there on its wires, just asking
+for trouble. If you try to just tape it to the back of the board, you
+are risking a short, since the battery's outside is metal. If you
+leave it dangling, you risk tearing off the wires. And on top of that,
+the battery connector that I have is a really tight fit for that
+socket, and it's hard to disconnect and re-connect it.
+
+So I sat down, and made this simple shield. It takes a LiPo battery in
+the form factor of an AAA battery -- but don't be deceived, it's still
+a 3.7V LiPo. I used some scrap bits of headers to prevent the battery
+from moving inside, which really makes the thing look bad, but I don't
+care. If you like, you could make it look much better.
+
+
+
+
+
+## Logs
+
+:::{postlist}
+:category: project-21605
+:::
+
+## Instructions
+

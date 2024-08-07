@@ -1,0 +1,35 @@
+---
+blogpost: true
+date: 2017-09-06
+category: project-27161
+---
+
+# The Challenges
+Published on 2017-09-06 in {ref}`project-27161`.
+
+Well, there are two main challenges when designing a shield for the
+trinket: the lack of real estate on the board, and the limited number
+of available pins. Those are amplified with the limitations of manual
+soldering, the minimal specs of common PCB manufacturers, the
+available packages of the chips to be used, and the budget limits.
+
+For instance, if I wanted to make a shield with a LED matrix on it, my
+first choice would be the HT16K33 chip that Adafruit uses in their
+backpacks. However, that chip is easily larger than the Trinket
+itself! So instead I would need to look for something smaller,
+possibly in a QFN package, like the IS31FL3728. I will also need to
+choose chips that use the I²C or SPI bus, because there can be
+multiple devices on those, or otherwise choose solutions that minimize
+the number of pins used, like using the ADC to read the states of
+buttons connected to different resistors.
+
+Connectors are going to be a problem, since most of them have huge
+2.54mm pitch through-hole pins. The solution for this is to use SMD
+versions of those connectors whenever possible, and use of smaller
+connectors. For instance, for the PWM shield, I'm going to use 1.27mm
+pitch connectors, compatible with the sub-micro servos.
+
+Finally, if nothing else works, I can grow sideways. making the shield
+more square, with room for the connectors on the sides. But that is
+the last resort.
+

@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Why I Hate Analog Circuits - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="why-i-hate-analog-circuits">
+<h1>Why I Hate Analog Circuits<a class="headerlink" href="#why-i-hate-analog-circuits" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2017-10-10 in <a class="reference internal" href="../#project-27161"><span class="std std-ref">Trinket Shields</span></a>.</p>
+<p>I’m completely hopeless with analog circuits. I think part of it might
+actually be a self-fulfilling prophecy — I know that I’m bad at it, so
+I’m not even trying. Usually I just try and copy any analog pieces I
+need from other projects, cargo-culting them and hoping they will
+work. A case in point: the audio shield.</p>
+<img alt="projects/project-27161/images/2296211507656446424.jpg" src="projects/project-27161/images/2296211507656446424.jpg" />
+<p>Simplicity itself. A small audio amplifier, connected through a
+resistor and capacitor to the DAC pin on one side, and to an SMD
+speaker on the other. What could possibly go wrong?</p>
+<p>First of all, I re-used a footprint for the PAM8301 amplifier, using a
+part for some sparkfun’s DAC chip. It’s exactly the same size, I just
+changed the labels on the pins. What I failed to note is that the pins
+on that chip are numbered in the opposite direction than on my
+amplifier. So to start with, I had to bend the pins of the chip the
+other way and dead-bug it. Fine.</p>
+<p>Next thing I am a little less sure of. I mean, I am sure it doesn’t
+work, but I’m not sure why. If I connect a piezo to the DAC pin
+directly, I get the sound that I’m playing (although very quietly). If
+I use the amplifier (with a 47kΩ resistor and 0.1µF capacitor between
+the pin and the input of the amp), I get nothing. And it gets warm.
+Sounds like it’s simply connected wrong, but I verified the PCB and
+the datasheet a million times already.</p>
+<p>I must be missing something obvious, here’s the schematic so that you
+can laugh at my ignorance:\</p>
+<img alt="projects/project-27161/images/6246001507657158855.png" src="projects/project-27161/images/6246001507657158855.png" />
+<p>Oh, and yes, I copied it. From Adafruit’s Circuit Playground Express
+board, which also uses a SAMD21 chip and a very similiar SMD speaker.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

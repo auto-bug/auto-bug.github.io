@@ -1,0 +1,76 @@
+---
+blogpost: true
+date: 2017-10-09
+category: project
+tags:  game, SAMD21, atmel, ongoing project, hardware, micropython, handheld, circuitpython
+image: 1
+---
+
+# µGame
+
+A handheld game console programmable with (Micro/Circuit)Python.
+
+<div class="project-thumb">
+
+:::{image} images/4787691512171711474.jpg
+:target: /_images/4787691512171711474.jpg
+:::
+
+:::{image} images/5532001510259340085.jpg
+:target: /_images/5532001510259340085.jpg
+:::
+
+:::{image} images/5854921525097630407.jpg
+:target: /_images/5854921525097630407.jpg
+:::
+
+:::{image} images/9011701528149736254.jpg
+:target: /_images/9011701528149736254.jpg
+:::
+
+:::{image} images/8563941525097646527.jpg
+:target: /_images/8563941525097646527.jpg
+:::
+
+:::{image} images/8201321527494944003.jpg
+:target: /_images/8201321527494944003.jpg
+:::
+
+</div>
+
+
+    A small game console directly programmable in Python. I always wanted
+to make this, and after my work on {ref}`project-21578` I finally decided that I'm ready.
+
+The first version may be a bit of a stretch — I tried to make it as
+small as possible, fitting in the 5x5cm limit of PCB manufacturers, so
+that it will be cheap to make the PCBs. Using the cheap ST7735 TFT
+display, and a cheap ATSAMD21E chip. I also tried to put all the
+components on one side of the board.
+
+Of course the hard part is writing a game library, and the actual
+games. There is already one simple platformer game written as a demo,
+and the software library is getting new features added as needed.
+
+
+
+:::{image} images/722781509237039692.gif
+
+:::
+
+
+
+<iframe style="width: 500px; height: 281px;" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/mizYcHKoYj0"></iframe>
+
+
+
+
+
+## Logs
+
+:::{postlist}
+:category: project-27629
+:::
+
+## Instructions
+

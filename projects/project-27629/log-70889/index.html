@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>First Game - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="first-game">
+<h1>First Game<a class="headerlink" href="#first-game" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2017-11-26 in <a class="reference internal" href="../#project-27629"><span class="std std-ref">µGame</span></a>.</p>
+<p>In order to write a good game framework or library, you have to make
+games. There is no other way — you won’t know whether you have all the
+necessary features until you actually try. And you won’t know if a
+feature is actually necessary until you need it. So the best way is to
+make a game, then another game, and then yet another game, and once
+you have covered the spectrum of different kinds of games you want to
+be able to make, you take all the bits and pieces from them and
+collect them in a single consistent library.</p>
+<p>So far all I had for µGame was a simple “character walking around a
+map” demo. I needed to make an actual game. What I would most like to
+make are Japanese-style RPG games and roguelike games, but that would
+be a bit too much for a start, so I decided to make a platformer. And
+since there is no way to do scrolling, I decided to try and make a
+Bubble Bobble-style platformer, where you only see one screen at a
+time.</p>
+<img alt="projects/project-27629/images/6847691511724437286.jpg" src="projects/project-27629/images/6847691511724437286.jpg" />
+<p>Of course it’s not a fun and challenging game — that would require a
+lot of playtesting and fine-tuning. But it has all the elements that
+such a game needs to have: the hero, the monsters, walls, platforms,
+ladders, jumping, shooting, picking up loot, death. It loads all its
+resources from BMP files (two banks 16 tiles each), and that, together
+with a non-precompiled code, pretty much uses up all the RAM on the
+device. But fear not, you can compile the source to .mpy files, which
+should free up some more space, and you can always compile the
+graphics into the firmware, in which case it frees 4kB of RAM for you.
+You also can have much more levels, since only one level is loaded
+into RAM at once, and there is plenty of flash space free.</p>
+<p>Next up will be some kind of a puzzle game, and then maybe a space
+shooter. I’m also still working on a set of default graphics to be
+pre-compiled into the firmware, to save you more precious RAM.</p>
+<p>The repository with the game is at  <a class="reference external" href="https://github.com/pewpew-game/circuitpython-jumperwire">https://github.com/pewpew-game/circuitpython-jumperwire</a>  and you will need the firmware from  <a class="reference external" href="https://github.com/pewpew-game/circuitpython/tree/ugame/atmel-samd/boards/ugame">https://github.com/pewpew-game/circuitpython/tree/ugame/atmel-
+samd/boards/ugame</a>  to run it.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

@@ -1,0 +1,65 @@
+---
+blogpost: true
+date: 2017-10-31
+category: project-27629
+---
+
+# Another PCB
+Published on 2017-10-31 in {ref}`project-27629`.
+
+Today I received a big batch of PCBs from OSHpark, and one of those
+was the next revision of the µGame PCB. There is a number of
+improvements there:
+
+
+ * The PCB is wider (42x50mm) giving me more room, but still fits in the
+5x5cm limit of many board houses.
+ * The buttons are spaced a little wider.
+ * I used non-clicking buttons this time.
+ * The only parts on the back side are the battery and the speaker.
+ * I used a smaller reset button.
+ * The active part of the display is centered on the PCB.
+ * There are footprints for 2 different battery holders.
+ * An analog pin connected to the battery through a voltage divider, for
+monitoring charge levels.
+ * Two of the button pins are swapped (left and down).
+
+
+
+:::{image} images/7144021509407322268.jpg
+
+:::
+
+
+Immediately after assembling the board I realized one more change: the
+USB 5V rail is connected directly to GND. Oops. That happened when I
+moved the button pads around, and made one of them touch the 5V trace.
+Fortunately cutting the trace and replacing it with a wire fixed it,
+and there was no damage.\
+
+
+But that means I need yet another version soon. To not waste my
+OSHpark coupons, I quickly tested the last feature of the board —
+sound. This one has a piezo speaker directly connected to the DAC pin.
+As you can expect, it's really quiet. Hmm, ok, that means that the
+next version will need a magnetic speaker and an amplifier. But where
+can I fit them?
+
+
+
+:::{image} https://644db4de3505c40a0444-327723bce298e3ff5813fb42baeefbaa.ssl.cf1.rackcdn.com/2faddcfbfd7401be000d1793b30e5dc4.png
+
+:::
+
+
+After taking some measurements of the new boards, I found a solution.
+I moved the fire buttons further from the edge (they aren't very
+comfortable they way they are now), and put the audio circuit in the
+freed space. It's not even very cramped — each component has lots of
+space around it. Of course the tiny 4mm speaker won't have great
+quality, but should be better than the piezo, and now I only have the
+battery on the back!
+
+I need to finish a couple of other boards, and then I'm making another
+order.
+

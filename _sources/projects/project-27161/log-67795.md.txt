@@ -1,0 +1,43 @@
+---
+blogpost: true
+date: 2017-09-25
+category: project-27161
+---
+
+# Buttons Shield
+Published on 2017-09-25 in {ref}`project-27161`.
+
+With the nice small display, it would be nice to also have some
+buttons, so that you could at least navigate a menu. So I decided to
+make a shield with three buttons. The problem is, we only have one
+free pin left with the display shield on. I didn't want to muck with
+reusing the SPI pins for other functions while the CS pin is high, and
+other trickery, but I noticed that the free pin is an analog pin.
+Great, we can do the resistor ladder trick!
+
+Basically, we will need a voltage divider, with different ratio of
+resistors switched by different buttons. Something like this:
+
+
+:::{image} images/9774231506374817325.png
+
+:::
+When no button is pressed, the analog pin is pulled up to 3.3V with
+the 20kΩ resistor, and the analog pin reads its maxium value. When
+button A is pressed, half of that voltage is redirected to ground, and
+the analog pin only reads 1.65V. When B is pressed, ⅓ of the voltage
+is redirected, and the pin should read 2.2V. When both A and B are
+pressed, ⅗ of voltage gets redirected, and the pin reads 1.32V. And so
+on, adding button C for ⅕.
+
+Now, looking at the voltage we can figure out exactly what combination
+of buttons has been pressed. It gets even easier if you only look at
+the top 3 bits of the reading.
+
+The shield itself is designed to go on the bottom of the trinket —
+because the display goes on top, of course.
+
+
+:::{image} images/5335011506375258991.jpg
+
+:::

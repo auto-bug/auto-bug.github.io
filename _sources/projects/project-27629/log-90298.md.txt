@@ -1,0 +1,30 @@
+---
+blogpost: true
+date: 2018-02-11
+category: project-27629
+---
+
+# Yes, we have no Bananas
+Published on 2018-02-11 in {ref}`project-27629`.
+
+It took less than two weeks, and all the µGames 10 are sold. I am both
+a bit surprised with how fast it went, and very grateful to everyone
+who bought one (a lot of them went to my friends). I don't plan on
+making any more of them for the next few weeks, at least until the
+Lunar New Year ends. I am now focusing on support of the devices that
+have their new owners, and on updating the firmware.
+
+Speaking of support, I already got some really valuable feedback. [@Frank Buss ](https://hackaday.io/hacker/55780) seems to have a knack for finding all the rough edges, and his
+suggestions already improved the documentation and resulted in some
+ideas about improving the firmware. Jell also reported some issues,
+which have been added to the docs. I expect to receive even more
+feedback as the devices arrive and their owners start experimenting
+with them seriously.
+
+I'm also going to work on making an emulator for this device — even if
+it's not going to emulate all of its limitations, it should allow
+easier development and debugging. You will still need to test against
+a real device to make sure that there is enough memory and that the
+speed is acceptable, though — it's not going to be a "real" emulator,
+just a version of the Stage library that runs on regular Python.
+

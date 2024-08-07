@@ -1,0 +1,49 @@
+---
+blogpost: true
+date: 2018-02-24
+category: project-27629
+---
+
+# µGame on ESP8266 with MicroPython
+Published on 2018-02-24 in {ref}`project-27629`.
+
+The SAMD21 chip is great for its native USB and the way you can just
+copy files on it, but since it's relatively new, the development
+boards for it are rather pricey. Plus, it really has small RAM and
+slow SPI, which limits what kind of games you can make.
+
+For making your own µGame clone, the ESP8266 could be a much better
+choice. 90kB of RAM and 40MHz SPI communication with the display (the
+esp can do 80MHz, but the display can't) make it a perfect solution.
+The only problem is a somewhat convoluted way of getting files on it,
+using external tools, but I might be able to do something about that
+with {ref}`project-58788` if I'm lucky. So I set out to try the µGame software on the ESP8266.
+
+The first try was using the CircuitPython firmware for Adafruit
+HUZZAH. Since the original µGame runs CircuitPython. Unfortunately,
+turns out that the HUZZAH board has been a little bit neglected, and
+some things don't work as expected with the current version. In
+particular, I couldn't get SPI to work while also using GPIO12 as D/C
+pin. After some failed attempts at fixing it quickly, I decided to try
+the good old MicroPython again.
+
+To do that, however, I had to port my _stage tile and and sprite
+engine to MicroPython from CircuitPython. While the two versions are
+very similar to the user, they differ substantially in their internal
+file organization, so I spent a whole night on this. But the result is
+very good:
+
+
+
+:::{image} images/2204261519483082974.jpg
+
+:::
+
+
+I'm using a new version of the {ref}`project-19371` here, and a standard ST7735 breakout module. The picture on the screen
+doesn't look good, because of lighting — sorry about that, I don't
+have access to a better environment at the moment.
+
+In any case, the Jumper Wire game seems to be working very well. The
+modified MicroPython sources are available at  [https://github.com/deshipu/micropython/tree/stage](https://github.com/deshipu/micropython/tree/stage)  so you can give it a go yourself!
+

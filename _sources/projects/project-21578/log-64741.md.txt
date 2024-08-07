@@ -1,0 +1,51 @@
+---
+blogpost: true
+date: 2017-08-06
+category: project-21578
+---
+
+# The Library
+Published on 2017-08-06 in {ref}`project-21578`.
+
+Today I finished the CircuitPython library for the PewPew Lite. It
+still has some room for improvement, especially in terms of memory
+use, but it already has the shape that I'm basically happy about.
+
+I had to completely rewrite it from my initial code, since I want it
+to be a little bit higher level than it was initially. Apart from_init_, which is used for setup at the beginning, there are only four
+functions:
+
+
+ * _brightness_ sets the brightness of the LED matrix, so that you can do fade-ins
+and outs,
+ * _keys_ queries for keys that have been pressed since the last call (with de-
+bouncing),
+ * _tick_ waits until a specified time has passed from the last call, and
+ * _show _that displays an image on the matrix.
+
+Then there is a class for representing the images in memory, which
+have five methods:
+
+
+ * _from_lines_ creates an image from data you are providing,
+ * _from_text_ creates an image with your text rendered on it,
+ * _pixel_ that gets or sets the color of a single pixel,
+ * _box_ which draws a filled rectangle, and
+ * _blit_ for copying one image onto another.
+
+That's it. The whole library has about 200 lines of code (including
+the font data), but lets you conveniently do things such as scrolling,
+displaying text, displaying animations, showing maps, moving around
+sprites, etc.
+
+For testing, I'm writing all this code on a Feather M0 Basic, which is
+the smallest and slowest device that runs CircuitPython — to make sure
+that the speed is acceptable for it, and that everything fits in the
+memory.
+
+Here is a simple scrolling menu written using all this, which I plan
+to use for selecting the games at the beginning:
+
+
+<iframe style="width: 500px; height: 281px;" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/E_fQcIwvMx4"></iframe>
+

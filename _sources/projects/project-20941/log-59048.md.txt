@@ -1,0 +1,43 @@
+---
+blogpost: true
+date: 2017-05-05
+category: project-20941
+---
+
+# 8x8 Matrix Shield Design
+Published on 2017-05-05 in {ref}`project-20941`.
+
+The final PCBs for the 8x8 matrix shield based on the IS31FL3728 chip
+arrived, and I verified that all the connection are now correct and
+working. You can download the design files and the gerbers in the
+"files" section above.
+
+Here is the schematic (the connections for the matrix itself are left
+as ratlines, for clarity):
+
+
+:::{image} images/5264121493988990592.png
+
+:::
+
+
+And here's the image of the PCB (I changed the colors from default
+yellow on orange):
+
+
+:::{image} images/8269081493989059384.png
+
+:::
+
+
+The bill of materials is as follows:
+
+
+ * the PCB
+ * the IS31FL3728 in a QFN package
+ * 3x 10kΩ 0805 resistor
+ * 2x 100nF 0805 capacitor
+ * 1x 1µF 0805 capacitor
+ * 1x 220nF 0805 capacitor
+ * 1x 8x8 mini LED matrix with anode rows and cathode columns
+

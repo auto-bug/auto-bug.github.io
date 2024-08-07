@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Replicating the Trinket M0 Express Hack - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="replicating-the-trinket-m0-express-hack">
+<h1>Replicating the Trinket M0 Express Hack<a class="headerlink" href="#replicating-the-trinket-m0-express-hack" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2017-10-02 in <a class="reference internal" href="../#project-21578"><span class="std std-ref">PewPew FeatherWing</span></a>.</p>
+<p>It would be great to have more memory on PewPew, so I decided to try
+and replicate the  <a class="reference external" href="https://daveastels.com/2017/09/01/trinket-m0-express-hack/">Trinket M0 Express</a>  hack, only with my bare chip. To do that, I need a flash chip. The
+original hack used a <em>S25FL116K0XMFI043</em> chip, but of course I don’t have that. But they should all be pretty
+much the same, no? So I tried with a <em>W25Q32FVSSIG</em> instead:</p>
+<img alt="projects/project-21578/images/1426111506979954792.jpg" src="projects/project-21578/images/1426111506979954792.jpg" />
+<p>\</p>
+<p>The connections are pretty much what you would expect:</p>
+<img alt="projects/project-21578/images/7082151506980134036.png" src="projects/project-21578/images/7082151506980134036.png" />
+<img alt="projects/project-21578/images/741941506980239023.png" src="projects/project-21578/images/741941506980239023.png" />
+<p>\</p>
+<p>And the board definition is in this branch:  <a class="reference external" href="https://github.com/pewpew-game/circuitpython/tree/trinket-m0-express">https://github.com/pewpew-game/circuitpython/tree/trinket-m0-express</a></p>
+<p>After compiling and flashing the firmware, it… doesn’t work. I mean,
+the CircuitPython itself works and shows me the REPL console, but
+there is no USB disk. And it’s easy to see why — there is a number of
+files in the_boards _directory that contain flash chip definitions, and that you include in
+your board definition files. And guess what, the chip I’m using is not
+there. So I have two options now: dive into the datasheets and prepare
+my own flash definition file, which would be the “correct” choice, or
+order a flash chip that is compatible with what is there already, then
+wait a few weeks for it to arrive and try again, which is the “lazy”
+choice. Guess which one I’ve chosen.</p>
+<p>Since I’m waiting for the PCBs and parts for the next version of
+PewPew anyways…</p>
+<p>Update: So I overcame by inherent laziness and created a flash file
+for the W25Q32BV family. And what do you know, it works!</p>
+</section>
+
+
+</div>
+  </body>
+</html>

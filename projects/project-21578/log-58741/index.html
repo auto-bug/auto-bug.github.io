@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>The Buttons - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="the-buttons">
+<h1>The Buttons<a class="headerlink" href="#the-buttons" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2017-05-01 in <a class="reference internal" href="../#project-21578"><span class="std std-ref">PewPew FeatherWing</span></a>.</p>
+<p>When I started planning this board, I only knew the HT16K33 LED driver
+chip (well, ok, also the MAX 7129, but that’s ancient). That chip has
+a pretty cool feature – by adding a diodes to the column pins you can
+re-use them to scan a matrix keypad at the same time as they drive the
+LED matrix. The chip even does de-bouncing for you, you just have to
+read the state of the keys from its registers. Super-convenient for a
+device like this.</p>
+<p>Unfortunately, the IS31FL3733 chip that I’m using now, while it allows
+me to control the brightness of each individual pixel, doesn’t have
+such a keyboard-scanning feature. But wait, the datasheet mentions
+something similar – it has an open/short LED detection. Isn’t a
+closed button pretty much electrically equivalent to a shorted LED? I
+could use this, together with the extra column pins that I don’t use
+(the chip supports 12x16 matrixes, I only have 8x16) to scan the
+buttons!</p>
+<p>I designed the first prototype with that idea in mind. The buttons are
+connected – through resistors, for safety – in place of LEDs on an
+extra column. Once the PCB arrived and I assembled it, I could start
+my tests.</p>
+<p>Turns out getting this mechanism to work properly is a little bit
+involved. First, the LEDs need to be enabled by writing 1s to the
+corresponding registers on the page 0. Then, the power register on
+page 3 needs to be set to 1, the minimum power setting. I
+experimentally determined that this step is not actually strictly
+necessary for the mechanism to work, but it’s probably there for
+safety, and it prevents the LED matrix from flashing brightly while
+the chip tests all the lines. Finally, you have to trigger the testing
+by writing 1 to a bit field in the config register on page 3. Then you
+have to wait 3.264ms, and finally you can set the current back to what
+it was, clear the bit field in the config register, and read the LED
+status from the registers on page 0. Easy.</p>
+<img alt="projects/project-21578/images/39751493638552640.jpg" src="projects/project-21578/images/39751493638552640.jpg" />
+<p>I got my code to work, and decided to try and write a simple snake
+game to see how well it all works. Turns own that it works pretty bad.</p>
+<p>You see, to get a decent responsiveness from the buttons, I need to
+scan them often. At the minimum once per the game’s animation frame.
+Humans are very sensitive in delays in tactile and visual areas –
+especially tactile. So I need to scan often. But you see, to scan I
+need to drop the current to the minimum setting, which effectively
+switches the display off. And if I do it for 3.265ms every frame, I
+get a nasty flickering. The board also makes some suspicious high-
+pitched noises, which can’t be good.</p>
+<p>So that’s it for the first prototype. I need to find a better way of
+handling the buttons. That prototype was going to be trashed anyways,
+because I made the holes for the matrix pins too small – that’s why
+the matrix is soldered on top, and not flush with the board on the
+photos.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

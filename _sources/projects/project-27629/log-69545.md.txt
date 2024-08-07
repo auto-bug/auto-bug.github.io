@@ -1,0 +1,39 @@
+---
+blogpost: true
+date: 2017-10-22
+category: project-27629
+---
+
+# Custom Firmware, Flash and Buttons
+Published on 2017-10-22 in {ref}`project-27629`.
+
+This board is pretty much the same as Trinket M0, with two notable
+differences: it has additional flash for the filesystem, and it uses
+more pins than Trinket M0 breaks out. That's why I needed a custom
+board definition for CircuitPython, which I made. And it seemed to
+work fine, for a while at least. I modified the library for the ST7735
+display to optimize it a bit, and started to write a simple program
+testing the buttons, when I ran into a problem: every time a soft
+reset happened (either because I pressed ctrl+d, or because the board
+detected changed files and restarted), it would crash into "safe
+mode".
+
+Of course, I assumed this must be the changes I made, so either the
+flash handling, or the fact that I don't have a DotStar LED connected
+on pins PA00 and PA01, but instead use them for buttons... It took me
+a couple of days since I first saw the problem with {ref}`project-21578` to realize what is the real reason for it: the gamepad library that I
+added upstream some time ago!
+
+A quick fix for that library to stop scanning keys on restart resolved
+the issue, and I have my key test working:
+
+
+
+:::{image} images/3943711508627542626.jpg
+
+:::
+
+
+Next I need to write the tiles+sprites engine that I've been thinking
+about since at least two years...
+

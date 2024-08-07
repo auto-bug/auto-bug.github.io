@@ -1,0 +1,26 @@
+---
+blogpost: true
+date: 2017-08-09
+category: project-25256
+---
+
+# Power Button Fail
+Published on 2017-08-09 in {ref}`project-25256`.
+
+The PCB for the power button arrived some time ago, and recently the
+last of the parts made it into my mailbox — the pair of mosfets in a
+single package. So I went and assembled everything, and powered it up,
+and what do you know, it didn't release blue smoke. But it also didn't
+work — it was always on. So I went through the schematic again, and
+then asked on the hack chat channel for help. Rubber-ducking helped
+and I noticed that I have swapped the P and N mosfets in my design.
+Ugh. I also tried the PCB on the zero, and turns out it doesn't fit
+quite right — the HDMI socket is a little bigger than I thought and
+needs a deeper cut out. So here's a new version of the PCB:
+
+
+:::{image} images/5858491502295919000.png
+
+:::
+Hopefully that one will work better.
+

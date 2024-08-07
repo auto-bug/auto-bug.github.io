@@ -1,0 +1,37 @@
+---
+blogpost: true
+date: 2017-09-15
+category: project-27257
+---
+
+# Ratsnest Lines
+Published on 2017-09-15 in {ref}`project-27257`.
+
+One of the nicest features of Fritzing is that it lets you easily
+switch between the schematic and PCB views, and the updates you make
+in one will show in the other in the form of so called "ratsnest"
+lines — color dashed lines.
+
+
+:::{image} images/6043721505461319491.png
+
+:::
+However, while generally useful, they can become very problematic when
+too dense, because of one peculiarity of Fritzing — the ratsnest lines
+have clicking priority over everything else, so it may be very
+difficult to click on anything covered by them. A quick workaround is
+to double-click on the offending lines to turn them into traces, which
+obey normal clicking priority rules and are not as problematic, but
+then it's hard to keep track of what you have already connected in
+your design.
+
+A better way is to simply disable the display of the ratsnest layer.
+You can do that in the menu, by clicking on the checkbox next to
+View→Ratsnest Layer. But then how are you going to know what to
+connect to what? Don't worry, if you click on any pin, Fritzing will
+highlight all the other pins it should be connected to — this way you
+can make all your connections while avoiding visual clutter.
+
+Though I still wish there was an option of making the ratsnest lines
+unclickable...
+

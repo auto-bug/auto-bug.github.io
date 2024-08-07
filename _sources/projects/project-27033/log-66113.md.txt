@@ -1,0 +1,42 @@
+---
+blogpost: true
+date: 2017-08-30
+category: project-27033
+---
+
+# The Right Size
+Published on 2017-08-30 in {ref}`project-27033`.
+
+Adafruit just recently released a new version of their Trinket boards,
+this time with the Atmel SAMD21 Cortex-M0 ARM chip, and with
+CircuitPython loaded on it by default. Of course I had to get a
+couple, and managed to do it before they went out of stock.
+
+\
+By a complete coincidence, the package with them arrived as the same
+time as the package from Aliexpress with the tiny ST7735 TFT display
+screens. I put them one next to the other, and what do you know — a
+perfect fit!
+
+
+:::{image} images/211641504106064241.jpg
+
+:::
+So I fired up my trusty Fritzing and quickly made a breakout board for
+this display, with the pins matching the pins on the Trinket M0. A few
+clicks later I have the order placed for OSHPark.
+
+
+:::{image} https://644db4de3505c40a0444-327723bce298e3ff5813fb42baeefbaa.ssl.cf1.rackcdn.com/f204484c0fc4b3a5c274158534535e3e.png
+
+:::
+(Yeah, I was in a hurry, so one of the mounting holes is slightly
+shifted. Oh well.)
+
+Because I only had five pins to use, and I'm not entirely sure if I
+can use the MISO pin for other purpose while the SPI is used on this
+microcontroller, I had to hard-wire the LED and CS pins. By a complete
+coincidence, the SCL pin is free (it's the MISO pin), and the SDA pin
+is the same as DC — so I think I should be still able to use the I²C
+bus with this connected.
+

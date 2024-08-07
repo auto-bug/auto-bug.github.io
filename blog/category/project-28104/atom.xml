@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>http://deshipu.art/</id>
+  <title>deshipu.art - Posts in project-28104</title>
+  <updated>2024-08-07T20:31:58.866367+00:00</updated>
+  <link href="http://deshipu.art/"/>
+  <link href="http://deshipu.art/blog/category/project-28104/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-28104/log-165346/</id>
+    <title>First Try</title>
+    <updated>2019-07-04T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="first-try"&gt;
+
+&lt;p&gt;Published on 2019-07-04 in &lt;a class="reference internal" href="../../../projects/project-28104/#project-28104"&gt;&lt;span class="std std-ref"&gt;Coin Battery Shield for D1 Mini&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;There is a battery shield for D1 Mini development board, produced and
+sold by Wemos, but I find it a little lacking for some specific use
+cases. It wastes power by boosting the battery voltage to 5V and then
+letting the on-board LDO bring it back to 3.3V. It has a separate USB
+socket for charging the battery. It doesn’t have a power switch. And
+most of all, it doesn’t contain an actual battery — you have to
+connect that separately. That means it not suitable for some really
+small and portable projects. So I made this.&lt;/p&gt;
+&lt;img alt="projects/project-28104/images/558581562235900937.png" src="projects/project-28104/images/558581562235900937.png" /&gt;
+&lt;p&gt;It’s a very simple shield. It only has the battery itself, behind a
+shottky diode to protect it from your USB power, a charging circuit
+connected to the 5V pin, with an indicator diode, and a power switch.
+That’s it.\&lt;/p&gt;
+&lt;p&gt;There are two down-sides for using this design. First, the battery is
+tiny — only around 40mAh — so it won’t last long. Second, it only
+provides between 3.6 and 4.2V to the 5V rail, so if you have anything
+that actually requires 5V, it won’t work. But I think it’s still
+useful for certain projects.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-28104/log-165346/" rel="alternate"/>
+    <summary>Published on 2019-07-04 in project-28104.</summary>
+    <published>2019-07-04T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-28104/log-165347/</id>
+    <title>Second Try</title>
+    <updated>2019-07-04T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="second-try"&gt;
+
+&lt;p&gt;Published on 2019-07-04 in &lt;a class="reference internal" href="../../../projects/project-28104/#project-28104"&gt;&lt;span class="std std-ref"&gt;Coin Battery Shield for D1 Mini&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I needed a battery for my &lt;span class="xref std std-ref"&gt;project-165983&lt;/span&gt; , so I revived this project and tried a second attempt. This time I’m
+using a bigger battery, LIR2450, though I made sure you can solder a
+holder for the smaller LIR2032 as well. There has been a change in how
+the charging works — with the switch on, the board is powered from the
+battery (through a shottky diode, to protect it from USB power you
+might have connected), with the switch off, the battery is charging.&lt;/p&gt;
+&lt;img alt="projects/project-28104/images/686111562236421210.png" src="projects/project-28104/images/686111562236421210.png" /&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-28104/log-165347/" rel="alternate"/>
+    <summary>Published on 2019-07-04 in project-28104.</summary>
+    <published>2019-07-04T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-28104/log-165348/</id>
+    <title>Smaller Battery</title>
+    <updated>2019-07-04T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="smaller-battery"&gt;
+
+&lt;p&gt;Published on 2019-07-04 in &lt;a class="reference internal" href="../../../projects/project-28104/#project-28104"&gt;&lt;span class="std std-ref"&gt;Coin Battery Shield for D1 Mini&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Here’s a photo with the smaller LIR2032 battery.&lt;/p&gt;
+&lt;img alt="projects/project-28104/images/1341111562238625473.jpg" src="projects/project-28104/images/1341111562238625473.jpg" /&gt;
+&lt;p&gt;As you can see, that version allows stacking, so you can have more
+shields under it (just the access to the battery will be harder).&lt;/p&gt;
+&lt;p&gt;UPDATE: Unfortunately this version doesn’t have enough power to
+actually power the ESP8266.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-28104/log-165348/" rel="alternate"/>
+    <summary>Published on 2019-07-04 in project-28104.</summary>
+    <published>2019-07-04T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-28104/log-165883/</id>
+    <title>Tindie</title>
+    <updated>2019-07-18T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="tindie"&gt;
+
+&lt;p&gt;Published on 2019-07-18 in &lt;a class="reference internal" href="../../../projects/project-28104/#project-28104"&gt;&lt;span class="std std-ref"&gt;Coin Battery Shield for D1 Mini&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Some additional battery holders came today, so I soldered a couple of
+more shields and put them on sale on Tindie. In the process I ran out
+of the charging chips, so I will make more when those arrive.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-28104/log-165883/" rel="alternate"/>
+    <summary>Published on 2019-07-18 in project-28104.</summary>
+    <published>2019-07-18T00:00:00+02:00</published>
+  </entry>
+</feed>

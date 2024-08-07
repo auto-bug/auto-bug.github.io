@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Underwhelming DMA - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="underwhelming-dma">
+<h1>Underwhelming DMA<a class="headerlink" href="#underwhelming-dma" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2019-04-19 in <a class="reference internal" href="../#project-27629"><span class="std std-ref">µGame</span></a>.</p>
+<p>I finally worked on an improvement that I long wanted to do to the
+_stage library, which is at the heart of µGame: make the communication
+with the display asynchronous by using DMA. This way I can have two
+buffers, and calculate the contents of one of them while the other one
+is being sent to the display.</p>
+<p>As a test I used the balls demo from the tutorial, but with all
+waiting for the next frame removed — so they move as fast as they can.</p>
+<p>Here is how it works before DMA:</p>
+<img alt="projects/project-27629/images/4838621555700681233.gif" src="projects/project-27629/images/4838621555700681233.gif" />
+<p>And here is how it works with DMA:</p>
+<img alt="projects/project-27629/images/1409261555700732524.gif" src="projects/project-27629/images/1409261555700732524.gif" />
+<p>As you can see, there is barely any perceptible difference at all!</p>
+<p>The code I wrote for this is pretty nasty and hacky, and after seeing
+this, I don’t think I have the heart to clean it up and send it as a
+pull request — it’s simply not worth it.</p>
+<p>However, I will keep an eye for other ways of improving the firmware.</p>
+<p>UPDATE: Yes, I made some more precise measurements as well. Running
+through 1000 frames of the animation took the DMA version 31.034s and
+the non-DMA version 32.699s. That is 32.22 fps with DMA and 30.58 fps
+without.</p>
+<p>UPDATE2: I did a second test, with full-screen updates this
+time. 159.08s for non-DMA, versus 148.708s for DMA. That’s 6.28 fps
+versus 6.72 fps. Even with such a large amount of data, the difference
+is negligible compared to the time spent computing it.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Inverse Kinematics - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="inverse-kinematics">
+<h1>Inverse Kinematics<a class="headerlink" href="#inverse-kinematics" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2017-03-18 in <a class="reference internal" href="../#project-20379"><span class="std std-ref">Deltabot</span></a>.</p>
+<p>Inverse kinematics for delta robots seem to have an opinion of being
+very complex and un-intuitive. I don’t really understand why, because
+to me they seem to be simpler then for most other robot arm
+configurations. Perhaps I’m missing something.</p>
+<p>Let’s split the problem in two parts. First, let’s just look at 1/3 of
+the robot, a single “arm” of the delta:</p>
+<img alt="projects/project-20379/images/7303201489803245721.png" src="projects/project-20379/images/7303201489803245721.png" />
+<p>We only have one degree of freedom here: the angle ￼￼α. That’s our output, what we need to calculate. And we only really
+have one input: the distance AD between the business end of the robot
+and the base of the servo. We also know all the mechanical dimensions
+of the robot: AB, BC, CD, DE. So how can we calculate α? From the <a class="reference external" href="https://en.wikipedia.org/wiki/Law_of_cosines">law of cosines</a> , of course! Given a triangle with dimensions a, b c, the law of
+cosines lets us calculate the angles of that triangle:</p>
+<img alt="api/latex?tex=%5Ccolor%7BWhite%7D%20%5Clarge%20%5Cgamma%20%3D%20%5Carccos%20%5Cfrac%7Ba%5E2%2Bb%5E2%20-%20c%5E2%7D%7B2ab%7D" src="api/latex?tex=%5Ccolor%7BWhite%7D%20%5Clarge%20%5Cgamma%20%3D%20%5Carccos%20%5Cfrac%7Ba%5E2%2Bb%5E2%20-%20c%5E2%7D%7B2ab%7D" />
+<p>Where γ is the angle opposite c. Also, we will actually calculate 180°-￼￼α, which is a sum of three angles:</p>
+<p>ADE, ADB and BDC. So we have:</p>
+<img alt="api/latex?tex=%5Ccolor%7BWhite%7D%20%5Clarge%20ADE%20%3D%20%5Carccos%5Cfrac%7BDE%7D%7BAD%7D" src="api/latex?tex=%5Ccolor%7BWhite%7D%20%5Clarge%20ADE%20%3D%20%5Carccos%5Cfrac%7BDE%7D%7BAD%7D" />
+<p>\</p>
+<img alt="api/latex?tex=%5Ccolor%7BWhite%7D%20%5Clarge%20BD%20%3D%20%5Csqrt%7BAD%5E2%20-%20ED%5E2%20%2B%20(ED%20-%20AB)%5E2%7D" src="api/latex?tex=%5Ccolor%7BWhite%7D%20%5Clarge%20BD%20%3D%20%5Csqrt%7BAD%5E2%20-%20ED%5E2%20%2B%20(ED%20-%20AB)%5E2%7D" />
+<img alt="api/latex?tex=%5Ccolor%7BWhite%7D%20%5Clarge%20ADB%20%3D%20%5Carccos%5Cfrac%7BAD%5E2%20%2B%20BD%5E2%20-%20AB%5E2%7D%7B2%5Ctimes%20AD%20%5Ctimes%20BD%7D" src="api/latex?tex=%5Ccolor%7BWhite%7D%20%5Clarge%20ADB%20%3D%20%5Carccos%5Cfrac%7BAD%5E2%20%2B%20BD%5E2%20-%20AB%5E2%7D%7B2%5Ctimes%20AD%20%5Ctimes%20BD%7D" />
+<img alt="api/latex?tex=%5Ccolor%7BWhite%7D%20%5Clarge%20BDC%20%3D%20%5Carccos%5Cfrac%7BBD%5E2%20%2B%20CD%5E2%20-%20BC%5E2%7D%7B2%5Ctimes%20BD%5Ctimes%20CD%7D" src="api/latex?tex=%5Ccolor%7BWhite%7D%20%5Clarge%20BDC%20%3D%20%5Carccos%5Cfrac%7BBD%5E2%20%2B%20CD%5E2%20-%20BC%5E2%7D%7B2%5Ctimes%20BD%5Ctimes%20CD%7D" />
+<p>And finally:</p>
+<img alt="api/latex?tex=%5Ccolor%7BWhite%7D%20%5Clarge%20%5Calpha%20%3D%20180%5Cdegree%20-%20ADE%20-%20ADB%20-%20BDC" src="api/latex?tex=%5Ccolor%7BWhite%7D%20%5Clarge%20%5Calpha%20%3D%20180%5Cdegree%20-%20ADE%20-%20ADB%20-%20BDC" />
+<p>That’s it. That’s the position the servo needs to move to. All we need
+to know is the distance AD. How can we know that distance for each of
+the arms? That’s very simple! It’s just the distance between the point
+we want our robot to move to, (x, y, z), and the base of the given
+arm, (x₁, y₁, z₁), which we know (we can measure them or calculate
+from the distance ED and the angle of the given arm).</p>
+<img alt="api/latex?tex=%5Ccolor%7BWhite%7D%20%5Clarge%20AD%20%3D%20%5Csqrt%7B(x-x_1)%5E2%20%2B%20(y-y_1)%5E2%20%2B%20(z%20-%20z_1)%5E2%7D" src="api/latex?tex=%5Ccolor%7BWhite%7D%20%5Clarge%20AD%20%3D%20%5Csqrt%7B(x-x_1)%5E2%20%2B%20(y-y_1)%5E2%20%2B%20(z%20-%20z_1)%5E2%7D" />
+<p>Applying all this math should let us move the robot to the coordinates
+we desire.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

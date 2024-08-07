@@ -1,0 +1,28 @@
+---
+blogpost: true
+date: 2018-07-02
+category: project-27257
+---
+
+# Tented Vias
+Published on 2018-07-02 in {ref}`project-27257`.
+
+This trick was originally described by [@Arduino Enigma ](https://hackaday.io/hacker/72667) in the {ref}`project-91895` . Tented vias are vias that are covered with soldermask. If you think
+about it for a moment, there is really no reason for a via to be
+exposed (unless you re-use it as a test point). Its job is to connect
+the layers, and it does it as well when it is covered. On the other
+hand, when it's covered, the risk of shorting it is smaller, and the
+board can look much better.
+
+Unfortunately Fritzing doesn't normally give you the option to have
+the vias tented. But there is a simple trick to add the soldermask
+over them when you are generating the gerbers. Start by generating
+your gerber files as usual, and once you do that, select_Routing→Select All Vias_ from the menu, and press the Del key to delete them. It will also
+delete some of the traces, but don't worry about it. Now generate
+another set of gerber files, in a separate directory, and close
+Fritzing without saving the file.
+
+Now all you have to do is to copy the_maskTop, maskBottom, silkTop_ and_silkBottom_ files from the latter directory to the former, and voila, your vias
+are now covered with soldermask. You can also only copy only some of
+those files to only have the vias covered on one side of the board.
+

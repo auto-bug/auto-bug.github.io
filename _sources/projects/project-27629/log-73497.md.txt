@@ -1,0 +1,75 @@
+---
+blogpost: true
+date: 2018-01-10
+category: project-27629
+---
+
+# Bigger Battery
+Published on 2018-01-10 in {ref}`project-27629`.
+
+The LIR2032 coin cell batteries that I used with this device so far
+are not the perfect solution. Sure, they are easy to get and replace,
+don't look nearly as scary as the aluminium pouch of the LiPo
+batteries, and actually have enough electricity to play for almost an
+hour, but they also have down sides: they are very slow to charge, 40
+minutes of play time is not nearly enough for the more boring travels,
+and they don't look very well on the back of the device.
+
+So I looked around for a different battery. I has to be:
+
+
+ * standard, so that I can tell users what battery they need to get,
+ * larger and capable of faster charging,
+ * easily obtainable and cheap,
+ * protected from over-discharge,
+ * flat and roughly the same size as the device,
+ * physically robust.
+
+That actually narrows the possibilities considerably, but I had an
+idea: let's use a battery from a cellphone — not a smartphone battery,
+those are too big and expensive, but a battery from one of the popular
+dumb phones. Nokia used to be a popular brand, so I'm sure there are a
+lot of cheap Nokia batteries I could use!
+
+Looking around I found the "Cellphone Knowledge Base" wiki, and there
+I found the two battery models that fit:  [BL-5B](http://www.cpkb.org/wiki/Nokia_BL-5B_battery)  and  [BL-4S](http://www.cpkb.org/wiki/Nokia_BL-4S_battery) .  I ordered one of each, and they arrived recently. The bigger and
+older one, BL-5B, arrived first:
+
+
+
+:::{image} images/9591781515614673414.jpg
+
+:::
+
+
+It's a bit of a tight fit, exactly the same height as the µGame. But
+the connector it uses let's me improvise something from goldpins, so
+it works pretty well:
+
+
+
+:::{image} images/4836961515614756365.jpg
+
+:::
+
+
+You can see the holes are not exactly right (I didn't have the
+dimensions when I designed the PCB) but they are close enough for this
+to work. Today the second battery arrived, and I actually like it a
+bit more. It's smaller but thicker, and it doesn't cover the mounting
+holes:
+
+
+
+:::{image} images/8875181515615009565.jpg
+
+:::
+
+
+The connector is a bit more tricky — I think I will simply solder it
+to the battery pads, after attaching the battery with 2-sided tape.
+It's supposed to be a prototype kit anyways.
+
+ [@MatejEusk ](https://hackaday.io/hacker/275398) is working on designing a 3D-printed case for this, it might work a
+little bit better with those batteries then.
+

@@ -1,0 +1,40 @@
+---
+blogpost: true
+date: 2017-09-23
+category: project-21578
+---
+
+# PewPew 3.0 Standalone
+Published on 2017-09-23 in {ref}`project-21578`.
+
+After my last experiment with the homebrew Trinket M0, I designed and
+ordered a board for PewPew that has its own Atmel SAMD21E chip on
+board. It arrived today, and i assembled it and it seems to be
+working! I was able to flash the UF2 bootloader and CircuitPython on
+it, and to light up a couple of pixels on the display — I still need
+to re-write the [pew.py](http://pew.py)  library for this platform. I'm especially worried about button
+handling, since CircuitPython doesn't have any interrupt support. In
+the worst case I might need to write the library in C and compile it
+into my own fork of CircuitPython.
+
+
+:::{image} images/9440841506120506908.jpg
+
+:::
+If it does come to that, I will probably also remap the pins, to use
+ones not available on the Trinket, and to free up the DAC pin for
+sound — adding a small amplifier and speaker would be great then. For
+now the design is a little bit random, and I had to add one wire where
+I missed a pull-up resistor. I expect to make more versions, and to
+gradually clean up the design and arrange all the elements properly.
+
+
+:::{image} images/7633211506120697777.jpg
+
+:::
+I'm also not happy with the location of the USB port, and generally
+with how you touch the elements with your fingers while holding this.
+I might actually get back to the "sandwich"  design with two PCBs, so
+that the back of the bottom PCB could be completely clean of
+components, and the battery could be hidden in between.
+

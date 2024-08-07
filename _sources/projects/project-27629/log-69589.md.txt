@@ -1,0 +1,24 @@
+---
+blogpost: true
+date: 2017-10-22
+category: project-27629
+---
+
+# Emulating PewPew Lite
+Published on 2017-10-22 in {ref}`project-27629`.
+
+I decided to make a quick experiment, before I go on writing the
+sprite library and writing proper games for this. I wrote a version of
+the "pew" library (needed for the games written for {ref}`project-21578` ) for this device, simulating the 8x8 display with rectangles.
+
+
+
+:::{image} images/247721508701129993.jpg
+
+:::
+
+
+At least the snake game works, didn't try the others yet. I'm
+redrawing the whole screen every frame, so the frame rate is not
+terrific, but it's playable.
+

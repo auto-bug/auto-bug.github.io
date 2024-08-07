@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Scrolling and Text - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="scrolling-and-text">
+<h1>Scrolling and Text<a class="headerlink" href="#scrolling-and-text" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2017-07-23 in <a class="reference internal" href="../#project-21578"><span class="std std-ref">PewPew FeatherWing</span></a>.</p>
+<p>While most games will be simple enough to just use the individual
+pixels on the matrix, we still need a way to display text to the
+player — to show errors, to list the available games, to show the
+“game over” text, etc. So today I worked on that.</p>
+<p>I designed my own 4×6 4-color font specially for this. The effect of
+using the 4 available colors for shading when they actually have very
+different hues is a bit strange, but you get used to it and I think
+it’s actually quite readable:</p>
+<img alt="https://j.gifs.com/76EDky.gif" src="https://j.gifs.com/76EDky.gif" />
+<p>I might add an option of displaying the text in just a single color —
+the font is designed so that it’s still readable if you “round” the
+half tones.</p>
+<p>The scrolling is actually quite slow on the SAMD feathers (the maximum
+speed is about twice as on the gif above), but I think it’s quite
+sufficient for text.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

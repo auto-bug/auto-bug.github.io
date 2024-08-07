@@ -1,0 +1,116 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>http://deshipu.art/</id>
+  <title>deshipu.art - Posts tagged LED MATRIX</title>
+  <updated>2024-08-07T20:31:59.662544+00:00</updated>
+  <link href="http://deshipu.art/"/>
+  <link href="http://deshipu.art/blog/tag/led-matrix/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-20839/</id>
+    <title>Weather Pal</title>
+    <updated>2017-04-01T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="weather-pal"&gt;
+
+&lt;p&gt;A simple display for weather forecasts.&lt;/p&gt;
+&lt;div class="project-thumb"&gt;
+&lt;a class="reference external image-reference" href="/_images/2057201491072344697.jpg"&gt;&lt;img alt="projects/project-20839/images/2057201491072344697.jpg" src="projects/project-20839/images/2057201491072344697.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/1899981491072364533.jpg"&gt;&lt;img alt="projects/project-20839/images/1899981491072364533.jpg" src="projects/project-20839/images/1899981491072364533.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/789381491072328607.jpg"&gt;&lt;img alt="projects/project-20839/images/789381491072328607.jpg" src="projects/project-20839/images/789381491072328607.jpg" /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;This is a very simple example of using ESP8266 with MicroPython and a {ref}`project-18120`  to make a weather forecast display. It will stand in my hall,
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;connected to a phone charger, so that I won’t forget an umbrella when
+leaving.&lt;/p&gt;
+&lt;section id="logs"&gt;
+&lt;h2&gt;Logs&lt;/h2&gt;
+&lt;ul class="postlist-style-none postlist simple"&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-04-01 - &lt;a class="reference internal" href="../../../projects/project-20839/log-56209/"&gt;Code&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section id="instructions"&gt;
+&lt;h2&gt;Instructions&lt;/h2&gt;
+&lt;/section&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-20839/" rel="alternate"/>
+    <summary>A simple display for weather forecasts.</summary>
+    <category term="8x8" label="8x8"/>
+    <category term="ESP8266" label="ESP8266"/>
+    <category term="HT16K33" label="HT16K33"/>
+    <category term="LEDMATRIX" label="LED MATRIX"/>
+    <category term="blink" label="blink"/>
+    <category term="d1mini" label="d1 mini"/>
+    <category term="hardware" label="hardware"/>
+    <category term="led" label="led"/>
+    <category term="ongoingproject" label="ongoing project"/>
+    <category term="weather" label="weather"/>
+    <published>2017-04-01T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-20941/</id>
+    <title>D1 Mini Matrix Deluxe Shields</title>
+    <updated>2017-04-05T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="d1-mini-matrix-deluxe-shields"&gt;
+
+&lt;p&gt;Shields for the D1 Mini ESP8266 board using the ISSI chips&lt;/p&gt;
+&lt;div class="project-thumb"&gt;
+&lt;a class="reference external image-reference" href="/_images/931981491389033893.png"&gt;&lt;img alt="projects/project-20941/images/931981491389033893.png" src="projects/project-20941/images/931981491389033893.png" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/8866461494364774367.jpg"&gt;&lt;img alt="projects/project-20941/images/8866461494364774367.jpg" src="projects/project-20941/images/8866461494364774367.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/1267431494364787210.jpg"&gt;&lt;img alt="projects/project-20941/images/1267431494364787210.jpg" src="projects/project-20941/images/1267431494364787210.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/3320271497897139925.jpg"&gt;&lt;img alt="projects/project-20941/images/3320271497897139925.jpg" src="projects/project-20941/images/3320271497897139925.jpg" /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;When I ordered the matrices for the {ref}`project-18120`  project, I found a number of cool matrices that couldn&amp;#39;t be driven by
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;the venerable HT16K33 chip that I used there. I went to search for a
+chip that could handle them, &lt;a class="reference external" href="https://hackaday.io/page/2976-alternative-to-ht16k33-for-a-common-anode-bi-color-matrix"&gt;and was pointed&lt;/a&gt;  to the IS31FL37* family of chips produced by ISSI.&lt;/p&gt;
+&lt;p&gt;Those chips are interesting for a variety of reasons. There are
+versions for charlieplexed displays, and for driving two matrices
+connected in reverse to each other, and for various sizes of regular
+matrices. More importantly, they can control the brigtness (or color)
+of each LED individually, and they often have interesting additional
+effects built-in, such as automatic animations, per-pixel blinking and
+“breathing”, and some can even modulate the brightness according to
+music or other analog input. They are also much more modern – they
+come in very small QFN packages and operate on 3.3V logic.&lt;/p&gt;
+&lt;p&gt;I requested some samples of those chips, and I will try to design and
+build some matrix shields using them. I also plan to do some more
+interesting things with them, but we will see how that works when I
+actually try.&lt;/p&gt;
+&lt;section id="logs"&gt;
+&lt;h2&gt;Logs&lt;/h2&gt;
+&lt;ul class="postlist-style-none postlist simple"&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-07-24 - &lt;a class="reference internal" href="../../../projects/project-20941/log-63916/"&gt;Equalizer on the IS31FL3728&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-07-03 - &lt;a class="reference internal" href="../../../projects/project-20941/log-62469/"&gt;A Quick Tour Around the IS31FL373x Chips&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-06-19 - &lt;a class="reference internal" href="../../../projects/project-20941/log-61842/"&gt;Grayscale 7x11 Matrix&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-06-19 - &lt;a class="reference internal" href="../../../projects/project-20941/log-61847/"&gt;Grayscale 14x11 Matrix&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-05-09 - &lt;a class="reference internal" href="../../../projects/project-20941/log-59293/"&gt;Smaller 8x8 Matrix Breakout&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-05-05 - &lt;a class="reference internal" href="../../../projects/project-20941/log-59048/"&gt;8x8 Matrix Shield Design&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-05-03 - &lt;a class="reference internal" href="../../../projects/project-20941/log-58932/"&gt;PewPew FeatherWing&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-04-29 - &lt;a class="reference internal" href="../../../projects/project-20941/log-58466/"&gt;Bi-color 8x8 Matrix&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-04-19 - &lt;a class="reference internal" href="../../../projects/project-20941/log-57713/"&gt;The 8×8 Monochrome Matrix Finished&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-04-15 - &lt;a class="reference internal" href="../../../projects/project-20941/log-57323/"&gt;Custom Footprints&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-04-10 - &lt;a class="reference internal" href="../../../projects/project-20941/log-57033/"&gt;Chips!&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-04-08 - &lt;a class="reference internal" href="../../../projects/project-20941/log-56875/"&gt;The 8×8 Monochrome Matrix&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section id="instructions"&gt;
+&lt;h2&gt;Instructions&lt;/h2&gt;
+&lt;/section&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-20941/" rel="alternate"/>
+    <summary>Shields for the D1 Mini ESP8266 board using the ISSI chips</summary>
+    <category term="Blinking" label="Blinking"/>
+    <category term="ESP8266" label="ESP8266"/>
+    <category term="LEDMATRIX" label="LED MATRIX"/>
+    <category term="d1mini" label="d1 mini"/>
+    <category term="hardware" label="hardware"/>
+    <category term="led" label="led"/>
+    <category term="ongoingproject" label="ongoing project"/>
+    <category term="wemos" label="wemos"/>
+    <published>2017-04-05T00:00:00+02:00</published>
+  </entry>
+</feed>

@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Version 4.2 - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="version-4-2">
+<h1>Version 4.2<a class="headerlink" href="#version-4-2" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2017-10-24 in <a class="reference internal" href="../#project-21578"><span class="std std-ref">PewPew FeatherWing</span></a>.</p>
+<p>After finding the reason for CircuitPython crashes in #µGame and
+getting the audio amplifier to work, version 4.1 has pretty much all
+the parts that I wanted to have. However, its physical layout is
+somewhat problematic, especially the rather large speaker smack in the
+middle of the board, which makes it hard to add a battery there.</p>
+<p>So I started working on version 4.2. So far I have the following
+changes:</p>
+<ul class="simple">
+<li><p>Added guide holes for the USB socket.</p></li>
+<li><p>Larger footprint for the flash chip, so that more chips can be used.</p></li>
+<li><p>Smaller and cheaper reset switch.</p></li>
+<li><p>Pads instead of holes for the battery connector.</p></li>
+<li><p>Moved the audio amplifier circuit.</p></li>
+<li><p>Moved the speaker to the front of the board, and used a footprint for
+really small SMD speakers.</p></li>
+<li><p>Moved some components away from each other, so it’s not as cramped.</p></li>
+</ul>
+<p>I’m still considering two more changes:</p>
+<ul class="simple">
+<li><p>Add a voltage divider to an analog pin, for measuring battery voltage.</p></li>
+<li><p>Move the charging circuit before the switch, so that charging is
+possible with the switch off.</p></li>
+</ul>
+<p>I think that 4.2 will be the last prototype, at least if everything
+works as expected.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

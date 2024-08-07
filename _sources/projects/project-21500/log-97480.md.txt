@@ -1,0 +1,26 @@
+---
+blogpost: true
+date: 2018-02-19
+category: project-21500
+---
+
+# Python Example
+Published on 2018-02-19 in {ref}`project-21500`.
+
+The same example in MicroPython for the ESP8266:
+
+
+```python
+import machine
+
+def read_channel(i2c, channel):
+    if not 0 <= channel <= 11:
+        raise ValueError()
+    data = i2c.readfrom_mem(0x35, 0x61 | (channel << 1), 2)
+    return ((data[0] & 0x0f) << 8) | data[1]
+
+i2c = machine.I2C(-1, sda=machine.Pin(4), scl=machine.Pin(5))
+while True:
+    print(read_channel(i2c, 0))
+```
+

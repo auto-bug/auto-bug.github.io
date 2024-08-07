@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>The Grid - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="the-grid">
+<h1>The Grid<a class="headerlink" href="#the-grid" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2017-09-15 in <a class="reference internal" href="../#project-27257"><span class="std std-ref">Fritzing Tricks</span></a>.</p>
+<p>The grid is a very useful tool. It lets you align all your parts
+properly, and make sure the traces between them are straight. However,
+the default grid in Fritzing is set to a huge 0.1” — which is probably
+fine for large through-hole parts, but completely inadequate for the
+smaller SMD components. Fortunately you can change the grid size using
+the View → Set Grid Size… menu option:</p>
+<img alt="projects/project-27257/images/6369051505462167714.png" src="projects/project-27257/images/6369051505462167714.png" />
+<p>I usually start with a pretty large grid, such as 0.05”, and then
+halve it whenever I need more detail or denser traces. This lets me
+make sure that all the large parts are properly aligned to the bigger
+grid, but the traces can still go around them.</p>
+<p>You can also temporarily disable snapping to the grid with the menu
+option View → Align to Grid, or by holding down the Ctrl key while
+moving a trace. This can be useful for those few traces that don’t
+want to align no matter what you do, because the footprint you are
+using is not compatible with the grid you have set.</p>
+<p>Another trick is to hold down both Ctrl and Shift keys while moving a
+trace — then it will automatically snap to horizontal, vertical or
+diagonal positions. I use that to connect traces to the pins of small
+integrated circuits, which somehow never align with my grid. So I make
+the first segment of the track horizontal, until it crosses the grid,
+and from there it all aligns properly again.</p>
+<p>Some objects, like the PCB itself or images, will never snap to the
+grid for some reason. To align them perfectly, you can use the
+“location” and “rotation” properties. This is also the way to get a
+rotation that is not a multiple of 45°.</p>
+<img alt="projects/project-27257/images/6762521505462661101.png" src="projects/project-27257/images/6762521505462661101.png" />
+</section>
+
+
+</div>
+  </body>
+</html>

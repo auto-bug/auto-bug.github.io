@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>The Challenges - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="the-challenges">
+<h1>The Challenges<a class="headerlink" href="#the-challenges" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2017-09-06 in <a class="reference internal" href="../#project-27161"><span class="std std-ref">Trinket Shields</span></a>.</p>
+<p>Well, there are two main challenges when designing a shield for the
+trinket: the lack of real estate on the board, and the limited number
+of available pins. Those are amplified with the limitations of manual
+soldering, the minimal specs of common PCB manufacturers, the
+available packages of the chips to be used, and the budget limits.</p>
+<p>For instance, if I wanted to make a shield with a LED matrix on it, my
+first choice would be the HT16K33 chip that Adafruit uses in their
+backpacks. However, that chip is easily larger than the Trinket
+itself! So instead I would need to look for something smaller,
+possibly in a QFN package, like the IS31FL3728. I will also need to
+choose chips that use the I²C or SPI bus, because there can be
+multiple devices on those, or otherwise choose solutions that minimize
+the number of pins used, like using the ADC to read the states of
+buttons connected to different resistors.</p>
+<p>Connectors are going to be a problem, since most of them have huge
+2.54mm pitch through-hole pins. The solution for this is to use SMD
+versions of those connectors whenever possible, and use of smaller
+connectors. For instance, for the PWM shield, I’m going to use 1.27mm
+pitch connectors, compatible with the sub-micro servos.</p>
+<p>Finally, if nothing else works, I can grow sideways. making the shield
+more square, with room for the connectors on the sides. But that is
+the last resort.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

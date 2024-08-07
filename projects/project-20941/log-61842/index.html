@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Grayscale 7x11 Matrix - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="grayscale-7x11-matrix">
+<h1>Grayscale 7x11 Matrix<a class="headerlink" href="#grayscale-7x11-matrix" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2017-06-19 in <a class="reference internal" href="../#project-20941"><span class="std std-ref">D1 Mini Matrix Deluxe Shields</span></a>.</p>
+<p>The third chip that I got from ISSI is IS31FL3736. It’s very similar
+to the IS31FL3733, except it only drives up to 8×12 LEDs. That’s
+perfect for those 7×11 LED matrices that I got!</p>
+<p>I actually designed that shield a while ago, and assembled it when it
+came. But it didn’t work, at least not reliably – the chip would
+sometimes be visible on the I²C bus, and sometimes not, and sometimes
+it would start behaving weird after some time… I put it all to my
+poor soldering skills and the really tiny QFN package, and gave up on
+it for a while.</p>
+<p>Yesterday, after debugging some problems with the IS31FL3733 on the <a class="reference internal" href="../../project-21578/#project-21578"><span class="std std-ref">PewPew FeatherWing</span></a> , which were solved by adding a decoupling capacitor across the power,
+I decided to dig out the old board and try adding a decoupling
+capacitor to it too. And what do you know, it works perfectly fine
+after all!</p>
+<img alt="projects/project-20941/images/3295091497884230697.jpg" src="projects/project-20941/images/3295091497884230697.jpg" />
+<p>The PCB is here: <a class="reference external" href="https://oshpark.com/projects/luMANBrm">https://oshpark.com/projects/luMANBrm</a> \</p>
+<p>And the updated MicroPython library for driving it: <a class="reference external" href="https://bitbucket.org/thesheep/micropython-is31fl37x/src">https://bitbucket.org/thesheep/micropython-is31fl37x/src</a></p>
+</section>
+
+
+</div>
+  </body>
+</html>

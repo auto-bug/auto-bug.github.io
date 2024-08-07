@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>After All it Works! - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="after-all-it-works">
+<h1>After All it Works!<a class="headerlink" href="#after-all-it-works" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2017-12-17 in <a class="reference internal" href="../#project-27757"><span class="std std-ref">Micro:Boy</span></a>.</p>
+<p>I have re-read what I wrote in my previous log, and got that “wait a
+minute” moment. I’m using a circuit literally copied from the
+datasheet. All connections are correct.  There is I2C communication.
+It just doesn’t display anything. Perhaps it’s the display that is
+broken? So I tried with another display, and lo and behold! It works!</p>
+<img alt="projects/project-27757/images/7316161513518850480.jpg" src="projects/project-27757/images/7316161513518850480.jpg" />
+<p>To be honest, I don’t think the display arrived broken — I think I
+broke it with my initial tries, when the components were taken from
+the SSD1306 datasheet, instead of the SH1106.</p>
+<p>But if the display works, that means I can assemble the whole thing
+and start programming for it! I quickly added all the remaining
+components, programmed the micro:bit with the “fill the display with
+random dots” demo, and it works:</p>
+<img alt="projects/project-27757/images/6312131513519065492.jpg" src="projects/project-27757/images/6312131513519065492.jpg" />
+<p>I even added the function to read the button states:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">buttons</span><span class="p">():</span>
+    <span class="n">microbit</span><span class="o">.</span><span class="n">i2c</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="mh">0x70</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x40</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">buttons</span> <span class="o">=</span> <span class="n">microbit</span><span class="o">.</span><span class="n">i2c</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mh">0x70</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">buttons</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;&gt;</span> <span class="mi">7</span> <span class="o">|</span> <span class="n">buttons</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>And I have all that is needed for simple games. For more complex
+games, I still need to implement the “blit” method — or three, for
+and, or, and xor.</p>
+<p>I’m still fine with the redesign I described in the previous log,
+though — this layout has one large problem: the micro:bit connectors
+are right under your fingers, including the i2c signals — and when you
+touch them, you get communication errors with the display. Switching
+to horizontal layout not only moves the connections out of the reach,
+but also makes it easy to use the two buttons on the back, so  think
+it’s better, even though the direction buttons are a little bit more
+squashed.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

@@ -1,0 +1,53 @@
+---
+blogpost: true
+date: 2017-10-02
+category: project-21578
+---
+
+# Replicating the Trinket M0 Express Hack
+Published on 2017-10-02 in {ref}`project-21578`.
+
+It would be great to have more memory on PewPew, so I decided to try
+and replicate the  [Trinket M0 Express](https://daveastels.com/2017/09/01/trinket-m0-express-hack/)  hack, only with my bare chip. To do that, I need a flash chip. The
+original hack used a _S25FL116K0XMFI043_ chip, but of course I don't have that. But they should all be pretty
+much the same, no? So I tried with a _W25Q32FVSSIG_ instead:
+
+
+:::{image} images/1426111506979954792.jpg
+
+:::
+\
+
+
+The connections are pretty much what you would expect:
+
+
+:::{image} images/7082151506980134036.png
+
+:::
+
+:::{image} images/741941506980239023.png
+
+:::
+\
+
+
+And the board definition is in this branch:  [https://github.com/pewpew-game/circuitpython/tree/trinket-m0-express](https://github.com/pewpew-game/circuitpython/tree/trinket-m0-express) 
+
+After compiling and flashing the firmware, it... doesn't work. I mean,
+the CircuitPython itself works and shows me the REPL console, but
+there is no USB disk. And it's easy to see why — there is a number of
+files in the_boards _directory that contain flash chip definitions, and that you include in
+your board definition files. And guess what, the chip I'm using is not
+there. So I have two options now: dive into the datasheets and prepare
+my own flash definition file, which would be the "correct" choice, or
+order a flash chip that is compatible with what is there already, then
+wait a few weeks for it to arrive and try again, which is the "lazy"
+choice. Guess which one I've chosen.
+
+Since I'm waiting for the PCBs and parts for the next version of
+PewPew anyways...
+
+Update: So I overcame by inherent laziness and created a flash file
+for the W25Q32BV family. And what do you know, it works!
+

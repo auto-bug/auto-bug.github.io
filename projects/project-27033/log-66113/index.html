@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>The Right Size - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="the-right-size">
+<h1>The Right Size<a class="headerlink" href="#the-right-size" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2017-08-30 in <a class="reference internal" href="../#project-27033"><span class="std std-ref">Trinket M0 TFT</span></a>.</p>
+<p>Adafruit just recently released a new version of their Trinket boards,
+this time with the Atmel SAMD21 Cortex-M0 ARM chip, and with
+CircuitPython loaded on it by default. Of course I had to get a
+couple, and managed to do it before they went out of stock.</p>
+<p><br />
+By a complete coincidence, the package with them arrived as the same
+time as the package from Aliexpress with the tiny ST7735 TFT display
+screens. I put them one next to the other, and what do you know — a
+perfect fit!</p>
+<img alt="projects/project-27033/images/211641504106064241.jpg" src="projects/project-27033/images/211641504106064241.jpg" />
+<p>So I fired up my trusty Fritzing and quickly made a breakout board for
+this display, with the pins matching the pins on the Trinket M0. A few
+clicks later I have the order placed for OSHPark.</p>
+<img alt="https://644db4de3505c40a0444-327723bce298e3ff5813fb42baeefbaa.ssl.cf1.rackcdn.com/f204484c0fc4b3a5c274158534535e3e.png" src="https://644db4de3505c40a0444-327723bce298e3ff5813fb42baeefbaa.ssl.cf1.rackcdn.com/f204484c0fc4b3a5c274158534535e3e.png" />
+<p>(Yeah, I was in a hurry, so one of the mounting holes is slightly
+shifted. Oh well.)</p>
+<p>Because I only had five pins to use, and I’m not entirely sure if I
+can use the MISO pin for other purpose while the SPI is used on this
+microcontroller, I had to hard-wire the LED and CS pins. By a complete
+coincidence, the SCL pin is free (it’s the MISO pin), and the SDA pin
+is the same as DC — so I think I should be still able to use the I²C
+bus with this connected.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

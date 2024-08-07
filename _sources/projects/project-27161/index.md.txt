@@ -1,0 +1,67 @@
+---
+blogpost: true
+date: 2017-09-06
+category: project
+tags:  2017HackadayPrize, ongoing project, hardware
+image: 1
+---
+
+# Trinket Shields
+
+Add-on boards for the Adafruit Trinket M0.
+
+<div class="project-thumb">
+
+:::{image} images/8702001504658783098.jpg
+:target: /_images/8702001504658783098.jpg
+:::
+
+:::{image} images/7346521504667726698.png
+:target: /_images/7346521504667726698.png
+:::
+
+</div>
+
+
+    Trinket is a very small (10 pins) microcontroller board made by
+Adafruit, originally using an ATtiny85 microcontroller and a
+bootloader that allowed programming it over USB. It's perfect for all
+those projects that just need a pin or two and some simple logic,
+especially when they need to be physically small. Of course due to
+very limited resources, you had to program it in C (or Arduino).
+
+Recently Adafruit released a new version of this board, sporting an
+ARM Cortex-M0 microcontroller running CircuitPython. It's the same
+size and form-factor as the old Trinket, but now you can simply
+program it by editing the Python files on the USB disk that appears
+when you plug it in. It's the smallest development board available
+that runs Python, and it's super-easy to use. I fell in love from the
+first sight with it.
+
+However, searching the Internet, I couldn't find any add-on boards for
+it, except for one, that adds LiPO battery charging to it. I have been
+making some add-ons for the D1 Mini, so far the smallest Python-
+enabled development board on the market, and now that there is a
+smaller board available, I decided to make some add-ons for it too.
+
+I already started this with the {ref}`project-27033` , but as I worked on it, I realized that I will need a lot more
+shields. I will need one that adds buttons that can be used with that
+display, and I will need one that lets me control hobby servos. One
+that offers more analog pins would be nice too, and perhaps even
+something that enables wireless communication of some kind. They
+should all be tiny -- fitting in a one square inch, preferably the
+size of the trinket itself -- and they should be stackable as much as
+possible.
+
+
+
+
+
+## Logs
+
+:::{postlist}
+:category: project-27161
+:::
+
+## Instructions
+

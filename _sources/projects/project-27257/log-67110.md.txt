@@ -1,0 +1,33 @@
+---
+blogpost: true
+date: 2017-09-14
+category: project-27257
+---
+
+# Hole Sizes
+Published on 2017-09-14 in {ref}`project-27257`.
+
+When Fritzing was created, we didn't have anything like OSHPark, and
+most hobbyist were making their PCBs manually at home. That included
+drilling. That's probably why the Fritzing defaults to 1mm hole sizes
+with a preety wide copper circle around them — it's simply much easier
+to do by hand.
+
+But today, when we send our PCBs to fabricators who use automated
+processes for everything, it doesn't make much sense, and the huge
+holes and pads mean it's impossible to route a track between them.
+
+Fortunately, you can change the sizes of holes for your headers, using
+the "hole size" settings:
+
+
+:::{image} images/4075001505400069802.png
+
+:::
+You have three pre-sets, but you can also enter your own numbers, and
+they will be remembered as one more preset. Personally I like using
+0.9mm for the hole diameter and 0.4mm for the ring thickness — this
+gives pretty good fit for the male headers, with enough copper to
+solder them to, and enough room between the pins to fit a trace
+comfortably.
+

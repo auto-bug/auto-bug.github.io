@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Audio Shield Done - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="audio-shield-done">
+<h1>Audio Shield Done<a class="headerlink" href="#audio-shield-done" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2017-10-17 in <a class="reference internal" href="../#project-27161"><span class="std std-ref">Trinket Shields</span></a>.</p>
+<p>After the problems I described in my last log, I added the PAM8301
+chips to the order at Mouser that I was making. I got the chips
+yesterday, but didn’t really have time to try anything. Today I
+finally replaced the Chinese chip with the one from Mouser, and lo and
+behold — it works! Well, I also got better speakers in the same order,
+and I also replaced that. They are quite loud!</p>
+<img alt="projects/project-27161/images/7558911508272917956.jpg" src="projects/project-27161/images/7558911508272917956.jpg" />
+<p>By the way, if you want to use CircuitPython with that shield, you
+have to compile your own — the default doesn’t have the_audioio_ module included, due to space restrictions. But if you remove some
+other module you are not using (like the_analogio_ in my case), it will fit.</p>
+<p>Now I only have one shield left to get to work — it’s assembled and
+the I²C address enumerates, but I need to write a driver for
+CircuitPython for it.</p>
+<p>Update: there was still one trivial problem left with the audio shield
+— the mirrored footprint for the amplifier chip. So if you don’t want
+to solder yours up-side-down, Like I did, then better use the
+corrected PCB available here:  <a class="reference external" href="https://oshpark.com/projects/OatupN72">https://oshpark.com/projects/OatupN72</a></p>
+</section>
+
+
+</div>
+  </body>
+</html>

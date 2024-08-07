@@ -1,0 +1,82 @@
+---
+blogpost: true
+date: 2017-10-15
+category: project-27757
+---
+
+# Quick and Dirty
+Published on 2017-10-15 in {ref}`project-27757`.
+
+The code from the previous log does its job, and is not too slow. But
+we can do much better! The display is organized into 8 "pages" of
+memory, each containing 8 lines of the display. Instead of updating
+every page on every refresh, we can keep track of which pages changes,
+and also the minimum and maximum column of the changed pixels, and
+only redraw those. The code below does that:
+
+
+```python
+import microbit
+ 
+ 
+class SH1106:
+    move = bytearray(b'\x00\xb0\x02\x10')
+ 
+    def __init__(self):
+        self.buffer = bytearray(1024)
+        self.dirty_min = bytearray([0] * 8)
+        self.dirty_max = bytearray([128] * 8)
+        microbit.i2c.init(freq=400000, scl=microbit.pin2, sda=microbit.pin1)
+        for i in range(2):
+            # First two transaction after init always fail.
+            try:
+                microbit.i2c.write(0x3c, b'')
+            except OSError:
+                pass
+        microbit.i2c.write(0x3c, b'\x00\xae\xd5\x80\xa8\x3f\xd3\x00\x40\x80\x14'
+                b'\x20\x00\xa1\xc0\xa0\xda\x12\x81\xcf\xd9\xf1\xdb\x40\xa4\xa6\xaf')
+        
+    def show(self):
+        index = 0
+        buf = self.buffer
+        for page in range(8):
+            dmin = self.dirty_min[page]
+            dmax = self.dirty_max[page]
+            if dmax:
+                self.move[1] = 0xb0 | page
+                self.move[2] = 0x00 | ((2 + dmin) & 0x0f)
+                self.move[3] = 0x10 | ((2 + dmin) >> 4) & 0x0f 
+                microbit.i2c.write(0x3c, self.move)
+                microbit.i2c.write(0x3c, b'\x40' + buf[index + dmin:index + dmax])
+            index += 128
+            self.dirty_max[page] = 0
+            self.dirty_min[page] = 127
+    
+    def pixel(self, x, y, color=None):
+        if not 0 <= x < 128 or not 0 <= y < 64:
+            return
+        page = y // 8
+        index = x + page * 128
+        mask = 1 << (y % 8)
+        if color is None:
+            return bool(self.buffer[index] & mask)
+        elif color:
+            self.buffer[index] |= mask
+        else:
+            self.buffer[index] &= ~mask
+        self.dirty_max[page] = max(self.dirty_max[page], x + 1)
+        self.dirty_min[page] = min(self.dirty_min[page], x)
+```
+
+ This is all good, you say, but we had to add 10 lines of code, that
+now have to be executed. Is it really faster this way, and if so, by
+how much?
+
+Turns out it's quite a bit faster — almost an order of magnitude. I
+ran a simple test, where I light up the same amount of pixels as the
+display has, except randomly, not filling the whole screen, and I do
+an update after every pixel. The simple code did this in four minutes
+fifty seconds. The optimized code took forty five seconds. Of course
+this is an extreme case, normally the speedup won't be as large, as
+nobody does a refresh after a single pixel, right?
+

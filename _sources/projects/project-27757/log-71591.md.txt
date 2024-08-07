@@ -1,0 +1,39 @@
+---
+blogpost: true
+date: 2017-12-15
+category: project-27757
+---
+
+# Restart
+Published on 2017-12-15 in {ref}`project-27757`.
+
+I didn't manage to get that display to work, even though the circuit
+is copied directly from the datasheet.  Interestingly, the modules
+with this display that I have use completely different values for all
+the components than the datasheet says — I tried with those too, to no
+avail. So I decided to take a step back and do it the easier way.
+
+There is a very small, minimalist module with this display designed as
+a shield for one of the new ESP32 boards, that will work just fine for
+my purposes. It already has all the needed components and it's
+working, so I will just use that. In addition, because now I have the
+display on a separate PCB, I can stack that PCB over the bolts, so I
+can use regular holes for the bolts, and change the orientation of the
+whole device, so that the A and B buttons of the micro:bit can also be
+used as shoulder buttons.
+
+The PCB looks like this:
+
+
+
+:::{image} https://644db4de3505c40a0444-327723bce298e3ff5813fb42baeefbaa.ssl.cf1.rackcdn.com/5722aa2090dc7e20e78c464a363fe08d.png
+
+:::
+
+
+I also decided to use an ATtiny24 for handling the buttons — this way
+I can write the latching code exactly the way I want it, and also do
+debouncing and all that internally. I briefly considering just using
+the analog pin and a bunch of resistors for the buttons, but I don't
+trust those bolt connections.
+

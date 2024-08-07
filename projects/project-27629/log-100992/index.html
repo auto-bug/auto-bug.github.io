@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>µGame on ESP8266 with MicroPython - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="game-on-esp8266-with-micropython">
+<h1>µGame on ESP8266 with MicroPython<a class="headerlink" href="#game-on-esp8266-with-micropython" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2018-02-24 in <a class="reference internal" href="../#project-27629"><span class="std std-ref">µGame</span></a>.</p>
+<p>The SAMD21 chip is great for its native USB and the way you can just
+copy files on it, but since it’s relatively new, the development
+boards for it are rather pricey. Plus, it really has small RAM and
+slow SPI, which limits what kind of games you can make.</p>
+<p>For making your own µGame clone, the ESP8266 could be a much better
+choice. 90kB of RAM and 40MHz SPI communication with the display (the
+esp can do 80MHz, but the display can’t) make it a perfect solution.
+The only problem is a somewhat convoluted way of getting files on it,
+using external tools, but I might be able to do something about that
+with <span class="xref std std-ref">project-58788</span> if I’m lucky. So I set out to try the µGame software on the ESP8266.</p>
+<p>The first try was using the CircuitPython firmware for Adafruit
+HUZZAH. Since the original µGame runs CircuitPython. Unfortunately,
+turns out that the HUZZAH board has been a little bit neglected, and
+some things don’t work as expected with the current version. In
+particular, I couldn’t get SPI to work while also using GPIO12 as D/C
+pin. After some failed attempts at fixing it quickly, I decided to try
+the good old MicroPython again.</p>
+<p>To do that, however, I had to port my _stage tile and and sprite
+engine to MicroPython from CircuitPython. While the two versions are
+very similar to the user, they differ substantially in their internal
+file organization, so I spent a whole night on this. But the result is
+very good:</p>
+<img alt="projects/project-27629/images/2204261519483082974.jpg" src="projects/project-27629/images/2204261519483082974.jpg" />
+<p>I’m using a new version of the <a class="reference internal" href="../../project-19371/#project-19371"><span class="std std-ref">D1 Mini X-Pad Shield</span></a> here, and a standard ST7735 breakout module. The picture on the screen
+doesn’t look good, because of lighting — sorry about that, I don’t
+have access to a better environment at the moment.</p>
+<p>In any case, the Jumper Wire game seems to be working very well. The
+modified MicroPython sources are available at  <a class="reference external" href="https://github.com/deshipu/micropython/tree/stage">https://github.com/deshipu/micropython/tree/stage</a>  so you can give it a go yourself!</p>
+</section>
+
+
+</div>
+  </body>
+</html>

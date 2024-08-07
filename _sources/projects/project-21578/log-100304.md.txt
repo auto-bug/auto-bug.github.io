@@ -1,0 +1,28 @@
+---
+blogpost: true
+date: 2018-02-23
+category: project-21578
+---
+
+# LAMEBOY Playing PewPew Games
+Published on 2018-02-23 in {ref}`project-21578`.
+
+I recently assembled a [@davedarko](https://hackaday.io/hacker/3459) 's {ref}`project-26823`  kit, and I wrote a simple library in MicroPython to handle all the
+hardware on the device. Then I thought, hey, this has buttons and
+display, I bet it could run PewPew games! So I ported the library to
+CircuitPython and added a small compatibility library for PewPew, and
+lo and behold, the games work!
+
+
+
+:::{image} images/6902141519384257666.jpg
+
+:::
+
+
+And since the ESP8266 has much more memory than the poort little
+SAMD21, you don't even have to precompile the libraries. It all fits
+with room to spare.
+
+All the code is available here:  [https://bitbucket.org/thesheep/circuitpython-lameboy/src/](https://bitbucket.org/thesheep/circuitpython-lameboy/src/) 
+

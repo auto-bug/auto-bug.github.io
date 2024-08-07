@@ -1,0 +1,16 @@
+---
+blogpost: true
+date: 2017-10-03
+category: project-21578
+---
+
+# GamePad module and Trinket M0 Haxpress
+Published on 2017-10-03 in {ref}`project-21578`.
+
+My pull requests just got merged into CircuitPython. One is the for
+the Trinket M0 with a hacked on flash chip — it's now called [Trinket M0 Haxpress](https://github.com/adafruit/circuitpython/tree/2.x/atmel-samd/boards/trinket_m0_haxpress) , and the other one is adding a [gamepad](http://circuitpython.readthedocs.io/en/2.x/shared-bindings/gamepad/GamePad.html)  module with functions for scanning and de-bouncing button presses.
+
+I'm now waiting for the version 4.1 prototype PCB and parts, and once
+that works, I can make the custom firmware for it and start working on
+the sound support in the library.
+

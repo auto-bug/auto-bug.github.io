@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posts tagged microbit</title>
-  <updated>2024-08-07T20:31:03.322526+00:00</updated>
+  <updated>2024-08-07T20:32:01.362613+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/tag/microbit/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -142,5 +142,104 @@ but pieces of plastic or wood, or even old credit cards could be used.&lt;/p&gt;
     <category term="microbit" label="microbit"/>
     <category term="ongoingproject" label="ongoing project"/>
     <published>2016-12-03T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-19936/</id>
+    <title>Marvin</title>
+    <updated>2017-02-20T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="marvin"&gt;
+
+&lt;p&gt;The paranoid android.&lt;/p&gt;
+&lt;div class="project-thumb"&gt;
+&lt;a class="reference external image-reference" href="/_images/9686521487595869602.jpg"&gt;&lt;img alt="projects/project-19936/images/9686521487595869602.jpg" src="projects/project-19936/images/9686521487595869602.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/8880961487597495086.jpg"&gt;&lt;img alt="projects/project-19936/images/8880961487597495086.jpg" src="projects/project-19936/images/8880961487597495086.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/7623171489071385922.jpg"&gt;&lt;img alt="projects/project-19936/images/7623171489071385922.jpg" src="projects/project-19936/images/7623171489071385922.jpg" /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;iframe width="500" height="281" frameborder="0" allowfullscreen="" src="https://www.youtube.com/embed/zpDrxyiQQeM"&gt;&lt;/iframe&gt;
+&lt;p&gt;\&lt;/p&gt;
+&lt;section id="logs"&gt;
+&lt;h2&gt;Logs&lt;/h2&gt;
+&lt;ul class="postlist-style-none postlist simple"&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-03-09 - &lt;a class="reference internal" href="../../../projects/project-19936/log-54666/"&gt;Walking&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-03-07 - &lt;a class="reference internal" href="../../../projects/project-19936/log-54559/"&gt;The Base&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section id="instructions"&gt;
+&lt;h2&gt;Instructions&lt;/h2&gt;
+&lt;/section&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-19936/" rel="alternate"/>
+    <summary>The paranoid android.</summary>
+    <category term="ROBOT" label="ROBOT"/>
+    <category term="biped" label="biped"/>
+    <category term="hardware" label="hardware"/>
+    <category term="marvin" label="marvin"/>
+    <category term="micro:bit" label="micro:bit"/>
+    <category term="microbit" label="microbit"/>
+    <category term="micropython" label="micropython"/>
+    <category term="ongoingproject" label="ongoing project"/>
+    <published>2017-02-20T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-27757/</id>
+    <title>Micro:Boy</title>
+    <updated>2017-10-15T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="micro-boy"&gt;
+
+&lt;p&gt;Arcade games on the Micro:bit&lt;/p&gt;
+&lt;div class="project-thumb"&gt;
+&lt;a class="reference external image-reference" href="/_images/7354261515360205991.jpg"&gt;&lt;img alt="projects/project-27757/images/7354261515360205991.jpg" src="projects/project-27757/images/7354261515360205991.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/3762871516221178379.jpg"&gt;&lt;img alt="projects/project-27757/images/3762871516221178379.jpg" src="projects/project-27757/images/3762871516221178379.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/9897221516920665977.jpg"&gt;&lt;img alt="projects/project-27757/images/9897221516920665977.jpg" src="projects/project-27757/images/9897221516920665977.jpg" /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;The Micro:bit is a pretty decent platform for teaching kids to
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;program, but you can’t really make arcade-style games for it. You only
+have two buttons and a 5x5 display. Perhaps enough for a very small
+snake game, but that’s pretty much it. That’s why I started working on &lt;a class="reference internal" href="../../../projects/project-21578/#project-21578"&gt;&lt;span class="std std-ref"&gt;PewPew FeatherWing&lt;/span&gt;&lt;/a&gt; as an alternative platform, but at some point I started wondering if
+it’s really impossible to do it on the micro:bit.&lt;/p&gt;
+&lt;p&gt;When the most recent version of micropython got the ability to use any
+pins for I2C, I realized that I can finally connect a display easily.
+I could use a HT16K33 and a 8x8 LED matrix like on the PewPew, but I
+decided to try something else — a monochrome OLED display, similar to
+the one used on many Arduino-based game consoles.&lt;/p&gt;
+&lt;section id="logs"&gt;
+&lt;h2&gt;Logs&lt;/h2&gt;
+&lt;ul class="postlist-style-none postlist simple"&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-01-25 - &lt;a class="reference internal" href="../../../projects/project-27757/log-84157/"&gt;MemoryError&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-01-20 - &lt;a class="reference internal" href="../../../projects/project-27757/log-78338/"&gt;Progress on a Game&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-01-18 - &lt;a class="reference internal" href="../../../projects/project-27757/log-77209/"&gt;Why Separate Button Controller?&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-01-17 - &lt;a class="reference internal" href="../../../projects/project-27757/log-77038/"&gt;Button Controller&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-01-09 - &lt;a class="reference internal" href="../../../projects/project-27757/log-72743/"&gt;Advanced Spriting&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-01-08 - &lt;a class="reference internal" href="../../../projects/project-27757/log-72667/"&gt;Blit&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-01-07 - &lt;a class="reference internal" href="../../../projects/project-27757/log-72626/"&gt;Some Progress&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-12-17 - &lt;a class="reference internal" href="../../../projects/project-27757/log-71654/"&gt;After All it Works!&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-12-15 - &lt;a class="reference internal" href="../../../projects/project-27757/log-71591/"&gt;Restart&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-11-30 - &lt;a class="reference internal" href="../../../projects/project-27757/log-71054/"&gt;Special Bolts&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-11-18 - &lt;a class="reference internal" href="../../../projects/project-27757/log-70648/"&gt;Shield Connectors&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-10-15 - &lt;a class="reference internal" href="../../../projects/project-27757/log-68977/"&gt;Quick and Dirty&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-10-15 - &lt;a class="reference internal" href="../../../projects/project-27757/log-68976/"&gt;Basic Display&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section id="instructions"&gt;
+&lt;h2&gt;Instructions&lt;/h2&gt;
+&lt;/section&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-27757/" rel="alternate"/>
+    <summary>Arcade games on the Micro:bit</summary>
+    <category term="CONSole" label="CONSole"/>
+    <category term="arcade" label="arcade"/>
+    <category term="completedproject" label="completed project"/>
+    <category term="game" label="game"/>
+    <category term="games" label="games"/>
+    <category term="hardware" label="hardware"/>
+    <category term="micro:bit" label="micro:bit"/>
+    <category term="microbit" label="microbit"/>
+    <category term="micropython" label="micropython"/>
+    <category term="python" label="python"/>
+    <published>2017-10-15T00:00:00+02:00</published>
   </entry>
 </feed>

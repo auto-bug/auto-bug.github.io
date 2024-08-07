@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>First CircuitPython Program - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="first-circuitpython-program">
+<h1>First CircuitPython Program<a class="headerlink" href="#first-circuitpython-program" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2017-07-19 in <a class="reference internal" href="../#project-21578"><span class="std std-ref">PewPew FeatherWing</span></a>.</p>
+<p>Today I found one more bi-color matrix that I have left (more of them
+are ordered for the next version), and used it to assemble a second
+PewPew Lite. I’m really happy with how it works, and I’m considering
+switching entirely to the Lite version — four colors are enough for
+most games, and really simplify things.</p>
+<p>However, this time I decided to make it as flat as possible, so I used
+the 3mm female pin headers on the Feather board, and shortened the
+male headers. The effect:</p>
+<img alt="projects/project-21578/images/4535321500501239899.jpg" src="projects/project-21578/images/4535321500501239899.jpg" />
+<p>Unfortunately it can’t get any flatter, because of the battery plug
+and the chip on the underside of the shield. But one centimeter is
+still quite good. I wonder if I can find a LiPo battery that would fit
+in the space between the boards – but more likely I will just stick
+the battery on the bottom.</p>
+<p>I also wrote the driver for the CircuitPython (used MicroPython before
+that), and a simple drawing program:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pewpew</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="n">pewpew</span><span class="o">.</span><span class="n">brightness</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">pewpew</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">color</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">hold</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">blink</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">hold_keys</span> <span class="o">=</span> <span class="p">(</span><span class="n">pewpew</span><span class="o">.</span><span class="n">K_UP</span> <span class="o">|</span> <span class="n">pewpew</span><span class="o">.</span><span class="n">K_DOWN</span> <span class="o">|</span> <span class="n">pewpew</span><span class="o">.</span><span class="n">K_LEFT</span> <span class="o">|</span> <span class="n">pewpew</span><span class="o">.</span><span class="n">K_RIGHT</span> <span class="o">|</span>
+             <span class="n">pewpew</span><span class="o">.</span><span class="n">K_X</span><span class="p">)</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">keys</span> <span class="o">=</span> <span class="n">pewpew</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">keys</span> <span class="o">&amp;</span> <span class="n">hold_keys</span><span class="p">:</span>
+        <span class="n">hold</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">if</span> <span class="n">keys</span> <span class="o">&amp;</span> <span class="n">pewpew</span><span class="o">.</span><span class="n">K_UP</span><span class="p">:</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">keys</span> <span class="o">&amp;</span> <span class="n">pewpew</span><span class="o">.</span><span class="n">K_DOWN</span><span class="p">:</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">keys</span> <span class="o">&amp;</span> <span class="n">pewpew</span><span class="o">.</span><span class="n">K_LEFT</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">keys</span> <span class="o">&amp;</span> <span class="n">pewpew</span><span class="o">.</span><span class="n">K_RIGHT</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">back</span> <span class="o">=</span> <span class="n">pewpew</span><span class="o">.</span><span class="n">pixel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">keys</span> <span class="o">&amp;</span> <span class="n">pewpew</span><span class="o">.</span><span class="n">K_O</span><span class="p">:</span>
+        <span class="n">back</span> <span class="o">=</span> <span class="n">color</span>
+    <span class="k">if</span> <span class="n">keys</span> <span class="o">&amp;</span> <span class="n">pewpew</span><span class="o">.</span><span class="n">K_X</span><span class="p">:</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="p">(</span><span class="n">color</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">4</span>
+    <span class="k">if</span> <span class="n">blink</span><span class="p">:</span>
+        <span class="n">pewpew</span><span class="o">.</span><span class="n">pixel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">back</span> <span class="o">==</span> <span class="n">color</span><span class="p">:</span>
+        <span class="n">pewpew</span><span class="o">.</span><span class="n">pixel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="n">color</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">4</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">pewpew</span><span class="o">.</span><span class="n">pixel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">back</span><span class="p">)</span>
+    <span class="n">blink</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">blink</span>
+    <span class="n">pewpew</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="n">pewpew</span><span class="o">.</span><span class="n">pixel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">back</span><span class="p">)</span>
+    <span class="k">while</span> <span class="n">pewpew</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="o">&amp;</span> <span class="n">hold_keys</span> <span class="ow">and</span> <span class="n">hold</span> <span class="o">&lt;</span> <span class="mi">15</span><span class="p">:</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.025</span><span class="p">)</span>
+        <span class="n">hold</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.125</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>As you can see, most of the code is dedicated to handling keys,
+including the repeating when a key is held down. The library is very
+bare bones for now, but I like the simplicity. I will probably need to
+add a function to display text, and some functions for scrolling
+around.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Ratsnest Lines - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="ratsnest-lines">
+<h1>Ratsnest Lines<a class="headerlink" href="#ratsnest-lines" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2017-09-15 in <a class="reference internal" href="../#project-27257"><span class="std std-ref">Fritzing Tricks</span></a>.</p>
+<p>One of the nicest features of Fritzing is that it lets you easily
+switch between the schematic and PCB views, and the updates you make
+in one will show in the other in the form of so called “ratsnest”
+lines — color dashed lines.</p>
+<img alt="projects/project-27257/images/6043721505461319491.png" src="projects/project-27257/images/6043721505461319491.png" />
+<p>However, while generally useful, they can become very problematic when
+too dense, because of one peculiarity of Fritzing — the ratsnest lines
+have clicking priority over everything else, so it may be very
+difficult to click on anything covered by them. A quick workaround is
+to double-click on the offending lines to turn them into traces, which
+obey normal clicking priority rules and are not as problematic, but
+then it’s hard to keep track of what you have already connected in
+your design.</p>
+<p>A better way is to simply disable the display of the ratsnest layer.
+You can do that in the menu, by clicking on the checkbox next to
+View→Ratsnest Layer. But then how are you going to know what to
+connect to what? Don’t worry, if you click on any pin, Fritzing will
+highlight all the other pins it should be connected to — this way you
+can make all your connections while avoiding visual clutter.</p>
+<p>Though I still wish there was an option of making the ratsnest lines
+unclickable…</p>
+</section>
+
+
+</div>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+---
+blogpost: true
+date: 2017-10-27
+category: project-27629
+---
+
+# The Magical Number 16
+Published on 2017-10-27 in {ref}`project-27629`.
+
+I'm trying to budget the memory of this thing, for graphics is known
+to take a lot of it. There is a number of tricks I plan to use to save
+memory in order to fit into the 32kB available, together with the
+CircuitPython runtime.
+
+
+ * Frozen modules. All the code libraries, and all the data that doesn't
+change (fonts, pre-defined palettes, pre-defined graphic, pre-defined
+sounds) are going to be byte-compiled and included in the firmware, to
+be executed directly from the chip's flash memory.
+ * Tiles. The basic unit of graphic in the game will be a 16x16 square
+with 16 colors, called a tile.
+ * Banks. Tiles will be stored in banks, 16 tiles in a bank. All tiles in
+a single bank share a palette.
+ * Palettes. The 16-color palettes will be switchable, so that you will
+be able to reuse a lot of graphics by simply changing the colors. One
+of the colors (pure magenta) will be always treated as transparent.
+ * Layers. A layer is a map of 16x16 tiles from a single bank with a
+single palette. It has x, y and z offsets, which control where on the
+screen it is being displayed and what it covers or is covered by it.
+ * Fonts. Fonts are similar to banks, except they use 8x8 images with 4
+colors. They can only be displayed on a special text layer, which is
+on top of everything else and can't be scrolled.
+ * Sprites. Those are like 1x1 layers with just one tile on them. They
+have x, y and z position, an assigned bank and palette, and the index
+of the image from that bank to be displayed.
+ * Dirty rectangles. Those are the areas of the screen that need to be
+updated in a given frame. Changing a square in a layer or sprite adds
+the corresponding area of the screen to the dirty rectangles list.
+Moving a sprite adds both the old and the new position (merged into
+one rectangle if they overlap). Moving a layer forces redraw of the
+entire screen (but there will be a trick for scrolling).
+
+That's the plan for now, anyways.
+

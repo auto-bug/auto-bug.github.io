@@ -1,0 +1,34 @@
+---
+blogpost: true
+date: 2017-04-15
+category: project-20941
+---
+
+# Custom Footprints
+Published on 2017-04-15 in {ref}`project-20941`.
+
+I made the trip to the hackerspace and used their hot air gun, and
+desoldered/resoldered the chip properly. I can now confirm that the
+resistors that I removed from the example schematic in the datasheet
+when designing that version of the PCB were in fact necessary for the
+chip to function. Who would have thought! Oh well, I just need to wait
+for the other version of the PCB, with all the resistors, to arrive.
+
+In other news, I also received the PCB for the 7x11 matrix and the
+IS31FL3736 chip. Unfortunately, there is a small problem with the QFN
+footprint that I used (instead of making a custom one based on the
+datasheet):
+
+
+:::{image} images/5820591492208871361.jpg
+
+:::
+
+
+Turns out that just taking a 36-pin QFN footprint and adding the pins
+to make it a 40-pin QFN footprint is not enough -- you also have to
+scale it down. I have now corrected all my QFN footprints for those
+chips to be exactly like in the datasheets, and re-did the PCBs. Of
+course it's another couple of weeks until they arrive...
+
+\

@@ -1,0 +1,41 @@
+---
+blogpost: true
+date: 2018-09-12
+category: project-27853
+---
+
+# Creeping Back to Life
+Published on 2018-09-12 in {ref}`project-27853`.
+
+Yes, this project spent quite a bit of time in a drawer. I got the
+AMG8833 sensor to play with, but I didn't really have a good idea
+about what I want to do with it. Then I designed this PCB with a
+footprint for that sensor, an atmega and a LED matrix, hoping that
+with enough magic I can make it into a kind of thermal camera. Then
+the PCB arrived together with a bunch of other PCBs, and got put into
+a drawer.
+
+Fast forward a few months, and the {ref}`project-7813` is back. I looked through my projects, and noticed that hey, this PCB
+is 2cm on a side to fit the LED matrix, and that's less than an inch,
+so why not. So I submitted it to the contest and promptly forgot about
+it.
+
+Now the deadline is looming, and it would be nice to at least start on
+this. So I took the PCB and soldered it up, and also found all the
+components that I will need:
+
+
+
+:::{image} images/1328911536744914663.jpg
+
+:::
+
+
+I used the female pin headers in the prototype so that I can remove
+the led matrix. The final version will not have them, and the led
+matrix will be soldered directly -- at least that's the plan.
+
+There will also be a lipo battery in there.
+
+Now I need to write the code for the atmega to handle the led matrix.
+

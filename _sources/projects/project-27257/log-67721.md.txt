@@ -1,0 +1,51 @@
+---
+blogpost: true
+date: 2017-09-24
+category: project-27257
+---
+
+# Net Labels
+Published on 2017-09-24 in {ref}`project-27257`.
+
+Let's talk a little bit about schematics. I know that you rarely visit
+that tab, but if you want other people to actually make sense of your
+project, you have to document it. Like I did with my {ref}`project-18120` :
+
+
+:::{image} images/2448341506280430055.png
+
+:::
+\
+
+
+I really tried to make it readable. However, the LED matrix has such
+ridiculously random pinout, and there are so many connections, that
+it's really difficult to make sense of it.
+
+Today I'm a little bit wiser and I use the net labels, which you can
+find in your parts pane under schematic view:
+
+
+:::{image} images/4687771506280554982.png
+
+:::
+\
+
+
+The way you use it, you connect it in place of a wire, and at the
+other end you make another one, with the same name. Fritzing considers
+all the labels with the same network name on them connected. The
+resulting schematic is much easier to read, like the way I made for {ref}`project-21578` :
+
+
+:::{image} images/7132411506280998450.png
+
+:::
+
+
+Of course, this is not a silver bullet. If you overdo it, and all your
+connections are just some random labels, your schematic will be even
+harder to read. But if you can think of a name for a given connection,
+it's probably a good idea to use a label for it.\
+
+

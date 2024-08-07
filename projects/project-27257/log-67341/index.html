@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Rotating Everything - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="rotating-everything">
+<h1>Rotating Everything<a class="headerlink" href="#rotating-everything" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2017-09-17 in <a class="reference internal" href="../#project-27257"><span class="std std-ref">Fritzing Tricks</span></a>.</p>
+<p>Rotating elements is easy. You just use the “rotate” button in the
+bottom left corner of the screen, right?</p>
+<img alt="projects/project-27257/images/720671505666678552.png" src="projects/project-27257/images/720671505666678552.png" />
+<p>Well, yes, you can do that and that works fine most of the time. But
+there are limitations. By default, that button rotates things by 90°.
+Some objects can be rotated by 45° by clicking on the small arrow on
+that button, and selecting the appropriate option for the pop-up menu.
+But some things, such as vias and holes, can’t be rotated at all.
+Initially that makes sense. After all, why would you want to rotate a
+round hole or via — they look the same no matter how they are rotated!
+However, you might still need to rotate a set of holes or vias, or a
+mix of parts (like your whole design, for example) that includes holes
+and vias in it. And Fritzing won’t let you do that.</p>
+<p>I had this problem with an Adafruit Feather shield that I was
+designing — it’s slightly longer than 5cm, but my board house would
+only make 5×5cm boards cheaply, anything larger costs extra. But I
+figured out that I can fit this shield into the 5×5cm outline if only
+I rotate it by 45°. But how can I do that when it contains vias and
+holes?</p>
+<p>Looking for a way to do this, I found this “rotation” property in the
+side pane:</p>
+<img alt="projects/project-27257/images/5683771505667163031.png" src="projects/project-27257/images/5683771505667163031.png" />
+<p>This lets you rotate a single object by pretty much any angle, not
+just multiplies of 45° or 90°. In particular, you can rotate your PCB
+by any amount, even though that red button only lets you do 90° for
+the PCBs. Neat! But I can’t use that when I have multiple objects
+selected, so it doesn’t solve the problem.</p>
+<p>I wish I could also figure out the next piece of the puzzle myself,
+but I actually found it on the Fritzing’s user forum. You see, the PCB
+has one property that other objects don’t have — the “sticky”
+checkbox, right under that rotation property:</p>
+<img alt="projects/project-27257/images/3913921505667409946.png" src="projects/project-27257/images/3913921505667409946.png" />
+<p>When an object is sticky, whenever you move it, it will also take with
+it all other objects that touch it. And rotation counts as movement
+here. So all I had to do is make my PCB sticky and set its rotation,
+and everything on it rotated together with it. Presto!</p>
+<p>Of course, sometimes you want to just rotate a few selected parts.
+Then you can drag a second PCB onto your design, make it sticky, put
+all the parts you need rotated on it, rotate it, and then delete the
+PCB and move the parts back where you need them. A bit hacky, but
+workable.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

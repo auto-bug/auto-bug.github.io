@@ -1,0 +1,33 @@
+---
+blogpost: true
+date: 2018-03-23
+category: project-27629
+---
+
+# New Shipment Soon
+Published on 2018-03-23 in {ref}`project-27629`.
+
+I just asked [@Makerfabs ](https://hackaday.io/hacker/245194) for a quote on a new batch of µGames to be produced, and if everything
+goes well, they will be in stock in a couple of weeks. Also, the 3.0
+version of CircuitPython is coming soon, and there will be a firmware
+update. The new version has greatly improved memory management, so it
+should help a little. I also fixed a few small bugs, and I plan to
+finally add the build-in art assets, which should also help with
+memory somewhat.
+
+In the meantime, I started to work on {ref}`project-86818` , and I entered it in the Hackaday Prize. I am not yet entirely sure
+where I will take this project, the only thing I'm certain of is that
+I want to keep it compatible with the current µGame — so that all the
+people who bought it are not left with an obsolete device. The new
+version will have more memory, so hopefully you won't need to pre-
+compile your files anymore, and I want to try and make it have proper
+audio, with volume control and headphone jack, a physically bigger
+display, and better connectors for external stuff. It will probably be
+more expensive, too, so it's more like an alternative to µGame
+coexisting with it side-by-side rather than a replacement.
+
+Finally, I just started today some sketches for another handheld, a {ref}`project-100853` , which is supposed to be even more minimal than µGame. The goal here
+is to minimize the price and power consumption, so that it could be
+used as a conference badge, given out to all participants. It's not
+going to be compatible with µGame, though.
+

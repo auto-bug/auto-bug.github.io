@@ -1,0 +1,23 @@
+---
+blogpost: true
+date: 2019-07-04
+category: project-28104
+---
+
+# Second Try
+Published on 2019-07-04 in {ref}`project-28104`.
+
+I needed a battery for my {ref}`project-165983` , so I revived this project and tried a second attempt. This time I'm
+using a bigger battery, LIR2450, though I made sure you can solder a
+holder for the smaller LIR2032 as well. There has been a change in how
+the charging works — with the switch on, the board is powered from the
+battery (through a shottky diode, to protect it from USB power you
+might have connected), with the switch off, the battery is charging.
+
+
+
+:::{image} images/686111562236421210.png
+
+:::
+
+

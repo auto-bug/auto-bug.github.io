@@ -1,0 +1,65 @@
+---
+blogpost: true
+date: 2017-10-03
+category: project
+tags:  ongoing project, hardware
+image: 1
+---
+
+# D1 Mini Expander Shield
+
+Add 16 extra GPIO pins to your ESP8266.
+
+<div class="project-thumb">
+
+:::{image} images/7941321553511754587.jpg
+:target: /_images/7941321553511754587.jpg
+:::
+
+:::{image} images/3033211508504921589.jpg
+:target: /_images/3033211508504921589.jpg
+:::
+
+:::{image} images/2261861507029129263.png
+:target: /_images/2261861507029129263.png
+:::
+
+:::{image} images/664661553511737785.jpg
+:target: /_images/664661553511737785.jpg
+:::
+
+:::{image} images/1377131553511765502.jpg
+:target: /_images/1377131553511765502.jpg
+:::
+
+</div>
+
+
+    The ESP8266 is a great and cheap chip, but it doesn't have many GPIO
+pins available. Half of them is taken up by the flash memory chip, and
+half of the remaining pins have additional function on boot, which
+makes them tricky to use. So you connect your SPI display, and some
+sensors over I2C, and you are left with two pins only, and they have
+to be pulled up on boot. What about all those buttons you need to add
+to your project? Well, sure, you could use the {ref}`project-19371` if you just want the buttons, but this is a much more versatile
+solution.
+
+With this shield you get additional 16 GPIO pins available over the
+I2C bus. And you can stack up to 8 such shields, for the total of 128
+pins! They can work as input (with weak pull-ups, so perfect for
+buttons) or output, and they even have interrupts. Sure, they are
+slower than the built-in pins, and you can't do PWM on them (for that
+try {ref}`project-13278` ), but they can let you free up some of the internal pins for that.
+
+
+
+
+
+## Logs
+
+:::{postlist}
+:category: project-27566
+:::
+
+## Instructions
+

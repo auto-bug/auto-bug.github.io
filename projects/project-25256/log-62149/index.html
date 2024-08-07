@@ -1,0 +1,242 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Let’s do it Right - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="let-s-do-it-right">
+<h1>Let’s do it Right<a class="headerlink" href="#let-s-do-it-right" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2017-06-25 in <a class="reference internal" href="../#project-25256"><span class="std std-ref">Ye Olde Nowt</span></a>.</p>
+<p>After a bit of research and experimenting, I can now conclude that my
+initial PCB design has a number of flaws, namely:</p>
+<ol class="arabic simple">
+<li><p>I choose the only pin that can’t be used as button when SPI is
+enabled, BCM7, for the UP button.</p></li>
+<li><p>I choose the pin that LiPO Zero module uses for signalling shutdown
+for the L1 button.</p></li>
+<li><p>I power the OLED from the regulated 3.3V, instead of the 5V power.</p></li>
+<li><p>I drive the mini-speakers directly from the PWM pins (with low-pass
+filters), without any amplifier.</p></li>
+<li><p>I didn’t include a footprint for an ON/OFF switch.</p></li>
+<li><p>I placed one of the audio circuits right under the display’s power
+coil.</p></li>
+<li><p>I arranged the SMD buttons in such a way, that they have to be
+soldered manually in a certain order.</p></li>
+</ol>
+<p>I decided to fix those flaws in a second revision of the PCB, and in
+also to add an EEPROM chip that will store the pin configuration and
+the device tree overlays necessary to use this board. In other words,
+I’m turning this into a proper HAT.</p>
+<p>Here’s the second version of the PCB so far:</p>
+<img alt="projects/project-25256/images/8638391498405164558.png" src="projects/project-25256/images/8638391498405164558.png" />
+<p>You can see that I moved the audio filters, so that they are together,
+and there is a header for their output – that’s where the amplifier
+board will go. There are no footprints for the speakers – they will
+also go on the amplifier board. There is a resistor next to the L2
+button, because the BCM6 pin can go high on the old Raspberry Pi
+versions during the boot, and we don’t want to have a short when the
+user happens to be holding that button down. There is an EEPROM chip
+with its pull-up resistors for I2C, as <a class="reference external" href="https://github.com/raspberrypi/hats/blob/master/designguide.md">specified in the HAT design guide</a> . Oh, and I switched to using through-hole buttons, because they
+actually use less space on the board, and will be easier to solder.</p>
+<p>I also took the time to actually draw a proper schematic:</p>
+<img alt="projects/project-25256/images/1816821498405427816.png" src="projects/project-25256/images/1816821498405427816.png" />
+<p>Then I wrote the overlay file for this board, which goes something
+like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="o">/</span><span class="n">dts</span><span class="o">-</span><span class="n">v1</span><span class="o">/</span><span class="p">;</span>
+<span class="o">/</span><span class="n">plugin</span><span class="o">/</span><span class="p">;</span>
+
+<span class="o">/</span> <span class="p">{</span>
+    <span class="n">compatible</span> <span class="o">=</span> <span class="s2">&quot;brcm,bcm2835&quot;</span><span class="p">,</span> <span class="s2">&quot;brcm,bcm2708&quot;</span><span class="p">,</span> <span class="s2">&quot;brcm,bcm2709&quot;</span><span class="p">;</span>
+
+    <span class="n">fragment</span><span class="o">@</span><span class="mi">0</span> <span class="p">{</span>
+        <span class="n">target</span> <span class="o">=</span> <span class="o">&lt;&amp;</span><span class="n">gpio</span><span class="o">&gt;</span><span class="p">;</span>
+        <span class="n">__overlay__</span> <span class="p">{</span>
+            <span class="n">pinctrl</span><span class="o">-</span><span class="n">names</span> <span class="o">=</span> <span class="s2">&quot;default&quot;</span><span class="p">;</span>
+            <span class="n">pinctrl</span><span class="o">-</span><span class="mi">0</span> <span class="o">=</span> <span class="o">&lt;&amp;</span><span class="n">pwm_audio_pins</span><span class="o">&gt;</span><span class="p">;</span>
+
+            <span class="n">pwm_audio_pins</span><span class="p">:</span> <span class="n">pwm_audio_pins</span> <span class="p">{</span>
+                <span class="n">brcm</span><span class="p">,</span><span class="n">pins</span> <span class="o">=</span> <span class="o">&lt;</span><span class="mi">12</span> <span class="mi">13</span><span class="o">&gt;</span><span class="p">;</span>   <span class="o">//</span> <span class="n">gpio</span> <span class="n">no</span> <span class="p">(</span><span class="s1">&#39;BCM&#39;</span> <span class="n">number</span><span class="p">)</span>
+                <span class="n">brcm</span><span class="p">,</span><span class="n">function</span> <span class="o">=</span> <span class="o">&lt;</span><span class="mi">4</span> <span class="mi">4</span><span class="o">&gt;</span><span class="p">;</span> <span class="o">//</span> <span class="mi">0</span><span class="p">:</span><span class="ow">in</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="n">out</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="n">alt5</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="n">alt4</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="n">alt0</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span> <span class="n">alt1</span><span class="p">,</span> <span class="mi">6</span><span class="p">:</span> <span class="n">alt2</span><span class="p">,</span> <span class="mi">7</span><span class="p">:</span> <span class="n">alt3</span>
+                <span class="n">brcm</span><span class="p">,</span><span class="n">pull</span> <span class="o">=</span> <span class="o">&lt;</span><span class="mi">0</span> <span class="mi">0</span><span class="o">&gt;</span><span class="p">;</span>     <span class="o">//</span> <span class="mi">2</span><span class="p">:</span><span class="n">up</span> <span class="mi">1</span><span class="p">:</span><span class="n">down</span> <span class="mi">0</span><span class="p">:</span><span class="n">none</span>
+            <span class="p">};</span>
+            <span class="n">keypad_pins</span><span class="p">:</span> <span class="n">keypad_pins</span> <span class="p">{</span>
+                <span class="n">brcm</span><span class="p">,</span><span class="n">pins</span> <span class="o">=</span>     <span class="o">&lt;</span><span class="mi">20</span> <span class="mi">26</span> <span class="mi">21</span> <span class="mi">19</span>  <span class="mi">5</span> <span class="mi">23</span> <span class="mi">18</span> <span class="mi">17</span> <span class="mi">16</span>  <span class="mi">6</span> <span class="mi">22</span> <span class="mi">27</span><span class="o">&gt;</span><span class="p">;</span>
+                <span class="n">brcm</span><span class="p">,</span><span class="n">function</span> <span class="o">=</span> <span class="o">&lt;</span> <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span><span class="o">&gt;</span><span class="p">;</span> <span class="o">//</span> <span class="ow">in</span>
+                <span class="n">brcm</span><span class="p">,</span><span class="n">pull</span> <span class="o">=</span>     <span class="o">&lt;</span> <span class="mi">2</span>  <span class="mi">2</span>  <span class="mi">2</span>  <span class="mi">2</span>  <span class="mi">2</span>  <span class="mi">2</span>  <span class="mi">2</span>  <span class="mi">2</span>  <span class="mi">2</span>  <span class="mi">2</span>  <span class="mi">2</span>  <span class="mi">2</span><span class="o">&gt;</span><span class="p">;</span> <span class="o">//</span> <span class="n">up</span>
+            <span class="p">};</span>
+            <span class="n">oled_pins</span><span class="p">:</span> <span class="n">oled_pins</span> <span class="p">{</span>
+                <span class="n">brcm</span><span class="p">,</span><span class="n">pins</span> <span class="o">=</span> <span class="o">&lt;</span><span class="mi">24</span> <span class="mi">25</span><span class="o">&gt;</span><span class="p">;</span>
+                <span class="n">brcm</span><span class="p">,</span><span class="n">function</span> <span class="o">=</span> <span class="o">&lt;</span><span class="mi">1</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">;</span>
+                <span class="n">brcm</span><span class="p">,</span><span class="n">pull</span> <span class="o">=</span> <span class="o">&lt;</span><span class="mi">0</span> <span class="mi">0</span><span class="o">&gt;</span><span class="p">;</span>
+            <span class="p">};</span>
+        <span class="p">};</span>
+    <span class="p">};</span>
+
+    <span class="n">fragment</span><span class="o">@</span><span class="mi">1</span> <span class="p">{</span>
+        <span class="n">target</span> <span class="o">=</span> <span class="o">&lt;&amp;</span><span class="n">soc</span><span class="o">&gt;</span><span class="p">;</span>
+        <span class="n">__overlay__</span> <span class="p">{</span>
+            <span class="n">keypad</span><span class="p">:</span> <span class="n">keypad</span> <span class="p">{</span>
+                <span class="n">compatible</span> <span class="o">=</span> <span class="s2">&quot;gpio-keys&quot;</span><span class="p">;</span>
+                <span class="n">pinctrl</span><span class="o">-</span><span class="n">names</span> <span class="o">=</span> <span class="s2">&quot;default&quot;</span><span class="p">;</span>
+                <span class="n">pinctrl</span><span class="o">-</span><span class="mi">0</span> <span class="o">=</span> <span class="o">&lt;&amp;</span><span class="n">keypad_pins</span><span class="o">&gt;</span><span class="p">;</span>
+                <span class="c1">#address-cells = &lt;1&gt;;</span>
+                <span class="c1">#size-cells = &lt;0&gt;;</span>
+
+                <span class="n">button</span><span class="o">@</span><span class="mi">20</span> <span class="p">{</span>
+                    <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;up&quot;</span><span class="p">;</span>
+                    <span class="n">linux</span><span class="p">,</span><span class="n">code</span> <span class="o">=</span> <span class="o">&lt;</span><span class="mi">103</span><span class="o">&gt;</span><span class="p">;</span> <span class="o">//</span> <span class="n">KEY_UP</span>
+                    <span class="n">gpios</span> <span class="o">=</span> <span class="o">&lt;&amp;</span><span class="n">gpio</span> <span class="mi">20</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">;</span>
+                <span class="p">};</span>
+                <span class="n">button</span><span class="o">@</span><span class="mi">26</span> <span class="p">{</span>
+                    <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;down&quot;</span><span class="p">;</span>
+                    <span class="n">linux</span><span class="p">,</span><span class="n">code</span> <span class="o">=</span> <span class="o">&lt;</span><span class="mi">108</span><span class="o">&gt;</span><span class="p">;</span> <span class="o">//</span> <span class="n">KEY_DOWN</span>
+                    <span class="n">gpios</span> <span class="o">=</span> <span class="o">&lt;&amp;</span><span class="n">gpio</span> <span class="mi">26</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">;</span>
+                <span class="p">};</span>
+                <span class="n">button</span><span class="o">@</span><span class="mi">21</span> <span class="p">{</span>
+                    <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;left&quot;</span><span class="p">;</span>
+                    <span class="n">linux</span><span class="p">,</span><span class="n">code</span> <span class="o">=</span> <span class="o">&lt;</span><span class="mi">105</span><span class="o">&gt;</span><span class="p">;</span> <span class="o">//</span> <span class="n">KEY_LEFT</span>
+                    <span class="n">gpios</span> <span class="o">=</span> <span class="o">&lt;&amp;</span><span class="n">gpio</span> <span class="mi">21</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">;</span>
+                <span class="p">};</span>
+                <span class="n">button</span><span class="o">@</span><span class="mi">19</span> <span class="p">{</span>
+                    <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;right&quot;</span><span class="p">;</span>
+                    <span class="n">linux</span><span class="p">,</span><span class="n">code</span> <span class="o">=</span> <span class="o">&lt;</span><span class="mi">106</span><span class="o">&gt;</span><span class="p">;</span> <span class="o">//</span> <span class="n">KEY_RIGHT</span>
+                    <span class="n">gpios</span> <span class="o">=</span> <span class="o">&lt;&amp;</span><span class="n">gpio</span> <span class="mi">19</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">;</span>
+                <span class="p">};</span>
+                <span class="n">button</span><span class="o">@</span><span class="mi">5</span> <span class="p">{</span>
+                    <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;X&quot;</span><span class="p">;</span>
+                    <span class="n">linux</span><span class="p">,</span><span class="n">code</span> <span class="o">=</span> <span class="o">&lt;</span><span class="mi">45</span><span class="o">&gt;</span><span class="p">;</span> <span class="o">//</span> <span class="n">KEY_X</span>
+                    <span class="n">gpios</span> <span class="o">=</span> <span class="o">&lt;&amp;</span><span class="n">gpio</span> <span class="mi">5</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">;</span>
+                <span class="p">};</span>
+                <span class="n">button</span><span class="o">@</span><span class="mi">23</span> <span class="p">{</span>
+                    <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;Z&quot;</span><span class="p">;</span>
+                    <span class="n">linux</span><span class="p">,</span><span class="n">code</span> <span class="o">=</span> <span class="o">&lt;</span><span class="mi">44</span><span class="o">&gt;</span><span class="p">;</span> <span class="o">//</span> <span class="n">KEY_Z</span>
+                    <span class="n">gpios</span> <span class="o">=</span> <span class="o">&lt;&amp;</span><span class="n">gpio</span> <span class="mi">23</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">;</span>
+                <span class="p">};</span>
+                <span class="n">button</span><span class="o">@</span><span class="mi">18</span> <span class="p">{</span>
+                    <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;R1&quot;</span><span class="p">;</span>
+                    <span class="n">linux</span><span class="p">,</span><span class="n">code</span> <span class="o">=</span> <span class="o">&lt;</span><span class="mi">30</span><span class="o">&gt;</span><span class="p">;</span> <span class="o">//</span> <span class="n">KEY_A</span>
+                    <span class="n">gpios</span> <span class="o">=</span> <span class="o">&lt;&amp;</span><span class="n">gpio</span> <span class="mi">18</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">;</span>
+                <span class="p">};</span>
+                <span class="n">button</span><span class="o">@</span><span class="mi">17</span> <span class="p">{</span>
+                    <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;R2&quot;</span><span class="p">;</span>
+                    <span class="n">linux</span><span class="p">,</span><span class="n">code</span> <span class="o">=</span> <span class="o">&lt;</span><span class="mi">31</span><span class="o">&gt;</span><span class="p">;</span> <span class="o">//</span> <span class="n">KEY_S</span>
+                    <span class="n">gpios</span> <span class="o">=</span> <span class="o">&lt;&amp;</span><span class="n">gpio</span> <span class="mi">17</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">;</span>
+                <span class="p">};</span>
+                <span class="n">button</span><span class="o">@</span><span class="mi">16</span> <span class="p">{</span>
+                    <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;L1&quot;</span><span class="p">;</span>
+                    <span class="n">linux</span><span class="p">,</span><span class="n">code</span> <span class="o">=</span> <span class="o">&lt;</span><span class="mi">32</span><span class="o">&gt;</span><span class="p">;</span> <span class="o">//</span> <span class="n">KEY_D</span>
+                    <span class="n">gpios</span> <span class="o">=</span> <span class="o">&lt;&amp;</span><span class="n">gpio</span> <span class="mi">16</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">;</span>
+                <span class="p">};</span>
+                <span class="n">button</span><span class="o">@</span><span class="mi">6</span> <span class="p">{</span>
+                    <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;L2&quot;</span><span class="p">;</span>
+                    <span class="n">linux</span><span class="p">,</span><span class="n">code</span> <span class="o">=</span> <span class="o">&lt;</span><span class="mi">33</span><span class="o">&gt;</span><span class="p">;</span> <span class="o">//</span> <span class="n">KEY_F</span>
+                    <span class="n">gpios</span> <span class="o">=</span> <span class="o">&lt;&amp;</span><span class="n">gpio</span> <span class="mi">6</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">;</span>
+                <span class="p">};</span>
+                <span class="n">button</span><span class="o">@</span><span class="mi">22</span> <span class="p">{</span>
+                    <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;start&quot;</span><span class="p">;</span>
+                    <span class="n">linux</span><span class="p">,</span><span class="n">code</span> <span class="o">=</span> <span class="o">&lt;</span><span class="mi">28</span><span class="o">&gt;</span><span class="p">;</span> <span class="o">//</span> <span class="n">KEY_ENTER</span>
+                    <span class="n">gpios</span> <span class="o">=</span> <span class="o">&lt;&amp;</span><span class="n">gpio</span> <span class="mi">22</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">;</span>
+                <span class="p">};</span>
+                <span class="n">button</span><span class="o">@</span><span class="mi">27</span> <span class="p">{</span>
+                    <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;select&quot;</span><span class="p">;</span>
+                    <span class="n">linux</span><span class="p">,</span><span class="n">code</span> <span class="o">=</span> <span class="o">&lt;</span><span class="mi">57</span><span class="o">&gt;</span><span class="p">;</span> <span class="o">//</span> <span class="n">KEY_SPACE</span>
+                    <span class="n">gpios</span> <span class="o">=</span> <span class="o">&lt;&amp;</span><span class="n">gpio</span> <span class="mi">27</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">;</span>
+                <span class="p">};</span>
+            <span class="p">};</span>
+        <span class="p">};</span>
+    <span class="p">};</span>
+
+
+    <span class="n">fragment</span><span class="o">@</span><span class="mi">2</span> <span class="p">{</span>
+        <span class="n">target</span> <span class="o">=</span> <span class="o">&lt;&amp;</span><span class="n">spi0</span><span class="o">&gt;</span><span class="p">;</span>
+        <span class="n">__overlay__</span> <span class="p">{</span>
+            <span class="n">status</span> <span class="o">=</span> <span class="s2">&quot;okay&quot;</span><span class="p">;</span>
+            <span class="c1">#address-cells = &lt;1&gt;;</span>
+            <span class="c1">#size-cells = &lt;0&gt;;</span>
+
+            <span class="n">spidev</span><span class="o">@</span><span class="mi">0</span><span class="p">{</span>
+                <span class="n">status</span> <span class="o">=</span> <span class="s2">&quot;disabled&quot;</span><span class="p">;</span>
+            <span class="p">};</span>
+            <span class="n">spidev</span><span class="o">@</span><span class="mi">1</span><span class="p">{</span>
+                <span class="n">status</span> <span class="o">=</span> <span class="s2">&quot;disabled&quot;</span><span class="p">;</span>
+            <span class="p">};</span>
+            <span class="n">oled_display</span><span class="p">:</span> <span class="n">oled_display</span><span class="o">@</span><span class="mi">0</span><span class="p">{</span>
+                <span class="n">compatible</span> <span class="o">=</span> <span class="s2">&quot;ssd,fb_ssd1351&quot;</span><span class="p">;</span>
+                <span class="n">status</span> <span class="o">=</span> <span class="s2">&quot;okay&quot;</span><span class="p">;</span>
+                <span class="n">reg</span> <span class="o">=</span> <span class="o">&lt;</span><span class="mi">0</span><span class="o">&gt;</span><span class="p">;</span>
+                <span class="n">pinctrl</span><span class="o">-</span><span class="n">names</span> <span class="o">=</span> <span class="s2">&quot;default&quot;</span><span class="p">;</span>
+                <span class="n">pinctrl</span><span class="o">-</span><span class="mi">0</span> <span class="o">=</span> <span class="o">&lt;&amp;</span><span class="n">oled_pins</span><span class="o">&gt;</span><span class="p">;</span>
+
+                <span class="n">spi</span><span class="o">-</span><span class="nb">max</span><span class="o">-</span><span class="n">frequency</span> <span class="o">=</span> <span class="o">&lt;</span><span class="mi">20000000</span><span class="o">&gt;</span><span class="p">;</span>
+                <span class="n">txbuflen</span> <span class="o">=</span> <span class="o">&lt;</span><span class="mi">32768</span><span class="o">&gt;</span><span class="p">;</span>
+                <span class="n">rotate</span> <span class="o">=</span> <span class="o">&lt;</span><span class="mi">0</span><span class="o">&gt;</span><span class="p">;</span>
+                <span class="n">fps</span> <span class="o">=</span> <span class="o">&lt;</span><span class="mi">33</span><span class="o">&gt;</span><span class="p">;</span>
+                <span class="n">buswidth</span> <span class="o">=</span> <span class="o">&lt;</span><span class="mi">8</span><span class="o">&gt;</span><span class="p">;</span>
+                <span class="n">dc</span><span class="o">-</span><span class="n">gpios</span> <span class="o">=</span> <span class="o">&lt;&amp;</span><span class="n">gpio</span> <span class="mi">25</span> <span class="mi">0</span><span class="o">&gt;</span><span class="p">;</span>
+                <span class="n">reset</span><span class="o">-</span><span class="n">gpios</span> <span class="o">=</span> <span class="o">&lt;&amp;</span><span class="n">gpio</span> <span class="mi">24</span> <span class="mi">0</span><span class="o">&gt;</span><span class="p">;</span>
+                <span class="n">debug</span> <span class="o">=</span> <span class="o">&lt;</span><span class="mi">0</span><span class="o">&gt;</span><span class="p">;</span>
+            <span class="p">};</span>
+        <span class="p">};</span>
+    <span class="p">};</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>and then I tested that all of the buttons actually work properly:</p>
+<img alt="projects/project-25256/images/5348691498405674703.jpg" src="projects/project-25256/images/5348691498405674703.jpg" />
+<p>Turns out that it mostly all works, but I have to manually enable
+pull-ups on all the pins – for some reason the above overlay doesn’t
+enable them. Which is fine by me, because the EEPROM lets me do that
+separately, and in the worst case I will add a script that will enable
+them at startup.</p>
+<p>In the end, it all turned out to be more complex than I anticipated,
+but I think I got it all resolved now.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+---
+blogpost: true
+date: 2017-06-23
+category: project-25256
+---
+
+# Display Power Problems
+Published on 2017-06-23 in {ref}`project-25256`.
+
+As I'm getting more of it to work and testing with Pico8, I'm starting
+to see that I have a serious problem with the display. As soon as
+there are white vertical lines on it, it starts making high-pitched
+noises and do "tv noise" for some frames, and then the whole Raspberry
+Pi hangs.
+
+Looking at the schematic, I think I made a big mistake connecting the
+display's power to pi's 3.3V pin. Sure, the display can run both on
+3.3V and 5V, and since there is no communication from the display to
+the pi, there is no problem with voltage incompatibility. I suspect
+that this display takes a bit too much juice for the pi's regulator.
+
+The solution? I will try to un-solder the VCC pin of the display, and
+use a wire to connect it to the 5V pins. We will see how that works.
+One downside is that won't look so good anymore.
+
+If that doesn't help, there is one more possibility -- the display
+drivers in the kernel may be simply buggy, sending to the display some
+weird commands that trip it up.
+

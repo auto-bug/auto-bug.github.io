@@ -2,148 +2,168 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posted in 2018</title>
-  <updated>2024-08-07T20:31:02.474690+00:00</updated>
+  <updated>2024-08-07T20:31:59.269905+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/2018/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
   <entry>
-    <id>http://deshipu.art/projects/project-19371/log-84151/</id>
-    <title>Version 3.0</title>
-    <updated>2018-01-25T00:00:00+01:00</updated>
-    <content type="html">&lt;section id="version-3-0"&gt;
+    <id>http://deshipu.art/projects/project-27257/log-148636/</id>
+    <title>Tented Vias</title>
+    <updated>2018-07-02T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="tented-vias"&gt;
 
-&lt;p&gt;Published on 2018-01-25 in &lt;a class="reference internal" href="../../projects/project-19371/#project-19371"&gt;&lt;span class="std std-ref"&gt;D1 Mini X-Pad Shield&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;I have been working a little on this project in the recent months,
-designing a new PCB using different parts and so on, but I didn’t
-really have time to assemble and test it properly. Recently I found
-the PCBs in a drawer, found the matching parts, and decided to give it
-a go. Behold, version 3.0:&lt;/p&gt;
-&lt;img alt="projects/project-19371/images/6528201516912435919.jpg" src="projects/project-19371/images/6528201516912435919.jpg" /&gt;
-&lt;p&gt;and the back side:&lt;/p&gt;
-&lt;p&gt;———- more ———-&lt;/p&gt;
-&lt;img alt="projects/project-19371/images/3290671516912471580.jpg" src="projects/project-19371/images/3290671516912471580.jpg" /&gt;
-&lt;p&gt;I’m using a much smaller PCA9554 here, which has pretty much the same
-I²C interface. I also put all the parts on the back, so that you can
-stack this board with the display more tightly.&lt;/p&gt;
-&lt;p&gt;Just like version 2.0, it has friction-fit pin headers, so you don’t
-even need to solder anything. As a bonus, I added a header for a
-SSD1331 display module, which you can simply plug in there. Only one
-problem, the module is too wide and covers some of the buttons.&lt;/p&gt;
-&lt;p&gt;I also used different buttons — initially I wanted to use the same
-kind that is on the Pro Mini boards for reset, but then realized that
-the “quiet” ALPS buttons fit that footprint too. Well, they almost fit
-— they are a bit too wide, and stick a little bit out on the D-pad
-side. Oh well.&lt;/p&gt;
-&lt;p&gt;Overall, I don’t think the improvements are worth rolling a new
-version on Tindie — and I still have a bunch of version 2.0 ones to
-sell. However, I’m already thinking about version 4.0, which will be
-bigger, have footprints for multiple different display modules, and
-will use an ATtiny24 to do de-bouncing and buffering, just like on &lt;span class="xref std std-ref"&gt;project-27757&lt;/span&gt; . It can take a while to finalize that one, though.&lt;/p&gt;
+&lt;p&gt;Published on 2018-07-02 in &lt;a class="reference internal" href="../../projects/project-27257/#project-27257"&gt;&lt;span class="std std-ref"&gt;Fritzing Tricks&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This trick was originally described by &lt;a class="reference external" href="https://hackaday.io/hacker/72667"&gt;&amp;#64;Arduino Enigma &lt;/a&gt; in the &lt;span class="xref std std-ref"&gt;project-91895&lt;/span&gt; . Tented vias are vias that are covered with soldermask. If you think
+about it for a moment, there is really no reason for a via to be
+exposed (unless you re-use it as a test point). Its job is to connect
+the layers, and it does it as well when it is covered. On the other
+hand, when it’s covered, the risk of shorting it is smaller, and the
+board can look much better.&lt;/p&gt;
+&lt;p&gt;Unfortunately Fritzing doesn’t normally give you the option to have
+the vias tented. But there is a simple trick to add the soldermask
+over them when you are generating the gerbers. Start by generating
+your gerber files as usual, and once you do that, select_Routing→Select All Vias_ from the menu, and press the Del key to delete them. It will also
+delete some of the traces, but don’t worry about it. Now generate
+another set of gerber files, in a separate directory, and close
+Fritzing without saving the file.&lt;/p&gt;
+&lt;p&gt;Now all you have to do is to copy the_maskTop, maskBottom, silkTop_ and_silkBottom_ files from the latter directory to the former, and voila, your vias
+are now covered with soldermask. You can also only copy only some of
+those files to only have the vias covered on one side of the board.&lt;/p&gt;
 &lt;/section&gt;
 </content>
-    <link href="http://deshipu.art/projects/project-19371/log-84151/" rel="alternate"/>
-    <summary>Published on 2018-01-25 in project-19371.</summary>
-    <published>2018-01-25T00:00:00+01:00</published>
+    <link href="http://deshipu.art/projects/project-27257/log-148636/" rel="alternate"/>
+    <summary>Published on 2018-07-02 in project-27257.</summary>
+    <published>2018-07-02T00:00:00+02:00</published>
   </entry>
   <entry>
-    <id>http://deshipu.art/projects/project-19371/log-146342/</id>
-    <title>Version 6.0</title>
-    <updated>2018-05-17T00:00:00+02:00</updated>
-    <content type="html">&lt;section id="version-6-0"&gt;
+    <id>http://deshipu.art/projects/project-21578/log-149325/</id>
+    <title>Making it Cheaper Again</title>
+    <updated>2018-07-14T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="making-it-cheaper-again"&gt;
 
-&lt;p&gt;Published on 2018-05-17 in &lt;a class="reference internal" href="../../projects/project-19371/#project-19371"&gt;&lt;span class="std std-ref"&gt;D1 Mini X-Pad Shield&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;After using an ATtiny24 for handling buttons in &lt;span class="xref std std-ref"&gt;project-27757&lt;/span&gt; I decided that this is also the way to go with the X-Pad shield. I
-designed version 5.0 which used the same buttons and layout as 4.0,
-but a different chip, and I tested the firmware with it. Turns out
-that it works very well, and does de-bouncing and buffering for you,
-so that you don’t have to poll the chip frantically for presses,
-afraid that you miss any. All button presses now wait nicely in the
-buffer until you read them. The shield looked like this:&lt;/p&gt;
-&lt;img alt="projects/project-19371/images/5465841526548313697.png" src="projects/project-19371/images/5465841526548313697.png" /&gt;
-&lt;p&gt;But then I have some problems with the shields I sold on Tindie (due
-to poor solder joints on the buttons), and I removed the shield from
-my store. I decided to work on the design a little bit more and make a
-version that will really be the best I can make. Behold, version 6.0:&lt;/p&gt;
-&lt;img alt="projects/project-19371/images/1599921526548559905.jpg" src="projects/project-19371/images/1599921526548559905.jpg" /&gt;
-&lt;p&gt;It’s bigger than the original X-Pad shield, and has mounting holes. It
-also has all the components, except buttons, on the back, and away
-from the middle part of the board — so it can lie flat against the D1
-Mini and other shields. It also has friction-fit headers, so no
-soldering is necessary and you can add it to another shield easily,
-like this:&lt;/p&gt;
-&lt;img alt="projects/project-19371/images/7862921526548698640.jpg" src="projects/project-19371/images/7862921526548698640.jpg" /&gt;
-&lt;p&gt;There are also two headers for popular display modules. One for the
-128×128 ST7735R module (you might need to trim that corner):&lt;/p&gt;
-&lt;img alt="projects/project-19371/images/3627931526548781441.jpg" src="projects/project-19371/images/3627931526548781441.jpg" /&gt;
-&lt;p&gt;And one for the popular SPI-based OLED modules, such as SSD1331 or
-SSD1306:&lt;/p&gt;
-&lt;img alt="projects/project-19371/images/8869361526548913513.jpg" src="projects/project-19371/images/8869361526548913513.jpg" /&gt;
-&lt;p&gt;I still need to add some last finishing touches to the firmware and
-test it all properly, and it’s going into my Tindie store.&lt;/p&gt;
+&lt;p&gt;Published on 2018-07-14 in &lt;a class="reference internal" href="../../projects/project-21578/#project-21578"&gt;&lt;span class="std std-ref"&gt;PewPew FeatherWing&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The PewPew Lite FeatherWing is one of my favorite designs, and I think
+it’s really great for learning programming games — actually better
+than the &lt;a class="reference internal" href="../../projects/project-27629/#project-27629"&gt;&lt;span class="std std-ref"&gt;µGame&lt;/span&gt;&lt;/a&gt; , because it’s so much simpler. The shield itself is pretty cheap,
+too. Unfortunately, you still need to have a Feather M0 (or, even
+better, M0 Express) to use it, and that’s actually twice as expensive
+as the shield itself. Add the LiPo battery to the mix, and you could
+instead buy an ODROID GO or something similar. This is problematic
+especially if you want to organize a workshop — you either make a
+workshop for the rich, or find a sponsor.&lt;/p&gt;
+&lt;p&gt;I have already tried to lower the price of the whole thing by putting
+the microcontroller directly on the device — basically copying the
+Trinket M0 schematic for that — but the resulting device was pretty
+complex to make, and I was never quite happy with it. Plus, you still
+needed the LiPo battery and its charging circuit and all that.&lt;/p&gt;
+&lt;p&gt;Today I sat down and redesigned the latest version of PewPew
+completely, using the knowledge I gained from µGame and from the &lt;span class="xref std std-ref"&gt;project-100853&lt;/span&gt; to simplify it as much as possible, while still keeping its basic
+functionality. That’s how I came up with PewPew 6.0:&lt;/p&gt;
+&lt;img alt="projects/project-21578/images/9513911531579693448.png" src="projects/project-21578/images/9513911531579693448.png" /&gt;
+&lt;p&gt;It’s exactly the size of two AA batteries, because that’s what it is
+going to be using for power. It uses the good old HT16K33 chip, just
+like the PewPew Lite, which simplifies things a lot. However, the
+buttons are handled directly by the microcontroller now, because to
+have them handled by the HT16K33, I would need six extra resistors,
+and I tried to minimize the parts count. To get rid of Shottky diodes
+or transistors for isolating the USB VBUS, I simply used the power
+switch to switch between the battery power and the USB power. I might
+even skip the voltage regulator and make it always run on battery
+power. Apart from that, there are the six buttons, the bi-color
+matrix, the SAMD21 microcontroller itself, two pull-up resistors for
+the I2C bus and two filter capacitors — that’s it. Everything is
+routed on the top layer of the PCB (the bottom is one big ground
+plane), and all parts (except for the battery holder) are mounted on
+top, to simplify assembly. I’m using the QFN version of SAMD21,
+because it’s slightly cheaper.&lt;/p&gt;
+&lt;p&gt;I considered using other chips than the HT16K33 for driving the
+matrix, in particular, simple shift registers to do all the work in
+the microcontroller, but in the end the HT16K33 is cheap enough and
+does all the work for me. In the future, I might consider switching to
+charlieplexed SMD bi-color LEDs and driving them from the MCU pins
+directly — that would probably shave a few dollars from the BOM at the
+cost of more work with assembling it.&lt;/p&gt;
 &lt;/section&gt;
 </content>
-    <link href="http://deshipu.art/projects/project-19371/log-146342/" rel="alternate"/>
-    <summary>Published on 2018-05-17 in project-19371.</summary>
-    <published>2018-05-17T00:00:00+02:00</published>
+    <link href="http://deshipu.art/projects/project-21578/log-149325/" rel="alternate"/>
+    <summary>Published on 2018-07-14 in project-21578.</summary>
+    <published>2018-07-14T00:00:00+02:00</published>
   </entry>
   <entry>
-    <id>http://deshipu.art/projects/project-6050/log-147636/</id>
-    <title>Reviving the Skull Tote</title>
-    <updated>2018-06-07T00:00:00+02:00</updated>
-    <content type="html">&lt;section id="reviving-the-skull-tote"&gt;
+    <id>http://deshipu.art/projects/project-27853/log-152772/</id>
+    <title>Creeping Back to Life</title>
+    <updated>2018-09-12T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="creeping-back-to-life"&gt;
 
-&lt;p&gt;Published on 2018-06-07 in &lt;a class="reference internal" href="../../projects/project-6050/#project-6050"&gt;&lt;span class="std std-ref"&gt;Tote&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;I have a number of prototypes of Tote that I have built over the
-years, but the most presentable one is the one I pimped up in  &lt;a class="reference external" href="https://hackaday.io/project/6050-tote/log/48853-pimp-your-bot"&gt;https://hackaday.io/project/6050-tote/log/48853-pimp-your-bot&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Unfortunately, that robot had a number of problems. Unlike all other
-Totes, it was powered with a 2S lipo battery, with a buck converter
-bringing to voltage down to 5V. That tiny buck converter would only
-work for a few minutes, and then starting to shut down when the
-current drawn by the servos made it too hot. Which would result in the
-robot having a seizure. I also discovered that the motor in one of the
-servos got stuck — rather common with the cheap SG90 servos — and
-would need to be replaced.&lt;/p&gt;
-&lt;p&gt;So I decided to open up this robot, replace the power with a more
-standard setup (a 1S lipo connected directly without any voltage
-stabilization), add a battery charging circuit, and replace the servo.&lt;/p&gt;
-&lt;p&gt;Here’s the USB port for the battery charging circuit:&lt;/p&gt;
-&lt;img alt="projects/project-6050/images/9036641528398127759.jpg" src="projects/project-6050/images/9036641528398127759.jpg" /&gt;
-&lt;p&gt;And the replaced servo, primed with black paint, waiting to dry for a
-dry-brushing:&lt;/p&gt;
-&lt;img alt="projects/project-6050/images/2825991528398180978.jpg" src="projects/project-6050/images/2825991528398180978.jpg" /&gt;
-&lt;p&gt;And finally the whole robot, it all its robot glory:&lt;/p&gt;
-&lt;img alt="projects/project-6050/images/7540951528398222731.jpg" src="projects/project-6050/images/7540951528398222731.jpg" /&gt;
+&lt;p&gt;Published on 2018-09-12 in &lt;a class="reference internal" href="../../projects/project-27853/#project-27853"&gt;&lt;span class="std std-ref"&gt;H-Cam&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Yes, this project spent quite a bit of time in a drawer. I got the
+AMG8833 sensor to play with, but I didn’t really have a good idea
+about what I want to do with it. Then I designed this PCB with a
+footprint for that sensor, an atmega and a LED matrix, hoping that
+with enough magic I can make it into a kind of thermal camera. Then
+the PCB arrived together with a bunch of other PCBs, and got put into
+a drawer.&lt;/p&gt;
+&lt;p&gt;Fast forward a few months, and the &lt;span class="xref std std-ref"&gt;project-7813&lt;/span&gt; is back. I looked through my projects, and noticed that hey, this PCB
+is 2cm on a side to fit the LED matrix, and that’s less than an inch,
+so why not. So I submitted it to the contest and promptly forgot about
+it.&lt;/p&gt;
+&lt;p&gt;Now the deadline is looming, and it would be nice to at least start on
+this. So I took the PCB and soldered it up, and also found all the
+components that I will need:&lt;/p&gt;
+&lt;img alt="projects/project-27853/images/1328911536744914663.jpg" src="projects/project-27853/images/1328911536744914663.jpg" /&gt;
+&lt;p&gt;I used the female pin headers in the prototype so that I can remove
+the led matrix. The final version will not have them, and the led
+matrix will be soldered directly – at least that’s the plan.&lt;/p&gt;
+&lt;p&gt;There will also be a lipo battery in there.&lt;/p&gt;
+&lt;p&gt;Now I need to write the code for the atmega to handle the led matrix.&lt;/p&gt;
 &lt;/section&gt;
 </content>
-    <link href="http://deshipu.art/projects/project-6050/log-147636/" rel="alternate"/>
-    <summary>Published on 2018-06-07 in project-6050.</summary>
-    <published>2018-06-07T00:00:00+02:00</published>
+    <link href="http://deshipu.art/projects/project-27853/log-152772/" rel="alternate"/>
+    <summary>Published on 2018-09-12 in project-27853.</summary>
+    <published>2018-09-12T00:00:00+02:00</published>
   </entry>
   <entry>
-    <id>http://deshipu.art/projects/project-7860/log-148360/</id>
-    <title>Corrected Repositories</title>
-    <updated>2018-06-24T00:00:00+02:00</updated>
-    <content type="html">&lt;section id="corrected-repositories"&gt;
+    <id>http://deshipu.art/projects/project-27629/log-153524/</id>
+    <title>Updated Firmware with CircuitPython 3.2.0</title>
+    <updated>2018-09-30T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="updated-firmware-with-circuitpython-3-2-0"&gt;
 
-&lt;p&gt;Published on 2018-06-24 in &lt;a class="reference internal" href="../../projects/project-7860/#project-7860"&gt;&lt;span class="std std-ref"&gt;Nyan Board&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="https://hackaday.io/hacker/125739"&gt;&amp;#64;Travis Hardiman &lt;/a&gt; pointed out that the code I have in the &lt;a class="reference external" href="https://bitbucket.org/thesheep/nyan/src/tiny10/main/"&gt;repository&lt;/a&gt;  in the attiny10 branch is actually for attiny85, and the attiny10
-code is missing, so I went ahead and re-created the attiny10 code
-(which I must have lost somehow), this time on attiny9 (which is the
-same as attiny10, only doesn’t have ADC, which we don’t need). It’s in
-the attiny9 branch now. So to summarize:&lt;/p&gt;
-&lt;ul class="simple"&gt;
-&lt;li&gt;&lt;p&gt;attiny85:  &lt;a class="reference external" href="https://bitbucket.org/thesheep/nyan/src/tiny10/main/"&gt;https://bitbucket.org/thesheep/nyan/src/tiny10/main/&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;attiny10 and attiny9: &lt;a class="reference external" href="https://bitbucket.org/thesheep/nyan/src/tiny10/main/"&gt;https://bitbucket.org/thesheep/nyan/src/tiny9/main/&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;attiny13:  &lt;a class="reference external" href="https://bitbucket.org/thesheep/nyan/src/tiny10/main/"&gt;https://bitbucket.org/thesheep/nyan/src/tiny13/main/&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Sorry for the confusion.&lt;/p&gt;
-&lt;p&gt;Also, to program the attiny10, you need to use a programmer capable of
-programming with the TPI protocol — recent versions of USBASP support
-it, you just need to add a 1kΩ resistor…&lt;/p&gt;
+&lt;p&gt;Published on 2018-09-30 in &lt;a class="reference internal" href="../../projects/project-27629/#project-27629"&gt;&lt;span class="std std-ref"&gt;µGame&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;CircuitPython 3.2.0 has been released a while ago, and brings a lot of
+bug fixes and some performance improvements. It would be nice to use
+it for µGame. Unfortunately, it also had some changes in how audio is
+handled, and since that interacted with available memory in ways that
+made the example games not work, it required more work on my part than
+just rebasing the repository.&lt;/p&gt;
+&lt;p&gt;However, I managed to work around the problems, and a new version of
+the firmware is now available at &lt;a class="reference external" href="https://github.com/python-ugame/circuitpython/releases/tag/ugame10-3.2.0"&gt;https://github.com/python-
+ugame/circuitpython/releases/tag/ugame10-3.2.0&lt;/a&gt; . There is also a release of the Vacuum Invaders game specially
+updated for that version of firmware: &lt;a class="reference external" href="https://github.com/python-ugame/vacuum-invaders/releases/tag/3.2.0"&gt;https://github.com/python-ugame/vacuum-invaders/releases/tag/3.2.0&lt;/a&gt; . The other example games, as well as the tutorial, should work
+without any changes.&lt;/p&gt;
+&lt;p&gt;In order to upgrade your device, you need to download the .uf2 file,
+and copy it to the TRINKETBOOT disk that appears when you press the
+“reset” button (located next to the direction buttons) twice. Once the
+file is copied, the device will reboot with the new firmware in place.&lt;/p&gt;
 &lt;/section&gt;
 </content>
-    <link href="http://deshipu.art/projects/project-7860/log-148360/" rel="alternate"/>
-    <summary>Published on 2018-06-24 in project-7860.</summary>
-    <published>2018-06-24T00:00:00+02:00</published>
+    <link href="http://deshipu.art/projects/project-27629/log-153524/" rel="alternate"/>
+    <summary>Published on 2018-09-30 in project-27629.</summary>
+    <published>2018-09-30T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-21578/log-155174/</id>
+    <title>Replaced by PewPew Standalone</title>
+    <updated>2018-10-23T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="replaced-by-pewpew-standalone"&gt;
+
+&lt;p&gt;Published on 2018-10-23 in &lt;a class="reference internal" href="../../projects/project-21578/#project-21578"&gt;&lt;span class="std std-ref"&gt;PewPew FeatherWing&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;While this still works and is fully compatible with all other PewPew
+boards, and while I still sell it on Tindie, check out the new devices
+over at &lt;span class="xref std std-ref"&gt;project-159733&lt;/span&gt; — they are bigger and cheaper, though no color display.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-21578/log-155174/" rel="alternate"/>
+    <summary>Published on 2018-10-23 in project-21578.</summary>
+    <published>2018-10-23T00:00:00+02:00</published>
   </entry>
 </feed>

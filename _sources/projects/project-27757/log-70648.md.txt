@@ -1,0 +1,31 @@
+---
+blogpost: true
+date: 2017-11-18
+category: project-27757
+---
+
+# Shield Connectors
+Published on 2017-11-18 in {ref}`project-27757`.
+
+One of the main challenges when making an accessory for the micro:bit
+is connecting it to the device. The large holes might be convenient
+for alligator clips, but not for pretty much anything else, and the
+edge connector is huge and hard to design a PCB for. This time, since
+I only need two pins for I2C and one for the speaker, I decided to go
+with bolts. However, I don't have room on the front side of the board
+for bolt holes (the display and buttons are too wide), so I need them
+in a "surface mount" version. Turns out that some large pads with
+vias, together with solder paste and a generous application of the hot
+air gun work pretty well for that:
+
+
+
+:::{image} images/3337901511019997872.jpg
+
+:::
+
+
+I even found some brass bolts without heads dedicated to be soldered
+to a PCB, but it will be a while before those arrive, so in the mean
+time I'm testing with regular bolts.
+

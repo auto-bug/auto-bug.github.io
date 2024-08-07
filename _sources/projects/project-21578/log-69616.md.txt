@@ -1,0 +1,38 @@
+---
+blogpost: true
+date: 2017-10-24
+category: project-21578
+---
+
+# Version 4.2
+Published on 2017-10-24 in {ref}`project-21578`.
+
+After finding the reason for CircuitPython crashes in #µGame and
+getting the audio amplifier to work, version 4.1 has pretty much all
+the parts that I wanted to have. However, its physical layout is
+somewhat problematic, especially the rather large speaker smack in the
+middle of the board, which makes it hard to add a battery there.
+
+So I started working on version 4.2. So far I have the following
+changes:
+
+
+ * Added guide holes for the USB socket.
+ * Larger footprint for the flash chip, so that more chips can be used.
+ * Smaller and cheaper reset switch.
+ * Pads instead of holes for the battery connector.
+ * Moved the audio amplifier circuit.
+ * Moved the speaker to the front of the board, and used a footprint for
+really small SMD speakers.
+ * Moved some components away from each other, so it's not as cramped.
+
+I'm still considering two more changes:
+
+
+ * Add a voltage divider to an analog pin, for measuring battery voltage.
+ * Move the charging circuit before the switch, so that charging is
+possible with the switch off.
+
+I think that 4.2 will be the last prototype, at least if everything
+works as expected.
+

@@ -1,0 +1,34 @@
+---
+blogpost: true
+date: 2017-06-19
+category: project-20941
+---
+
+# Grayscale 14x11 Matrix
+Published on 2017-06-19 in {ref}`project-20941`.
+
+The IS31FL3733 has double the pins of IS31FL3736, so you get double
+fun! This board was also finished and assembled for some time, but I
+couldn't get it to work. Today I checked dug it out to try the
+capacitor trick, but it already has the decoupling capacitor. But once
+I had it out, I did some more experimenting and sure enough, I had the
+SDA and SCL pins swapped on it!
+
+
+:::{image} images/6166031497894364593.jpg
+
+:::
+
+
+This board was pretty hard to route -- it's a lot of pins, and it's
+not like they are arranged with any logic. In the end I couldn't find
+a way to route the last 4 traces, so I just made two 4-pin headers,
+and then connected them with wires. It works, and that's what counts.
+
+The colors in the photos are of course all wrong -- because the camera
+sees colors differently than human eye. In reality all the pixels are
+red, with different brightness -- not yellow.
+
+I guess now I need to write the code for playing a movie on this, or
+at least some animated gifs...
+

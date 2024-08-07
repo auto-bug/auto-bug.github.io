@@ -2,172 +2,168 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posted in 2017</title>
-  <updated>2024-08-07T20:31:02.489803+00:00</updated>
+  <updated>2024-08-07T20:31:59.291084+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/2017/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
   <entry>
-    <id>http://deshipu.art/projects/project-19371/log-68472/</id>
-    <title>Buy it on Tindie</title>
-    <updated>2017-10-09T00:00:00+02:00</updated>
-    <content type="html">&lt;section id="buy-it-on-tindie"&gt;
+    <id>http://deshipu.art/projects/project-27579/log-71833/</id>
+    <title>Fixed Second Version</title>
+    <updated>2017-12-21T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="fixed-second-version"&gt;
 
-&lt;p&gt;Published on 2017-10-09 in &lt;a class="reference internal" href="../../projects/project-19371/#project-19371"&gt;&lt;span class="std std-ref"&gt;D1 Mini X-Pad Shield&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;I have added this to my shop at Tindie, so you can now buy it: &lt;a class="reference external" href="https://www.tindie.com/products/deshipu/x-pad-20-buttons-shield-for-d1-mini/"&gt;https://www.tindie.com/products/deshipu/x-pad-20-buttons-shield-
-for-d1-mini/&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;It’s the cheapest shield I have made so far. I am not entirely happy
-with it yet (the buttons are too small and I should have put the chip
-on the underside), but it’s actually very useful, so why not let
-people get it. It goes well together with the official OLED shield:&lt;/p&gt;
-&lt;img alt="https://d3s5r33r268y59.cloudfront.net/69596/products/thumbs/2017-09-28T09:15:11.133Z-IMG_20170928_104036.jpg.2560x2560_q85.jpg" src="https://d3s5r33r268y59.cloudfront.net/69596/products/thumbs/2017-09-28T09:15:11.133Z-IMG_20170928_104036.jpg.2560x2560_q85.jpg" /&gt;
+&lt;p&gt;Published on 2017-12-21 in &lt;a class="reference internal" href="../../projects/project-27579/#project-27579"&gt;&lt;span class="std std-ref"&gt;Blinka&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I also fixed the short on the second version of the board, and
+uploaded the design to OSHPark here:  &lt;a class="reference external" href="https://oshpark.com/shared_projects/xMggaR8L"&gt;https://oshpark.com/shared_projects/xMggaR8L&lt;/a&gt;&lt;/p&gt;
 &lt;/section&gt;
 </content>
-    <link href="http://deshipu.art/projects/project-19371/log-68472/" rel="alternate"/>
-    <summary>Published on 2017-10-09 in project-19371.</summary>
-    <published>2017-10-09T00:00:00+02:00</published>
+    <link href="http://deshipu.art/projects/project-27579/log-71833/" rel="alternate"/>
+    <summary>Published on 2017-12-21 in project-27579.</summary>
+    <published>2017-12-21T00:00:00+01:00</published>
   </entry>
   <entry>
-    <id>http://deshipu.art/projects/project-19371/log-68590/</id>
-    <title>Example Code</title>
-    <updated>2017-10-11T00:00:00+02:00</updated>
-    <content type="html">&lt;section id="example-code"&gt;
+    <id>http://deshipu.art/projects/project-27579/log-71853/</id>
+    <title>Third Version</title>
+    <updated>2017-12-22T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="third-version"&gt;
 
-&lt;p&gt;Published on 2017-10-11 in &lt;a class="reference internal" href="../../projects/project-19371/#project-19371"&gt;&lt;span class="std std-ref"&gt;D1 Mini X-Pad Shield&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;There has been some questions as to how to actually handle this shield
-in the code, so I’m providing some simple examples:&lt;/p&gt;
-&lt;section id="micropython"&gt;
-&lt;h2&gt;MicroPython&lt;/h2&gt;
-&lt;div class="highlight-python notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;machine&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;I2C&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Pin&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;time&lt;/span&gt;
-&lt;span class="n"&gt;i2c&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;I2C&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sda&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;Pin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;scl&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;Pin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-&lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;hex&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i2c&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;readfrom&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mh"&gt;0x20&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]))&lt;/span&gt;
-    &lt;span class="n"&gt;time&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sleep&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;/section&gt;
-&lt;section id="nodemcu"&gt;
-&lt;h2&gt;NodeMCU&lt;/h2&gt;
-&lt;div class="highlight-default notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;
-&lt;span class="n"&gt;i2c&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;setup&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;i2c&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SLOW&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;tmr&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;alarm&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1000&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;function&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt;
-    &lt;span class="n"&gt;i2c&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;start&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="n"&gt;i2c&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;address&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;30&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;i2c&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;RECEIVER&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;string&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;toHex&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i2c&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
-    &lt;span class="n"&gt;i2c&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;stop&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;end&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;/section&gt;
-&lt;section id="arduino"&gt;
-&lt;h2&gt;Arduino&lt;/h2&gt;
-&lt;div class="highlight-cpp notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;#include&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="cpf"&gt;&amp;lt;Wire.h&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;&lt;/span&gt;
-&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;setup&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;Wire&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;begin&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;Serial&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;begin&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;loop&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;Wire&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;requestFrom&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mh"&gt;0x20&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;Serial&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Wire&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;HEX&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;delay&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1000&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;All of the above examples scan the buttons once a second and print
-their state as a hexadecimal number on the serial console.&lt;/p&gt;
-&lt;/section&gt;
+&lt;p&gt;Published on 2017-12-22 in &lt;a class="reference internal" href="../../projects/project-27579/#project-27579"&gt;&lt;span class="std std-ref"&gt;Blinka&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I finally got my hands on a vector version of the Blinka logo, and I
+immediately started working on the third version of the board. Of
+course the file was a horrible mess of spurious nodes, but after a
+couple of hours of cleaning it up, and some simple operations on the
+shapes, I have the basic layers ready:&lt;/p&gt;
+&lt;img alt="projects/project-27579/images/5498281513945166377.png" src="projects/project-27579/images/5498281513945166377.png" /&gt;
+&lt;p&gt;This time the board outline is much simplified, to avoid problems with
+cutting it out. I realized that there is a fifth color that I didn’t
+use — the raw FR4 board — so I used it here. I also made it much
+bigger this time — so that it fits in the 5×5cm square. That should
+give me enough space to fit the SAMD21, the coin cell battery, the
+power switch, and as many pads as I can route conveniently on a single
+side. I’m also considering just slapping a Trinket M0 on it — we will
+see.&lt;/p&gt;
 &lt;/section&gt;
 </content>
-    <link href="http://deshipu.art/projects/project-19371/log-68590/" rel="alternate"/>
-    <summary>Published on 2017-10-11 in project-19371.</summary>
-    <published>2017-10-11T00:00:00+02:00</published>
+    <link href="http://deshipu.art/projects/project-27579/log-71853/" rel="alternate"/>
+    <summary>Published on 2017-12-22 in project-27579.</summary>
+    <published>2017-12-22T00:00:00+01:00</published>
   </entry>
   <entry>
-    <id>http://deshipu.art/projects/project-11660/log-69167/</id>
-    <title>OLED Displays</title>
-    <updated>2017-10-17T00:00:00+02:00</updated>
-    <content type="html">&lt;section id="oled-displays"&gt;
+    <id>http://deshipu.art/projects/project-27629/log-71971/</id>
+    <title>Testing at the Fab</title>
+    <updated>2017-12-26T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="testing-at-the-fab"&gt;
 
-&lt;p&gt;Published on 2017-10-17 in &lt;a class="reference internal" href="../../projects/project-11660/#project-11660"&gt;&lt;span class="std std-ref"&gt;Various Micropython Libraries and Drivers&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;The code is at &lt;a class="reference external" href="https://bitbucket.org/thesheep/micropython-oled/overview"&gt;https://bitbucket.org/thesheep/micropython-oled/overview&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;See the README for explanation and examples.&lt;/p&gt;
-&lt;p&gt;This time I wrote drivers for something that mostly already had its
-drivers in MicroPython — the monochrome OLED displays. I did that,
-because I wasn’t happy with the existing drivers — they are a bit
-elaborate in terms of indirection and inheritance. Sure, code reuse
-and so on, but not very nice for constrained platforms. So I did my
-own, trying to optimize them. I also exposed some useful functions,
-like flipping and hardware scrolling.&lt;/p&gt;
-&lt;p&gt;I will hopefully add some more exotic displays there, as I get
-specimen to test on.&lt;/p&gt;
+&lt;p&gt;Published on 2017-12-26 in &lt;a class="reference internal" href="../../projects/project-27629/#project-27629"&gt;&lt;span class="std std-ref"&gt;µGame&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Apparently some fab houses can do firmware programming and testing of
+the devices right in the factory — you just have to provide detailed
+step-by-step instructions on how to do it. So I started work on the
+firmware flashing guide and on the test program. I also modified the
+version 8 PCB design that I have on order from Aisler to add the VCC
+pad to the bottom of the board — together with SWDCLK, SWDIO and GND
+they form the programming interface. The STLink clone I had didn’t
+require VCC connected, but it also didn’t program the chips
+consistently. The J-Link is consistent, but requires VCC to drive its
+own programming pins.&lt;/p&gt;
+&lt;p&gt;I’m also working on the guide itself, and one of the things I will
+need is a drawing of the board with the pads marked. So I made this:&lt;/p&gt;
+&lt;img alt="projects/project-27629/images/4955251514252282765.png" src="projects/project-27629/images/4955251514252282765.png" /&gt;
+&lt;p&gt;I still need to write the actual test program, and see if I can
+somehow put the CircuitPython and the bootloader into a single binary
+to be flashed — that would simplify and speed up the process.
+Unfortunately the test program will still need to be copied over USB —
+because I also want this and the flash chip tested.&lt;/p&gt;
 &lt;/section&gt;
 </content>
-    <link href="http://deshipu.art/projects/project-11660/log-69167/" rel="alternate"/>
-    <summary>Published on 2017-10-17 in project-11660.</summary>
-    <published>2017-10-17T00:00:00+02:00</published>
+    <link href="http://deshipu.art/projects/project-27629/log-71971/" rel="alternate"/>
+    <summary>Published on 2017-12-26 in project-27629.</summary>
+    <published>2017-12-26T00:00:00+01:00</published>
   </entry>
   <entry>
-    <id>http://deshipu.art/projects/project-18439/log-70239/</id>
-    <title>Multiple I²C Addresses</title>
-    <updated>2017-11-08T00:00:00+01:00</updated>
-    <content type="html">&lt;section id="multiple-i2c-addresses"&gt;
+    <id>http://deshipu.art/projects/project-27629/log-72065/</id>
+    <title>nGame is µGame, only Smaller</title>
+    <updated>2017-12-28T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="ngame-is-game-only-smaller"&gt;
 
-&lt;p&gt;Published on 2017-11-08 in &lt;a class="reference internal" href="../../projects/project-18439/#project-18439"&gt;&lt;span class="std std-ref"&gt;Motor Shield Reprogramming&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;As mentioned by &lt;a class="reference external" href="https://hackaday.io/hacker/252214"&gt;&amp;#64;Matrix User &lt;/a&gt; in the comments, the new firmware doesn’t support selecting of the I²C
-address with the jumper pads on the bottom of the board — instead the
-address is fixed in the firmware. There is an issue reported about
-this at &lt;a class="reference external" href="https://github.com/pbugalski/wemos_motor_shield/issues/3"&gt;https://github.com/pbugalski/wemos_motor_shield/issues/3&lt;/a&gt;  and some workarounds, including alternate builds of the firmware with
-different hard-coded addresses.&lt;/p&gt;
+&lt;p&gt;Published on 2017-12-28 in &lt;a class="reference internal" href="../../projects/project-27629/#project-27629"&gt;&lt;span class="std std-ref"&gt;µGame&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;While I was designing the &lt;a class="reference internal" href="../../projects/project-19371/#project-19371"&gt;&lt;span class="std std-ref"&gt;D1 Mini X-Pad Shield&lt;/span&gt;&lt;/a&gt; , the &lt;a class="reference internal" href="../../projects/project-21578/#project-21578"&gt;&lt;span class="std std-ref"&gt;PewPew FeatherWing&lt;/span&gt;&lt;/a&gt; and most recently µGame, I struggled with the same problem: how to fit
+the direction pads and fire buttons on as small PCB area as possible,
+while still keeping them usable. I think I have tested pretty much any
+type of SMD buttons on offer from China, tried different layouts and
+packing schemes, and even did some uncanny experiments with fitting
+larger buttons to smaller footprints. But I never quite had the
+courage to really push the limits. Until now, that is.&lt;/p&gt;
+&lt;img alt="projects/project-27629/images/388361514475842212.jpg" src="projects/project-27629/images/388361514475842212.jpg" /&gt;
+&lt;p&gt;This is what happens to µGame when you leave it in your pants pocket
+in the dryer and let it shrink. It uses the same ST7725S display that
+I used in &lt;a class="reference internal" href="../../projects/project-27033/#project-27033"&gt;&lt;span class="std std-ref"&gt;Trinket M0 TFT&lt;/span&gt;&lt;/a&gt; — even the driver fits, you just have to adjust the screen size in it.
+It uses the smallest 2-pad buttons I could find — they use 1206
+resistor footprints. The SAMD21 microcontroller has no additional
+flash storage this time, so we are very constrained in what fits there
+— none of the demos for µGame I had worked out of the box, that’s why
+the photo shows just random pixels.&lt;/p&gt;
+&lt;p&gt;———- more ———-&lt;/p&gt;
+&lt;img alt="projects/project-27629/images/2744301514476082949.jpg" src="projects/project-27629/images/2744301514476082949.jpg" /&gt;
+&lt;p&gt;On the back you can see the 2032 coin cell battery, the power switch
+and the voltage regulator circuit, the USB socket and the shottky
+diode that isolates the battery from the USB power. There is no
+battery charging, no audio output, no battery monitoring and even no
+reset button (you can reset it to get to the bootloader by shorting
+one of the vias to ground). I still have some free space in that
+corner (and it’s also free on the other side), so I might add a hole
+for a keychain there…&lt;/p&gt;
+&lt;p&gt;As I said, the memory constraints are severe, and I haven’t written a
+game or demo that actually runs on it, but I’m sure I can do it. In
+the worst case, I can drop the wasteful CircuitPython and program this
+thing with Arduino.&lt;/p&gt;
+&lt;p&gt;This whole thing is basically just to see how hard it would be to
+build (moderately), and use (hard, you have to press the buttons with
+your fingernails). Also, because I kinda felt bad switching the final
+µGame version to use old Nokia phone batteries after submitting this
+to the coin cell contest. So here, a version that still runs on the
+coin cell.&lt;/p&gt;
+&lt;p&gt;Also big thanks to the hackers on the &lt;span class="xref std std-ref"&gt;project-5373&lt;/span&gt; for helping me debug the power/USB problems.&lt;/p&gt;
 &lt;/section&gt;
 </content>
-    <link href="http://deshipu.art/projects/project-18439/log-70239/" rel="alternate"/>
-    <summary>Published on 2017-11-08 in project-18439.</summary>
-    <published>2017-11-08T00:00:00+01:00</published>
+    <link href="http://deshipu.art/projects/project-27629/log-72065/" rel="alternate"/>
+    <summary>Published on 2017-12-28 in project-27629.</summary>
+    <published>2017-12-28T00:00:00+01:00</published>
   </entry>
   <entry>
-    <id>http://deshipu.art/projects/project-13278/log-71202/</id>
-    <title>Fabrication and Version 2.0</title>
-    <updated>2017-12-04T00:00:00+01:00</updated>
-    <content type="html">&lt;section id="fabrication-and-version-2-0"&gt;
+    <id>http://deshipu.art/projects/project-27629/log-72107/</id>
+    <title>Final Prototype</title>
+    <updated>2017-12-29T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="final-prototype"&gt;
 
-&lt;p&gt;Published on 2017-12-04 in &lt;a class="reference internal" href="../../projects/project-13278/#project-13278"&gt;&lt;span class="std std-ref"&gt;Servo Breakout for WeMos D1 Mini&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;There is a relatively high demand for this board on Tindie, so when I
-sold the last of the 75 hand-assembled modules, I stated looking at
-fabrication options. Unfortunately, for a board with so many soldering
-points (the servo socket headers), it was relatively expensive. I
-didn’t realize that the work I was doing by hand is worth so much. In
-any case, I asked several fabrication services for quotes, and since I
-didn’t want to increase the price too much, went with the cheapest
-one, which turned out to be PCBWay.&lt;/p&gt;
-&lt;p&gt;They were very helpful all along the way. The bill of materials CSV
-file I sent them didn’t parse quite well for them (probably because I
-wrote it by hand in Vim), but they had no problem with me just
-including an ASCII-art table in the e-mail instead. On every step of
-the process they sent me photos, asking if it looks correct. They also
-tried to catch possible errors themselves: for example, my BOM didn’t
-include the stacking headers that I add to every module — they saw
-them in the photo and asked if they need to be added. (I send them
-unsoldered, so I add them later myself). There was also one small
-glitch when they initially wanted to use straight pin headers instead
-of angled ones, but because they sent me the photo I could point out
-the mistake, and there was no problem switching to the correct
-headers.&lt;/p&gt;
-&lt;p&gt;I choose the cheapest shipping (again to keep the price low), but it
-still arrived without problems in 2 weeks. Here’s a photo of the
-package I got:&lt;/p&gt;
-&lt;img alt="projects/project-13278/images/7901051512382432339.jpg" src="projects/project-13278/images/7901051512382432339.jpg" /&gt;
-&lt;p&gt;The anti-static bags on the bottom contain the soldered panels (I
-choose to depanelize them myself, again to save costs). The rest of
-the bags are all the left-over parts, including one unsoldered PCB
-panel of 5 modules.&lt;/p&gt;
-&lt;p&gt;A quick test shows that the modules work very well.&lt;/p&gt;
-&lt;p&gt;All in all, I’m very happy with them. You can buy the new modules on
-Tindie here:  &lt;a class="reference external" href="https://www.tindie.com/products/deshipu/16-channel-servo-shield-for-d1-mini-version-20/"&gt;https://www.tindie.com/products/deshipu/16-channel-servo-shield-
-for-d1-mini-version-20&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Published on 2017-12-29 in &lt;a class="reference internal" href="../../projects/project-27629/#project-27629"&gt;&lt;span class="std std-ref"&gt;µGame&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The version 8 PCBs arrived from Aisler, together with the stencil, and
+it looks great this time!&lt;/p&gt;
+&lt;img alt="projects/project-27629/images/1334281514587551825.jpg" src="projects/project-27629/images/1334281514587551825.jpg" /&gt;
+&lt;p&gt;Please especially note the smooth edges of the board, without any
+trace of the panelization tabs. Of course I immediately assembled one
+of the boards and tested it:&lt;/p&gt;
+&lt;img alt="projects/project-27629/images/4611061514587644013.jpg" src="projects/project-27629/images/4611061514587644013.jpg" /&gt;
+&lt;p&gt;It works great. Please note the much nicer alignment of the chips, and
+the fact that there are no parts under your fingers. One of the
+buttons had to be moved a little to the side, but it’s actually better
+that way.&lt;/p&gt;
+&lt;p&gt;Of course there were still changes needed, but they are so small, that
+I can confidently send the gerber files to the fab without ordering
+one more test board. The changes included adding one more debug pad
+for connecting VCC, adding holes to the debug pads so that it’s easier
+to connect probes to them, moving some of the resistors a little to
+make them easier to solder, and fixing the stencil to include the pads
+for the USB port, and exclude the holes of the power switch
+(workarounds for Fritzing’s weirdness).&lt;/p&gt;
+&lt;p&gt;I also wrote the step-by-step testing instructions, and made a test
+program:&lt;/p&gt;
+&lt;img alt="projects/project-27629/images/1940471514587965047.jpg" src="projects/project-27629/images/1940471514587965047.jpg" /&gt;
+&lt;p&gt;So everything is ready for fabrication. I will now send all that to
+the fab house, and see what they think about it.&lt;/p&gt;
 &lt;/section&gt;
 </content>
-    <link href="http://deshipu.art/projects/project-13278/log-71202/" rel="alternate"/>
-    <summary>Published on 2017-12-04 in project-13278.</summary>
-    <published>2017-12-04T00:00:00+01:00</published>
+    <link href="http://deshipu.art/projects/project-27629/log-72107/" rel="alternate"/>
+    <summary>Published on 2017-12-29 in project-27629.</summary>
+    <published>2017-12-29T00:00:00+01:00</published>
   </entry>
 </feed>

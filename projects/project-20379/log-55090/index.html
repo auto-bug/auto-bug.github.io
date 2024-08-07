@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Code - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="code">
+<h1>Code<a class="headerlink" href="#code" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2017-03-18 in <a class="reference internal" href="../#project-20379"><span class="std std-ref">Deltabot</span></a>.</p>
+<p>I have the basic code for the inverse kinematics of the robot working:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">I2C</span><span class="p">,</span> <span class="n">Pin</span>
+<span class="kn">import</span> <span class="nn">servo</span>
+
+
+<span class="n">PI2</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="n">PI3</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">3</span>
+
+
+<span class="k">class</span> <span class="nc">Robot</span><span class="p">:</span>
+    <span class="n">ARM_LENGTH</span> <span class="o">=</span> <span class="mi">42</span>
+    <span class="n">ROD_LENGTH</span> <span class="o">=</span> <span class="mi">134</span>
+    <span class="n">HUB_LENGTH</span> <span class="o">=</span> <span class="mi">27</span>
+    <span class="n">BASE_LENGTH</span> <span class="o">=</span> <span class="mi">62</span>
+
+    <span class="n">BASE_X</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="mi">0</span><span class="p">,</span>
+        <span class="p">(</span><span class="n">BASE_LENGTH</span> <span class="o">-</span> <span class="n">HUB_LENGTH</span><span class="p">)</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">PI3</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">BASE_LENGTH</span> <span class="o">-</span> <span class="n">HUB_LENGTH</span><span class="p">)</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="n">PI3</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="n">BASE_Y</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">BASE_LENGTH</span> <span class="o">-</span> <span class="n">HUB_LENGTH</span><span class="p">,</span>
+        <span class="p">(</span><span class="n">BASE_LENGTH</span> <span class="o">-</span> <span class="n">HUB_LENGTH</span><span class="p">)</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">PI3</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">BASE_LENGTH</span> <span class="o">-</span> <span class="n">HUB_LENGTH</span><span class="p">)</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="n">PI3</span><span class="p">),</span>
+    <span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">i2c</span> <span class="o">=</span> <span class="n">I2C</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">servos</span> <span class="o">=</span> <span class="n">servo</span><span class="o">.</span><span class="n">Servos</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">i2c</span><span class="p">,</span> <span class="n">min_us</span><span class="o">=</span><span class="mi">700</span><span class="p">,</span> <span class="n">max_us</span><span class="o">=</span><span class="mi">2400</span><span class="p">,</span>
+                                   <span class="n">degrees</span><span class="o">=</span><span class="mi">180</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">trims</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">home</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">move</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arm</span><span class="p">,</span> <span class="n">radians</span><span class="p">):</span>
+        <span class="n">radians</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">trims</span><span class="p">[</span><span class="n">arm</span><span class="p">]</span> <span class="o">+</span> <span class="n">PI2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">servos</span><span class="o">.</span><span class="n">position</span><span class="p">(</span><span class="n">arm</span><span class="p">,</span> <span class="n">radians</span><span class="o">=</span><span class="n">radians</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">arm_ik</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">distance</span><span class="p">):</span>
+        <span class="n">alpha</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">acos</span><span class="p">(</span>
+            <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">BASE_LENGTH</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">HUB_LENGTH</span><span class="p">)</span> <span class="o">/</span>
+            <span class="p">(</span><span class="n">distance</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="n">beta</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">acos</span><span class="p">(</span>
+            <span class="p">(</span><span class="n">distance</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">ARM_LENGTH</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">ROD_LENGTH</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span>
+            <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">ARM_LENGTH</span> <span class="o">*</span> <span class="n">distance</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">-</span> <span class="n">alpha</span> <span class="o">-</span> <span class="n">beta</span>
+
+    <span class="k">def</span> <span class="nf">robot_ik</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span>
+            <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">BASE_X</span><span class="p">[</span><span class="n">arm</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span>
+            <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">BASE_Y</span><span class="p">[</span><span class="n">arm</span><span class="p">]</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span>
+            <span class="n">z</span> <span class="o">**</span> <span class="mi">2</span>
+        <span class="p">)</span> <span class="k">for</span> <span class="n">arm</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">move_to</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">arm</span><span class="p">,</span> <span class="n">distance</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">robot_ik</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">arm</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">arm_ik</span><span class="p">(</span><span class="n">distance</span><span class="p">))</span>
+
+</pre></div>
+</div>
+<p>As you can see, shifting the servo by the width of the hub greatly
+simplified the equations. I am pretty happy with how it works –
+managed to draw a circle on a piece of paper, and the circle is
+actually round. One thing is strange, though – the circle was
+supposed to have 5cm radius, but it’s around 2cm instead… I might
+have an error there somewhere. I will keep experimenting with it.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

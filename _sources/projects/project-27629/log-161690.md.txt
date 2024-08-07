@@ -1,0 +1,31 @@
+---
+blogpost: true
+date: 2019-04-12
+category: project-27629
+---
+
+# CircuitPython 4.0 and Display Support
+Published on 2019-04-12 in {ref}`project-27629`.
+
+The upcoming CircuitPython 4.0 introduces, among other things, built-
+in support for displays. That means that when there is an error in
+your code, you will be able to see it right there on the screen,
+without having to connect to some gnarly serial ports. For now the
+built-in display code is slow — fast enough for displaying text, but
+not for games. So I went and modified my {ref}`project-80626`  library to coexist with the displayio support, to get the best of
+both world — console using displayio, and fast updates using stage.
+
+
+
+:::{image} images/5830841555024172770.jpg
+
+:::
+
+
+There are still some tweaks left to do, perhaps use of a smaller font,
+and I still need to resolve the audioio problems that appeared with
+CircuitPython 3.0, but there are already nice improvements.
+
+I also hope to see if I can use DMA to speed up display updates
+considerably.
+

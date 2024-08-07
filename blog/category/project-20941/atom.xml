@@ -1,0 +1,202 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>http://deshipu.art/</id>
+  <title>deshipu.art - Posts in project-20941</title>
+  <updated>2024-08-07T20:31:58.605007+00:00</updated>
+  <link href="http://deshipu.art/"/>
+  <link href="http://deshipu.art/blog/category/project-20941/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-20941/log-59293/</id>
+    <title>Smaller 8x8 Matrix Breakout</title>
+    <updated>2017-05-09T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="smaller-8x8-matrix-breakout"&gt;
+
+&lt;p&gt;Published on 2017-05-09 in &lt;a class="reference internal" href="../../../projects/project-20941/#project-20941"&gt;&lt;span class="std std-ref"&gt;D1 Mini Matrix Deluxe Shields&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The shields are nice, but not everybody has a D1 Mini, and not
+everybody wants to put that matrix on top of their dev board. Sure,
+you can just use wires for the shield, but with such a small and
+convenient chip, it makes sense to make an even smaller breakout board
+– one that you could tile easily. So I made one that is exactly the
+size of the matrix:&lt;/p&gt;
+&lt;img alt="projects/project-20941/images/8650391494364936192.jpg" src="projects/project-20941/images/8650391494364936192.jpg" /&gt;
+&lt;p&gt;I soldered the pin header sideways here, but you can also solder it
+normally, and then you can tile the boards easily. I also broke out
+the address pin this time, so you can change the I2C address of the
+board by connecting it to one of the other pins (you get 4 different
+addresses this way).&lt;/p&gt;
+&lt;img alt="projects/project-20941/images/3778241494365024247.jpg" src="projects/project-20941/images/3778241494365024247.jpg" /&gt;
+&lt;p&gt;There is also the audio pin, which you can use to control the
+brightness or to feed the built-in equalizer. I will be experimenting
+some more with that once the microphones arrive.&lt;/p&gt;
+&lt;p&gt;I have added the design files and gerbers to the download section, and
+you can also order the board from &lt;a class="reference external" href="https://hackaday.iohttps://hackaday.io/hacker/131216"&gt;&amp;#64;oshpark&lt;/a&gt;  here: &lt;a class="reference external" href="https://oshpark.com/shared_projects/jGebL1gK"&gt;https://oshpark.com/shared_projects/jGebL1gK&lt;/a&gt;&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-20941/log-59293/" rel="alternate"/>
+    <summary>Published on 2017-05-09 in project-20941.</summary>
+    <published>2017-05-09T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-20941/log-61847/</id>
+    <title>Grayscale 14x11 Matrix</title>
+    <updated>2017-06-19T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="grayscale-14x11-matrix"&gt;
+
+&lt;p&gt;Published on 2017-06-19 in &lt;a class="reference internal" href="../../../projects/project-20941/#project-20941"&gt;&lt;span class="std std-ref"&gt;D1 Mini Matrix Deluxe Shields&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The IS31FL3733 has double the pins of IS31FL3736, so you get double
+fun! This board was also finished and assembled for some time, but I
+couldn’t get it to work. Today I checked dug it out to try the
+capacitor trick, but it already has the decoupling capacitor. But once
+I had it out, I did some more experimenting and sure enough, I had the
+SDA and SCL pins swapped on it!&lt;/p&gt;
+&lt;img alt="projects/project-20941/images/6166031497894364593.jpg" src="projects/project-20941/images/6166031497894364593.jpg" /&gt;
+&lt;p&gt;This board was pretty hard to route – it’s a lot of pins, and it’s
+not like they are arranged with any logic. In the end I couldn’t find
+a way to route the last 4 traces, so I just made two 4-pin headers,
+and then connected them with wires. It works, and that’s what counts.&lt;/p&gt;
+&lt;p&gt;The colors in the photos are of course all wrong – because the camera
+sees colors differently than human eye. In reality all the pixels are
+red, with different brightness – not yellow.&lt;/p&gt;
+&lt;p&gt;I guess now I need to write the code for playing a movie on this, or
+at least some animated gifs…&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-20941/log-61847/" rel="alternate"/>
+    <summary>Published on 2017-06-19 in project-20941.</summary>
+    <published>2017-06-19T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-20941/log-61842/</id>
+    <title>Grayscale 7x11 Matrix</title>
+    <updated>2017-06-19T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="grayscale-7x11-matrix"&gt;
+
+&lt;p&gt;Published on 2017-06-19 in &lt;a class="reference internal" href="../../../projects/project-20941/#project-20941"&gt;&lt;span class="std std-ref"&gt;D1 Mini Matrix Deluxe Shields&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The third chip that I got from ISSI is IS31FL3736. It’s very similar
+to the IS31FL3733, except it only drives up to 8×12 LEDs. That’s
+perfect for those 7×11 LED matrices that I got!&lt;/p&gt;
+&lt;p&gt;I actually designed that shield a while ago, and assembled it when it
+came. But it didn’t work, at least not reliably – the chip would
+sometimes be visible on the I²C bus, and sometimes not, and sometimes
+it would start behaving weird after some time… I put it all to my
+poor soldering skills and the really tiny QFN package, and gave up on
+it for a while.&lt;/p&gt;
+&lt;p&gt;Yesterday, after debugging some problems with the IS31FL3733 on the &lt;a class="reference internal" href="../../../projects/project-21578/#project-21578"&gt;&lt;span class="std std-ref"&gt;PewPew FeatherWing&lt;/span&gt;&lt;/a&gt; , which were solved by adding a decoupling capacitor across the power,
+I decided to dig out the old board and try adding a decoupling
+capacitor to it too. And what do you know, it works perfectly fine
+after all!&lt;/p&gt;
+&lt;img alt="projects/project-20941/images/3295091497884230697.jpg" src="projects/project-20941/images/3295091497884230697.jpg" /&gt;
+&lt;p&gt;The PCB is here: &lt;a class="reference external" href="https://oshpark.com/projects/luMANBrm"&gt;https://oshpark.com/projects/luMANBrm&lt;/a&gt; \&lt;/p&gt;
+&lt;p&gt;And the updated MicroPython library for driving it: &lt;a class="reference external" href="https://bitbucket.org/thesheep/micropython-is31fl37x/src"&gt;https://bitbucket.org/thesheep/micropython-is31fl37x/src&lt;/a&gt;&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-20941/log-61842/" rel="alternate"/>
+    <summary>Published on 2017-06-19 in project-20941.</summary>
+    <published>2017-06-19T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-20941/log-62469/</id>
+    <title>A Quick Tour Around the IS31FL373x Chips</title>
+    <updated>2017-07-03T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="a-quick-tour-around-the-is31fl373x-chips"&gt;
+
+&lt;p&gt;Published on 2017-07-03 in &lt;a class="reference internal" href="../../../projects/project-20941/#project-20941"&gt;&lt;span class="std std-ref"&gt;D1 Mini Matrix Deluxe Shields&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;There is a whole family of those, and they are all controlled in a
+similar way. Of course all the details are in the datasheets, and in
+theory this is all the information you need, but in practice I think
+it’s useful to have a general bird’s-eye view of the whole thing.&lt;/p&gt;
+&lt;p&gt;The chips are controlled over I2C and I’m not going to explain that.
+Uncharacteristically, it has two additional pins related to the I2C
+protocol, apart from the usual SDA and SCL: those are the IIC-RST,
+which can be used to reset the part of the chip that handles
+communication, in case your bus gets stuck in some weird state
+preventing communication, and VIO, which sets the voltage that you
+want to use for the communication. I usually just pull the IIC-RST
+down and the VIO up.&lt;/p&gt;
+&lt;p&gt;The higher-level protocol is also quite simple. You have 8-bit
+registers with b-bit addresses, divided into pages. To read or write a
+register from the current page, you simply write that register’s
+number, and then either read with a repeated start or write. That’s
+pretty much standard.  Changing a page is bit more involved, because
+it’s apparently potentially dangerous: first you need to unlock the
+page register by writing the magic value 0xc5 to the register 0xfe,
+and then you can write the page number to the register 0xfd.&lt;/p&gt;
+&lt;p&gt;There are four pages.&lt;/p&gt;
+&lt;p&gt;Page 0 is dedicated to configuring which LEDs are being used, and to
+reading results of the open/short detection. At the minimum you need
+to write 1s to the bits corresponding to the LEDs that are actually
+connected to the chip (your matrix may be smaller than the chip’s
+maximum). You only do it once at the beginning.\&lt;/p&gt;
+&lt;p&gt;Page 1 contains information about brightness of each individual LED.
+That’s where you actually draw your pixels. Of course, the default
+brightness is 0, so you need to write something there to actually see
+anything.&lt;/p&gt;
+&lt;p&gt;Page 2 controls blinking, or rather “breathing”, as they call the
+fade-in fade-out animation that you can set on any of the individual
+LEDs, in 3 different variations of timing. You don’t need to touch
+anything here. Oh, and for this to have any effect, you need to set
+the B_EN bit in the register 0x00 on page 3.&lt;/p&gt;
+&lt;p&gt;And finally page 3 is configuration. At the minimum, you need to write
+0x01 to the register 0x00 here to enable the chip, and some value to
+the register 0x01 setting the global brightness (because of course it
+defaults to 0 and you wouldn’t see anything). The rest is about
+configuring the blink timings, pull-up and pull-down resistors on the
+LEDs, and a software reset – not that interesting.&lt;/p&gt;
+&lt;p&gt;So the workflow of the driver is usually as follows:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;&lt;p&gt;Set which LEDs you are using by writing to registers on page 0.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Switch to page 3.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Enable the chip and set the global brightness.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Switch to page 1.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Actually draw your graphics by writing to the registers on page 1.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;That should get you started. Of course, there are lots more small
+details and possibilities there.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-20941/log-62469/" rel="alternate"/>
+    <summary>Published on 2017-07-03 in project-20941.</summary>
+    <published>2017-07-03T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-20941/log-63916/</id>
+    <title>Equalizer on the IS31FL3728</title>
+    <updated>2017-07-24T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="equalizer-on-the-is31fl3728"&gt;
+
+&lt;p&gt;Published on 2017-07-24 in &lt;a class="reference internal" href="../../../projects/project-20941/#project-20941"&gt;&lt;span class="std std-ref"&gt;D1 Mini Matrix Deluxe Shields&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I recently got a hot air rework station (a cheap Chinese one), which
+allowed me to revisit some of my failed assemblies with the QFN chips,
+and fix them. Yes, the problems I had were partly due to missing
+filtering capacitors, but also due to bad soldering. With the hot air
+I’m getting 100% success rate, which is a 100% improvement from the
+manual method. Yay.&lt;/p&gt;
+&lt;p&gt;One of the boards I re-did was a breakout for the IS32FL3728 chip with
+the audio pin broken out. Since I also had a small microphone breakout
+at hand, I decided to try the equalizer mode of that chip. There are
+some good and some bad news.&lt;/p&gt;
+&lt;p&gt;The good news is that it works pretty nicely, blinking the LEDs in
+time with the sound. The bad news is that since I completely scrambled
+the order of rows and columns, for easier routing, and then fixed id
+in software, the hardware equalizer, which doesn’t know anything about
+my row/column remapping, doesn’t really look like a proper equalizer.&lt;/p&gt;
+&lt;p&gt;So I sat down and re-designed the breakout, paying attention to keep
+the rows and columns in order. Turns out it was still possible to
+route everything (I think I’m getting better at it), and the new
+breakout is now ordered:&lt;/p&gt;
+&lt;img alt="https://644db4de3505c40a0444-327723bce298e3ff5813fb42baeefbaa.ssl.cf1.rackcdn.com/42c641f1ebdce128d9be0cc18f6b0b9e.png" src="https://644db4de3505c40a0444-327723bce298e3ff5813fb42baeefbaa.ssl.cf1.rackcdn.com/42c641f1ebdce128d9be0cc18f6b0b9e.png" /&gt;
+&lt;p&gt;It’s exactly the size of the matrix, and I got it on a thin PCB. But
+the best thing is thet there are some empty areas left on that board
+(where the sheep and the Fritzing logo are), and I could probably fit
+a small microcontroller in there, that would just put the chip in the
+equalizer mode, and a small microphone. Just add a coin battery, and
+you have a fancy wearable equalizer display… I need to do some
+testing when the boards arrive, but it seems promising.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-20941/log-63916/" rel="alternate"/>
+    <summary>Published on 2017-07-24 in project-20941.</summary>
+    <published>2017-07-24T00:00:00+02:00</published>
+  </entry>
+</feed>

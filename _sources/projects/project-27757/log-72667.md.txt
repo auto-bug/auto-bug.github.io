@@ -1,0 +1,143 @@
+---
+blogpost: true
+date: 2018-01-08
+category: project-27757
+---
+
+# Blit
+Published on 2018-01-08 in {ref}`project-27757`.
+
+I'm still waiting for the attiny chips for the button handling, but I
+realized that my display driver is not really suitable for making
+games. Sure, it has that cool dirty pages stuff that makes it fast,
+but it only can draw a pixel at a time. That's not how you are going
+to get nice smooth animations. We need a blit operation — something
+that will let me draw a whole sprite in one operation.
+
+The way blit works, it takes whole bytes, shifts them as required, and
+combines with the current frame buffer using one of the logic
+operators. For a start I have chosen xor. Why? Because that's the
+easiest way to have sprites that don't delete the background as they
+move around — you blit them once to show them, and you blit them a
+second time to make them disappear. Sure, they don't look pretty when
+they collide with something, but it's a start. Later I can do similar
+operations with or and and, so that I can have pretty sprites with a
+mask. For now I have a bouncing box:
+
+
+
+:::{image} images/9192361515417509989.gif
+
+:::
+
+
+This is done with this code:
+
+---------- more ----------
+```python
+import microbit
+
+
+class SH1106:
+    _command = bytearray(b'\x00\xb0\x02\x10')
+
+    def __init__(self):
+        self.buffer = bytearray(1024)
+        self.dirty_min = bytearray([0] * 8)
+        self.dirty_max = bytearray([128] * 8)
+        microbit.i2c.init(freq=400000, scl=microbit.pin2, sda=microbit.pin1)
+        for i in range(2):
+            # First two transaction after init always fail.
+            try:
+                microbit.i2c.write(0x3c, b'')
+            except OSError:
+                pass
+        _init = (b'\x00\xae\xd5\x80\xa8\x3f\xd3\x00\x40\x80\x14'
+                 b'\x20\x00\xa1\xc8\xa1\xda\x12\x81\xcf\xd9\xf1'
+                 b'\xdb\x40\xa4\xa6\xaf')
+        microbit.i2c.write(0x3c, _init)
+        microbit.i2c.write(0x3c, _init)
+
+    def show(self):
+        index = 0
+        buf = self.buffer
+        for page in range(8):
+            dmin = self.dirty_min[page]
+            dmax = self.dirty_max[page]
+            if dmax:
+                self._command[1] = 0xb0 | page
+                self._command[2] = 0x00 | ((2 + dmin) & 0x0f)
+                self._command[3] = 0x10 | ((2 + dmin) >> 4) & 0x0f
+                microbit.i2c.write(0x3c, self._command)
+                microbit.i2c.write(0x3c,
+                                   b'\x40' + buf[index + dmin:index + dmax])
+            index += 128
+            self.dirty_max[page] = 0
+            self.dirty_min[page] = 127
+
+    def pixel(self, x, y, color=None):
+        if not 0 <= x < 128 or not 0 <= y < 64:
+            return
+        page = y // 8
+        index = x + page * 128
+        mask = 1 << (y % 8)
+        if color is None:
+            return bool(self.buffer[index] & mask)
+        elif color:
+            self.buffer[index] |= mask
+        else:
+            self.buffer[index] &= ~mask
+        self.dirty_max[page] = max(self.dirty_max[page], x + 1)
+        self.dirty_min[page] = min(self.dirty_min[page], x)
+
+    def xor(self, x, y, data):
+        if not -8 < x < 128:
+            return
+        if x < 0:
+            data = data[-x:]
+            x = 0
+        elif x > 120:
+            data = data[:120 - x]
+        page = y // 8
+        shift = y % 8
+        if 0 <= page <= 7:
+            index = x + page * 128
+            for byte in data:
+                self.buffer[index] ^= byte << shift
+                index += 1
+            self.dirty_min[page] = min(self.dirty_min[page], x)
+            self.dirty_max[page] = max(self.dirty_max[page], x + 8)
+        page += 1
+        if 0 <= page <= 7 and shift:
+            index = x + page * 128
+            shift = 8 - shift
+            for byte in data:
+                self.buffer[index] ^= byte >> shift
+                index += 1
+            self.dirty_min[page] = min(self.dirty_min[page], x)
+            self.dirty_max[page] = max(self.dirty_max[page], x + 8)
+
+
+display = SH1106()
+box = b'\xff\x81\x81\x81\x81\x81\x81\xff'
+x = 0
+y = 0
+dx = 1
+dy = 1
+while True:
+    display.xor(x, y, box)
+    display.show()
+    display.xor(x, y, box)
+    x += dx
+    y += dy
+    if not 0 <= x < 120:
+        dx = -dx
+    if not 0 <= y <= 56:
+        dy = - dy
+    microbit.sleep(10)
+```
+
+ So I can easily blit 8x8 sprites (and tiles). If I want bigger ones,
+I can just compose them out of those 8x8 blocks — it's not going to be
+considerably slower.
+

@@ -1,0 +1,46 @@
+---
+blogpost: true
+date: 2017-10-03
+category: project-21578
+---
+
+# Struggling with BOM
+Published on 2017-10-03 in {ref}`project-21578`.
+
+The PewPew Lite was simple enough to solder by hand. The self-
+contained PewPew is not going to be so easy. Of course, I can solder a
+prototype or two — I even explicitly shied away from QFN parts — but
+just thinking about making a 20 pieces for a workshop makes me
+shudder. So I need a PCB assembly service.
+
+I have been looking at the different services, and what they need as
+the input, and not very surprisingly, the main input they need is the
+bill of materials, also known ass the parts list. Unfortunately, it's
+not enough to just say "a 10kΩ resistor" — you have to specify the
+size, tolerance, and most importantly, the product number. Actually,
+forget everything else, they just want the product number, and if the
+part is exotic, a link for where to buy it.
+
+So I've spent the last couple of evenings trying to use the {ref}`project-21525`  service, and it has been a bumpy ride. I started with the pick-and-
+place file that Fritzing generated for me — it's a CSV file that lists
+all the parts, together with their exact positions on the board. So I
+just removed the irrelevant position information, and got a list of
+parts in a format that could be imported into FindChips. Then
+FindChips started sugeesting parts. Oh boy.
+
+It couldn't find any tact switches at all. Apparently the best
+alternative to a USB micro socket is a HDMI socket. There is only one
+power switch with the pinout I need, and it's a super-expensive ALPS.
+0402 20kΩ resistors simply don't exist. Forget about any LED matrices
+at all, not to mention bi-color ones. And so on and so forth.
+
+With much struggling and some cheating, I finally put together a BOM
+list that only has 3 parts missing. I have simply added the URLs for
+those in the comments. The list is at  [https://www.findchips.com/org/10-open-
+hardware/list/48895-pewpew-41-bomcsv](https://www.findchips.com/org/10-open-hardware/list/48895-pewpew-41-bomcsv) 
+
+The good news is that the total cost of all parts seems to be around
+$15 at quantity 1. That means that together with the PCBs and the
+assembly service, there is a chance that the whole thing won't be more
+expensive than a Feather board.
+

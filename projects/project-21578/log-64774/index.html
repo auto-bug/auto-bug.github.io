@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>PewPew Lite Version 4.0 - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="pewpew-lite-version-4-0">
+<h1>PewPew Lite Version 4.0<a class="headerlink" href="#pewpew-lite-version-4-0" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2017-08-07 in <a class="reference internal" href="../#project-21578"><span class="std std-ref">PewPew FeatherWing</span></a>.</p>
+<p>It’s pretty crazy how much small details such a simple project can
+have. I just ordered the 4th iteration of PewPew Lite at OSHPark
+(that’s the tenth iteration overall, if you count all the PewPew
+boards). The changes this time are prompted by two factors:
+simplifying and speeding up the software, and making the whole thing
+thinner. Also, making the LED matrix easier to attach. Here goes:</p>
+<img alt="https://644db4de3505c40a0444-327723bce298e3ff5813fb42baeefbaa.ssl.cf1.rackcdn.com/e0fcba0e285b93bf0337d2f797d2ac61.png" src="https://644db4de3505c40a0444-327723bce298e3ff5813fb42baeefbaa.ssl.cf1.rackcdn.com/e0fcba0e285b93bf0337d2f797d2ac61.png" />
+<p>\</p>
+<p>When I routed this board initially, I connected the columns for the
+red LEDs in the opposite order as the columns for the green LEDs —
+because that’s physically more convenient, when one is on the top row,
+and the other on the bottom row of the pins. I didn’t worry too much,
+and I said the famous last words, “we will fix it in software”. And I
+did it in software, and it works fine.</p>
+<p>However, CircuitPython on the Feather M0 board is not as lightning-
+fast at bit manipulation as C would be, and an additional iteration
+over 128 pixels just to inverse the bit order is a little bit visible
+in the frame rate. Not horribly, but hey, if we can get rid of that,
+that would be swell.</p>
+<p>So I went back to the design, dropped a bunch of extra vias and made
+both colors use the same order of columns. And sice I was fiddling
+with that anyways, I also made the holes for the matrix pins larger,
+so you don’t have to wiggle them so much to insert the matrix into the
+board. I also moved the chip to the center of the board and away from
+the matrix, so it’s easier to get to all of the pins with the
+soldering iron.</p>
+<p>Next is the thickness. I figured out that you can fit a small 110mAh
+LiPO battery between the two boards, at least with those Feather
+boards that have a prototyping area. That would really make this thing
+small, and there is enough room even if you use narrow headers.
+However, connecting and disconnecting your battery all the time would
+be super-inconvenient, and a switch hanging on a battery lead would
+look bad. So I added a small switch in the version 3.0 of the board (I
+didn’t write about it here). But the only place where I could fit that
+switch was over the battery plug, which is incidentally the highest
+component on the feather board.</p>
+<img alt="projects/project-21578/images/7528871502102428331.jpg" src="projects/project-21578/images/7528871502102428331.jpg" />
+<p>\</p>
+<p>So the switch makes the whole thing about 1mm thicker. In version 4.0
+I moved the button resistors a bit, dropped the diode (which is only
+required when you use more than 8 buttons), and made room for the
+switch on the edge opposite to the USB port.</p>
+<p>Finally, I tried to space all the traces a little bit better, to leave
+more room between them and fewer opportunities for manufacturing
+problems. There are still a few tight spots, but it’s better already.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

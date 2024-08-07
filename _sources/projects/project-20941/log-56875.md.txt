@@ -1,0 +1,29 @@
+---
+blogpost: true
+date: 2017-04-08
+category: project-20941
+---
+
+# The 8×8 Monochrome Matrix
+Published on 2017-04-08 in {ref}`project-20941`.
+
+The first shield I'm going to make is a standard 8×8 matrix with red
+LEDs, using the IS31FL3728 chip. What's the difference from the
+HT16K33-based one then? Well, not much. It's still "on/off" only for
+each LED, with a global brightness control. There are two extra
+features, related to the analog input pin that this chip has: you can
+modulate the brightness of the whole matrix according to an audio
+signal, and you can switch it into "equalizer mode" -- not sure what
+it does then, but you can guess.
+
+I have the PCBs already, and I should get the chips on Monday. I will
+need to do some tricky QFN package soldering then, but I have a couple
+of tricks that should work.
+
+
+:::{image} images/9132961491655378073.jpg
+
+:::
+
+
+\

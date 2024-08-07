@@ -1,0 +1,163 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>http://deshipu.art/</id>
+  <title>deshipu.art - Posts in project-21578</title>
+  <updated>2024-08-07T20:31:58.637765+00:00</updated>
+  <link href="http://deshipu.art/"/>
+  <link href="http://deshipu.art/blog/category/project-21578/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-21578/log-145952/</id>
+    <title>PewPew Lite Version 4.2</title>
+    <updated>2018-05-08T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="pewpew-lite-version-4-2"&gt;
+
+&lt;p&gt;Published on 2018-05-08 in &lt;a class="reference internal" href="../../../projects/project-21578/#project-21578"&gt;&lt;span class="std std-ref"&gt;PewPew FeatherWing&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I had that version designed for quite a while, actually, and even the
+PCBs arrived and were lying there in a drawer — but I didn’t have time
+to work on them, busy with other projects. Now I moved, and found the
+PCBs in a box (and &lt;a class="reference external" href="https://hackaday.io/hacker/7"&gt;&amp;#64;Benchoff &lt;/a&gt; mentioned PewPew in an article), and decided to assemble them and put
+up on sale on Tindie. So now there is a new version of the PewPew Lite
+on Tinide. For now I only made ten, because that’s how many boards I
+had, but I already ordered some more, and more parts, so I will keep
+them coming.&lt;/p&gt;
+&lt;img alt="projects/project-21578/images/6945441525792828467.jpg" src="projects/project-21578/images/6945441525792828467.jpg" /&gt;
+&lt;p&gt;The new version comes with the matrix display already soldered, and
+with staggered holes for the pin headers — so that you can simply
+friction-fit them without soldering. The connection seems to be good
+enough, but if you experience problems, you can always solder them.
+There is still no socket for the battery — you will have to solder the
+leads directly if you add it. There is simply no room for it on this
+board.&lt;/p&gt;
+&lt;p&gt;Also, you no longer can choose a color. They are all red. It was the
+preferred color anyways, yellow ones only got sold when the red ones
+ran out.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-21578/log-145952/" rel="alternate"/>
+    <summary>Published on 2018-05-08 in project-21578.</summary>
+    <published>2018-05-08T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-21578/log-149325/</id>
+    <title>Making it Cheaper Again</title>
+    <updated>2018-07-14T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="making-it-cheaper-again"&gt;
+
+&lt;p&gt;Published on 2018-07-14 in &lt;a class="reference internal" href="../../../projects/project-21578/#project-21578"&gt;&lt;span class="std std-ref"&gt;PewPew FeatherWing&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The PewPew Lite FeatherWing is one of my favorite designs, and I think
+it’s really great for learning programming games — actually better
+than the &lt;a class="reference internal" href="../../../projects/project-27629/#project-27629"&gt;&lt;span class="std std-ref"&gt;µGame&lt;/span&gt;&lt;/a&gt; , because it’s so much simpler. The shield itself is pretty cheap,
+too. Unfortunately, you still need to have a Feather M0 (or, even
+better, M0 Express) to use it, and that’s actually twice as expensive
+as the shield itself. Add the LiPo battery to the mix, and you could
+instead buy an ODROID GO or something similar. This is problematic
+especially if you want to organize a workshop — you either make a
+workshop for the rich, or find a sponsor.&lt;/p&gt;
+&lt;p&gt;I have already tried to lower the price of the whole thing by putting
+the microcontroller directly on the device — basically copying the
+Trinket M0 schematic for that — but the resulting device was pretty
+complex to make, and I was never quite happy with it. Plus, you still
+needed the LiPo battery and its charging circuit and all that.&lt;/p&gt;
+&lt;p&gt;Today I sat down and redesigned the latest version of PewPew
+completely, using the knowledge I gained from µGame and from the &lt;span class="xref std std-ref"&gt;project-100853&lt;/span&gt; to simplify it as much as possible, while still keeping its basic
+functionality. That’s how I came up with PewPew 6.0:&lt;/p&gt;
+&lt;img alt="projects/project-21578/images/9513911531579693448.png" src="projects/project-21578/images/9513911531579693448.png" /&gt;
+&lt;p&gt;It’s exactly the size of two AA batteries, because that’s what it is
+going to be using for power. It uses the good old HT16K33 chip, just
+like the PewPew Lite, which simplifies things a lot. However, the
+buttons are handled directly by the microcontroller now, because to
+have them handled by the HT16K33, I would need six extra resistors,
+and I tried to minimize the parts count. To get rid of Shottky diodes
+or transistors for isolating the USB VBUS, I simply used the power
+switch to switch between the battery power and the USB power. I might
+even skip the voltage regulator and make it always run on battery
+power. Apart from that, there are the six buttons, the bi-color
+matrix, the SAMD21 microcontroller itself, two pull-up resistors for
+the I2C bus and two filter capacitors — that’s it. Everything is
+routed on the top layer of the PCB (the bottom is one big ground
+plane), and all parts (except for the battery holder) are mounted on
+top, to simplify assembly. I’m using the QFN version of SAMD21,
+because it’s slightly cheaper.&lt;/p&gt;
+&lt;p&gt;I considered using other chips than the HT16K33 for driving the
+matrix, in particular, simple shift registers to do all the work in
+the microcontroller, but in the end the HT16K33 is cheap enough and
+does all the work for me. In the future, I might consider switching to
+charlieplexed SMD bi-color LEDs and driving them from the MCU pins
+directly — that would probably shave a few dollars from the BOM at the
+cost of more work with assembling it.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-21578/log-149325/" rel="alternate"/>
+    <summary>Published on 2018-07-14 in project-21578.</summary>
+    <published>2018-07-14T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-21578/log-155174/</id>
+    <title>Replaced by PewPew Standalone</title>
+    <updated>2018-10-23T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="replaced-by-pewpew-standalone"&gt;
+
+&lt;p&gt;Published on 2018-10-23 in &lt;a class="reference internal" href="../../../projects/project-21578/#project-21578"&gt;&lt;span class="std std-ref"&gt;PewPew FeatherWing&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;While this still works and is fully compatible with all other PewPew
+boards, and while I still sell it on Tindie, check out the new devices
+over at &lt;span class="xref std std-ref"&gt;project-159733&lt;/span&gt; — they are bigger and cheaper, though no color display.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-21578/log-155174/" rel="alternate"/>
+    <summary>Published on 2018-10-23 in project-21578.</summary>
+    <published>2018-10-23T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-21578/log-165753/</id>
+    <title>D1 Mini Shield</title>
+    <updated>2019-07-15T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="d1-mini-shield"&gt;
+
+&lt;p&gt;Published on 2019-07-15 in &lt;a class="reference internal" href="../../../projects/project-21578/#project-21578"&gt;&lt;span class="std std-ref"&gt;PewPew FeatherWing&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I have been mostly working on the &lt;span class="xref std std-ref"&gt;project-159733&lt;/span&gt; recently, but some people still prefer the PewPew Lite version, mostly
+for its color display and ability to work with the ESP8266 Feather. So
+after I finally found reasonably tiny buttons for &lt;span class="xref std std-ref"&gt;project-165983&lt;/span&gt; , I decided to also make a version of the PewPew Lite in form of a D1
+Mini shield. As an additional challenge I wanted to make it
+electrically identical to the FeatherWing. After two nights, I had the
+design:&lt;/p&gt;
+&lt;img alt="projects/project-21578/images/3869751563223148383.png" src="projects/project-21578/images/3869751563223148383.png" /&gt;
+&lt;img alt="projects/project-21578/images/4679431563223184652.png" src="projects/project-21578/images/4679431563223184652.png" /&gt;
+&lt;p&gt;It’s not perfect. Ideally, all the resistors would be under the LED
+matrix, but there simply wasn’t enough room to fit all the traces
+there. But I managed to do it, even if it required a thousand vias. &lt;a class="reference external" href="https://oshpark.com/shared_projects/i3DM7Qay"&gt;I ordered the PCB from OSHPark&lt;/a&gt; , and promptly forgot about the whole thing.&lt;/p&gt;
+&lt;p&gt;Today the boards came, so I assembled one. I found a bi-color matrix
+in my drawer, but I only found 3 of the buttons — I’m still waiting
+for the package with more of them. So I only soldered what I had, to
+test how the menu works:&lt;/p&gt;
+&lt;img alt="projects/project-21578/images/2511091563223374398.JPG" src="projects/project-21578/images/2511091563223374398.JPG" /&gt;
+&lt;p&gt;Since CircuitPython no longer supports ESP8266, I had to port the Pew
+library to MicroPython — that was easy enough, with just changing all
+the timing functions to use utime, and all i2c calls to use the
+machine module. After I did that, I wanted to upload the code to
+GitHub, &lt;a class="reference external" href="https://github.com/pewpew-game/pew-pewpewlite-4.x-micropython"&gt;but discovered that it’s already there&lt;/a&gt;  — I have ported it once already and forgot about it.&lt;/p&gt;
+&lt;p&gt;Once the missing button arrive I will finish this.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-21578/log-165753/" rel="alternate"/>
+    <summary>Published on 2019-07-15 in project-21578.</summary>
+    <published>2019-07-15T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-21578/log-165851/</id>
+    <title>Buttons</title>
+    <updated>2019-07-18T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="buttons"&gt;
+
+&lt;p&gt;Published on 2019-07-18 in &lt;a class="reference internal" href="../../../projects/project-21578/#project-21578"&gt;&lt;span class="std std-ref"&gt;PewPew FeatherWing&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The buttons came today, so I finished it. It’s not the prettiest
+soldering job, and the buttons are not quite aligned, but it works and
+I can move on.&lt;/p&gt;
+&lt;img alt="projects/project-21578/images/2270791563434837459.JPG" src="projects/project-21578/images/2270791563434837459.JPG" /&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-21578/log-165851/" rel="alternate"/>
+    <summary>Published on 2019-07-18 in project-21578.</summary>
+    <published>2019-07-18T00:00:00+02:00</published>
+  </entry>
+</feed>

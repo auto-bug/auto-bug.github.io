@@ -1,0 +1,171 @@
+---
+blogpost: true
+date: 2018-01-25
+category: project-27757
+---
+
+# MemoryError
+Published on 2018-01-25 in {ref}`project-27757`.
+
+So I got that Boulder Dash game as far as I can, working around the
+ridiculously low memory of Micro:bit, and I think I won't be able to
+go further. This platform is simply too puny.
+
+
+
+:::{image} images/3938441516919484314.jpg
+
+:::
+
+
+I have an animated player character digging tunnels, and I have
+boulders that block his way and fall into empty space you dig under
+them. And I can't add even a single line of code without getting a
+MemoryError.
+
+---------- more ----------What I would need to make it a playable game at a minimum? Well, rocks
+need to slip sideways when on top of other rocks, and there have to be
+gems to collect — then I could design some logic levels, at least. If
+I managed to also add monsters, it could be a fun arcade game. This is
+the code I have so far:
+
+
+```python
+from microbit import i2c, running_time, sleep, pin1, pin2
+
+
+class Boy:
+    def __init__(self, delay=100):
+        b = bytearray
+        self.buffer = b(1024 + 1)
+        self.dmin = b([0] * 8)
+        self.dmax = b([128] * 8)
+        i2c.init(freq=400000, scl=pin2, sda=pin1)
+        try:
+            i2c.write(0x3c, b'')
+        except:
+            pass
+        i2c.write(0x3c, 
+            b'\x00\xae\xd5\x80\xa8\x3f\xd3\x00\x40\x80\x14'
+            b'\x20\x00\xa1\xc8\xa1\xda\x12\x81\xcf\xd9\xf1'
+            b'\xdb\x40\xa4\xa6\xaf')
+        self.next = running_time() + delay
+        self.delay = delay
+        
+    @staticmethod
+    def buttons():
+        return i2c.read(0x10, 1)[0]
+
+    def tick(self):
+        sleep(self.next - running_time())
+        self.next += self.delay
+
+    def update(self):
+        c = bytearray(4)
+        b = self.buffer
+        i = 0
+        for p in range(8):
+            dmin = self.dmin[p]
+            dmax = self.dmax[p]
+            if dmax:
+                c[1] = 0xb0 | p
+                c[2] = 0x00 | ((2 + dmin) & 0x0f)
+                c[3] = 0x10 | ((2 + dmin) >> 4) & 0x0f
+                i2c.write(0x3c, c)
+                l = b[i + dmin:i + dmax + 1]
+                l[0] = 0x40
+                i2c.write(0x3c, l)
+            i += 128
+            self.dmax[p] = 0
+            self.dmin[p] = 127
+
+    def blit(self, x, y, data, mask=b''):
+        if not 0 <= x < 120:
+            return
+        b = self.buffer
+        p = y // 8
+        s = y % 8
+        if 0 <= p <= 7:
+            i = x + 128 * p + 1
+            for a in mask:
+                b[i] &= ~(a << s)
+                i += 1
+            i = x + 128 * p + 1
+            for a in data:
+                b[i] ^= a << s
+                i += 1
+            self.dmin[p] = min(self.dmin[p], x)
+            self.dmax[p] = max(self.dmax[p], x + 8)
+        p += 1
+        if 0 <= p <= 7 and s:
+            s = 8 - s
+            i = x + 128 * p + 1
+            for a in mask:
+                b[i] &= ~(a >> s)
+                i += 1
+            i = x + 128 * p + 1
+            for a in data:
+                b[i] ^= a >> s
+                i += 1
+            self.dmin[p] = min(self.dmin[p], x)
+            self.dmax[p] = max(self.dmax[p], x + 8)
+
+boy = Boy()
+MAN_MASK = b'0\xfe\xff\xff\xff\xff\xfe0'
+DIRT = b'\x8a \x05P\x05 \x8a '
+DARK = b'\x00\x00\x00\x00\x00\x00\x00\x00'
+ROCK_MASK = b'<~\xff\xff\xff\xff~<'
+ROCK = b'\x004Z>V*\x14\x00'
+dirt = bytearray(16)
+for y in range(8):
+    for x in range(16):
+        boy.blit(x * 8, y * 8, DIRT)
+rocks = {(0, 0), (3, 3), (3, 4), (5, 2), (10, 1)}
+for x, y in rocks:
+    boy.blit(x * 8, y * 8, ROCK, ROCK_MASK)
+x, y = 0, 8
+dx = dy = steps = 0
+while True:
+    key = boy.buttons()
+    if steps == 0:
+        dirt[x // 8] |= 1 << (y // 8)
+        dx = dy = 0
+        if key & 4 and x < 120:
+            dx = 1
+        elif key & 16 and x > 0:
+            dx = -1
+        elif key & 32 and y < 56:
+            dy = 1
+        elif key & 8 and y > 0:
+            dy = -1
+        if (x // 8 + dx, y // 8 + dy) in rocks:
+            dx = dy = 0
+        if dx or dy:
+            steps = 7
+    else:
+        steps -= 1
+    x += dx
+    y += dy
+    man = (b'\x00\x10z>:~ \x00', b'\x00 \x1a~z>\x10\x00')[(steps // 2) % 2]
+    if dx + dy > 0:
+        man = bytes(reversed(man))
+    for rx, ry in list(rocks):
+        if dirt[rx] & (1 << (ry + 1)) and not (
+                (y // 8 == ry + 1) and
+                (rx * 8 - 6 <= x <= rx * 8 + 6)
+            ) and (rx, ry + 1) not in rocks:
+            dirt[rx] |= 1 << ry
+            boy.blit(rx * 8, ry * 8, DARK, ROCK_MASK)
+            boy.blit(rx * 8, ry * 8 + 8, ROCK, ROCK_MASK)
+            rocks.remove((rx, ry))
+            rocks.add((rx, ry + 1))
+    boy.blit(x, y, man, MAN_MASK)
+    boy.update()
+    boy.blit(x, y, DARK, MAN_MASK)
+    boy.tick()
+```
+
+It's not the most readable code possible, you have to admit, but it
+works. I guess if I completely skipped animations, and made things
+jump by full tiles, then I could save some memory... 
+

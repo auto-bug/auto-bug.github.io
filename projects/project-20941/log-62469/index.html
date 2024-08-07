@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>A Quick Tour Around the IS31FL373x Chips - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="a-quick-tour-around-the-is31fl373x-chips">
+<h1>A Quick Tour Around the IS31FL373x Chips<a class="headerlink" href="#a-quick-tour-around-the-is31fl373x-chips" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2017-07-03 in <a class="reference internal" href="../#project-20941"><span class="std std-ref">D1 Mini Matrix Deluxe Shields</span></a>.</p>
+<p>There is a whole family of those, and they are all controlled in a
+similar way. Of course all the details are in the datasheets, and in
+theory this is all the information you need, but in practice I think
+it’s useful to have a general bird’s-eye view of the whole thing.</p>
+<p>The chips are controlled over I2C and I’m not going to explain that.
+Uncharacteristically, it has two additional pins related to the I2C
+protocol, apart from the usual SDA and SCL: those are the IIC-RST,
+which can be used to reset the part of the chip that handles
+communication, in case your bus gets stuck in some weird state
+preventing communication, and VIO, which sets the voltage that you
+want to use for the communication. I usually just pull the IIC-RST
+down and the VIO up.</p>
+<p>The higher-level protocol is also quite simple. You have 8-bit
+registers with b-bit addresses, divided into pages. To read or write a
+register from the current page, you simply write that register’s
+number, and then either read with a repeated start or write. That’s
+pretty much standard.  Changing a page is bit more involved, because
+it’s apparently potentially dangerous: first you need to unlock the
+page register by writing the magic value 0xc5 to the register 0xfe,
+and then you can write the page number to the register 0xfd.</p>
+<p>There are four pages.</p>
+<p>Page 0 is dedicated to configuring which LEDs are being used, and to
+reading results of the open/short detection. At the minimum you need
+to write 1s to the bits corresponding to the LEDs that are actually
+connected to the chip (your matrix may be smaller than the chip’s
+maximum). You only do it once at the beginning.\</p>
+<p>Page 1 contains information about brightness of each individual LED.
+That’s where you actually draw your pixels. Of course, the default
+brightness is 0, so you need to write something there to actually see
+anything.</p>
+<p>Page 2 controls blinking, or rather “breathing”, as they call the
+fade-in fade-out animation that you can set on any of the individual
+LEDs, in 3 different variations of timing. You don’t need to touch
+anything here. Oh, and for this to have any effect, you need to set
+the B_EN bit in the register 0x00 on page 3.</p>
+<p>And finally page 3 is configuration. At the minimum, you need to write
+0x01 to the register 0x00 here to enable the chip, and some value to
+the register 0x01 setting the global brightness (because of course it
+defaults to 0 and you wouldn’t see anything). The rest is about
+configuring the blink timings, pull-up and pull-down resistors on the
+LEDs, and a software reset – not that interesting.</p>
+<p>So the workflow of the driver is usually as follows:</p>
+<ol class="arabic simple">
+<li><p>Set which LEDs you are using by writing to registers on page 0.</p></li>
+<li><p>Switch to page 3.</p></li>
+<li><p>Enable the chip and set the global brightness.</p></li>
+<li><p>Switch to page 1.</p></li>
+<li><p>Actually draw your graphics by writing to the registers on page 1.</p></li>
+</ol>
+<p>That should get you started. Of course, there are lots more small
+details and possibilities there.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

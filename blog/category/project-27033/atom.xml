@@ -1,0 +1,126 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>http://deshipu.art/</id>
+  <title>deshipu.art - Posts in project-27033</title>
+  <updated>2024-08-07T20:31:58.681013+00:00</updated>
+  <link href="http://deshipu.art/"/>
+  <link href="http://deshipu.art/blog/category/project-27033/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-27033/log-66113/</id>
+    <title>The Right Size</title>
+    <updated>2017-08-30T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="the-right-size"&gt;
+
+&lt;p&gt;Published on 2017-08-30 in &lt;a class="reference internal" href="../../../projects/project-27033/#project-27033"&gt;&lt;span class="std std-ref"&gt;Trinket M0 TFT&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Adafruit just recently released a new version of their Trinket boards,
+this time with the Atmel SAMD21 Cortex-M0 ARM chip, and with
+CircuitPython loaded on it by default. Of course I had to get a
+couple, and managed to do it before they went out of stock.&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;
+By a complete coincidence, the package with them arrived as the same
+time as the package from Aliexpress with the tiny ST7735 TFT display
+screens. I put them one next to the other, and what do you know — a
+perfect fit!&lt;/p&gt;
+&lt;img alt="projects/project-27033/images/211641504106064241.jpg" src="projects/project-27033/images/211641504106064241.jpg" /&gt;
+&lt;p&gt;So I fired up my trusty Fritzing and quickly made a breakout board for
+this display, with the pins matching the pins on the Trinket M0. A few
+clicks later I have the order placed for OSHPark.&lt;/p&gt;
+&lt;img alt="https://644db4de3505c40a0444-327723bce298e3ff5813fb42baeefbaa.ssl.cf1.rackcdn.com/f204484c0fc4b3a5c274158534535e3e.png" src="https://644db4de3505c40a0444-327723bce298e3ff5813fb42baeefbaa.ssl.cf1.rackcdn.com/f204484c0fc4b3a5c274158534535e3e.png" /&gt;
+&lt;p&gt;(Yeah, I was in a hurry, so one of the mounting holes is slightly
+shifted. Oh well.)&lt;/p&gt;
+&lt;p&gt;Because I only had five pins to use, and I’m not entirely sure if I
+can use the MISO pin for other purpose while the SPI is used on this
+microcontroller, I had to hard-wire the LED and CS pins. By a complete
+coincidence, the SCL pin is free (it’s the MISO pin), and the SDA pin
+is the same as DC — so I think I should be still able to use the I²C
+bus with this connected.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-27033/log-66113/" rel="alternate"/>
+    <summary>Published on 2017-08-30 in project-27033.</summary>
+    <published>2017-08-30T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-27033/log-66243/</id>
+    <title>Software</title>
+    <updated>2017-09-01T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="software"&gt;
+
+&lt;p&gt;Published on 2017-09-01 in &lt;a class="reference internal" href="../../../projects/project-27033/#project-27033"&gt;&lt;span class="std std-ref"&gt;Trinket M0 TFT&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;While waiting for the PCBs, I decided to try and see if the &lt;a class="reference external" href="https://github.com/adafruit/Adafruit_CircuitPython_RGB_Display"&gt;Adafruit RGB Display&lt;/a&gt;  library for CircuitPython will work properly on the Trinket M0 with
+this display. I used the &lt;span class="xref std std-ref"&gt;project-19377&lt;/span&gt; I made earlier, connecting it with wires to the trinket.&lt;/p&gt;
+&lt;p&gt;The first problem, that library supports the “green tab” ST7735
+displays, but not the “red tab” ones — and of course, the one that I
+have, despite having a green tab, is of the “red tab” variety and
+needs a different initialization sequence. Fortunately the MicroPython
+version of that library supports it, so I made a quick pull request to
+also add it to the CircuitPython version. I tested it on the ESP8266,
+so that I can compare both MicroPython and CircuitPython, and it
+worked fine. Great.&lt;/p&gt;
+&lt;p&gt;Now, back to the Trinket M0, it still doesn’t work. The display
+remains blank. What’s the problem? It worked with the ESP8266. Let’s
+take a logic analyzer and see…&lt;/p&gt;
+&lt;img alt="projects/project-27033/images/366821504262037253.png" src="projects/project-27033/images/366821504262037253.png" /&gt;
+&lt;p&gt;Hmm, that doesn’t look right. Before every byte being transmitted,
+there is this weird blip both on the data and the clock lines. Let’s
+look closer.&lt;/p&gt;
+&lt;img alt="projects/project-27033/images/6366881504262094769.png" src="projects/project-27033/images/6366881504262094769.png" /&gt;
+&lt;p&gt;Yeah, definitely something is not right. What could it be? Probably
+something specific to the Trinket M0. So I &lt;a class="reference external" href="https://github.com/adafruit/circuitpython/issues/219"&gt;reported the bug&lt;/a&gt;  in the CircuitPython project, and went to sleep.&lt;/p&gt;
+&lt;p&gt;The next day I had a look into the code of the display library, and
+the code of the BusDevice library that it uses, and had an epiphany.
+The BusDevice code calls_spi.configure() _before every transmission, to make sure it’s done with the correct
+baud rate and mode — and that call resets the SPI peripheral and
+causes the blip.&lt;/p&gt;
+&lt;p&gt;Sure enough, commenting that line out makes the display work:&lt;/p&gt;
+&lt;img alt="projects/project-27033/images/3349201504262523125.jpg" src="projects/project-27033/images/3349201504262523125.jpg" /&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-27033/log-66243/" rel="alternate"/>
+    <summary>Published on 2017-09-01 in project-27033.</summary>
+    <published>2017-09-01T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-27033/log-66256/</id>
+    <title>To do it, to do it, to do it…</title>
+    <updated>2017-09-01T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="to-do-it-to-do-it-to-do-it"&gt;
+
+&lt;p&gt;Published on 2017-09-01 in &lt;a class="reference internal" href="../../../projects/project-27033/#project-27033"&gt;&lt;span class="std std-ref"&gt;Trinket M0 TFT&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;After a hint from &lt;a class="reference external" href="https://hackaday.io/hacker/45459"&gt;&amp;#64;limor &lt;/a&gt; about a reset pin and some experimenting, I decided to re-do this PCB,
+this time properly, following all the rules.&lt;/p&gt;
+&lt;img alt="https://644db4de3505c40a0444-327723bce298e3ff5813fb42baeefbaa.ssl.cf1.rackcdn.com/d7c85fa4a0d7e5c30330c34cf3e96692.png" src="https://644db4de3505c40a0444-327723bce298e3ff5813fb42baeefbaa.ssl.cf1.rackcdn.com/d7c85fa4a0d7e5c30330c34cf3e96692.png" /&gt;
+&lt;p&gt;\&lt;/p&gt;
+&lt;p&gt;So the reset pin is now tied to the board’s reset. That frees up one
+digital pin, which I can now use for chip select, instead of having it
+pulled down permanently. Because the Trinket M0 doesn’t have a pull-up
+resistor on its reset pin, I had to add one.&lt;/p&gt;
+&lt;p&gt;The second resistor is for the LED back-light, so you can pick the
+right one for the brightness you desire.&lt;/p&gt;
+&lt;p&gt;Finally, I added a filter capacitor to the display’s power, for good
+measure.&lt;/p&gt;
+&lt;p&gt;I also fixed the mounting holes and added a logo. The logo is up-side-
+down in relation to the text on the board, but I only noticed it now
+and who looks at those things anyways.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-27033/log-66256/" rel="alternate"/>
+    <summary>Published on 2017-09-01 in project-27033.</summary>
+    <published>2017-09-01T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-27033/log-67009/</id>
+    <title>Moved</title>
+    <updated>2017-09-12T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="moved"&gt;
+
+&lt;p&gt;Published on 2017-09-12 in &lt;a class="reference internal" href="../../../projects/project-27033/#project-27033"&gt;&lt;span class="std std-ref"&gt;Trinket M0 TFT&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This project has moved to &lt;a class="reference internal" href="../../../projects/project-27161/#project-27161"&gt;&lt;span class="std std-ref"&gt;Trinket Shields&lt;/span&gt;&lt;/a&gt; .&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-27033/log-67009/" rel="alternate"/>
+    <summary>Published on 2017-09-12 in project-27033.</summary>
+    <published>2017-09-12T00:00:00+02:00</published>
+  </entry>
+</feed>

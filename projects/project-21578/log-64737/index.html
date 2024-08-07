@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Why not Raspberry Pi? - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="why-not-raspberry-pi">
+<h1>Why not Raspberry Pi?<a class="headerlink" href="#why-not-raspberry-pi" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2017-08-06 in <a class="reference internal" href="../#project-21578"><span class="std std-ref">PewPew FeatherWing</span></a>.</p>
+<p>It seems that I have been blogged at  <a class="reference external" href="https://hackaday.com/2017/08/06/hackaday-prize-best-product-finalist-pewpew/">https://hackaday.com/2017/08/06/hackaday-prize-best-product-finalist-
+pewpew/</a>  and there are some questions as to whether it makes sense to do what
+I do when there is already a Raspberry Pi and all its retro-console
+builds.</p>
+<p>Well, this is a little bit different. Sure, lots of game consoles
+using a Raspberry Pi out there. In fact, I have build one myself
+recently with <a class="reference internal" href="../../project-25256/#project-25256"><span class="std std-ref">Ye Olde Nowt</span></a> and I have to say that it is great fun. But it’s not very good for
+teaching for the following reasons (in no particular order):</p>
+<ol class="arabic simple">
+<li><p>You have to start by teaching Linux. That’s a challenge already.</p></li>
+<li><p>Long booting time.</p></li>
+<li><p>Short battery time.</p></li>
+<li><p>SD cards get damaged when you power it off without proper shutdown,
+and then random things start to happen.</p></li>
+<li><p>Setting up the screen and inputs is a complex and somewhat hacky
+process. Not something you want to teach to a group of 14 year olds.</p></li>
+<li><p>Lots of existing emulators and ready games for this system. That
+discourages from making your own.</p></li>
+<li><p>No really good and simple game programming library for Python,
+although PyGame Zero helps here.</p></li>
+<li><p>Relatively high-resolution color graphics forces you to find game art
+somewhere and distracts from making the actual game.</p></li>
+<li><p>Raspberry Pi is not that cheap, if you consider the cost of the SD
+card, the screen, the power source, all the cables and adapters, etc.</p></li>
+</ol>
+<p>On the other hand, I’m aiming at something that will be:</p>
+<ol class="arabic simple">
+<li><p>Working out of the box, without special configuration. Connect to your
+computer, copy two files on it, and you are ready to play. Edit the
+files in place, and make your own game.</p></li>
+<li><p>Easy to fix. In the worst case just erase the memory, and you have
+your working device back.</p></li>
+<li><p>Simple. The library for it only has four functions (and one of them is
+for setting the brightness, so you don’t even need to learn that one),
+and a single object with three methods. You can fit the documentation
+for that on a single page of paper.</p></li>
+<li><p>Portable. It’s the size of an AA battery and runs on a single battery
+charge for hours.</p></li>
+<li><p>Powerful enough to be fun and engaging.</p></li>
+</ol>
+<p>Of course, at some point you will want to switch to a real computer,
+pick up something like PyGame and continue from where you left, making
+more complex games. But I think this will be a really good stepping
+stone for starting.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

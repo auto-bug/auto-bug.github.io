@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Some Fixes - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="some-fixes">
+<h1>Some Fixes<a class="headerlink" href="#some-fixes" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2017-09-24 in <a class="reference internal" href="../#project-21578"><span class="std std-ref">PewPew FeatherWing</span></a>.</p>
+<p>I wrote the library for the PewPew 3.0 version, and also did some more
+testing of the hardware, which uncovered a number of mistakes.</p>
+<p>First of all, I forgot a pull-up resistor for the SDB pin of the
+IS31FL3733 that acts as enable pin — which means the display would
+switch off randomly. I added that with a piece of wrapping wire.\</p>
+<p>Second, the battery circuit didn’t work, and it took me a while to
+realize that I forgot to connect it to the rest of the power of the
+device. That requires a Shottky diode, so that we don’t send power up
+the USB cable when it’s connected. Since I didn’t have any at hand, I
+ordered them, and for now used a regular rectifier diode. The voltage
+drop is higher, but it works fine with fully charged battery. That was
+another pice of wrapping wire added.</p>
+<img alt="projects/project-21578/images/5996931506246678085.jpg" src="projects/project-21578/images/5996931506246678085.jpg" />
+<p>Both of those fixes are now included in the next version of the PCB.</p>
+<p>Then there are smaller issues. I realized that since this is going to
+be used for education, it’s likely that the device is going to be
+subjected to a lot of stresses. That was one of the reasons for using
+a LED matrix and not a glass display, for instance. But the USB port
+looks very vulnerable where it is, and I wanted to make sure it will
+be attached very firmly. So I moved the fire buttons a little bit
+towards the center of the board, to make room for a row of vias right
+under the USB socket. That should really secure it in place properly.\</p>
+<p>Next, the SWD pads (in the lower right corner) are a little too close
+to each other for convenient debugging, so I moved them a little and
+spaced them farther apart, and also broke out GND and !RST pins on the
+other side of the board, so that I can get to the bootloader more
+conveniently.</p>
+<p>Then I went and tried to build a custom CircuitPython firmware for
+this board, and it turns out that it’s relatively easy to remap the
+pins — so I moved the pins around a little, to free the PA02 DAC pin.
+Some more experimenting, and it seems I can free up enough room by
+removing unused modules to include the audioio module. Together with
+the free DAC pin that means I can have some sound.</p>
+<p>So I moved the traces for the display to pack them a bit more densely,
+and sqeezed a small PAM8301 amplifier in there, and a pair of pads for
+soldering an SMD speaker. The end result looks something like this:</p>
+<img alt="projects/project-21578/images/2393531506247365986.png" src="projects/project-21578/images/2393531506247365986.png" />
+<p>I also remembered about <a class="reference external" href="https://daveastels.com/2017/09/01/trinket-m0-express-hack/">a recent hack with Trinket M0</a>  that expands the available flash memory with an SPI flash chip. That
+would actually solve a lot of problems for me, and a quick check
+revealed that the pins that are being used are indeed free in my
+design. However, there is physically no room for a SOIC-8 chip in
+there.</p>
+<p>I might actually try and go for the sandwich approach, with a second
+PCB acting as the back plate for the whole device — the cost of the
+PCB would be negligible, and I would have so much more room for
+everything…</p>
+</section>
+
+
+</div>
+  </body>
+</html>

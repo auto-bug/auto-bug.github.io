@@ -1,0 +1,38 @@
+---
+blogpost: true
+date: 2018-04-18
+category: project-21578
+---
+
+# Version 5.1
+Published on 2018-04-18 in {ref}`project-21578`.
+
+I have been doing some spring cleaning, and found the PCBs I made for
+the version 5.1 of the PewPew, which I never actually assembled. That
+version is bigger than my previous attempts, and uses a larger, 3cm
+matrix. Since I will be soon going to work with that ISSI matrix
+driver chip again (for the {ref}`project-100853` ), I decided to go ahead and assemble this after all. Here's the
+result, next to the PewPew Lite for scale (please excuse the flux
+stains):
+
+
+
+:::{image} images/6778141524002161763.jpg
+
+:::
+
+
+Unfortunately, I didn't actually find the source of those bi-color
+matrices with square pixels — the ones I have have round pixels, and
+this one is desoldered from Adafruit's backpack, because it does look
+much better. The new board does have sound, but lacks the battery
+charging circuit — I assumed it will be powered by a non-
+rechargeablecoin cell battery on the back. Unfortunately, I didn't
+test it first, and turns out that the non-rechargeable batteries
+simply don't have enough power for this to work.
+
+I don't currently plan on making any more versions of this, or on
+manufacturing this version — it's just something I wanted to finish. I
+will probably be making more of the PewPew Lite FeatherWings for sale,
+though, as there seems to be interest in those.
+

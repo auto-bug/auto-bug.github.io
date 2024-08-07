@@ -1,0 +1,34 @@
+---
+blogpost: true
+date: 2017-06-19
+category: project-20941
+---
+
+# Grayscale 7x11 Matrix
+Published on 2017-06-19 in {ref}`project-20941`.
+
+The third chip that I got from ISSI is IS31FL3736. It's very similar
+to the IS31FL3733, except it only drives up to 8×12 LEDs. That's
+perfect for those 7×11 LED matrices that I got!
+
+I actually designed that shield a while ago, and assembled it when it
+came. But it didn't work, at least not reliably -- the chip would
+sometimes be visible on the I²C bus, and sometimes not, and sometimes
+it would start behaving weird after some time... I put it all to my
+poor soldering skills and the really tiny QFN package, and gave up on
+it for a while.
+
+Yesterday, after debugging some problems with the IS31FL3733 on the {ref}`project-21578` , which were solved by adding a decoupling capacitor across the power,
+I decided to dig out the old board and try adding a decoupling
+capacitor to it too. And what do you know, it works perfectly fine
+after all!
+
+
+:::{image} images/3295091497884230697.jpg
+
+:::
+The PCB is here: [https://oshpark.com/projects/luMANBrm](https://oshpark.com/projects/luMANBrm) \
+
+
+And the updated MicroPython library for driving it: [https://bitbucket.org/thesheep/micropython-is31fl37x/src](https://bitbucket.org/thesheep/micropython-is31fl37x/src) 
+

@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Software - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="software">
+<h1>Software<a class="headerlink" href="#software" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2017-09-01 in <a class="reference internal" href="../#project-27033"><span class="std std-ref">Trinket M0 TFT</span></a>.</p>
+<p>While waiting for the PCBs, I decided to try and see if the <a class="reference external" href="https://github.com/adafruit/Adafruit_CircuitPython_RGB_Display">Adafruit RGB Display</a>  library for CircuitPython will work properly on the Trinket M0 with
+this display. I used the <span class="xref std std-ref">project-19377</span> I made earlier, connecting it with wires to the trinket.</p>
+<p>The first problem, that library supports the “green tab” ST7735
+displays, but not the “red tab” ones — and of course, the one that I
+have, despite having a green tab, is of the “red tab” variety and
+needs a different initialization sequence. Fortunately the MicroPython
+version of that library supports it, so I made a quick pull request to
+also add it to the CircuitPython version. I tested it on the ESP8266,
+so that I can compare both MicroPython and CircuitPython, and it
+worked fine. Great.</p>
+<p>Now, back to the Trinket M0, it still doesn’t work. The display
+remains blank. What’s the problem? It worked with the ESP8266. Let’s
+take a logic analyzer and see…</p>
+<img alt="projects/project-27033/images/366821504262037253.png" src="projects/project-27033/images/366821504262037253.png" />
+<p>Hmm, that doesn’t look right. Before every byte being transmitted,
+there is this weird blip both on the data and the clock lines. Let’s
+look closer.</p>
+<img alt="projects/project-27033/images/6366881504262094769.png" src="projects/project-27033/images/6366881504262094769.png" />
+<p>Yeah, definitely something is not right. What could it be? Probably
+something specific to the Trinket M0. So I <a class="reference external" href="https://github.com/adafruit/circuitpython/issues/219">reported the bug</a>  in the CircuitPython project, and went to sleep.</p>
+<p>The next day I had a look into the code of the display library, and
+the code of the BusDevice library that it uses, and had an epiphany.
+The BusDevice code calls_spi.configure() _before every transmission, to make sure it’s done with the correct
+baud rate and mode — and that call resets the SPI peripheral and
+causes the blip.</p>
+<p>Sure enough, commenting that line out makes the display work:</p>
+<img alt="projects/project-27033/images/3349201504262523125.jpg" src="projects/project-27033/images/3349201504262523125.jpg" />
+</section>
+
+
+</div>
+  </body>
+</html>

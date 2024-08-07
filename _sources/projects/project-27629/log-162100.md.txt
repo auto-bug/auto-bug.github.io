@@ -1,0 +1,54 @@
+---
+blogpost: true
+date: 2019-04-19
+category: project-27629
+---
+
+# Underwhelming DMA
+Published on 2019-04-19 in {ref}`project-27629`.
+
+I finally worked on an improvement that I long wanted to do to the
+_stage library, which is at the heart of µGame: make the communication
+with the display asynchronous by using DMA. This way I can have two
+buffers, and calculate the contents of one of them while the other one
+is being sent to the display.
+
+As a test I used the balls demo from the tutorial, but with all
+waiting for the next frame removed — so they move as fast as they can.
+
+Here is how it works before DMA:
+
+
+
+:::{image} images/4838621555700681233.gif
+
+:::
+
+
+And here is how it works with DMA:
+
+
+
+:::{image} images/1409261555700732524.gif
+
+:::
+
+
+As you can see, there is barely any perceptible difference at all!
+
+The code I wrote for this is pretty nasty and hacky, and after seeing
+this, I don't think I have the heart to clean it up and send it as a
+pull request — it's simply not worth it.
+
+However, I will keep an eye for other ways of improving the firmware.
+
+UPDATE: Yes, I made some more precise measurements as well. Running
+through 1000 frames of the animation took the DMA version 31.034s and
+the non-DMA version 32.699s. That is 32.22 fps with DMA and 30.58 fps
+without.
+
+UPDATE2: I did a second test, with full-screen updates this
+time. 159.08s for non-DMA, versus 148.708s for DMA. That's 6.28 fps
+versus 6.72 fps. Even with such a large amount of data, the difference
+is negligible compared to the time spent computing it.
+

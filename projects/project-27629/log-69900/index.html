@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Another PCB - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="another-pcb">
+<h1>Another PCB<a class="headerlink" href="#another-pcb" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2017-10-31 in <a class="reference internal" href="../#project-27629"><span class="std std-ref">µGame</span></a>.</p>
+<p>Today I received a big batch of PCBs from OSHpark, and one of those
+was the next revision of the µGame PCB. There is a number of
+improvements there:</p>
+<ul class="simple">
+<li><p>The PCB is wider (42x50mm) giving me more room, but still fits in the
+5x5cm limit of many board houses.</p></li>
+<li><p>The buttons are spaced a little wider.</p></li>
+<li><p>I used non-clicking buttons this time.</p></li>
+<li><p>The only parts on the back side are the battery and the speaker.</p></li>
+<li><p>I used a smaller reset button.</p></li>
+<li><p>The active part of the display is centered on the PCB.</p></li>
+<li><p>There are footprints for 2 different battery holders.</p></li>
+<li><p>An analog pin connected to the battery through a voltage divider, for
+monitoring charge levels.</p></li>
+<li><p>Two of the button pins are swapped (left and down).</p></li>
+</ul>
+<img alt="projects/project-27629/images/7144021509407322268.jpg" src="projects/project-27629/images/7144021509407322268.jpg" />
+<p>Immediately after assembling the board I realized one more change: the
+USB 5V rail is connected directly to GND. Oops. That happened when I
+moved the button pads around, and made one of them touch the 5V trace.
+Fortunately cutting the trace and replacing it with a wire fixed it,
+and there was no damage.\</p>
+<p>But that means I need yet another version soon. To not waste my
+OSHpark coupons, I quickly tested the last feature of the board —
+sound. This one has a piezo speaker directly connected to the DAC pin.
+As you can expect, it’s really quiet. Hmm, ok, that means that the
+next version will need a magnetic speaker and an amplifier. But where
+can I fit them?</p>
+<img alt="https://644db4de3505c40a0444-327723bce298e3ff5813fb42baeefbaa.ssl.cf1.rackcdn.com/2faddcfbfd7401be000d1793b30e5dc4.png" src="https://644db4de3505c40a0444-327723bce298e3ff5813fb42baeefbaa.ssl.cf1.rackcdn.com/2faddcfbfd7401be000d1793b30e5dc4.png" />
+<p>After taking some measurements of the new boards, I found a solution.
+I moved the fire buttons further from the edge (they aren’t very
+comfortable they way they are now), and put the audio circuit in the
+freed space. It’s not even very cramped — each component has lots of
+space around it. Of course the tiny 4mm speaker won’t have great
+quality, but should be better than the piezo, and now I only have the
+battery on the back!</p>
+<p>I need to finish a couple of other boards, and then I’m making another
+order.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

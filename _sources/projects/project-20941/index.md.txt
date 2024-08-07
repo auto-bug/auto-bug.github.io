@@ -1,0 +1,64 @@
+---
+blogpost: true
+date: 2017-04-05
+category: project
+tags:  LED MATRIX, wemos, hardware, Blinking, led, ongoing project, ESP8266, d1 mini
+image: 1
+---
+
+# D1 Mini Matrix Deluxe Shields
+
+Shields for the D1 Mini ESP8266 board using the ISSI chips
+
+<div class="project-thumb">
+
+:::{image} images/931981491389033893.png
+:target: /_images/931981491389033893.png
+:::
+
+:::{image} images/8866461494364774367.jpg
+:target: /_images/8866461494364774367.jpg
+:::
+
+:::{image} images/1267431494364787210.jpg
+:target: /_images/1267431494364787210.jpg
+:::
+
+:::{image} images/3320271497897139925.jpg
+:target: /_images/3320271497897139925.jpg
+:::
+
+</div>
+
+
+    When I ordered the matrices for the {ref}`project-18120`  project, I found a number of cool matrices that couldn't be driven by
+the venerable HT16K33 chip that I used there. I went to search for a
+chip that could handle them, [and was pointed](https://hackaday.io/page/2976-alternative-to-ht16k33-for-a-common-anode-bi-color-matrix)  to the IS31FL37* family of chips produced by ISSI.
+
+Those chips are interesting for a variety of reasons. There are
+versions for charlieplexed displays, and for driving two matrices
+connected in reverse to each other, and for various sizes of regular
+matrices. More importantly, they can control the brigtness (or color)
+of each LED individually, and they often have interesting additional
+effects built-in, such as automatic animations, per-pixel blinking and
+"breathing", and some can even modulate the brightness according to
+music or other analog input. They are also much more modern -- they
+come in very small QFN packages and operate on 3.3V logic.
+
+I requested some samples of those chips, and I will try to design and
+build some matrix shields using them. I also plan to do some more
+interesting things with them, but we will see how that works when I
+actually try.
+
+
+
+
+
+## Logs
+
+:::{postlist}
+:category: project-20941
+:::
+
+## Instructions
+

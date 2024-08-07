@@ -1,0 +1,49 @@
+---
+blogpost: true
+date: 2017-10-10
+category: project-27161
+---
+
+# Why I Hate Analog Circuits
+Published on 2017-10-10 in {ref}`project-27161`.
+
+I'm completely hopeless with analog circuits. I think part of it might
+actually be a self-fulfilling prophecy — I know that I'm bad at it, so
+I'm not even trying. Usually I just try and copy any analog pieces I
+need from other projects, cargo-culting them and hoping they will
+work. A case in point: the audio shield.
+
+
+:::{image} images/2296211507656446424.jpg
+
+:::
+Simplicity itself. A small audio amplifier, connected through a
+resistor and capacitor to the DAC pin on one side, and to an SMD
+speaker on the other. What could possibly go wrong?
+
+First of all, I re-used a footprint for the PAM8301 amplifier, using a
+part for some sparkfun's DAC chip. It's exactly the same size, I just
+changed the labels on the pins. What I failed to note is that the pins
+on that chip are numbered in the opposite direction than on my
+amplifier. So to start with, I had to bend the pins of the chip the
+other way and dead-bug it. Fine.
+
+Next thing I am a little less sure of. I mean, I am sure it doesn't
+work, but I'm not sure why. If I connect a piezo to the DAC pin
+directly, I get the sound that I'm playing (although very quietly). If
+I use the amplifier (with a 47kΩ resistor and 0.1µF capacitor between
+the pin and the input of the amp), I get nothing. And it gets warm.
+Sounds like it's simply connected wrong, but I verified the PCB and
+the datasheet a million times already.
+
+I must be missing something obvious, here's the schematic so that you
+can laugh at my ignorance:\
+
+
+
+:::{image} images/6246001507657158855.png
+
+:::
+Oh, and yes, I copied it. From Adafruit's Circuit Playground Express
+board, which also uses a SAMD21 chip and a very similiar SMD speaker.
+

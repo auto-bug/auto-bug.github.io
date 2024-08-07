@@ -1,0 +1,30 @@
+---
+blogpost: true
+date: 2018-05-28
+category: project-27629
+---
+
+# µGame Turbo is no More
+Published on 2018-05-28 in {ref}`project-27629`.
+
+After working on research and design for the {ref}`project-86818` for several months, and after Adafruit has started to work on their
+own version of a game console for CircuitPython, I decided that the
+improvements are not really worth the extra price and work, and
+decided to come back and focus on regular µGame more.
+
+There will be no more hardware iterations (except perhaps a small
+update changing the USB port to one that is more friendly to the
+fabricators), but there is still a lot that can be done in firmware
+and in the libraries. In particular, I have some ideas that I want to
+try to speed up the screen updates and to make more memory available
+for the games.
+
+The CircuitPython 3.0 is coming, Beta0 version was just released last
+week, and I've been working a little bit to make sure that all the
+libraries for µGame work with it. Right now I'm struggling with a
+change in the API for AudioIO, which makes CircuitPython try to
+allocate an extra 512 bytes of RAM every time you try to play a sound.
+Obviously that fails randomly in any larger game, as there is simply
+no room for it. But I'm sure a solution can be found — in the worst
+case, I will switch to a different way of making sounds.
+

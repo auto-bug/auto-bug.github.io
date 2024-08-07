@@ -1,0 +1,27 @@
+---
+blogpost: true
+date: 2017-04-19
+category: project-20941
+---
+
+# The 8×8 Monochrome Matrix Finished
+Published on 2017-04-19 in {ref}`project-20941`.
+
+Well, almost. There is going to be one more version of the PCB,
+because_of course_I swapped one of the rows with one of the columns of the matrix.
+
+
+:::{image} images/5647081492630847857.jpg
+
+:::
+
+
+You can also see that one of the rows has a cold joint in there, but
+that was easily fixed.
+
+I also wrote a MicroPython library for this matrix, which is available
+at [https://bitbucket.org/thesheep/micropython-is31fl3728/src](https://bitbucket.org/thesheep/micropython-is31fl3728/src) 
+
+I will still need to update it to reorder the rows and columns to fit
+the reality -- but I will do that once I get a final working PCB.
+

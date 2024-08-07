@@ -1,0 +1,23 @@
+---
+blogpost: true
+date: 2017-05-10
+category: project-21578
+---
+
+# Prototyping
+Published on 2017-05-10 in {ref}`project-21578`.
+
+While I'm waiting for the new PCBs with two different approaches to
+buttons, I decided to start writing some code. But I need to test it
+somehow, and it's difficult with the non-functional buttons, so I
+decided to use a combo of the {ref}`project-19371`  and {ref}`project-18120` . Sure, the x-pad shield uses a different chip than what I will use,
+and the matrix shield only has 1 shade of 1 color, but at least I can
+get some code going on them. I can later replace the parts that handle
+the display and keys.
+
+
+:::{image} images/6141351494369883181.jpg
+
+:::
+
+

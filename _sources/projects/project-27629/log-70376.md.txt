@@ -1,0 +1,60 @@
+---
+blogpost: true
+date: 2017-11-11
+category: project-27629
+---
+
+# The Case for a Case
+Published on 2017-11-11 in {ref}`project-27629`.
+
+Just before going on a two week vacation, I decided to try and see
+what I can do in terms of a case for this device. Why do I even need a
+case? Well, there are two reasons:
+
+
+ 1. To protect the glass (but not gorilla-glass) screen from scratches, so
+that I can carry it in my pocket,
+ 1. To protect the battery both mechanically and electrically from random
+objects in that pocket.
+
+It's connected with the fact that I want to use a bigger LiPo battery
+than the 40mAh button cell battery I use right now.
+
+With those goals in mind, what are my options?
+
+
+ 1. Use an existing, commonly available container of roughly the right
+size.
+ 1. Make the case out of layers of laser-cut transparent acrylic.
+ 1. 3D-print it, possibly adding laser-cut transparent acrylic as screen
+protection.
+
+To see which of those options would be the best, I exported the PCB to
+Inkscape and prepared a model of the device, with all buttons,
+switches, sockets and the screen marked.
+
+
+
+:::{image} images/7944801510418793912.png
+
+:::
+
+
+Then I tried to fiddle with it a bit, trying to come up with the
+layers for the laser-cut case. I immediately stumbled on a problem:
+the power switch (and also the reset switch, but that one could only
+have a hole to be pressed with a paperclip) only sticks out of the PCB
+very little — about 1mm. That means that the wall of the case can't be
+thicker than that, or that it needs to add some kind of an extension
+of the switch's knob. The USB port has a similar problem, but
+fortunately in this case it's more like 2mm, so it's not so bad.
+
+There is also another problem if I decide to go for thin walls — the
+front panel needs cutouts for the buttons, and those pretty much touch
+the edge of the PCB, making this arrow-shaped corner of the panel,
+where the only mounting screw is, very fragile and easy to break
+off...
+
+That's the status for now. I will probably keep thinking about this
+during my vacation, and will try something when I get back.
+

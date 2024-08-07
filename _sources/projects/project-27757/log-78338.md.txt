@@ -1,0 +1,154 @@
+---
+blogpost: true
+date: 2018-01-20
+category: project-27757
+---
+
+# Progress on a Game
+Published on 2018-01-20 in {ref}`project-27757`.
+
+With the hardware finalized, the remaining work is to actually write
+at least one game, to prove that it's possible. I decided to make a
+game inspired by such classics as Dig Dug, Digger and Boulder Dash —
+you dig tunnels, collect gems, avoid monsters and drop boulders on
+them. So far I have the basic graphics and the player animation:
+
+
+
+:::{image} images/9529311516408706440.gif
+
+:::
+
+
+---------- more ----------The code for the display got a bit simplified, and merged with the
+code for buttons. I also added a "tick" function for keeping a
+constant frame rate.
+
+
+```python
+import microbit
+
+
+DIRT = b'\x8a \x05P\x05 \x8a '
+DARK = b'\x00\x00\x00\x00\x00\x00\x00\x00'
+ROCK_MASK = b'<~\xff\xff\xff\xff~<'
+ROCK = b'\x004Z>V*\x14\x00'
+GEM = b'\x00\x18,N\x02\x04\x08\x00'
+MAN_MASK = b'0\xfe\xff\xff\xff\xff\xfe0'
+MAN = (b'\x00\x10z>:~ \x00', b'\x00 \x1a~z>\x10\x00')
+
+
+class Console:
+    _command = bytearray(b'\x00\xb0\x02\x10')
+
+    def __init__(self):
+        self.next_frame = microbit.running_time() + 100
+        self.buffer = bytearray(1024)
+        self.dirty_min = bytearray([0] * 8)
+        self.dirty_max = bytearray([128] * 8)
+        microbit.i2c.init(freq=400000, scl=microbit.pin2, sda=microbit.pin1)
+        try:
+            microbit.i2c.write(0x3c, b'')
+        except OSError:
+            pass
+        _init = (b'\x00\xae\xd5\x80\xa8\x3f\xd3\x00\x40\x80\x14'
+                 b'\x20\x00\xa1\xc8\xa1\xda\x12\x81\xcf\xd9\xf1'
+                 b'\xdb\x40\xa4\xa6\xaf')
+        microbit.i2c.write(0x3c, _init)
+
+    @staticmethod
+    def buttons():
+        return microbit.i2c.read(0x10, 1)[0]
+
+    def tick(self, ms=100):
+        delay = self.next_frame - microbit.running_time()
+        if delay > 0:
+            microbit.sleep(delay)
+        self.next_frame += ms
+
+    def update(self):
+        buf = self.buffer
+        index = 0
+        for page in range(8):
+            dmin = self.dirty_min[page]
+            dmax = self.dirty_max[page]
+            if dmax:
+                self._command[1] = 0xb0 | page
+                self._command[2] = 0x00 | ((2 + dmin) & 0x0f)
+                self._command[3] = 0x10 | ((2 + dmin) >> 4) & 0x0f
+                microbit.i2c.write(0x3c, self._command)
+                microbit.i2c.write(0x3c,
+                                   b'\x40' + buf[index + dmin:index + dmax])
+            index += 128
+            self.dirty_max[page] = 0
+            self.dirty_min[page] = 127
+
+    def blit(self, x, y, data, mask=b''):
+        if not -8 < x < 128:
+            return
+        if x < 0:
+            data = data[-x:]
+            x = 0
+        elif x > 120:
+            data = data[:120 - x]
+        page = y // 8
+        shift = y % 8
+        if 0 <= page <= 7:
+            index = x + 128 * page
+            for byte in mask:
+                self.buffer[index] &= ~(byte << shift)
+                index += 1
+            index = x + 128 * page
+            for byte in data:
+                self.buffer[index] ^= byte << shift
+                index += 1
+            self.dirty_min[page] = min(self.dirty_min[page], x)
+            self.dirty_max[page] = max(self.dirty_max[page], x + 8)
+        page += 1
+        if 0 <= page <= 7 and shift:
+            shift = 8 - shift
+            index = x + 128 * page
+            for byte in mask:
+                self.buffer[index] &= ~(byte >> shift)
+                index += 1
+            index = x + 128 * page
+            for byte in data:
+                self.buffer[index] ^= byte >> shift
+                index += 1
+            self.dirty_min[page] = min(self.dirty_min[page], x)
+            self.dirty_max[page] = max(self.dirty_max[page], x + 8)
+
+
+console = Console()
+for y in range(8):
+    for x in range(16):
+        if (x + 3 * y + 1) % 5:
+            console.blit(x * 8, y * 8, DIRT)
+console.blit(0, 0, ROCK, ROCK_MASK)
+console.blit(0, 16, GEM, ROCK_MASK)
+frame = 0
+facing = 1
+x = 0
+y = 8
+while True:
+    frame = (frame + 1) % 4
+    buttons = console.buttons()
+    if buttons & 4:
+        x += 1
+        facing = 1
+    elif buttons & 16:
+        x -= 1
+        facing = -1
+    man = MAN[frame // 2]
+    if facing > 0:
+        man = reversed(man)
+    console.blit(x, y, man, MAN_MASK)
+    console.update()
+    console.blit(x, y, DARK, MAN_MASK)
+    console.tick(50)
+
+```
+
+You can also see how you can easily mirror the sprites by calling
+"reversed" on their data. 
+

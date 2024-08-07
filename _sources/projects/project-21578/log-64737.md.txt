@@ -1,0 +1,57 @@
+---
+blogpost: true
+date: 2017-08-06
+category: project-21578
+---
+
+# Why not Raspberry Pi?
+Published on 2017-08-06 in {ref}`project-21578`.
+
+It seems that I have been blogged at  [https://hackaday.com/2017/08/06/hackaday-prize-best-product-finalist-
+pewpew/](https://hackaday.com/2017/08/06/hackaday-prize-best-product-finalist-pewpew/)  and there are some questions as to whether it makes sense to do what
+I do when there is already a Raspberry Pi and all its retro-console
+builds.
+
+Well, this is a little bit different. Sure, lots of game consoles
+using a Raspberry Pi out there. In fact, I have build one myself
+recently with {ref}`project-25256` and I have to say that it is great fun. But it's not very good for
+teaching for the following reasons (in no particular order):
+
+
+ 1. You have to start by teaching Linux. That's a challenge already.
+ 1. Long booting time.
+ 1. Short battery time.
+ 1. SD cards get damaged when you power it off without proper shutdown,
+and then random things start to happen.
+ 1. Setting up the screen and inputs is a complex and somewhat hacky
+process. Not something you want to teach to a group of 14 year olds.
+ 1. Lots of existing emulators and ready games for this system. That
+discourages from making your own.
+ 1. No really good and simple game programming library for Python,
+although PyGame Zero helps here.
+ 1. Relatively high-resolution color graphics forces you to find game art
+somewhere and distracts from making the actual game.
+ 1. Raspberry Pi is not that cheap, if you consider the cost of the SD
+card, the screen, the power source, all the cables and adapters, etc.
+
+On the other hand, I'm aiming at something that will be:
+
+
+ 1. Working out of the box, without special configuration. Connect to your
+computer, copy two files on it, and you are ready to play. Edit the
+files in place, and make your own game.
+ 1. Easy to fix. In the worst case just erase the memory, and you have
+your working device back.
+ 1. Simple. The library for it only has four functions (and one of them is
+for setting the brightness, so you don't even need to learn that one),
+and a single object with three methods. You can fit the documentation
+for that on a single page of paper.
+ 1. Portable. It's the size of an AA battery and runs on a single battery
+charge for hours.
+ 1. Powerful enough to be fun and engaging. 
+
+Of course, at some point you will want to switch to a real computer,
+pick up something like PyGame and continue from where you left, making
+more complex games. But I think this will be a really good stepping
+stone for starting.
+

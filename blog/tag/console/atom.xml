@@ -1,0 +1,369 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>http://deshipu.art/</id>
+  <title>deshipu.art - Posts tagged CONSole</title>
+  <updated>2024-08-07T20:31:59.499146+00:00</updated>
+  <link href="http://deshipu.art/"/>
+  <link href="http://deshipu.art/blog/tag/console/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-21578/</id>
+    <title>PewPew FeatherWing</title>
+    <updated>2017-04-29T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="pewpew-featherwing"&gt;
+
+&lt;p&gt;A shield for Adafruit Feather boards with buttons and a LED matrix display, for simple games.&lt;/p&gt;
+&lt;div class="project-thumb"&gt;
+&lt;a class="reference external image-reference" href="/_images/5291871493471689331.jpg"&gt;&lt;img alt="projects/project-21578/images/5291871493471689331.jpg" src="projects/project-21578/images/5291871493471689331.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/1414571501003318561.jpg"&gt;&lt;img alt="projects/project-21578/images/1414571501003318561.jpg" src="projects/project-21578/images/1414571501003318561.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/238851494965557079.jpg"&gt;&lt;img alt="projects/project-21578/images/238851494965557079.jpg" src="projects/project-21578/images/238851494965557079.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/1671981524002657232.jpg"&gt;&lt;img alt="projects/project-21578/images/1671981524002657232.jpg" src="projects/project-21578/images/1671981524002657232.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/1734091525792538997.jpg"&gt;&lt;img alt="projects/project-21578/images/1734091525792538997.jpg" src="projects/project-21578/images/1734091525792538997.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/8067841525792523707.jpg"&gt;&lt;img alt="projects/project-21578/images/8067841525792523707.jpg" src="projects/project-21578/images/8067841525792523707.jpg" /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Game programming is hard. Sure, you can easily throw together
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;something in RPGMaker, RenPy or Unity3D, and it’s great – but you
+don’t actually know how it works inside. There is a certain skill
+required to go from scratch, write your own main loop, handle events,
+push the pixels, etc.  Incidentally, the same exact skills are
+required when programming any other interactive system, such as a
+graphical user interface, an automatic appliance, a mobile art
+installation or… a robot! Those are going to be much more common in
+our lives soon. If we want to stay in control, we need to be able to
+program them ourselves, and for that we need those skills. They
+empower us and give us back the control over the technology.\&lt;/p&gt;
+&lt;p&gt;One great tool for teaching it is PyGame – which is a library, and
+not a game engine, so it forces you to attend to all those pesky
+details of game engine internals yourself. Which is a bit difficult,
+of course, but ultimately very useful. But even if you play with
+PyGame on the Raspberry Pi, it’s still a very complicated and
+difficult to understand system. The learning curve is steep, and
+debugging is hell.&lt;/p&gt;
+&lt;p&gt;Enter MicroPython, and one of its flavors, CircuitPython. It’s written
+by the people at Adafruit with the education in mind, but it runs on
+infinitely simpler devices than your average computer. Devices which
+you can’t break easily, because reflashing the program will reset them
+to a known good state. Devices which run on batteries for hours, and
+which you can carry in your pocket. Devices, for which there is a
+plethora of add-ons and sensors that you could make use of in your
+game.&lt;/p&gt;
+&lt;p&gt;However, as of yet, there is no game library and/or add-on that would
+allow to easily create games in CircuitPython. This project is an
+attempt to fix this.\&lt;/p&gt;
+&lt;iframe style="width: 500px; height: 281px;" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/Ad4hccVy9C8"&gt;&lt;/iframe&gt;
+&lt;section id="logs"&gt;
+&lt;h2&gt;Logs&lt;/h2&gt;
+&lt;ul class="postlist-style-none postlist simple"&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-07-18 - &lt;a class="reference internal" href="../../../projects/project-21578/log-165851/"&gt;Buttons&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-07-15 - &lt;a class="reference internal" href="../../../projects/project-21578/log-165753/"&gt;D1 Mini Shield&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-10-23 - &lt;a class="reference internal" href="../../../projects/project-21578/log-155174/"&gt;Replaced by PewPew Standalone&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-07-14 - &lt;a class="reference internal" href="../../../projects/project-21578/log-149325/"&gt;Making it Cheaper Again&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-05-08 - &lt;a class="reference internal" href="../../../projects/project-21578/log-145952/"&gt;PewPew Lite Version 4.2&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-04-18 - &lt;a class="reference internal" href="../../../projects/project-21578/log-144381/"&gt;Version 5.1&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-02-23 - &lt;a class="reference internal" href="../../../projects/project-21578/log-100304/"&gt;LAMEBOY Playing PewPew Games&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-12-06 - &lt;a class="reference internal" href="../../../projects/project-21578/log-71294/"&gt;The Aisler Saga, Part 2&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-11-02 - &lt;a class="reference internal" href="../../../projects/project-21578/log-69951/"&gt;Sanity Check&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-10-24 - &lt;a class="reference internal" href="../../../projects/project-21578/log-69616/"&gt;Version 4.2&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-10-22 - &lt;a class="reference internal" href="../../../projects/project-21578/log-69580/"&gt;PyWeek Failure&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-10-15 - &lt;a class="reference internal" href="../../../projects/project-21578/log-68872/"&gt;PyWeek, Here I Come&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-10-15 - &lt;a class="reference internal" href="../../../projects/project-21578/log-68839/"&gt;PewPew 4.1&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-10-14 - &lt;a class="reference internal" href="../../../projects/project-21578/log-68755/"&gt;Boards from Aisler&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-10-13 - &lt;a class="reference internal" href="../../../projects/project-21578/log-68671/"&gt;Contest Video&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-10-03 - &lt;a class="reference internal" href="../../../projects/project-21578/log-68179/"&gt;Struggling with BOM&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-10-03 - &lt;a class="reference internal" href="../../../projects/project-21578/log-68189/"&gt;GamePad module and Trinket M0 Haxpress&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-10-02 - &lt;a class="reference internal" href="../../../projects/project-21578/log-68146/"&gt;Replicating the Trinket M0 Express Hack&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-09-29 - &lt;a class="reference internal" href="../../../projects/project-21578/log-67973/"&gt;Custom CircuitPython&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-09-26 - &lt;a class="reference internal" href="../../../projects/project-21578/log-67808/"&gt;License&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-09-24 - &lt;a class="reference internal" href="../../../projects/project-21578/log-67692/"&gt;Some Fixes&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-09-23 - &lt;a class="reference internal" href="../../../projects/project-21578/log-67618/"&gt;PewPew 3.0 Standalone&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-09-17 - &lt;a class="reference internal" href="../../../projects/project-21578/log-67292/"&gt;Tetris&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-09-15 - &lt;a class="reference internal" href="../../../projects/project-21578/log-67200/"&gt;Homebrew Trinket M0&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-09-11 - &lt;a class="reference internal" href="../../../projects/project-21578/log-66939/"&gt;Maker Faire Zürich&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-09-07 - &lt;a class="reference internal" href="../../../projects/project-21578/log-66813/"&gt;The Store is Live&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-09-07 - &lt;a class="reference internal" href="../../../projects/project-21578/log-66778/"&gt;More Quality Control&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-09-06 - &lt;a class="reference internal" href="../../../projects/project-21578/log-66752/"&gt;First Production Boards&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-08-30 - &lt;a class="reference internal" href="../../../projects/project-21578/log-66069/"&gt;Documentation&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-08-29 - &lt;a class="reference internal" href="../../../projects/project-21578/log-66034/"&gt;Quality Control&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-08-15 - &lt;a class="reference internal" href="../../../projects/project-21578/log-65171/"&gt;Final version for the PewPew Lite&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-08-10 - &lt;a class="reference internal" href="../../../projects/project-21578/log-64925/"&gt;Displays Are Hard&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-08-07 - &lt;a class="reference internal" href="../../../projects/project-21578/log-64774/"&gt;PewPew Lite Version 4.0&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-08-06 - &lt;a class="reference internal" href="../../../projects/project-21578/log-64737/"&gt;Why not Raspberry Pi?&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-08-06 - &lt;a class="reference internal" href="../../../projects/project-21578/log-64741/"&gt;The Library&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-08-05 - &lt;a class="reference internal" href="../../../projects/project-21578/log-64667/"&gt;Thinking about PewPew 2&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-07-25 - &lt;a class="reference internal" href="../../../projects/project-21578/log-64205/"&gt;Prototypes&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-07-24 - &lt;a class="reference internal" href="../../../projects/project-21578/log-64091/"&gt;BOM Updated for PewPew Lite&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-07-23 - &lt;a class="reference internal" href="../../../projects/project-21578/log-63758/"&gt;Scrolling and Text&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-07-23 - &lt;a class="reference internal" href="../../../projects/project-21578/log-63767/"&gt;Business Plan&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-07-21 - &lt;a class="reference internal" href="../../../projects/project-21578/log-63612/"&gt;The Challenge&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-07-19 - &lt;a class="reference internal" href="../../../projects/project-21578/log-63466/"&gt;First CircuitPython Program&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-07-17 - &lt;a class="reference internal" href="../../../projects/project-21578/log-63230/"&gt;PewPew Lite Assembled&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-07-05 - &lt;a class="reference internal" href="../../../projects/project-21578/log-62595/"&gt;PewPew Lite Schematic&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-07-03 - &lt;a class="reference internal" href="../../../projects/project-21578/log-62471/"&gt;PewPew Lite&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-06-18 - &lt;a class="reference internal" href="../../../projects/project-21578/log-61802/"&gt;Version 1.5&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-05-31 - &lt;a class="reference internal" href="../../../projects/project-21578/log-60531/"&gt;Sound&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-05-16 - &lt;a class="reference internal" href="../../../projects/project-21578/log-59690/"&gt;ESP8266 GPIOs Suck&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-05-13 - &lt;a class="reference internal" href="../../../projects/project-21578/log-59512/"&gt;Version 1.4&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-05-10 - &lt;a class="reference internal" href="../../../projects/project-21578/log-59296/"&gt;Prototyping&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-05-01 - &lt;a class="reference internal" href="../../../projects/project-21578/log-58739/"&gt;The Display&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-05-01 - &lt;a class="reference internal" href="../../../projects/project-21578/log-58783/"&gt;The Concept&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-05-01 - &lt;a class="reference internal" href="../../../projects/project-21578/log-58741/"&gt;The Buttons&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-05-01 - &lt;a class="reference internal" href="../../../projects/project-21578/log-58784/"&gt;Ghosting&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section id="instructions"&gt;
+&lt;h2&gt;Instructions&lt;/h2&gt;
+&lt;section id="trim-the-matrix"&gt;
+&lt;h3&gt;Trim the matrix&lt;/h3&gt;
+&lt;p&gt;Use wire cutters to cut off the excess pins, as flat against the board
+as possible.&lt;/p&gt;
+&lt;img alt="projects/project-21578/images/6292041502800678061.jpg" src="projects/project-21578/images/6292041502800678061.jpg" /&gt;
+&lt;/section&gt;
+&lt;hr class="docutils" /&gt;
+&lt;section id="add-a-battery-optional"&gt;
+&lt;h3&gt;Add a battery (optional)&lt;/h3&gt;
+&lt;p&gt;If you have a small battery (I used 110mAh), you can add it on the
+back of the board.&lt;/p&gt;
+&lt;img alt="projects/project-21578/images/1304421502800738814.jpg" src="projects/project-21578/images/1304421502800738814.jpg" /&gt;
+&lt;/section&gt;
+&lt;hr class="docutils" /&gt;
+&lt;section id="cut-the-wires"&gt;
+&lt;h3&gt;Cut the wires&lt;/h3&gt;
+&lt;p&gt;Cut the battery wires to about 0.5cm. Be careful to cut them one at a
+time, otherwise your cutters will short the battery and make sparks
+fly.&lt;/p&gt;
+&lt;img alt="projects/project-21578/images/4215711502800798345.jpg" src="projects/project-21578/images/4215711502800798345.jpg" /&gt;
+&lt;/section&gt;
+&lt;hr class="docutils" /&gt;
+&lt;section id="prepare-wires"&gt;
+&lt;h3&gt;Prepare wires&lt;/h3&gt;
+&lt;p&gt;Carefully remove the insulation and tin the ends of the wires. Be
+careful to not short them.&lt;/p&gt;
+&lt;img alt="projects/project-21578/images/5447851502800878302.jpg" src="projects/project-21578/images/5447851502800878302.jpg" /&gt;
+&lt;/section&gt;
+&lt;hr class="docutils" /&gt;
+&lt;section id="solder-battery"&gt;
+&lt;h3&gt;Solder battery&lt;/h3&gt;
+&lt;p&gt;Solder the wires to the holes marked + (red wire) and - (black wire).&lt;/p&gt;
+&lt;img alt="projects/project-21578/images/7973941502800944466.jpg" src="projects/project-21578/images/7973941502800944466.jpg" /&gt;
+&lt;/section&gt;
+&lt;hr class="docutils" /&gt;
+&lt;section id="add-tape"&gt;
+&lt;h3&gt;Add tape&lt;/h3&gt;
+&lt;p&gt;Use a piece of two-sided tape to hold the battery in place, to prevent
+it from shorting the matrix pins, and to protect it from being damaged
+by the sharp pin leftovers sticking from the board.&lt;/p&gt;
+&lt;img alt="projects/project-21578/images/8300181502801002830.jpg" src="projects/project-21578/images/8300181502801002830.jpg" /&gt;
+&lt;/section&gt;
+&lt;hr class="docutils" /&gt;
+&lt;section id="more-tape"&gt;
+&lt;h3&gt;More tape&lt;/h3&gt;
+&lt;p&gt;Also add some tape on top, to prevent shorts on the Feather side.&lt;/p&gt;
+&lt;img alt="projects/project-21578/images/2308801502801085535.jpg" src="projects/project-21578/images/2308801502801085535.jpg" /&gt;
+&lt;/section&gt;
+&lt;hr class="docutils" /&gt;
+&lt;section id="finished"&gt;
+&lt;h3&gt;Finished&lt;/h3&gt;
+&lt;p&gt;The board is finished and ready to be programmed.&lt;/p&gt;
+&lt;img alt="projects/project-21578/images/7638691502801149553.jpg" src="projects/project-21578/images/7638691502801149553.jpg" /&gt;
+&lt;/section&gt;
+&lt;hr class="docutils" /&gt;
+&lt;section id="solder-paste-for-the-buttons"&gt;
+&lt;h3&gt;Solder paste for the buttons&lt;/h3&gt;
+&lt;p&gt;Heat the board a little bit with your hot-air station, and then apply
+the soldering paste on all the button pads.\&lt;/p&gt;
+&lt;img alt="projects/project-21578/images/8859541502799266028.jpg" src="projects/project-21578/images/8859541502799266028.jpg" /&gt;
+&lt;/section&gt;
+&lt;hr class="docutils" /&gt;
+&lt;section id="place-buttons"&gt;
+&lt;h3&gt;Place buttons&lt;/h3&gt;
+&lt;p&gt;Place the buttons in they correct positions. Be careful to align them
+properly, as the surface tension of the solder will not be enough to
+move them.&lt;/p&gt;
+&lt;img alt="projects/project-21578/images/852401502799357886.jpg" src="projects/project-21578/images/852401502799357886.jpg" /&gt;
+&lt;/section&gt;
+&lt;hr class="docutils" /&gt;
+&lt;section id="solder-buttons"&gt;
+&lt;h3&gt;Solder buttons&lt;/h3&gt;
+&lt;p&gt;Apply the hot air to solder the buttons. Be careful to not melt the
+plastic caps.&lt;/p&gt;
+&lt;img alt="projects/project-21578/images/60381502799483071.jpg" src="projects/project-21578/images/60381502799483071.jpg" /&gt;
+&lt;/section&gt;
+&lt;hr class="docutils" /&gt;
+&lt;section id="solder-paste-for-the-components"&gt;
+&lt;h3&gt;Solder paste for the components&lt;/h3&gt;
+&lt;p&gt;Flip the board, and apply the solder paste to all the pads on the
+other side.&lt;/p&gt;
+&lt;img alt="projects/project-21578/images/1689841502799551428.jpg" src="projects/project-21578/images/1689841502799551428.jpg" /&gt;
+&lt;/section&gt;
+&lt;hr class="docutils" /&gt;
+&lt;section id="place-components"&gt;
+&lt;h3&gt;Place components&lt;/h3&gt;
+&lt;p&gt;Place the components. Make sure to align the chip properly — it is
+also too big to move with the surface tension. Pay attention to the
+resistor values.&lt;/p&gt;
+&lt;img alt="projects/project-21578/images/1868381502799628098.jpg" src="projects/project-21578/images/1868381502799628098.jpg" /&gt;
+&lt;/section&gt;
+&lt;hr class="docutils" /&gt;
+&lt;section id="solder-components"&gt;
+&lt;h3&gt;Solder components&lt;/h3&gt;
+&lt;p&gt;Apply the hot air. Be careful to not blow the resistors away.&lt;/p&gt;
+&lt;img alt="projects/project-21578/images/5189601502799684142.jpg" src="projects/project-21578/images/5189601502799684142.jpg" /&gt;
+&lt;/section&gt;
+&lt;hr class="docutils" /&gt;
+&lt;section id="remove-bridges"&gt;
+&lt;h3&gt;Remove bridges&lt;/h3&gt;
+&lt;p&gt;Use a suction tool or a copper wick to remove any solder bridges you
+might have gotten, like in this case between the first and second pins
+of the chip.&lt;/p&gt;
+&lt;img alt="projects/project-21578/images/9291301502799748592.jpg" src="projects/project-21578/images/9291301502799748592.jpg" /&gt;
+&lt;/section&gt;
+&lt;hr class="docutils" /&gt;
+&lt;section id="insert-headers"&gt;
+&lt;h3&gt;Insert headers&lt;/h3&gt;
+&lt;p&gt;We are going for a low profile look, so we will solder the headers in
+reverse. Insert the male headers from the top, long side down.&lt;/p&gt;
+&lt;img alt="projects/project-21578/images/8653911502799855822.jpg" src="projects/project-21578/images/8653911502799855822.jpg" /&gt;
+&lt;/section&gt;
+&lt;hr class="docutils" /&gt;
+&lt;section id="solder-headers"&gt;
+&lt;h3&gt;Solder headers&lt;/h3&gt;
+&lt;p&gt;Now flip the board and solder each pin in place. Make sure to not use
+too much solder and make the joint as flat as possible. Use a suction
+tool or a wick to remove excess solder.&lt;/p&gt;
+&lt;img alt="projects/project-21578/images/8757581502799952286.jpg" src="projects/project-21578/images/8757581502799952286.jpg" /&gt;
+&lt;/section&gt;
+&lt;hr class="docutils" /&gt;
+&lt;section id="remove-plastic-from-headers"&gt;
+&lt;h3&gt;Remove plastic from headers&lt;/h3&gt;
+&lt;p&gt;Once the headers are all soldered, you can remove the plastic that
+held them together. Use wire cutters or tweezers to pry it off. Be
+careful to not damage the buttons in the process.&lt;/p&gt;
+&lt;img alt="projects/project-21578/images/9162981502800043770.jpg" src="projects/project-21578/images/9162981502800043770.jpg" /&gt;
+&lt;/section&gt;
+&lt;hr class="docutils" /&gt;
+&lt;section id="trim-the-headers"&gt;
+&lt;h3&gt;Trim the headers&lt;/h3&gt;
+&lt;p&gt;Trim the pins, so that the top of the board is completely flat.&lt;/p&gt;
+&lt;img alt="projects/project-21578/images/8829621502800133375.jpg" src="projects/project-21578/images/8829621502800133375.jpg" /&gt;
+&lt;/section&gt;
+&lt;hr class="docutils" /&gt;
+&lt;section id="put-the-plastic-back-on-optional"&gt;
+&lt;h3&gt;Put the plastic back on (optional)&lt;/h3&gt;
+&lt;p&gt;If you are going to use the low-profile female headers on your Feather
+boards, you can put the plastic back on the pins, since they only need
+to stick out very little. If you are using regular headers, leave the
+plastic off, this way the pins can go deeper into the female headers
+and the whole thing will be thinner.&lt;/p&gt;
+&lt;img alt="projects/project-21578/images/3474201502800214697.jpg" src="projects/project-21578/images/3474201502800214697.jpg" /&gt;
+&lt;/section&gt;
+&lt;hr class="docutils" /&gt;
+&lt;section id="insert-the-matrix"&gt;
+&lt;h3&gt;Insert the matrix&lt;/h3&gt;
+&lt;p&gt;Insert the bi-color LED matrix into the holes. Make sure to make the
+text on the matrix face down, as pictured here. You will need to use
+your tweezers to make every pin fit into its hole. It takes some
+patience.&lt;/p&gt;
+&lt;img alt="projects/project-21578/images/8546931502800346621.jpg" src="projects/project-21578/images/8546931502800346621.jpg" /&gt;
+&lt;/section&gt;
+&lt;hr class="docutils" /&gt;
+&lt;section id="push-the-matrix"&gt;
+&lt;h3&gt;Push the matrix&lt;/h3&gt;
+&lt;p&gt;Push the matrix against a soft surface until it’s flush with the
+board. Don’t use too much force, or you will break the board or
+scratch the matrix.&lt;/p&gt;
+&lt;img alt="projects/project-21578/images/5439921502800449941.jpg" src="projects/project-21578/images/5439921502800449941.jpg" /&gt;
+&lt;/section&gt;
+&lt;hr class="docutils" /&gt;
+&lt;section id="solder-the-matrix"&gt;
+&lt;h3&gt;Solder the matrix&lt;/h3&gt;
+&lt;p&gt;Solder all of the pins on the back side. Start with the side ones, and
+then do the middle.&lt;/p&gt;
+&lt;img alt="projects/project-21578/images/5438501502800560205.jpg" src="projects/project-21578/images/5438501502800560205.jpg" /&gt;
+&lt;/section&gt;
+&lt;/section&gt;
+&lt;hr class="docutils" /&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-21578/" rel="alternate"/>
+    <summary>A shield for Adafruit Feather boards with buttons and a LED matrix display, for simple games.</summary>
+    <category term="2017HackadayPrize" label="2017HackadayPrize"/>
+    <category term="CONSole" label="CONSole"/>
+    <category term="ESP8266" label="ESP8266"/>
+    <category term="Feather" label="Feather"/>
+    <category term="adafruit" label="adafruit"/>
+    <category term="blinkenlighten" label="blinkenlighten"/>
+    <category term="featherwing" label="featherwing"/>
+    <category term="game" label="game"/>
+    <category term="gaming" label="gaming"/>
+    <category term="hardware" label="hardware"/>
+    <category term="led" label="led"/>
+    <category term="matrix" label="matrix"/>
+    <category term="ongoingproject" label="ongoing project"/>
+    <category term="play" label="play"/>
+    <category term="wing" label="wing"/>
+    <published>2017-04-29T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-27757/</id>
+    <title>Micro:Boy</title>
+    <updated>2017-10-15T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="micro-boy"&gt;
+
+&lt;p&gt;Arcade games on the Micro:bit&lt;/p&gt;
+&lt;div class="project-thumb"&gt;
+&lt;a class="reference external image-reference" href="/_images/7354261515360205991.jpg"&gt;&lt;img alt="projects/project-27757/images/7354261515360205991.jpg" src="projects/project-27757/images/7354261515360205991.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/3762871516221178379.jpg"&gt;&lt;img alt="projects/project-27757/images/3762871516221178379.jpg" src="projects/project-27757/images/3762871516221178379.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/9897221516920665977.jpg"&gt;&lt;img alt="projects/project-27757/images/9897221516920665977.jpg" src="projects/project-27757/images/9897221516920665977.jpg" /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;The Micro:bit is a pretty decent platform for teaching kids to
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;program, but you can’t really make arcade-style games for it. You only
+have two buttons and a 5x5 display. Perhaps enough for a very small
+snake game, but that’s pretty much it. That’s why I started working on &lt;a class="reference internal" href="../../../projects/project-21578/#project-21578"&gt;&lt;span class="std std-ref"&gt;PewPew FeatherWing&lt;/span&gt;&lt;/a&gt; as an alternative platform, but at some point I started wondering if
+it’s really impossible to do it on the micro:bit.&lt;/p&gt;
+&lt;p&gt;When the most recent version of micropython got the ability to use any
+pins for I2C, I realized that I can finally connect a display easily.
+I could use a HT16K33 and a 8x8 LED matrix like on the PewPew, but I
+decided to try something else — a monochrome OLED display, similar to
+the one used on many Arduino-based game consoles.&lt;/p&gt;
+&lt;section id="logs"&gt;
+&lt;h2&gt;Logs&lt;/h2&gt;
+&lt;ul class="postlist-style-none postlist simple"&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-01-25 - &lt;a class="reference internal" href="../../../projects/project-27757/log-84157/"&gt;MemoryError&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-01-20 - &lt;a class="reference internal" href="../../../projects/project-27757/log-78338/"&gt;Progress on a Game&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-01-18 - &lt;a class="reference internal" href="../../../projects/project-27757/log-77209/"&gt;Why Separate Button Controller?&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-01-17 - &lt;a class="reference internal" href="../../../projects/project-27757/log-77038/"&gt;Button Controller&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-01-09 - &lt;a class="reference internal" href="../../../projects/project-27757/log-72743/"&gt;Advanced Spriting&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-01-08 - &lt;a class="reference internal" href="../../../projects/project-27757/log-72667/"&gt;Blit&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-01-07 - &lt;a class="reference internal" href="../../../projects/project-27757/log-72626/"&gt;Some Progress&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-12-17 - &lt;a class="reference internal" href="../../../projects/project-27757/log-71654/"&gt;After All it Works!&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-12-15 - &lt;a class="reference internal" href="../../../projects/project-27757/log-71591/"&gt;Restart&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-11-30 - &lt;a class="reference internal" href="../../../projects/project-27757/log-71054/"&gt;Special Bolts&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-11-18 - &lt;a class="reference internal" href="../../../projects/project-27757/log-70648/"&gt;Shield Connectors&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-10-15 - &lt;a class="reference internal" href="../../../projects/project-27757/log-68977/"&gt;Quick and Dirty&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-10-15 - &lt;a class="reference internal" href="../../../projects/project-27757/log-68976/"&gt;Basic Display&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section id="instructions"&gt;
+&lt;h2&gt;Instructions&lt;/h2&gt;
+&lt;/section&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-27757/" rel="alternate"/>
+    <summary>Arcade games on the Micro:bit</summary>
+    <category term="CONSole" label="CONSole"/>
+    <category term="arcade" label="arcade"/>
+    <category term="completedproject" label="completed project"/>
+    <category term="game" label="game"/>
+    <category term="games" label="games"/>
+    <category term="hardware" label="hardware"/>
+    <category term="micro:bit" label="micro:bit"/>
+    <category term="microbit" label="microbit"/>
+    <category term="micropython" label="micropython"/>
+    <category term="python" label="python"/>
+    <published>2017-10-15T00:00:00+02:00</published>
+  </entry>
+</feed>

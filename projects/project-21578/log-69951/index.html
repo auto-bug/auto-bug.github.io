@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Sanity Check - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="sanity-check">
+<h1>Sanity Check<a class="headerlink" href="#sanity-check" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2017-11-02 in <a class="reference internal" href="../#project-21578"><span class="std std-ref">PewPew FeatherWing</span></a>.</p>
+<p>It’s important to periodically revise the project’s goals, both to see
+if they are still relevant, and to adjust the course of the project to
+better fulfill them. It’s time to do this for PewPew. I recently did
+that for PewPew.</p>
+<p>The last change in course of the project was almost two months ago,
+after the Mini Maker Faire Zürich, when I decided that while PewPew
+Lite seems functional enough, it costs up to $40 to get all the parts
+together — the feathers, the battery and the PewPew Lite itself. Then
+I identified the feather board as the most costly part of the whole,
+and one that I don’t have any control over. So I decided to try and
+get rid of that part by designing a standalone version of PewPew.</p>
+<p>I have to note here, that nobody was complaining about the price, they
+were, however, complaining about the fact that they have to buy
+separate things in separate places. Making PewPew standalone would
+also solve that problem.</p>
+<p>I produced four different prototypes for that, with a design for the
+fifth already on my disk and prepared for ordering. I initially used a
+smaller PCB, but after struggling with fitting everything on it, I
+switched back to the Feather form factor, and after <a class="reference external" href="https://hackaday.io/hacker/3459">&#64;davedarko </a> recently pointed out that I can make it bigger and use the bigger LED
+matrices, I designed yet another version, shaped more like the
+GameBoy.</p>
+<img alt="projects/project-21578/images/5932041509616166297.png" src="projects/project-21578/images/5932041509616166297.png" />
+<p>But then, in the mean time, I also worked on  <a class="reference internal" href="../../project-27629/#project-27629"><span class="std std-ref">µGame</span></a> — and I realized that the ST7735R 128x128 RGB display on it is cheaper
+than the IS31FL3733 chip I use for driving the LED matrix, not to
+mention the LED matrix itself. And it was trivial to make the PewPew
+games run on µGame too.</p>
+<p>Sure, the LED matrix has a lot of advantages compared to the TFT
+display. It has excellent brightness and viewing angles, while not
+using a lot of battery power. It’s made of plastic, not glass, and
+therefore it’s very hard to damage, even when carried in the pocket.
+Its low resolution and limited colors impose restrictions that
+stimulate creativity and make it actually much easier to finish the
+game. But the display also has advantages over the LED matrix. It’s
+bigger, has more colors, lets me use cute graphics for the “pixels”,
+doesn’t require me to route dozens of tiny traces or solder TQFP48
+packages with insane pitches, is very common and easy to source and
+looks more like a “real” game console. It also lets me display text in
+a readable form, which is great for things like error messages.</p>
+<p>I don’t want to merge the µGame and PewPew into one project — PewPew
+has very well defined goals that are different from the “for fun”
+nature of µGame. But I think that it doesn’t actually make much sense
+to have an “advanced” version of PewPew, when µGame exists. So I won’t
+be ordering that last prototype. Instead, I made one last version of
+the PewPew Lite shield, with only one small change — replacing all the
+resistors on it with resistor arrays, reducing the number of parts
+from 17 to 11, and making it better suited for eventual fabrication. I
+will wait for it to sell out on Tindie, and order another batch, and
+in the mean time I will work on the workshops.</p>
+<p>Honestly speaking, PewPew Lite is really good for the goals of this
+project, and the standalone version doesn’t really add much. And after
+looking into assembly services and the prices for them, I realized
+that I can’t really make it much cheaper than the feathers — not so
+much that it will matter. Maybe I could get it down to $30 or $25, but
+I’m not sure it’s worth it. And the extra features, like more colors
+and sound, are not really adding much to the project goals — they are
+more of a distraction.</p>
+<p>So I will stick to the PewPew Lite and work on the content from now
+on. And new features and developments are going to go into µGame,
+which is more of an experimental project, without clearly defined
+goals.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

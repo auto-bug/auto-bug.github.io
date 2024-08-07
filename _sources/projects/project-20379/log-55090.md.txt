@@ -1,0 +1,84 @@
+---
+blogpost: true
+date: 2017-03-18
+category: project-20379
+---
+
+# Code
+Published on 2017-03-18 in {ref}`project-20379`.
+
+I have the basic code for the inverse kinematics of the robot working:
+
+
+```python
+import math
+from machine import I2C, Pin
+import servo
+
+
+PI2 = math.pi / 2
+PI3 = math.pi / 3
+
+
+class Robot:
+    ARM_LENGTH = 42
+    ROD_LENGTH = 134
+    HUB_LENGTH = 27
+    BASE_LENGTH = 62
+
+    BASE_X = (
+        0,
+        (BASE_LENGTH - HUB_LENGTH) * math.sin(2 * PI3),
+        (BASE_LENGTH - HUB_LENGTH) * math.sin(4 * PI3),
+    )
+    BASE_Y = (
+        BASE_LENGTH - HUB_LENGTH,
+        (BASE_LENGTH - HUB_LENGTH) * math.cos(2 * PI3),
+        (BASE_LENGTH - HUB_LENGTH) * math.cos(4 * PI3),
+    )
+
+    def __init__(self):
+        self.i2c = I2C(-1, Pin(5), Pin(4))
+        self.servos = servo.Servos(self.i2c, min_us=700, max_us=2400,
+                                   degrees=180)
+        self.trims = (0, -0.1, -0.2)
+
+    def home(self):
+        self.move(0, 0)
+        self.move(1, 0)
+        self.move(2, 0)
+
+    def move(self, arm, radians):
+        radians += self.trims[arm] + PI2
+        self.servos.position(arm, radians=radians)
+
+    def arm_ik(self, distance):
+        alpha = math.acos(
+            (self.BASE_LENGTH - self.HUB_LENGTH) /
+            (distance)
+        )
+        beta = math.acos(
+            (distance ** 2 + self.ARM_LENGTH ** 2 - self.ROD_LENGTH ** 2) /
+            (2 * self.ARM_LENGTH * distance)
+        )
+        return math.pi - alpha - beta
+
+    def robot_ik(self, x, y, z):
+        return tuple(math.sqrt(
+            (self.BASE_X[arm] - x) ** 2 +
+            (self.BASE_Y[arm] - y) ** 2 +
+            z ** 2
+        ) for arm in (0, 1, 2))
+
+    def move_to(self, x, y, z):
+        for arm, distance in enumerate(self.robot_ik(x, y, z)):
+            self.move(arm, self.arm_ik(distance))
+
+```
+
+As you can see, shifting the servo by the width of the hub greatly
+simplified the equations. I am pretty happy with how it works --
+managed to draw a circle on a piece of paper, and the circle is
+actually round. One thing is strange, though -- the circle was
+supposed to have 5cm radius, but it's around 2cm instead... I might
+have an error there somewhere. I will keep experimenting with it.

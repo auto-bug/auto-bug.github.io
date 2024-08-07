@@ -1,0 +1,39 @@
+---
+blogpost: true
+date: 2017-12-02
+category: project-27629
+---
+
+# Battery Life
+Published on 2017-12-02 in {ref}`project-27629`.
+
+Since I entered this into the #Coin Cell Challenge, I'd better write
+something about the battery power. All the prototypes so far have on
+their back a socket for a LIR2302 battery, and a built-in charging
+circuit. The later prototypes also have connectors for other
+batteries.
+
+
+
+:::{image} images/2425191512171523604.jpg
+
+:::
+
+
+The 40mAh LIR2302 lets you play for about... 40 minutes. I didn't add
+any sound to any of my games yet (thought I did test that it works
+well with wav files) — I expect that using sounds will shorten the
+play time somewhat.\
+
+
+The charging circuit has been limited to around 40mA, so that it won't
+damage the tiny batteries.
+
+It is possible to use a different LiPo battery than the coin cells.
+For example, a battery from a small cellphone (not smartphone) works
+well, especially since it's about the same size as the device and
+nicely fits flat on the back. In such case it's recommended to replace
+the current-setting resistor in the battery charging circuit to a 10kΩ
+(for 100mAh battery) or even 5kΩ (for 200mAh battery or larger), for
+faster charging.
+

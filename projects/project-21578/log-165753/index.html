@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>D1 Mini Shield - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="d1-mini-shield">
+<h1>D1 Mini Shield<a class="headerlink" href="#d1-mini-shield" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2019-07-15 in <a class="reference internal" href="../#project-21578"><span class="std std-ref">PewPew FeatherWing</span></a>.</p>
+<p>I have been mostly working on the <span class="xref std std-ref">project-159733</span> recently, but some people still prefer the PewPew Lite version, mostly
+for its color display and ability to work with the ESP8266 Feather. So
+after I finally found reasonably tiny buttons for <span class="xref std std-ref">project-165983</span> , I decided to also make a version of the PewPew Lite in form of a D1
+Mini shield. As an additional challenge I wanted to make it
+electrically identical to the FeatherWing. After two nights, I had the
+design:</p>
+<img alt="projects/project-21578/images/3869751563223148383.png" src="projects/project-21578/images/3869751563223148383.png" />
+<img alt="projects/project-21578/images/4679431563223184652.png" src="projects/project-21578/images/4679431563223184652.png" />
+<p>It’s not perfect. Ideally, all the resistors would be under the LED
+matrix, but there simply wasn’t enough room to fit all the traces
+there. But I managed to do it, even if it required a thousand vias. <a class="reference external" href="https://oshpark.com/shared_projects/i3DM7Qay">I ordered the PCB from OSHPark</a> , and promptly forgot about the whole thing.</p>
+<p>Today the boards came, so I assembled one. I found a bi-color matrix
+in my drawer, but I only found 3 of the buttons — I’m still waiting
+for the package with more of them. So I only soldered what I had, to
+test how the menu works:</p>
+<img alt="projects/project-21578/images/2511091563223374398.JPG" src="projects/project-21578/images/2511091563223374398.JPG" />
+<p>Since CircuitPython no longer supports ESP8266, I had to port the Pew
+library to MicroPython — that was easy enough, with just changing all
+the timing functions to use utime, and all i2c calls to use the
+machine module. After I did that, I wanted to upload the code to
+GitHub, <a class="reference external" href="https://github.com/pewpew-game/pew-pewpewlite-4.x-micropython">but discovered that it’s already there</a>  — I have ported it once already and forgot about it.</p>
+<p>Once the missing button arrive I will finish this.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

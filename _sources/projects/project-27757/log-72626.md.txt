@@ -1,0 +1,43 @@
+---
+blogpost: true
+date: 2018-01-07
+category: project-27757
+---
+
+# Some Progress
+Published on 2018-01-07 in {ref}`project-27757`.
+
+The PCBs with the horizontal layout and display module arrived, so I
+assembled the new version:
+
+
+
+:::{image} images/1283961515359542650.jpg
+
+:::
+
+
+I'm happy with it mechanically. You don't touch the contacts when you
+hold it, and the two buttons on the micro:bit are right under your
+index fingers. It's wide enough to hold comfortably. The flattened
+d-pad is a bit less convenient than it could be if it was full-size,
+but I can't have everything. The coin battery fits inside the
+sandwich, and the whole thing the right thickness. I had to add some
+spacers to the bolts that hold the thing together, to make sure the
+spacing is right. You can both use through-hole bolts, or solder them
+to the pads — here I soldered them, but I think I will go with
+through-hole in the future.
+
+I'm still missing one crucial part — the attiny that will be handling
+the buttons is still on the slow boat from China. Seems like the
+holiday season was really tough on the post offices around the world,
+because everything takes longer now. I guess I won't be able to get
+this to work before the contest deadline.
+
+On an unrelated note, I think I figured out why I couldn't get that
+display to work reliably without a module. Turns out that after
+powering it, it requires to be reset by the physical reset pin. The
+datasheet's example schematics don't show it, but those modules have
+an R-C circuit on the reset pin to do that. Mine didn't, hence the
+problems. But I think I will stay with the modules for now anyways.
+

@@ -1,0 +1,42 @@
+---
+blogpost: true
+date: 2018-02-19
+category: project-21500
+---
+
+# Arduino Example
+Published on 2018-02-19 in {ref}`project-21500`.
+
+This is an example Arduino sketch that keeps reading from channel 0
+and printing the result on the serial console.
+
+
+```cpp
+#include <Wire.h>
+
+
+#define ADC_I2C_ADDRESS 0x35
+
+
+uint16_t readChannel(uint8_t channel) {
+    if (channel >= 12) {
+        return 0;
+    }
+    Wire.beginTransmission(ADC_I2C_ADDRESS);
+    Wire.write((channel << 1) | 0x61);
+    Wire.endTransmission(false);
+    Wire.requestFrom(ADC_I2C_ADDRESS, 2);
+    uint8_t high = Wire.read();
+    return ((high & 0x0f) << 8) | Wire.read();
+}
+
+void setup() {
+    Wire.begin();
+    Serial.begin(9600);
+}
+
+void loop() {
+    Serial.print(readChannel(0));
+}
+```
+

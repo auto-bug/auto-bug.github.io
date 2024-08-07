@@ -1,0 +1,83 @@
+---
+blogpost: true
+date: 2017-07-19
+category: project-21578
+---
+
+# First CircuitPython Program
+Published on 2017-07-19 in {ref}`project-21578`.
+
+Today I found one more bi-color matrix that I have left (more of them
+are ordered for the next version), and used it to assemble a second
+PewPew Lite. I'm really happy with how it works, and I'm considering
+switching entirely to the Lite version — four colors are enough for
+most games, and really simplify things.
+
+However, this time I decided to make it as flat as possible, so I used
+the 3mm female pin headers on the Feather board, and shortened the
+male headers. The effect:
+
+
+:::{image} images/4535321500501239899.jpg
+
+:::
+Unfortunately it can't get any flatter, because of the battery plug
+and the chip on the underside of the shield. But one centimeter is
+still quite good. I wonder if I can find a LiPo battery that would fit
+in the space between the boards -- but more likely I will just stick
+the battery on the bottom.
+
+I also wrote the driver for the CircuitPython (used MicroPython before
+that), and a simple drawing program:
+
+
+```python
+import pewpew
+import time
+pewpew.brightness(0)
+pewpew.show()
+x = 3
+y = 3
+color = 1
+hold = 0
+blink = False
+hold_keys = (pewpew.K_UP | pewpew.K_DOWN | pewpew.K_LEFT | pewpew.K_RIGHT |
+             pewpew.K_X)
+while True:
+    keys = pewpew.keys()
+    if not keys & hold_keys:
+        hold = 0
+    if keys & pewpew.K_UP:
+        y = max(0, y - 1)
+    elif keys & pewpew.K_DOWN:
+        y = min(7, y + 1)
+    if keys & pewpew.K_LEFT:
+        x = max(0, x - 1)
+    elif keys & pewpew.K_RIGHT:
+        x = min(7, x + 1)
+    back = pewpew.pixel(x, y)
+    if keys & pewpew.K_O:
+        back = color
+    if keys & pewpew.K_X:
+        color = (color + 1) % 4
+    if blink:
+        pewpew.pixel(x, y, color)
+    elif back == color:
+        pewpew.pixel(x, y, (color + 1) % 4)
+    else:
+        pewpew.pixel(x, y, back)
+    blink = not blink
+    pewpew.show()
+    pewpew.pixel(x, y, back)
+    while pewpew.keys() & hold_keys and hold < 15:
+        time.sleep(0.025)
+        hold += 1
+    time.sleep(0.125)
+```
+
+As you can see, most of the code is dedicated to handling keys,
+including the repeating when a key is held down. The library is very
+bare bones for now, but I like the simplicity. I will probably need to
+add a function to display text, and some functions for scrolling
+around.
+

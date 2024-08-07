@@ -1,0 +1,44 @@
+---
+blogpost: true
+date: 2017-07-24
+category: project-20941
+---
+
+# Equalizer on the IS31FL3728
+Published on 2017-07-24 in {ref}`project-20941`.
+
+I recently got a hot air rework station (a cheap Chinese one), which
+allowed me to revisit some of my failed assemblies with the QFN chips,
+and fix them. Yes, the problems I had were partly due to missing
+filtering capacitors, but also due to bad soldering. With the hot air
+I'm getting 100% success rate, which is a 100% improvement from the
+manual method. Yay.
+
+One of the boards I re-did was a breakout for the IS32FL3728 chip with
+the audio pin broken out. Since I also had a small microphone breakout
+at hand, I decided to try the equalizer mode of that chip. There are
+some good and some bad news.
+
+The good news is that it works pretty nicely, blinking the LEDs in
+time with the sound. The bad news is that since I completely scrambled
+the order of rows and columns, for easier routing, and then fixed id
+in software, the hardware equalizer, which doesn't know anything about
+my row/column remapping, doesn't really look like a proper equalizer.
+
+So I sat down and re-designed the breakout, paying attention to keep
+the rows and columns in order. Turns out it was still possible to
+route everything (I think I'm getting better at it), and the new
+breakout is now ordered:
+
+
+:::{image} https://644db4de3505c40a0444-327723bce298e3ff5813fb42baeefbaa.ssl.cf1.rackcdn.com/42c641f1ebdce128d9be0cc18f6b0b9e.png
+
+:::
+It's exactly the size of the matrix, and I got it on a thin PCB. But
+the best thing is thet there are some empty areas left on that board
+(where the sheep and the Fritzing logo are), and I could probably fit
+a small microcontroller in there, that would just put the chip in the
+equalizer mode, and a small microphone. Just add a coin battery, and
+you have a fancy wearable equalizer display... I need to do some
+testing when the boards arrive, but it seems promising.
+

@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Suddenly: A Speedup - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="suddenly-a-speedup">
+<h1>Suddenly:  A Speedup<a class="headerlink" href="#suddenly-a-speedup" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2019-06-21 in <a class="reference internal" href="../#project-27629"><span class="std std-ref">µGame</span></a>.</p>
+<p>The SAMD21 powering the µGame consoles is not a daemon of speed. With
+48MHz clock and software floating point operations, not to mention the
+overhead from CircuitPython interpreter, it’s barely enough for a
+dozen frames per second in a relatively simple game. But there is good
+news: a recently released beta version of CircuitPython, 4.1.0, has
+enabled an optimization option which has been so far disabled to save
+on firmware size. It had been re-enabled, because it turns out that it
+provides a five time speedup of the CircuitPython virtual machine, and
+the size savings weren’t that big anyways.</p>
+<p>So now suddenly all µGames are going to be 5x faster as soon as you
+upgrade their firmware with 4.1.0 that you can download from <a class="reference external" href="http://circuitpython.org">http://circuitpython.org</a> .</p>
+</section>
+
+
+</div>
+  </body>
+</html>

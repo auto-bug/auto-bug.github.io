@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Reading BMP - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="reading-bmp">
+<h1>Reading BMP<a class="headerlink" href="#reading-bmp" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2017-10-26 in <a class="reference internal" href="../#project-27629"><span class="std std-ref">µGame</span></a>.</p>
+<p>This thing has a real color display for real graphics — so you will
+need graphics in your games. I could create my own format, and some
+utility program to convert common image formats to it, but that’s
+always an additional step — it would be so much nicer to be able to
+edit the images directly on the USB drive. So I looked around for a
+file format that would be easy to parse, uncompressed, capable of
+storing 16-color indexed images, and understood by common graphics
+formats. And what do you know, the stupidest raster file format, BMP!</p>
+<p>So I took a tile sheet from one of my games, converted it to 16 colors
+and saved as BMP in GIMP. Then I poked around the file in Python until
+I had it displaying, with this code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">busio</span>
+
+<span class="kn">from</span> <span class="nn">adafruit_rgb_display</span> <span class="kn">import</span> <span class="n">st7735</span>
+<span class="kn">from</span> <span class="nn">adafruit_rgb_display.rgb</span> <span class="kn">import</span> <span class="n">color565</span>
+
+
+<span class="n">rst</span> <span class="o">=</span> <span class="n">digitalio</span><span class="o">.</span><span class="n">DigitalInOut</span><span class="p">(</span><span class="n">board</span><span class="o">.</span><span class="n">D0</span><span class="p">)</span>
+<span class="n">dc</span> <span class="o">=</span> <span class="n">digitalio</span><span class="o">.</span><span class="n">DigitalInOut</span><span class="p">(</span><span class="n">board</span><span class="o">.</span><span class="n">D2</span><span class="p">)</span>
+<span class="n">cs</span> <span class="o">=</span> <span class="n">digitalio</span><span class="o">.</span><span class="n">DigitalInOut</span><span class="p">(</span><span class="n">board</span><span class="o">.</span><span class="n">D1</span><span class="p">)</span>
+<span class="n">spi</span> <span class="o">=</span> <span class="n">busio</span><span class="o">.</span><span class="n">SPI</span><span class="p">(</span><span class="n">clock</span><span class="o">=</span><span class="n">board</span><span class="o">.</span><span class="n">SCK</span><span class="p">,</span> <span class="n">MOSI</span><span class="o">=</span><span class="n">board</span><span class="o">.</span><span class="n">MOSI</span><span class="p">)</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">st7735</span><span class="o">.</span><span class="n">ST7735R</span><span class="p">(</span><span class="n">spi</span><span class="p">,</span> <span class="n">cs</span><span class="o">=</span><span class="n">cs</span><span class="p">,</span> <span class="n">dc</span><span class="o">=</span><span class="n">dc</span><span class="p">,</span> <span class="n">rst</span><span class="o">=</span><span class="n">rst</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;walls.bmp&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">18</span><span class="p">)</span>
+    <span class="n">width</span> <span class="o">=</span> <span class="nb">int</span><span class="o">.</span><span class="n">from_bytes</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span> <span class="s1">&#39;little&#39;</span><span class="p">)</span>
+    <span class="n">height</span> <span class="o">=</span> <span class="nb">int</span><span class="o">.</span><span class="n">from_bytes</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span> <span class="s1">&#39;little&#39;</span><span class="p">)</span>
+    <span class="n">buffer</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">(</span><span class="n">width</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">46</span><span class="p">)</span>
+    <span class="n">colors</span> <span class="o">=</span> <span class="nb">int</span><span class="o">.</span><span class="n">from_bytes</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span> <span class="s1">&#39;little&#39;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">54</span><span class="p">)</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">colors</span> <span class="o">*</span> <span class="mi">4</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">height</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">width</span> <span class="o">//</span> <span class="mi">2</span><span class="p">):</span>
+            <span class="n">b</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span> <span class="o">&amp;</span> <span class="mh">0x0f</span><span class="p">)</span> <span class="o">*</span> <span class="mi">4</span>
+            <span class="n">z</span> <span class="o">=</span> <span class="n">color565</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">c</span> <span class="o">+</span> <span class="mi">2</span><span class="p">],</span> <span class="n">p</span><span class="p">[</span><span class="n">c</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span> <span class="n">p</span><span class="p">[</span><span class="n">c</span><span class="p">])</span>
+            <span class="n">buffer</span><span class="p">[</span><span class="n">x</span> <span class="o">*</span> <span class="mi">4</span> <span class="o">+</span> <span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">z</span> <span class="o">&amp;</span> <span class="mh">0xff</span>
+            <span class="n">buffer</span><span class="p">[</span><span class="n">x</span> <span class="o">*</span> <span class="mi">4</span> <span class="o">+</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">z</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span>
+            <span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span> <span class="o">&gt;&gt;</span> <span class="mi">4</span><span class="p">)</span> <span class="o">*</span> <span class="mi">4</span>
+            <span class="n">z</span> <span class="o">=</span> <span class="n">color565</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">c</span> <span class="o">+</span> <span class="mi">2</span><span class="p">],</span> <span class="n">p</span><span class="p">[</span><span class="n">c</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span> <span class="n">p</span><span class="p">[</span><span class="n">c</span><span class="p">])</span>
+            <span class="n">buffer</span><span class="p">[</span><span class="n">x</span> <span class="o">*</span> <span class="mi">4</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">z</span> <span class="o">&amp;</span> <span class="mh">0xff</span>
+            <span class="n">buffer</span><span class="p">[</span><span class="n">x</span> <span class="o">*</span> <span class="mi">4</span> <span class="o">+</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">z</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span>
+        <span class="n">d</span><span class="o">.</span><span class="n">_block</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">height</span><span class="o">-</span><span class="n">y</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">buffer</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>I had to draw it one line at a time, instead of one large buffer,
+because of not enough memory. There is a lot more work required before
+this turns into a tiles and sprites engine, but the first step is
+done.</p>
+<img alt="projects/project-27629/images/2712881508979135162.jpg" src="projects/project-27629/images/2712881508979135162.jpg" />
+</section>
+
+
+</div>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+---
+blogpost: true
+date: 2017-11-03
+category: project-27629
+---
+
+# Delays are Inevitable
+Published on 2017-11-03 in {ref}`project-27629`.
+
+Both of my prototypes stopped working. Just like that. And that
+happened just as I was going to show them off in Adafruit's show-and-
+tell. Oh well, bad luck I guess. I decided it must be the flex ribbon
+connecting the displays to the PCBs, and I re-did the connection with
+my soldering iron, inspecting it carefully for shorts, etc. They
+started to work again. For a moment. Then the newer one stopped
+responding completely, and no amount of re-soldering helped. So I de-
+soldered the display from both, and put the one from the old prototype
+on the new one. It worked for two hours, and then stopped again. This
+time I decided it must be broken traces on the flex ribbon, because I
+bent it too much. Since I don't have any more displays with 14 pins,
+but I have a couple of modules with the same display but with a
+different connector, I decided to continue work by using one of those
+modules and a Trinket M0.
+
+The displays stopped working with the Trinket too, even though I
+didn't touch the flex ribbon or the connections at all.
+
+So I began to poke at the non-working display, trying slower SPI
+speeds, different commands, etc. At some point I got it to work — I
+was sure then that the problem is not with the display module, but
+with my code.
+
+Turns out that the display working or not was a completely random
+thing. The problem is that some of the SPI commands, such as reset or
+wake up from sleep, require a lot of time for the display to perform,
+and delays are needed. I added those, and also lowered the SPI speed
+during the initialization sequence, and it works on the Trinket every
+time. So I compiled the firmware for the "dead" prototype, uploaded it
+— and it works too! I bet that when I solder the other display it will
+also work.
+
+One more obstacle out of the way.
+

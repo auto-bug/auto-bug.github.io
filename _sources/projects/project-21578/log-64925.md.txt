@@ -1,0 +1,51 @@
+---
+blogpost: true
+date: 2017-08-10
+category: project-21578
+---
+
+# Displays Are Hard
+Published on 2017-08-10 in {ref}`project-21578`.
+
+Yesterday the breakout board I made for those tiny displays arrived,
+so today I soldered one and tried to get it to work. So far
+unsuccessfully, but we will see what the future brings.
+
+The datasheet at the seller's Aliexpress page only has this image as
+the information:
+
+
+:::{image} images/9152111502315255100.jpg
+
+:::
+And then this table:
+
+
+:::{image} images/414981502315277587.jpg
+
+:::
+The product page has ST7735S in the title, so I'm working under the
+assumption that it is indeed a ST7735-series chip. Assuming that, and
+looking at the datasheet, I'm guessing the following pins:
+
+<table ><thead ><tr ><th >Image</th><th >Datasheet</th></tr></thead><tbody ><tr ><td >GND</td><td >GND</td></tr><tr ><td >IOVCC (1.8/2.8V)</td><td >VDDI\
+</td></tr><tr ><td >SPI</td><td >SPI4W</td></tr><tr ><td >IM2</td><td >IM2</td></tr><tr ><td >CS</td><td >CSX</td></tr><tr ><td >RESET</td><td >RESX</td></tr><tr ><td >RS/SCL</td><td >D/CX (SCL)</td></tr><tr ><td >WR/A0</td><td >WRX (D/CX)</td></tr><tr ><td >E/RD</td><td >RDX</td></tr><tr ><td >D0/SDA</td><td >D0 (SDA)</td></tr><tr ><td >D1-7</td><td >D1-7</td></tr><tr ><td >VDD-2.8V</td><td >VDD</td></tr><tr ><td >LEDA</td><td >Backlight LED Anode</td></tr><tr ><td >LEDK</td><td >Backlight LED Cathode</td></tr></tbody></table>The first test was connecting power to the LED anode and cathode pins,
+and sure enough, I got the backlight going. Yay, that means I know the
+direction in which the pins are numbered.
+
+Then I tried wiring it for the 4-wire SPI mode, since that's what I
+already have the drivers for. I connected VDD, VDDI, LEDA, and SPI to
+power, GND, LEDK and IM2 to ground, and all the SPI pins, and tried
+the driver. Nothing, white screen. Tried a second display just to be
+sure. Same. Hmmm...
+
+
+:::{image} images/7496611502316229603.jpg
+
+:::
+(By the way, when you are making a breakout like this, and make it
+exactly the size of the display, like I did, then make sure that: 1.
+the pins are a multiple of 2.54mm apart, so that you can insert it
+into the breadboard, and 2. you put the pin markings on the side that
+is not covered by the display.)
+

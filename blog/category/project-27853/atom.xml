@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>http://deshipu.art/</id>
+  <title>deshipu.art - Posts in project-27853</title>
+  <updated>2024-08-07T20:31:58.862805+00:00</updated>
+  <link href="http://deshipu.art/"/>
+  <link href="http://deshipu.art/blog/category/project-27853/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-27853/log-152772/</id>
+    <title>Creeping Back to Life</title>
+    <updated>2018-09-12T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="creeping-back-to-life"&gt;
+
+&lt;p&gt;Published on 2018-09-12 in &lt;a class="reference internal" href="../../../projects/project-27853/#project-27853"&gt;&lt;span class="std std-ref"&gt;H-Cam&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Yes, this project spent quite a bit of time in a drawer. I got the
+AMG8833 sensor to play with, but I didn’t really have a good idea
+about what I want to do with it. Then I designed this PCB with a
+footprint for that sensor, an atmega and a LED matrix, hoping that
+with enough magic I can make it into a kind of thermal camera. Then
+the PCB arrived together with a bunch of other PCBs, and got put into
+a drawer.&lt;/p&gt;
+&lt;p&gt;Fast forward a few months, and the &lt;span class="xref std std-ref"&gt;project-7813&lt;/span&gt; is back. I looked through my projects, and noticed that hey, this PCB
+is 2cm on a side to fit the LED matrix, and that’s less than an inch,
+so why not. So I submitted it to the contest and promptly forgot about
+it.&lt;/p&gt;
+&lt;p&gt;Now the deadline is looming, and it would be nice to at least start on
+this. So I took the PCB and soldered it up, and also found all the
+components that I will need:&lt;/p&gt;
+&lt;img alt="projects/project-27853/images/1328911536744914663.jpg" src="projects/project-27853/images/1328911536744914663.jpg" /&gt;
+&lt;p&gt;I used the female pin headers in the prototype so that I can remove
+the led matrix. The final version will not have them, and the led
+matrix will be soldered directly – at least that’s the plan.&lt;/p&gt;
+&lt;p&gt;There will also be a lipo battery in there.&lt;/p&gt;
+&lt;p&gt;Now I need to write the code for the atmega to handle the led matrix.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-27853/log-152772/" rel="alternate"/>
+    <summary>Published on 2018-09-12 in project-27853.</summary>
+    <published>2018-09-12T00:00:00+02:00</published>
+  </entry>
+</feed>

@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Homebrew Trinket M0 - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="homebrew-trinket-m0">
+<h1>Homebrew Trinket M0<a class="headerlink" href="#homebrew-trinket-m0" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2017-09-15 in <a class="reference internal" href="../#project-21578"><span class="std std-ref">PewPew FeatherWing</span></a>.</p>
+<p>The PewPew Lite FeatherWing is released and on sale on Tindie, so time
+for the next steps. I’m still working on the documentation and games —
+I hope to actually publish something this weekend. In the mean time I
+also started working on the full — not “lite” — version of PewPew
+again. It will have the IS31FL3733 chip for driving the LED matrix, so
+there will be more colors available (but the library will be
+backwards-compatible), and it will have a microcontroller chip on it
+for handling the buttons and possibly sound. But what microcontroller?</p>
+<p>So far I have built one prototype with the ATmega328p on it, working
+as an I2C slave, providing the button handling and some simple sound
+generation. The sound part is actually the main difficulty, and I’m
+not very happy with what I got there. So there is a possibility for
+using different chips.</p>
+<p>Today I spent half a day experimenting with an ATSAMD21E18 chip — the
+same as on the Trinket M0. I ordered a bunch of them recently, and I
+decided to try and run CircuitPython on them. Why did I choose that
+one, and not the other chips that are used in the Feather M0 boards?
+Because Trinket M0 doesn’t have an external oscillator, and the only
+part that is actually required on it is a tiny little capacitor. So I
+connected all it all up:</p>
+<img alt="projects/project-21578/images/1339071505507487811.jpg" src="projects/project-21578/images/1339071505507487811.jpg" />
+<p>Two power pins, two grounds, D+, D- and GND for the USB, and SWD, SWC
+and GND for the STLink-v2. And some wires for the reset pin. There is
+also a small capacitor between the VCORE and GND pins there — it has
+to have short traces, so I added it directly to the pins with some
+wrapping wire.</p>
+<p>Now, to burn the bootloader. You will need to compile the bootloader
+itself, the sources are at  <a class="reference external" href="https://github.com/Microsoft/uf2-samd21">https://github.com/Microsoft/uf2-samd21</a> , and you will need to flash it. The makefile in that repo has a
+“burn” target, but it requires a specific version of Arduino to be
+installed, and some hacking with the OpenOCD configuration, so instead
+I used <a class="reference external" href="https://github.com/adafruit/Adafruit_Adalink">https://github.com/adafruit/Adafruit_Adalink</a> . The rest of the day was spent trying to get it all to work, not
+realizing that the step I’m missing is wiping the chip. So start with
+that:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>adalink -v atsamd21g18 -p stlink -w
+</pre></div>
+</div>
+<p>Then edit the “uf2.h” file to disable some features for the bootloader
+(because they won’t all fit), and compile it with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make <span class="nv">BOARD</span><span class="o">=</span>trinket
+</pre></div>
+</div>
+<p>Then take the “bootloader.bin” file you find in the “build” directory,
+and do:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>adalink -v atsamd21g18 -p stlink -b bootloader.bin <span class="m">0</span>
+</pre></div>
+</div>
+<p>This at least worked for me, though I did run the “make burn” script
+in that bootloader’s directory previously, so it’s possible that it
+set some fuses on the chip too, and may be required.</p>
+<p>After doing that, I connected the USB port, shorted the reset wires,
+and had it appear as a USB disk. I then copied the
+“update_bootloader.uf2” file, to make sure all the fuses are set
+correctly, reset it again, and then copied the CircuitPython file to
+it. Voila, it works!</p>
+<p>Next up will be some testing of the pins, and possibly figuring out
+how to add my own pin definitions to CircuitPython, so that I can use
+more GPIOs.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

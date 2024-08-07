@@ -1,0 +1,90 @@
+---
+blogpost: true
+date: 2018-01-09
+category: project-27757
+---
+
+# Advanced Spriting
+Published on 2018-01-09 in {ref}`project-27757`.
+
+After a nightfull of sleep, I realized that I don't need a separate
+method with "or" for proper non-transparent sprites, since if I'm
+masking the place with black anyways, "xor" works just as well. As an
+added bonus, I can have also parts of the sprite sticking out of the
+mask outline, which then will be xor-ed, which could be a nice effect.
+I also decided to use "nand" for the mask, not "and", since then the
+outline of the sprite is white and the background is black, and that
+works better with the shifting operators. Finally, I made the mask
+just an optional argument to the blit function, since you are not
+likely to use it alone. So I have this:
+
+
+
+:::{image} images/7406811515505670407.gif
+
+:::
+
+
+I had to add one more thing, of which I didn't think before. When not
+using "xor" for the sprite, I need some way to restore the previous
+background when the sprite moves away. Right now I'm using an
+inefficient method of simply keeping a copy of the background in a
+separate buffer, and simply copying the few bytes where the sprite
+used to be from it to the actual frame buffer (and updating the dirty
+numbers accordingly). A more efficient way could be imagined.
+
+---------- more ----------Anyways, the new code looks like this:
+
+
+```python
+    def blit(self, x, y, data, mask=b''):
+        if not -8 < x < 128:
+            return
+        if x < 0:
+            data = data[-x:]
+            x = 0
+        elif x > 120:
+            data = data[:120 - x]
+        page = y // 8
+        shift = y % 8
+        if 0 <= page <= 7:
+            index = x + 128 * page
+            for byte in mask:
+                self.buffer[index] &= ~(byte << shift)
+                index += 1
+            index = x + 128 * page
+            for byte in data:
+                self.buffer[index] ^= byte << shift
+                index += 1
+            self.dirty_min[page] = min(self.dirty_min[page], x)
+            self.dirty_max[page] = max(self.dirty_max[page], x + 8)
+        page += 1
+        if 0 <= page <= 7 and shift:
+            shift = 8 - shift
+            index = x + 128 * page
+            for byte in mask:
+                self.buffer[index] &= ~(byte >> shift)
+                index += 1
+            index = x + 128 * page
+            for byte in data:
+                self.buffer[index] ^= byte >> shift
+                index += 1
+            self.dirty_min[page] = min(self.dirty_min[page], x)
+            self.dirty_max[page] = max(self.dirty_max[page], x + 8)
+            
+    def clear(self, x, y, background):
+        buf = self.buffer
+        for page in (y // 8, y // 8 + 1):
+            if page > 7:
+                break
+            index = x + 128 * page
+            for i in range(8):
+                buf[index] = background[index]
+                index += 1
+            self.dirty_min[page] = min(self.dirty_min[page], x)
+            self.dirty_max[page] = max(self.dirty_max[page], x + 8)
+```
+
+I still need to work on making the clear function more robust, so that
+you can use it with coordinates outside of the screen. 
+

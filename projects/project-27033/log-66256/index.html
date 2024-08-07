@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>To do it, to do it, to do it… - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="to-do-it-to-do-it-to-do-it">
+<h1>To do it, to do it, to do it…<a class="headerlink" href="#to-do-it-to-do-it-to-do-it" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2017-09-01 in <a class="reference internal" href="../#project-27033"><span class="std std-ref">Trinket M0 TFT</span></a>.</p>
+<p>After a hint from <a class="reference external" href="https://hackaday.io/hacker/45459">&#64;limor </a> about a reset pin and some experimenting, I decided to re-do this PCB,
+this time properly, following all the rules.</p>
+<img alt="https://644db4de3505c40a0444-327723bce298e3ff5813fb42baeefbaa.ssl.cf1.rackcdn.com/d7c85fa4a0d7e5c30330c34cf3e96692.png" src="https://644db4de3505c40a0444-327723bce298e3ff5813fb42baeefbaa.ssl.cf1.rackcdn.com/d7c85fa4a0d7e5c30330c34cf3e96692.png" />
+<p>\</p>
+<p>So the reset pin is now tied to the board’s reset. That frees up one
+digital pin, which I can now use for chip select, instead of having it
+pulled down permanently. Because the Trinket M0 doesn’t have a pull-up
+resistor on its reset pin, I had to add one.</p>
+<p>The second resistor is for the LED back-light, so you can pick the
+right one for the brightness you desire.</p>
+<p>Finally, I added a filter capacitor to the display’s power, for good
+measure.</p>
+<p>I also fixed the mounting holes and added a logo. The logo is up-side-
+down in relation to the text on the board, but I only noticed it now
+and who looks at those things anyways.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

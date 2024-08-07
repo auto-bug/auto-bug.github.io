@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Homebrew - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="homebrew">
+<h1>Homebrew<a class="headerlink" href="#homebrew" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2017-11-25 in <a class="reference internal" href="../#project-27629"><span class="std std-ref">µGame</span></a>.</p>
+<p>This device I’m building is not very beginner-friendly. It uses all
+SMD components, a bare displays screen, needs you to flash the
+bootloader to a bare chip and compile your own CircuitPython, etc.
+Quite a bit of work, to be honest. On the other hand, I would like the
+software library I’m making for this to be generally useful, and not
+just limited to this one device. So I wrote it in a way that lets you
+use it with pretty much any SPI display with 16-bit colors, and any
+buttons. Today I went and made a “homebrew” version of µGame, to show
+that it really doesn’t have to be hard.</p>
+<p>My initial experiments used a Trinket M0, but to really write an
+interesting game you will probably need much more room, so this time I
+used a Feather M0 Express, which has an additional flash chip. I also
+used a breakout board I made for displays, and a bunch of buttons:</p>
+<img alt="projects/project-27629/images/3830531511626987823.jpg" src="projects/project-27629/images/3830531511626987823.jpg" />
+<p>———- more ———-I had to bend the legs of those buttons a little bit, to pack them on
+the board tightly enough:</p>
+<img alt="projects/project-27629/images/2150231511627058003.jpg" src="projects/project-27629/images/2150231511627058003.jpg" />
+<p>A little bit of soldering:</p>
+<img alt="projects/project-27629/images/5397691511627085832.jpg" src="projects/project-27629/images/5397691511627085832.jpg" />
+<p>And we have out gamepad:</p>
+<img alt="projects/project-27629/images/2815221511627124565.jpg" src="projects/project-27629/images/2815221511627124565.jpg" />
+<p>Next, we need to wire the display module. I used a module with the
+same ST7735R display as I used on the µGame, so that I can use the
+same code, but you can also use SSD1331, SSD1351, HX8353 or ILI9341.</p>
+<img alt="projects/project-27629/images/3020811511627264689.jpg" src="projects/project-27629/images/3020811511627264689.jpg" />
+<p>I wired it to the SPI pins of the feather, with CS pulled low
+permanently, RST connected to feather’s reset, and LED pulled up.</p>
+<img alt="projects/project-27629/images/8730071511627424673.jpg" src="projects/project-27629/images/8730071511627424673.jpg" />
+<p>Then I also wired the buttons — one side of each button goes to GND,
+and the other side to one of the digital pins.</p>
+<img alt="projects/project-27629/images/3620411511627488589.jpg" src="projects/project-27629/images/3620411511627488589.jpg" />
+<p>And that’s it. Add some pin headers, and plug it into the feather:</p>
+<img alt="projects/project-27629/images/6671491511627538661.jpg" src="projects/project-27629/images/6671491511627538661.jpg" />
+<p>Next, I had to compile CircuitPython with my library enabled, and
+provide custom initialization code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">board</span>
+<span class="kn">import</span> <span class="nn">digitalio</span>
+<span class="kn">import</span> <span class="nn">busio</span>
+
+<span class="kn">import</span> <span class="nn">st7735r</span>
+<span class="kn">import</span> <span class="nn">gamepad</span>
+
+
+<span class="n">K_X</span> <span class="o">=</span> <span class="mh">0x01</span>
+<span class="n">K_DOWN</span> <span class="o">=</span> <span class="mh">0x02</span>
+<span class="n">K_LEFT</span> <span class="o">=</span> <span class="mh">0x04</span>
+<span class="n">K_RIGHT</span> <span class="o">=</span> <span class="mh">0x08</span>
+<span class="n">K_UP</span> <span class="o">=</span> <span class="mh">0x10</span>
+<span class="n">K_O</span> <span class="o">=</span> <span class="mh">0x20</span>
+
+
+<span class="n">dc</span> <span class="o">=</span> <span class="n">digitalio</span><span class="o">.</span><span class="n">DigitalInOut</span><span class="p">(</span><span class="n">board</span><span class="o">.</span><span class="n">MISO</span><span class="p">)</span>
+<span class="n">spi</span> <span class="o">=</span> <span class="n">busio</span><span class="o">.</span><span class="n">SPI</span><span class="p">(</span><span class="n">clock</span><span class="o">=</span><span class="n">board</span><span class="o">.</span><span class="n">SCK</span><span class="p">,</span> <span class="n">MOSI</span><span class="o">=</span><span class="n">board</span><span class="o">.</span><span class="n">MOSI</span><span class="p">)</span>
+<span class="n">spi</span><span class="o">.</span><span class="n">try_lock</span><span class="p">()</span>
+<span class="n">spi</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">baudrate</span><span class="o">=</span><span class="mi">23000000</span><span class="p">,</span> <span class="n">polarity</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">phase</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">display</span> <span class="o">=</span> <span class="n">st7735r</span><span class="o">.</span><span class="n">ST7735R</span><span class="p">(</span><span class="n">spi</span><span class="p">,</span> <span class="n">dc</span><span class="p">,</span> <span class="mb">0b110</span><span class="p">)</span>
+<span class="n">buttons</span> <span class="o">=</span> <span class="n">gamepad</span><span class="o">.</span><span class="n">GamePad</span><span class="p">(</span>
+    <span class="n">digitalio</span><span class="o">.</span><span class="n">DigitalInOut</span><span class="p">(</span><span class="n">board</span><span class="o">.</span><span class="n">D6</span><span class="p">),</span>
+    <span class="n">digitalio</span><span class="o">.</span><span class="n">DigitalInOut</span><span class="p">(</span><span class="n">board</span><span class="o">.</span><span class="n">D11</span><span class="p">),</span>
+    <span class="n">digitalio</span><span class="o">.</span><span class="n">DigitalInOut</span><span class="p">(</span><span class="n">board</span><span class="o">.</span><span class="n">D12</span><span class="p">),</span>
+    <span class="n">digitalio</span><span class="o">.</span><span class="n">DigitalInOut</span><span class="p">(</span><span class="n">board</span><span class="o">.</span><span class="n">D9</span><span class="p">),</span>
+    <span class="n">digitalio</span><span class="o">.</span><span class="n">DigitalInOut</span><span class="p">(</span><span class="n">board</span><span class="o">.</span><span class="n">D10</span><span class="p">),</span>
+    <span class="n">digitalio</span><span class="o">.</span><span class="n">DigitalInOut</span><span class="p">(</span><span class="n">board</span><span class="o">.</span><span class="n">D5</span><span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>(Since that module doesn’t use the MISO pin, I used it for D/C). I
+uploaded my work-in-progress demo game, and voila, it works!</p>
+<img alt="projects/project-27629/images/1418211511627725819.jpg" src="projects/project-27629/images/1418211511627725819.jpg" />
+<p>UPDATE: I had to make two changes compared to these photos. One, I
+forgot a wire from the fire buttons to the GND, and two, I now
+connected the CS pin to D13, instead of directly to GND.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

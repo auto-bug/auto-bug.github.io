@@ -1,0 +1,32 @@
+---
+blogpost: true
+date: 2018-02-19
+category: project-21500
+---
+
+# LUA Example
+Published on 2018-02-19 in {ref}`project-21500`.
+
+And the same example for the NodeMCU LUA:
+
+
+```
+
+function read_channel(channel)
+    i2c.start(0)
+    i2c.address(0, 0x35, i2c.TRANSMITTER)
+    i2c.write(0, bit.bor(bit.lshift(channel, 1), 0x61))
+    i2c.start(0)
+    i2c.address(0, 0x35, i2c.RECEIVER)
+    high = i2c.read()
+    low = i2c.read()
+    i2c.stop()
+    return bit.bor(bit.lshift(bit.band(high, 0x0f), 8), low)
+end
+
+i2c.setup(0, 1, 2, i2c.SLOW)
+while (true) do
+    print(read_channel(0))
+end
+```
+

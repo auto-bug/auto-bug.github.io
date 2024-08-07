@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Struggling with BOM - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="struggling-with-bom">
+<h1>Struggling with BOM<a class="headerlink" href="#struggling-with-bom" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2017-10-03 in <a class="reference internal" href="../#project-21578"><span class="std std-ref">PewPew FeatherWing</span></a>.</p>
+<p>The PewPew Lite was simple enough to solder by hand. The self-
+contained PewPew is not going to be so easy. Of course, I can solder a
+prototype or two — I even explicitly shied away from QFN parts — but
+just thinking about making a 20 pieces for a workshop makes me
+shudder. So I need a PCB assembly service.</p>
+<p>I have been looking at the different services, and what they need as
+the input, and not very surprisingly, the main input they need is the
+bill of materials, also known ass the parts list. Unfortunately, it’s
+not enough to just say “a 10kΩ resistor” — you have to specify the
+size, tolerance, and most importantly, the product number. Actually,
+forget everything else, they just want the product number, and if the
+part is exotic, a link for where to buy it.</p>
+<p>So I’ve spent the last couple of evenings trying to use the <span class="xref std std-ref">project-21525</span>  service, and it has been a bumpy ride. I started with the pick-and-
+place file that Fritzing generated for me — it’s a CSV file that lists
+all the parts, together with their exact positions on the board. So I
+just removed the irrelevant position information, and got a list of
+parts in a format that could be imported into FindChips. Then
+FindChips started sugeesting parts. Oh boy.</p>
+<p>It couldn’t find any tact switches at all. Apparently the best
+alternative to a USB micro socket is a HDMI socket. There is only one
+power switch with the pinout I need, and it’s a super-expensive ALPS.
+0402 20kΩ resistors simply don’t exist. Forget about any LED matrices
+at all, not to mention bi-color ones. And so on and so forth.</p>
+<p>With much struggling and some cheating, I finally put together a BOM
+list that only has 3 parts missing. I have simply added the URLs for
+those in the comments. The list is at  <a class="reference external" href="https://www.findchips.com/org/10-open-hardware/list/48895-pewpew-41-bomcsv">https://www.findchips.com/org/10-open-
+hardware/list/48895-pewpew-41-bomcsv</a></p>
+<p>The good news is that the total cost of all parts seems to be around
+$15 at quantity 1. That means that together with the PCBs and the
+assembly service, there is a chance that the whole thing won’t be more
+expensive than a Feather board.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

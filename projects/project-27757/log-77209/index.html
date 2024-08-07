@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Why Separate Button Controller? - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="why-separate-button-controller">
+<h1>Why Separate Button Controller?<a class="headerlink" href="#why-separate-button-controller" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2018-01-18 in <a class="reference internal" href="../#project-27757"><span class="std std-ref">Micro:Boy</span></a>.</p>
+<p>I have been asked why I’m using a separate chip for handling the
+buttons, so I thought I will just explain it in here. The question was
+why not just use the edge connector, and then use the additional pins
+available on the Micro:bit for reading the buttons. There are actually
+to reasons for that:</p>
+<section id="i-don-t-like-the-edge-connector">
+<h2>I don’t like the edge connector.<a class="headerlink" href="#i-don-t-like-the-edge-connector" title="Permalink to this heading">¶</a></h2>
+<p>Ever since I first saw it, I tried to work around it with something
+smaller, lighter and less expensive — you can look at my <span class="xref std std-ref">project-9685</span> — but I never managed to get a reliable connection without damaging
+the Micro:bit itself. I do have a bunch of those connectors, both
+soldered on a breakout board, and loose, but they are simply too large
+for such a small handheld device, I don’t have a Fritzing footprint
+for them (and don’t feel like making one), and soldering all the pins
+is a chore. Bolts are, on the other hand, a tested and reliable
+alternative.</p>
+</section>
+<section id="handling-buttons-is-not-trivial">
+<h2>Handling buttons is not trivial.<a class="headerlink" href="#handling-buttons-is-not-trivial" title="Permalink to this heading">¶</a></h2>
+<p>Looking at the code for the button controller you wouldn’t guess that,
+but handling the button presses properly is actually a non-trivial
+task. You have to de-bounce them, and you have to buffer them — those
+are some simple things we came to expect from anything with buttons,
+because it’s so common. Doing that in the limited version of
+Micropython that runs on the Micro:bit, without access to timers or
+interrupts, while at the same time handling the logic of whatever game
+you are playing would be a challenge, if not outright impossible.
+Doing it in C as a built-in module would be a little easier (that’s
+how I did it for <a class="reference internal" href="../../project-27629/#project-27629"><span class="std std-ref">µGame</span></a> ), but getting that extra code merged and released would take ages —
+the current release is a year behind, and there is never enough
+memory, so I don’t think they would happily accept an extra module
+that is only useful in one project. Having to use a custom Micropython
+firmware would make it impossible to code using Mu or any of the other
+dedicated editors.</p>
+<p>So considering all that, I decided to use a dedicated chip for the
+buttons. I initially started with a simple gpio expander chip, like in <a class="reference internal" href="../../project-19371/#project-19371"><span class="std std-ref">D1 Mini X-Pad Shield</span></a> , but that still requires you to poll it constantly and do the de-
+bouncing and buffering yourself. You can also easily miss presses.
+Then I switched to the HT16K33 that I’m using in <a class="reference internal" href="../../project-21578/#project-21578"><span class="std std-ref">PewPew FeatherWing</span></a> , because it does the de-bouncing and buffering for you, but that’s an
+expensive and bulky chip, that we are not really fully utilizing. So I
+looked for the cheapest microcontroller with enough pins, and ATtiny24
+seems like the perfect fit, especially since I already have experience
+with AVR.</p>
+</section>
+</section>
+
+
+</div>
+  </body>
+</html>

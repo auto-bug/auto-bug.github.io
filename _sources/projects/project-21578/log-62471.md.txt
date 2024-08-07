@@ -1,0 +1,36 @@
+---
+blogpost: true
+date: 2017-07-03
+category: project-21578
+---
+
+# PewPew Lite
+Published on 2017-07-03 in {ref}`project-21578`.
+
+I decided to try and make a more minimalist version of this board,
+replacing the IS31FL3733 LED matrix driver chip and the
+microcontroller with a HT16K33 chip, which can do both LED matrix
+control and key scanning at the same time. It will have no sound. Why
+didn't I use HT16K33 in the first place? Well, the main reason is
+because it can only switch the LEDs on or off, and doesn't have
+brightness control for individual pixels. That means that there will
+be only 4 colors available for each pixel: black, green, red and
+yellow. On the other hand, this chip is cheaper, easier to source and
+much easier to solder by hand.
+
+The plan is to write the libraries in such a way, that most games will
+work on both kinds of the boards -- as long as they don't require too
+many subtle shades of colors. It should still be possible to make
+Flappy Bird, Pong, Snake, Arkanoid, Space Invaders, Rogue, Boulder
+Dash or similar clones, and even have some board games like Checkers
+or Go. Chess would require much more colors, and it would be probably
+hard to remember which shade is which piece.
+
+As usual, I will see how it all works when the boards arrive.
+
+
+:::{image} images/3120221499035323184.png
+
+:::
+
+

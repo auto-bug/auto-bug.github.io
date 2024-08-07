@@ -1,0 +1,34 @@
+---
+blogpost: true
+date: 2017-05-13
+category: project-21578
+---
+
+# Version 1.4
+Published on 2017-05-13 in {ref}`project-21578`.
+
+I ordered the PCB for version 1.4 from OSHPark on May 1st. It was sent
+to fab the same day, and shipped on May 4th. Today (May 13th) I found
+it in my mailbox. I was waiting for it eagerly, hoping it would arrive
+before May 17th, when I'm departing for [PyCon.us](http://PyCon.us)  -- I wanted to take the prototype with me to show it there. It
+actually arrived 4 days earlier than anticipated, which is great!
+
+However, I'm still missing parts for it. The buttons I was able to
+scavenge from the earlier prototypes, but this new version uses a
+TM1650 chip for handling the buttons, and that is still on its way
+from China (it took the seller two weeks to ship it). You can see the
+empty footprint waiting for it.
+
+
+:::{image} images/4365191494673611191.jpg
+
+:::
+Then again, I was able to verify that the display works (I was a bit
+afraid I broke something when moving the chip on the other side of the
+board).
+
+Hopefully the chips arrive soon, or I will also receive the version
+1.2 of the prototype -- that's the one with the buttons connected
+directly to GPIO pins, and with ghosting problems. That was also
+ordered on May 1st, but shipped on May 9th, so 5 days later...
+

@@ -1,0 +1,49 @@
+---
+blogpost: true
+date: 2017-07-23
+category: project-21578
+---
+
+# Business Plan
+Published on 2017-07-23 in {ref}`project-21578`.
+
+The first step is to get the PewPew Lite featherwing to work properly,
+write the example games for it, and write the tutorial explaining how
+each one of them works. This part only requires time on my part, no
+special funding or resources are necessary. This should be done until
+the end of the year.
+
+Once that is done, the next step is to start producing the boards and
+selling them on Tindie, at the same time reaching out to potential
+distributors. This is also the time to start running workshops,
+improving the documentation based on the feedback from the early
+users, and finding ways to outsource the assembly of the boards.
+
+If that is successful, use the funds and experience gained from that
+to finish the PewPew (not Lite) board and to keep growing the
+community (at this point probably hired help will be necessary).
+Cooperate with teachers and writers to prepare lesson plans and other
+materials, record video tutorials, etc. With larger number of PewPew
+board, it should be possible to keep their price similar to the PewPew
+Lite.
+
+If PewPew Lite featherwing is not successful, stop its production, and
+work on a PewPew D1 Mini version, which would work with much cheaper
+Chinese boards. Again, start selling those on Tindie, but this time
+the goal is to get other manufacturers to clone them, and not the
+distributors to sell them. Instead of preparing lessons, work on
+making the documentation appeal to the maker community, encourage
+modding and emphasize the use of those boards outside of education and
+games, as controllers for robots and IoT devices.
+
+If any of those two plans works, start working on a third version of
+the PewPew board, this time with a TFT screen and an STM32 processor
+for handling it, with a tile and sprite engine and built-in example
+assets. Keep it compatible with the previous platforms, making all the
+old games work on it, but provide additional functions. Write an
+emulator on a PC that will allow easier debugging, and will let people
+try the games even without the device. Maintain a repository of games,
+including both the example games and 3rd party contributions (require
+open licenses on those). The games for older platform can use graphics
+based on popular themes (maybe get licenses from movies etc.).
+

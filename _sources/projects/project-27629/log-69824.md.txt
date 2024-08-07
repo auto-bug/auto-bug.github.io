@@ -1,0 +1,25 @@
+---
+blogpost: true
+date: 2017-10-29
+category: project-27629
+---
+
+# The Power of Plain C
+Published on 2017-10-29 in {ref}`project-27629`.
+
+I was expecting a considerable speedup from rewriting the whole
+rendering code as a C module and compiling it into the CircuitPython
+firmware, but a 50x improvement is much better than anticipated. I was
+afraid that I will have to limit myself to just a few sprites on the
+screen at once, and just one or two layers of tiles. But with this
+speed, there is no such problem. Of course, it will still slow down to
+around one frame per second if I fill the whole screen with animated
+sprites, but I think even ¼ of screen is already workable.
+
+
+
+:::{image} images/2179411509287391232.jpg
+
+:::
+
+
