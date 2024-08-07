@@ -64,7 +64,7 @@ have one input: the distance AD between the business end of the robot
 and the base of the servo. We also know all the mechanical dimensions
 of the robot: AB, BC, CD, DE. So how can we calculate α? From the <a class="reference external" href="https://en.wikipedia.org/wiki/Law_of_cosines">law of cosines</a> , of course! Given a triangle with dimensions a, b c, the law of
 cosines lets us calculate the angles of that triangle:</p>
-<p><span class="math notranslate nohighlight">\(\large \gamma = \arccos \frac{a^2+b^2 - c^2}{2ab}\)</span> Where γ is the angle opposite c. Also, we will actually calculate 180°-￼￼α, which is a sum of three angles: ADE, ADB and BDC. So we have:</p>
+<p><span class="math notranslate nohighlight">\(\large \gamma = \arccos \frac{a^2+b^2 - c^2}{2ab}\)</span> Where γ is the angle opposite c. Also, we will actually calculate 180°-α, which is a sum of three angles: ADE, ADB and BDC. So we have:</p>
 <div class="math notranslate nohighlight">
 \[\large ADE = \arccos\frac{DE}{AD}\]</div>
 <div class="math notranslate nohighlight">
@@ -75,14 +75,16 @@ cosines lets us calculate the angles of that triangle:</p>
 \[\large BDC = \arccos\frac{BD^2 + CD^2 - BC^2}{2\times BD\times CD}\]</div>
 <p>And finally:</p>
 <div class="math notranslate nohighlight">
-\[\large \alpha = 180°\degree - ADE - ADB - BDC\]</div>
+\[\large \alpha = 180° - ADE - ADB - BDC\]</div>
 <p>That’s it. That’s the position the servo needs to move to. All we need
 to know is the distance AD. How can we know that distance for each of
 the arms? That’s very simple! It’s just the distance between the point
 we want our robot to move to, (x, y, z), and the base of the given
 arm, (x₁, y₁, z₁), which we know (we can measure them or calculate
 from the distance ED and the angle of the given arm).</p>
-<p><span class="math notranslate nohighlight">\(\color{White} \large AD = \sqrt{(x-x_1)^2 + (y-y_1)^2 + (z - z_1)^2}\)</span> Applying all this math should let us move the robot to the coordinates
+<div class="math notranslate nohighlight">
+\[\large AD = \sqrt{(x-x_1)^2 + (y-y_1)^2 + (z - z_1)^2}\]</div>
+<p>Applying all this math should let us move the robot to the coordinates
 we desire.</p>
 </section>
 

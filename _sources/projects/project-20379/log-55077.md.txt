@@ -27,7 +27,7 @@ and the base of the servo. We also know all the mechanical dimensions
 of the robot: AB, BC, CD, DE. So how can we calculate α? From the [law of cosines](https://en.wikipedia.org/wiki/Law_of_cosines) , of course! Given a triangle with dimensions a, b c, the law of
 cosines lets us calculate the angles of that triangle:
 
-$\large \gamma = \arccos \frac{a^2+b^2 - c^2}{2ab}$ Where γ is the angle opposite c. Also, we will actually calculate 180°-￼￼α, which is a sum of three angles: ADE, ADB and BDC. So we have:
+$\large \gamma = \arccos \frac{a^2+b^2 - c^2}{2ab}$ Where γ is the angle opposite c. Also, we will actually calculate 180°-α, which is a sum of three angles: ADE, ADB and BDC. So we have:
 
 $$\large ADE = \arccos\frac{DE}{AD}$$
 
@@ -40,7 +40,7 @@ $$\large BDC = \arccos\frac{BD^2 + CD^2 - BC^2}{2\times BD\times CD}$$
 
 And finally:
 
-$$\large \alpha = 180°\degree - ADE - ADB - BDC$$
+$$\large \alpha = 180° - ADE - ADB - BDC$$
 
 That's it. That's the position the servo needs to move to. All we need
 to know is the distance AD. How can we know that distance for each of
@@ -49,6 +49,8 @@ we want our robot to move to, (x, y, z), and the base of the given
 arm, (x₁, y₁, z₁), which we know (we can measure them or calculate
 from the distance ED and the angle of the given arm).
 
-$\color{White} \large AD = \sqrt{(x-x_1)^2 + (y-y_1)^2 + (z - z_1)^2}$ Applying all this math should let us move the robot to the coordinates
+$$\large AD = \sqrt{(x-x_1)^2 + (y-y_1)^2 + (z - z_1)^2}$$
+
+Applying all this math should let us move the robot to the coordinates
 we desire.
 
