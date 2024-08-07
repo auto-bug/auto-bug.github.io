@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
-  <title>deshipu.art - Posts in project</title>
-  <updated>2024-08-07T14:59:30.646200+00:00</updated>
+  <title>deshipu.art - Posts tagged ongoing project</title>
+  <updated>2024-08-07T14:59:30.703442+00:00</updated>
   <link href="http://deshipu.art/"/>
-  <link href="http://deshipu.art/blog/category/project/atom.xml" rel="self"/>
+  <link href="http://deshipu.art/blog/tag/ongoing-project/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
   <entry>
     <id>http://deshipu.art/projects/project-6050/</id>
@@ -60,41 +60,5 @@ a base for experimenting with robot gaits and related problems.&lt;/p&gt;
     <category term="quadruped" label="quadruped"/>
     <category term="robots" label="robots"/>
     <published>2015-05-31T00:00:00+02:00</published>
-  </entry>
-  <entry>
-    <id>http://deshipu.art/projects/666-project/</id>
-    <title>A Project</title>
-    <updated>2018-12-25T00:00:00+01:00</updated>
-    <content type="html">&lt;section id="a-project"&gt;
-
-&lt;p&gt;This is an example project.&lt;/p&gt;
-&lt;section id="logs"&gt;
-&lt;h2&gt;Logs&lt;/h2&gt;
-&lt;ul class="postlist-style-none postlist"&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-12-25 &lt;a class="reference internal" href="../../../projects/666-project/log-001/"&gt;A Project Log&lt;/a&gt;&lt;/p&gt;
-&lt;p class="ablog-post-excerpt"&gt;This is an example project log.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/section&gt;
-&lt;/section&gt;
-</content>
-    <link href="http://deshipu.art/projects/666-project/" rel="alternate"/>
-    <summary>This is an example project.</summary>
-    <published>2018-12-25T00:00:00+01:00</published>
-  </entry>
-  <entry>
-    <id>http://deshipu.art/projects/777-project/</id>
-    <title>Another Project</title>
-    <updated>2024-06-29T00:00:00+02:00</updated>
-    <content type="html">&lt;section id="another-project"&gt;
-
-&lt;p&gt;Some other project &lt;a class="reference external" href="http://dopieralski.pl"&gt;http://dopieralski.pl&lt;/a&gt; example.&lt;/p&gt;
-&lt;a class="reference external image-reference" href="/_images/image.jpg"&gt;&lt;img alt="../../../_images/image.jpg" src="../../../_images/image.jpg" /&gt;&lt;/a&gt;
-&lt;hr class="docutils" /&gt;
-&lt;/section&gt;
-</content>
-    <link href="http://deshipu.art/projects/777-project/" rel="alternate"/>
-    <summary>Some other project http://dopieralski.pl example.</summary>
-    <published>2024-06-29T00:00:00+02:00</published>
   </entry>
 </feed>
