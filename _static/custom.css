@@ -217,16 +217,23 @@ div.project-list li p {
 div.project-list li p.ablog-post-excerpt {
     background: rgba(0, 0, 0, 0.5);
     position: absolute;
-    bottom: 0;
+    bottom: -1px;
     left: 0;
 }
 div.project-list li p.ablog-post-title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
 }
 div.project-list li p.ablog-post-title  a{
     display: block;
     width: 100%;
     height: 100%;
     z-index: 1000;
+    font-weight: bold;
 }
 div.project-list img {
     max-width: 100%;
