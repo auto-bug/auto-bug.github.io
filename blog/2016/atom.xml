@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posted in 2016</title>
-  <updated>2024-08-07T19:00:35.519514+00:00</updated>
+  <updated>2024-08-07T19:07:50.354497+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/2016/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -12,6 +12,7 @@
     <updated>2016-11-09T00:00:00+01:00</updated>
     <content type="html">&lt;section id="pimp-your-bot"&gt;
 
+&lt;p&gt;Published on 2016-11-09.&lt;/p&gt;
 &lt;p&gt;The winter is coming, and my robots need some maintenance – after a
 year of traveling to various conferences and fairs, they accumulated a
 number of injuries. It’s also a good idea to recharge the lipo
@@ -66,10 +67,7 @@ ready. Now I just need to wait for the glue to set…&lt;/p&gt;
 &lt;/section&gt;
 </content>
     <link href="http://deshipu.art/projects/log-6050-48853/" rel="alternate"/>
-    <summary>The winter is coming, and my robots need some maintenance – after a
-year of traveling to various conferences and fairs, they accumulated a
-number of injuries. It’s also a good idea to recharge the lipo
-batteries once in a while.</summary>
+    <summary>Published on 2016-11-09.</summary>
     <published>2016-11-09T00:00:00+01:00</published>
   </entry>
   <entry>
@@ -78,6 +76,7 @@ batteries once in a while.</summary>
     <updated>2016-11-10T00:00:00+01:00</updated>
     <content type="html">&lt;section id="pimp-your-robot-ii"&gt;
 
+&lt;p&gt;Published on 2016-11-10.&lt;/p&gt;
 &lt;p&gt;So, today I hotglued the lenses with the LEDs, updated the software to
 let me switch the LEDs on and off, added a piezo to the robot, so it
 makes sounds, and painted some red highlights on the legs. The end
@@ -88,10 +87,7 @@ result:&lt;/p&gt;
 &lt;/section&gt;
 </content>
     <link href="http://deshipu.art/projects/log-6050-48901/" rel="alternate"/>
-    <summary>So, today I hotglued the lenses with the LEDs, updated the software to
-let me switch the LEDs on and off, added a piezo to the robot, so it
-makes sounds, and painted some red highlights on the legs. The end
-result:</summary>
+    <summary>Published on 2016-11-10.</summary>
     <published>2016-11-10T00:00:00+01:00</published>
   </entry>
   <entry>
@@ -100,6 +96,7 @@ result:</summary>
     <updated>2016-12-07T00:00:00+01:00</updated>
     <content type="html">&lt;section id="version-5"&gt;
 
+&lt;p&gt;Published on 2016-12-07.&lt;/p&gt;
 &lt;p&gt;I’ve been asked for a Tote kit for a Christmas preset by a friend, and
 I realized I no longer have any version 4 boards. So I had to go and
 order some. But if I’m ordering boards anyways, why not make some
@@ -118,10 +115,7 @@ That should make it easier to use them for sensors.&lt;/p&gt;
 &lt;/section&gt;
 </content>
     <link href="http://deshipu.art/projects/log-6050-50045/" rel="alternate"/>
-    <summary>I’ve been asked for a Tote kit for a Christmas preset by a friend, and
-I realized I no longer have any version 4 boards. So I had to go and
-order some. But if I’m ordering boards anyways, why not make some
-improvements here and there? So here’s a version 5.</summary>
+    <summary>Published on 2016-12-07.</summary>
     <published>2016-12-07T00:00:00+01:00</published>
   </entry>
   <entry>
@@ -130,6 +124,7 @@ improvements here and there? So here’s a version 5.</summary>
     <updated>2016-12-21T00:00:00+01:00</updated>
     <content type="html">&lt;section id="cordic"&gt;
 
+&lt;p&gt;Published on 2016-12-21.&lt;/p&gt;
 &lt;p&gt;Since the flu season began, I’ve been lying in bed sick quite some
 time. While I don’t recommend doing coding with a fever (takes way too
 much time to track down the trivial mistakes you make), you do have
@@ -189,13 +184,7 @@ know when that happens, but first I need to get over this flu.&lt;/p&gt;
 &lt;/section&gt;
 </content>
     <link href="http://deshipu.art/projects/log-6050-50664/" rel="alternate"/>
-    <summary>Since the flu season began, I’ve been lying in bed sick quite some
-time. While I don’t recommend doing coding with a fever (takes way too
-much time to track down the trivial mistakes you make), you do have
-some free time to explore some coding ideas that you didn’t bother
-with before. One of such things on my to do list is rewriting Tote’s
-inverse kinematics code to use only integer math, and I found a
-marvelous family of algorithms that can let me do it.</summary>
+    <summary>Published on 2016-12-21.</summary>
     <published>2016-12-21T00:00:00+01:00</published>
   </entry>
   <entry>
@@ -204,6 +193,7 @@ marvelous family of algorithms that can let me do it.</summary>
     <updated>2016-12-22T00:00:00+01:00</updated>
     <content type="html">&lt;section id="imath-h"&gt;
 
+&lt;p&gt;Published on 2016-12-22.&lt;/p&gt;
 &lt;p&gt;It took me two evenings of pretty much randomly editing code, trying
 to make it as small as possible without breaking it horribly at the
 same time, but I finally have a library with three basic functions,&lt;em&gt;iasin&lt;/em&gt;,&lt;em&gt;iatan2&lt;/em&gt; and_isqrt_, which are_int16_t_ versions of the ones from the standard library. The angles are
@@ -333,13 +323,7 @@ standard library:&lt;/p&gt;
 &lt;/section&gt;
 </content>
     <link href="http://deshipu.art/projects/log-6050-50708/" rel="alternate"/>
-    <summary>It took me two evenings of pretty much randomly editing code, trying
-to make it as small as possible without breaking it horribly at the
-same time, but I finally have a library with three basic functions,iasin,iatan2 and_isqrt_, which are_int16_t_ versions of the ones from the standard library. The angles are
-returned in the range of -1800 to 1800, and the input to asin is
--1&lt;&lt;13 +1 to 1&lt;&lt;13. The whole library is around 700 bytes (644 at the
-last compile) and should be relatively fast on the AVR (although I
-didn’t really time it). Oh, and the code is at https://bitbucket.org/thesheep/imath/src/tip/imath.c</summary>
+    <summary>Published on 2016-12-22.</summary>
     <published>2016-12-22T00:00:00+01:00</published>
   </entry>
 </feed>

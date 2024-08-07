@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posts tagged ROBOT</title>
-  <updated>2024-08-07T19:00:35.644237+00:00</updated>
+  <updated>2024-08-07T19:07:50.452179+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/tag/robot/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -53,316 +53,148 @@ a base for experimenting with robot gaits and related problems.&lt;/p&gt;
 &lt;h2&gt;Logs&lt;/h2&gt;
 &lt;ul class="postlist-style-none postlist"&gt;
 &lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-06-07 - &lt;a class="reference internal" href="../../../projects/log-6050-147636/"&gt;Reviving the Skull Tote&lt;/a&gt;&lt;/p&gt;
-&lt;p class="ablog-post-excerpt"&gt;I have a number of prototypes of Tote that I have built over the
-years, but the most presentable one is the one I pimped up in  &lt;a class="reference external" href="https://hackaday.io/project/6050-tote/log/48853-pimp-your-bot"&gt;https://hackaday.io/project/6050-tote/log/48853-pimp-your-bot&lt;/a&gt;&lt;/p&gt;
+&lt;p class="ablog-post-excerpt"&gt;Published on 2018-06-07.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-01-15 - &lt;a class="reference internal" href="../../../projects/log-6050-51940/"&gt;Gangsta&lt;/a&gt;&lt;/p&gt;
-&lt;p class="ablog-post-excerpt"&gt;As I wrote in the previous logs, I’m going to be upgrading Tote to use
-some more expensive, but more powerful and easier to use components.
-But what about the poor students? If you are really concerned about
-the budget, the original Tote is almost what you need. Almost, because
-you would still need to order the PCB for it. Or would you?&lt;/p&gt;
+&lt;p class="ablog-post-excerpt"&gt;Published on 2017-01-15.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-01-14 - &lt;a class="reference internal" href="../../../projects/log-6050-51852/"&gt;Programming the Spinal Cord&lt;/a&gt;&lt;/p&gt;
-&lt;p class="ablog-post-excerpt"&gt;n the previous log I made a decision to use an Adafruit Feather board
-for the robot’s brains, and a bare ATmega chip in a DIP package for
-its spinal cord – that is, the servo controller. That’s supposed to
-make the board much easier to solder even by inexperienced builders.
-But wait a minute! How are they going to get the servo controller
-program onto those chips? Will that not require some extra hardware?
-Sadly, yes.&lt;/p&gt;
+&lt;p class="ablog-post-excerpt"&gt;Published on 2017-01-14.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-01-11 - &lt;a class="reference internal" href="../../../projects/log-6050-51725/"&gt;New Year Reflections&lt;/a&gt;&lt;/p&gt;
-&lt;p class="ablog-post-excerpt"&gt;This is one of my oldest projects, and definitely one that I have put
-the most total work into so far. With the year’s end, I decided to
-reflect a bit about the progress made so far and the way forward.\&lt;/p&gt;
+&lt;p class="ablog-post-excerpt"&gt;Published on 2017-01-11.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2017-01-11 - &lt;a class="reference internal" href="../../../projects/log-6050-51738/"&gt;Choosing the Brains&lt;/a&gt;&lt;/p&gt;
-&lt;p class="ablog-post-excerpt"&gt;In the previous post I shared some of my thoughts about this project,
-and decided to pick a different development board than the Pro Mini
-that I have been using so far. Don’t get me wrong, Pro Mini is great
-for all kinds of small and cheap projects, it’s just that I want to
-make programming this robot as simple as possible. That, among other
-things, means using a platform that has a lot of computing power, not
-just enough, preferably one that has so much of it, that it can be
-used with a high-level language like Python. That also means something
-that has a USB socket.&lt;/p&gt;
+&lt;p class="ablog-post-excerpt"&gt;Published on 2017-01-11.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-12-22 - &lt;a class="reference internal" href="../../../projects/log-6050-50708/"&gt;imath.h&lt;/a&gt;&lt;/p&gt;
-&lt;p class="ablog-post-excerpt"&gt;It took me two evenings of pretty much randomly editing code, trying
-to make it as small as possible without breaking it horribly at the
-same time, but I finally have a library with three basic functions,&lt;em&gt;iasin&lt;/em&gt;,&lt;em&gt;iatan2&lt;/em&gt; and_isqrt_, which are_int16_t_ versions of the ones from the standard library. The angles are
-returned in the range of -1800 to 1800, and the input to asin is
--1&amp;lt;&amp;lt;13 +1 to 1&amp;lt;&amp;lt;13. The whole library is around 700 bytes (644 at the
-last compile) and should be relatively fast on the AVR (although I
-didn’t really time it). Oh, and the code is at &lt;a class="reference external" href="https://bitbucket.org/thesheep/imath/src/tip/imath.c"&gt;https://bitbucket.org/thesheep/imath/src/tip/imath.c&lt;/a&gt;&lt;/p&gt;
+&lt;p class="ablog-post-excerpt"&gt;Published on 2016-12-22.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-12-21 - &lt;a class="reference internal" href="../../../projects/log-6050-50664/"&gt;CORDIC&lt;/a&gt;&lt;/p&gt;
-&lt;p class="ablog-post-excerpt"&gt;Since the flu season began, I’ve been lying in bed sick quite some
-time. While I don’t recommend doing coding with a fever (takes way too
-much time to track down the trivial mistakes you make), you do have
-some free time to explore some coding ideas that you didn’t bother
-with before. One of such things on my to do list is rewriting Tote’s
-inverse kinematics code to use only integer math, and I found a
-marvelous family of algorithms that can let me do it.&lt;/p&gt;
+&lt;p class="ablog-post-excerpt"&gt;Published on 2016-12-21.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-12-07 - &lt;a class="reference internal" href="../../../projects/log-6050-50045/"&gt;Version 5&lt;/a&gt;&lt;/p&gt;
-&lt;p class="ablog-post-excerpt"&gt;I’ve been asked for a Tote kit for a Christmas preset by a friend, and
-I realized I no longer have any version 4 boards. So I had to go and
-order some. But if I’m ordering boards anyways, why not make some
-improvements here and there? So here’s a version 5.&lt;/p&gt;
+&lt;p class="ablog-post-excerpt"&gt;Published on 2016-12-07.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-11-10 - &lt;a class="reference internal" href="../../../projects/log-6050-48901/"&gt;Pimp Your Robot II&lt;/a&gt;&lt;/p&gt;
-&lt;p class="ablog-post-excerpt"&gt;So, today I hotglued the lenses with the LEDs, updated the software to
-let me switch the LEDs on and off, added a piezo to the robot, so it
-makes sounds, and painted some red highlights on the legs. The end
-result:&lt;/p&gt;
+&lt;p class="ablog-post-excerpt"&gt;Published on 2016-11-10.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-11-09 - &lt;a class="reference internal" href="../../../projects/log-6050-48853/"&gt;Pimp Your Bot&lt;/a&gt;&lt;/p&gt;
-&lt;p class="ablog-post-excerpt"&gt;The winter is coming, and my robots need some maintenance – after a
-year of traveling to various conferences and fairs, they accumulated a
-number of injuries. It’s also a good idea to recharge the lipo
-batteries once in a while.&lt;/p&gt;
+&lt;p class="ablog-post-excerpt"&gt;Published on 2016-11-09.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-01-29 - &lt;a class="reference internal" href="../../../projects/log-6050-30979/"&gt;The Way Forward?&lt;/a&gt;&lt;/p&gt;
-&lt;p class="ablog-post-excerpt"&gt;A lot has happened in the recent time for the hobbyist community, and
-I’m currently wondering where I want to take this project. Here’s some
-random rambling on the subject, just to clear it out of my head.&lt;/p&gt;
+&lt;p class="ablog-post-excerpt"&gt;Published on 2016-01-29.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-01-23 - &lt;a class="reference internal" href="../../../projects/log-6050-30721/"&gt;Another Tote in the Wild&lt;/a&gt;&lt;/p&gt;
-&lt;p class="ablog-post-excerpt"&gt;Today I spent most of the day with a friend building his own instance
-of Tote. Not only it was great fun, but I also learned a bit about
-which parts need work (unsurprisingly, tuning and trimming the servos
-is hard). We also experimented with a slightly different leg geometry
-(the hip servos rotated by 90°), which gives slightly longer legs with
-better reach. I think I will make it the default.&lt;/p&gt;
+&lt;p class="ablog-post-excerpt"&gt;Published on 2016-01-23.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-01-07 - &lt;a class="reference internal" href="../../../projects/log-6050-30026/"&gt;Tote Zero&lt;/a&gt;&lt;/p&gt;
-&lt;p class="ablog-post-excerpt"&gt;So the boards have arrived and I started working on the &lt;span class="xref myst"&gt;#Tote Zero&lt;/span&gt; , an older brother of Tote, powered by the Pi Zero board. That doesn’t
-mean Tote is dead or deprecated or anything, of course. I will
-continue working on all my project in the same erratic and chaotic
-manner I did before.&lt;/p&gt;
+&lt;p class="ablog-post-excerpt"&gt;Published on 2016-01-07.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-12-20 - &lt;a class="reference internal" href="../../../projects/log-6050-29288/"&gt;PyBoard&lt;/a&gt;&lt;/p&gt;
-&lt;p class="ablog-post-excerpt"&gt;There is a version of Tote using PyBoard as its brains: &lt;span class="xref myst"&gt;#Micropython Quadruped Robot&lt;/span&gt;&lt;/p&gt;
+&lt;p class="ablog-post-excerpt"&gt;Published on 2015-12-20.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-12-04 - &lt;a class="reference internal" href="../../../projects/log-6050-28670/"&gt;Pi Zero&lt;/a&gt;&lt;/p&gt;
-&lt;p class="ablog-post-excerpt"&gt;With the new Pi Zero board and its price, it may actually make sense
-to use in in place of the Arduino on Tote. It’s only a little bit more
-expensive, after all. The problem is, it doesn’t have hardware PWM and
-has a whole operating system that needs to boot, has to be properly
-configured and requires all the right software. The cost of the SD
-card also cannot be ignored. All the adapters and cables are not a
-problem, as it wouldn’t need them while connected to the robot.&lt;/p&gt;
+&lt;p class="ablog-post-excerpt"&gt;Published on 2015-12-04.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-12-02 - &lt;a class="reference internal" href="../../../projects/log-6050-28596/"&gt;Micro:Tote&lt;/a&gt;&lt;/p&gt;
-&lt;p class="ablog-post-excerpt"&gt;I almost had the Raspberry Pi thing working last time, and I promised
-to get it to work, but not just yet. The last two weeks I had a
-different project on my mind. I was participating in the &lt;a class="reference external" href="http://microworldtour.github.io/microbit/monifa.html"&gt;Micro World Tour&lt;/a&gt; , a program that gets a couple of the micro:bit boards into the hands
-of Python hackers to do something nice with its Micropython
-implementation. So, obviously, I had to put it on Tote. Just imagine
-every kid in UK building their own quadruped robot and doing amazing
-stuff with it!&lt;/p&gt;
+&lt;p class="ablog-post-excerpt"&gt;Published on 2015-12-02.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-11-21 - &lt;a class="reference internal" href="../../../projects/log-6050-28167/"&gt;I²C Slave&lt;/a&gt;&lt;/p&gt;
-&lt;p class="ablog-post-excerpt"&gt;I have done a little bit of progress towards putting a Raspberry Pi on
-Tote. You see, I didn’t want to make it communicate over serial,
-because I’ve done that already with ESP8266 (see previous logs). This
-time I wanted something more ambitious, so I decided to use I²C. As
-the first step, I completely rebuilt one of my robot prototypes, to
-use the new PCB and to also leave the top side of the PCB as flat as
-possible – it only has the Pro Mini and the servo horns there, and
-all the rest is on the bottom side. I also added a voltage regulator
-giving a steady 5V, so that I can power the Raspberry Pi with it. The
-Pro Mini still uses only 3.3V, but it’s fine with 5V, as it has an
-internal regulator. Servos actually work better at 5V, as it’s within
-its parameters, unlike the 3.7V, which was a bit low. Finally, I
-replaced the 1S 3.7V LiPo battery with a 2S one, so that the regulator
-has something to drop from (the boost converters that I have all have
-a 500mA shutoff, so they are not suitable for powering 12 servos).&lt;/p&gt;
+&lt;p class="ablog-post-excerpt"&gt;Published on 2015-11-21.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-11-05 - &lt;a class="reference internal" href="../../../projects/log-6050-27566/"&gt;Nothing Happens&lt;/a&gt;&lt;/p&gt;
-&lt;p class="ablog-post-excerpt"&gt;I have been a little bit busy with other things recently, and I didn’t
-update this project for a while, so I thought that it’s time to write
-something just to let you all know that it’s not abandoned.&lt;/p&gt;
+&lt;p class="ablog-post-excerpt"&gt;Published on 2015-11-05.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-10-22 - &lt;a class="reference internal" href="../../../projects/log-6050-26905/"&gt;Another Batch of PCBs&lt;/a&gt;&lt;/p&gt;
-&lt;p class="ablog-post-excerpt"&gt;The last few weeks have been very busy, with all the conferences,
-sickness, day job, etc. so I fell a little behind with my plan to have
-regular experiments published here. Hopefully that will improve.&lt;/p&gt;
+&lt;p class="ablog-post-excerpt"&gt;Published on 2015-10-22.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-09-25 - &lt;a class="reference internal" href="../../../projects/log-6050-25845/"&gt;Vertical Climb&lt;/a&gt;&lt;/p&gt;
-&lt;p class="ablog-post-excerpt"&gt;A small robot walking around your desk or even around your room on the
-floor is one thing. The same robot climbing your furniture and able to
-get everywhere in your room is a completely different game! That’s why
-I always wanted to make Tote able to climb. Unfortunately, the problem
-is harder than it seems at first sight.&lt;/p&gt;
+&lt;p class="ablog-post-excerpt"&gt;Published on 2015-09-25.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-09-04 - &lt;a class="reference internal" href="../../../projects/log-6050-24644/"&gt;Weight Lifting&lt;/a&gt;&lt;/p&gt;
-&lt;p class="ablog-post-excerpt"&gt;I’ve been recently asked how much weight can Tote carry. So far I had
-to give a honest answer, that I don’t know. The heaviest I had it
-carry was a pack of 4 AA batteries. So I decided to make a few tests.&lt;/p&gt;
+&lt;p class="ablog-post-excerpt"&gt;Published on 2015-09-04.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-09-03 - &lt;a class="reference internal" href="../../../projects/log-6050-24608/"&gt;Making Tote without a PCB&lt;/a&gt;&lt;/p&gt;
-&lt;p class="ablog-post-excerpt"&gt;Seeing how most of robots based on or inspired by Tote don’t actually
-use the original printed circuit board, I conclude that ordering one
-is the main pain point. I don’t really see why, because it’s not very
-expensive and the waiting time is about the same as with ordering the
-servos and all the other parts. And it’s not like you won’t find a use
-for the other 9 boards, as they are pretty much generic servo breakout
-boards. They are just shaped in a way that makes it easy to attach the
-legs. Anyways, I decided to explain how you can build Tote with just a
-proto-board, like &lt;span class="xref myst"&gt;#Tote in the Wild&lt;/span&gt;  and &lt;span class="xref myst"&gt;#Micropython Quadruped Robot&lt;/span&gt; . Let’s start with the connections (note that the connections for your
-IR sensor may be different):&lt;/p&gt;
+&lt;p class="ablog-post-excerpt"&gt;Published on 2015-09-03.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-08-28 - &lt;a class="reference internal" href="../../../projects/log-6050-24255/"&gt;Totes in the Wild&lt;/a&gt;&lt;/p&gt;
-&lt;p class="ablog-post-excerpt"&gt;The main goal of all this work I’m doing on Tote is to make people
-build their own robots. The idea is that they can start with Tote (or
-the elements of Tote that they like), and grow from there.
-Unfortunately, so far nobody that I know of decided to try it. Until
-recently.&lt;/p&gt;
+&lt;p class="ablog-post-excerpt"&gt;Published on 2015-08-28.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-08-25 - &lt;a class="reference internal" href="../../../projects/log-6050-24016/"&gt;Out of the Prize&lt;/a&gt;&lt;/p&gt;
-&lt;p class="ablog-post-excerpt"&gt;This project is not one of the 100 projects that qualified to the
-semifinals of the Hackaday Prize 2015. And no wonder, with 900 of
-great projects that entered, the chances were slim. It was still great
-fun to participate and I won some very nice swag in the process! Keep
-on tracking the contest, as it will only get more interesting with
-time.&lt;/p&gt;
+&lt;p class="ablog-post-excerpt"&gt;Published on 2015-08-25.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-08-15 - &lt;a class="reference internal" href="../../../projects/log-6050-22817/"&gt;Version 4 of PCB Documented&lt;/a&gt;&lt;/p&gt;
-&lt;p class="ablog-post-excerpt"&gt;After building two prototypes and testing them, I decided to make the
-version 4 of the PCB the default in &lt;a class="reference external" href="http://tote.readthedocs.org/"&gt;the documentation&lt;/a&gt; . There are also &lt;a class="reference external" href="http://tote.readthedocs.org/en/latest/assembly_v4.html"&gt;updated assembly instructions&lt;/a&gt;  with lots of photos. Don’t worry, the &lt;a class="reference external" href="http://tote.readthedocs.org/en/latest/assembly_v2.html"&gt;instructions for the old boards are still there&lt;/a&gt; .&lt;/p&gt;
+&lt;p class="ablog-post-excerpt"&gt;Published on 2015-08-15.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-08-15 - &lt;a class="reference internal" href="../../../projects/log-6050-22895/"&gt;Proprioception Revisited: Touch&lt;/a&gt;&lt;/p&gt;
-&lt;p class="ablog-post-excerpt"&gt;Sensing the positions of limbs and the forces acting on them is just
-part of the proprioception, there is also the sense of touch and the
-inner ear. Today we will do touch.&lt;/p&gt;
+&lt;p class="ablog-post-excerpt"&gt;Published on 2015-08-15.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-08-15 - &lt;a class="reference internal" href="../../../projects/log-6050-22871/"&gt;Hackaday Prize Quaterfinals Video&lt;/a&gt;&lt;/p&gt;
-&lt;p class="ablog-post-excerpt"&gt;I decided to make it a bloopers video, showing the stages of
-development of this robot and how it reached the current form. Enjoy!&lt;/p&gt;
+&lt;p class="ablog-post-excerpt"&gt;Published on 2015-08-15.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-08-14 - &lt;a class="reference internal" href="../../../projects/log-6050-22768/"&gt;System Diagram&lt;/a&gt;&lt;/p&gt;
-&lt;p class="ablog-post-excerpt"&gt;This is the diagram of my plan to improve the worldwide robot
-situation:&lt;/p&gt;
+&lt;p class="ablog-post-excerpt"&gt;Published on 2015-08-14.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-08-14 - &lt;a class="reference internal" href="../../../projects/log-6050-22775/"&gt;Licenses&lt;/a&gt;&lt;/p&gt;
-&lt;p class="ablog-post-excerpt"&gt;To be eligible for the Hackaday Prize, I have to explicitly document
-the licenses for everything. So here it goes.&lt;/p&gt;
+&lt;p class="ablog-post-excerpt"&gt;Published on 2015-08-14.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-08-12 - &lt;a class="reference internal" href="../../../projects/log-6050-22595/"&gt;New New Board in the Wild&lt;/a&gt;&lt;/p&gt;
-&lt;p class="ablog-post-excerpt"&gt;So the version 4 printed circuit boards arrived a few days ago (no,
-that’s not super-fast shipping from China, I just waited several weeks
-before even writing about them). I’m almost perfectly happy with them,
-so far I only came up with two small things I want to change. Probably
-not enough to make another version.&lt;/p&gt;
+&lt;p class="ablog-post-excerpt"&gt;Published on 2015-08-12.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-08-01 - &lt;a class="reference internal" href="../../../projects/log-6050-21962/"&gt;New New Printed Circuit Board&lt;/a&gt;&lt;/p&gt;
-&lt;p class="ablog-post-excerpt"&gt;You know how it is. As soon as you get your hands on the new PCB and
-assemble another prototype to test it, you get a million ideas for
-improvements to it. That’s what happened when I got the version 3 of
-the Tote’s body, and it lead to a complete overhaul in version 4.&lt;/p&gt;
+&lt;p class="ablog-post-excerpt"&gt;Published on 2015-08-01.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-07-30 - &lt;a class="reference internal" href="../../../projects/log-6050-21869/"&gt;Follow Me, I Say!&lt;/a&gt;&lt;/p&gt;
-&lt;p class="ablog-post-excerpt"&gt;I didn’t have much time to work on Tote this week, but since the
-sensors arrived, I will at least finish the “follow me” log.&lt;/p&gt;
+&lt;p class="ablog-post-excerpt"&gt;Published on 2015-07-30.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-07-24 - &lt;a class="reference internal" href="../../../projects/log-6050-21465/"&gt;Follow Me!&lt;/a&gt;&lt;/p&gt;
-&lt;p class="ablog-post-excerpt"&gt;Some time ago I got the &lt;a class="reference external" href="https://hackaday.io/project/6050-tote-affordable-spider-robot/log/20790-distance-sensor-second-try"&gt;Sharp distance sensor to work with Tote&lt;/a&gt;  (somewhat), and I promised we will do something interesting with it.
-Obstacle avoidance is old, so let’s try to make the robot follow us
-instead. The idea is actually very similar to obstacle avoidance,
-except that instead of avoiding obstacles, you go toward them.&lt;/p&gt;
+&lt;p class="ablog-post-excerpt"&gt;Published on 2015-07-24.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-07-21 - &lt;a class="reference internal" href="../../../projects/log-6050-21263/"&gt;Testing The New Printed Circuit Board&lt;/a&gt;&lt;/p&gt;
-&lt;p class="ablog-post-excerpt"&gt;The &lt;a class="reference external" href="http://dirtypcbs.com/view.php?share=8923&amp;amp;accesskey=8b094bbc0000d8c4912eef9a90965aac"&gt;new PCBs&lt;/a&gt;  just arrived from &lt;a class="reference external" href="http://dirtypcbs.com"&gt;Dirtypcbs&lt;/a&gt;  and I started to test them. This is version three of the board, and &lt;a class="reference external" href="https://hackaday.io/project/6050-tote-affordable-spider-robot/log/20019-pcb-redesign"&gt;most of the improvements are really just for convenience or aesthetics&lt;/a&gt; .&lt;/p&gt;
+&lt;p class="ablog-post-excerpt"&gt;Published on 2015-07-21.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-07-16 - &lt;a class="reference internal" href="../../../projects/log-6050-21027/"&gt;Cheap Chinese STM32 Boards&lt;/a&gt;&lt;/p&gt;
-&lt;p class="ablog-post-excerpt"&gt;We already saw that Tote can work with a Pro Mini, Pro Micro or Teensy
-3.1 as its brains. The Teensy is especially interesting, as it gives
-us a lot of pins for additional sensors and effectors. But it’s quite
-expensive. Could we maybe use a cheaper ARM board instead?&lt;/p&gt;
+&lt;p class="ablog-post-excerpt"&gt;Published on 2015-07-16.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-07-11 - &lt;a class="reference internal" href="../../../projects/log-6050-20824/"&gt;Custom Controller&lt;/a&gt;&lt;/p&gt;
-&lt;p class="ablog-post-excerpt"&gt;The newest Hackaday Prize Hot List is about human interfaces, so I
-decided to work on that a little over the weekend. I found an analog
-joystick module lying around, so I’m going to try and make a custom
-controller for Tote.&lt;/p&gt;
+&lt;p class="ablog-post-excerpt"&gt;Published on 2015-07-11.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-07-10 - &lt;a class="reference internal" href="../../../projects/log-6050-20790/"&gt;Distance Sensor, Second Try&lt;/a&gt;&lt;/p&gt;
-&lt;p class="ablog-post-excerpt"&gt;Seonsors are very important for robots, and a distance sensor is one
-of the most useful ones that you can install, as it gives the robot an
-approximation of vision. I tried to use an ultrasound distance sensor
-with Tote before, and failed miserably. This time I’m going to use an
-infra-red distance sensor.&lt;/p&gt;
+&lt;p class="ablog-post-excerpt"&gt;Published on 2015-07-10.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-07-07 - &lt;a class="reference internal" href="../../../projects/log-6050-20586/"&gt;Logicoma-kun&lt;/a&gt;&lt;/p&gt;
-&lt;p class="ablog-post-excerpt"&gt;The continuous-rotation servos arrived, and I got to finish another of
-my experiments, &lt;a class="reference external" href="https://hackaday.io/project/6321-katka-a-mammalian-robot/log/20293-spider-mode"&gt;which I mentioned previously&lt;/a&gt;  over at the &lt;span class="xref myst"&gt;#Katka, a mammalian robot&lt;/span&gt;  project. Since I’m re-using parts and experience between all those
-projects, it becomes harder to separate them. This one might even grow
-out into its own project, but for now I will publish it here, as it’s
-basically Tote with a slightly different leg configuration and
-software.&lt;/p&gt;
+&lt;p class="ablog-post-excerpt"&gt;Published on 2015-07-07.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-07-02 - &lt;a class="reference internal" href="../../../projects/log-6050-20344/"&gt;Using Teensy 3.1&lt;/a&gt;&lt;/p&gt;
-&lt;p class="ablog-post-excerpt"&gt;One of the topics I intend to cover in those logs is how to extend
-Tote with various boards and modules. I’ve already had one log on how
-to use Pro Micro instead of Pro Mini, and one on adding an ESP8266
-board with Micropython. Now it’s time for the Teensy 3.1.&lt;/p&gt;
+&lt;p class="ablog-post-excerpt"&gt;Published on 2015-07-02.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-06-30 - &lt;a class="reference internal" href="../../../projects/log-6050-20241/"&gt;Schematics&lt;/a&gt;&lt;/p&gt;
-&lt;p class="ablog-post-excerpt"&gt;I’ve been asked to provide schematics of the PCB. I must admit, that I
-neglected that part a little, mostly doing all modifications and
-connections directly in the PCB view, but now I cleaned up the
-schematic view a little better.&lt;/p&gt;
+&lt;p class="ablog-post-excerpt"&gt;Published on 2015-06-30.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-06-26 - &lt;a class="reference internal" href="../../../projects/log-6050-20019/"&gt;PCB Redesign&lt;/a&gt;&lt;/p&gt;
-&lt;p class="ablog-post-excerpt"&gt;After the recent failures and after using the Tote’s PCB in a couple
-of different projects, I decided that some changes are needed to the
-design. Here is &lt;a class="reference external" href="https://bitbucket.org/thesheep/tote/src/tip/fritzing/pcb3.fzz"&gt;the new PCB&lt;/a&gt; :&lt;/p&gt;
+&lt;p class="ablog-post-excerpt"&gt;Published on 2015-06-26.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-06-23 - &lt;a class="reference internal" href="../../../projects/log-6050-19897/"&gt;Failure: HC-SR04 Distance Sensor&lt;/a&gt;&lt;/p&gt;
-&lt;p class="ablog-post-excerpt"&gt;What is a robot without sensors? Just a remote-controlled toy! It’s
-time to add some external sensors to Tote.&lt;/p&gt;
+&lt;p class="ablog-post-excerpt"&gt;Published on 2015-06-23.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-06-17 - &lt;a class="reference internal" href="../../../projects/log-6050-19645/"&gt;Remote control with ESP8266 and Micropython&lt;/a&gt;&lt;/p&gt;
-&lt;p class="ablog-post-excerpt"&gt;Raspberry Pi now requires at least 3GB SD card for its system image,
-and turns out I don’t have any that big around.&lt;/p&gt;
+&lt;p class="ablog-post-excerpt"&gt;Published on 2015-06-17.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-06-10 - &lt;a class="reference internal" href="../../../projects/log-6050-19284/"&gt;Using Arduino Pro Micro&lt;/a&gt;&lt;/p&gt;
-&lt;p class="ablog-post-excerpt"&gt;You can use Arduino Nano instead of the Pro Mini in Tote, if you
-prefer to have that USB socket available. Apart from the fact that the
-Nano has the USB2TTL build into it, there are no differences, so it
-should all work. However, I don’t have a spare Nano around, so I
-haven’t actually tested it. Caveats may appear.&lt;/p&gt;
+&lt;p class="ablog-post-excerpt"&gt;Published on 2015-06-10.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-06-09 - &lt;a class="reference internal" href="../../../projects/log-6050-19236/"&gt;Dirty PCBs are dirty&lt;/a&gt;&lt;/p&gt;
-&lt;p class="ablog-post-excerpt"&gt;For everyone who have ordered the PCB for Tote from &lt;a class="reference external" href="http://dirtypcbs.com/view.php?share=6918&amp;amp;accesskey=97f6a684899c11fcc50da07808869f5d"&gt;Dirty PCBs&lt;/a&gt;  just a quick note. Remember, that it’s the cut-throat cheap
-prototyping boards, and mistakes do happen. They are often simple to
-work around, but do test your boards for shorts before soldering
-anything or, especially, connecting a battery to the soldered board. I
-just had another batch arrive, and there is a small mistake on them:&lt;/p&gt;
+&lt;p class="ablog-post-excerpt"&gt;Published on 2015-06-09.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-06-04 - &lt;a class="reference internal" href="../../../projects/log-6050-18992/"&gt;Proprioception on the Cheap&lt;/a&gt;&lt;/p&gt;
-&lt;p class="ablog-post-excerpt"&gt;Remember that time when you sat on your leg for some time, and it got
-numb, and when you got up, it felt all wooden and walking was like
-walking on stilts? That’s how most walking robots feel. What happened
-is your nerves got squished and blocked a little, and you lost your &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Proprioception"&gt;sense of proprioception&lt;/a&gt;  – the position and forces of your limbs. Now you know why robots
-that don’t have force and position sensors on them have such a hard
-time walking!&lt;/p&gt;
+&lt;p class="ablog-post-excerpt"&gt;Published on 2015-06-04.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-05-31 - &lt;a class="reference internal" href="../../../projects/log-6050-18736/"&gt;Hacking on Tote&lt;/a&gt;&lt;/p&gt;
-&lt;p class="ablog-post-excerpt"&gt;Since Tote evolved from &lt;a class="reference external" href="https://hackaday.io/project/3300-kubik-quadruped-robot"&gt;µKubik&lt;/a&gt; , I put all updates about it there. But now that it is pretty much
-ready, I’m going to do some experimenting and extending and hacking on
-it, and I think it makes sense to have a separate project page for
-that, and leave the Python-powered µKubik alone.&lt;/p&gt;
+&lt;p class="ablog-post-excerpt"&gt;Published on 2015-05-31.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-05-31 - &lt;a class="reference internal" href="../../../projects/log-6050-18738/"&gt;Different Power Sources&lt;/a&gt;&lt;/p&gt;
-&lt;p class="ablog-post-excerpt"&gt;Power source is a hard problem for any walking or flying robots.
-Unlike the robots that roll on wheels (or tracks), walkers have to
-carry its own weight, and the battery can be easily the heaviest part
-of the robot. They also tend to draw quite a lot of current for their
-many actuators, so that further limits the choices.&lt;/p&gt;
+&lt;p class="ablog-post-excerpt"&gt;Published on 2015-05-31.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/section&gt;

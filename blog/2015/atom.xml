@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posted in 2015</title>
-  <updated>2024-08-07T19:00:35.560514+00:00</updated>
+  <updated>2024-08-07T19:07:50.398832+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/2015/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -12,6 +12,7 @@
     <updated>2015-11-05T00:00:00+01:00</updated>
     <content type="html">&lt;section id="nothing-happens"&gt;
 
+&lt;p&gt;Published on 2015-11-05.&lt;/p&gt;
 &lt;p&gt;I have been a little bit busy with other things recently, and I didn’t
 update this project for a while, so I thought that it’s time to write
 something just to let you all know that it’s not abandoned.&lt;/p&gt;
@@ -26,9 +27,7 @@ show yet.&lt;/p&gt;
 &lt;/section&gt;
 </content>
     <link href="http://deshipu.art/projects/log-6050-27566/" rel="alternate"/>
-    <summary>I have been a little bit busy with other things recently, and I didn’t
-update this project for a while, so I thought that it’s time to write
-something just to let you all know that it’s not abandoned.</summary>
+    <summary>Published on 2015-11-05.</summary>
     <published>2015-11-05T00:00:00+01:00</published>
   </entry>
   <entry>
@@ -37,6 +36,7 @@ something just to let you all know that it’s not abandoned.</summary>
     <updated>2015-11-21T00:00:00+01:00</updated>
     <content type="html">&lt;section id="i2c-slave"&gt;
 
+&lt;p&gt;Published on 2015-11-21.&lt;/p&gt;
 &lt;p&gt;I have done a little bit of progress towards putting a Raspberry Pi on
 Tote. You see, I didn’t want to make it communicate over serial,
 because I’ve done that already with ESP8266 (see previous logs). This
@@ -156,21 +156,7 @@ it’s still some time until it actually walks.&lt;/p&gt;
 &lt;/section&gt;
 </content>
     <link href="http://deshipu.art/projects/log-6050-28167/" rel="alternate"/>
-    <summary>I have done a little bit of progress towards putting a Raspberry Pi on
-Tote. You see, I didn’t want to make it communicate over serial,
-because I’ve done that already with ESP8266 (see previous logs). This
-time I wanted something more ambitious, so I decided to use I²C. As
-the first step, I completely rebuilt one of my robot prototypes, to
-use the new PCB and to also leave the top side of the PCB as flat as
-possible – it only has the Pro Mini and the servo horns there, and
-all the rest is on the bottom side. I also added a voltage regulator
-giving a steady 5V, so that I can power the Raspberry Pi with it. The
-Pro Mini still uses only 3.3V, but it’s fine with 5V, as it has an
-internal regulator. Servos actually work better at 5V, as it’s within
-its parameters, unlike the 3.7V, which was a bit low. Finally, I
-replaced the 1S 3.7V LiPo battery with a 2S one, so that the regulator
-has something to drop from (the boost converters that I have all have
-a 500mA shutoff, so they are not suitable for powering 12 servos).</summary>
+    <summary>Published on 2015-11-21.</summary>
     <published>2015-11-21T00:00:00+01:00</published>
   </entry>
   <entry>
@@ -179,6 +165,7 @@ a 500mA shutoff, so they are not suitable for powering 12 servos).</summary>
     <updated>2015-12-02T00:00:00+01:00</updated>
     <content type="html">&lt;section id="micro-tote"&gt;
 
+&lt;p&gt;Published on 2015-12-02.&lt;/p&gt;
 &lt;p&gt;I almost had the Raspberry Pi thing working last time, and I promised
 to get it to work, but not just yet. The last two weeks I had a
 different project on my mind. I was participating in the &lt;a class="reference external" href="http://microworldtour.github.io/microbit/monifa.html"&gt;Micro World Tour&lt;/a&gt; , a program that gets a couple of the micro:bit boards into the hands
@@ -243,13 +230,7 @@ really sent it to the next person in line.&lt;/p&gt;
 &lt;/section&gt;
 </content>
     <link href="http://deshipu.art/projects/log-6050-28596/" rel="alternate"/>
-    <summary>I almost had the Raspberry Pi thing working last time, and I promised
-to get it to work, but not just yet. The last two weeks I had a
-different project on my mind. I was participating in the Micro World Tour , a program that gets a couple of the micro:bit boards into the hands
-of Python hackers to do something nice with its Micropython
-implementation. So, obviously, I had to put it on Tote. Just imagine
-every kid in UK building their own quadruped robot and doing amazing
-stuff with it!</summary>
+    <summary>Published on 2015-12-02.</summary>
     <published>2015-12-02T00:00:00+01:00</published>
   </entry>
   <entry>
@@ -258,6 +239,7 @@ stuff with it!</summary>
     <updated>2015-12-04T00:00:00+01:00</updated>
     <content type="html">&lt;section id="pi-zero"&gt;
 
+&lt;p&gt;Published on 2015-12-04.&lt;/p&gt;
 &lt;p&gt;With the new Pi Zero board and its price, it may actually make sense
 to use in in place of the Arduino on Tote. It’s only a little bit more
 expensive, after all. The problem is, it doesn’t have hardware PWM and
@@ -273,13 +255,7 @@ better than on this photo. We will see how that works.&lt;/p&gt;
 &lt;/section&gt;
 </content>
     <link href="http://deshipu.art/projects/log-6050-28670/" rel="alternate"/>
-    <summary>With the new Pi Zero board and its price, it may actually make sense
-to use in in place of the Arduino on Tote. It’s only a little bit more
-expensive, after all. The problem is, it doesn’t have hardware PWM and
-has a whole operating system that needs to boot, has to be properly
-configured and requires all the right software. The cost of the SD
-card also cannot be ignored. All the adapters and cables are not a
-problem, as it wouldn’t need them while connected to the robot.</summary>
+    <summary>Published on 2015-12-04.</summary>
     <published>2015-12-04T00:00:00+01:00</published>
   </entry>
   <entry>
@@ -288,6 +264,7 @@ problem, as it wouldn’t need them while connected to the robot.</summary>
     <updated>2015-12-20T00:00:00+01:00</updated>
     <content type="html">&lt;section id="pyboard"&gt;
 
+&lt;p&gt;Published on 2015-12-20.&lt;/p&gt;
 &lt;p&gt;There is a version of Tote using PyBoard as its brains: &lt;span class="xref myst"&gt;#Micropython Quadruped Robot&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;But the code for that was translated from Tote’s Arduino code, and
 didn’t work too well for some reason. I promised to try and fix that
@@ -302,7 +279,7 @@ and connected the PyBoard using dupont cables:&lt;/p&gt;
 &lt;/section&gt;
 </content>
     <link href="http://deshipu.art/projects/log-6050-29288/" rel="alternate"/>
-    <summary>There is a version of Tote using PyBoard as its brains: #Micropython Quadruped Robot</summary>
+    <summary>Published on 2015-12-20.</summary>
     <published>2015-12-20T00:00:00+01:00</published>
   </entry>
 </feed>
