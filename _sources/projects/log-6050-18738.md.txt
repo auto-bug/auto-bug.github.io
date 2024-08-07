@@ -1,0 +1,82 @@
+---
+blogpost: true
+date: 2015-05-31
+category: project-6050
+---
+
+# Different Power Sources
+
+Power source is a hard problem for any walking or flying robots.
+Unlike the robots that roll on wheels (or tracks), walkers have to
+carry its own weight, and the battery can be easily the heaviest part
+of the robot. They also tend to draw quite a lot of current for their
+many actuators, so that further limits the choices.
+
+For the base Tote, I went with a single-cell LiPo battery, mostly
+because they have the best weight-to-power ratio, and they are
+relatively easy to get, either from hobby model shops, from
+electronics shops, or from discarded cellphones, electric
+toothbrushes, etc. but there are other possibilities.
+
+**Alkaline batteries** are well known by the robot experts as absolutely the crappiest
+batteries you could use for your robot. Not only they are heavy, but
+also the current you can draw from them is almost nothing, and they
+will discharge pretty quickly, after which you can simply throw them
+away. So can Tote be powered with alkaline batteries? Let's find out!
+
+
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/SZiQHDCJas0"></iframe>
+
+As you can see, you can, but not for very long. But it's nice to see
+that Tote can actually lift them. That means that I could probably
+swap them for some**NiMH** or**NiCd** rechargeable batteries, and it would be all good. Let's see!
+
+
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/7EXs-lPbF28"></iframe>
+
+That actually went pretty well! Apart from some weight-shifting
+problems, I would probably need to find a better way of attaching
+them. Also, using AAA cells instead of AA would improve the weight,
+but unfortunately I don't have any AAA rechargeable batteries on me at
+the moment. Finally, a**LiPo** battery salvaged from a broken power bank, for comparison.
+
+
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/2oY1tgPdmVQ"></iframe>
+
+That huge battery should keep it going whole day.
+
+Now, let's look at some more advanced hack. For an experiment with
+force-sensing servos, that I will describe separately at some point, I
+needed the voltage given to the servos to be constant, so that I would
+get consistent readings. The obvious solution is to add a switching
+voltage regulator (an**UBEC**), and I actually thought about that when designing Tote's printed
+circuit board, so there is a place for it:\
+
+
+
+:::{image} https://cdn.hackaday.io/images/7729521433080757411.jpg
+
+:::
+
+
+It's conveniently located just after the power switch and the voltage-
+monitoring circuit, so that those two will still work correctly. One
+problem that I had is that this regulator needs higher voltage to
+regulate it_down_to the voltage desired, so I needed to use a battery with higher
+voltage. So I used a 2S**LiFePo4**battery here. What is that? They are all the rage these days among the
+power flashlight geeks. They are similar to LiPo batteries, except
+they are much stabler both chemically and electrically, giving pretty
+good 3.3V voltage and not exploding if you as much as look at them
+funny. Unfortunately, you need a special charger for them -- the LiPo
+charging modules are no good.
+
+Of course, for experiments on your desktop, you can always just plug
+the robot into a bench power supply, and have it drag a cable behind.
+It's actually more convenient than having to recharge or swap
+batteries all the time. Unfortunately you can't simply power this
+robot from your computer's USB. It needs way more power than the 500mA
+the USB standard specifies.
+
+That concludes my experiments with power sources. As you can see, you
+have a lot of choices.
+

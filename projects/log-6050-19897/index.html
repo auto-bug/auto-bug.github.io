@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Failure: HC-SR04 Distance Sensor - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="failure-hc-sr04-distance-sensor">
+<h1>Failure: HC-SR04 Distance Sensor<a class="headerlink" href="#failure-hc-sr04-distance-sensor" title="Permalink to this heading">¶</a></h1>
+<p>What is a robot without sensors? Just a remote-controlled toy! It’s
+time to add some external sensors to Tote.</p>
+<p>If you looked at the <a class="reference external" href="http://tote.readthedocs.org/en/latest/_images/pcb2a.png">PCB</a> , you probably noticed the four pins broken out at the bottom. Yes,
+they match the pinout of a cheap HC-SR04 ultrasonic range finder. It
+should be a great way to add some obstacle avoidance or person
+following capabilities to Tote, just like its older brother µKubik
+has.</p>
+<hr class="docutils" />
+<p>\</p>
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="" src="https://www.youtube.com/embed/qmuZv3mmvRI"></iframe>
+<p>So let’s do it. The trigger pin is connected to pin 3 on the Arduino,
+and the echo is on pin 13 – yes, I ran out of pins and had to reuse
+the LED pin for this. As a side effect, the LED blinks every time we
+read the distance. A quick sketch to test the sensor:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#define TRIG_PIN 3</span>
+<span class="cp">#define ECHO_PIN 13</span>
+
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">115200</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">TRIG_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">ECHO_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">INPUT</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">duration</span><span class="p">,</span><span class="w"> </span><span class="n">distance</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">TRIG_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">delayMicroseconds</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">TRIG_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">delayMicroseconds</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">TRIG_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">duration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pulseIn</span><span class="p">(</span><span class="n">ECHO_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">distance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">duration</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">58.2</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">distance</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot; cm&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>And lo and behold, proper readings:</p>
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="" src="https://www.youtube.com/embed/_Bw_2RLY4qY"></iframe>
+<p>Yay, so that’s it, right? Now just add <a class="reference external" href="https://bitbucket.org/thesheep/tote/src/eda3cc49cbb6e0774d22d0e6b12d5ccc45cfd3c9/start/ping.ino?at=ping">some basic logic to the code</a>  to make the robot stop when there is an obstacle in front, and we are
+ready to go, right? Wrong.</p>
+<p>For some reason, the robot stop immediately after the first step.
+What’s happening?</p>
+<p>OK, let’s connect the serial and see. The distance readings are all 0.
+Why? Disconnect the battery, connect the Pro Mini to the USB and look
+again. Readings are all connect. Disconnect the USB power and run it
+from battery – 0 again. Argh.</p>
+<p>Wait a minute. The Pro Mini actually has VCC at 5V while it’s being
+powered from the USB cable, and 3.3V when it runs from the battery…
+What were the power requirements of that HC-SR04 sensor again? Where
+is the <a class="reference external" href="http://www.elecfreaks.com/store/download/HC-SR04.pdf">datasheet</a> …</p>
+<p>Right, working voltage 5V. Sigh. Of curse I did check that before when
+I was designing the board, but back then I still wanted to use a 5V
+Pro Mini, and a voltage regulator. I later switched to 3.3V and
+completely forgot about the sensor. So what can be done?</p>
+<p>Well, looking at what I have lying around I took a 5V Pro Mini, a 2S
+LiPo battery and a 5V voltage regulator, and quickly replaced Tote’s
+guts.<strong>Warning</strong>: the 5V Pro Mini doesn’t have the RAW pin separated from the VCC pin
+like the 3.3V version does, so don’t connect it to the USB2TTL while
+it’s in the robot – the power draw will quickly fry the power
+regulator in Pro Mini. You have to remove it for programming.</p>
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="" src="https://www.youtube.com/embed/QjZ5rQOpvEw"></iframe>
+<p>You can see that now it kinda works, except for random times when the
+sensor returns completely weird values. Maybe the sensor is broken?
+Replacing the sensor didn’t help much. Taking three readings in a
+quick succession and taking maximum of them didn’t help either – it
+seems, that the sensor just has some moments when the readings are
+consistently bad. I can’t think of a solution.</p>
+<p>While this is a failure, I thought that I will publish it anyways, as
+even the failures give us something to learn from – often even more
+than the successes. And speaking of failures, remember how I promised
+to connect a Raspberry Pi to Tote? That’s too cancelled for the moment
+– my A+ RPI suddenly stopped working, the power LED won’t shine, the
+activity LED shines weakly when powered from USB, and not at all when
+powered through the pins. I guess I have a streak of bad luck. Oh
+well.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

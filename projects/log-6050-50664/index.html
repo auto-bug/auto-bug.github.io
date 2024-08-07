@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>CORDIC - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="cordic">
+<h1>CORDIC<a class="headerlink" href="#cordic" title="Permalink to this heading">¶</a></h1>
+<p>Since the flu season began, I’ve been lying in bed sick quite some
+time. While I don’t recommend doing coding with a fever (takes way too
+much time to track down the trivial mistakes you make), you do have
+some free time to explore some coding ideas that you didn’t bother
+with before. One of such things on my to do list is rewriting Tote’s
+inverse kinematics code to use only integer math, and I found a
+marvelous family of algorithms that can let me do it.</p>
+<p>If you look at my explanation of Tote’s inverse kinematics at <a class="reference external" href="http://tote.readthedocs.io/en/latest/ik.html">http://tote.readthedocs.io/en/latest/ik.html</a> , you will see that I’m using two trigonometric functions (actually
+inverse trigonometric functions) in there: atan2 and acos. They both
+return an angle – in the case of the standard library functions, in
+form of a number between -PI and PI (or was it 0 and 2PI? I can’t
+remember). That’s a pretty arbitrary range, that I have to then
+convert into servo pulse width in the range between 600 and 2400µs.
+Wouldn’t it me great if they instead returned integers from 0 to 1800,
+so that I could use them for the servo pulse width directly?</p>
+<p>But how are such trigonometric functions calculated? There are several
+ways. You can approximate them with a polynomial, using a so-called
+Taylor series. You can also have a lookup table, with some
+interpolation for the values in between. But both of those approaches
+involve quite a lot of multiplications and divisions, and possibly
+floating point (or fixed point) numbers. Which is slow on a
+microcontroller such as the one used in Tote, not to mention a lot of
+code being generated (especially for the lookup tables). Fortunately
+there are the CORDIC algorithms, which involve only a lookup in a
+small table, some additions and some bit shifts. And of course you do
+it all on integers. Plus, you have very good control over the accuracy
+– the more iterations of the algorithm you do, the better results you
+get.</p>
+<p>How does it work? The heart of the algorithm is a small mathematical
+trick that lets you rotate a point (x, y) around the center of the
+coordinate system (0, 0) by a fixed angle using just additions and bit
+shifts, provided you know the arcus tangent value of that fixed angle.
+So you make a lookup table with a dozen values for 45°, 22.5°, 11.25°,
+5.625°, and so on (each angle half of the previous one), and you do a
+binary search for your value.</p>
+<p>Let’s say you want to calculate cos(a). Imagine a length 1 line
+starting at (0, 0) and going to (x, y), with the angle between the x
+axis and the line being a. Then the value we are looking for is x. How
+do we find x? We will start with a line at angle 0° and coordinates
+(1, 0), and rotate it (using our additions and shifts) by 45° one way
+or the other, depending if our a is larger or smaller than 0. We will
+get some point (x1, y1) this way. Then we will rotate it again, by
+22.5°, one way or the other depending on where the angle a is compared
+to our current angle. And we will repeat that, rotating by a smaller
+angle each time, until we get close enough to out angle a. At that
+point we have calculated our cos(a) (and also sin(a) at the same
+time).</p>
+<p>Calculating the inverse trigonometric functions is similar, except we
+start with the line at (x, y), and try to rotate it to be as close to
+(1, 0) as possible, keeping track of how much we have rotated it so
+far. Once we got close enough to (1, 0), the total angle is our
+answer. Simple.</p>
+<p>All that is left for me is to actually write some code, test it, tune
+it to use the smallest types possible and to work with enough accuracy
+for my particular use case, and put that code in Tote. I will let you
+know when that happens, but first I need to get over this flu.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

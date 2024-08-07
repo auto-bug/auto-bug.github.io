@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Different Power Sources - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="different-power-sources">
+<h1>Different Power Sources<a class="headerlink" href="#different-power-sources" title="Permalink to this heading">¶</a></h1>
+<p>Power source is a hard problem for any walking or flying robots.
+Unlike the robots that roll on wheels (or tracks), walkers have to
+carry its own weight, and the battery can be easily the heaviest part
+of the robot. They also tend to draw quite a lot of current for their
+many actuators, so that further limits the choices.</p>
+<p>For the base Tote, I went with a single-cell LiPo battery, mostly
+because they have the best weight-to-power ratio, and they are
+relatively easy to get, either from hobby model shops, from
+electronics shops, or from discarded cellphones, electric
+toothbrushes, etc. but there are other possibilities.</p>
+<p><strong>Alkaline batteries</strong> are well known by the robot experts as absolutely the crappiest
+batteries you could use for your robot. Not only they are heavy, but
+also the current you can draw from them is almost nothing, and they
+will discharge pretty quickly, after which you can simply throw them
+away. So can Tote be powered with alkaline batteries? Let’s find out!</p>
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/SZiQHDCJas0"></iframe>
+<p>As you can see, you can, but not for very long. But it’s nice to see
+that Tote can actually lift them. That means that I could probably
+swap them for some<strong>NiMH</strong> or<strong>NiCd</strong> rechargeable batteries, and it would be all good. Let’s see!</p>
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/7EXs-lPbF28"></iframe>
+<p>That actually went pretty well! Apart from some weight-shifting
+problems, I would probably need to find a better way of attaching
+them. Also, using AAA cells instead of AA would improve the weight,
+but unfortunately I don’t have any AAA rechargeable batteries on me at
+the moment. Finally, a<strong>LiPo</strong> battery salvaged from a broken power bank, for comparison.</p>
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/2oY1tgPdmVQ"></iframe>
+<p>That huge battery should keep it going whole day.</p>
+<p>Now, let’s look at some more advanced hack. For an experiment with
+force-sensing servos, that I will describe separately at some point, I
+needed the voltage given to the servos to be constant, so that I would
+get consistent readings. The obvious solution is to add a switching
+voltage regulator (an<strong>UBEC</strong>), and I actually thought about that when designing Tote’s printed
+circuit board, so there is a place for it:\</p>
+<img alt="https://cdn.hackaday.io/images/7729521433080757411.jpg" src="https://cdn.hackaday.io/images/7729521433080757411.jpg" />
+<p>It’s conveniently located just after the power switch and the voltage-
+monitoring circuit, so that those two will still work correctly. One
+problem that I had is that this regulator needs higher voltage to
+regulate it_down_to the voltage desired, so I needed to use a battery with higher
+voltage. So I used a 2S<strong>LiFePo4</strong>battery here. What is that? They are all the rage these days among the
+power flashlight geeks. They are similar to LiPo batteries, except
+they are much stabler both chemically and electrically, giving pretty
+good 3.3V voltage and not exploding if you as much as look at them
+funny. Unfortunately, you need a special charger for them – the LiPo
+charging modules are no good.</p>
+<p>Of course, for experiments on your desktop, you can always just plug
+the robot into a bench power supply, and have it drag a cable behind.
+It’s actually more convenient than having to recharge or swap
+batteries all the time. Unfortunately you can’t simply power this
+robot from your computer’s USB. It needs way more power than the 500mA
+the USB standard specifies.</p>
+<p>That concludes my experiments with power sources. As you can see, you
+have a lot of choices.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

@@ -1,0 +1,92 @@
+---
+blogpost: true
+date: 2015-07-24
+category: project-6050
+---
+
+# Follow Me!
+
+Some time ago I got the [Sharp distance sensor to work with Tote](https://hackaday.io/project/6050-tote-affordable-spider-robot/log/20790-distance-sensor-second-try)  (somewhat), and I promised we will do something interesting with it.
+Obstacle avoidance is old, so let's try to make the robot follow us
+instead. The idea is actually very similar to obstacle avoidance,
+except that instead of avoiding obstacles, you go toward them.
+
+So what's the plan? We want our robot to behave differently depending
+on what the distance sensor is telling it:
+
+
+ * If the obstacle is very close, go backwards;
+ * if the obstacle is close, stay in place and do nothing;
+ * if the obstacle is far, go forward;
+ * finally, if there is no obstacle in sight, rotate in place to find it.
+
+This translates pretty easily into code:
+
+
+```cpp
+void sharp_loop() {
+    int distance = analogRead(A4);
+    if (distance > 660) {
+        creep_dx = 0;
+        creep_dy = -1;
+        creep_rotation = 0;
+        beep(352, 100);
+    } else if (distance > 480) {
+        creep_dx = 0;
+        creep_dy = 0;
+        creep_rotation = 0;
+    } else if (distance > 420) {
+        creep_dx = 0;
+        creep_dy = 1;
+        creep_rotation = 0;
+        beep(704, 100);
+    } else {
+        creep_dx = 0;
+        creep_dy = 0;
+        creep_rotation = PI/45;
+        beep(1408, 100);
+    }
+}
+```
+
+
+---
+I also added some beeps in there, that will tell us what the current
+state is. Since the new PCB has a place for a piezo buzzer on pin 13,
+I also added it to the previous robots:
+
+
+:::{image} https://cdn.hackaday.io/images/9149541437741274409.jpg
+
+:::
+
+
+But how does our code work? Turns out, that it doesn't work very well.
+The problem comes from how our 5V sensor works when it's under-powered
+with 3.3V. Remember the plot of values from last time?
+
+
+:::{image} https://cdn.hackaday.io/images/8548111437741395294.png
+
+:::
+
+
+It's U-shaped, and that means that we get the same reading both for
+20cm and for 50cm and more. That means that we have practically no way
+to tell if something is 20cm away or 50cm away, and that means that we
+can't reliably get the "no obstacle in sight" condition.
+
+Even if we shorten our distances to where the curve is relatively
+straight, we are still going to get weird readings when nothing is
+that close.
+
+Oh well, the sensor was cheap so it was worth a try. I guess this is a
+lesson: don't try to use parts outside of their specified parameters.
+Now I ordered some distance sensors that work between 2.7 and 5.5V, so
+that should be better. I will try again when they arrive.
+
+Finally, a video of Tote failing to follow my hand:
+
+
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/u7CzJw-UeYg"></iframe>
+

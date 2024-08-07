@@ -1,0 +1,52 @@
+---
+blogpost: true
+date: 2018-06-07
+category: project-6050
+---
+
+# Reviving the Skull Tote
+
+I have a number of prototypes of Tote that I have built over the
+years, but the most presentable one is the one I pimped up in  [https://hackaday.io/project/6050-tote/log/48853-pimp-your-bot](https://hackaday.io/project/6050-tote/log/48853-pimp-your-bot) 
+
+Unfortunately, that robot had a number of problems. Unlike all other
+Totes, it was powered with a 2S lipo battery, with a buck converter
+bringing to voltage down to 5V. That tiny buck converter would only
+work for a few minutes, and then starting to shut down when the
+current drawn by the servos made it too hot. Which would result in the
+robot having a seizure. I also discovered that the motor in one of the
+servos got stuck — rather common with the cheap SG90 servos — and
+would need to be replaced.
+
+So I decided to open up this robot, replace the power with a more
+standard setup (a 1S lipo connected directly without any voltage
+stabilization), add a battery charging circuit, and replace the servo.
+
+Here's the USB port for the battery charging circuit:
+
+
+
+:::{image} https://cdn.hackaday.io/images/9036641528398127759.jpg
+
+:::
+
+
+And the replaced servo, primed with black paint, waiting to dry for a
+dry-brushing:
+
+
+
+:::{image} https://cdn.hackaday.io/images/2825991528398180978.jpg
+
+:::
+
+
+And finally the whole robot, it all its robot glory:
+
+
+
+:::{image} https://cdn.hackaday.io/images/7540951528398222731.jpg
+
+:::
+
+

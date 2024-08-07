@@ -1,0 +1,437 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>http://deshipu.art/</id>
+  <title>deshipu.art - Posts in project-6050</title>
+  <updated>2024-08-07T18:42:38.681415+00:00</updated>
+  <link href="http://deshipu.art/"/>
+  <link href="http://deshipu.art/blog/category/project-6050/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/log-6050-51738/</id>
+    <title>Choosing the Brains</title>
+    <updated>2017-01-11T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="choosing-the-brains"&gt;
+
+&lt;p&gt;In the previous post I shared some of my thoughts about this project,
+and decided to pick a different development board than the Pro Mini
+that I have been using so far. Don’t get me wrong, Pro Mini is great
+for all kinds of small and cheap projects, it’s just that I want to
+make programming this robot as simple as possible. That, among other
+things, means using a platform that has a lot of computing power, not
+just enough, preferably one that has so much of it, that it can be
+used with a high-level language like Python. That also means something
+that has a USB socket.&lt;/p&gt;
+&lt;hr class="docutils" /&gt;
+&lt;p&gt;The plan is to keep the Tote base PCB for its body, and keep the
+ATmega microcontroller on it, but make it only serve as a servo
+controller. Then, on top of it, have headers for plugging in the
+actual brains, and possibly for stacking additional shields with
+sensors and other peripherals. The board would only need connections
+for the power and the I2C pins, but since there is no standard for the
+pin layout (or, rather, there are lots of standards), I need to choose
+one – history shows that trying to make it flexible and compatible
+with many different boards only leads to pain and suffering.&lt;/p&gt;
+&lt;p&gt;However, I still want this to be relatively cheap. It would be bad if
+the brain was more expensive than the ~$20 the legs cost. I first
+tried with the D1 Mini board, because it’s my favorite ESP8266 board,
+it’s small and compact, and it has a number of shields for it
+available. It’s also easy to make new shields for it, and they can be
+very small, which makes them cheap on OSHPark. The board can run
+MicroPython and has WiFi build in, which makes it easy to use a remote
+console to program and debug it very conveniently. There is also a
+LiPo shield, which makes it possible to recharge the battery from the
+USB. So I spent some hours making this:&lt;/p&gt;
+&lt;img alt="https://cdn.hackaday.io/images/5545441484170063244.png" src="https://cdn.hackaday.io/images/5545441484170063244.png" /&gt;
+&lt;p&gt;The base is just the &lt;a class="reference external" href="https://hackaday.io/project/13278"&gt;#Servo Breakout for WeMos D1 Mini&lt;/a&gt;  with 20 channels for the servos. I tried to make it easier to
+reprogram by including the ISP header. There are no Tote-specific
+markings about leg servos and so on there – just channel numbers, so
+it makes it easier to see which servo is which inside your program,
+where you have to refer to them by numbers too (at least initially).
+This way there is no hardcoded magical knowledge necessary, and you
+can use the remaining 8 PWM outputs for other things, or use this
+board with a different legs configuration than Tote has.&lt;/p&gt;
+&lt;p&gt;There is also a power switch in there, but it’s not connected to the
+rest of the board – since I didn’t decide about how it will be
+powered yet (you can have the LiPo shield or not, you can have some
+other charging/protection module, you can use a powerbank, etc.), I
+left it disconnected and only provided headers. I also added battery
+connectors on both ends of the board, for use with any battery holder.
+Unfortunately, I didn’t know which one, so I just spaced them as far
+from each other as possible.&lt;/p&gt;
+&lt;p&gt;Then there are the headers for connecting the D1 Mini and its shields.
+I used alternating holes headers, so that you can plug it directly
+into the PCB (but you can also use headers). I connected the servo
+power to the 5V pin, to bypass the voltage regulator on the board.&lt;/p&gt;
+&lt;p&gt;Later, I found a tube of ATmega328 chips in the MLF package, and I was
+a bit bored, so I made a version for that, playing with Fritzing’s
+curvy traces:&lt;/p&gt;
+&lt;img alt="https://cdn.hackaday.io/images/7757741484170897474.png" src="https://cdn.hackaday.io/images/7757741484170897474.png" /&gt;
+&lt;p&gt;It was fun, but ultimately unproductive. Anyways, I liked the first
+board, so I ordered it at DirtyPCBs and went do bed.I couldn’t sleep that night.&lt;/p&gt;
+&lt;p&gt;Tossing and turning, I started thinking about different options I have
+for using this. Then the doubts crept it. If I use the LiPo shield,
+there will be a boost converter on the 5V line that powers the servos.
+Will it have enough power for all those servos? If not, can I somehow
+power the servos directly from the LiPo? I don’t have a connection for
+that on the board, should I add it? What will happen if I short the 5V
+pin with the 3.3V pin on the D1 Mini? Will that damage the voltage
+regulator? Can I make adapters for the D1 Mini pinout for other
+boards? What if I wanted to use OpenMV, could that work? Which of the
+official D1 Mini shields would actually be useful? The temperature and
+humidity sensors? The button shield? The single WS2812B RGB LED? Will
+there be enough room between the robot legs to place the board under
+the body instead of on top? And so on.&lt;/p&gt;
+&lt;p&gt;Finally, at 5am I decided I’m not going to fall asleep anyways, so I
+could as well do some mock designs. What other ESP8266 development
+board do I know that has a lot of shields available? Maybe the
+Adafruit HUZZAH Feather? It’s a bit expensive, but it does come with a
+LiPo charger built-in, the correct pin markings for MicroPython (the
+D1 Mini uses the NodeMCU markings) and generally has great support.
+There are also other Arduino-compatible boards with that footprint,
+and there is an M0 board that also runs MicroPython. And the shields
+somehow look more appealing.&lt;/p&gt;
+&lt;p&gt;So I decided to give it a try, and I came up with this:&lt;/p&gt;
+&lt;img alt="https://cdn.hackaday.io/images/8821021484171642513.png" src="https://cdn.hackaday.io/images/8821021484171642513.png" /&gt;
+&lt;p&gt;Unfortunately, the Feather is a fraction longer than the 5cm of the
+Tote’s base, so it sticks out about 2mm in front. That’s where the
+ESP8266’s antenna is, so I guess that’s fine. I also made a couple of
+other decisions here.Since there is no boost converter, only the charging circuit, I have
+no problems with servos drawing too much power – I will just power
+them directly from the battery. I decided on the kind of battery to
+use – I discovered the 16340 lithium batteries. Previously I knew the
+18650, as they are commonly used for power banks, but those are too big for
+Tote. The 16340 is half that size, and there are convenient battery holders for it.
+So I added holes for mounting such a holder on the bottom of the
+board, and made all the connections for the switch and the charging
+circuit, etc.&lt;/p&gt;
+&lt;p&gt;I also decided to use one of the analog-only pins of the ATmega for
+battery voltage monitoring, since I wasn’t using them anyways. It’s
+the same voltage divider circuit I had in the previous Totes.&lt;/p&gt;
+&lt;p&gt;One more addition, is the double pin header on the front. I plan to
+add a female header to it, but soldered flat on the board, so that you
+can easily plug any sensor breakout boards into it, and they will be
+facing forward. Of course, you would need to make any connections with
+additional wires, but at least there is the mechanical support.&lt;/p&gt;
+&lt;p&gt;But something wasn’t quite right. I had this nagging feeling that I’m
+forgetting something. I reviewed my notes, and then I realized. Tote
+is supposed to be simple to build without access to special tools like
+3D printers or laser cutters. Or like reflow ovens, hot plates, hot
+air guns or very precise soldering irons, like the one I have. I have
+SMD parts on that board, and no beginner is going to solder that with
+a cheap soldering iron, without using any flux. This board is simply
+too complex for Tote. I need something simpler.&lt;/p&gt;
+&lt;p&gt;So I deleted the microcontroller and all the SMD parts, and started
+working again. I came up with something like this:&lt;/p&gt;
+&lt;img alt="https://cdn.hackaday.io/images/4663631484172769261.png" src="https://cdn.hackaday.io/images/4663631484172769261.png" /&gt;
+&lt;p&gt;There is a number of changes. I used an ATmega chip in a DIP package,
+which should be easy enough to solder with a rusty nail. There are no
+analog-only pins in that version, so the battery monitoring went away.
+I connected the reset pin to the Feather’s reset, so they share the
+pullup resistor there. And I’m going to use internal pullups for the
+I²C lines.\&lt;/p&gt;
+&lt;p&gt;Next, I aligned all the headers with each other, so that it’s easier
+to solder them all by inserting them into a breadboard for holding. I
+had some room on the sides, so I doubled the Feather’s pins, making a
+prototyping area where you can connect those wires from your sensors,
+or whatever you want. I also disconnected the second ground pin from
+the ground, as I realized that it’s connected to CH_PD on the HUZZAH,
+and I would get a short there. As a finishing touch, I added all the
+labels I could think of, and moved them to more convenient places. I
+also added ground fill and some silkscreen decorations that are not
+shown here, for clarity.&lt;/p&gt;
+&lt;p&gt;DirtyPCBs has this awesome feature, where you can change your order’s
+gerber if it wasn’t assigned to a panel yet. I checked my order, and
+it wasn’t, so I quickly swapped this. I think this is the design I’m
+going to go with. It’s easy enough to assemble even for a beginner,
+provides a lot of room for prototyping, and is simple and modular.&lt;/p&gt;
+&lt;p&gt;It’s funny how bigger components, like the DIP chip and the Feather
+board, actually give me more room on the board. The DIP chip has much
+better spacing of the legs, so I don’t need as much width for fitting
+all the traces. The Feather is narrower than the D1 Mini by 2.54mm,
+but that means you can fit two Feather shields (they call them Wings)
+on a 5x5cm PCB, and you have room for the servo horns on the sides of
+that base board. Finally, you can use a DIP socket and make the chip
+pluggable – so you can easily replace it, and also reprogram it more
+conveniently.&lt;/p&gt;
+&lt;p&gt;I’m really excited about this board, and I think this is really the
+right direction for Tote to go in. The next step is code and
+documentation for it. If the prototype works well enough, I’m going to
+make it the default version in the documentation and only focus on
+this. Can’t wait for the boards to arrive.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/log-6050-51738/" rel="alternate"/>
+    <summary>In the previous post I shared some of my thoughts about this project,
+and decided to pick a different development board than the Pro Mini
+that I have been using so far. Don’t get me wrong, Pro Mini is great
+for all kinds of small and cheap projects, it’s just that I want to
+make programming this robot as simple as possible. That, among other
+things, means using a platform that has a lot of computing power, not
+just enough, preferably one that has so much of it, that it can be
+used with a high-level language like Python. That also means something
+that has a USB socket.</summary>
+    <published>2017-01-11T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/log-6050-51725/</id>
+    <title>New Year Reflections</title>
+    <updated>2017-01-11T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="new-year-reflections"&gt;
+
+&lt;section id="year-s-summary"&gt;
+&lt;h2&gt;Year’s Summary&lt;/h2&gt;
+&lt;p&gt;This is one of my oldest projects, and definitely one that I have put
+the most total work into so far. With the year’s end, I decided to
+reflect a bit about the progress made so far and the way forward.\&lt;/p&gt;
+&lt;p&gt;There wasn’t a lot of activity, but some interesting things did happen
+last year.&lt;/p&gt;
+&lt;p&gt;We had a workshop in Belgrade, where we built 20 &lt;a class="reference external" href="https://hackaday.io/project/9927"&gt;#Tote HaD&lt;/a&gt; s. I have learned a lot about how (not) to source parts for such an
+event, how to run it, what parts are actually hard for people, etc.
+There were also some improvements to the construction itself
+contributed by the participants – but only during the workshop. I’m a
+bit disappointed that nobody seems to have done anything with their
+robot after the workshop – or, at least, I haven’t heard about it. I
+think this is an important point to consider.\&lt;/p&gt;
+&lt;p&gt;There have also been some Tote-inspired builds out there. I helped to
+build at least two of them. There are even more unfinished projects,
+but I guess that’s normal.&lt;/p&gt;
+&lt;p&gt;On my side, I released another version of the PCB, experimented with
+some alternate brains (including the &lt;a class="reference external" href="https://hackaday.io/project/9065"&gt;#Tote Zero&lt;/a&gt;  with a Raspberry Pi), and made one of my prototypes look much better
+by giving it a chassis and some LED eyes, and a coat of paint. There
+has been practically no progress on the software side, despite some
+research on the CORDIC algorithms and servo PWM code. I also didn’t
+experiment much with sensors and behaviors. The step-by-step tutorial
+is also empty.&lt;/p&gt;
+&lt;p&gt;Overall, even though some work got done, and even though I gained some
+experience, I’m not particularly happy with the outcomes of the Tote
+project. I’m starting to realize that it’s not enough to give people a
+platform to experiment with – even if they do experiments and
+improvements, it’s all for nothing if they don’t share them.&lt;/p&gt;
+&lt;/section&gt;
+&lt;section id="wrong-goals"&gt;
+&lt;h2&gt;Wrong Goals&lt;/h2&gt;
+&lt;p&gt;I think that part of the problem is that I have been focusing on the
+wrong parts of the project. I need to pause and re-evaluate some of
+the assumptions I made, and see where that takes me.&lt;/p&gt;
+&lt;p&gt;When I was just starting with Tote, I still remembered being a student
+and not having much of a budget for this kind of projects. So I made
+lowering the total cost the number one priority (well, apart from
+having it actually work, of course). As I look at this now, this might
+have been a mistake. Sure, when you are a student in Poland, price is
+the number one factor for anything. But it turns out that most people
+who do this hobby stuff actually don’t mind spending a little bit more
+if that saves them time, makes things more convenient, gives better
+results or even just makes things look more shiny. If you are going to
+put hours of work into a project anyways, you don’t mind waiting a
+little bit more to get the extra funds. So I am going to pay less
+attention to the price (but still try to keep everything frugal) from
+now on.&lt;/p&gt;
+&lt;p&gt;By default, Tote is controlled with a TV remote, and has no autonomous
+functionality. I did that, because I figured it’s the simplest
+starting point, and also shows off the hardware capabilities, leaving
+any software-side innovation to the users. Or maybe I was just lazy.
+In any case, I think that this has turned it into a toy, and
+discouraged actually programming it. There are some other decisions
+that also contributed to it: the need for an external programmer for
+programming, the main code written in C++, no easy way to update and
+debug the code. I think I should start putting more effort into making
+it easier to actually program this robot, and encourage it more. Fast
+iteration is the key to good progress. I have become painfully aware
+of that recently when working on the recent version &lt;a class="reference external" href="https://hackaday.io/project/3736"&gt;#µBob biped robot&lt;/a&gt; , where I had to physically unscrew and detach the legs to access the
+chip for programming. That’s the best way to make sure nobody ever
+changes anything in the program unless they absolutely must. So I need
+to try and remove all the obstacles for programming. And also finally
+finish the programming tutorial for it.&lt;/p&gt;
+&lt;p&gt;Simplicity was another design goal (it always is), but I kinda lost
+track of it in my pursuit of squeezing as much as possible from the
+small budget. It especially shows in my &lt;a class="reference external" href="https://hackaday.io/project/6050/log/30979-the-way-forward"&gt;The Way Forward&lt;/a&gt;  log a few months ago and &lt;a class="reference external" href="https://hackaday.io/project/9065-tote-zero/log/31747-everything-in-one"&gt;the crazy PCB design for Tote Zero&lt;/a&gt; . Something definitely went wrong there. I really need to break up the
+whole design into independent, single-function modules, and I need to
+work on lowering the complexity of each of them – preferably using
+ready off-the-shelf parts and modules. I also need to look into making
+the assembly easier. One of the goals from the beginning was to not
+require any special tools like 3D printers or laser cutters – so that
+you can make it at home easily. However, I forgot that soldering
+skills are also an “advanced tool”, and that while many people have
+access to some way of soldering, soldering tiny, densely packed SMD
+components is not a common skill. So I definitely need to review that.&lt;/p&gt;
+&lt;p&gt;Sourcing the parts is a problem too. From the start the goal was to
+use standard, off-the-shelf, easily available components, and I did
+follow that. However, in my pursuit to make things cheap and also to
+make it easy to reuse whatever parts you might have lying around, I
+left a lot of things underspecified. The battery is an excellent
+example of that – I’m mostly using LiPos for toy quadcopters, because
+they are cheap, light and can provide a lot of current. But every
+manufacturers makes them in a little bit different sizes, with
+different plugs (they especially love to swap the + and - leads), and
+generally storing and charging them is a bit involved. Because of
+that, my designs just leave the battery out, assuming the user will
+use whatever he has, and will attach it whenever it fits, usually with
+a two-sided tape, or maybe velcro. That’s definitely sub-optimal, and
+I need to put more focus into specifying the parts a little bit more
+precisely and using more standard ones. It’s also a very daunting task
+to order a couple of servos in one place, a battery in another place,
+the pcb in yet another place, the mcrocontroller board in yet another,
+etc. – I think that this stops many people from trying this project.
+Of course, the obvious solution would be a kit, but I don’t want to be
+selling anything… Perhaps I should try looking at Tindie anyways?&lt;/p&gt;
+&lt;p&gt;Finally, but perhaps most importantly, I need to find a way to disown
+this project, to make it a brand of its own, and not something
+attached to my name. I think that most people, when they build a
+complex project like this, like to “own” it, make it their own – and
+not say “I’ve build Radomir’s robot”. I haven’t figured out how to do
+that yet. Perhaps I will need to team up with some other similar
+projects?&lt;/p&gt;
+&lt;/section&gt;
+&lt;section id="future-plans"&gt;
+&lt;h2&gt;Future Plans&lt;/h2&gt;
+&lt;p&gt;I definitely want to continue working on Tote with the goal of
+crowdsourcing innovation in the area of quadruped robots. There will
+probably be some large changes, though, as a result of the above goal
+changes. I will probably use a different development board, something
+that has shields. I will try to make the battery and power more
+manageable, and I will put more focus on the documentation and
+software side of things.&lt;/p&gt;
+&lt;/section&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/log-6050-51725/" rel="alternate"/>
+    <summary>This is one of my oldest projects, and definitely one that I have put
+the most total work into so far. With the year’s end, I decided to
+reflect a bit about the progress made so far and the way forward.\</summary>
+    <published>2017-01-11T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/log-6050-51852/</id>
+    <title>Programming the Spinal Cord</title>
+    <updated>2017-01-14T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="programming-the-spinal-cord"&gt;
+
+&lt;p&gt;n the previous log I made a decision to use an Adafruit Feather board
+for the robot’s brains, and a bare ATmega chip in a DIP package for
+its spinal cord – that is, the servo controller. That’s supposed to
+make the board much easier to solder even by inexperienced builders.
+But wait a minute! How are they going to get the servo controller
+program onto those chips? Will that not require some extra hardware?
+Sadly, yes.&lt;/p&gt;
+&lt;p&gt;It will require six extra wires.&lt;/p&gt;
+&lt;p&gt;The trick is to use the Feather board as an ISP programmer, using the
+“Arduino as ISP” example sketch from the Arduino IDE. You will need to
+make the following connections:&lt;/p&gt;
+&lt;img alt="https://cdn.hackaday.io/images/967991484403277085.png" src="https://cdn.hackaday.io/images/967991484403277085.png" /&gt;
+&lt;p&gt;Now, in your Arduino IDE go to Files→Examples→11.ArduinoISP and select
+that example. Then scroll to around line 68 and change this:&lt;/p&gt;
+&lt;div class="highlight-cpp notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;// Configure which pins to use:&lt;/span&gt;
+
+&lt;span class="c1"&gt;// The standard pin configuration.&lt;/span&gt;
+&lt;span class="cp"&gt;#ifndef ARDUINO_HOODLOADER2 &lt;/span&gt;
+
+&lt;span class="cp"&gt;#define RESET     10 &lt;/span&gt;&lt;span class="c1"&gt;// Use pin 10 to reset the target rather than SS&lt;/span&gt;
+&lt;span class="cp"&gt;#define LED_HB    9&lt;/span&gt;
+&lt;span class="cp"&gt;#define LED_ERR   8&lt;/span&gt;
+&lt;span class="cp"&gt;#define LED_PMODE 7&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Into this:&lt;/p&gt;
+&lt;div class="highlight-vbscript notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;// Configure which pins to use:
+
+// The standard pin configuration.
+#ifndef ARDUINO_HOODLOADER2 
+
+#define RESET     0
+#define LED_HB    2
+#define LED_ERR   4
+#define LED_PMODE 5
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Then go to Tools→Board and select the Adafruit HUZZAH board, then do
+Sketch→Upload. You have your programmer ready.Then to program the chip, load the sketch with the servo controller,
+change the board to Arduino Uno, select Tools→Programmer→Arduino as
+ISP, and do Sketch→Upload Using Programmer. You should see some
+blinking lights on your Feather, and then your chip is programmed.&lt;/p&gt;
+&lt;p&gt;In the end, I will probably make a Makefile that does the equivalent
+of the above procedure automatically, to streamline the experience a
+bit.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/log-6050-51852/" rel="alternate"/>
+    <summary>n the previous log I made a decision to use an Adafruit Feather board
+for the robot’s brains, and a bare ATmega chip in a DIP package for
+its spinal cord – that is, the servo controller. That’s supposed to
+make the board much easier to solder even by inexperienced builders.
+But wait a minute! How are they going to get the servo controller
+program onto those chips? Will that not require some extra hardware?
+Sadly, yes.</summary>
+    <published>2017-01-14T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/log-6050-51940/</id>
+    <title>Gangsta</title>
+    <updated>2017-01-15T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="gangsta"&gt;
+
+&lt;p&gt;As I wrote in the previous logs, I’m going to be upgrading Tote to use
+some more expensive, but more powerful and easier to use components.
+But what about the poor students? If you are really concerned about
+the budget, the original Tote is almost what you need. Almost, because
+you would still need to order the PCB for it. Or would you?&lt;/p&gt;
+&lt;p&gt;Of course not! The PCB doesn’t have anything you can’t easily
+reproduce on a vero/strip/perma board! Here’s one example of a Tote on
+a strip board:&lt;/p&gt;
+&lt;img alt="https://cdn.hackaday.io/images/5143501484479792847.png" src="https://cdn.hackaday.io/images/5143501484479792847.png" /&gt;
+&lt;p&gt;Sure, you will need to remap the pins in the code, but that should be
+quite easy. Yes, I went wild in Fritzing, and it’s barely readable.
+Here’s a clearer picture of the strip board you will need to make:&lt;/p&gt;
+&lt;img alt="https://cdn.hackaday.io/images/6940371484479875736.png" src="https://cdn.hackaday.io/images/6940371484479875736.png" /&gt;
+&lt;p&gt;It even has the voltage divider for monitoring the battery. Oh, right,
+and don’t use alkaline batteries like on the picture. Use a LiPo from
+a quadcopter or from an old cellphone.&lt;/p&gt;
+&lt;p&gt;I have to admit that one thing they say about Fritzing is true: it
+sucks for making schematics:&lt;/p&gt;
+&lt;img alt="https://cdn.hackaday.io/images/3958631484480008034.png" src="https://cdn.hackaday.io/images/3958631484480008034.png" /&gt;
+&lt;p&gt;I wonder if I should fork this version off the main Tote, and keep a
+repository with the Arduino code for it, with remapped pins and so
+on…&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/log-6050-51940/" rel="alternate"/>
+    <summary>As I wrote in the previous logs, I’m going to be upgrading Tote to use
+some more expensive, but more powerful and easier to use components.
+But what about the poor students? If you are really concerned about
+the budget, the original Tote is almost what you need. Almost, because
+you would still need to order the PCB for it. Or would you?</summary>
+    <published>2017-01-15T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/log-6050-147636/</id>
+    <title>Reviving the Skull Tote</title>
+    <updated>2018-06-07T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="reviving-the-skull-tote"&gt;
+
+&lt;p&gt;I have a number of prototypes of Tote that I have built over the
+years, but the most presentable one is the one I pimped up in  &lt;a class="reference external" href="https://hackaday.io/project/6050-tote/log/48853-pimp-your-bot"&gt;https://hackaday.io/project/6050-tote/log/48853-pimp-your-bot&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Unfortunately, that robot had a number of problems. Unlike all other
+Totes, it was powered with a 2S lipo battery, with a buck converter
+bringing to voltage down to 5V. That tiny buck converter would only
+work for a few minutes, and then starting to shut down when the
+current drawn by the servos made it too hot. Which would result in the
+robot having a seizure. I also discovered that the motor in one of the
+servos got stuck — rather common with the cheap SG90 servos — and
+would need to be replaced.&lt;/p&gt;
+&lt;p&gt;So I decided to open up this robot, replace the power with a more
+standard setup (a 1S lipo connected directly without any voltage
+stabilization), add a battery charging circuit, and replace the servo.&lt;/p&gt;
+&lt;p&gt;Here’s the USB port for the battery charging circuit:&lt;/p&gt;
+&lt;img alt="https://cdn.hackaday.io/images/9036641528398127759.jpg" src="https://cdn.hackaday.io/images/9036641528398127759.jpg" /&gt;
+&lt;p&gt;And the replaced servo, primed with black paint, waiting to dry for a
+dry-brushing:&lt;/p&gt;
+&lt;img alt="https://cdn.hackaday.io/images/2825991528398180978.jpg" src="https://cdn.hackaday.io/images/2825991528398180978.jpg" /&gt;
+&lt;p&gt;And finally the whole robot, it all its robot glory:&lt;/p&gt;
+&lt;img alt="https://cdn.hackaday.io/images/7540951528398222731.jpg" src="https://cdn.hackaday.io/images/7540951528398222731.jpg" /&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/log-6050-147636/" rel="alternate"/>
+    <summary>I have a number of prototypes of Tote that I have built over the
+years, but the most presentable one is the one I pimped up in  https://hackaday.io/project/6050-tote/log/48853-pimp-your-bot</summary>
+    <published>2018-06-07T00:00:00+02:00</published>
+  </entry>
+</feed>

@@ -1,0 +1,135 @@
+---
+blogpost: true
+date: 2015-06-04
+category: project-6050
+---
+
+# Proprioception on the Cheap
+
+Remember that time when you sat on your leg for some time, and it got
+numb, and when you got up, it felt all wooden and walking was like
+walking on stilts? That's how most walking robots feel. What happened
+is your nerves got squished and blocked a little, and you lost your [sense of proprioception](https://en.wikipedia.org/wiki/Proprioception)  -- the position and forces of your limbs. Now you know why robots
+that don't have force and position sensors on them have such a hard
+time walking!
+
+What if we could add this sense to our robot? It would still be blind
+and deaf, but at least it would have a sense of self. It could feel
+its way around, knowing if a leg is standing on the floor or floating
+in the air, knowing if there is something blocking its movement. If we
+got smart with programming, we could even make it "obedient" and go in
+the direction you push it, just like this robot:
+
+
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/AMVO6rI5mL4"></iframe>
+
+OK, well, maybe not as well. After all, we have limited budget and
+time. Plus programming the algorithm that calculates the overall force
+from the feedback from all the joint could be a challenge...
+
+But at the minimum we could make our robot stop when it arrives at the
+edge of the table and tries to put one of its legs in the abyss beyond
+it. Or when we pick it up.
+
+So how do we do it? We could attach additional sensors to the legs --
+encoders for the position and pressure sensors for touch and force. I
+checked the parts -- they are either expensive or problematic to mount
+on such a robot. But wait, doesn't the hobby servo already know its
+position? Why not use that?
+
+The first approach was to use an additional wire added to the servo's
+potentiometer to read its position. I used this [excellent guide on modifying the servo](http://letsmakerobots.com/content/sensing-your-servos-position) . It worked. Kinda. But not as well as I hoped. The problem is that to
+deduce what force is applied on the leg, I need to calculate the
+difference between the desired position of the servo and the actual
+position. This difference is going to be small, because the servo's
+electronics are working hard to correct it. Turns out that they are
+smaller than the noise, even if I add filtering capacitors and
+software filters. Oh well.
+
+Then I realized that the servo's electronics is actually already
+calculating the force, for its own purposes. Can I somehow plug into
+that? What if instead of reading the pot's position, I would simply
+read the voltage that the servo is applying to its motor? Turns out
+that this works quite well, at least with the SG90 servos that I have.
+Here's an experiment that I performed to test a "compliant motion"
+servo:
+
+
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/Ms8yTKYebaI"></iframe>
+
+I soldered an additional wire to the servo's motor, like this:\
+
+
+
+:::{image} https://cdn.hackaday.io/images/2507231433409447350.jpg
+
+:::
+
+
+I also had to make the hole in the cover a little bit larger, to fit
+the extra wire:
+:::{image} https://cdn.hackaday.io/images/6186631433409502496.jpg
+
+:::
+
+
+Now, just connect the extra wire to one of the free analog pins on the
+Pro Mini:
+:::{image} https://cdn.hackaday.io/images/407621433409552947.jpg
+
+:::
+
+
+As you can see, the robot also uses a voltage regulator that I
+described in [the previous log](https://hackaday.io/project/6050-tote-affordable-spider-robot/log/18738-different-power-sources) . That's because I need the voltage readings from the motors to be
+consistent, and not depend on how much juice is left in the battery.Now just a simple addition to the walking algorithm. Every time you
+put your leg down, wait for the servo to get there, and then read the
+force from it. If the force is too small, stop. I also made all the
+other legs move up slightly just before the reading, to shift the
+weight more to the leg that we are interested in. The result is not
+very pretty yet, but I'm sure I can tweak it to look better:
+
+
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/Q08YaEeYNSg"></iframe>
+
+With some tricks, I might even be able to make it walk on uneven
+terrain without additional endstop switches at the ends of the legs.
+
+
+## Update 2015-06-10:
+
+A friend of mine ran some of those servos through an oscilloscope, to
+see how the voltage on both of the motor wires looks like. Here's the
+servo going one way, stopping for a moment, and then going the other
+way:
+
+
+:::{image} https://cdn.hackaday.io/images/6523361433962373953.png
+
+:::
+
+
+You can see that when stopped, the motor floats at about 2.3V, and
+goes up to 5.7V or almost to 0V when moving. You can also see that
+there is quite a lot of oscillating at the end, when it overshoots and
+corrects:
+
+
+:::{image} https://cdn.hackaday.io/images/1875031433962508897.png
+
+:::
+
+
+An interesting thing happens when you reverse the direction without
+stopping:
+
+
+:::{image} https://cdn.hackaday.io/images/6556091433962558341.png
+
+:::
+
+
+One of the motor leads gets high voltage long before the other gets
+low. Since what drives the motor is the difference, this gives the
+motor some time to stop and reverse, before applying the full force.
+

@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posts tagged quadruped</title>
-  <updated>2024-08-07T18:37:11.823724+00:00</updated>
+  <updated>2024-08-07T18:42:38.822617+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/tag/quadruped/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -51,12 +51,21 @@ of glaring lack of robots, I’m working on a robot that is suitable as
 a base for experimenting with robot gaits and related problems.&lt;/p&gt;
 &lt;section id="logs"&gt;
 &lt;h2&gt;Logs&lt;/h2&gt;
-&lt;ul class="postlist-style-none postlist simple"&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2024-06-29 &lt;a class="reference internal" href="../../../projects/777-project/"&gt;Another Project&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-12-25 &lt;a class="reference internal" href="../../../projects/666-project/log-001/"&gt;A Project Log&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2018-12-25 &lt;a class="reference internal" href="../../../projects/666-project/"&gt;A Project&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-05-31 &lt;a class="reference internal" href="../../../projects/project-6050/"&gt;Tote&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;aside class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;span class="docutils literal"&gt;/home/sheep/dev/ablog/deshipu.art/projects/project-6050.md&lt;/span&gt;, line 82)&lt;/p&gt;
+&lt;p&gt;Directive ‘postlist’: Invalid options YAML: while parsing a block mapping
+  in “&amp;lt;unicode string&amp;gt;”, line 1, column 1:
+    category: log-6050
+    ^
+expected &amp;lt;block end&amp;gt;, but found ‘{’
+  in “&amp;lt;unicode string&amp;gt;”, line 2, column 16:
+    format: {date} {title}
+                   ^&lt;/p&gt;
+&lt;div class="highlight-default notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;category&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;log&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;6050&lt;/span&gt;
+&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nb"&gt;format&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;date&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/aside&gt;
 &lt;/section&gt;
 &lt;/section&gt;
 </content>

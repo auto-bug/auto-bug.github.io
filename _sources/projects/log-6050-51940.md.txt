@@ -1,0 +1,51 @@
+---
+blogpost: true
+date: 2017-01-15
+category: project-6050
+---
+
+# Gangsta
+
+As I wrote in the previous logs, I'm going to be upgrading Tote to use
+some more expensive, but more powerful and easier to use components.
+But what about the poor students? If you are really concerned about
+the budget, the original Tote is almost what you need. Almost, because
+you would still need to order the PCB for it. Or would you?
+
+Of course not! The PCB doesn't have anything you can't easily
+reproduce on a vero/strip/perma board! Here's one example of a Tote on
+a strip board:
+
+
+:::{image} https://cdn.hackaday.io/images/5143501484479792847.png
+
+:::
+
+
+Sure, you will need to remap the pins in the code, but that should be
+quite easy. Yes, I went wild in Fritzing, and it's barely readable.
+Here's a clearer picture of the strip board you will need to make:
+
+
+:::{image} https://cdn.hackaday.io/images/6940371484479875736.png
+
+:::
+
+
+It even has the voltage divider for monitoring the battery. Oh, right,
+and don't use alkaline batteries like on the picture. Use a LiPo from
+a quadcopter or from an old cellphone.
+
+I have to admit that one thing they say about Fritzing is true: it
+sucks for making schematics:
+
+
+:::{image} https://cdn.hackaday.io/images/3958631484480008034.png
+
+:::
+
+
+I wonder if I should fork this version off the main Tote, and keep a
+repository with the Arduino code for it, with remapped pins and so
+on...
+

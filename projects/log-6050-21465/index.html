@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Follow Me! - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="follow-me">
+<h1>Follow Me!<a class="headerlink" href="#follow-me" title="Permalink to this heading">¶</a></h1>
+<p>Some time ago I got the <a class="reference external" href="https://hackaday.io/project/6050-tote-affordable-spider-robot/log/20790-distance-sensor-second-try">Sharp distance sensor to work with Tote</a>  (somewhat), and I promised we will do something interesting with it.
+Obstacle avoidance is old, so let’s try to make the robot follow us
+instead. The idea is actually very similar to obstacle avoidance,
+except that instead of avoiding obstacles, you go toward them.</p>
+<p>So what’s the plan? We want our robot to behave differently depending
+on what the distance sensor is telling it:</p>
+<ul class="simple">
+<li><p>If the obstacle is very close, go backwards;</p></li>
+<li><p>if the obstacle is close, stay in place and do nothing;</p></li>
+<li><p>if the obstacle is far, go forward;</p></li>
+<li><p>finally, if there is no obstacle in sight, rotate in place to find it.</p></li>
+</ul>
+<p>This translates pretty easily into code:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">sharp_loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">distance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">analogRead</span><span class="p">(</span><span class="n">A4</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">distance</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">660</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">creep_dx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">creep_dy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">creep_rotation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">beep</span><span class="p">(</span><span class="mi">352</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">distance</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">480</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">creep_dx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">creep_dy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">creep_rotation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">distance</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">420</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">creep_dx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">creep_dy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">creep_rotation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">beep</span><span class="p">(</span><span class="mi">704</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">creep_dx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">creep_dy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">creep_rotation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PI</span><span class="o">/</span><span class="mi">45</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">beep</span><span class="p">(</span><span class="mi">1408</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p>I also added some beeps in there, that will tell us what the current
+state is. Since the new PCB has a place for a piezo buzzer on pin 13,
+I also added it to the previous robots:</p>
+<img alt="https://cdn.hackaday.io/images/9149541437741274409.jpg" src="https://cdn.hackaday.io/images/9149541437741274409.jpg" />
+<p>But how does our code work? Turns out, that it doesn’t work very well.
+The problem comes from how our 5V sensor works when it’s under-powered
+with 3.3V. Remember the plot of values from last time?</p>
+<img alt="https://cdn.hackaday.io/images/8548111437741395294.png" src="https://cdn.hackaday.io/images/8548111437741395294.png" />
+<p>It’s U-shaped, and that means that we get the same reading both for
+20cm and for 50cm and more. That means that we have practically no way
+to tell if something is 20cm away or 50cm away, and that means that we
+can’t reliably get the “no obstacle in sight” condition.</p>
+<p>Even if we shorten our distances to where the curve is relatively
+straight, we are still going to get weird readings when nothing is
+that close.</p>
+<p>Oh well, the sensor was cheap so it was worth a try. I guess this is a
+lesson: don’t try to use parts outside of their specified parameters.
+Now I ordered some distance sensors that work between 2.7 and 5.5V, so
+that should be better. I will try again when they arrive.</p>
+<p>Finally, a video of Tote failing to follow my hand:</p>
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/u7CzJw-UeYg"></iframe>
+</section>
+
+
+</div>
+  </body>
+</html>

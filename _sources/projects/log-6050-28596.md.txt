@@ -1,0 +1,100 @@
+---
+blogpost: true
+date: 2015-12-02
+category: project-6050
+---
+
+# Micro:Tote
+
+I almost had the Raspberry Pi thing working last time, and I promised
+to get it to work, but not just yet. The last two weeks I had a
+different project on my mind. I was participating in the [Micro World Tour](http://microworldtour.github.io/microbit/monifa.html) , a program that gets a couple of the micro:bit boards into the hands
+of Python hackers to do something nice with its Micropython
+implementation. So, obviously, I had to put it on Tote. Just imagine
+every kid in UK building their own quadruped robot and doing amazing
+stuff with it!
+
+But yeah, there were some hurdles. First, we had to write [some documentation for it](http://microbit-micropython.readthedocs.org/) , because it's all just being created as we go. Then I had to use an
+edge connector, which I received separately, to get access to the I²C
+pins:
+
+
+:::{image} https://cdn.hackaday.io/images/3065641449081853661.jpg
+
+:::
+
+
+I already had the_i2cslave_code that I've written for Raspberry Pi last time, so that part was
+easier. So all I needed was to hook it up and test:
+
+
+:::{image} https://cdn.hackaday.io/images/3608111449081939724.jpg
+
+:::
+
+
+Unfortunately, it didn't work. The_i2c.write()_ function simply seemed to do nothing at all. I reported the issue,
+and the good Micropython developers added error handling to it, so now
+at least I could see an exception being raised. But it turned out to
+be a generic I²C error, not really telling me what is wrong. I spent
+the whole weekend trying different variations, adding pullup
+resistors, checking if the accelerometer and compass that are on the
+same I²C bus work (they did), etc. I also tested it multiple times
+with Raspberry Pi, to make sure the error is on the micro:bit side:
+
+
+:::{image} https://cdn.hackaday.io/images/1072471449082320846.jpg
+
+:::
+
+
+Finally, my week with micro:bit ended, and I had to send it to the
+next person. So I packed the whole thing up and went to bed.
+
+I couldn't sleep that night. Instead, I read the I²C specification and
+the Atmel notes on using TWI on their AVR chips. The next day, I read
+some helpful suggestions in the comments on the issue that I reported,
+and noticed a curious thing. One of the comments in the C code for the
+micro:bit DAL mentioned, that the I²C address is 8 bit. That's
+strange, because from the spec I knew that I²C uses 7 bit addresses,
+and the least significant bit is used to indicate the direction of
+communication. Hmm, wait a minute, if I tried and shifted the address
+one bit to the left...
+
+I unpacked the board, hooked it up to my robot again and tried. And
+sure enough, it just worked. Amazing. Don't worry, this will be fixed
+in the future, so that the final versions will all use 7 bit
+addresses. But once I had it working, I couldn't just pack it back and
+send it. I wrote a quick e-mail to the next person apologizing for it,
+and went to work. In the evening, I sat down and started to port the
+inverse kinematics to Micropython.
+
+I wrote the IK code for my robots many times already, but each time
+it's an equally frustrating process of figuring out why the leg is
+moving in the direction opposite to expected. It took me several
+hours, but I finally did it.
+
+
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/VZ7vxIEno0o"></iframe>
+
+Then some more frustration while I tried to make the walking code
+work. Here the challenge was not so much the code itself, because once
+you know what the robot has to do, it's quite simple, but the fact
+that I ran out of memory and stack space. I had to do a few unpythonic
+things to my code to make it fit on this small board, but finally I
+got a (very bad) gait working. So I strapped the micro:bit on top of
+Tote, and let it walk:
+
+
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/SMqX_yPnfVI"></iframe>
+
+I know there is a lot that could be improved here. In fact, this is
+quite horrible, compared to how Tote walks normally. This is not the
+fault of micro:bit, but rather my sloppy programming and the fact that
+I was in hurry.
+
+Once this was done, I packed the micro:bit up again and this time
+really sent it to the next person in line.
+
+After this, Raspberry Pi should be a piece of cake :-)
+

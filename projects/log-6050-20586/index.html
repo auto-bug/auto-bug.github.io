@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Logicoma-kun - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="logicoma-kun">
+<h1>Logicoma-kun<a class="headerlink" href="#logicoma-kun" title="Permalink to this heading">¶</a></h1>
+<p>The continuous-rotation servos arrived, and I got to finish another of
+my experiments, <a class="reference external" href="https://hackaday.io/project/6321-katka-a-mammalian-robot/log/20293-spider-mode">which I mentioned previously</a>  over at the <span class="xref myst">#Katka, a mammalian robot</span>  project. Since I’m re-using parts and experience between all those
+projects, it becomes harder to separate them. This one might even grow
+out into its own project, but for now I will publish it here, as it’s
+basically Tote with a slightly different leg configuration and
+software.</p>
+<p>Remember the cute tank-robots from Masamune Shirow’s mangas? First
+Fuchikomas, then Tachikomas. Now, in the newest TV series, there is a
+new addition to the family called Logicoma. And it’s much more, hmm,
+shall I say “realistically”, designed than the others – in fact, I
+thought that I might be able to build a model of it out of Tote.</p>
+<img alt="https://cdn.hackaday.io/images/3053521436274374167.jpg" src="https://cdn.hackaday.io/images/3053521436274374167.jpg" />
+<hr class="docutils" />
+<p>Since with the Arduino Pro Mini I’m limited to 12 servos, I had to
+find a way to reduce the number of servos and still get proper
+walking. My experiments with <span class="xref myst">#Katka, a mammalian robot</span>  allowed me to do that, so I used the 4 free servo slots for 4
+continuous-rotation servos placed at the ends of the legs. <a class="reference external" href="http://letsmakerobots.com/content/how-modify-micro-servo-continuous-rotation">I could actually have converted the SG90 servos instead</a> , but I didn’t have the round servo horns for the wheels, so I decided
+to just order ready servos.</p>
+<p>For now, just for testing, I have two separate programs, one for just
+driving forward:</p>
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/WvPRhwA7Aa0"></iframe>
+<p>And one for walking forward:</p>
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/2LjSKvdbtPk"></iframe>
+<p>I’m sure I will be able to add a lot more, and also add all the props
+that will make it look like a real Logicoma, but that’s it for a
+start.</p>
+<p>I actually think that there is a lot of promise for this kind of
+hybrid robots that have both wheels for efficient and fast locomotion
+over flat terrain, and legs for getting through rough terrain, stairs,
+and maybe even climbing. If you look at the robots from this year’s
+DARPA Robotics Challenge, many of them have additional wheels on them.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

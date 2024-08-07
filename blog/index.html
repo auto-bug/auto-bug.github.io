@@ -137,6 +137,1409 @@
 
   <div class="section ablog-post">
     <h2 class="ablog-post-title">
+      <a href="../projects/log-6050-147636/">Reviving the Skull Tote</a>
+    </h2>
+
+    <ul class="ablog-archive">
+      <li>
+          2018-06-07 
+      </li>
+          
+<li id="category">
+  <span>Category:</span
+  >
+   
+  <a href="category/project-6050/">project-6050</a>  
+</li>
+  
+    </ul>
+    <div class="ablog-post-excerpt docutils container">
+<p>I have a number of prototypes of Tote that I have built over the
+years, but the most presentable one is the one I pimped up in  <a class="reference external" href="https://hackaday.io/project/6050-tote/log/48853-pimp-your-bot">https://hackaday.io/project/6050-tote/log/48853-pimp-your-bot</a></p>
+</div>
+
+    <p class="ablog-post-expand"><a href="../projects/log-6050-147636/"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../projects/log-6050-51940/">Gangsta</a>
+    </h2>
+
+    <ul class="ablog-archive">
+      <li>
+          2017-01-15 
+      </li>
+          
+<li id="category">
+  <span>Category:</span
+  >
+   
+  <a href="category/project-6050/">project-6050</a>  
+</li>
+  
+    </ul>
+    <div class="ablog-post-excerpt docutils container">
+<p>As I wrote in the previous logs, I’m going to be upgrading Tote to use
+some more expensive, but more powerful and easier to use components.
+But what about the poor students? If you are really concerned about
+the budget, the original Tote is almost what you need. Almost, because
+you would still need to order the PCB for it. Or would you?</p>
+</div>
+
+    <p class="ablog-post-expand"><a href="../projects/log-6050-51940/"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../projects/log-6050-51852/">Programming the Spinal Cord</a>
+    </h2>
+
+    <ul class="ablog-archive">
+      <li>
+          2017-01-14 
+      </li>
+          
+<li id="category">
+  <span>Category:</span
+  >
+   
+  <a href="category/project-6050/">project-6050</a>  
+</li>
+  
+    </ul>
+    <div class="ablog-post-excerpt docutils container">
+<p>n the previous log I made a decision to use an Adafruit Feather board
+for the robot’s brains, and a bare ATmega chip in a DIP package for
+its spinal cord – that is, the servo controller. That’s supposed to
+make the board much easier to solder even by inexperienced builders.
+But wait a minute! How are they going to get the servo controller
+program onto those chips? Will that not require some extra hardware?
+Sadly, yes.</p>
+</div>
+
+    <p class="ablog-post-expand"><a href="../projects/log-6050-51852/"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../projects/log-6050-51725/">New Year Reflections</a>
+    </h2>
+
+    <ul class="ablog-archive">
+      <li>
+          2017-01-11 
+      </li>
+          
+<li id="category">
+  <span>Category:</span
+  >
+   
+  <a href="category/project-6050/">project-6050</a>  
+</li>
+  
+    </ul>
+    <div class="ablog-post-excerpt docutils container">
+<p>This is one of my oldest projects, and definitely one that I have put
+the most total work into so far. With the year’s end, I decided to
+reflect a bit about the progress made so far and the way forward.\</p>
+</div>
+
+    <p class="ablog-post-expand"><a href="../projects/log-6050-51725/"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../projects/log-6050-51738/">Choosing the Brains</a>
+    </h2>
+
+    <ul class="ablog-archive">
+      <li>
+          2017-01-11 
+      </li>
+          
+<li id="category">
+  <span>Category:</span
+  >
+   
+  <a href="category/project-6050/">project-6050</a>  
+</li>
+  
+    </ul>
+    <div class="ablog-post-excerpt docutils container">
+<p>In the previous post I shared some of my thoughts about this project,
+and decided to pick a different development board than the Pro Mini
+that I have been using so far. Don’t get me wrong, Pro Mini is great
+for all kinds of small and cheap projects, it’s just that I want to
+make programming this robot as simple as possible. That, among other
+things, means using a platform that has a lot of computing power, not
+just enough, preferably one that has so much of it, that it can be
+used with a high-level language like Python. That also means something
+that has a USB socket.</p>
+</div>
+
+    <p class="ablog-post-expand"><a href="../projects/log-6050-51738/"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../projects/log-6050-50708/">imath.h</a>
+    </h2>
+
+    <ul class="ablog-archive">
+      <li>
+          2016-12-22 
+      </li>
+          
+<li id="category">
+  <span>Category:</span
+  >
+   
+  <a href="category/project-6050/">project-6050</a>  
+</li>
+  
+    </ul>
+    <div class="ablog-post-excerpt docutils container">
+<p>It took me two evenings of pretty much randomly editing code, trying
+to make it as small as possible without breaking it horribly at the
+same time, but I finally have a library with three basic functions,<em>iasin</em>,<em>iatan2</em> and_isqrt_, which are_int16_t_ versions of the ones from the standard library. The angles are
+returned in the range of -1800 to 1800, and the input to asin is
+-1&lt;&lt;13 +1 to 1&lt;&lt;13. The whole library is around 700 bytes (644 at the
+last compile) and should be relatively fast on the AVR (although I
+didn’t really time it). Oh, and the code is at <a class="reference external" href="https://bitbucket.org/thesheep/imath/src/tip/imath.c">https://bitbucket.org/thesheep/imath/src/tip/imath.c</a></p>
+</div>
+
+    <p class="ablog-post-expand"><a href="../projects/log-6050-50708/"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../projects/log-6050-50664/">CORDIC</a>
+    </h2>
+
+    <ul class="ablog-archive">
+      <li>
+          2016-12-21 
+      </li>
+          
+<li id="category">
+  <span>Category:</span
+  >
+   
+  <a href="category/project-6050/">project-6050</a>  
+</li>
+  
+    </ul>
+    <div class="ablog-post-excerpt docutils container">
+<p>Since the flu season began, I’ve been lying in bed sick quite some
+time. While I don’t recommend doing coding with a fever (takes way too
+much time to track down the trivial mistakes you make), you do have
+some free time to explore some coding ideas that you didn’t bother
+with before. One of such things on my to do list is rewriting Tote’s
+inverse kinematics code to use only integer math, and I found a
+marvelous family of algorithms that can let me do it.</p>
+</div>
+
+    <p class="ablog-post-expand"><a href="../projects/log-6050-50664/"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../projects/log-6050-50045/">Version 5</a>
+    </h2>
+
+    <ul class="ablog-archive">
+      <li>
+          2016-12-07 
+      </li>
+          
+<li id="category">
+  <span>Category:</span
+  >
+   
+  <a href="category/project-6050/">project-6050</a>  
+</li>
+  
+    </ul>
+    <div class="ablog-post-excerpt docutils container">
+<p>I’ve been asked for a Tote kit for a Christmas preset by a friend, and
+I realized I no longer have any version 4 boards. So I had to go and
+order some. But if I’m ordering boards anyways, why not make some
+improvements here and there? So here’s a version 5.</p>
+</div>
+
+    <p class="ablog-post-expand"><a href="../projects/log-6050-50045/"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../projects/log-6050-48901/">Pimp Your Robot II</a>
+    </h2>
+
+    <ul class="ablog-archive">
+      <li>
+          2016-11-10 
+      </li>
+          
+<li id="category">
+  <span>Category:</span
+  >
+   
+  <a href="category/project-6050/">project-6050</a>  
+</li>
+  
+    </ul>
+    <div class="ablog-post-excerpt docutils container">
+<p>So, today I hotglued the lenses with the LEDs, updated the software to
+let me switch the LEDs on and off, added a piezo to the robot, so it
+makes sounds, and painted some red highlights on the legs. The end
+result:</p>
+</div>
+
+    <p class="ablog-post-expand"><a href="../projects/log-6050-48901/"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../projects/log-6050-48853/">Pimp Your Bot</a>
+    </h2>
+
+    <ul class="ablog-archive">
+      <li>
+          2016-11-09 
+      </li>
+          
+<li id="category">
+  <span>Category:</span
+  >
+   
+  <a href="category/project-6050/">project-6050</a>  
+</li>
+  
+    </ul>
+    <div class="ablog-post-excerpt docutils container">
+<p>The winter is coming, and my robots need some maintenance – after a
+year of traveling to various conferences and fairs, they accumulated a
+number of injuries. It’s also a good idea to recharge the lipo
+batteries once in a while.</p>
+</div>
+
+    <p class="ablog-post-expand"><a href="../projects/log-6050-48853/"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../projects/log-6050-30979/">The Way Forward?</a>
+    </h2>
+
+    <ul class="ablog-archive">
+      <li>
+          2016-01-29 
+      </li>
+          
+<li id="category">
+  <span>Category:</span
+  >
+   
+  <a href="category/project-6050/">project-6050</a>  
+</li>
+  
+    </ul>
+    <div class="ablog-post-excerpt docutils container">
+<p>A lot has happened in the recent time for the hobbyist community, and
+I’m currently wondering where I want to take this project. Here’s some
+random rambling on the subject, just to clear it out of my head.</p>
+</div>
+
+    <p class="ablog-post-expand"><a href="../projects/log-6050-30979/"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../projects/log-6050-30721/">Another Tote in the Wild</a>
+    </h2>
+
+    <ul class="ablog-archive">
+      <li>
+          2016-01-23 
+      </li>
+          
+<li id="category">
+  <span>Category:</span
+  >
+   
+  <a href="category/project-6050/">project-6050</a>  
+</li>
+  
+    </ul>
+    <div class="ablog-post-excerpt docutils container">
+<p>Today I spent most of the day with a friend building his own instance
+of Tote. Not only it was great fun, but I also learned a bit about
+which parts need work (unsurprisingly, tuning and trimming the servos
+is hard). We also experimented with a slightly different leg geometry
+(the hip servos rotated by 90°), which gives slightly longer legs with
+better reach. I think I will make it the default.</p>
+</div>
+
+    <p class="ablog-post-expand"><a href="../projects/log-6050-30721/"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../projects/log-6050-30026/">Tote Zero</a>
+    </h2>
+
+    <ul class="ablog-archive">
+      <li>
+          2016-01-07 
+      </li>
+          
+<li id="category">
+  <span>Category:</span
+  >
+   
+  <a href="category/project-6050/">project-6050</a>  
+</li>
+  
+    </ul>
+    <div class="ablog-post-excerpt docutils container">
+<p>So the boards have arrived and I started working on the <span class="xref myst">#Tote Zero</span> , an older brother of Tote, powered by the Pi Zero board. That doesn’t
+mean Tote is dead or deprecated or anything, of course. I will
+continue working on all my project in the same erratic and chaotic
+manner I did before.</p>
+</div>
+
+    <p class="ablog-post-expand"><a href="../projects/log-6050-30026/"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../projects/log-6050-29288/">PyBoard</a>
+    </h2>
+
+    <ul class="ablog-archive">
+      <li>
+          2015-12-20 
+      </li>
+          
+<li id="category">
+  <span>Category:</span
+  >
+   
+  <a href="category/project-6050/">project-6050</a>  
+</li>
+  
+    </ul>
+    <div class="ablog-post-excerpt docutils container">
+<p>There is a version of Tote using PyBoard as its brains: <span class="xref myst">#Micropython Quadruped Robot</span></p>
+</div>
+
+    <p class="ablog-post-expand"><a href="../projects/log-6050-29288/"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../projects/log-6050-28670/">Pi Zero</a>
+    </h2>
+
+    <ul class="ablog-archive">
+      <li>
+          2015-12-04 
+      </li>
+          
+<li id="category">
+  <span>Category:</span
+  >
+   
+  <a href="category/project-6050/">project-6050</a>  
+</li>
+  
+    </ul>
+    <div class="ablog-post-excerpt docutils container">
+<p>With the new Pi Zero board and its price, it may actually make sense
+to use in in place of the Arduino on Tote. It’s only a little bit more
+expensive, after all. The problem is, it doesn’t have hardware PWM and
+has a whole operating system that needs to boot, has to be properly
+configured and requires all the right software. The cost of the SD
+card also cannot be ignored. All the adapters and cables are not a
+problem, as it wouldn’t need them while connected to the robot.</p>
+</div>
+
+    <p class="ablog-post-expand"><a href="../projects/log-6050-28670/"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../projects/log-6050-28596/">Micro:Tote</a>
+    </h2>
+
+    <ul class="ablog-archive">
+      <li>
+          2015-12-02 
+      </li>
+          
+<li id="category">
+  <span>Category:</span
+  >
+   
+  <a href="category/project-6050/">project-6050</a>  
+</li>
+  
+    </ul>
+    <div class="ablog-post-excerpt docutils container">
+<p>I almost had the Raspberry Pi thing working last time, and I promised
+to get it to work, but not just yet. The last two weeks I had a
+different project on my mind. I was participating in the <a class="reference external" href="http://microworldtour.github.io/microbit/monifa.html">Micro World Tour</a> , a program that gets a couple of the micro:bit boards into the hands
+of Python hackers to do something nice with its Micropython
+implementation. So, obviously, I had to put it on Tote. Just imagine
+every kid in UK building their own quadruped robot and doing amazing
+stuff with it!</p>
+</div>
+
+    <p class="ablog-post-expand"><a href="../projects/log-6050-28596/"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../projects/log-6050-28167/">I²C Slave</a>
+    </h2>
+
+    <ul class="ablog-archive">
+      <li>
+          2015-11-21 
+      </li>
+          
+<li id="category">
+  <span>Category:</span
+  >
+   
+  <a href="category/project-6050/">project-6050</a>  
+</li>
+  
+    </ul>
+    <div class="ablog-post-excerpt docutils container">
+<p>I have done a little bit of progress towards putting a Raspberry Pi on
+Tote. You see, I didn’t want to make it communicate over serial,
+because I’ve done that already with ESP8266 (see previous logs). This
+time I wanted something more ambitious, so I decided to use I²C. As
+the first step, I completely rebuilt one of my robot prototypes, to
+use the new PCB and to also leave the top side of the PCB as flat as
+possible – it only has the Pro Mini and the servo horns there, and
+all the rest is on the bottom side. I also added a voltage regulator
+giving a steady 5V, so that I can power the Raspberry Pi with it. The
+Pro Mini still uses only 3.3V, but it’s fine with 5V, as it has an
+internal regulator. Servos actually work better at 5V, as it’s within
+its parameters, unlike the 3.7V, which was a bit low. Finally, I
+replaced the 1S 3.7V LiPo battery with a 2S one, so that the regulator
+has something to drop from (the boost converters that I have all have
+a 500mA shutoff, so they are not suitable for powering 12 servos).</p>
+</div>
+
+    <p class="ablog-post-expand"><a href="../projects/log-6050-28167/"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../projects/log-6050-27566/">Nothing Happens</a>
+    </h2>
+
+    <ul class="ablog-archive">
+      <li>
+          2015-11-05 
+      </li>
+          
+<li id="category">
+  <span>Category:</span
+  >
+   
+  <a href="category/project-6050/">project-6050</a>  
+</li>
+  
+    </ul>
+    <div class="ablog-post-excerpt docutils container">
+<p>I have been a little bit busy with other things recently, and I didn’t
+update this project for a while, so I thought that it’s time to write
+something just to let you all know that it’s not abandoned.</p>
+</div>
+
+    <p class="ablog-post-expand"><a href="../projects/log-6050-27566/"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../projects/log-6050-26905/">Another Batch of PCBs</a>
+    </h2>
+
+    <ul class="ablog-archive">
+      <li>
+          2015-10-22 
+      </li>
+          
+<li id="category">
+  <span>Category:</span
+  >
+   
+  <a href="category/project-6050/">project-6050</a>  
+</li>
+  
+    </ul>
+    <div class="ablog-post-excerpt docutils container">
+<p>The last few weeks have been very busy, with all the conferences,
+sickness, day job, etc. so I fell a little behind with my plan to have
+regular experiments published here. Hopefully that will improve.</p>
+</div>
+
+    <p class="ablog-post-expand"><a href="../projects/log-6050-26905/"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../projects/log-6050-25845/">Vertical Climb</a>
+    </h2>
+
+    <ul class="ablog-archive">
+      <li>
+          2015-09-25 
+      </li>
+          
+<li id="category">
+  <span>Category:</span
+  >
+   
+  <a href="category/project-6050/">project-6050</a>  
+</li>
+  
+    </ul>
+    <div class="ablog-post-excerpt docutils container">
+<p>A small robot walking around your desk or even around your room on the
+floor is one thing. The same robot climbing your furniture and able to
+get everywhere in your room is a completely different game! That’s why
+I always wanted to make Tote able to climb. Unfortunately, the problem
+is harder than it seems at first sight.</p>
+</div>
+
+    <p class="ablog-post-expand"><a href="../projects/log-6050-25845/"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../projects/log-6050-24644/">Weight Lifting</a>
+    </h2>
+
+    <ul class="ablog-archive">
+      <li>
+          2015-09-04 
+      </li>
+          
+<li id="category">
+  <span>Category:</span
+  >
+   
+  <a href="category/project-6050/">project-6050</a>  
+</li>
+  
+    </ul>
+    <div class="ablog-post-excerpt docutils container">
+<p>I’ve been recently asked how much weight can Tote carry. So far I had
+to give a honest answer, that I don’t know. The heaviest I had it
+carry was a pack of 4 AA batteries. So I decided to make a few tests.</p>
+</div>
+
+    <p class="ablog-post-expand"><a href="../projects/log-6050-24644/"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../projects/log-6050-24608/">Making Tote without a PCB</a>
+    </h2>
+
+    <ul class="ablog-archive">
+      <li>
+          2015-09-03 
+      </li>
+          
+<li id="category">
+  <span>Category:</span
+  >
+   
+  <a href="category/project-6050/">project-6050</a>  
+</li>
+  
+    </ul>
+    <div class="ablog-post-excerpt docutils container">
+<p>Seeing how most of robots based on or inspired by Tote don’t actually
+use the original printed circuit board, I conclude that ordering one
+is the main pain point. I don’t really see why, because it’s not very
+expensive and the waiting time is about the same as with ordering the
+servos and all the other parts. And it’s not like you won’t find a use
+for the other 9 boards, as they are pretty much generic servo breakout
+boards. They are just shaped in a way that makes it easy to attach the
+legs. Anyways, I decided to explain how you can build Tote with just a
+proto-board, like <span class="xref myst">#Tote in the Wild</span>  and <span class="xref myst">#Micropython Quadruped Robot</span> . Let’s start with the connections (note that the connections for your
+IR sensor may be different):</p>
+</div>
+
+    <p class="ablog-post-expand"><a href="../projects/log-6050-24608/"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../projects/log-6050-24255/">Totes in the Wild</a>
+    </h2>
+
+    <ul class="ablog-archive">
+      <li>
+          2015-08-28 
+      </li>
+          
+<li id="category">
+  <span>Category:</span
+  >
+   
+  <a href="category/project-6050/">project-6050</a>  
+</li>
+  
+    </ul>
+    <div class="ablog-post-excerpt docutils container">
+<p>The main goal of all this work I’m doing on Tote is to make people
+build their own robots. The idea is that they can start with Tote (or
+the elements of Tote that they like), and grow from there.
+Unfortunately, so far nobody that I know of decided to try it. Until
+recently.</p>
+</div>
+
+    <p class="ablog-post-expand"><a href="../projects/log-6050-24255/"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../projects/log-6050-24016/">Out of the Prize</a>
+    </h2>
+
+    <ul class="ablog-archive">
+      <li>
+          2015-08-25 
+      </li>
+          
+<li id="category">
+  <span>Category:</span
+  >
+   
+  <a href="category/project-6050/">project-6050</a>  
+</li>
+  
+    </ul>
+    <div class="ablog-post-excerpt docutils container">
+<p>This project is not one of the 100 projects that qualified to the
+semifinals of the Hackaday Prize 2015. And no wonder, with 900 of
+great projects that entered, the chances were slim. It was still great
+fun to participate and I won some very nice swag in the process! Keep
+on tracking the contest, as it will only get more interesting with
+time.</p>
+</div>
+
+    <p class="ablog-post-expand"><a href="../projects/log-6050-24016/"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../projects/log-6050-22817/">Version 4 of PCB Documented</a>
+    </h2>
+
+    <ul class="ablog-archive">
+      <li>
+          2015-08-15 
+      </li>
+          
+<li id="category">
+  <span>Category:</span
+  >
+   
+  <a href="category/project-6050/">project-6050</a>  
+</li>
+  
+    </ul>
+    <div class="ablog-post-excerpt docutils container">
+<p>After building two prototypes and testing them, I decided to make the
+version 4 of the PCB the default in <a class="reference external" href="http://tote.readthedocs.org/">the documentation</a> . There are also <a class="reference external" href="http://tote.readthedocs.org/en/latest/assembly_v4.html">updated assembly instructions</a>  with lots of photos. Don’t worry, the <a class="reference external" href="http://tote.readthedocs.org/en/latest/assembly_v2.html">instructions for the old boards are still there</a> .</p>
+</div>
+
+    <p class="ablog-post-expand"><a href="../projects/log-6050-22817/"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../projects/log-6050-22895/">Proprioception Revisited: Touch</a>
+    </h2>
+
+    <ul class="ablog-archive">
+      <li>
+          2015-08-15 
+      </li>
+          
+<li id="category">
+  <span>Category:</span
+  >
+   
+  <a href="category/project-6050/">project-6050</a>  
+</li>
+  
+    </ul>
+    <div class="ablog-post-excerpt docutils container">
+<p>Sensing the positions of limbs and the forces acting on them is just
+part of the proprioception, there is also the sense of touch and the
+inner ear. Today we will do touch.</p>
+</div>
+
+    <p class="ablog-post-expand"><a href="../projects/log-6050-22895/"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../projects/log-6050-22871/">Hackaday Prize Quaterfinals Video</a>
+    </h2>
+
+    <ul class="ablog-archive">
+      <li>
+          2015-08-15 
+      </li>
+          
+<li id="category">
+  <span>Category:</span
+  >
+   
+  <a href="category/project-6050/">project-6050</a>  
+</li>
+  
+    </ul>
+    <div class="ablog-post-excerpt docutils container">
+<p>I decided to make it a bloopers video, showing the stages of
+development of this robot and how it reached the current form. Enjoy!</p>
+</div>
+
+    <p class="ablog-post-expand"><a href="../projects/log-6050-22871/"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../projects/log-6050-22768/">System Diagram</a>
+    </h2>
+
+    <ul class="ablog-archive">
+      <li>
+          2015-08-14 
+      </li>
+          
+<li id="category">
+  <span>Category:</span
+  >
+   
+  <a href="category/project-6050/">project-6050</a>  
+</li>
+  
+    </ul>
+    <div class="ablog-post-excerpt docutils container">
+<p>This is the diagram of my plan to improve the worldwide robot
+situation:</p>
+</div>
+
+    <p class="ablog-post-expand"><a href="../projects/log-6050-22768/"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../projects/log-6050-22775/">Licenses</a>
+    </h2>
+
+    <ul class="ablog-archive">
+      <li>
+          2015-08-14 
+      </li>
+          
+<li id="category">
+  <span>Category:</span
+  >
+   
+  <a href="category/project-6050/">project-6050</a>  
+</li>
+  
+    </ul>
+    <div class="ablog-post-excerpt docutils container">
+<p>To be eligible for the Hackaday Prize, I have to explicitly document
+the licenses for everything. So here it goes.</p>
+</div>
+
+    <p class="ablog-post-expand"><a href="../projects/log-6050-22775/"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../projects/log-6050-22595/">New New Board in the Wild</a>
+    </h2>
+
+    <ul class="ablog-archive">
+      <li>
+          2015-08-12 
+      </li>
+          
+<li id="category">
+  <span>Category:</span
+  >
+   
+  <a href="category/project-6050/">project-6050</a>  
+</li>
+  
+    </ul>
+    <div class="ablog-post-excerpt docutils container">
+<p>So the version 4 printed circuit boards arrived a few days ago (no,
+that’s not super-fast shipping from China, I just waited several weeks
+before even writing about them). I’m almost perfectly happy with them,
+so far I only came up with two small things I want to change. Probably
+not enough to make another version.</p>
+</div>
+
+    <p class="ablog-post-expand"><a href="../projects/log-6050-22595/"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../projects/log-6050-21962/">New New Printed Circuit Board</a>
+    </h2>
+
+    <ul class="ablog-archive">
+      <li>
+          2015-08-01 
+      </li>
+          
+<li id="category">
+  <span>Category:</span
+  >
+   
+  <a href="category/project-6050/">project-6050</a>  
+</li>
+  
+    </ul>
+    <div class="ablog-post-excerpt docutils container">
+<p>You know how it is. As soon as you get your hands on the new PCB and
+assemble another prototype to test it, you get a million ideas for
+improvements to it. That’s what happened when I got the version 3 of
+the Tote’s body, and it lead to a complete overhaul in version 4.</p>
+</div>
+
+    <p class="ablog-post-expand"><a href="../projects/log-6050-21962/"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../projects/log-6050-21869/">Follow Me, I Say!</a>
+    </h2>
+
+    <ul class="ablog-archive">
+      <li>
+          2015-07-30 
+      </li>
+          
+<li id="category">
+  <span>Category:</span
+  >
+   
+  <a href="category/project-6050/">project-6050</a>  
+</li>
+  
+    </ul>
+    <div class="ablog-post-excerpt docutils container">
+<p>I didn’t have much time to work on Tote this week, but since the
+sensors arrived, I will at least finish the “follow me” log.</p>
+</div>
+
+    <p class="ablog-post-expand"><a href="../projects/log-6050-21869/"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../projects/log-6050-21465/">Follow Me!</a>
+    </h2>
+
+    <ul class="ablog-archive">
+      <li>
+          2015-07-24 
+      </li>
+          
+<li id="category">
+  <span>Category:</span
+  >
+   
+  <a href="category/project-6050/">project-6050</a>  
+</li>
+  
+    </ul>
+    <div class="ablog-post-excerpt docutils container">
+<p>Some time ago I got the <a class="reference external" href="https://hackaday.io/project/6050-tote-affordable-spider-robot/log/20790-distance-sensor-second-try">Sharp distance sensor to work with Tote</a>  (somewhat), and I promised we will do something interesting with it.
+Obstacle avoidance is old, so let’s try to make the robot follow us
+instead. The idea is actually very similar to obstacle avoidance,
+except that instead of avoiding obstacles, you go toward them.</p>
+</div>
+
+    <p class="ablog-post-expand"><a href="../projects/log-6050-21465/"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../projects/log-6050-21263/">Testing The New Printed Circuit Board</a>
+    </h2>
+
+    <ul class="ablog-archive">
+      <li>
+          2015-07-21 
+      </li>
+          
+<li id="category">
+  <span>Category:</span
+  >
+   
+  <a href="category/project-6050/">project-6050</a>  
+</li>
+  
+    </ul>
+    <div class="ablog-post-excerpt docutils container">
+<p>The <a class="reference external" href="http://dirtypcbs.com/view.php?share=8923&amp;accesskey=8b094bbc0000d8c4912eef9a90965aac">new PCBs</a>  just arrived from <a class="reference external" href="http://dirtypcbs.com">Dirtypcbs</a>  and I started to test them. This is version three of the board, and <a class="reference external" href="https://hackaday.io/project/6050-tote-affordable-spider-robot/log/20019-pcb-redesign">most of the improvements are really just for convenience or aesthetics</a> .</p>
+</div>
+
+    <p class="ablog-post-expand"><a href="../projects/log-6050-21263/"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../projects/log-6050-21027/">Cheap Chinese STM32 Boards</a>
+    </h2>
+
+    <ul class="ablog-archive">
+      <li>
+          2015-07-16 
+      </li>
+          
+<li id="category">
+  <span>Category:</span
+  >
+   
+  <a href="category/project-6050/">project-6050</a>  
+</li>
+  
+    </ul>
+    <div class="ablog-post-excerpt docutils container">
+<p>We already saw that Tote can work with a Pro Mini, Pro Micro or Teensy
+3.1 as its brains. The Teensy is especially interesting, as it gives
+us a lot of pins for additional sensors and effectors. But it’s quite
+expensive. Could we maybe use a cheaper ARM board instead?</p>
+</div>
+
+    <p class="ablog-post-expand"><a href="../projects/log-6050-21027/"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../projects/log-6050-20824/">Custom Controller</a>
+    </h2>
+
+    <ul class="ablog-archive">
+      <li>
+          2015-07-11 
+      </li>
+          
+<li id="category">
+  <span>Category:</span
+  >
+   
+  <a href="category/project-6050/">project-6050</a>  
+</li>
+  
+    </ul>
+    <div class="ablog-post-excerpt docutils container">
+<p>The newest Hackaday Prize Hot List is about human interfaces, so I
+decided to work on that a little over the weekend. I found an analog
+joystick module lying around, so I’m going to try and make a custom
+controller for Tote.</p>
+</div>
+
+    <p class="ablog-post-expand"><a href="../projects/log-6050-20824/"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../projects/log-6050-20790/">Distance Sensor, Second Try</a>
+    </h2>
+
+    <ul class="ablog-archive">
+      <li>
+          2015-07-10 
+      </li>
+          
+<li id="category">
+  <span>Category:</span
+  >
+   
+  <a href="category/project-6050/">project-6050</a>  
+</li>
+  
+    </ul>
+    <div class="ablog-post-excerpt docutils container">
+<p>Seonsors are very important for robots, and a distance sensor is one
+of the most useful ones that you can install, as it gives the robot an
+approximation of vision. I tried to use an ultrasound distance sensor
+with Tote before, and failed miserably. This time I’m going to use an
+infra-red distance sensor.</p>
+</div>
+
+    <p class="ablog-post-expand"><a href="../projects/log-6050-20790/"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../projects/log-6050-20586/">Logicoma-kun</a>
+    </h2>
+
+    <ul class="ablog-archive">
+      <li>
+          2015-07-07 
+      </li>
+          
+<li id="category">
+  <span>Category:</span
+  >
+   
+  <a href="category/project-6050/">project-6050</a>  
+</li>
+  
+    </ul>
+    <div class="ablog-post-excerpt docutils container">
+<p>The continuous-rotation servos arrived, and I got to finish another of
+my experiments, <a class="reference external" href="https://hackaday.io/project/6321-katka-a-mammalian-robot/log/20293-spider-mode">which I mentioned previously</a>  over at the <span class="xref myst">#Katka, a mammalian robot</span>  project. Since I’m re-using parts and experience between all those
+projects, it becomes harder to separate them. This one might even grow
+out into its own project, but for now I will publish it here, as it’s
+basically Tote with a slightly different leg configuration and
+software.</p>
+</div>
+
+    <p class="ablog-post-expand"><a href="../projects/log-6050-20586/"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../projects/log-6050-20344/">Using Teensy 3.1</a>
+    </h2>
+
+    <ul class="ablog-archive">
+      <li>
+          2015-07-02 
+      </li>
+          
+<li id="category">
+  <span>Category:</span
+  >
+   
+  <a href="category/project-6050/">project-6050</a>  
+</li>
+  
+    </ul>
+    <div class="ablog-post-excerpt docutils container">
+<p>One of the topics I intend to cover in those logs is how to extend
+Tote with various boards and modules. I’ve already had one log on how
+to use Pro Micro instead of Pro Mini, and one on adding an ESP8266
+board with Micropython. Now it’s time for the Teensy 3.1.</p>
+</div>
+
+    <p class="ablog-post-expand"><a href="../projects/log-6050-20344/"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../projects/log-6050-20241/">Schematics</a>
+    </h2>
+
+    <ul class="ablog-archive">
+      <li>
+          2015-06-30 
+      </li>
+          
+<li id="category">
+  <span>Category:</span
+  >
+   
+  <a href="category/project-6050/">project-6050</a>  
+</li>
+  
+    </ul>
+    <div class="ablog-post-excerpt docutils container">
+<p>I’ve been asked to provide schematics of the PCB. I must admit, that I
+neglected that part a little, mostly doing all modifications and
+connections directly in the PCB view, but now I cleaned up the
+schematic view a little better.</p>
+</div>
+
+    <p class="ablog-post-expand"><a href="../projects/log-6050-20241/"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../projects/log-6050-20019/">PCB Redesign</a>
+    </h2>
+
+    <ul class="ablog-archive">
+      <li>
+          2015-06-26 
+      </li>
+          
+<li id="category">
+  <span>Category:</span
+  >
+   
+  <a href="category/project-6050/">project-6050</a>  
+</li>
+  
+    </ul>
+    <div class="ablog-post-excerpt docutils container">
+<p>After the recent failures and after using the Tote’s PCB in a couple
+of different projects, I decided that some changes are needed to the
+design. Here is <a class="reference external" href="https://bitbucket.org/thesheep/tote/src/tip/fritzing/pcb3.fzz">the new PCB</a> :</p>
+</div>
+
+    <p class="ablog-post-expand"><a href="../projects/log-6050-20019/"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../projects/log-6050-19897/">Failure: HC-SR04 Distance Sensor</a>
+    </h2>
+
+    <ul class="ablog-archive">
+      <li>
+          2015-06-23 
+      </li>
+          
+<li id="category">
+  <span>Category:</span
+  >
+   
+  <a href="category/project-6050/">project-6050</a>  
+</li>
+  
+    </ul>
+    <div class="ablog-post-excerpt docutils container">
+<p>What is a robot without sensors? Just a remote-controlled toy! It’s
+time to add some external sensors to Tote.</p>
+</div>
+
+    <p class="ablog-post-expand"><a href="../projects/log-6050-19897/"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../projects/log-6050-19645/">Remote control with ESP8266 and Micropython</a>
+    </h2>
+
+    <ul class="ablog-archive">
+      <li>
+          2015-06-17 
+      </li>
+          
+<li id="category">
+  <span>Category:</span
+  >
+   
+  <a href="category/project-6050/">project-6050</a>  
+</li>
+  
+    </ul>
+    <div class="ablog-post-excerpt docutils container">
+<p>Raspberry Pi now requires at least 3GB SD card for its system image,
+and turns out I don’t have any that big around.</p>
+</div>
+
+    <p class="ablog-post-expand"><a href="../projects/log-6050-19645/"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../projects/log-6050-19284/">Using Arduino Pro Micro</a>
+    </h2>
+
+    <ul class="ablog-archive">
+      <li>
+          2015-06-10 
+      </li>
+          
+<li id="category">
+  <span>Category:</span
+  >
+   
+  <a href="category/project-6050/">project-6050</a>  
+</li>
+  
+    </ul>
+    <div class="ablog-post-excerpt docutils container">
+<p>You can use Arduino Nano instead of the Pro Mini in Tote, if you
+prefer to have that USB socket available. Apart from the fact that the
+Nano has the USB2TTL build into it, there are no differences, so it
+should all work. However, I don’t have a spare Nano around, so I
+haven’t actually tested it. Caveats may appear.</p>
+</div>
+
+    <p class="ablog-post-expand"><a href="../projects/log-6050-19284/"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../projects/log-6050-19236/">Dirty PCBs are dirty</a>
+    </h2>
+
+    <ul class="ablog-archive">
+      <li>
+          2015-06-09 
+      </li>
+          
+<li id="category">
+  <span>Category:</span
+  >
+   
+  <a href="category/project-6050/">project-6050</a>  
+</li>
+  
+    </ul>
+    <div class="ablog-post-excerpt docutils container">
+<p>For everyone who have ordered the PCB for Tote from <a class="reference external" href="http://dirtypcbs.com/view.php?share=6918&amp;accesskey=97f6a684899c11fcc50da07808869f5d">Dirty PCBs</a>  just a quick note. Remember, that it’s the cut-throat cheap
+prototyping boards, and mistakes do happen. They are often simple to
+work around, but do test your boards for shorts before soldering
+anything or, especially, connecting a battery to the soldered board. I
+just had another batch arrive, and there is a small mistake on them:</p>
+</div>
+
+    <p class="ablog-post-expand"><a href="../projects/log-6050-19236/"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../projects/log-6050-18992/">Proprioception on the Cheap</a>
+    </h2>
+
+    <ul class="ablog-archive">
+      <li>
+          2015-06-04 
+      </li>
+          
+<li id="category">
+  <span>Category:</span
+  >
+   
+  <a href="category/project-6050/">project-6050</a>  
+</li>
+  
+    </ul>
+    <div class="ablog-post-excerpt docutils container">
+<p>Remember that time when you sat on your leg for some time, and it got
+numb, and when you got up, it felt all wooden and walking was like
+walking on stilts? That’s how most walking robots feel. What happened
+is your nerves got squished and blocked a little, and you lost your <a class="reference external" href="https://en.wikipedia.org/wiki/Proprioception">sense of proprioception</a>  – the position and forces of your limbs. Now you know why robots
+that don’t have force and position sensors on them have such a hard
+time walking!</p>
+</div>
+
+    <p class="ablog-post-expand"><a href="../projects/log-6050-18992/"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
       <a href="../projects/project-6050/">Tote</a>
     </h2>
 
@@ -156,13 +1559,13 @@
   <span>Tags: </span
   >
    
-  <a href="tag/robots/">robots</a>   
-  <a href="tag/atmel/">atmel</a>   
-  <a href="tag/ongoing-project/">ongoing project</a>   
+  <a href="tag/2015hackadayprize/">2015HackadayPrize</a>   
+  <a href="tag/robot/">ROBOT</a>   
   <a href="tag/quadruped/">quadruped</a>   
   <a href="tag/hardware/">hardware</a>   
-  <a href="tag/robot/">ROBOT</a>   
-  <a href="tag/2015hackadayprize/">2015HackadayPrize</a>  
+  <a href="tag/atmel/">atmel</a>   
+  <a href="tag/ongoing-project/">ongoing project</a>   
+  <a href="tag/robots/">robots</a>  
 </li>
  
     </ul>
@@ -172,6 +1575,67 @@
 </div>
 
     <p class="ablog-post-expand"><a href="../projects/project-6050/"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../projects/log-6050-18736/">Hacking on Tote</a>
+    </h2>
+
+    <ul class="ablog-archive">
+      <li>
+          2015-05-31 
+      </li>
+          
+<li id="category">
+  <span>Category:</span
+  >
+   
+  <a href="category/project-6050/">project-6050</a>  
+</li>
+  
+    </ul>
+    <div class="ablog-post-excerpt docutils container">
+<p>Since Tote evolved from <a class="reference external" href="https://hackaday.io/project/3300-kubik-quadruped-robot">µKubik</a> , I put all updates about it there. But now that it is pretty much
+ready, I’m going to do some experimenting and extending and hacking on
+it, and I think it makes sense to have a separate project page for
+that, and leave the Python-powered µKubik alone.</p>
+</div>
+
+    <p class="ablog-post-expand"><a href="../projects/log-6050-18736/"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../projects/log-6050-18738/">Different Power Sources</a>
+    </h2>
+
+    <ul class="ablog-archive">
+      <li>
+          2015-05-31 
+      </li>
+          
+<li id="category">
+  <span>Category:</span
+  >
+   
+  <a href="category/project-6050/">project-6050</a>  
+</li>
+  
+    </ul>
+    <div class="ablog-post-excerpt docutils container">
+<p>Power source is a hard problem for any walking or flying robots.
+Unlike the robots that roll on wheels (or tracks), walkers have to
+carry its own weight, and the battery can be easily the heaviest part
+of the robot. They also tend to draw quite a lot of current for their
+many actuators, so that further limits the choices.</p>
+</div>
+
+    <p class="ablog-post-expand"><a href="../projects/log-6050-18738/"><em>Read more ...</em></a></p>
     <hr/>
   </div>
    

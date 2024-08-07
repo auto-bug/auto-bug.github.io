@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>PCB Redesign - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="pcb-redesign">
+<h1>PCB Redesign<a class="headerlink" href="#pcb-redesign" title="Permalink to this heading">¶</a></h1>
+<p>After the recent failures and after using the Tote’s PCB in a couple
+of different projects, I decided that some changes are needed to the
+design. Here is <a class="reference external" href="https://bitbucket.org/thesheep/tote/src/tip/fritzing/pcb3.fzz">the new PCB</a> :</p>
+<img alt="https://cdn.hackaday.io/images/6927631435323642206.png" src="https://cdn.hackaday.io/images/6927631435323642206.png" />
+<hr class="docutils" />
+<p>There are several changes compared to the previous one:</p>
+<ul class="simple">
+<li><p>a nice logo on the silkscreen,</p></li>
+<li><p>the board is square again,</p></li>
+<li><p>removed the additional holes,</p></li>
+<li><p>the servo connectors are moved slightly, to make more room for screws,</p></li>
+<li><p>battery connector moved to the front edge of the board,</p></li>
+<li><p>removed the HC-SR04 sensor header, since it doesn’t work reliably,</p></li>
+<li><p>reordered the IR sensor pins to match the pinouts of my sensors,</p></li>
+<li><p>added a header for connecting a piezo speaker, for making noises,</p></li>
+<li><p>added pins for A6 and A7 gpios of the Pro Mini, for both 3.3V and 5V
+versions,</p></li>
+<li><p>you no longer need to add a jumper, that place has a connection by
+default, and you can cut the trace if you want to connect a voltage
+regulator,</p></li>
+<li><p>there is another trace you can cut to be able to disconnect power to
+the servos, but still have the Pro Mini and all the sensors powered.</p></li>
+</ul>
+<p>Don’t worry, the old board will not stop working, and I will still
+support it. The changes are not that big anyways – I made sure that I
+don’t change any pin numbers or anything similar, which would make the
+software incompatible.</p>
+<p>I haven’t ordered the new boards yet, so there is no link for ordering
+them. I will wait a couple more days for ideas for more improvements,
+and then order them.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

@@ -2,10 +2,43 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posted in 2018</title>
-  <updated>2024-08-07T18:37:11.761220+00:00</updated>
+  <updated>2024-08-07T18:42:38.708040+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/2018/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/log-6050-147636/</id>
+    <title>Reviving the Skull Tote</title>
+    <updated>2018-06-07T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="reviving-the-skull-tote"&gt;
+
+&lt;p&gt;I have a number of prototypes of Tote that I have built over the
+years, but the most presentable one is the one I pimped up in  &lt;a class="reference external" href="https://hackaday.io/project/6050-tote/log/48853-pimp-your-bot"&gt;https://hackaday.io/project/6050-tote/log/48853-pimp-your-bot&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Unfortunately, that robot had a number of problems. Unlike all other
+Totes, it was powered with a 2S lipo battery, with a buck converter
+bringing to voltage down to 5V. That tiny buck converter would only
+work for a few minutes, and then starting to shut down when the
+current drawn by the servos made it too hot. Which would result in the
+robot having a seizure. I also discovered that the motor in one of the
+servos got stuck — rather common with the cheap SG90 servos — and
+would need to be replaced.&lt;/p&gt;
+&lt;p&gt;So I decided to open up this robot, replace the power with a more
+standard setup (a 1S lipo connected directly without any voltage
+stabilization), add a battery charging circuit, and replace the servo.&lt;/p&gt;
+&lt;p&gt;Here’s the USB port for the battery charging circuit:&lt;/p&gt;
+&lt;img alt="https://cdn.hackaday.io/images/9036641528398127759.jpg" src="https://cdn.hackaday.io/images/9036641528398127759.jpg" /&gt;
+&lt;p&gt;And the replaced servo, primed with black paint, waiting to dry for a
+dry-brushing:&lt;/p&gt;
+&lt;img alt="https://cdn.hackaday.io/images/2825991528398180978.jpg" src="https://cdn.hackaday.io/images/2825991528398180978.jpg" /&gt;
+&lt;p&gt;And finally the whole robot, it all its robot glory:&lt;/p&gt;
+&lt;img alt="https://cdn.hackaday.io/images/7540951528398222731.jpg" src="https://cdn.hackaday.io/images/7540951528398222731.jpg" /&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/log-6050-147636/" rel="alternate"/>
+    <summary>I have a number of prototypes of Tote that I have built over the
+years, but the most presentable one is the one I pimped up in  https://hackaday.io/project/6050-tote/log/48853-pimp-your-bot</summary>
+    <published>2018-06-07T00:00:00+02:00</published>
+  </entry>
   <entry>
     <id>http://deshipu.art/projects/666-project/</id>
     <title>A Project</title>

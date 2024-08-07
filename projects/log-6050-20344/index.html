@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Using Teensy 3.1 - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="using-teensy-3-1">
+<h1>Using Teensy 3.1<a class="headerlink" href="#using-teensy-3-1" title="Permalink to this heading">¶</a></h1>
+<p>One of the topics I intend to cover in those logs is how to extend
+Tote with various boards and modules. I’ve already had one log on how
+to use Pro Micro instead of Pro Mini, and one on adding an ESP8266
+board with Micropython. Now it’s time for the Teensy 3.1.</p>
+<p>The Teensy 3.1 is an ARM board very similar in shape to the Pro Mini,
+but with much more computing power and lots of pins, both digital and
+analog. It’s really a great choice if you have outgrown the Pro Mini.
+You can program it just like Arduino, using the Teensyduino IDE. So I
+figured my code should just work, right? Wrong.</p>
+<p>It actually took me almost 2 weeks to get my code to work. Here’s the
+story.</p>
+<hr class="docutils" />
+<p>Connecting the Teensy 3.1 is a little bit tricky. Although the pin
+pitch is right, you can’t just plug it into the Pro Mini socket on the
+Tote, because the GND pin has been moved to the other side of the
+board. Sigh. That’s fine, though, you can just use short wires, or, if
+you have a socket, a set of extra-long pin headers and some Dupont
+cables:\</p>
+<img alt="https://cdn.hackaday.io/images/5343941435843885374.jpg" src="https://cdn.hackaday.io/images/5343941435843885374.jpg" />
+<p>Then it simply plugs into the Tote socket. Looks a little bit weird,
+but should work just fine:</p>
+<img alt="https://cdn.hackaday.io/images/5006831435843968794.jpg" src="https://cdn.hackaday.io/images/5006831435843968794.jpg" />
+<p>Now just adjust the pin numbers in <a class="reference external" href="https://bitbucket.org/thesheep/tote/src/806a193584f9e4653414de2dd4f55ba884f0502d/start/servos.ino?at=teensy31#cl-9">servos.ino</a> , remove the IR code (it’s based on AVR interrupts, so probably won’t
+work on Teensy), and we are ready to go. Another super-easy
+conversion.Except that it doesn’t work. As soon as the robot is witched on, it
+gets an attack of epilepsy, twitching its legs randomly. Why?<strong>Why?</strong></p>
+<p>Now, the “fun” part of the project started. I began with the absolute
+low-level, checking first if the Servo library example works. It
+worked correctly. Then I proceeded to debug the_servos.ino_ code, making sure that each servo really moves to the angle it has
+been told to move to. Everything seems to be in order. Hmph.</p>
+<p>That means that the error must be somewhere in the inverse kinematics
+code. I was afraid of that. But the code works perfectly fine on the
+Pro Mini and other AVR-based Arduinos. So what could be wrong?</p>
+<p>Someone told me that the_abs()<em>funtion may be not defined for floating point numbers, so I replaced
+it with a call to_max(a, -a)</em>. No joy. Someone else told me that the AVR doesn’t really have
+“double” type, and that it is in fact just normal “float”. So I tried
+changing all types to “float”. Nope. Then changing all the
+trigonometric functions to their float versions. No. Verifying all
+loops for buffer overruns and adding sentinel conditions checking for
+correct ranges. Still nothing.</p>
+<p>Finally, the time has come to disconnect the Teensy 3.1 from Tote and
+do some serious debugging over the serial. After placing a lot of
+strategically planned print statements, a pattern started to emerge.
+It seemed that sometimes a value would suddenly be multiplied by 255.
+How come? Add more print statement to also display the constants and
+tables I used, and I found the problem.</p>
+<p>Turns out that the <a class="reference external" href="http://blog.cdleary.com/2012/11/arm-chars-are-unsigned-by-default/">char type is unsigned by default on ARM</a> . And I had some tables with just values like 1 and -1 for tuning
+various parameters. And of course all those -1s have become 255s, and
+the robot went crazy.</p>
+<p>After replacing the chars with ints, everything went more or less
+smoothly:</p>
+<iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/7N34Yd2vMS0"></iframe>
+<p>Remember kids, don’t write “char” when you mean “int8”!</p>
+</section>
+
+
+</div>
+  </body>
+</html>

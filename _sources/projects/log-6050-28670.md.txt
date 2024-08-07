@@ -1,0 +1,28 @@
+---
+blogpost: true
+date: 2015-12-04
+category: project-6050
+---
+
+# Pi Zero
+
+With the new Pi Zero board and its price, it may actually make sense
+to use in in place of the Arduino on Tote. It's only a little bit more
+expensive, after all. The problem is, it doesn't have hardware PWM and
+has a whole operating system that needs to boot, has to be properly
+configured and requires all the right software. The cost of the SD
+card also cannot be ignored. All the adapters and cables are not a
+problem, as it wouldn't need them while connected to the robot.
+
+I started some initial testing on the Servo Blaster daemon for
+controlling the servos:
+
+
+:::{image} https://cdn.hackaday.io/images/6435031449239124956.jpg
+
+:::
+
+
+I also designed and ordered a PCB that makes the Pi Zero fit a little
+better than on this photo. We will see how that works.
+

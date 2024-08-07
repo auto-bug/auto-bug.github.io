@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Programming the Spinal Cord - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section id="programming-the-spinal-cord">
+<h1>Programming the Spinal Cord<a class="headerlink" href="#programming-the-spinal-cord" title="Permalink to this heading">¶</a></h1>
+<p>n the previous log I made a decision to use an Adafruit Feather board
+for the robot’s brains, and a bare ATmega chip in a DIP package for
+its spinal cord – that is, the servo controller. That’s supposed to
+make the board much easier to solder even by inexperienced builders.
+But wait a minute! How are they going to get the servo controller
+program onto those chips? Will that not require some extra hardware?
+Sadly, yes.</p>
+<p>It will require six extra wires.</p>
+<p>The trick is to use the Feather board as an ISP programmer, using the
+“Arduino as ISP” example sketch from the Arduino IDE. You will need to
+make the following connections:</p>
+<img alt="https://cdn.hackaday.io/images/967991484403277085.png" src="https://cdn.hackaday.io/images/967991484403277085.png" />
+<p>Now, in your Arduino IDE go to Files→Examples→11.ArduinoISP and select
+that example. Then scroll to around line 68 and change this:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Configure which pins to use:</span>
+
+<span class="c1">// The standard pin configuration.</span>
+<span class="cp">#ifndef ARDUINO_HOODLOADER2 </span>
+
+<span class="cp">#define RESET     10 </span><span class="c1">// Use pin 10 to reset the target rather than SS</span>
+<span class="cp">#define LED_HB    9</span>
+<span class="cp">#define LED_ERR   8</span>
+<span class="cp">#define LED_PMODE 7</span>
+</pre></div>
+</div>
+<p>Into this:</p>
+<div class="highlight-vbscript notranslate"><div class="highlight"><pre><span></span>// Configure which pins to use:
+
+// The standard pin configuration.
+#ifndef ARDUINO_HOODLOADER2 
+
+#define RESET     0
+#define LED_HB    2
+#define LED_ERR   4
+#define LED_PMODE 5
+</pre></div>
+</div>
+<p>Then go to Tools→Board and select the Adafruit HUZZAH board, then do
+Sketch→Upload. You have your programmer ready.Then to program the chip, load the sketch with the servo controller,
+change the board to Arduino Uno, select Tools→Programmer→Arduino as
+ISP, and do Sketch→Upload Using Programmer. You should see some
+blinking lights on your Feather, and then your chip is programmed.</p>
+<p>In the end, I will probably make a Makefile that does the equivalent
+of the above procedure automatically, to streamline the experience a
+bit.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

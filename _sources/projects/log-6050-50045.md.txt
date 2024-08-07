@@ -1,0 +1,38 @@
+---
+blogpost: true
+date: 2016-12-07
+category: project-6050
+---
+
+# Version 5
+
+I've been asked for a Tote kit for a Christmas preset by a friend, and
+I realized I no longer have any version 4 boards. So I had to go and
+order some. But if I'm ordering boards anyways, why not make some
+improvements here and there? So here's a version 5.
+
+
+:::{image} https://cdn.hackaday.io/images/7989951481143160341.png
+
+:::
+
+
+You can see the board is much simpler now. It's basically just the
+servos, the battery, the pro mini, power switch and ir sensor. There
+are still the optional battery monitoring, piezo, distance sensor and
+extra capacitor, but by default they are not used. I also switched
+some pins around, so now using the serial pins for servos -- but all
+the analog pins are free, and broken out close to each of the legs.
+That should make it easier to use them for sensors.
+
+There is also a new step-by-step assembly tutorial for this version at [http://tote.readthedocs.io/en/latest/assembly_v5.html](http://tote.readthedocs.io/en/latest/assembly_v5.html)  and slightly modified code at [https://bitbucket.org/thesheep/tote/src/tip/v5](https://bitbucket.org/thesheep/tote/src/tip/v5) .
+
+
+:::{image} https://cdn.hackaday.io/images/7428001481143601250.jpg
+
+:::
+
+
+And I still have the other 9 boards to give away.Oh, right and a DirtyPCB link: [http://dirtypcbs.com/store/user/preview/1154](http://dirtypcbs.com/store/user/preview/1154) \
+
+
