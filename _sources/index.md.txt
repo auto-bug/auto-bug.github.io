@@ -1,0 +1,29 @@
+This is a website documenting projects of [Radomir Dopieralski](http://dopieralski.pl), also known as *deshipu*. Most of those projects were originally published at [hackaday.io](https://hackaday.io/deshipu).
+
+# Recent Updates:
+The most recent new content:
+
+::::{container}
+:class: updates-list
+
+:::{postlist} 5
+:format: \{title\}
+:excerpts:
+:::
+
+::::
+
+# Projects
+
+The list of all projects.  You can also check the [archive](blog) to see the full list of articles, or the [tags](blog/tag) for particular topics.
+
+::::{container:
+:class: project-list
+
+:::{postlist}
+:format: \{title\}
+:category: project
+:excerpts:
+:::
+
+::::
