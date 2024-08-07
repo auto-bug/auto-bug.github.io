@@ -233,9 +233,15 @@ Into this:
 #define LED_PMODE 5
 ```
 
-Then go to Tools→Board and select the Adafruit HUZZAH board, then do Sketch→Upload. You have your programmer ready.Then to program the chip, load the sketch with the servo controller, change the board to Arduino Uno, select Tools→Programmer→Arduino as ISP, and do Sketch→Upload Using Programmer. You should see some blinking lights on your Feather, and then your chip is programmed.
+Then go to Tools→Board and select the Adafruit HUZZAH board, then do
+Sketch→Upload. You have your programmer ready.Then to program the chip, load the sketch with the servo controller,
+change the board to Arduino Uno, select Tools→Programmer→Arduino as
+ISP, and do Sketch→Upload Using Programmer. You should see some
+blinking lights on your Feather, and then your chip is programmed.
 
-In the end, I will probably make a Makefile that does the equivalent of the above procedure automatically, to streamline the experience a bit.
+In the end, I will probably make a Makefile that does the equivalent
+of the above procedure automatically, to streamline the experience a
+bit.
 
 
 
@@ -254,7 +260,9 @@ just enough, preferably one that has so much of it, that it can be
 used with a high-level language like Python. That also means something
 that has a USB socket.
 
----------- more ----------The plan is to keep the Tote base PCB for its body, and keep the
+
+---
+The plan is to keep the Tote base PCB for its body, and keep the
 ATmega microcontroller on it, but make it only serve as a servo
 controller. Then, on top of it, have headers for plugging in the
 actual brains, and possibly for stacking additional shields with
@@ -1255,9 +1263,15 @@ void receiveEvent(int bytes) {
 }
 ```
 
-Nothing fancy or complicated, but it gets the job done. One thing I could have done easier -- I'm sending the positions as floats, because that's what the functions I already had were accepting. I could have instead make them work in µs, as most servo controllers out there, and use simple integers. I might still switch to that, if it turns out to be too slow, but for now this is good enough.
+Nothing fancy or complicated, but it gets the job done. One thing I
+could have done easier -- I'm sending the positions as floats, because
+that's what the functions I already had were accepting. I could have
+instead make them work in µs, as most servo controllers out there, and
+use simple integers. I might still switch to that, if it turns out to
+be too slow, but for now this is good enough.
 
-Next, I wrote some Python code on the Raspberry Pi side, to test if I can actually move the servos:
+Next, I wrote some Python code on the Raspberry Pi side, to test if I
+can actually move the servos:
 
 
 
@@ -1277,7 +1291,10 @@ def servo_move(servo, radians=None, degrees=None):
         [ord(b) for b in struct.pack('<f', radians)])
 ```
 
- After some small tweaks, it works. By the way, funny how write_block_data requires a list of integers, not a string of bytes, as the struct.pack() produces. Oh well.Once I had that tested, it's time to wrap it in a class and plug into my old Python gait code:
+ After some small tweaks, it works. By the way, funny how
+write_block_data requires a list of integers, not a string of bytes,
+as the struct.pack() produces. Oh well.Once I had that tested, it's time to wrap it in a class and plug into
+my old Python gait code:
 
 
 
@@ -1313,7 +1330,8 @@ class Servos(object):
             [ord(b) for b in struct.pack('<f', radians)])
 ```
 
-Then I assembled all the parts of the robot together, and it's ready to start walking:
+Then I assembled all the parts of the robot together, and it's ready
+to start walking:
 
 
 :::{image} https://cdn.hackaday.io/images/1173681448136046223.jpg
@@ -1321,7 +1339,9 @@ Then I assembled all the parts of the robot together, and it's ready to start wa
 :::
 
 
-Except I decided to sit down and refactor the Python code a little bit (and I need to adjust it to a different servo configuration, etc.), so it's still some time until it actually walks.
+Except I decided to sit down and refactor the Python code a little bit
+(and I need to adjust it to a different servo configuration, etc.), so
+it's still some time until it actually walks.
 
 
 
@@ -1405,7 +1425,9 @@ into rubber from a balloon, then tied that to each leg.
 :::
 
 
----------- more ----------Since the magnets seemed to be small and weak, I used two of them on
+
+---
+Since the magnets seemed to be small and weak, I used two of them on
 every foot initially. The effect wasn't very good -- they turned out
 to be too strong, and Tote couldn't lift any of its feet:
 
@@ -1440,7 +1462,9 @@ black, which makes the robot look much cooler!
 :::
 
 
----------- more ----------This is Tote under load of about 800g. As you can see, there is 600ml
+
+---
+This is Tote under load of about 800g. As you can see, there is 600ml
 of tea, plus the beaker and teabag, which themselves weight around
 200g. With this load the robot shows visible effort and the battery
 alarm will occasionally go off (but the robot doesn't shut down, it
@@ -1489,7 +1513,9 @@ IR sensor may be different):
 :::
 
 
----------- more ----------As you can see, it's not overly complicated. The board needs to be
+
+---
+As you can see, it's not overly complicated. The board needs to be
 19x19 holes to keep the original dimensions of Tote -- if you change
 that, you will need to change the_BASE_ variable in the code, so that the robot knows how big it is. If you
 don't like to make so many connections with wires, you can also use a
@@ -1537,7 +1563,9 @@ recently.
 I got e-mails from at least two people who are now working on their
 robots more or less based on Tote.
 
----------- more ----------The first one is[#Micropython Quadruped Robot](/project/6877) built by[@wagner](/hacker/38882). He used a permaboard instead of a PCB for the body, and translated
+
+---
+The first one is[#Micropython Quadruped Robot](/project/6877) built by[@wagner](/hacker/38882). He used a permaboard instead of a PCB for the body, and translated
 the walking code from C++ into Micropython, to use with his pyBoard.
 Last time I heard from him he still had some problems with the code,
 but I hope he will get them resolved.
@@ -1573,7 +1601,9 @@ whatsoever. The real goal is to make it easier for people to get
 started with a walking robot and to finally get those robots into our
 homes.
 
----------- more ----------If you like this project and its goals, there is a similar one that
+
+---
+If you like this project and its goals, there is a similar one that
 qualified, that you can track and support:[#The Kasei Initiative](/project/6418). It's on a little earlier stage, but the goals are even more
 ambitious!
 
@@ -1611,7 +1641,9 @@ trigger, too unreliable or too hard to build. I needed something off-
 the shelf that I could put on the end of the leg and that would tell
 me whether it's touching the ground or not. Seems easy.
 
----------- more ----------The obvious first choice is microswitch pushbuttons, similar to that
+
+---
+The obvious first choice is microswitch pushbuttons, similar to that
 reset switch on the Pro Mini. Small, light, easy to install, simple,
 reliable. Except the force you have to use to make one "click" is way
 too large for Tote's mass. It can basically stand on them and still
@@ -1764,7 +1796,9 @@ not enough to make another version.
 :::
 
 
----------- more ----------
+
+---
+
 
 This time the board is bigger and the servo horns are not attached
 diagonally -- they fit within the board. The holes for the horns
@@ -1804,7 +1838,9 @@ the Tote's body, and it lead to a complete overhaul in version 4.
 :::
 
 
----------- more ----------The most obvious change is the size. So far all the Tote's PCB were
+
+---
+The most obvious change is the size. So far all the Tote's PCB were
 38×38mm, simply because that size works well. But the servo horns
 stick out of the PCB quite far, so the robot is in fact bigger than
 that. Why not reclaim that space to have more room for all the
@@ -1869,7 +1905,9 @@ This sensor works beautifully though. Here's my testing rig:
 :::
 
 
----------- more ----------And here are the results:\
+
+---
+And here are the results:\
 
 
 <table ><tbody ><tr ><td >Distance</td><td >Reading</td></tr><tr ><td >50</td><td >20</td></tr><tr ><td >45</td><td >68</td></tr><tr ><td >40</td><td >122</td></tr><tr ><td >35</td><td >174</td></tr><tr ><td >30</td><td >243</td></tr><tr ><td >25</td><td >317</td></tr><tr ><td >20</td><td >423</td></tr><tr ><td >15</td><td >597</td></tr><tr ><td >10</td><td >900</td></tr><tr ><td >5</td><td >1020</td></tr></tbody></table>As you can see, they don't repeat and use pretty much all the scale
@@ -1909,7 +1947,12 @@ void sharp_loop() {
 }
 ```
 
-And here we go:<iframe style="width: 500px; height: 281px;" width="500" height="281" src="//www.youtube.com/embed/1I-EeEPEjx8" frameborder="0" allowfullscreen="None"></iframe>There still can be a lot of improvements. Instead of rotating in one direction, the robot could first just rotate its body left and right to see if the target is still there. I could use some timeouts between switching into the "search" mode, so that it doesn't switch back and forth constantly. The speed could be adjusted depending on the actual distance, etc. I will leave those as homework, though.
+And here we go:<iframe style="width: 500px; height: 281px;" width="500" height="281" src="//www.youtube.com/embed/1I-EeEPEjx8" frameborder="0" allowfullscreen="None"></iframe>There still can be a lot of improvements. Instead of rotating in one
+direction, the robot could first just rotate its body left and right
+to see if the target is still there. I could use some timeouts between
+switching into the "search" mode, so that it doesn't switch back and
+forth constantly. The speed could be adjusted depending on the actual
+distance, etc. I will leave those as homework, though.
 
 
 
@@ -1961,7 +2004,11 @@ void sharp_loop() {
 }
 ```
 
----------- more ----------I also added some beeps in there, that will tell us what the current state is. Since the new PCB has a place for a piezo buzzer on pin 13, I also added it to the previous robots:
+
+---
+I also added some beeps in there, that will tell us what the current
+state is. Since the new PCB has a place for a piezo buzzer on pin 13,
+I also added it to the previous robots:
 
 
 :::{image} https://cdn.hackaday.io/images/9149541437741274409.jpg
@@ -1969,7 +2016,9 @@ void sharp_loop() {
 :::
 
 
-But how does our code work? Turns out, that it doesn't work very well. The problem comes from how our 5V sensor works when it's under-powered with 3.3V. Remember the plot of values from last time?
+But how does our code work? Turns out, that it doesn't work very well.
+The problem comes from how our 5V sensor works when it's under-powered
+with 3.3V. Remember the plot of values from last time?
 
 
 :::{image} https://cdn.hackaday.io/images/8548111437741395294.png
@@ -1977,11 +2026,19 @@ But how does our code work? Turns out, that it doesn't work very well. The probl
 :::
 
 
-It's U-shaped, and that means that we get the same reading both for 20cm and for 50cm and more. That means that we have practically no way to tell if something is 20cm away or 50cm away, and that means that we can't reliably get the "no obstacle in sight" condition.
+It's U-shaped, and that means that we get the same reading both for
+20cm and for 50cm and more. That means that we have practically no way
+to tell if something is 20cm away or 50cm away, and that means that we
+can't reliably get the "no obstacle in sight" condition.
 
-Even if we shorten our distances to where the curve is relatively straight, we are still going to get weird readings when nothing is that close.
+Even if we shorten our distances to where the curve is relatively
+straight, we are still going to get weird readings when nothing is
+that close.
 
-Oh well, the sensor was cheap so it was worth a try. I guess this is a lesson: don't try to use parts outside of their specified parameters. Now I ordered some distance sensors that work between 2.7 and 5.5V, so that should be better. I will try again when they arrive.
+Oh well, the sensor was cheap so it was worth a try. I guess this is a
+lesson: don't try to use parts outside of their specified parameters.
+Now I ordered some distance sensors that work between 2.7 and 5.5V, so
+that should be better. I will try again when they arrive.
 
 Finally, a video of Tote failing to follow my hand:
 
@@ -2000,7 +2057,9 @@ The[new PCBs](http://dirtypcbs.com/view.php?share=8923&accesskey=8b094bbc0000d8c
 :::
 
 
----------- more ----------So, this time there seem to be no errors on the board (last time I got
+
+---
+So, this time there seem to be no errors on the board (last time I got
 boards with solder mask applied to some of the SMD pads). The picture
 doesn't really look as good as I hoped, but that's fine. Time to
 assemble the electronics and see if the robot works:\
@@ -2059,7 +2118,9 @@ right pins.
 :::
 
 
----------- more ----------But how do I program it? Do I need a JTAG programmer, a complex setup
+
+---
+But how do I program it? Do I need a JTAG programmer, a complex setup
 for cross-compiling to ARM and a complicated GDB configuration? Turns
 out that I don't, because there is the[stm32duino](http://www.stm32duino.com/) project! And they even have a step-by-step YouTube video on how to
 program that board:
@@ -2099,7 +2160,9 @@ controller for Tote.
 :::
 
 
----------- more ----------First a quick test. The joystick has two pots for the position, and a
+
+---
+First a quick test. The joystick has two pots for the position, and a
 button for pushing down the hat. That means we can have two modes, one
 for walking around, and one for changing the body posture. For a quick
 test, I connected it to a Pro Mini and tested with this simple Arduino
@@ -2124,15 +2187,26 @@ void loop() {
 }
 ```
 
-It seems to be working perfectly. Next, I need an IR diode, for sending the signal to Tote. Quick rummaging through my parts box, and I found one, and a 100Ω resistor for it (the LED calculator says it should be 90Ω, but I couldn't find any).
+It seems to be working perfectly. Next, I need an IR diode, for
+sending the signal to Tote. Quick rummaging through my parts box, and
+I found one, and a 100Ω resistor for it (the LED calculator says it
+should be 90Ω, but I couldn't find any).
 :::{image} https://cdn.hackaday.io/images/2052811436629226337.jpg
 
 :::
 
 
- I also took another Pro Mini with an IR receiver and sample code to read the IR signals, for debugging. Now, my initial idea was to send the joystick position encoded as two bytes in the command (button code), and the state of the button would change the "address" part of the signal. Turns out it's not that simple.
+ I also took another Pro Mini with an IR receiver and sample code to
+read the IR signals, for debugging. Now, my initial idea was to send
+the joystick position encoded as two bytes in the command (button
+code), and the state of the button would change the "address" part of
+the signal. Turns out it's not that simple.
 
-The two bytes in the command code are not just arbitrary bytes. One has to be negation of the other. So effectively I only have one byte that I can send. So I decided to send two separate commands, with different addresses, one for the x, and one for the y. The code for that is quite simple:
+The two bytes in the command code are not just arbitrary bytes. One
+has to be negation of the other. So effectively I only have one byte
+that I can send. So I decided to send two separate commands, with
+different addresses, one for the x, and one for the y. The code for
+that is quite simple:
 
 
 ```cpp
@@ -2161,7 +2235,10 @@ The two bytes in the command code are not just arbitrary bytes. One has to be ne
 
 ```
 
-Additionally, if the button on the joystick is pressed, you get different functions -- walking sideways and changing the robot height. All this added to [ir.ino](https://bitbucket.org/thesheep/tote/src/22662daa9d26d7cddd83226e1e6ace775f2ed8c1/start/ir.ino?at=irjoy). All that was left was to put all the parts, together with a battery, in a box:
+Additionally, if the button on the joystick is pressed, you get
+different functions -- walking sideways and changing the robot height.
+All this added to[ir.ino](https://bitbucket.org/thesheep/tote/src/22662daa9d26d7cddd83226e1e6ace775f2ed8c1/start/ir.ino?at=irjoy). All that was left was to put all the parts, together with a battery,
+in a box:
 
 
 :::{image} https://cdn.hackaday.io/images/1091771436629637404.jpg
@@ -2169,7 +2246,8 @@ Additionally, if the button on the joystick is pressed, you get different functi
 :::
 
 
-Some stickers taken from LiPo cells complete the look. Here's the controller in action:
+Some stickers taken from LiPo cells complete the look. Here's the
+controller in action:
 
 <iframe style="width: 500px; height: 281px;" width="500" height="281" src="//www.youtube.com/embed/uX7K6_ChTmM" frameborder="0" allowfullscreen="None"></iframe>
 
@@ -2194,7 +2272,9 @@ power supply. Will it work at our robot's 3.3V? Let's find out!
 :::
 
 
----------- more ----------Connecting this sensor is easy. There are three cables: red for power,
+
+---
+Connecting this sensor is easy. There are three cables: red for power,
 black for ground and yellow for the sensor output. The voltage on the
 output wire will vary depending on the distance being read by the
 sensor, so we have to connect it to an analog pin. The easiest way to
@@ -2230,7 +2310,10 @@ void loop() {
 }
 ```
 
-It will basically repeatedly read the analog pin value and print it on the serial line. We can use the Arduino IDE's serial monitor to see those values. A quick test and yay, we are getting readings, and they are different depending on the distance. So far so good.
+It will basically repeatedly read the analog pin value and print it on
+the serial line. We can use the Arduino IDE's serial monitor to see
+those values. A quick test and yay, we are getting readings, and they
+are different depending on the distance. So far so good.
 
 
 :::{image} https://cdn.hackaday.io/images/1619621436553858490.jpg
@@ -2238,7 +2321,12 @@ It will basically repeatedly read the analog pin value and print it on the seria
 :::
 
 
-The photo above shows my testing rig. A long ruler, the sensor taped to one end, and a reasonably reflective white object. Note, that the power line from the USB2TTL is disconnected and the Pro Mini is running on the battery power, so that it gets to regulate its own 3.3V for the sensor, and doesn't rely on the power from the computer. Here are the measurements I did, plotted on a chart:
+The photo above shows my testing rig. A long ruler, the sensor taped
+to one end, and a reasonably reflective white object. Note, that the
+power line from the USB2TTL is disconnected and the Pro Mini is
+running on the battery power, so that it gets to regulate its own 3.3V
+for the sensor, and doesn't rely on the power from the computer. Here
+are the measurements I did, plotted on a chart:
 
 
 :::{image} https://cdn.hackaday.io/images/6856891436554041118.png
@@ -2246,7 +2334,13 @@ The photo above shows my testing rig. A long ruler, the sensor taped to one end,
 :::
 
 
-As you can see, the sensor has a much shorter useful range than the 80cm it gets on 5V. At about 35cm it starts to break already. But that's fine, 35cm is a lot for our robot. We also won't need exact measurements, so no need to convert those numbers to centimeters -- we will just read the chart for setting our limits.Next, let's actually attach the sensor to our robot and make it do something. Of course, the simplest thing it can do is to stop before it hits an obstacle.
+As you can see, the sensor has a much shorter useful range than the
+80cm it gets on 5V. At about 35cm it starts to break already. But
+that's fine, 35cm is a lot for our robot. We also won't need exact
+measurements, so no need to convert those numbers to centimeters -- we
+will just read the chart for setting our limits.Next, let's actually attach the sensor to our robot and make it do
+something. Of course, the simplest thing it can do is to stop before
+it hits an obstacle.
 
 
 :::{image} https://cdn.hackaday.io/images/3268571436554231854.jpg
@@ -2254,7 +2348,13 @@ As you can see, the sensor has a much shorter useful range than the 80cm it gets
 :::
 
 
-I used adhesive tape to attach the sensor to the front of the robot. I might come up with a better way of doing it in the future, but this is good enough for now. Now let's add some code that does the stopping. We just add a [_sharp.ino_](https://bitbucket.org/thesheep/tote/src/52697d7f12c87825ac4579f371ccd22bdd2151bc/start/sharp.ino?at=sharp) file, with corresponding _sharp.h_, and call it all from [_start.ino_](https://bitbucket.org/thesheep/tote/src/9aa456eb0395f03c488d6ef61da6a31f7e39ff4d/start/start.ino?at=sharp). And let's see the results:<iframe style="width: 500px; height: 281px;" width="500" height="281" src="//www.youtube.com/embed/WR_0yxW_Ba0" frameborder="0" allowfullscreen="None"></iframe>It works as expected, the robot consistently stops at about 15cm from the obstacle. That's it for today, in the future I will show how to code a simple obstacle-avoiding algorithm, and then how to make the robot follow you around.
+I used adhesive tape to attach the sensor to the front of the robot. I
+might come up with a better way of doing it in the future, but this is
+good enough for now. Now let's add some code that does the stopping.
+We just add a[_sharp.ino_](https://bitbucket.org/thesheep/tote/src/52697d7f12c87825ac4579f371ccd22bdd2151bc/start/sharp.ino?at=sharp) file, with corresponding_sharp.h_, and call it all from[_start.ino_](https://bitbucket.org/thesheep/tote/src/9aa456eb0395f03c488d6ef61da6a31f7e39ff4d/start/start.ino?at=sharp). And let's see the results:<iframe style="width: 500px; height: 281px;" width="500" height="281" src="//www.youtube.com/embed/WR_0yxW_Ba0" frameborder="0" allowfullscreen="None"></iframe>It works as expected, the robot consistently stops at about 15cm from
+the obstacle. That's it for today, in the future I will show how to
+code a simple obstacle-avoiding algorithm, and then how to make the
+robot follow you around.
 
 
 
@@ -2282,7 +2382,9 @@ thought that I might be able to build a model of it out of Tote.
 :::
 
 
----------- more ----------Since with the Arduino Pro Mini I'm limited to 12 servos, I had to
+
+---
+Since with the Arduino Pro Mini I'm limited to 12 servos, I had to
 find a way to reduce the number of servos and still get proper
 walking. My experiments with[#Katka, a mammalian robot](/project/6321) allowed me to do that, so I used the 4 free servo slots for 4
 continuous-rotation servos placed at the ends of the legs.[I could actually have converted the SG90 servos instead](http://letsmakerobots.com/content/how-modify-micro-servo-continuous-rotation), but I didn't have the round servo horns for the wheels, so I decided
@@ -2324,7 +2426,9 @@ figured my code should just work, right? Wrong.
 It actually took me almost 2 weeks to get my code to work. Here's the
 story.
 
----------- more ----------Connecting the Teensy 3.1 is a little bit tricky. Although the pin
+
+---
+Connecting the Teensy 3.1 is a little bit tricky. Although the pin
 pitch is right, you can't just plug it into the Pro Mini socket on the
 Tote, because the GND pin has been moved to the other side of the
 board. Sigh. That's fine, though, you can just use short wires, or, if
@@ -2436,7 +2540,9 @@ design. Here is[the new PCB](https://bitbucket.org/thesheep/tote/src/tip/fritzin
 :::
 
 
----------- more ----------There are several changes compared to the previous one:
+
+---
+There are several changes compared to the previous one:
 
 
  * a nice logo on the silkscreen,
@@ -2480,7 +2586,9 @@ should be a great way to add some obstacle avoidance or person
 following capabilities to Tote, just like its older brother µKubik
 has.
 
----------- more ----------\
+
+---
+\
 
 
 <iframe style="width: 500px; height: 281px;" width="500" height="281" src="//www.youtube.com/embed/qmuZv3mmvRI" frameborder="0" allowfullscreen=""></iframe>So let's do it. The trigger pin is connected to pin 3 on the Arduino,
@@ -2518,21 +2626,49 @@ void loop() {
 
 ```
 
-And lo and behold, proper readings:<iframe style="width: 500px; height: 281px;" width="500" height="281" src="//www.youtube.com/embed/_Bw_2RLY4qY" frameborder="0" allowfullscreen=""></iframe>Yay, so that's it, right? Now just add [some basic logic to the code](https://bitbucket.org/thesheep/tote/src/eda3cc49cbb6e0774d22d0e6b12d5ccc45cfd3c9/start/ping.ino?at=ping) to make the robot stop when there is an obstacle in front, and we are ready to go, right? Wrong.
+And lo and behold, proper readings:<iframe style="width: 500px; height: 281px;" width="500" height="281" src="//www.youtube.com/embed/_Bw_2RLY4qY" frameborder="0" allowfullscreen=""></iframe>Yay, so that's it, right? Now just add[some basic logic to the code](https://bitbucket.org/thesheep/tote/src/eda3cc49cbb6e0774d22d0e6b12d5ccc45cfd3c9/start/ping.ino?at=ping) to make the robot stop when there is an obstacle in front, and we are
+ready to go, right? Wrong.
 
-For some reason, the robot stop immediately after the first step. What's happening?
+For some reason, the robot stop immediately after the first step.
+What's happening?
 
-OK, let's connect the serial and see. The distance readings are all 0. Why? Disconnect the battery, connect the Pro Mini to the USB and look again. Readings are all connect. Disconnect the USB power and run it from battery -- 0 again. Argh.
+OK, let's connect the serial and see. The distance readings are all 0.
+Why? Disconnect the battery, connect the Pro Mini to the USB and look
+again. Readings are all connect. Disconnect the USB power and run it
+from battery -- 0 again. Argh.
 
-Wait a minute. The Pro Mini actually has VCC at 5V while it's being powered from the USB cable, and 3.3V when it runs from the battery... What were the power requirements of that HC-SR04 sensor again? Where is the [datasheet](http://www.elecfreaks.com/store/download/HC-SR04.pdf)...
+Wait a minute. The Pro Mini actually has VCC at 5V while it's being
+powered from the USB cable, and 3.3V when it runs from the battery...
+What were the power requirements of that HC-SR04 sensor again? Where
+is the[datasheet](http://www.elecfreaks.com/store/download/HC-SR04.pdf)...
 
-Right, working voltage 5V. Sigh. Of curse I did check that before when I was designing the board, but back then I still wanted to use a 5V Pro Mini, and a voltage regulator. I later switched to 3.3V and completely forgot about the sensor. So what can be done?
+Right, working voltage 5V. Sigh. Of curse I did check that before when
+I was designing the board, but back then I still wanted to use a 5V
+Pro Mini, and a voltage regulator. I later switched to 3.3V and
+completely forgot about the sensor. So what can be done?
 
-Well, looking at what I have lying around I took a 5V Pro Mini, a 2S LiPo battery and a 5V voltage regulator, and quickly replaced Tote's guts. **Warning**: the 5V Pro Mini doesn't have the RAW pin separated from the VCC pin like the 3.3V version does, so don't connect it to the USB2TTL while it's in the robot -- the power draw will quickly fry the power regulator in Pro Mini. You have to remove it for programming.
+Well, looking at what I have lying around I took a 5V Pro Mini, a 2S
+LiPo battery and a 5V voltage regulator, and quickly replaced Tote's
+guts.**Warning**: the 5V Pro Mini doesn't have the RAW pin separated from the VCC pin
+like the 3.3V version does, so don't connect it to the USB2TTL while
+it's in the robot -- the power draw will quickly fry the power
+regulator in Pro Mini. You have to remove it for programming.
 
-<iframe style="width: 500px; height: 281px;" width="500" height="281" src="//www.youtube.com/embed/QjZ5rQOpvEw" frameborder="0" allowfullscreen=""></iframe>You can see that now it kinda works, except for random times when the sensor returns completely weird values. Maybe the sensor is broken? Replacing the sensor didn't help much. Taking three readings in a quick succession and taking maximum of them didn't help either -- it seems, that the sensor just has some moments when the readings are consistently bad. I can't think of a solution.
+<iframe style="width: 500px; height: 281px;" width="500" height="281" src="//www.youtube.com/embed/QjZ5rQOpvEw" frameborder="0" allowfullscreen=""></iframe>You can see that now it kinda works, except for random times when the
+sensor returns completely weird values. Maybe the sensor is broken?
+Replacing the sensor didn't help much. Taking three readings in a
+quick succession and taking maximum of them didn't help either -- it
+seems, that the sensor just has some moments when the readings are
+consistently bad. I can't think of a solution.
 
-While this is a failure, I thought that I will publish it anyways, as even the failures give us something to learn from -- often even more than the successes. And speaking of failures, remember how I promised to connect a Raspberry Pi to Tote? That's too cancelled for the moment -- my A+ RPI suddenly stopped working, the power LED won't shine, the activity LED shines weakly when powered from USB, and not at all when powered through the pins. I guess I have a streak of bad luck. Oh well.
+While this is a failure, I thought that I will publish it anyways, as
+even the failures give us something to learn from -- often even more
+than the successes. And speaking of failures, remember how I promised
+to connect a Raspberry Pi to Tote? That's too cancelled for the moment
+-- my A+ RPI suddenly stopped working, the power LED won't shine, the
+activity LED shines weakly when powered from USB, and not at all when
+powered through the pins. I guess I have a streak of bad luck. Oh
+well.
 
 
 
@@ -2547,7 +2683,9 @@ the Raspberry Pi, Teensy 3.1, ESP8266 and anything else I could find,
 all running different kinds of Python. That would also let me score
 more points in the "[mountain of prizes](http://hackaday.com/2015/06/08/a-mountain-of-prizes-for-projects-using-these-parts/)" as those boards use chips from all kinds of manufacturers, and I
 could claim then that Tote "uses" them. But reality as always
-interferes.---------- more ----------
+interferes.
+---
+
 
 Raspberry Pi now requires at least 3GB SD card for its system image,
 and turns out I don't have any that big around.
@@ -2618,7 +2756,10 @@ socket.bind(('0.0.0.0', 2323))
 socket.listen(1)
 ```
 
-It just prints on the console anything it gets on port 2323. I saved that as _esp8266/scripts/main_._py_ and recompiled -- the ESP9266 port of Micropython doesn't yet have filesystem support, so you have to add all files to the firmware itself. Then restart, get to the console with _USB2TTL_, and make it connect to the WiFi:
+It just prints on the console anything it gets on port 2323. I saved
+that as_esp8266/scripts/main_._py_ and recompiled -- the ESP9266 port of Micropython doesn't yet have
+filesystem support, so you have to add all files to the firmware
+itself. Then restart, get to the console with_USB2TTL_, and make it connect to the WiFi:
 
 
 ```python
@@ -2626,7 +2767,8 @@ import network
 network.connect('your ssid', 'your password')
 ```
 
-That gets remembered, so you don't have to do it every time. Quick test of the server using _netcat_:
+That gets remembered, so you don't have to do it every time. Quick
+test of the server using_netcat_:
 ```ruby
 $ nc 192.168.0.13 2323
 xxx
@@ -2636,7 +2778,11 @@ x
 
 ```
 
-And we are finished on this side. Or so I thought. But we will get to that. Now, for the robot side, I flashed that "serial control" version of the Tote code to the Pro Mini, and made a simple connector for the ESP8266 using some female headers, two-sided tape and a bunch of wires:
+And we are finished on this side. Or so I thought. But we will get to
+that. Now, for the robot side, I flashed that "serial control" version of
+the Tote code to the Pro Mini, and made a simple connector for the
+ESP8266 using some female headers, two-sided tape and a bunch of
+wires:
 
 
 :::{image} https://cdn.hackaday.io/images/6642121434528945481.jpg
@@ -2644,7 +2790,7 @@ And we are finished on this side. Or so I thought. But we will get to that. Now,
 :::
 
 
-It fits nicely on the _FTDI_ connector on top of the robot:
+It fits nicely on the_FTDI_ connector on top of the robot:
 
 
 :::{image} https://cdn.hackaday.io/images/2532981434529049651.jpg
@@ -2652,13 +2798,29 @@ It fits nicely on the _FTDI_ connector on top of the robot:
 :::
 
 
-Now let's test it. I made it so that after powering on, the robot does nothing and waits for "xx" on the serial -- that's because many boards will print random stuff to serial while booting, and you don't want that to be interpreted as commands. So I switch the robot on, send "xx" and... nothing. What?
+Now let's test it. I made it so that after powering on, the robot does
+nothing and waits for "xx" on the serial -- that's because many boards
+will print random stuff to serial while booting, and you don't want
+that to be interpreted as commands. So I switch the robot on, send
+"xx" and... nothing. What?
 
-Fast forward four hours. I'm up to my ears in debugging. Tried 3 different ESP8266 boards and 3 different Pro Minis, debugged it using _SoftwareSerial_ and by connecting the RX pin to the ESP and the TX one to the _USB2TTL_, one exceptionally helpful fellow on the _#arduino_ IRC channel even wrote a serial-forwarding code for me in low-level AVR C. The outcome? Both the Pro Mini and ESP8266 work perfectly fine when connected to the computer through _USB2TTL_. But as soon as you connect them to each other and try to transmit serial data at 115200 baud rate, half the data gets corrupted. That's over a 4mm long wire. Adding pullups, pulldowns, capacitors, etc. doesn't help. I sat over this until the small hours of the night, but didn't figure out a solution. I guess I will need to start saving for an osciloscpe.
+Fast forward four hours. I'm up to my ears in debugging. Tried 3
+different ESP8266 boards and 3 different Pro Minis, debugged it using_SoftwareSerial_ and by connecting the RX pin to the ESP and the TX one to the_USB2TTL_, one exceptionally helpful fellow on the_#arduino_ IRC channel even wrote a serial-forwarding code for me in low-level
+AVR C. The outcome? Both the Pro Mini and ESP8266 work perfectly fine
+when connected to the computer through_USB2TTL_. But as soon as you connect them to each other and try to transmit
+serial data at 115200 baud rate, half the data gets corrupted. That's
+over a 4mm long wire. Adding pullups, pulldowns, capacitors, etc.
+doesn't help. I sat over this until the small hours of the night, but
+didn't figure out a solution. I guess I will need to start saving for
+an osciloscpe.
 
-After a night's sleep, I went back to that Micropython code, grepped for "115200", and changed it to "9600", recompiled, flashed, changed the speed on the Arduino side and what do you know, it works!
+After a night's sleep, I went back to that Micropython code, grepped
+for "115200", and changed it to "9600", recompiled, flashed, changed
+the speed on the Arduino side and what do you know, it works!
 
-<iframe style="width: 500px; height: 281px;" width="500" height="281" src="//www.youtube.com/embed/4HnUbrXEJcQ" frameborder="0" allowfullscreen="None"></iframe>Next I will try to get that SD card for the RPI and show you the more low-level control. Who knows, maybe by this time the picam also arrives, and we can have some OpenCV fun.
+<iframe style="width: 500px; height: 281px;" width="500" height="281" src="//www.youtube.com/embed/4HnUbrXEJcQ" frameborder="0" allowfullscreen="None"></iframe>Next I will try to get that SD card for the RPI and show you the more
+low-level control. Who knows, maybe by this time the picam also
+arrives, and we can have some OpenCV fun.
 
 
 
@@ -2680,7 +2842,9 @@ right on the chip, which makes it easy to program it as a keyboard or
 mouse. It also has a form factor similar to the Pro Mini, so let's see
 if we can use it.
 
----------- more ----------First of all,**never plug your Pro Micro to the USB while it's in the robot.**The power lines are connected, and the servos draw so much current,
+
+---
+First of all,**never plug your Pro Micro to the USB while it's in the robot.**The power lines are connected, and the servos draw so much current,
 that it will instantly fry the on-board regulator on the Pro Micro.
 That means, that you have to go with the socket version of the PCB,
 not solder the module directly.**I am serious here, I fried one poor Pro Micro this way.**
