@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posts in project-19921</title>
-  <updated>2024-08-07T20:37:31.366018+00:00</updated>
+  <updated>2024-08-07T20:45:04.946575+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/category/project-19921/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -12,8 +12,8 @@
     <updated>2019-11-02T00:00:00+01:00</updated>
     <content type="html">&lt;section id="time-for-a-refresh"&gt;
 
-&lt;p&gt;Published on 2019-11-02 in &lt;a class="reference internal" href="../../../projects/project-19921/#project-19921"&gt;&lt;span class="std std-ref"&gt;SpiderWing&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;I left this project be, and focused more on the &lt;a class="reference internal" href="../../../projects/project-158981/#project-158981"&gt;&lt;span class="std std-ref"&gt;Kubik M0&lt;/span&gt;&lt;/a&gt; and &lt;a class="reference internal" href="../../../projects/project-19603/#project-19603"&gt;&lt;span class="std std-ref"&gt;D1 Mini Tote&lt;/span&gt;&lt;/a&gt; projects, but it’s time to revisit it, and bring back the improvements
+&lt;p&gt;Published on 2019-11-02 in &lt;span class="xref std std-ref"&gt;project-19921&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;I left this project be, and focused more on the &lt;span class="xref std std-ref"&gt;project-158981&lt;/span&gt; and &lt;span class="xref std std-ref"&gt;project-19603&lt;/span&gt; projects, but it’s time to revisit it, and bring back the improvements
 from those two projects.&lt;/p&gt;
 &lt;/section&gt;
 </content>
@@ -27,9 +27,9 @@ from those two projects.&lt;/p&gt;
     <updated>2019-11-03T00:00:00+01:00</updated>
     <content type="html">&lt;section id="new-pcb-design"&gt;
 
-&lt;p&gt;Published on 2019-11-03 in &lt;a class="reference internal" href="../../../projects/project-19921/#project-19921"&gt;&lt;span class="std std-ref"&gt;SpiderWing&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2019-11-03 in &lt;span class="xref std std-ref"&gt;project-19921&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;As mentioned, it’s time to modernize this design a little bit. So
-first of all, I added the PCB legs from &lt;a class="reference internal" href="../../../projects/project-19603/#project-19603"&gt;&lt;span class="std std-ref"&gt;D1 Mini Tote&lt;/span&gt;&lt;/a&gt; , and also added footprints for contact switches at the ends of those
+first of all, I added the PCB legs from &lt;span class="xref std std-ref"&gt;project-19603&lt;/span&gt; , and also added footprints for contact switches at the ends of those
 legs. Then I switched all parts (except for headers) to SMD, because
 that’s usually cheaper and easier to fabricate. Finally, we have some
 additional headers for connecting those foot switches to the Feather’s
@@ -52,7 +52,7 @@ able to order it easily, though some fabs might complain about
     <updated>2019-12-08T00:00:00+01:00</updated>
     <content type="html">&lt;section id="batteries-why-doesn-t-anybody-think-about-the-batteries"&gt;
 
-&lt;p&gt;Published on 2019-12-08 in &lt;a class="reference internal" href="../../../projects/project-19921/#project-19921"&gt;&lt;span class="std std-ref"&gt;SpiderWing&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2019-12-08 in &lt;span class="xref std std-ref"&gt;project-19921&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;Today I decided that the new PCB design was lying on the disk long
 enough, and that it’s time to order it. But then, when I opened it in
 Fritzing, I decided to work on it a little bit more and add an
@@ -95,9 +95,9 @@ fees for them, for some reason).&lt;/p&gt;
     <updated>2019-12-16T00:00:00+01:00</updated>
     <content type="html">&lt;section id="bodgetty-bodge"&gt;
 
-&lt;p&gt;Published on 2019-12-16 in &lt;a class="reference internal" href="../../../projects/project-19921/#project-19921"&gt;&lt;span class="std std-ref"&gt;SpiderWing&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2019-12-16 in &lt;span class="xref std std-ref"&gt;project-19921&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;The PCBs arrived today, so time for some testing. I didn’t have any
-PCA9685 left, so I had to remove it from one of my old  &lt;a class="reference internal" href="../../../projects/project-13278/#project-13278"&gt;&lt;span class="std std-ref"&gt;Servo Breakout for WeMos D1 Mini&lt;/span&gt;&lt;/a&gt; boards. With all the parts in place, time for some test:&lt;/p&gt;
+PCA9685 left, so I had to remove it from one of my old  &lt;span class="xref std std-ref"&gt;project-13278&lt;/span&gt; boards. With all the parts in place, time for some test:&lt;/p&gt;
 &lt;img alt="projects/project-19921/images/4958321576536384211.jpg" src="projects/project-19921/images/4958321576536384211.jpg" /&gt;
 &lt;p&gt;And nope, the Feather doesn’t get enough power. That’s weird. Let’s
 check the footprint for that battery protection chip again, shall we?
@@ -122,7 +122,7 @@ and programming it, so it will probably wait for the holidays.&lt;/p&gt;
     <updated>2019-12-31T00:00:00+01:00</updated>
     <content type="html">&lt;section id="it-s-alive-again"&gt;
 
-&lt;p&gt;Published on 2019-12-31 in &lt;a class="reference internal" href="../../../projects/project-19921/#project-19921"&gt;&lt;span class="std std-ref"&gt;SpiderWing&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2019-12-31 in &lt;span class="xref std std-ref"&gt;project-19921&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;It took me a while to re-assemble, re-connect and re-calibrate all the
 legs with the new PCB, but today the robot is again standing on its
 own. I was a bit worried that the battery protection circuit would
@@ -147,7 +147,7 @@ least they should let the robot avoid falling off the table.&lt;/p&gt;
 there is room for adding modules on top of the robot. It could be a
 prototyping board with some sensors, or one of the other featherwings
 with displays, LEDs, speakers, etc. — it would even work very well
-with the &lt;a class="reference internal" href="../../../projects/project-165011/#project-165011"&gt;&lt;span class="std std-ref"&gt;Gesture FeatherWing&lt;/span&gt;&lt;/a&gt; , controlled by gestures — if I ever get that to work.&lt;/p&gt;
+with the &lt;span class="xref std std-ref"&gt;project-165011&lt;/span&gt; , controlled by gestures — if I ever get that to work.&lt;/p&gt;
 &lt;/section&gt;
 </content>
     <link href="http://deshipu.art/projects/project-19921/log-172522/" rel="alternate"/>

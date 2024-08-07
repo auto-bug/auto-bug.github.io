@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posts in project-182342</title>
-  <updated>2024-08-07T20:37:30.996733+00:00</updated>
+  <updated>2024-08-07T20:45:04.592693+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/category/project-182342/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -12,7 +12,7 @@
     <updated>2022-12-15T00:00:00+01:00</updated>
     <content type="html">&lt;section id="great-success"&gt;
 
-&lt;p&gt;Published on 2022-12-15 in &lt;a class="reference internal" href="../../../projects/project-182342/#project-182342"&gt;&lt;span class="std std-ref"&gt;Camera Shield for S2 Mini&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2022-12-15 in &lt;span class="xref std std-ref"&gt;project-182342&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;Last time I gave up on the ESP32-S2, so today I decided to see how
 this camera works with the RP2040 instead. That uses a different
 library, called imagecapture, and since that library makes the master
@@ -118,12 +118,12 @@ pin numbering.&lt;/p&gt;
     <updated>2022-12-15T00:00:00+01:00</updated>
     <content type="html">&lt;section id="next-steps"&gt;
 
-&lt;p&gt;Published on 2022-12-15 in &lt;a class="reference internal" href="../../../projects/project-182342/#project-182342"&gt;&lt;span class="std std-ref"&gt;Camera Shield for S2 Mini&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2022-12-15 in &lt;span class="xref std std-ref"&gt;project-182342&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;Now that I have it working, what is the next step? Well, right now the
 shield requires the microcontroller to provide the main clock signal
 for the camera chip. That means that the camera needs at least one PWM
 channel to work, and with only 8 channels available on the esp32-s2,
-and with 8 servo needed on my &lt;a class="reference internal" href="../../../projects/project-180025/#project-180025"&gt;&lt;span class="std std-ref"&gt;Fluffbug&lt;/span&gt;&lt;/a&gt; robot, that doesn’t work very well. But I also have an off-the-shelf
+and with 8 servo needed on my &lt;span class="xref std std-ref"&gt;project-180025&lt;/span&gt; robot, that doesn’t work very well. But I also have an off-the-shelf
 camera module that doesn’t even have the main clock pin broken out,
 because it has an oscillator that takes care of that. Could I add an
 oscillator to my shield, and make the PWM channel unnecessary?
@@ -159,7 +159,7 @@ works.&lt;/p&gt;
     <updated>2022-12-18T00:00:00+01:00</updated>
     <content type="html">&lt;section id="version-4-and-moocam"&gt;
 
-&lt;p&gt;Published on 2022-12-18 in &lt;a class="reference internal" href="../../../projects/project-182342/#project-182342"&gt;&lt;span class="std std-ref"&gt;Camera Shield for S2 Mini&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2022-12-18 in &lt;span class="xref std std-ref"&gt;project-182342&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;Since I was ordering PCBs anyways, I went ahead and added the version
 4 of the shield, with the footprint fot the oscillator added, to the
 order:&lt;/p&gt;
@@ -192,7 +192,7 @@ mistakes, it should work.&lt;/p&gt;
     <updated>2022-12-31T00:00:00+01:00</updated>
     <content type="html">&lt;section id="everything-works"&gt;
 
-&lt;p&gt;Published on 2022-12-31 in &lt;a class="reference internal" href="../../../projects/project-182342/#project-182342"&gt;&lt;span class="std std-ref"&gt;Camera Shield for S2 Mini&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2022-12-31 in &lt;span class="xref std std-ref"&gt;project-182342&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;The PCBs arrived in the break between holidays, and I got to assemble
 one of each. First the Raspberry Pi Pico shield:&lt;/p&gt;
 &lt;img alt="projects/project-182342/images/2751821672516614090.jpg" src="projects/project-182342/images/2751821672516614090.jpg" /&gt;
@@ -220,7 +220,7 @@ design files available, and that’s it.&lt;/p&gt;
     <updated>2023-01-11T00:00:00+01:00</updated>
     <content type="html">&lt;section id="streaming"&gt;
 
-&lt;p&gt;Published on 2023-01-11 in &lt;a class="reference internal" href="../../../projects/project-182342/#project-182342"&gt;&lt;span class="std std-ref"&gt;Camera Shield for S2 Mini&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2023-01-11 in &lt;span class="xref std std-ref"&gt;project-182342&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;It doesn’t help much to have a camera on your robot, if you don’t do
 anything with the video. Displaying it on a display is cool, but not
 really that useful when it has to be attached to the same device.

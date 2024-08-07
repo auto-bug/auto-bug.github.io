@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posts in project-182998</title>
-  <updated>2024-08-07T20:37:31.058754+00:00</updated>
+  <updated>2024-08-07T20:45:04.623239+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/category/project-182998/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -12,12 +12,12 @@
     <updated>2021-12-09T00:00:00+01:00</updated>
     <content type="html">&lt;section id="programming"&gt;
 
-&lt;p&gt;Published on 2021-12-09 in &lt;a class="reference internal" href="../../../projects/project-182998/#project-182998"&gt;&lt;span class="std std-ref"&gt;Kleks Keyboard&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2021-12-09 in &lt;span class="xref std std-ref"&gt;project-182998&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;All that is left is to program it. As usual, I wanted to use
 CircuitPython, with my &lt;a class="reference external" href="https://github.com/deshipu/ukeeb"&gt;ukeeb&lt;/a&gt;  library. I flashed the bootloader with a JLink through a header I
 temporarily soldered to the stitches in the middle, and then I flashed
 the most recent CircuitPython. I’m using the board definition I made
-for &lt;a class="reference internal" href="../../../projects/project-171381/#project-171381"&gt;&lt;span class="std std-ref"&gt;Fluff M0&lt;/span&gt;&lt;/a&gt; , because it exposes all the pins of the SAMD21.&lt;/p&gt;
+for &lt;span class="xref std std-ref"&gt;project-171381&lt;/span&gt; , because it exposes all the pins of the SAMD21.&lt;/p&gt;
 &lt;p&gt;Next it’s time to decide on the layout. For now I am using something
 like this:&lt;/p&gt;
 &lt;img alt="projects/project-182998/images/8992751639080387066.png" src="projects/project-182998/images/8992751639080387066.png" /&gt;
@@ -43,7 +43,7 @@ the home/end and pgup/pgdn layers. Otherwise it works for me.&lt;/p&gt;
     <updated>2021-12-09T00:00:00+01:00</updated>
     <content type="html">&lt;section id="the-pcbs"&gt;
 
-&lt;p&gt;Published on 2021-12-09 in &lt;a class="reference internal" href="../../../projects/project-182998/#project-182998"&gt;&lt;span class="std std-ref"&gt;Kleks Keyboard&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2021-12-09 in &lt;span class="xref std std-ref"&gt;project-182998&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;I designed the PCB for this keyboard the same way as the two-part
 split keyboards are often designed: the same PCB is used as the left
 and right part, with switch footprints on both sides, so that it can
@@ -72,7 +72,7 @@ how they look, and that part of the PCB was empty anyways.&lt;/p&gt;
     <updated>2021-12-10T00:00:00+01:00</updated>
     <content type="html">&lt;section id="nkro-and-boot"&gt;
 
-&lt;p&gt;Published on 2021-12-10 in &lt;a class="reference internal" href="../../../projects/project-182998/#project-182998"&gt;&lt;span class="std std-ref"&gt;Kleks Keyboard&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2021-12-10 in &lt;span class="xref std std-ref"&gt;project-182998&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;I took the opportunity with this new keyboard and worked a bit on my
 uKeeb CircuitPython library. With the custom HID descriptors we can
 have an NKRO keyboard, but there is a small problem: the bitmap device
@@ -97,7 +97,7 @@ code at  &lt;a class="reference external" href="https://github.com/deshipu/ukee
     <updated>2021-12-27T00:00:00+01:00</updated>
     <content type="html">&lt;section id="thinking-about-v2"&gt;
 
-&lt;p&gt;Published on 2021-12-27 in &lt;a class="reference internal" href="../../../projects/project-182998/#project-182998"&gt;&lt;span class="std std-ref"&gt;Kleks Keyboard&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2021-12-27 in &lt;span class="xref std std-ref"&gt;project-182998&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;I’ve been using this keyboard some time, and it’s close to perfect,
 but there are several things that could be still improved in my
 opinion, so I went ahead and re-designed the PCB a little bit.&lt;/p&gt;
@@ -129,7 +129,7 @@ But there were free pins, so why not.&lt;/p&gt;
     <updated>2022-01-14T00:00:00+01:00</updated>
     <content type="html">&lt;section id="version-two"&gt;
 
-&lt;p&gt;Published on 2022-01-14 in &lt;a class="reference internal" href="../../../projects/project-182998/#project-182998"&gt;&lt;span class="std std-ref"&gt;Kleks Keyboard&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2022-01-14 in &lt;span class="xref std std-ref"&gt;project-182998&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;Select all, cut.&lt;/p&gt;
 &lt;img alt="projects/project-182998/images/5116031642169677634.jpg" src="projects/project-182998/images/5116031642169677634.jpg" /&gt;
 &lt;p&gt;Paste.&lt;/p&gt;

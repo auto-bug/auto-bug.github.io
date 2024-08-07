@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posts in project-178061</title>
-  <updated>2024-08-07T20:37:30.831946+00:00</updated>
+  <updated>2024-08-07T20:45:04.427883+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/category/project-178061/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -12,7 +12,7 @@
     <updated>2022-03-03T00:00:00+01:00</updated>
     <content type="html">&lt;section id="it-s-alive"&gt;
 
-&lt;p&gt;Published on 2022-03-03 in &lt;a class="reference internal" href="../../../projects/project-178061/#project-178061"&gt;&lt;span class="std std-ref"&gt;PewPew S2&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2022-03-03 in &lt;span class="xref std std-ref"&gt;project-178061&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;I had some time to add the remaining resistors to the build, and to
 compile a version of CircuitPython with my _stage module included. It
 all went without too much problems.&lt;/p&gt;
@@ -43,9 +43,9 @@ is not great, but I can’t think of any better way to place it.&lt;/p&gt;
     <updated>2022-08-18T00:00:00+02:00</updated>
     <content type="html">&lt;section id="a-case"&gt;
 
-&lt;p&gt;Published on 2022-08-18 in &lt;a class="reference internal" href="../../../projects/project-178061/#project-178061"&gt;&lt;span class="std std-ref"&gt;PewPew S2&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2022-08-18 in &lt;span class="xref std std-ref"&gt;project-178061&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;Because I’m working on the RP2040 version of this, together with the
-PCBs I also ordered a laser-cut case in the same style as the &lt;a class="reference internal" href="../../../projects/project-165032/#project-165032"&gt;&lt;span class="std std-ref"&gt;PewPew M4&lt;/span&gt;&lt;/a&gt; has. And since the dimensions are the same, the case also fits this
+PCBs I also ordered a laser-cut case in the same style as the &lt;span class="xref std std-ref"&gt;project-165032&lt;/span&gt; has. And since the dimensions are the same, the case also fits this
 board, so I now have a nicely encased console:&lt;/p&gt;
 &lt;img alt="projects/project-178061/images/8328151660853580831.jpg" src="projects/project-178061/images/8328151660853580831.jpg" /&gt;
 &lt;p&gt;The button caps are right now still on small pieces of two-sided tape,
@@ -75,12 +75,12 @@ and has the speaker and the microccontroller board on the back.&lt;/p&gt;
     <updated>2024-06-07T00:00:00+02:00</updated>
     <content type="html">&lt;section id="s3"&gt;
 
-&lt;p&gt;Published on 2024-06-07 in &lt;a class="reference internal" href="../../../projects/project-178061/#project-178061"&gt;&lt;span class="std std-ref"&gt;PewPew S2&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2024-06-07 in &lt;span class="xref std std-ref"&gt;project-178061&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;New microcontrollers keep coming out, and each one looks like an
 interesting choice for a game console. I have been working a little
 bit on the Xiao S3, so I decided to try and make a PCB for it with the
 same display and buttons. I also used it as a test for the solderable
-nuts that I wrote about in &lt;a class="reference internal" href="../../../projects/project-186921/#project-186921"&gt;&lt;span class="std std-ref"&gt;µGame 22&lt;/span&gt;&lt;/a&gt; .&lt;/p&gt;
+nuts that I wrote about in &lt;span class="xref std std-ref"&gt;project-186921&lt;/span&gt; .&lt;/p&gt;
 &lt;img alt="projects/project-178061/images/1846391717777136617.png" src="projects/project-178061/images/1846391717777136617.png" /&gt;
 &lt;p&gt;I started with the latest PCB for uGame 22, and removed the RP2)40
 chip and all related components. That left me with the power and audio
@@ -106,7 +106,7 @@ didn’t feel like looking for the parts in the drawers, and I already
 know that circuit works fine. I had to compile my own version of the
 firmware, because the support for that board in CircuitPython is still
 not merged, due to Seeed Studio not providing a VID/PID to use. I also
-had to add the &lt;a class="reference internal" href="../../../projects/project-80626/#project-80626"&gt;&lt;span class="std std-ref"&gt;Stage, a Tile and Sprite Engine&lt;/span&gt;&lt;/a&gt; to the firmware, to have all my games working – it’s not usually
+had to add the &lt;span class="xref std std-ref"&gt;project-80626&lt;/span&gt; to the firmware, to have all my games working – it’s not usually
 enabled for boards that don’t have a built-in display.&lt;/p&gt;
 &lt;p&gt;Overall, I’m very happy about how this microcontroller performs and
 about how the solderable nuts came out mechanically. I’m now thinking
@@ -126,7 +126,7 @@ well, I might use a WROOM module for the next version of this console.&lt;/p&gt;
     <updated>2024-06-07T00:00:00+02:00</updated>
     <content type="html">&lt;section id="the-return-of-the-parallel-display"&gt;
 
-&lt;p&gt;Published on 2024-06-07 in &lt;a class="reference internal" href="../../../projects/project-178061/#project-178061"&gt;&lt;span class="std std-ref"&gt;PewPew S2&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2024-06-07 in &lt;span class="xref std std-ref"&gt;project-178061&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;As I mentioned in the previous log, while the parallel display
 protocol doesn’t help much with the RP2040 chip, it might be a
 different story with the ESP32-S2 and S3. So it would be nice to check
@@ -231,7 +231,7 @@ works with that chip. We will see.&lt;/p&gt;
     <updated>2024-07-25T00:00:00+02:00</updated>
     <content type="html">&lt;section id="s3-with-a-module"&gt;
 
-&lt;p&gt;Published on 2024-07-25 in &lt;a class="reference internal" href="../../../projects/project-178061/#project-178061"&gt;&lt;span class="std std-ref"&gt;PewPew S2&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2024-07-25 in &lt;span class="xref std std-ref"&gt;project-178061&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;I finally gave up on the parallel display. It seems that something in
 IDF is broken again, and since it’s broken now, even if it gets fixed,
 chances are that it will break again. I can instead stick to what is

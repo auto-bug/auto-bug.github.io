@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posted in 2015</title>
-  <updated>2024-08-07T20:37:32.217753+00:00</updated>
+  <updated>2024-08-07T20:45:06.048226+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/2015/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -12,7 +12,7 @@
     <updated>2015-12-17T00:00:00+01:00</updated>
     <content type="html">&lt;section id="switches-and-keycaps"&gt;
 
-&lt;p&gt;Published on 2015-12-17 in &lt;a class="reference internal" href="../../projects/project-8282/#project-8282"&gt;&lt;span class="std std-ref"&gt;Alpen Clack&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2015-12-17 in &lt;span class="xref std std-ref"&gt;project-8282&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;The Gateron switches and the keycaps that I ordered on Massdrop
 finally arrived. The switches fit nicely:&lt;/p&gt;
 &lt;img alt="projects/project-8282/images/4760751450349631799.jpg" src="projects/project-8282/images/4760751450349631799.jpg" /&gt;
@@ -37,7 +37,7 @@ how it develops.&lt;/p&gt;
     <updated>2015-12-19T00:00:00+01:00</updated>
     <content type="html">&lt;section id="electronics"&gt;
 
-&lt;p&gt;Published on 2015-12-19 in &lt;a class="reference internal" href="../../projects/project-8282/#project-8282"&gt;&lt;span class="std std-ref"&gt;Alpen Clack&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2015-12-19 in &lt;span class="xref std std-ref"&gt;project-8282&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;I fixed the switches in place with a little bit of glue (they can
 still be removed if needed), and I soldered the horizontal connections
 with a thick copper wire. Then I drilled the mounting holes for the A*
@@ -66,12 +66,12 @@ particular layout. It’s almost finished.&lt;/p&gt;
     <updated>2015-12-20T00:00:00+01:00</updated>
     <content type="html">&lt;section id="pyboard"&gt;
 
-&lt;p&gt;Published on 2015-12-20 in &lt;a class="reference internal" href="../../projects/project-6050/#project-6050"&gt;&lt;span class="std std-ref"&gt;Tote&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2015-12-20 in &lt;span class="xref std std-ref"&gt;project-6050&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;There is a version of Tote using PyBoard as its brains: &lt;span class="xref std std-ref"&gt;project-6877&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;But the code for that was translated from Tote’s Arduino code, and
 didn’t work too well for some reason. I promised to try and fix that
 some time ago, but somehow I never got the time for it. Last night I
-finally got myself to remove the PyBoard from &lt;a class="reference internal" href="../../projects/project-3694/#project-3694"&gt;&lt;span class="std std-ref"&gt;Henk the Hexapod&lt;/span&gt;&lt;/a&gt; , put it on Tote and program.&lt;/p&gt;
+finally got myself to remove the PyBoard from &lt;span class="xref std std-ref"&gt;project-3694&lt;/span&gt; , put it on Tote and program.&lt;/p&gt;
 &lt;p&gt;As the base, I used the micro:bit version of Tote’s code, since it’s
 MicroPython too. I just added the servo-handling code that &lt;a class="reference external" href="https://hackaday.io/hacker/38882"&gt;&amp;#64;wagner&lt;/a&gt;  wrote for his robot. I also used the same pins, timers and channels.
 Since I didn’t want to make a custom PCB, I just used the old trick
@@ -128,7 +128,7 @@ connect to the one servo channel:&lt;/p&gt;
     <updated>2015-12-22T00:00:00+01:00</updated>
     <content type="html">&lt;section id="connections-and-software"&gt;
 
-&lt;p&gt;Published on 2015-12-22 in &lt;a class="reference internal" href="../../projects/project-8282/#project-8282"&gt;&lt;span class="std std-ref"&gt;Alpen Clack&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2015-12-22 in &lt;span class="xref std std-ref"&gt;project-8282&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;So today I finished the second version of Alpen Clack – this one
 built from scratch. As always, the most work-intensive part was
 soldering everything together. This time I used non-insulated wire,

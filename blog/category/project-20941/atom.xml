@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posts in project-20941</title>
-  <updated>2024-08-07T20:37:31.431808+00:00</updated>
+  <updated>2024-08-07T20:45:05.029815+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/category/project-20941/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -12,7 +12,7 @@
     <updated>2017-05-09T00:00:00+02:00</updated>
     <content type="html">&lt;section id="smaller-8x8-matrix-breakout"&gt;
 
-&lt;p&gt;Published on 2017-05-09 in &lt;a class="reference internal" href="../../../projects/project-20941/#project-20941"&gt;&lt;span class="std std-ref"&gt;D1 Mini Matrix Deluxe Shields&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2017-05-09 in &lt;span class="xref std std-ref"&gt;project-20941&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;The shields are nice, but not everybody has a D1 Mini, and not
 everybody wants to put that matrix on top of their dev board. Sure,
 you can just use wires for the shield, but with such a small and
@@ -43,7 +43,7 @@ you can also order the board from &lt;a class="reference external" href="https:/
     <updated>2017-06-19T00:00:00+02:00</updated>
     <content type="html">&lt;section id="grayscale-14x11-matrix"&gt;
 
-&lt;p&gt;Published on 2017-06-19 in &lt;a class="reference internal" href="../../../projects/project-20941/#project-20941"&gt;&lt;span class="std std-ref"&gt;D1 Mini Matrix Deluxe Shields&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2017-06-19 in &lt;span class="xref std std-ref"&gt;project-20941&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;The IS31FL3733 has double the pins of IS31FL3736, so you get double
 fun! This board was also finished and assembled for some time, but I
 couldn’t get it to work. Today I checked dug it out to try the
@@ -72,7 +72,7 @@ at least some animated gifs…&lt;/p&gt;
     <updated>2017-06-19T00:00:00+02:00</updated>
     <content type="html">&lt;section id="grayscale-7x11-matrix"&gt;
 
-&lt;p&gt;Published on 2017-06-19 in &lt;a class="reference internal" href="../../../projects/project-20941/#project-20941"&gt;&lt;span class="std std-ref"&gt;D1 Mini Matrix Deluxe Shields&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2017-06-19 in &lt;span class="xref std std-ref"&gt;project-20941&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;The third chip that I got from ISSI is IS31FL3736. It’s very similar
 to the IS31FL3733, except it only drives up to 8×12 LEDs. That’s
 perfect for those 7×11 LED matrices that I got!&lt;/p&gt;
@@ -82,7 +82,7 @@ sometimes be visible on the I²C bus, and sometimes not, and sometimes
 it would start behaving weird after some time… I put it all to my
 poor soldering skills and the really tiny QFN package, and gave up on
 it for a while.&lt;/p&gt;
-&lt;p&gt;Yesterday, after debugging some problems with the IS31FL3733 on the &lt;a class="reference internal" href="../../../projects/project-21578/#project-21578"&gt;&lt;span class="std std-ref"&gt;PewPew FeatherWing&lt;/span&gt;&lt;/a&gt; , which were solved by adding a decoupling capacitor across the power,
+&lt;p&gt;Yesterday, after debugging some problems with the IS31FL3733 on the &lt;span class="xref std std-ref"&gt;project-21578&lt;/span&gt; , which were solved by adding a decoupling capacitor across the power,
 I decided to dig out the old board and try adding a decoupling
 capacitor to it too. And what do you know, it works perfectly fine
 after all!&lt;/p&gt;
@@ -101,7 +101,7 @@ after all!&lt;/p&gt;
     <updated>2017-07-03T00:00:00+02:00</updated>
     <content type="html">&lt;section id="a-quick-tour-around-the-is31fl373x-chips"&gt;
 
-&lt;p&gt;Published on 2017-07-03 in &lt;a class="reference internal" href="../../../projects/project-20941/#project-20941"&gt;&lt;span class="std std-ref"&gt;D1 Mini Matrix Deluxe Shields&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2017-07-03 in &lt;span class="xref std std-ref"&gt;project-20941&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;There is a whole family of those, and they are all controlled in a
 similar way. Of course all the details are in the datasheets, and in
 theory this is all the information you need, but in practice I think
@@ -165,7 +165,7 @@ details and possibilities there.&lt;/p&gt;
     <updated>2017-07-24T00:00:00+02:00</updated>
     <content type="html">&lt;section id="equalizer-on-the-is31fl3728"&gt;
 
-&lt;p&gt;Published on 2017-07-24 in &lt;a class="reference internal" href="../../../projects/project-20941/#project-20941"&gt;&lt;span class="std std-ref"&gt;D1 Mini Matrix Deluxe Shields&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2017-07-24 in &lt;span class="xref std std-ref"&gt;project-20941&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;I recently got a hot air rework station (a cheap Chinese one), which
 allowed me to revisit some of my failed assemblies with the QFN chips,
 and fix them. Yes, the problems I had were partly due to missing

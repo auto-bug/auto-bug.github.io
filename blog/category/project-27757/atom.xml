@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posts in project-27757</title>
-  <updated>2024-08-07T20:37:31.606553+00:00</updated>
+  <updated>2024-08-07T20:45:05.281558+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/category/project-27757/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -12,7 +12,7 @@
     <updated>2018-01-09T00:00:00+01:00</updated>
     <content type="html">&lt;section id="advanced-spriting"&gt;
 
-&lt;p&gt;Published on 2018-01-09 in &lt;a class="reference internal" href="../../../projects/project-27757/#project-27757"&gt;&lt;span class="std std-ref"&gt;Micro:Boy&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2018-01-09 in &lt;span class="xref std std-ref"&gt;project-27757&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;After a nightfull of sleep, I realized that I don’t need a separate
 method with “or” for proper non-transparent sprites, since if I’m
 masking the place with black anyways, “xor” works just as well. As an
@@ -94,7 +94,7 @@ you can use it with coordinates outside of the screen.&lt;/p&gt;
     <updated>2018-01-17T00:00:00+01:00</updated>
     <content type="html">&lt;section id="button-controller"&gt;
 
-&lt;p&gt;Published on 2018-01-17 in &lt;a class="reference internal" href="../../../projects/project-27757/#project-27757"&gt;&lt;span class="std std-ref"&gt;Micro:Boy&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2018-01-17 in &lt;span class="xref std std-ref"&gt;project-27757&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;The ATtiny24A chips I ordered finally arrived yesterday, and I could
 start working on the firmware for the button controller. I quickly
 assembled a setup for experimenting:&lt;/p&gt;
@@ -155,7 +155,7 @@ code:&lt;/p&gt;
 &lt;p&gt;Not much code, but it does de-bouncing and  caching of the presses
 until they are read — which is why I needed a microcontroller, instead
 of a simple GPIO expander chip. It all works pretty well, I think I’m
-going to use the same approach in the next version of the &lt;a class="reference internal" href="../../../projects/project-19371/#project-19371"&gt;&lt;span class="std std-ref"&gt;D1 Mini X-Pad Shield&lt;/span&gt;&lt;/a&gt; .&lt;/p&gt;
+going to use the same approach in the next version of the &lt;span class="xref std std-ref"&gt;project-19371&lt;/span&gt; .&lt;/p&gt;
 &lt;p&gt;After soldering the chip to the Micro:bit, it still works very well,
 so I’m happy with it.&lt;/p&gt;
 &lt;/section&gt;
@@ -170,7 +170,7 @@ so I’m happy with it.&lt;/p&gt;
     <updated>2018-01-18T00:00:00+01:00</updated>
     <content type="html">&lt;section id="why-separate-button-controller"&gt;
 
-&lt;p&gt;Published on 2018-01-18 in &lt;a class="reference internal" href="../../../projects/project-27757/#project-27757"&gt;&lt;span class="std std-ref"&gt;Micro:Boy&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2018-01-18 in &lt;span class="xref std std-ref"&gt;project-27757&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;I have been asked why I’m using a separate chip for handling the
 buttons, so I thought I will just explain it in here. The question was
 why not just use the edge connector, and then use the additional pins
@@ -198,16 +198,16 @@ Micropython that runs on the Micro:bit, without access to timers or
 interrupts, while at the same time handling the logic of whatever game
 you are playing would be a challenge, if not outright impossible.
 Doing it in C as a built-in module would be a little easier (that’s
-how I did it for &lt;a class="reference internal" href="../../../projects/project-27629/#project-27629"&gt;&lt;span class="std std-ref"&gt;µGame&lt;/span&gt;&lt;/a&gt; ), but getting that extra code merged and released would take ages —
+how I did it for &lt;span class="xref std std-ref"&gt;project-27629&lt;/span&gt; ), but getting that extra code merged and released would take ages —
 the current release is a year behind, and there is never enough
 memory, so I don’t think they would happily accept an extra module
 that is only useful in one project. Having to use a custom Micropython
 firmware would make it impossible to code using Mu or any of the other
 dedicated editors.&lt;/p&gt;
 &lt;p&gt;So considering all that, I decided to use a dedicated chip for the
-buttons. I initially started with a simple gpio expander chip, like in &lt;a class="reference internal" href="../../../projects/project-19371/#project-19371"&gt;&lt;span class="std std-ref"&gt;D1 Mini X-Pad Shield&lt;/span&gt;&lt;/a&gt; , but that still requires you to poll it constantly and do the de-
+buttons. I initially started with a simple gpio expander chip, like in &lt;span class="xref std std-ref"&gt;project-19371&lt;/span&gt; , but that still requires you to poll it constantly and do the de-
 bouncing and buffering yourself. You can also easily miss presses.
-Then I switched to the HT16K33 that I’m using in &lt;a class="reference internal" href="../../../projects/project-21578/#project-21578"&gt;&lt;span class="std std-ref"&gt;PewPew FeatherWing&lt;/span&gt;&lt;/a&gt; , because it does the de-bouncing and buffering for you, but that’s an
+Then I switched to the HT16K33 that I’m using in &lt;span class="xref std std-ref"&gt;project-21578&lt;/span&gt; , because it does the de-bouncing and buffering for you, but that’s an
 expensive and bulky chip, that we are not really fully utilizing. So I
 looked for the cheapest microcontroller with enough pins, and ATtiny24
 seems like the perfect fit, especially since I already have experience
@@ -225,7 +225,7 @@ with AVR.&lt;/p&gt;
     <updated>2018-01-20T00:00:00+01:00</updated>
     <content type="html">&lt;section id="progress-on-a-game"&gt;
 
-&lt;p&gt;Published on 2018-01-20 in &lt;a class="reference internal" href="../../../projects/project-27757/#project-27757"&gt;&lt;span class="std std-ref"&gt;Micro:Boy&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2018-01-20 in &lt;span class="xref std std-ref"&gt;project-27757&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;With the hardware finalized, the remaining work is to actually write
 at least one game, to prove that it’s possible. I decided to make a
 game inspired by such classics as Dig Dug, Digger and Boulder Dash —
@@ -372,7 +372,7 @@ constant frame rate.&lt;/p&gt;
     <updated>2018-01-25T00:00:00+01:00</updated>
     <content type="html">&lt;section id="memoryerror"&gt;
 
-&lt;p&gt;Published on 2018-01-25 in &lt;a class="reference internal" href="../../../projects/project-27757/#project-27757"&gt;&lt;span class="std std-ref"&gt;Micro:Boy&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2018-01-25 in &lt;span class="xref std std-ref"&gt;project-27757&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;So I got that Boulder Dash game as far as I can, working around the
 ridiculously low memory of Micro:bit, and I think I won’t be able to
 go further. This platform is simply too puny.&lt;/p&gt;

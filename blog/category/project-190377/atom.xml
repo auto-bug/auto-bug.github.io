@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posts in project-190377</title>
-  <updated>2024-08-07T20:37:31.266466+00:00</updated>
+  <updated>2024-08-07T20:45:04.823075+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/category/project-190377/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -12,7 +12,7 @@
     <updated>2023-04-02T00:00:00+02:00</updated>
     <content type="html">&lt;section id="smart-servos"&gt;
 
-&lt;p&gt;Published on 2023-04-02 in &lt;a class="reference internal" href="../../../projects/project-190377/#project-190377"&gt;&lt;span class="std std-ref"&gt;Sly Bug&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2023-04-02 in &lt;span class="xref std std-ref"&gt;project-190377&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;Hobby servos were not designed for robots – they are mainly for
 remote-controlled airplanes and boats, and they were created back in
 times of analog radios, when PWM signal was the easiest to multiplex.
@@ -35,7 +35,7 @@ contain all the logic of a smart servo in a package compatible with a
 nine gram hobby servo. Of course they are more expensive, but not so
 much that I couldn’t run some experiments with them. And since they
 are a drop-in replacement for the hobby servos, I don’t need to design
-a whole new robot for them, I can use all the mechanical parts of the &lt;a class="reference internal" href="../../../projects/project-180025/#project-180025"&gt;&lt;span class="std std-ref"&gt;Fluffbug&lt;/span&gt;&lt;/a&gt; or &lt;a class="reference internal" href="../../../projects/project-188908/#project-188908"&gt;&lt;span class="std std-ref"&gt;Moo Bug&lt;/span&gt;&lt;/a&gt; , and probably reuse the PCB as well. The only thing I need to
+a whole new robot for them, I can use all the mechanical parts of the &lt;span class="xref std std-ref"&gt;project-180025&lt;/span&gt; or &lt;span class="xref std std-ref"&gt;project-188908&lt;/span&gt; , and probably reuse the PCB as well. The only thing I need to
 implement is the new communication protocol. So that’s the plan for
 now: a version of Fluffbug with smart servos in place of the hobby
 servos. And we will see where we can take it from there.&lt;/p&gt;
@@ -52,7 +52,7 @@ servos. And we will see where we can take it from there.&lt;/p&gt;
     <updated>2023-04-02T00:00:00+02:00</updated>
     <content type="html">&lt;section id="the-protocol"&gt;
 
-&lt;p&gt;Published on 2023-04-02 in &lt;a class="reference internal" href="../../../projects/project-190377/#project-190377"&gt;&lt;span class="std std-ref"&gt;Sly Bug&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2023-04-02 in &lt;span class="xref std std-ref"&gt;project-190377&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;To talk to a smart servo you use a half-duplex UART protocol – meaning
 both RX and TX is done over the same wire, just not at the same time.
 The microcontroller sends a command, and then releases the pin and
@@ -156,7 +156,7 @@ documentation! I would never figure it all out myself.&lt;/p&gt;
     <updated>2023-04-03T00:00:00+02:00</updated>
     <content type="html">&lt;section id="the-devil-in-the-details"&gt;
 
-&lt;p&gt;Published on 2023-04-03 in &lt;a class="reference internal" href="../../../projects/project-190377/#project-190377"&gt;&lt;span class="std std-ref"&gt;Sly Bug&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2023-04-03 in &lt;span class="xref std std-ref"&gt;project-190377&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;While the new servos are mostly a drop-in replacement for the rc
 servos, there are still some considerations we have to keep in mind.
 The first potential problem is that I’m powering those servos directly
@@ -196,7 +196,7 @@ cables provided with the servos.&lt;/p&gt;
     <updated>2023-04-18T00:00:00+02:00</updated>
     <content type="html">&lt;section id="servo-library"&gt;
 
-&lt;p&gt;Published on 2023-04-18 in &lt;a class="reference internal" href="../../../projects/project-190377/#project-190377"&gt;&lt;span class="std std-ref"&gt;Sly Bug&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2023-04-18 in &lt;span class="xref std std-ref"&gt;project-190377&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;I finally made some progress on the library for CircuitPython for
 controlling the smart servos. For now I only have the basics, and I
 don’t support SYNC WRITE (though I do have WRITE and REG WRITE, so you

@@ -2,225 +2,47 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posts tagged hardware</title>
-  <updated>2024-08-07T20:37:35.726783+00:00</updated>
+  <updated>2024-08-07T20:45:06.086947+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/tag/hardware/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
   <entry>
-    <id>http://deshipu.art/projects/project-188909/</id>
-    <title>Wee Bug</title>
-    <updated>2022-12-31T00:00:00+01:00</updated>
-    <content type="html">&lt;section id="wee-bug"&gt;
+    <id>http://deshipu.art/projects/project-7168/</id>
+    <title>Logicoma-kun</title>
+    <updated>2015-08-12T00:00:00+02:00</updated>
+    <content type="html">&lt;section id="logicoma-kun"&gt;
 
-&lt;p&gt;Fluffbug but smaller&lt;/p&gt;
+&lt;p&gt;A working model of a Logikoma from “Ghost in the Shell: Arise”.&lt;/p&gt;
 &lt;div class="project-thumb"&gt;
-&lt;a class="reference external image-reference" href="/_images/9509241673273452763.jpg"&gt;&lt;img alt="projects/project-188909/images/9509241673273452763.jpg" src="projects/project-188909/images/9509241673273452763.jpg" /&gt;&lt;/a&gt;
-&lt;a class="reference external image-reference" href="/_images/9859711673287876667.jpg"&gt;&lt;img alt="projects/project-188909/images/9859711673287876667.jpg" src="projects/project-188909/images/9859711673287876667.jpg" /&gt;&lt;/a&gt;
-&lt;a class="reference external image-reference" href="/_images/4258961674770699507.jpg"&gt;&lt;img alt="projects/project-188909/images/4258961674770699507.jpg" src="projects/project-188909/images/4258961674770699507.jpg" /&gt;&lt;/a&gt;
-&lt;a class="reference external image-reference" href="/_images/17991693090470263.jpg"&gt;&lt;img alt="projects/project-188909/images/17991693090470263.jpg" src="projects/project-188909/images/17991693090470263.jpg" /&gt;&lt;/a&gt;
-&lt;a class="reference external image-reference" href="/_images/1955731693143555811.jpg"&gt;&lt;img alt="projects/project-188909/images/1955731693143555811.jpg" src="projects/project-188909/images/1955731693143555811.jpg" /&gt;&lt;/a&gt;
-&lt;a class="reference external image-reference" href="/_images/5593081710886184394.jpg"&gt;&lt;img alt="projects/project-188909/images/5593081710886184394.jpg" src="projects/project-188909/images/5593081710886184394.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/7377381439385943204.png"&gt;&lt;img alt="projects/project-7168/images/7377381439385943204.png" src="projects/project-7168/images/7377381439385943204.png" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/9848921439385928830.jpg"&gt;&lt;img alt="projects/project-7168/images/9848921439385928830.jpg" src="projects/project-7168/images/9848921439385928830.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/6228831440691950345.jpg"&gt;&lt;img alt="projects/project-7168/images/6228831440691950345.jpg" src="projects/project-7168/images/6228831440691950345.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/6649951440436400031.jpg"&gt;&lt;img alt="projects/project-7168/images/6649951440436400031.jpg" src="projects/project-7168/images/6649951440436400031.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/2317161466596076890.jpg"&gt;&lt;img alt="projects/project-7168/images/2317161466596076890.jpg" src="projects/project-7168/images/2317161466596076890.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/7230501440784315736.jpg"&gt;&lt;img alt="projects/project-7168/images/7230501440784315736.jpg" src="projects/project-7168/images/7230501440784315736.jpg" /&gt;&lt;/a&gt;
 &lt;/div&gt;
-&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;While digging through my drawers, I stumbled upon a bag of sub-micro
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;servos I bought a few years ago from HobbyKing for the &lt;a class="reference internal" href="../../../projects/project-10665/#project-10665"&gt;&lt;span class="std std-ref"&gt;Pony Bot&lt;/span&gt;&lt;/a&gt; , but never used in the end, because they had wrong connectors. Turns
-out there are HK-282A servos with 1.25mm-pitch JST connectors and
-HK-282AS, with 1mm-pitch unidentified connectors. In any case, the
-Pony Bot is on hold indefinitely for now, until I can find the energy
-to actually program a gait for it, so I thought that maybe I can use
-those tiny servos for something else: make a tiny version of the &lt;a class="reference internal" href="../../../projects/project-180025/#project-180025"&gt;&lt;span class="std std-ref"&gt;Fluffbug&lt;/span&gt;&lt;/a&gt; robot. That would also have the advantage of not needing to write a
-new gait code, since the one already written for Fluffbug should work.&lt;/p&gt;
-&lt;p&gt;So I went ahead and started to design a Fluffbug, but with everything
-smaller.&lt;/p&gt;
-&lt;img alt="projects/project-188909/images/3804161677707812005.gif" src="projects/project-188909/images/3804161677707812005.gif" /&gt;
 &lt;section id="logs"&gt;
 &lt;h2&gt;Logs&lt;/h2&gt;
 &lt;ul class="postlist-style-none postlist simple"&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2024-04-16 - &lt;a class="reference internal" href="../../../projects/project-188909/log-229014/"&gt;Designs Published&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2024-03-19 - &lt;a class="reference internal" href="../../../projects/project-188909/log-228303/"&gt;Thermal Camera&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-12-15 - &lt;a class="reference internal" href="../../../projects/project-188909/log-226028/"&gt;Wee Display&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-12-12 - &lt;a class="reference internal" href="../../../projects/project-188909/log-225955/"&gt;1mm and 1.25mm Versions&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-12-01 - &lt;a class="reference internal" href="../../../projects/project-188909/log-225667/"&gt;Not All Batteries are Created Equal&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-10-24 - &lt;a class="reference internal" href="../../../projects/project-188909/log-224561/"&gt;Add Some Fluff&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-10-14 - &lt;a class="reference internal" href="../../../projects/project-188909/log-224329/"&gt;Balancing&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-10-13 - &lt;a class="reference internal" href="../../../projects/project-188909/log-224310/"&gt;A Display&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-09-30 - &lt;a class="reference internal" href="../../../projects/project-188909/log-223768/"&gt;Version 6.0&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-09-20 - &lt;a class="reference internal" href="../../../projects/project-188909/log-223462/"&gt;A String of Prototypes&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-08-27 - &lt;a class="reference internal" href="../../../projects/project-188909/log-222565/"&gt;New Body in Action&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-08-19 - &lt;a class="reference internal" href="../../../projects/project-188909/log-222365/"&gt;New Body&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-06-14 - &lt;a class="reference internal" href="../../../projects/project-188909/log-220213/"&gt;New Servos&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-03-01 - &lt;a class="reference internal" href="../../../projects/project-188909/log-216427/"&gt;Just Programmed&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-01-26 - &lt;a class="reference internal" href="../../../projects/project-188909/log-215547/"&gt;Now Just Program It&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2022-12-31 - &lt;a class="reference internal" href="../../../projects/project-188909/log-214805/"&gt;PCB Design&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2022-12-31 - &lt;a class="reference internal" href="../../../projects/project-188909/log-214836/"&gt;2.0 Already!&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2019-01-01 - &lt;a class="reference internal" href="../../../projects/project-7168/log-157725/"&gt;Still Alive&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-07-28 - &lt;a class="reference internal" href="../../../projects/project-7168/log-42703/"&gt;Hands and Handles&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-07-06 - &lt;a class="reference internal" href="../../../projects/project-7168/log-41251/"&gt;Eye Socket&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-06-27 - &lt;a class="reference internal" href="../../../projects/project-7168/log-40721/"&gt;Early Prototypes&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2016-06-22 - &lt;a class="reference internal" href="../../../projects/project-7168/log-40426/"&gt;New Brains&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-12-20 - &lt;a class="reference internal" href="../../../projects/project-7168/log-29297/"&gt;Reversing a Servo&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-08-29 - &lt;a class="reference internal" href="../../../projects/project-7168/log-24301/"&gt;The Eye&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-08-28 - &lt;a class="reference internal" href="../../../projects/project-7168/log-24259/"&gt;Wiring and Hands&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-08-27 - &lt;a class="reference internal" href="../../../projects/project-7168/log-24166/"&gt;Weapons Box&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-08-24 - &lt;a class="reference internal" href="../../../projects/project-7168/log-23997/"&gt;Hotglue Everything!&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2015-08-13 - &lt;a class="reference internal" href="../../../projects/project-7168/log-22686/"&gt;Early Experiments&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;/section&gt;
-&lt;section id="instructions"&gt;
-&lt;h2&gt;Instructions&lt;/h2&gt;
 &lt;/section&gt;
 &lt;/section&gt;
 </content>
-    <link href="http://deshipu.art/projects/project-188909/" rel="alternate"/>
-    <summary>Fluffbug but smaller</summary>
-    <category term="ROBOT" label="ROBOT"/>
-    <category term="circuitpython" label="circuitpython"/>
+    <link href="http://deshipu.art/projects/project-7168/" rel="alternate"/>
+    <summary>A working model of a Logikoma from “Ghost in the Shell: Arise”.</summary>
     <category term="hardware" label="hardware"/>
     <category term="ongoingproject" label="ongoing project"/>
-    <category term="quadruped" label="quadruped"/>
-    <published>2022-12-31T00:00:00+01:00</published>
-  </entry>
-  <entry>
-    <id>http://deshipu.art/projects/project-190377/</id>
-    <title>Sly Bug</title>
-    <updated>2023-04-02T00:00:00+02:00</updated>
-    <content type="html">&lt;section id="sly-bug"&gt;
-
-&lt;p&gt;Fluffbug but with smart servos&lt;/p&gt;
-&lt;div class="project-thumb"&gt;
-&lt;a class="reference external image-reference" href="/_images/2482921680823345698.jpg"&gt;&lt;img alt="projects/project-190377/images/2482921680823345698.jpg" src="projects/project-190377/images/2482921680823345698.jpg" /&gt;&lt;/a&gt;
-&lt;a class="reference external image-reference" href="/_images/7758631681246533447.jpg"&gt;&lt;img alt="projects/project-190377/images/7758631681246533447.jpg" src="projects/project-190377/images/7758631681246533447.jpg" /&gt;&lt;/a&gt;
-&lt;/div&gt;
-&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;This is my first foray into the world of smart servos. The plan is to
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;build a robot similar to &lt;a class="reference internal" href="../../../projects/project-180025/#project-180025"&gt;&lt;span class="std std-ref"&gt;Fluffbug&lt;/span&gt;&lt;/a&gt; , but use robot servos in place of the rc servos. Since those servos
-offer telemetry, this opens a lot of possibilities for programming
-interesting behaviors.&lt;/p&gt;
-&lt;section id="logs"&gt;
-&lt;h2&gt;Logs&lt;/h2&gt;
-&lt;ul class="postlist-style-none postlist simple"&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-04-18 - &lt;a class="reference internal" href="../../../projects/project-190377/log-217800/"&gt;Servo Library&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-04-03 - &lt;a class="reference internal" href="../../../projects/project-190377/log-217264/"&gt;The Devil in the Details&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-04-02 - &lt;a class="reference internal" href="../../../projects/project-190377/log-217238/"&gt;The Protocol&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-04-02 - &lt;a class="reference internal" href="../../../projects/project-190377/log-217229/"&gt;Smart Servos&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/section&gt;
-&lt;section id="instructions"&gt;
-&lt;h2&gt;Instructions&lt;/h2&gt;
-&lt;/section&gt;
-&lt;/section&gt;
-</content>
-    <link href="http://deshipu.art/projects/project-190377/" rel="alternate"/>
-    <summary>Fluffbug but with smart servos</summary>
-    <category term="hardware" label="hardware"/>
-    <category term="ongoingproject" label="ongoing project"/>
-    <published>2023-04-02T00:00:00+02:00</published>
-  </entry>
-  <entry>
-    <id>http://deshipu.art/projects/project-191383/</id>
-    <title>Bigbug</title>
-    <updated>2023-06-02T00:00:00+02:00</updated>
-    <content type="html">&lt;section id="bigbug"&gt;
-
-&lt;p&gt;a 200% version of Fluffbug robot&lt;/p&gt;
-&lt;div class="project-thumb"&gt;
-&lt;a class="reference external image-reference" href="/_images/9489121685665481887.jpg"&gt;&lt;img alt="projects/project-191383/images/9489121685665481887.jpg" src="projects/project-191383/images/9489121685665481887.jpg" /&gt;&lt;/a&gt;
-&lt;a class="reference external image-reference" href="/_images/509471688509851877.jpg"&gt;&lt;img alt="projects/project-191383/images/509471688509851877.jpg" src="projects/project-191383/images/509471688509851877.jpg" /&gt;&lt;/a&gt;
-&lt;a class="reference external image-reference" href="/_images/1129381720028890846.jpg"&gt;&lt;img alt="projects/project-191383/images/1129381720028890846.jpg" src="projects/project-191383/images/1129381720028890846.jpg" /&gt;&lt;/a&gt;
-&lt;a class="reference external image-reference" href="/_images/1781321722594344548.jpg"&gt;&lt;img alt="projects/project-191383/images/1781321722594344548.jpg" src="projects/project-191383/images/1781321722594344548.jpg" /&gt;&lt;/a&gt;
-&lt;/div&gt;
-&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;The parts available to us sometimes drive what we build. When I found
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;some 2g sub-micro servos in my drawer, I decided that my &lt;a class="reference internal" href="../../../projects/project-180025/#project-180025"&gt;&lt;span class="std std-ref"&gt;Fluffbug&lt;/span&gt;&lt;/a&gt; robot needs a 50% version, and so &lt;a class="reference internal" href="../../../projects/project-188909/#project-188909"&gt;&lt;span class="std std-ref"&gt;Wee Bug&lt;/span&gt;&lt;/a&gt; was created. Now I found some beefy MG886R servos, so it’s time for a
-200% (not quite) version.&lt;/p&gt;
-&lt;section id="logs"&gt;
-&lt;h2&gt;Logs&lt;/h2&gt;
-&lt;ul class="postlist-style-none postlist simple"&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2024-07-03 - &lt;a class="reference internal" href="../../../projects/project-191383/log-231040/"&gt;The Legs&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2024-06-24 - &lt;a class="reference internal" href="../../../projects/project-191383/log-230744/"&gt;The PCB Body&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2024-06-20 - &lt;a class="reference internal" href="../../../projects/project-191383/log-230608/"&gt;Version Two&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-07-05 - &lt;a class="reference internal" href="../../../projects/project-191383/log-220911/"&gt;Edward Knifelegs&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-06-02 - &lt;a class="reference internal" href="../../../projects/project-191383/log-219930/"&gt;Material Alternatives&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-06-02 - &lt;a class="reference internal" href="../../../projects/project-191383/log-219929/"&gt;Initial Decisions&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/section&gt;
-&lt;section id="instructions"&gt;
-&lt;h2&gt;Instructions&lt;/h2&gt;
-&lt;/section&gt;
-&lt;/section&gt;
-</content>
-    <link href="http://deshipu.art/projects/project-191383/" rel="alternate"/>
-    <summary>a 200% version of Fluffbug robot</summary>
-    <category term="completedproject" label="completed project"/>
-    <category term="hardware" label="hardware"/>
-    <published>2023-06-02T00:00:00+02:00</published>
-  </entry>
-  <entry>
-    <id>http://deshipu.art/projects/project-192761/</id>
-    <title>Astro-chan Badge</title>
-    <updated>2023-09-12T00:00:00+02:00</updated>
-    <content type="html">&lt;section id="astro-chan-badge"&gt;
-
-&lt;p&gt;An cute astronaut sitting on your shoulder.&lt;/p&gt;
-&lt;div class="project-thumb"&gt;
-&lt;a class="reference external image-reference" href="/_images/6034741694473754020.jpg"&gt;&lt;img alt="projects/project-192761/images/6034741694473754020.jpg" src="projects/project-192761/images/6034741694473754020.jpg" /&gt;&lt;/a&gt;
-&lt;a class="reference external image-reference" href="/_images/4261491695115203090.jpg"&gt;&lt;img alt="projects/project-192761/images/4261491695115203090.jpg" src="projects/project-192761/images/4261491695115203090.jpg" /&gt;&lt;/a&gt;
-&lt;/div&gt;
-&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Ever since I saw those round display, I wanted to make an astronaut
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;badge like this, with the display as the helmet. So I finally went
-ahead and did it. There isn’t really much to it, just the display, a
-footprint for a Xiao-compatible dev board on the back, a battery
-holder and an accelerometer, so that I can make it react to movement.&lt;/p&gt;
-&lt;section id="logs"&gt;
-&lt;h2&gt;Logs&lt;/h2&gt;
-&lt;ul class="postlist-style-none postlist simple"&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-09-30 - &lt;a class="reference internal" href="../../../projects/project-192761/log-223769/"&gt;Second Animation and Accelerometer&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-09-19 - &lt;a class="reference internal" href="../../../projects/project-192761/log-223390/"&gt;Missing Components&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-09-13 - &lt;a class="reference internal" href="../../../projects/project-192761/log-223224/"&gt;First Animation&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-09-12 - &lt;a class="reference internal" href="../../../projects/project-192761/log-223080/"&gt;Design&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2023-09-12 - &lt;a class="reference internal" href="../../../projects/project-192761/log-223081/"&gt;Assembly&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/section&gt;
-&lt;section id="instructions"&gt;
-&lt;h2&gt;Instructions&lt;/h2&gt;
-&lt;/section&gt;
-&lt;/section&gt;
-</content>
-    <link href="http://deshipu.art/projects/project-192761/" rel="alternate"/>
-    <summary>An cute astronaut sitting on your shoulder.</summary>
-    <category term="hardware" label="hardware"/>
-    <category term="ongoingproject" label="ongoing project"/>
-    <published>2023-09-12T00:00:00+02:00</published>
-  </entry>
-  <entry>
-    <id>http://deshipu.art/projects/project-196453/</id>
-    <title>Badge Ribbon for CircuitPython</title>
-    <updated>2024-06-06T00:00:00+02:00</updated>
-    <content type="html">&lt;section id="badge-ribbon-for-circuitpython"&gt;
-
-&lt;p&gt;Improve your paper conference badge with some blinking lights.&lt;/p&gt;
-&lt;div class="project-thumb"&gt;
-&lt;a class="reference external image-reference" href="/_images/9333561717674079090.jpg"&gt;&lt;img alt="projects/project-196453/images/9333561717674079090.jpg" src="projects/project-196453/images/9333561717674079090.jpg" /&gt;&lt;/a&gt;
-&lt;/div&gt;
-&lt;div class="highlight-none notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Some conferences offer those colorful ribbons that you can stick to
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;your paper badge to indicate your interests, or the fact that it’s
-your first time on that conference, or your pronouns, etc. I decided I
-want something like that to indicate that I’m interested in Python on
-microcontrollers, but I thought that maybe making it a little bit more
-flashy, with blinking lights, would be a good idea.&lt;/p&gt;
-&lt;img alt="projects/project-196453/images/2587001717674257265.gif" src="projects/project-196453/images/2587001717674257265.gif" /&gt;
-&lt;section id="logs"&gt;
-&lt;h2&gt;Logs&lt;/h2&gt;
-&lt;ul class="postlist-style-none postlist simple"&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2024-06-06 - &lt;a class="reference internal" href="../../../projects/project-196453/log-230321/"&gt;The Design&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2024-06-06 - &lt;a class="reference internal" href="../../../projects/project-196453/log-230322/"&gt;Assembly&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/section&gt;
-&lt;section id="instructions"&gt;
-&lt;h2&gt;Instructions&lt;/h2&gt;
-&lt;/section&gt;
-&lt;/section&gt;
-</content>
-    <link href="http://deshipu.art/projects/project-196453/" rel="alternate"/>
-    <summary>Improve your paper conference badge with some blinking lights.</summary>
-    <category term="completedproject" label="completed project"/>
-    <category term="hardware" label="hardware"/>
-    <published>2024-06-06T00:00:00+02:00</published>
+    <published>2015-08-12T00:00:00+02:00</published>
   </entry>
 </feed>

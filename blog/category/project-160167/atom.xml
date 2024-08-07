@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posts in project-160167</title>
-  <updated>2024-08-07T20:37:30.485467+00:00</updated>
+  <updated>2024-08-07T20:45:03.521566+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/category/project-160167/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -12,7 +12,7 @@
     <updated>2018-10-18T00:00:00+02:00</updated>
     <content type="html">&lt;section id="making-holes"&gt;
 
-&lt;p&gt;Published on 2018-10-18 in &lt;a class="reference internal" href="../../../projects/project-160167/#project-160167"&gt;&lt;span class="std std-ref"&gt;Electronic Barrette Hub&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2018-10-18 in &lt;span class="xref std std-ref"&gt;project-160167&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;While waiting for the PCBs (they might not make it in time after all,
 I’m afraid), I’m still working on the faceplates. In order to
 correctly place all the holes for the CPX’s LEDs and sensors, I
@@ -39,7 +39,7 @@ secure the CPX to the board.&lt;/p&gt;
     <updated>2018-10-20T00:00:00+02:00</updated>
     <content type="html">&lt;section id="working-prototype-kinda"&gt;
 
-&lt;p&gt;Published on 2018-10-20 in &lt;a class="reference internal" href="../../../projects/project-160167/#project-160167"&gt;&lt;span class="std std-ref"&gt;Electronic Barrette Hub&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2018-10-20 in &lt;span class="xref std std-ref"&gt;project-160167&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;I have an estimation for the shipping of the PCBs, and it doesn’t look
 good: they will arrive Monday, 3h before the deadline for the prize.
 So I decided to go and cobble together a working prototype from what I
@@ -72,7 +72,7 @@ it looks bad.&lt;/p&gt;
     <updated>2018-10-21T00:00:00+02:00</updated>
     <content type="html">&lt;section id="video-and-repository-update"&gt;
 
-&lt;p&gt;Published on 2018-10-21 in &lt;a class="reference internal" href="../../../projects/project-160167/#project-160167"&gt;&lt;span class="std std-ref"&gt;Electronic Barrette Hub&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2018-10-21 in &lt;span class="xref std std-ref"&gt;project-160167&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;In preparation for the deadline, I have now linked the required video
 in the project’s metadata, and updated the project repository with the
 most recent design files, bill of materials and schematic.&lt;/p&gt;
@@ -88,7 +88,7 @@ most recent design files, bill of materials and schematic.&lt;/p&gt;
     <updated>2018-10-21T00:00:00+02:00</updated>
     <content type="html">&lt;section id="what-i-hope-to-achieve"&gt;
 
-&lt;p&gt;Published on 2018-10-21 in &lt;a class="reference internal" href="../../../projects/project-160167/#project-160167"&gt;&lt;span class="std std-ref"&gt;Electronic Barrette Hub&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2018-10-21 in &lt;span class="xref std std-ref"&gt;project-160167&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;It’s time to talk a little bit about the goals of this project.  On
 the face of it, there is really very little creativity in it: it’s
 basically just a carrier PCB for the Circuit Playground Express board,
@@ -135,7 +135,7 @@ learn a lot in the process.&lt;/p&gt;
     <updated>2018-10-22T00:00:00+02:00</updated>
     <content type="html">&lt;section id="proper-prototype"&gt;
 
-&lt;p&gt;Published on 2018-10-22 in &lt;a class="reference internal" href="../../../projects/project-160167/#project-160167"&gt;&lt;span class="std std-ref"&gt;Electronic Barrette Hub&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2018-10-22 in &lt;span class="xref std std-ref"&gt;project-160167&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;The PCBs just arrived from &lt;a class="reference external" href="https://hackaday.io/hacker/131216"&gt;&amp;#64;oshpark &lt;/a&gt; and I finally assembled a proper prototype. I’m quite happy with how
 it looks, even without the face plate or any ornaments on the PCB:&lt;/p&gt;
 &lt;img alt="projects/project-160167/images/1804971540204588238.jpg" src="projects/project-160167/images/1804971540204588238.jpg" /&gt;
@@ -148,7 +148,7 @@ them from view.&lt;/p&gt;
 &lt;img alt="projects/project-160167/images/7089001540204735865.jpg" src="projects/project-160167/images/7089001540204735865.jpg" /&gt;
 &lt;p&gt;Four for general purpose GPIO pins, with two pins on each, also
 doubling for UART and I2C communication, and one for USB, for those
-devices (like the &lt;a class="reference internal" href="../../../projects/project-158701/#project-158701"&gt;&lt;span class="std std-ref"&gt;Video Pendant&lt;/span&gt;&lt;/a&gt; ) which are too small to fit an USB port, but still need USB
+devices (like the &lt;span class="xref std std-ref"&gt;project-158701&lt;/span&gt; ) which are too small to fit an USB port, but still need USB
 communication. The power on the USB port is stabilized 3.3V, while the
 remaining ports are connected to the battery directly, because they
 are likely to need all the power they can get.&lt;/p&gt;

@@ -49,9 +49,9 @@
 <div role="main">
   <section id="the-pcb-design">
 <h1>The PCB Design<a class="headerlink" href="#the-pcb-design" title="Permalink to this heading">¶</a></h1>
-<p>Published on 2019-06-08 in <a class="reference internal" href="../#project-165983"><span class="std std-ref">D1 Mini UI Shield</span></a>.</p>
+<p>Published on 2019-06-08 in <span class="xref std std-ref">project-165983</span>.</p>
 <p>This project actually started a looong time ago, back when I was still
-playing with <a class="reference internal" href="../../project-20941/#project-20941"><span class="std std-ref">D1 Mini Matrix Deluxe Shields</span></a> , <a class="reference internal" href="../../project-21578/#project-21578"><span class="std std-ref">PewPew FeatherWing</span></a> was starting to take shape in my head, and nobody even dreamed about <a class="reference internal" href="../../project-27629/#project-27629"><span class="std std-ref">µGame</span></a> . I was inspired by the D1 Mini OLED shield, but I wanted some buttons
+playing with <span class="xref std std-ref">project-20941</span> , <span class="xref std std-ref">project-21578</span> was starting to take shape in my head, and nobody even dreamed about <span class="xref std std-ref">project-27629</span> . I was inspired by the D1 Mini OLED shield, but I wanted some buttons
 on it, and I wanted them to be arranged in a d-pad. Then other
 projects happened, and I forgot about it, until recently, when I
 started to play with those OLED displays again, and found my old
@@ -59,7 +59,7 @@ designs. Having learned a lot in that time, and having found some new
 really tiny buttons, I decided to revive this project and e-design it.
 I came up with this PCB design:</p>
 <img alt="projects/project-165983/images/960901559991526014.png" src="projects/project-165983/images/960901559991526014.png" />
-<p>As mentioned in the description, it’s basically the <a class="reference internal" href="../../project-19371/#project-19371"><span class="std std-ref">D1 Mini X-Pad Shield</span></a> compressed to a smaller size (and with two of the buttons removed),
+<p>As mentioned in the description, it’s basically the <span class="xref std std-ref">project-19371</span> compressed to a smaller size (and with two of the buttons removed),
 and with a display added on top. I used one of the free pins for the
 display’s reset (it has to be reset after powering on, and I didn’t
 want to waste the ESP8266 pin for that), but otherwise it’s the same.</p>
@@ -69,7 +69,7 @@ though the buttons already use I2C. That is because SPI is faster and
 supported in hardware by the ESP8266 (I2C is bit-banged).</p>
 <p>Another challenge was fitting the 0.96” display and buttons on top of
 the shield, without them conflicting with the pins. In the end, I
-decided to use the same technique I used in the <a class="reference internal" href="../../project-165011/#project-165011"><span class="std std-ref">Gesture FeatherWing</span></a> — angled pin headers soldered as SMD to the PCB, only this time I made
+decided to use the same technique I used in the <span class="xref std std-ref">project-165011</span> — angled pin headers soldered as SMD to the PCB, only this time I made
 them a bit shorter too.</p>
 <p>In the end I had some free space in the middle, so I decided to put a
 buzzer in there, so you can even have sounds.</p>

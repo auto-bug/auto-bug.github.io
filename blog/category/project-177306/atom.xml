@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posts in project-177306</title>
-  <updated>2024-08-07T20:37:30.810849+00:00</updated>
+  <updated>2024-08-07T20:45:04.404740+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/category/project-177306/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -12,7 +12,7 @@
     <updated>2021-02-04T00:00:00+01:00</updated>
     <content type="html">&lt;section id="the-assembly"&gt;
 
-&lt;p&gt;Published on 2021-02-04 in &lt;a class="reference internal" href="../../../projects/project-177306/#project-177306"&gt;&lt;span class="std std-ref"&gt;PewPew Slim&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2021-02-04 in &lt;span class="xref std std-ref"&gt;project-177306&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;You would think this is the perfect case for the SMT Assembly service
 offered by JLCPCB — all components on one side, no sockets, a lot of
 tiny parts that are best assembled by a machine. Unfortunately, they
@@ -50,7 +50,7 @@ had two stripes of 50, that’s why you can see two different colors in
 there — whiter and more yellowish. I expected some of the LEDs to not
 work and have to be reworked, but I didn’t expect what actually
 happened.&lt;/p&gt;
-&lt;p&gt;I flashed the firmware with the code for the old &lt;a class="reference internal" href="../../../projects/project-159733/#project-159733"&gt;&lt;span class="std std-ref"&gt;PewPew Standalone&lt;/span&gt;&lt;/a&gt;  — it should work, it would just use only one side of the LEDs, with
+&lt;p&gt;I flashed the firmware with the code for the old &lt;span class="xref std std-ref"&gt;project-159733&lt;/span&gt;  — it should work, it would just use only one side of the LEDs, with
 one color. Once I have that working, I can work on improved code that
 would handle both colors. Unfortunately what I got as a result is
 quite random. Multiple LEDs on both rows and columns seem to be
@@ -116,7 +116,7 @@ assembled in a fab, with solder paste, stencil and a pnp machine.&lt;/p&gt;
     <updated>2021-02-04T00:00:00+01:00</updated>
     <content type="html">&lt;section id="the-design"&gt;
 
-&lt;p&gt;Published on 2021-02-04 in &lt;a class="reference internal" href="../../../projects/project-177306/#project-177306"&gt;&lt;span class="std std-ref"&gt;PewPew Slim&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2021-02-04 in &lt;span class="xref std std-ref"&gt;project-177306&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;I always wanted to make a version of the PewPew with discrete LEDs,
 but it didn’t make much sense for many reasons. It looks worse, as you
 lose the diffuser that is built into the LED matrix, and it costs
@@ -165,7 +165,7 @@ remove it when flashing the firmware is done.&lt;/p&gt;
     <updated>2021-02-05T00:00:00+01:00</updated>
     <content type="html">&lt;section id="the-prototype"&gt;
 
-&lt;p&gt;Published on 2021-02-05 in &lt;a class="reference internal" href="../../../projects/project-177306/#project-177306"&gt;&lt;span class="std std-ref"&gt;PewPew Slim&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2021-02-05 in &lt;span class="xref std std-ref"&gt;project-177306&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;It took longer than anticipated, but with checking after each diode, I
 finally managed to get all of them properly soldered without any
 shorts. Then I made a branch of CircuitPython with the right code, and
@@ -175,7 +175,7 @@ here it is:&lt;/p&gt;
 CircuitPython 5.x, the interrupts are not as stable as they used to
 be, and you can see the LEDs flickering a little, which is annoying.
 Lack of a diffuser also makes it look worse than the very first
-version of &lt;a class="reference internal" href="../../../projects/project-21578/#project-21578"&gt;&lt;span class="std std-ref"&gt;PewPew FeatherWing&lt;/span&gt;&lt;/a&gt; with the bi-color matrix.&lt;/p&gt;
+version of &lt;span class="xref std std-ref"&gt;project-21578&lt;/span&gt; with the bi-color matrix.&lt;/p&gt;
 &lt;p&gt;The touch pads are tricky. The direction pads are a bit too close
 together and it’s hard to use them — it’s expected, but there simply
 isn’t more space on the PCB for it. At the same time, despite my
@@ -197,9 +197,9 @@ I think the end result is not great.&lt;/p&gt;
     <updated>2021-03-11T00:00:00+01:00</updated>
     <content type="html">&lt;section id="going-bigger"&gt;
 
-&lt;p&gt;Published on 2021-03-11 in &lt;a class="reference internal" href="../../../projects/project-177306/#project-177306"&gt;&lt;span class="std std-ref"&gt;PewPew Slim&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2021-03-11 in &lt;span class="xref std std-ref"&gt;project-177306&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;I got a bunch of cheap rectangular pink LEDs, so I’m trying to do the
-same thing, but in the form factor of the original &lt;a class="reference internal" href="../../../projects/project-159733/#project-159733"&gt;&lt;span class="std std-ref"&gt;PewPew Standalone&lt;/span&gt;&lt;/a&gt; :&lt;/p&gt;
+same thing, but in the form factor of the original &lt;span class="xref std std-ref"&gt;project-159733&lt;/span&gt; :&lt;/p&gt;
 &lt;img alt="projects/project-177306/images/5448231615465884461.png" src="projects/project-177306/images/5448231615465884461.png" /&gt;
 &lt;img alt="projects/project-177306/images/3352751615465891954.png" src="projects/project-177306/images/3352751615465891954.png" /&gt;
 &lt;/section&gt;
@@ -214,7 +214,7 @@ same thing, but in the form factor of the original &lt;a class="reference intern
     <updated>2022-04-06T00:00:00+02:00</updated>
     <content type="html">&lt;section id="bigger-version-done"&gt;
 
-&lt;p&gt;Published on 2022-04-06 in &lt;a class="reference internal" href="../../../projects/project-177306/#project-177306"&gt;&lt;span class="std std-ref"&gt;PewPew Slim&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2022-04-06 in &lt;span class="xref std std-ref"&gt;project-177306&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;It only took me one year to finish the version from the previous log.
 Of course I assembled it as soon as the PCBs arrived, but I couldn’t
 get it to work, and I blamed bad soldering on the LEDs, which

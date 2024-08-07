@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posts in project-20379</title>
-  <updated>2024-08-07T20:37:31.394701+00:00</updated>
+  <updated>2024-08-07T20:45:04.981761+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/category/project-20379/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -12,7 +12,7 @@
     <updated>2017-03-18T00:00:00+01:00</updated>
     <content type="html">&lt;section id="code"&gt;
 
-&lt;p&gt;Published on 2017-03-18 in &lt;a class="reference internal" href="../../../projects/project-20379/#project-20379"&gt;&lt;span class="std std-ref"&gt;Deltabot&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2017-03-18 in &lt;span class="xref std std-ref"&gt;project-20379&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;I have the basic code for the inverse kinematics of the robot working:&lt;/p&gt;
 &lt;div class="highlight-python notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;math&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;machine&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;I2C&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Pin&lt;/span&gt;
@@ -97,7 +97,7 @@ have an error there somewhere. I will keep experimenting with it.&lt;/p&gt;
     <updated>2017-03-18T00:00:00+01:00</updated>
     <content type="html">&lt;section id="inverse-kinematics"&gt;
 
-&lt;p&gt;Published on 2017-03-18 in &lt;a class="reference internal" href="../../../projects/project-20379/#project-20379"&gt;&lt;span class="std std-ref"&gt;Deltabot&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2017-03-18 in &lt;span class="xref std std-ref"&gt;project-20379&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;Inverse kinematics for delta robots seem to have an opinion of being
 very complex and un-intuitive. I don’t really understand why, because
 to me they seem to be simpler then for most other robot arm
@@ -141,7 +141,7 @@ we desire.&lt;/p&gt;
     <updated>2017-03-18T00:00:00+01:00</updated>
     <content type="html">&lt;section id="inverse-kinematics-redoux"&gt;
 
-&lt;p&gt;Published on 2017-03-18 in &lt;a class="reference internal" href="../../../projects/project-20379/#project-20379"&gt;&lt;span class="std std-ref"&gt;Deltabot&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2017-03-18 in &lt;span class="xref std std-ref"&gt;project-20379&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;Now that I have it working, I should explain the inverse kinematics of
 this delta arm properly. First, let’s just consider a single arm of
 the delta – the other two are going to be pretty much identical:&lt;/p&gt;
@@ -181,7 +181,7 @@ from that by 120° – so their positions are (tmp * sin 120°, tmp * cos
     <updated>2017-03-18T00:00:00+01:00</updated>
     <content type="html">&lt;section id="z-is-required"&gt;
 
-&lt;p&gt;Published on 2017-03-18 in &lt;a class="reference internal" href="../../../projects/project-20379/#project-20379"&gt;&lt;span class="std std-ref"&gt;Deltabot&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2017-03-18 in &lt;span class="xref std std-ref"&gt;project-20379&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;After a whole day of debugging I finally found the error in mu
 routines that made the circle too small, and generally bad positions.
 Turns out that to compute the angle of the arm, you need more than
@@ -226,7 +226,7 @@ won’t work. So here are the corrected inverse kinematics routines:&lt;/p&gt;
     <updated>2017-03-19T00:00:00+01:00</updated>
     <content type="html">&lt;section id="lessons-learned"&gt;
 
-&lt;p&gt;Published on 2017-03-19 in &lt;a class="reference internal" href="../../../projects/project-20379/#project-20379"&gt;&lt;span class="std std-ref"&gt;Deltabot&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2017-03-19 in &lt;span class="xref std std-ref"&gt;project-20379&lt;/span&gt;.&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;p&gt;Inverse kinematics of delta robots are actually simpler than those of
 arms&lt;/p&gt;&lt;/li&gt;

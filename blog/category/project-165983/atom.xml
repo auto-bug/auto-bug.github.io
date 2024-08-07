@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posts in project-165983</title>
-  <updated>2024-08-07T20:37:30.546897+00:00</updated>
+  <updated>2024-08-07T20:45:03.592956+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/category/project-165983/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -12,9 +12,9 @@
     <updated>2019-06-08T00:00:00+02:00</updated>
     <content type="html">&lt;section id="the-pcb-design"&gt;
 
-&lt;p&gt;Published on 2019-06-08 in &lt;a class="reference internal" href="../../../projects/project-165983/#project-165983"&gt;&lt;span class="std std-ref"&gt;D1 Mini UI Shield&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2019-06-08 in &lt;span class="xref std std-ref"&gt;project-165983&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;This project actually started a looong time ago, back when I was still
-playing with &lt;a class="reference internal" href="../../../projects/project-20941/#project-20941"&gt;&lt;span class="std std-ref"&gt;D1 Mini Matrix Deluxe Shields&lt;/span&gt;&lt;/a&gt; , &lt;a class="reference internal" href="../../../projects/project-21578/#project-21578"&gt;&lt;span class="std std-ref"&gt;PewPew FeatherWing&lt;/span&gt;&lt;/a&gt; was starting to take shape in my head, and nobody even dreamed about &lt;a class="reference internal" href="../../../projects/project-27629/#project-27629"&gt;&lt;span class="std std-ref"&gt;µGame&lt;/span&gt;&lt;/a&gt; . I was inspired by the D1 Mini OLED shield, but I wanted some buttons
+playing with &lt;span class="xref std std-ref"&gt;project-20941&lt;/span&gt; , &lt;span class="xref std std-ref"&gt;project-21578&lt;/span&gt; was starting to take shape in my head, and nobody even dreamed about &lt;span class="xref std std-ref"&gt;project-27629&lt;/span&gt; . I was inspired by the D1 Mini OLED shield, but I wanted some buttons
 on it, and I wanted them to be arranged in a d-pad. Then other
 projects happened, and I forgot about it, until recently, when I
 started to play with those OLED displays again, and found my old
@@ -22,7 +22,7 @@ designs. Having learned a lot in that time, and having found some new
 really tiny buttons, I decided to revive this project and e-design it.
 I came up with this PCB design:&lt;/p&gt;
 &lt;img alt="projects/project-165983/images/960901559991526014.png" src="projects/project-165983/images/960901559991526014.png" /&gt;
-&lt;p&gt;As mentioned in the description, it’s basically the &lt;a class="reference internal" href="../../../projects/project-19371/#project-19371"&gt;&lt;span class="std std-ref"&gt;D1 Mini X-Pad Shield&lt;/span&gt;&lt;/a&gt; compressed to a smaller size (and with two of the buttons removed),
+&lt;p&gt;As mentioned in the description, it’s basically the &lt;span class="xref std std-ref"&gt;project-19371&lt;/span&gt; compressed to a smaller size (and with two of the buttons removed),
 and with a display added on top. I used one of the free pins for the
 display’s reset (it has to be reset after powering on, and I didn’t
 want to waste the ESP8266 pin for that), but otherwise it’s the same.&lt;/p&gt;
@@ -32,7 +32,7 @@ though the buttons already use I2C. That is because SPI is faster and
 supported in hardware by the ESP8266 (I2C is bit-banged).&lt;/p&gt;
 &lt;p&gt;Another challenge was fitting the 0.96” display and buttons on top of
 the shield, without them conflicting with the pins. In the end, I
-decided to use the same technique I used in the &lt;a class="reference internal" href="../../../projects/project-165011/#project-165011"&gt;&lt;span class="std std-ref"&gt;Gesture FeatherWing&lt;/span&gt;&lt;/a&gt; — angled pin headers soldered as SMD to the PCB, only this time I made
+decided to use the same technique I used in the &lt;span class="xref std std-ref"&gt;project-165011&lt;/span&gt; — angled pin headers soldered as SMD to the PCB, only this time I made
 them a bit shorter too.&lt;/p&gt;
 &lt;p&gt;In the end I had some free space in the middle, so I decided to put a
 buzzer in there, so you can even have sounds.&lt;/p&gt;
@@ -48,7 +48,7 @@ buzzer in there, so you can even have sounds.&lt;/p&gt;
     <updated>2019-06-09T00:00:00+02:00</updated>
     <content type="html">&lt;section id="more-details"&gt;
 
-&lt;p&gt;Published on 2019-06-09 in &lt;a class="reference internal" href="../../../projects/project-165983/#project-165983"&gt;&lt;span class="std std-ref"&gt;D1 Mini UI Shield&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2019-06-09 in &lt;span class="xref std std-ref"&gt;project-165983&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;I think I have perfected the technique of soldering those angled
 headers now — after assembling a few more.&lt;/p&gt;
 &lt;img alt="projects/project-165983/images/4657931560103917462.jpg" src="projects/project-165983/images/4657931560103917462.jpg" /&gt;
@@ -122,7 +122,7 @@ or just stuff a lipo in there:&lt;/p&gt;
     <updated>2019-06-19T00:00:00+02:00</updated>
     <content type="html">&lt;section id="buttons"&gt;
 
-&lt;p&gt;Published on 2019-06-19 in &lt;a class="reference internal" href="../../../projects/project-165983/#project-165983"&gt;&lt;span class="std std-ref"&gt;D1 Mini UI Shield&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2019-06-19 in &lt;span class="xref std std-ref"&gt;project-165983&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;After re-ordering and choosing a faster shipping method, I finally
 have those tiny buttons:&lt;/p&gt;
 &lt;img alt="projects/project-165983/images/5259761560949728465.jpg" src="projects/project-165983/images/5259761560949728465.jpg" /&gt;
@@ -151,7 +151,7 @@ way, though, so expect it on Tindie near you soon-ish.&lt;/p&gt;
     <updated>2019-06-19T00:00:00+02:00</updated>
     <content type="html">&lt;section id="tindie"&gt;
 
-&lt;p&gt;Published on 2019-06-19 in &lt;a class="reference internal" href="../../../projects/project-165983/#project-165983"&gt;&lt;span class="std std-ref"&gt;D1 Mini UI Shield&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2019-06-19 in &lt;span class="xref std std-ref"&gt;project-165983&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;This shield is now available on Tindie. Unfortunately, for now I only
 had one complete unit (because I only had two displays, and I need one
 prototype for, uh, prototyping), and it’s already sold. But as soon as
@@ -173,9 +173,9 @@ arrive after two months).&lt;/p&gt;
     <updated>2019-07-04T00:00:00+02:00</updated>
     <content type="html">&lt;section id="battery"&gt;
 
-&lt;p&gt;Published on 2019-07-04 in &lt;a class="reference internal" href="../../../projects/project-165983/#project-165983"&gt;&lt;span class="std std-ref"&gt;D1 Mini UI Shield&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2019-07-04 in &lt;span class="xref std std-ref"&gt;project-165983&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;The UI shield and the D1 Mini Lite make together a very nice small
-device, but they lack power. That is why I revived my &lt;a class="reference internal" href="../../../projects/project-28104/#project-28104"&gt;&lt;span class="std std-ref"&gt;Coin Battery Shield for D1 Mini&lt;/span&gt;&lt;/a&gt; project, and made a shield that fits on the back of the whole
+device, but they lack power. That is why I revived my &lt;span class="xref std std-ref"&gt;project-28104&lt;/span&gt; project, and made a shield that fits on the back of the whole
 assembly, creating a pretty neat sandwich:&lt;/p&gt;
 &lt;img alt="projects/project-165983/images/5755391562239964768.jpg" src="projects/project-165983/images/5755391562239964768.jpg" /&gt;
 &lt;p&gt;And all together:&lt;/p&gt;

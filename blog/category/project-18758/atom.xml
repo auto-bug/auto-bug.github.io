@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posts in project-18758</title>
-  <updated>2024-08-07T20:37:31.230417+00:00</updated>
+  <updated>2024-08-07T20:45:04.781204+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/category/project-18758/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -12,9 +12,9 @@
     <updated>2016-12-04T00:00:00+01:00</updated>
     <content type="html">&lt;section id="just-starting"&gt;
 
-&lt;p&gt;Published on 2016-12-04 in &lt;a class="reference internal" href="../../../projects/project-18758/#project-18758"&gt;&lt;span class="std std-ref"&gt;Mechatronic Ears on the Micro:bit&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2016-12-04 in &lt;span class="xref std std-ref"&gt;project-18758&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;When I was thinking what could kids make with the micro:bit, I
-remembered my &lt;a class="reference internal" href="../../../projects/project-9769/#project-9769"&gt;&lt;span class="std std-ref"&gt;Mechatronic Ears&lt;/span&gt;&lt;/a&gt;  project. The micro:bit has a built-in accelerometer, can easily
+remembered my &lt;span class="xref std std-ref"&gt;project-9769&lt;/span&gt;  project. The micro:bit has a built-in accelerometer, can easily
 control up to three servos (because that’s how many pins are easy to
 access without an edge connector), and can be programmed in Python. So
 I decided to give it a try.&lt;/p&gt;
@@ -56,7 +56,7 @@ the rest has to stay loose, so that the servo can easily move.&lt;/p&gt;
 &lt;p&gt;Yellow goes to the pins, red goes to 3V, and brown goes to GND. One of
 the servos had its original wires broken, so I had to replace them
 with some randomly colored ones… Look at the other one for
-reference.Next, a quick test using the servo code from &lt;a class="reference internal" href="../../../projects/project-8643/#project-8643"&gt;&lt;span class="std std-ref"&gt;Micro:Bob&lt;/span&gt;&lt;/a&gt; .&lt;/p&gt;
+reference.Next, a quick test using the servo code from &lt;span class="xref std std-ref"&gt;project-8643&lt;/span&gt; .&lt;/p&gt;
 &lt;iframe style="width: 500px; height: 281px;" width="500" height="281" frameborder="0" allowfullscreen="None" src="https://www.youtube.com/embed/aSmmwRwKM5Y"&gt;&lt;/iframe&gt;
 &lt;p&gt;You can see the servo “buzzing” when it’s outside of its allowed
 range. I experimented a bit to find the optimal range for this

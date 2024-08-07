@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posts in project-19603</title>
-  <updated>2024-08-07T20:37:31.344993+00:00</updated>
+  <updated>2024-08-07T20:45:04.917145+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/category/project-19603/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -12,7 +12,7 @@
     <updated>2017-02-18T00:00:00+01:00</updated>
     <content type="html">&lt;section id="smaller-atmega"&gt;
 
-&lt;p&gt;Published on 2017-02-18 in &lt;a class="reference internal" href="../../../projects/project-19603/#project-19603"&gt;&lt;span class="std std-ref"&gt;D1 Mini Tote&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2017-02-18 in &lt;span class="xref std std-ref"&gt;project-19603&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;The ATmega8 chips arrived, and I decided to try and see if my servo
 controller code will run on it equally well as on the ATmega328p that
 I used previously. After soldering it to the PCB (I’m getting better
@@ -27,7 +27,7 @@ makefile, flashed again and… it works!&lt;/p&gt;
 &lt;p&gt;I still need to properly debug and finish the Python code for walking
 – the last weeks were a bit too busy to setup the testing and focus
 on this properly, but I hope I will get it done soon.&lt;/p&gt;
-&lt;p&gt;By the way, I also received the PCB for the &lt;a class="reference internal" href="../../../projects/project-19921/#project-19921"&gt;&lt;span class="std std-ref"&gt;SpiderWing&lt;/span&gt;&lt;/a&gt;  – the Feather version of this. I’m going to be developing them both
+&lt;p&gt;By the way, I also received the PCB for the &lt;span class="xref std std-ref"&gt;project-19921&lt;/span&gt;  – the Feather version of this. I’m going to be developing them both
 in parallel for now.&lt;/p&gt;
 &lt;/section&gt;
 </content>
@@ -41,8 +41,8 @@ in parallel for now.&lt;/p&gt;
     <updated>2017-02-20T00:00:00+01:00</updated>
     <content type="html">&lt;section id="battery-protection"&gt;
 
-&lt;p&gt;Published on 2017-02-20 in &lt;a class="reference internal" href="../../../projects/project-19603/#project-19603"&gt;&lt;span class="std std-ref"&gt;D1 Mini Tote&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;I did some more work both on this project and on the &lt;a class="reference internal" href="../../../projects/project-19921/#project-19921"&gt;&lt;span class="std std-ref"&gt;SpiderWing&lt;/span&gt;&lt;/a&gt; . I debugged the leg IK code finally – it was all about reversed
+&lt;p&gt;Published on 2017-02-20 in &lt;span class="xref std std-ref"&gt;project-19603&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;I did some more work both on this project and on the &lt;span class="xref std std-ref"&gt;project-19921&lt;/span&gt; . I debugged the leg IK code finally – it was all about reversed
 servo directions. I also tested different parameters for the creep
 gait, and I can tell it will take some time to tune this properly.&lt;/p&gt;
 &lt;p&gt;However, in the process of doing that, I ran the LiPo batteries on
@@ -86,7 +86,7 @@ to connect the sockets together, and the robot will still have to be
 switched on for charging – I have bad experiences with leaving
 anything connected to the battery with the switch in the off position:
 I want the switch to cut the battery completely.&lt;/p&gt;
-&lt;p&gt;For the &lt;a class="reference internal" href="../../../projects/project-19921/#project-19921"&gt;&lt;span class="std std-ref"&gt;SpiderWing&lt;/span&gt;&lt;/a&gt; , I went with a voltage divider initially. It would be perfect to just
+&lt;p&gt;For the &lt;span class="xref std std-ref"&gt;project-19921&lt;/span&gt; , I went with a voltage divider initially. It would be perfect to just
 connect it to A6 or A7 – the analog-only pins that I’m not using
 anyways – of the ATmega, however, they are not broken out in the DIP
 package. So now I have a choice between using one of the servo pins
@@ -116,7 +116,7 @@ their own programs.&lt;/p&gt;
     <updated>2017-06-14T00:00:00+02:00</updated>
     <content type="html">&lt;section id="more-brain-power"&gt;
 
-&lt;p&gt;Published on 2017-06-14 in &lt;a class="reference internal" href="../../../projects/project-19603/#project-19603"&gt;&lt;span class="std std-ref"&gt;D1 Mini Tote&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2017-06-14 in &lt;span class="xref std std-ref"&gt;project-19603&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;It has been a while since the last update, and there have been some
 developments. I will write about them in detail in separate logs when
 I get more time to do it properly. But today I just wanted to share a
@@ -140,7 +140,7 @@ with the D1 Mini or the Feather boards. I like the form factor (and
 price) of the D1 Mini better, but Feather has more options for me to
 choose from (I even got an ESP32 Feather recently, but didn’t have a
 chance to do anything with it yet). So I started both this project and
-the &lt;a class="reference internal" href="../../../projects/project-19921/#project-19921"&gt;&lt;span class="std std-ref"&gt;SpiderWing&lt;/span&gt;&lt;/a&gt; . Now seeing that the D1 Mini footprint becomes a kind of a standard,
+the &lt;span class="xref std std-ref"&gt;project-19921&lt;/span&gt; . Now seeing that the D1 Mini footprint becomes a kind of a standard,
 I’m hoping that both versions will become equally viable.&lt;/p&gt;
 &lt;/section&gt;
 </content>
@@ -154,7 +154,7 @@ I’m hoping that both versions will become equally viable.&lt;/p&gt;
     <updated>2017-06-15T00:00:00+02:00</updated>
     <content type="html">&lt;section id="sturdier-legs"&gt;
 
-&lt;p&gt;Published on 2017-06-15 in &lt;a class="reference internal" href="../../../projects/project-19603/#project-19603"&gt;&lt;span class="std std-ref"&gt;D1 Mini Tote&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2017-06-15 in &lt;span class="xref std std-ref"&gt;project-19603&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;One of the common complaints I’ve heard about the mechanical design of
 Tote is that the legs are really too flimsy. I must have been lucky
 with the quality of plastic for the servo horns I got, because I
@@ -186,13 +186,13 @@ after all.&lt;/p&gt;
     <updated>2019-05-08T00:00:00+02:00</updated>
     <content type="html">&lt;section id="one-more-version"&gt;
 
-&lt;p&gt;Published on 2019-05-08 in &lt;a class="reference internal" href="../../../projects/project-19603/#project-19603"&gt;&lt;span class="std std-ref"&gt;D1 Mini Tote&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2019-05-08 in &lt;span class="xref std std-ref"&gt;project-19603&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;An advantage of having several similar projects, some long-term and
 some faster, is that the research and innovation you test in the fast
 projects can trickle back into the slower ones. This is one such
 example. When I started with this, I was mostly using ready modules
 for most things, and the PCB was just a way to hold things together.
-After some intensive development of &lt;a class="reference internal" href="../../../projects/project-27629/#project-27629"&gt;&lt;span class="std std-ref"&gt;µGame&lt;/span&gt;&lt;/a&gt; , &lt;a class="reference internal" href="../../../projects/project-159733/#project-159733"&gt;&lt;span class="std std-ref"&gt;PewPew Standalone&lt;/span&gt;&lt;/a&gt; and &lt;a class="reference internal" href="../../../projects/project-158981/#project-158981"&gt;&lt;span class="std std-ref"&gt;Kubik M0&lt;/span&gt;&lt;/a&gt; , however, I figured out some ways of doing some of those things
+After some intensive development of &lt;span class="xref std std-ref"&gt;project-27629&lt;/span&gt; , &lt;span class="xref std std-ref"&gt;project-159733&lt;/span&gt; and &lt;span class="xref std std-ref"&gt;project-158981&lt;/span&gt; , however, I figured out some ways of doing some of those things
 better with discrete components and with better mechanical design. So
 it’s time to make a new version that will include all those
 improvements.&lt;/p&gt;
@@ -205,7 +205,7 @@ more room under the robot to fit the servos when the legs are in
 extreme positions (it will still require cutting off those “ears” from
 the servos). The body is still 5×5cm, but there are all those leg
 parts around it, so now the whole PCB is 10×10cm — which reflects the
-current reality of ordering cheap PCBs. It’s the same idea as in &lt;a class="reference internal" href="../../../projects/project-158981/#project-158981"&gt;&lt;span class="std std-ref"&gt;Kubik M0&lt;/span&gt;&lt;/a&gt; , however, the feet now have footprints for switches, so we can detect
+current reality of ordering cheap PCBs. It’s the same idea as in &lt;span class="xref std std-ref"&gt;project-158981&lt;/span&gt; , however, the feet now have footprints for switches, so we can detect
 ground easily.&lt;/p&gt;
 &lt;p&gt;There is no room for the battery protection and charging module
 anymore, instead there is a charging and a protection circuit directly

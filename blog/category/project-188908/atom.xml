@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posts in project-188908</title>
-  <updated>2024-08-07T20:37:31.235249+00:00</updated>
+  <updated>2024-08-07T20:45:04.787141+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/category/project-188908/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -12,7 +12,7 @@
     <updated>2022-12-30T00:00:00+01:00</updated>
     <content type="html">&lt;section id="the-pcb-design"&gt;
 
-&lt;p&gt;Published on 2022-12-30 in &lt;a class="reference internal" href="../../../projects/project-188908/#project-188908"&gt;&lt;span class="std std-ref"&gt;Moo Bug&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2022-12-30 in &lt;span class="xref std std-ref"&gt;project-188908&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;This is my first project where I completely switched to EasyEDA as a
 PCB design tool. I honestly tried KiCAD several times over the years,
 and it’s just so hilariously bad at exploring designs, that I gave up
@@ -46,7 +46,7 @@ an oled display and a speaker.&lt;/p&gt;
     <updated>2022-12-31T00:00:00+01:00</updated>
     <content type="html">&lt;section id="the-oled-face"&gt;
 
-&lt;p&gt;Published on 2022-12-31 in &lt;a class="reference internal" href="../../../projects/project-188908/#project-188908"&gt;&lt;span class="std std-ref"&gt;Moo Bug&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2022-12-31 in &lt;span class="xref std std-ref"&gt;project-188908&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;The PCBs arrived right after the holidays, and I quickly assembled
 one, moved the whole legs from one of my fluffbugs, and here it is,
 all working as expected. I just had to update the pin names in my
@@ -80,7 +80,7 @@ the amplifier to maximum gain).&lt;/p&gt;
     <updated>2024-03-18T00:00:00+01:00</updated>
     <content type="html">&lt;section id="going-smaller"&gt;
 
-&lt;p&gt;Published on 2024-03-18 in &lt;a class="reference internal" href="../../../projects/project-188908/#project-188908"&gt;&lt;span class="std std-ref"&gt;Moo Bug&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2024-03-18 in &lt;span class="xref std std-ref"&gt;project-188908&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;Smaller robots are easier. Mostly because of the cube law, which says
 that the weight of a thing grows proportionally to the third power of
 the size. A robot twice larger is 8 times heavier, and accordingly
@@ -92,7 +92,7 @@ start small.&lt;/p&gt;
 &lt;p&gt;But not too small! You want to use off-the shelf components, and to be
 able to work with your hands, preferably without a need of a
 microscope or special processes. So there is a sweet spot in the size
-of the robots. When I started with &lt;a class="reference internal" href="../../../projects/project-180025/#project-180025"&gt;&lt;span class="std std-ref"&gt;Fluffbug&lt;/span&gt;&lt;/a&gt; , that size was mostly dictated by the size of the servos that were
+of the robots. When I started with &lt;span class="xref std std-ref"&gt;project-180025&lt;/span&gt; , that size was mostly dictated by the size of the servos that were
 available. The 9g cheap blue hobby servos were basically the cheapest
 and easiest to source actuators for a robot that you could get, and
 the size of both Fluffbug and Moo Bug that is based on it were mostly
@@ -104,7 +104,7 @@ than the 9g servos, and since they are later design, they actually
 have better features. They work with single LiPO voltages, and they
 often have larger rotation range. They also use much smaller
 connectors, which lets you save space on the PCB.&lt;/p&gt;
-&lt;p&gt;I have been exploring the use of those smaller servos with the &lt;a class="reference internal" href="../../../projects/project-188909/#project-188909"&gt;&lt;span class="std std-ref"&gt;Wee Bug&lt;/span&gt;&lt;/a&gt; , and I’m pretty happy with what you can do with them and a small
+&lt;p&gt;I have been exploring the use of those smaller servos with the &lt;span class="xref std std-ref"&gt;project-188909&lt;/span&gt; , and I’m pretty happy with what you can do with them and a small
 board like the Xiao. However, sometimes you want to have more pins, so
 you can add a display, a speaker, maybe some extra servos for hands,
 additional sensors and so on. So I decided I need a Wee Bug with the

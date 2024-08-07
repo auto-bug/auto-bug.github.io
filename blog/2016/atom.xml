@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posted in 2016</title>
-  <updated>2024-08-07T20:37:32.195568+00:00</updated>
+  <updated>2024-08-07T20:45:06.020368+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/2016/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -12,7 +12,7 @@
     <updated>2016-12-29T00:00:00+01:00</updated>
     <content type="html">&lt;section id="ressurection"&gt;
 
-&lt;p&gt;Published on 2016-12-29 in &lt;a class="reference internal" href="../../projects/project-3736/#project-3736"&gt;&lt;span class="std std-ref"&gt;µBob biped robot&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2016-12-29 in &lt;span class="xref std std-ref"&gt;project-3736&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;I really wanted to enter one of my robots into the 1kB contest, but
 unfortunately the inverse kinematics calculations result in quite some
 bit of code. I tried to use some pretty neat algorithms to get around
@@ -46,7 +46,7 @@ additional options would help sometimes and then break again later. In
 the end it turned out that the wires that I soldered to my programming
 clip came off, and weren’t giving a good connection.&lt;/p&gt;
 &lt;p&gt;Next, I needed some code to drive the servos. Unfortunately, I
-couldn’t use the code from &lt;a class="reference internal" href="../../projects/project-9769/#project-9769"&gt;&lt;span class="std std-ref"&gt;Mechatronic Ears&lt;/span&gt;&lt;/a&gt; , because this time I needed to drive 3 servos at once (actually 4,
+couldn’t use the code from &lt;span class="xref std std-ref"&gt;project-9769&lt;/span&gt; , because this time I needed to drive 3 servos at once (actually 4,
 but two of them share a common signal). So I looked around and found &lt;a class="reference external" href="http://www.thebox.myzen.co.uk/Tutorial/LEDs.html"&gt;a servo library for the ATtiny85&lt;/a&gt; . It was too big for my purposes, but I used the ideas from it to
 write my own, that’s about 512 bytes (and probably can be further
 optimized).&lt;/p&gt;
@@ -71,7 +71,7 @@ add some code for reading the ADC.&lt;/p&gt;
     <updated>2016-12-30T00:00:00+01:00</updated>
     <content type="html">&lt;section id="attiny10"&gt;
 
-&lt;p&gt;Published on 2016-12-30 in &lt;a class="reference internal" href="../../projects/project-7860/#project-7860"&gt;&lt;span class="std std-ref"&gt;Nyan Board&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2016-12-30 in &lt;span class="xref std std-ref"&gt;project-7860&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;So the surprise chip, ATtiny10, arrived, and I started to work on
 programming it. I already have the code for it prepared, and the PCB
 has been ordered a week ago, so I just need to get the code on the
@@ -121,7 +121,7 @@ things to try, I’m open for ideas.&lt;/p&gt;
     <updated>2016-12-30T00:00:00+01:00</updated>
     <content type="html">&lt;section id="the-body"&gt;
 
-&lt;p&gt;Published on 2016-12-30 in &lt;a class="reference internal" href="../../projects/project-3736/#project-3736"&gt;&lt;span class="std std-ref"&gt;µBob biped robot&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2016-12-30 in &lt;span class="xref std std-ref"&gt;project-3736&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;Today I’m continuing the work on resurrecting µBob. I decided to use a
 Pololu SHARP distance sensor (because it can work with 3V), and using
 a bit of hot glue I attached the pins to it, so that I can plug it in
@@ -151,7 +151,7 @@ into the holes in the PCB:&lt;/p&gt;
     <updated>2016-12-31T00:00:00+01:00</updated>
     <content type="html">&lt;section id="attiny10-working"&gt;
 
-&lt;p&gt;Published on 2016-12-31 in &lt;a class="reference internal" href="../../projects/project-7860/#project-7860"&gt;&lt;span class="std std-ref"&gt;Nyan Board&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2016-12-31 in &lt;span class="xref std std-ref"&gt;project-7860&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;As soon as I posted the last log, I realized what the problem was. The
 TPICLK wire was loose all this time. After fixing that, programming
 with AVRdude and USBASP went without any problems, and I could test my
@@ -204,7 +204,7 @@ size is fine.&lt;/p&gt;
     <updated>2016-12-31T00:00:00+01:00</updated>
     <content type="html">&lt;section id="distance-sensor"&gt;
 
-&lt;p&gt;Published on 2016-12-31 in &lt;a class="reference internal" href="../../projects/project-3736/#project-3736"&gt;&lt;span class="std std-ref"&gt;µBob biped robot&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2016-12-31 in &lt;span class="xref std std-ref"&gt;project-3736&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;For the first time µBob has a working distance sensor on board (you
 might recall I tried to give it a distance sensor earlier, but it
 didn’t work). So let’s make use of it.&lt;/p&gt;

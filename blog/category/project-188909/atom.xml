@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posts in project-188909</title>
-  <updated>2024-08-07T20:37:31.245215+00:00</updated>
+  <updated>2024-08-07T20:45:04.798843+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/category/project-188909/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -12,9 +12,9 @@
     <updated>2023-12-01T00:00:00+01:00</updated>
     <content type="html">&lt;section id="not-all-batteries-are-created-equal"&gt;
 
-&lt;p&gt;Published on 2023-12-01 in &lt;a class="reference internal" href="../../../projects/project-188909/#project-188909"&gt;&lt;span class="std std-ref"&gt;Wee Bug&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2023-12-01 in &lt;span class="xref std std-ref"&gt;project-188909&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;With the new PCB in version 6.0 I switched to the bigger 16340 battery
-that I originally used in &lt;a class="reference internal" href="../../../projects/project-180025/#project-180025"&gt;&lt;span class="std std-ref"&gt;Fluffbug&lt;/span&gt;&lt;/a&gt; , thinking that the extra weight is not so great, and extra capacity
+that I originally used in &lt;span class="xref std std-ref"&gt;project-180025&lt;/span&gt; , thinking that the extra weight is not so great, and extra capacity
 will be useful. Also those batteries are much easier to find, since
 they are commonly used in vapers. And incidentally, with version 6.0 I
 started to have problems with power. The robot would work on a fully
@@ -63,7 +63,7 @@ with toxic lithium.&lt;/p&gt;
     <updated>2023-12-12T00:00:00+01:00</updated>
     <content type="html">&lt;section id="mm-and-1-25mm-versions"&gt;
 
-&lt;p&gt;Published on 2023-12-12 in &lt;a class="reference internal" href="../../../projects/project-188909/#project-188909"&gt;&lt;span class="std std-ref"&gt;Wee Bug&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2023-12-12 in &lt;span class="xref std std-ref"&gt;project-188909&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;The 2g servos I’m using for weebug come in three different connectors:
 the traditional 2.54mm pitch servo plug, a 1.25mm pitch jst plug, and
 a 1mm pitch plug. I think the traditional plug is way too big for this
@@ -102,7 +102,7 @@ Together with using reasonable quality of batteries, that should help.&lt;/p&gt;
     <updated>2023-12-15T00:00:00+01:00</updated>
     <content type="html">&lt;section id="wee-display"&gt;
 
-&lt;p&gt;Published on 2023-12-15 in &lt;a class="reference internal" href="../../../projects/project-188909/#project-188909"&gt;&lt;span class="std std-ref"&gt;Wee Bug&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2023-12-15 in &lt;span class="xref std std-ref"&gt;project-188909&lt;/span&gt;.&lt;/p&gt;
 &lt;img alt="projects/project-188909/images/47221702660969258.gif" src="projects/project-188909/images/47221702660969258.gif" /&gt;
 &lt;p&gt;A while ago I made a &lt;a class="reference external" href="https://hackaday.io/project/188909-wee-bug/log/224310-a-display"&gt;display shield&lt;/a&gt;  (mask?) for the Wee Bug, but because it needs additional pins to talk
 to the microcontroller, it only works with the Waveshare Mini boards,
@@ -176,7 +176,7 @@ eye working on the robot now.&lt;/p&gt;
     <updated>2024-03-19T00:00:00+01:00</updated>
     <content type="html">&lt;section id="thermal-camera"&gt;
 
-&lt;p&gt;Published on 2024-03-19 in &lt;a class="reference internal" href="../../../projects/project-188909/#project-188909"&gt;&lt;span class="std std-ref"&gt;Wee Bug&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2024-03-19 in &lt;span class="xref std std-ref"&gt;project-188909&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;There is a header with the 3.3V power, I2C and INT pins broken out
 just above the servos on the Wee Bug (and other of my robots as well),
 because I was planning on plugging a time-of-flight distance sensor
@@ -186,7 +186,7 @@ that place. So far I tried a gesture sensor and a TV remote IR sensor
 (that one is not a module, just a part plugged directly into the power
 and INT holes). But I noticed that the AMG888 thermal camera module
 also has the same pinout.&lt;/p&gt;
-&lt;p&gt;So when I assembled a new &lt;a class="reference internal" href="../../../projects/project-188908/#project-188908"&gt;&lt;span class="std std-ref"&gt;Moo Bug&lt;/span&gt;&lt;/a&gt; using a pi pico clone board with a built-in display, I decided to give
+&lt;p&gt;So when I assembled a new &lt;span class="xref std std-ref"&gt;project-188908&lt;/span&gt; using a pi pico clone board with a built-in display, I decided to give
 it a try:&lt;/p&gt;
 &lt;img alt="projects/project-188909/images/4313281710886498298.jpg" src="projects/project-188909/images/4313281710886498298.jpg" /&gt;
 &lt;p&gt;Turns out that there is already a driver library for that sensor in
@@ -235,7 +235,7 @@ camera. And no, no heat-seeking missiles.&lt;/p&gt;
     <updated>2024-04-16T00:00:00+02:00</updated>
     <content type="html">&lt;section id="designs-published"&gt;
 
-&lt;p&gt;Published on 2024-04-16 in &lt;a class="reference internal" href="../../../projects/project-188909/#project-188909"&gt;&lt;span class="std std-ref"&gt;Wee Bug&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2024-04-16 in &lt;span class="xref std std-ref"&gt;project-188909&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;I have been putting off publishing the design files and code, hoping
 that I can clean them up a little bit first, but who am I kidding? If
 I don’t publish them as they are, they are probably never going to be

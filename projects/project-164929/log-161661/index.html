@@ -49,7 +49,7 @@
 <div role="main">
   <section id="buttons">
 <h1>Buttons<a class="headerlink" href="#buttons" title="Permalink to this heading">¶</a></h1>
-<p>Published on 2019-04-11 in <a class="reference internal" href="../#project-164929"><span class="std std-ref">PyBadge Hacking</span></a>.</p>
+<p>Published on 2019-04-11 in <span class="xref std std-ref">project-164929</span>.</p>
 <p>Handling buttons on a game console requires some special
 consideration, since it is going to affect how responsive the games
 feel. Human touch can discriminate really small timing differences,
@@ -75,7 +75,7 @@ delays and so on — which is much easier to understand for a beginner.
 That is why I wrote the “gamepad” module for CircuitPython — so that I
 can use it for buttons on the #µGame.</p>
 <p>Another approach is to outsource the task to a dedicated chip, such as
-the HT16K33 on the <a class="reference internal" href="../../project-21578/#project-21578"><span class="std std-ref">PewPew FeatherWing</span></a> or a custom programmed ATtiny24 on the <a class="reference internal" href="../../project-19371/#project-19371"><span class="std std-ref">D1 Mini X-Pad Shield</span></a> — they can do the scanning and the debouncing for your, and you just
+the HT16K33 on the <span class="xref std std-ref">project-21578</span> or a custom programmed ATtiny24 on the <span class="xref std std-ref">project-19371</span> — they can do the scanning and the debouncing for your, and you just
 need a small snippet of code to read the currently buffered button
 state from them over I²C. Easy!</p>
 <p>Now, back to the PyBadge. That device uses a 74HC165 shift register

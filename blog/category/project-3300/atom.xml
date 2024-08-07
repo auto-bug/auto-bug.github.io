@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posts in project-3300</title>
-  <updated>2024-08-07T20:37:31.680965+00:00</updated>
+  <updated>2024-08-07T20:45:05.397722+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/category/project-3300/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -12,7 +12,7 @@
     <updated>2015-04-17T00:00:00+02:00</updated>
     <content type="html">&lt;section id="force-sensing"&gt;
 
-&lt;p&gt;Published on 2015-04-17 in &lt;a class="reference internal" href="../../../projects/project-3300/#project-3300"&gt;&lt;span class="std std-ref"&gt;µKubik quadruped robot&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2015-04-17 in &lt;span class="xref std std-ref"&gt;project-3300&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;After showing the robots at PyCon.us, I had some great conversations
 about all the possible ways I could improve them. One particularly
 nice idea is to connect some extra wires to the servo pots, and by
@@ -45,7 +45,7 @@ works. Then I can try one of the other options if needed.&lt;/p&gt;
     <updated>2015-05-08T00:00:00+02:00</updated>
     <content type="html">&lt;section id="tote-kubik-s-younger-brother"&gt;
 
-&lt;p&gt;Published on 2015-05-08 in &lt;a class="reference internal" href="../../../projects/project-3300/#project-3300"&gt;&lt;span class="std std-ref"&gt;µKubik quadruped robot&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2015-05-08 in &lt;span class="xref std std-ref"&gt;project-3300&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;I separated the Arduino-only version of µKubik as a separate project,
 called Tote, with comprehensive build instructions available at &lt;a class="reference external" href="http://tote.readthedocs.org/"&gt;http://tote.readthedocs.org/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;It’s supposed to be a starting point for people experimenting with
@@ -62,7 +62,7 @@ their own quadrupeds.&lt;/p&gt;
     <updated>2015-05-28T00:00:00+02:00</updated>
     <content type="html">&lt;section id="family-grows"&gt;
 
-&lt;p&gt;Published on 2015-05-28 in &lt;a class="reference internal" href="../../../projects/project-3300/#project-3300"&gt;&lt;span class="std std-ref"&gt;µKubik quadruped robot&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2015-05-28 in &lt;span class="xref std std-ref"&gt;project-3300&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;As I’m writing the &lt;a class="reference external" href="http://tote.readthedocs.org/"&gt;guide for building and programming this robot&lt;/a&gt; , I need a way to test if the instructions make sense and are simple
 enough. So I’ve build another brother for µKubik, this time following
 my own instructions to the letter. It went well, except I didn’t count
@@ -87,7 +87,7 @@ firmware, and see if I can control it that way.&lt;/p&gt;
     <updated>2015-05-29T00:00:00+02:00</updated>
     <content type="html">&lt;section id="sensing-the-servo-force"&gt;
 
-&lt;p&gt;Published on 2015-05-29 in &lt;a class="reference internal" href="../../../projects/project-3300/#project-3300"&gt;&lt;span class="std std-ref"&gt;µKubik quadruped robot&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2015-05-29 in &lt;span class="xref std std-ref"&gt;project-3300&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;So, a little bit of rethinking what I actually need, and the solution
 became obvious. I don’t want to know the position of the servo, I want
 to know the force that is affecting it (and, at the same time, the
@@ -112,7 +112,7 @@ not feed itself…&lt;/p&gt;
     <updated>2015-05-29T00:00:00+02:00</updated>
     <content type="html">&lt;section id="sensing-the-servo-position"&gt;
 
-&lt;p&gt;Published on 2015-05-29 in &lt;a class="reference internal" href="../../../projects/project-3300/#project-3300"&gt;&lt;span class="std std-ref"&gt;µKubik quadruped robot&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2015-05-29 in &lt;span class="xref std std-ref"&gt;project-3300&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;So I finally came around to testing this setup. A 9g hobby servo, with
 an additional cable hooked up to the middle pin of its pot, and
 connected to an analog pin on the arduino. Voila, now we can sense the

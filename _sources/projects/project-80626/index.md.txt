@@ -4,11 +4,14 @@ date: 2018-03-09
 category: project
 tags:  ongoing project, Software
 image: 1
+
+A library for MicroPython for drawing tiles and sprites on a RGB SPI screen.
 ---
 
 # Stage, a Tile and Sprite Engine
 
 A library for MicroPython for drawing tiles and sprites on a RGB SPI screen.
+
 
 <div class="project-thumb">
 
@@ -39,6 +42,7 @@ A library for MicroPython for drawing tiles and sprites on a RGB SPI screen.
 </div>
 
 
+
     This is a MicroPython library that provides the means for drawing
 sprites with tiled background on 16-bit SPI-based displays. It
 consists of a small part written in C that needs to be compiled into
@@ -58,11 +62,11 @@ This library was originally created in CircuitPython for {ref}`project-27629` , 
 
 
 
+
 ## Logs
 
 :::{postlist}
 :category: project-80626
 :::
 
-## Instructions
 

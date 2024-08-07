@@ -4,11 +4,14 @@ date: 2021-10-25
 category: project
 tags:  2021hackadayprize, ongoing project, hardware
 image: 1
+
+OV2640 shield for the S2 Mini ESP32-S2 board.
 ---
 
 # Camera Shield for S2 Mini
 
 OV2640 shield for the S2 Mini ESP32-S2 board.
+
 
 <div class="project-thumb">
 
@@ -31,11 +34,13 @@ OV2640 shield for the S2 Mini ESP32-S2 board.
 </div>
 
 
+
     With CircuitPython now supporting a camera, it would be nice to have a
 camera shield to use with my robot {ref}`project-180025` . The OV2640 camera module is pretty powerful (it can create JPEG data
 to stream), and the S2 Mini has enough pins to drive it, so the only
 inconvenience left are three voltages need for powering the camera.
 The shield takes care of that.
+
 
 
 
@@ -47,5 +52,4 @@ The shield takes care of that.
 :category: project-182342
 :::
 
-## Instructions
 

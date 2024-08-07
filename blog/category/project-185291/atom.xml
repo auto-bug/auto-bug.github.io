@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posts in project-185291</title>
-  <updated>2024-08-07T20:37:31.189828+00:00</updated>
+  <updated>2024-08-07T20:45:04.730178+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/category/project-185291/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -12,7 +12,7 @@
     <updated>2022-10-16T00:00:00+02:00</updated>
     <content type="html">&lt;section id="the-challenge"&gt;
 
-&lt;p&gt;Published on 2022-10-16 in &lt;a class="reference internal" href="../../../projects/project-185291/#project-185291"&gt;&lt;span class="std std-ref"&gt;PewPew LCD&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2022-10-16 in &lt;span class="xref std std-ref"&gt;project-185291&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;This project was submitted to the 2022 Hackaday Prize, and it
 qualified to semifinals, so let me take some time and talk about the
 challenge that I am trying to tackle with it.&lt;/p&gt;
@@ -94,7 +94,7 @@ potentially become pewpew-compatible, with the help of the community.&lt;/p&gt;
     <updated>2023-08-29T00:00:00+02:00</updated>
     <content type="html">&lt;section id="what-remains-to-be-done"&gt;
 
-&lt;p&gt;Published on 2023-08-29 in &lt;a class="reference internal" href="../../../projects/project-185291/#project-185291"&gt;&lt;span class="std std-ref"&gt;PewPew LCD&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2023-08-29 in &lt;span class="xref std std-ref"&gt;project-185291&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;I had a bit of a break on this project, caused both by my lack of
 motivation, and by the chip shortage, meaning you couldn’t get any
 SAMD21 chips (or anything that could easily replace them) anywhere.
@@ -175,7 +175,7 @@ on their computers, change the silkscreen according to their needs,
 and order the device assembled with a few clicks. Well, mostly
 assembled, they would still need to buy and solder the displays.&lt;/p&gt;
 &lt;p&gt;Unless, of course, I switched to some kind of displays that are
-available from LCSC, like the small OLED screens I used in the &lt;a class="reference internal" href="../../../projects/project-180309/#project-180309"&gt;&lt;span class="std std-ref"&gt;PewPew OLED&lt;/span&gt;&lt;/a&gt; . Come to think of it… hmmm…&lt;/p&gt;
+available from LCSC, like the small OLED screens I used in the &lt;span class="xref std std-ref"&gt;project-180309&lt;/span&gt; . Come to think of it… hmmm…&lt;/p&gt;
 &lt;p&gt;Anyways, I have some work and some decisions before me.&lt;/p&gt;
 &lt;/section&gt;
 </content>
@@ -189,7 +189,7 @@ available from LCSC, like the small OLED screens I used in the &lt;a class="refe
     <updated>2023-09-01T00:00:00+02:00</updated>
     <content type="html">&lt;section id="never-be-clever-for-the-sake-of-being-clever"&gt;
 
-&lt;p&gt;Published on 2023-09-01 in &lt;a class="reference internal" href="../../../projects/project-185291/#project-185291"&gt;&lt;span class="std std-ref"&gt;PewPew LCD&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2023-09-01 in &lt;span class="xref std std-ref"&gt;project-185291&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;A bunch of sleepless nights, and I have designed a version of PewPew
 with that ST7735 display from LCSC in EasyEDA, to see how that single-
 click assembly thing would work for it. I was very careful to use the
@@ -260,7 +260,7 @@ once. But that will have to wait until the SAMD21 is back in stock.&lt;/p&gt;
     <updated>2023-09-23T00:00:00+02:00</updated>
     <content type="html">&lt;section id="connectors"&gt;
 
-&lt;p&gt;Published on 2023-09-23 in &lt;a class="reference internal" href="../../../projects/project-185291/#project-185291"&gt;&lt;span class="std std-ref"&gt;PewPew LCD&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2023-09-23 in &lt;span class="xref std std-ref"&gt;project-185291&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;If I we can’t have them solder the display on the PCB for us, and have
 to get it separately, maybe we can at least skip the soldering step by
 using an FPC connector. This way you just have to stick the display in
@@ -297,12 +297,12 @@ price of the display. Ooof. I will keep exploring the possibilities.&lt;/p&gt;
     <updated>2024-06-23T00:00:00+02:00</updated>
     <content type="html">&lt;section id="practicality-beats-purity"&gt;
 
-&lt;p&gt;Published on 2024-06-23 in &lt;a class="reference internal" href="../../../projects/project-185291/#project-185291"&gt;&lt;span class="std std-ref"&gt;PewPew LCD&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2024-06-23 in &lt;span class="xref std std-ref"&gt;project-185291&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;It’s been a while since the last update in this project, but that
 doesn’t mean nothing was happening. In fact, the whole project got a
 complete overhaul, as I reevaluated the goals and the methods of
 reaching them.&lt;/p&gt;
-&lt;p&gt;I went back all the way to the &lt;a class="reference internal" href="../../../projects/project-165032/#project-165032"&gt;&lt;span class="std std-ref"&gt;PewPew M4&lt;/span&gt;&lt;/a&gt; design, including standard thickness PCB, a micro-USB socket that is
+&lt;p&gt;I went back all the way to the &lt;span class="xref std std-ref"&gt;project-165032&lt;/span&gt; design, including standard thickness PCB, a micro-USB socket that is
 not made out of the PCB, and a plastic battery holder for two AAA
 batteries. And physical buttons. I also changed the display to a
 ST7735, 180x128, 1.8” color TFT.&lt;/p&gt;

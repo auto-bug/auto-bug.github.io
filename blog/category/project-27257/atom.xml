@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posts in project-27257</title>
-  <updated>2024-08-07T20:37:31.542556+00:00</updated>
+  <updated>2024-08-07T20:45:05.161534+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/category/project-27257/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -12,7 +12,7 @@
     <updated>2017-09-17T00:00:00+02:00</updated>
     <content type="html">&lt;section id="rotating-everything"&gt;
 
-&lt;p&gt;Published on 2017-09-17 in &lt;a class="reference internal" href="../../../projects/project-27257/#project-27257"&gt;&lt;span class="std std-ref"&gt;Fritzing Tricks&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2017-09-17 in &lt;span class="xref std std-ref"&gt;project-27257&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;Rotating elements is easy. You just use the “rotate” button in the
 bottom left corner of the screen, right?&lt;/p&gt;
 &lt;img alt="projects/project-27257/images/720671505666678552.png" src="projects/project-27257/images/720671505666678552.png" /&gt;
@@ -66,7 +66,7 @@ workable.&lt;/p&gt;
     <updated>2017-09-18T00:00:00+02:00</updated>
     <content type="html">&lt;section id="trace-aesthetics"&gt;
 
-&lt;p&gt;Published on 2017-09-18 in &lt;a class="reference internal" href="../../../projects/project-27257/#project-27257"&gt;&lt;span class="std std-ref"&gt;Fritzing Tricks&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2017-09-18 in &lt;span class="xref std std-ref"&gt;project-27257&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;I’ve been putting this post off for some time now, but we need to talk
 about this sooner or later. Fritzing became infamous in the
 electronics community for the characteristic ugly traces that are
@@ -139,10 +139,10 @@ work with.&lt;/p&gt;
     <updated>2017-09-24T00:00:00+02:00</updated>
     <content type="html">&lt;section id="net-labels"&gt;
 
-&lt;p&gt;Published on 2017-09-24 in &lt;a class="reference internal" href="../../../projects/project-27257/#project-27257"&gt;&lt;span class="std std-ref"&gt;Fritzing Tricks&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2017-09-24 in &lt;span class="xref std std-ref"&gt;project-27257&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;Let’s talk a little bit about schematics. I know that you rarely visit
 that tab, but if you want other people to actually make sense of your
-project, you have to document it. Like I did with my &lt;a class="reference internal" href="../../../projects/project-18120/#project-18120"&gt;&lt;span class="std std-ref"&gt;D1 Mini Matrix Shield&lt;/span&gt;&lt;/a&gt; :&lt;/p&gt;
+project, you have to document it. Like I did with my &lt;span class="xref std std-ref"&gt;project-18120&lt;/span&gt; :&lt;/p&gt;
 &lt;img alt="projects/project-27257/images/2448341506280430055.png" src="projects/project-27257/images/2448341506280430055.png" /&gt;
 &lt;p&gt;\&lt;/p&gt;
 &lt;p&gt;I really tried to make it readable. However, the LED matrix has such
@@ -155,7 +155,7 @@ find in your parts pane under schematic view:&lt;/p&gt;
 &lt;p&gt;The way you use it, you connect it in place of a wire, and at the
 other end you make another one, with the same name. Fritzing considers
 all the labels with the same network name on them connected. The
-resulting schematic is much easier to read, like the way I made for &lt;a class="reference internal" href="../../../projects/project-21578/#project-21578"&gt;&lt;span class="std std-ref"&gt;PewPew FeatherWing&lt;/span&gt;&lt;/a&gt; :&lt;/p&gt;
+resulting schematic is much easier to read, like the way I made for &lt;span class="xref std std-ref"&gt;project-21578&lt;/span&gt; :&lt;/p&gt;
 &lt;img alt="projects/project-27257/images/7132411506280998450.png" src="projects/project-27257/images/7132411506280998450.png" /&gt;
 &lt;p&gt;Of course, this is not a silver bullet. If you overdo it, and all your
 connections are just some random labels, your schematic will be even
@@ -173,7 +173,7 @@ it’s probably a good idea to use a label for it.\&lt;/p&gt;
     <updated>2018-07-01T00:00:00+02:00</updated>
     <content type="html">&lt;section id="custom-pcb-outline"&gt;
 
-&lt;p&gt;Published on 2018-07-01 in &lt;a class="reference internal" href="../../../projects/project-27257/#project-27257"&gt;&lt;span class="std std-ref"&gt;Fritzing Tricks&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2018-07-01 in &lt;span class="xref std std-ref"&gt;project-27257&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;One of the greatest advantages of Fritzing over other PCB software
 currently on the market is its ability to SVG files directly, without
 any need of converting or tracing them. Since it uses SVG internally
@@ -182,7 +182,7 @@ file. I’m going to tell you here how I go about making custom PCB
 outlines.&lt;/p&gt;
 &lt;p&gt;Usually I start by designing everything on a standard rectangular PCB,
 keeping in mind the rough shape that I am going to need. Here’s an
-improved design for the &lt;a class="reference internal" href="../../../projects/project-9769/#project-9769"&gt;&lt;span class="std std-ref"&gt;Mechatronic Ears&lt;/span&gt;&lt;/a&gt;  with a power switch added:&lt;/p&gt;
+improved design for the &lt;span class="xref std std-ref"&gt;project-9769&lt;/span&gt;  with a power switch added:&lt;/p&gt;
 &lt;img alt="projects/project-27257/images/4296261530465949010.png" src="projects/project-27257/images/4296261530465949010.png" /&gt;
 &lt;p&gt;Next, I export the design as an SVG image:&lt;/p&gt;
 &lt;img alt="projects/project-27257/images/1906711530466066806.png" src="projects/project-27257/images/1906711530466066806.png" /&gt;
@@ -242,7 +242,7 @@ where something went wrong, to make sure it’s correct.&lt;/p&gt;
     <updated>2018-07-02T00:00:00+02:00</updated>
     <content type="html">&lt;section id="tented-vias"&gt;
 
-&lt;p&gt;Published on 2018-07-02 in &lt;a class="reference internal" href="../../../projects/project-27257/#project-27257"&gt;&lt;span class="std std-ref"&gt;Fritzing Tricks&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2018-07-02 in &lt;span class="xref std std-ref"&gt;project-27257&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;This trick was originally described by &lt;a class="reference external" href="https://hackaday.io/hacker/72667"&gt;&amp;#64;Arduino Enigma &lt;/a&gt; in the &lt;span class="xref std std-ref"&gt;project-91895&lt;/span&gt; . Tented vias are vias that are covered with soldermask. If you think
 about it for a moment, there is really no reason for a via to be
 exposed (unless you re-use it as a test point). Its job is to connect

@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posts in project-58788</title>
-  <updated>2024-08-07T20:37:31.761958+00:00</updated>
+  <updated>2024-08-07T20:45:05.486192+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/category/project-58788/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -12,7 +12,7 @@
     <updated>2018-02-24T00:00:00+01:00</updated>
     <content type="html">&lt;section id="arduino-s-atmega16u2-firmware"&gt;
 
-&lt;p&gt;Published on 2018-02-24 in &lt;a class="reference internal" href="../../../projects/project-58788/#project-58788"&gt;&lt;span class="std std-ref"&gt;ESP8266 with True USB&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2018-02-24 in &lt;span class="xref std std-ref"&gt;project-58788&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;The first thing I want to make is a USB to serial converter, so why
 not look at something that does it already. The ATmega16u2 chip on
 Arduino UNO is programmed as just such a device. A quick search, &lt;a class="reference external" href="https://github.com/arduino/Arduino/blob/master/hardware/arduino/avr/firmwares/atmegaxxu2/arduino-usbserial/Arduino-usbserial.c"&gt;and we have the source code for its firmware&lt;/a&gt; . As I expected, it uses LUFA to do the USB work, and hardware serial
@@ -44,7 +44,7 @@ knows. More testing required.&lt;/p&gt;
     <updated>2018-02-26T00:00:00+01:00</updated>
     <content type="html">&lt;section id="lufa-demos"&gt;
 
-&lt;p&gt;Published on 2018-02-26 in &lt;a class="reference internal" href="../../../projects/project-58788/#project-58788"&gt;&lt;span class="std std-ref"&gt;ESP8266 with True USB&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2018-02-26 in &lt;span class="xref std std-ref"&gt;project-58788&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;Today I tried to actually compile the arduino firmware for the
 atmega16u2, however, without much success. It seems to be written for
 an unspecified version of LUFA different than the current release.
@@ -79,7 +79,7 @@ I hope I can steal that from the Arduino firmware code.&lt;/p&gt;
     <updated>2018-03-05T00:00:00+01:00</updated>
     <content type="html">&lt;section id="usbtoserial-with-lufa"&gt;
 
-&lt;p&gt;Published on 2018-03-05 in &lt;a class="reference internal" href="../../../projects/project-58788/#project-58788"&gt;&lt;span class="std std-ref"&gt;ESP8266 with True USB&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2018-03-05 in &lt;span class="xref std std-ref"&gt;project-58788&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;I didn’t have much time this week, since I was travelling (and got
 stuck in Dublin due to cancelled flights), but I did take a Pro Micro
 with me for experimenting, and after some poking around the LUFA
@@ -114,7 +114,7 @@ what the offset is for MicroPython (or even better, how to find it).&lt;/p&gt;
     <updated>2018-03-08T00:00:00+01:00</updated>
     <content type="html">&lt;section id="massstorage-demo-with-lufa"&gt;
 
-&lt;p&gt;Published on 2018-03-08 in &lt;a class="reference internal" href="../../../projects/project-58788/#project-58788"&gt;&lt;span class="std std-ref"&gt;ESP8266 with True USB&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2018-03-08 in &lt;span class="xref std std-ref"&gt;project-58788&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;Today I experimented a little bit with the mass storage demo. I
 created the Dataflash.h and flash command header files based on the
 modified demo from  &lt;a class="reference external" href="https://github.com/JayconSystems/EPaper-Mass-Storage-Demo-LUFA"&gt;https://github.com/JayconSystems/EPaper-Mass-Storage-Demo-LUFA&lt;/a&gt;  and I got it to compile. Then I changed the pins and the flash id to
@@ -137,7 +137,7 @@ I also didn’t try to use the USBtoSerial to actually flash the ESP8266
     <updated>2018-03-23T00:00:00+01:00</updated>
     <content type="html">&lt;section id="first-pcb"&gt;
 
-&lt;p&gt;Published on 2018-03-23 in &lt;a class="reference internal" href="../../../projects/project-58788/#project-58788"&gt;&lt;span class="std std-ref"&gt;ESP8266 with True USB&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2018-03-23 in &lt;span class="xref std std-ref"&gt;project-58788&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;I still didn’t get the flash to work correctly, but I had some
 sleepless night, so I sketched up a PCB for the first prototype. This
 is the top where the ESP-12F module goes:&lt;/p&gt;

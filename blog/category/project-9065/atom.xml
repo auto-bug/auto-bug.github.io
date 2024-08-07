@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posts in project-9065</title>
-  <updated>2024-08-07T20:37:31.961169+00:00</updated>
+  <updated>2024-08-07T20:45:05.742252+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/category/project-9065/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -12,7 +12,7 @@
     <updated>2016-01-27T00:00:00+01:00</updated>
     <content type="html">&lt;section id="first-walk"&gt;
 
-&lt;p&gt;Published on 2016-01-27 in &lt;a class="reference internal" href="../../../projects/project-9065/#project-9065"&gt;&lt;span class="std std-ref"&gt;Tote Zero&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2016-01-27 in &lt;span class="xref std std-ref"&gt;project-9065&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;So today I figured out which servo is on which leg, rebuilt the legs
 to make the coxas longer, trimmed all servos again, added pieces of
 rubber tube as feet, and replaced the battery with a larger one.&lt;/p&gt;
@@ -34,9 +34,9 @@ and behold, we have a walking robot!&lt;/p&gt;
     <updated>2016-02-07T00:00:00+01:00</updated>
     <content type="html">&lt;section id="camera"&gt;
 
-&lt;p&gt;Published on 2016-02-07 in &lt;a class="reference internal" href="../../../projects/project-9065/#project-9065"&gt;&lt;span class="std std-ref"&gt;Tote Zero&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2016-02-07 in &lt;span class="xref std std-ref"&gt;project-9065&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;Today I worked a little bit on adding a camera to Tote Zero. Most of
-this I have already done for &lt;a class="reference internal" href="../../../projects/project-3301/#project-3301"&gt;&lt;span class="std std-ref"&gt;Pico-Kubik quadruped robot&lt;/span&gt;&lt;/a&gt; , but I thought I will do a more detailed write-up. I started by
+this I have already done for &lt;span class="xref std std-ref"&gt;project-3301&lt;/span&gt; , but I thought I will do a more detailed write-up. I started by
 digging up from my junk pile an old camera module from a laptop. You
 can usually find those in electronic junk, or, failing that, buy them
 as spare parts for a dollar or two. Mine looked something like this:&lt;/p&gt;
@@ -111,7 +111,7 @@ actually do something fun.&lt;/p&gt;
     <updated>2016-02-07T00:00:00+01:00</updated>
     <content type="html">&lt;section id="face"&gt;
 
-&lt;p&gt;Published on 2016-02-07 in &lt;a class="reference internal" href="../../../projects/project-9065/#project-9065"&gt;&lt;span class="std std-ref"&gt;Tote Zero&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2016-02-07 in &lt;span class="xref std std-ref"&gt;project-9065&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;I also needed to figure out a way to attach the camera to the robot in
 a robust way. So I drilled some holes in the plastic that holds it,
 and screwed that to the Pi Zero:&lt;/p&gt;
@@ -133,7 +133,7 @@ port hub I had, and made an alternate cable:&lt;/p&gt;
     <updated>2016-02-11T00:00:00+01:00</updated>
     <content type="html">&lt;section id="everything-in-one"&gt;
 
-&lt;p&gt;Published on 2016-02-11 in &lt;a class="reference internal" href="../../../projects/project-9065/#project-9065"&gt;&lt;span class="std std-ref"&gt;Tote Zero&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2016-02-11 in &lt;span class="xref std std-ref"&gt;project-9065&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;o I haven’t done much work on this during the week, but I did do some
 thinking, and the results of that are pretty scary. First, I realized
 that using Servo Blaster and all those pins is not really that
@@ -147,7 +147,7 @@ sensor socket, and a voltage regulator module. I had to use both sides
 of the PCB with surface pads, and the RPi header doesn’t quite fit on
 the 5cm board, but that’s details.&lt;/p&gt;
 &lt;p&gt;How would you use this? There are three options. Only put a Pro Mini
-there, and you have the simple version of &lt;a class="reference internal" href="../../../projects/project-6050/#project-6050"&gt;&lt;span class="std std-ref"&gt;Tote&lt;/span&gt;&lt;/a&gt;  with remote control. Add a ESP8266 with the right firmware, talking
+there, and you have the simple version of &lt;span class="xref std std-ref"&gt;project-6050&lt;/span&gt;  with remote control. Add a ESP8266 with the right firmware, talking
 to the Pro Mini over I²C, and you have a Micropython or Lua-based
 robot with WiFi. Finally, add a voltage regulator and Pi Zero, and you
 have a perambulating computer, with WiFi over ESP8266 and possibly a
@@ -167,8 +167,8 @@ all over Hackaday. It does, however, sound like the right way forward.&lt;/p&gt;
     <updated>2016-11-06T00:00:00+01:00</updated>
     <content type="html">&lt;section id="robot-fusion"&gt;
 
-&lt;p&gt;Published on 2016-11-06 in &lt;a class="reference internal" href="../../../projects/project-9065/#project-9065"&gt;&lt;span class="std std-ref"&gt;Tote Zero&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;So I never actually made that board from the last log. But remember &lt;a class="reference internal" href="../../../projects/project-9927/#project-9927"&gt;&lt;span class="std std-ref"&gt;Tote HaD&lt;/span&gt;&lt;/a&gt; , those robots that we have built at Hackaday Belgrade? I have spent a
+&lt;p&gt;Published on 2016-11-06 in &lt;span class="xref std std-ref"&gt;project-9065&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;So I never actually made that board from the last log. But remember &lt;span class="xref std std-ref"&gt;project-9927&lt;/span&gt; , those robots that we have built at Hackaday Belgrade? I have spent a
 considerable amount of time designing that PCB, and it has a couple of
 Easter eggs in there. On of them is that unpopulated pin header in the
 lower right corner:&lt;/p&gt;

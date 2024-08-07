@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posted in 2023</title>
-  <updated>2024-08-07T20:37:32.071054+00:00</updated>
+  <updated>2024-08-07T20:45:05.868265+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/2023/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -12,7 +12,7 @@
     <updated>2023-12-12T00:00:00+01:00</updated>
     <content type="html">&lt;section id="mm-and-1-25mm-versions"&gt;
 
-&lt;p&gt;Published on 2023-12-12 in &lt;a class="reference internal" href="../../projects/project-188909/#project-188909"&gt;&lt;span class="std std-ref"&gt;Wee Bug&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2023-12-12 in &lt;span class="xref std std-ref"&gt;project-188909&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;The 2g servos I’m using for weebug come in three different connectors:
 the traditional 2.54mm pitch servo plug, a 1.25mm pitch jst plug, and
 a 1mm pitch plug. I think the traditional plug is way too big for this
@@ -51,7 +51,7 @@ Together with using reasonable quality of batteries, that should help.&lt;/p&gt;
     <updated>2023-12-12T00:00:00+01:00</updated>
     <content type="html">&lt;section id="sound-volume-reduced"&gt;
 
-&lt;p&gt;Published on 2023-12-12 in &lt;a class="reference internal" href="../../projects/project-186921/#project-186921"&gt;&lt;span class="std std-ref"&gt;µGame 22&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2023-12-12 in &lt;span class="xref std std-ref"&gt;project-186921&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;I have been quiet the past few months about this project, because I
 was still struggling with power problems. Adding the boost converter
 was a great idea, and it works very well, but if you make the speaker
@@ -86,7 +86,7 @@ producing and selling them.&lt;/p&gt;
     <updated>2023-12-12T00:00:00+01:00</updated>
     <content type="html">&lt;section id="working-on-version-3"&gt;
 
-&lt;p&gt;Published on 2023-12-12 in &lt;a class="reference internal" href="../../projects/project-175712/#project-175712"&gt;&lt;span class="std std-ref"&gt;Kamina Keyboard&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2023-12-12 in &lt;span class="xref std std-ref"&gt;project-175712&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;We had recently a keyboard enthusiasts meetup in my city, and a
 surprising number of people were interested in the Kamina v2 keyboard
 – it seems to be a good stepping stone between a traditional keyboard
@@ -102,7 +102,7 @@ switches hot-swappable, it could be a very good intro into the world
 of ergonomic keyboards.&lt;/p&gt;
 &lt;p&gt;But how to make it easier to assemble? Simple, just use the raspberry
 pi pico microcontroller board for the brains, similar to how I did it
-for the &lt;a class="reference internal" href="../../projects/project-10408/#project-10408"&gt;&lt;span class="std std-ref"&gt;Steno Keyboard&lt;/span&gt;&lt;/a&gt; project. It’s cheap, and there are easily enough pins. You can even
+for the &lt;span class="xref std std-ref"&gt;project-10408&lt;/span&gt; project. It’s cheap, and there are easily enough pins. You can even
 get clones with additional features, like a USB-C connector or a small
 display! The rest is just soldering the hot-swap sockets, and all the
 diodes. Shouldn’t be too hard.&lt;/p&gt;
@@ -138,7 +138,7 @@ for those of us with exceptionally dexterous thumbs.&lt;/p&gt;
     <updated>2023-12-15T00:00:00+01:00</updated>
     <content type="html">&lt;section id="wee-display"&gt;
 
-&lt;p&gt;Published on 2023-12-15 in &lt;a class="reference internal" href="../../projects/project-188909/#project-188909"&gt;&lt;span class="std std-ref"&gt;Wee Bug&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2023-12-15 in &lt;span class="xref std std-ref"&gt;project-188909&lt;/span&gt;.&lt;/p&gt;
 &lt;img alt="projects/project-188909/images/47221702660969258.gif" src="projects/project-188909/images/47221702660969258.gif" /&gt;
 &lt;p&gt;A while ago I made a &lt;a class="reference external" href="https://hackaday.io/project/188909-wee-bug/log/224310-a-display"&gt;display shield&lt;/a&gt;  (mask?) for the Wee Bug, but because it needs additional pins to talk
 to the microcontroller, it only works with the Waveshare Mini boards,
@@ -212,7 +212,7 @@ eye working on the robot now.&lt;/p&gt;
     <updated>2023-12-22T00:00:00+01:00</updated>
     <content type="html">&lt;section id="kamina-3-1"&gt;
 
-&lt;p&gt;Published on 2023-12-22 in &lt;a class="reference internal" href="../../projects/project-175712/#project-175712"&gt;&lt;span class="std std-ref"&gt;Kamina Keyboard&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2023-12-22 in &lt;span class="xref std std-ref"&gt;project-175712&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;As mentioned in the previous log, I decided to do one more version of
 this keyboard. The main change is that in place of a SAMD21 bare
 microcontroller, I’m now using a Raspberry Pi Pico or compatible

@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posted in 2017</title>
-  <updated>2024-08-07T20:37:32.180527+00:00</updated>
+  <updated>2024-08-07T20:45:05.996691+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/2017/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -12,7 +12,7 @@
     <updated>2017-12-21T00:00:00+01:00</updated>
     <content type="html">&lt;section id="fixed-second-version"&gt;
 
-&lt;p&gt;Published on 2017-12-21 in &lt;a class="reference internal" href="../../projects/project-27579/#project-27579"&gt;&lt;span class="std std-ref"&gt;Blinka&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2017-12-21 in &lt;span class="xref std std-ref"&gt;project-27579&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;I also fixed the short on the second version of the board, and
 uploaded the design to OSHPark here:  &lt;a class="reference external" href="https://oshpark.com/shared_projects/xMggaR8L"&gt;https://oshpark.com/shared_projects/xMggaR8L&lt;/a&gt;&lt;/p&gt;
 &lt;/section&gt;
@@ -27,7 +27,7 @@ uploaded the design to OSHPark here:  &lt;a class="reference external" href="ht
     <updated>2017-12-22T00:00:00+01:00</updated>
     <content type="html">&lt;section id="third-version"&gt;
 
-&lt;p&gt;Published on 2017-12-22 in &lt;a class="reference internal" href="../../projects/project-27579/#project-27579"&gt;&lt;span class="std std-ref"&gt;Blinka&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2017-12-22 in &lt;span class="xref std std-ref"&gt;project-27579&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;I finally got my hands on a vector version of the Blinka logo, and I
 immediately started working on the third version of the board. Of
 course the file was a horrible mess of spurious nodes, but after a
@@ -54,7 +54,7 @@ see.&lt;/p&gt;
     <updated>2017-12-26T00:00:00+01:00</updated>
     <content type="html">&lt;section id="testing-at-the-fab"&gt;
 
-&lt;p&gt;Published on 2017-12-26 in &lt;a class="reference internal" href="../../projects/project-27629/#project-27629"&gt;&lt;span class="std std-ref"&gt;µGame&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2017-12-26 in &lt;span class="xref std std-ref"&gt;project-27629&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;Apparently some fab houses can do firmware programming and testing of
 the devices right in the factory — you just have to provide detailed
 step-by-step instructions on how to do it. So I started work on the
@@ -85,8 +85,8 @@ because I also want this and the flash chip tested.&lt;/p&gt;
     <updated>2017-12-28T00:00:00+01:00</updated>
     <content type="html">&lt;section id="ngame-is-game-only-smaller"&gt;
 
-&lt;p&gt;Published on 2017-12-28 in &lt;a class="reference internal" href="../../projects/project-27629/#project-27629"&gt;&lt;span class="std std-ref"&gt;µGame&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;While I was designing the &lt;a class="reference internal" href="../../projects/project-19371/#project-19371"&gt;&lt;span class="std std-ref"&gt;D1 Mini X-Pad Shield&lt;/span&gt;&lt;/a&gt; , the &lt;a class="reference internal" href="../../projects/project-21578/#project-21578"&gt;&lt;span class="std std-ref"&gt;PewPew FeatherWing&lt;/span&gt;&lt;/a&gt; and most recently µGame, I struggled with the same problem: how to fit
+&lt;p&gt;Published on 2017-12-28 in &lt;span class="xref std std-ref"&gt;project-27629&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;While I was designing the &lt;span class="xref std std-ref"&gt;project-19371&lt;/span&gt; , the &lt;span class="xref std std-ref"&gt;project-21578&lt;/span&gt; and most recently µGame, I struggled with the same problem: how to fit
 the direction pads and fire buttons on as small PCB area as possible,
 while still keeping them usable. I think I have tested pretty much any
 type of SMD buttons on offer from China, tried different layouts and
@@ -96,7 +96,7 @@ courage to really push the limits. Until now, that is.&lt;/p&gt;
 &lt;img alt="projects/project-27629/images/388361514475842212.jpg" src="projects/project-27629/images/388361514475842212.jpg" /&gt;
 &lt;p&gt;This is what happens to µGame when you leave it in your pants pocket
 in the dryer and let it shrink. It uses the same ST7725S display that
-I used in &lt;a class="reference internal" href="../../projects/project-27033/#project-27033"&gt;&lt;span class="std std-ref"&gt;Trinket M0 TFT&lt;/span&gt;&lt;/a&gt; — even the driver fits, you just have to adjust the screen size in it.
+I used in &lt;span class="xref std std-ref"&gt;project-27033&lt;/span&gt; — even the driver fits, you just have to adjust the screen size in it.
 It uses the smallest 2-pad buttons I could find — they use 1206
 resistor footprints. The SAMD21 microcontroller has no additional
 flash storage this time, so we are very constrained in what fits there
@@ -135,7 +135,7 @@ coin cell.&lt;/p&gt;
     <updated>2017-12-29T00:00:00+01:00</updated>
     <content type="html">&lt;section id="final-prototype"&gt;
 
-&lt;p&gt;Published on 2017-12-29 in &lt;a class="reference internal" href="../../projects/project-27629/#project-27629"&gt;&lt;span class="std std-ref"&gt;µGame&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2017-12-29 in &lt;span class="xref std std-ref"&gt;project-27629&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;The version 8 PCBs arrived from Aisler, together with the stencil, and
 it looks great this time!&lt;/p&gt;
 &lt;img alt="projects/project-27629/images/1334281514587551825.jpg" src="projects/project-27629/images/1334281514587551825.jpg" /&gt;

@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posts in project-27629</title>
-  <updated>2024-08-07T20:37:31.593335+00:00</updated>
+  <updated>2024-08-07T20:45:05.251583+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/category/project-27629/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -12,13 +12,13 @@
     <updated>2019-04-12T00:00:00+02:00</updated>
     <content type="html">&lt;section id="circuitpython-4-0-and-display-support"&gt;
 
-&lt;p&gt;Published on 2019-04-12 in &lt;a class="reference internal" href="../../../projects/project-27629/#project-27629"&gt;&lt;span class="std std-ref"&gt;µGame&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2019-04-12 in &lt;span class="xref std std-ref"&gt;project-27629&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;The upcoming CircuitPython 4.0 introduces, among other things, built-
 in support for displays. That means that when there is an error in
 your code, you will be able to see it right there on the screen,
 without having to connect to some gnarly serial ports. For now the
 built-in display code is slow — fast enough for displaying text, but
-not for games. So I went and modified my &lt;a class="reference internal" href="../../../projects/project-80626/#project-80626"&gt;&lt;span class="std std-ref"&gt;Stage, a Tile and Sprite Engine&lt;/span&gt;&lt;/a&gt;  library to coexist with the displayio support, to get the best of
+not for games. So I went and modified my &lt;span class="xref std std-ref"&gt;project-80626&lt;/span&gt;  library to coexist with the displayio support, to get the best of
 both world — console using displayio, and fast updates using stage.&lt;/p&gt;
 &lt;img alt="projects/project-27629/images/5830841555024172770.jpg" src="projects/project-27629/images/5830841555024172770.jpg" /&gt;
 &lt;p&gt;There are still some tweaks left to do, perhaps use of a smaller font,
@@ -38,7 +38,7 @@ considerably.&lt;/p&gt;
     <updated>2019-04-19T00:00:00+02:00</updated>
     <content type="html">&lt;section id="underwhelming-dma"&gt;
 
-&lt;p&gt;Published on 2019-04-19 in &lt;a class="reference internal" href="../../../projects/project-27629/#project-27629"&gt;&lt;span class="std std-ref"&gt;µGame&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2019-04-19 in &lt;span class="xref std std-ref"&gt;project-27629&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;I finally worked on an improvement that I long wanted to do to the
 _stage library, which is at the heart of µGame: make the communication
 with the display asynchronous by using DMA. This way I can have two
@@ -75,7 +75,7 @@ is negligible compared to the time spent computing it.&lt;/p&gt;
     <updated>2019-05-20T00:00:00+02:00</updated>
     <content type="html">&lt;section id="circuitpython-4-0-0-released-please-wait-for-4-0-1"&gt;
 
-&lt;p&gt;Published on 2019-05-20 in &lt;a class="reference internal" href="../../../projects/project-27629/#project-27629"&gt;&lt;span class="std std-ref"&gt;µGame&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2019-05-20 in &lt;span class="xref std std-ref"&gt;project-27629&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;The CircuitPython 4.0.0 has just been released, and it does include
 support for µGame. However, due to last-minute breaking changes in
 RC4, and my travelling that made it impossible to fix it over the
@@ -96,7 +96,7 @@ or so, which will have it all fixed.&lt;/p&gt;
     <updated>2019-06-06T00:00:00+02:00</updated>
     <content type="html">&lt;section id="the-last-game"&gt;
 
-&lt;p&gt;Published on 2019-06-06 in &lt;a class="reference internal" href="../../../projects/project-27629/#project-27629"&gt;&lt;span class="std std-ref"&gt;µGame&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2019-06-06 in &lt;span class="xref std std-ref"&gt;project-27629&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;Yesterday I received the order for the last µGame on Tindie. That
 makes it 111 units sold on Tindie (and maybe a dozen more sold
 elsewhere). Since I don’t plan on making any more of them, that was
@@ -122,7 +122,7 @@ will still grow a community of users for it.&lt;/p&gt;
     <updated>2019-06-21T00:00:00+02:00</updated>
     <content type="html">&lt;section id="suddenly-a-speedup"&gt;
 
-&lt;p&gt;Published on 2019-06-21 in &lt;a class="reference internal" href="../../../projects/project-27629/#project-27629"&gt;&lt;span class="std std-ref"&gt;µGame&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2019-06-21 in &lt;span class="xref std std-ref"&gt;project-27629&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;The SAMD21 powering the µGame consoles is not a daemon of speed. With
 48MHz clock and software floating point operations, not to mention the
 overhead from CircuitPython interpreter, it’s barely enough for a

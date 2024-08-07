@@ -49,25 +49,25 @@
 <div role="main">
   <section id="configuration">
 <h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">¶</a></h1>
-<p>Published on 2021-05-26 in <a class="reference internal" href="../#project-180025"><span class="std std-ref">Fluffbug</span></a>.</p>
-<p>While the <a class="reference internal" href="../../project-6050/#project-6050"><span class="std std-ref">Tote</span></a> robot was close to what I wanted to achieve back then, it had two
+<p>Published on 2021-05-26 in <span class="xref std std-ref">project-180025</span>.</p>
+<p>While the <span class="xref std std-ref">project-6050</span> robot was close to what I wanted to achieve back then, it had two
 major problems. First, the servos, even though relatively cheap
 individually, contribute to the total cost of the project
 considerably, because you need at least a dozen of them. Second,
 Arduino, while popular, is not the best coding environment for
 experimenting.</p>
 <p>I have long worked on making a version of Tote that could be
-programmed with Python — starting with <a class="reference internal" href="../../project-9927/#project-9927"><span class="std std-ref">Tote HaD</span></a> , that had an additional ESP8266 on board, through <a class="reference internal" href="../../project-9065/#project-9065"><span class="std std-ref">Tote Zero</span></a> that had a whole single-board computer, to the most recent <a class="reference internal" href="../../project-158981/#project-158981"><span class="std std-ref">Kubik M0</span></a> , running CircuitPython. Unfortunately, with the last I ran into a
+programmed with Python — starting with <span class="xref std std-ref">project-9927</span> , that had an additional ESP8266 on board, through <span class="xref std std-ref">project-9065</span> that had a whole single-board computer, to the most recent <span class="xref std std-ref">project-158981</span> , running CircuitPython. Unfortunately, with the last I ran into a
 problem with not enough PWM outputs available on the chip I choose.</p>
 <p>I have also experimented with robots that require fewer servos, but
 can still walk properly, without relying on the surface of the floor
-having the right friction. It started with <a class="reference internal" href="../../project-6321/#project-6321"><span class="std std-ref">Katka, a mammalian robot</span></a> ,  <span class="xref std std-ref">project-8521</span>  and <a class="reference internal" href="../../project-10665/#project-10665"><span class="std std-ref">Pony Bot</span></a> , and more recently some experiments with the <a class="reference internal" href="../../project-158981/#project-158981"><span class="std std-ref">Kubik M0</span></a> . Turns out that it is possible to make a robot with only eight servos
+having the right friction. It started with <span class="xref std std-ref">project-6321</span> ,  <span class="xref std std-ref">project-8521</span>  and <span class="xref std std-ref">project-10665</span> , and more recently some experiments with the <span class="xref std std-ref">project-158981</span> . Turns out that it is possible to make a robot with only eight servos
 that still has an insect-like configuration of the legs. It can walk
 properly, keeping its feet firm on the ground, as long as it doesn’t
 have to turn — because it can’t move its legs sideways. But even for
 turning is not impossible, with some cheating.</p>
 <p>So this is how I came up with Fluffbug — a bug-like robot with
-Feather-compatible (or <a class="reference internal" href="../../project-171381/#project-171381"><span class="std std-ref">Fluff M0</span></a> -compatible) shields. The tiny SAMD21 microcontroller has just enough
+Feather-compatible (or <span class="xref std std-ref">project-171381</span> -compatible) shields. The tiny SAMD21 microcontroller has just enough
 PWM outputs to control the eight servos, and the small PCB works
 nicely as the body of the robot, with enough room for a 16340 battery,
 and s FeatherWing on the front.</p>

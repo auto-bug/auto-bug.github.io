@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posts in project-180309</title>
-  <updated>2024-08-07T20:37:30.893941+00:00</updated>
+  <updated>2024-08-07T20:45:04.492582+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/category/project-180309/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -12,10 +12,10 @@
     <updated>2021-06-12T00:00:00+02:00</updated>
     <content type="html">&lt;section id="adding-the-board-to-circuitpython"&gt;
 
-&lt;p&gt;Published on 2021-06-12 in &lt;a class="reference internal" href="../../../projects/project-180309/#project-180309"&gt;&lt;span class="std std-ref"&gt;PewPew OLED&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2021-06-12 in &lt;span class="xref std std-ref"&gt;project-180309&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;Last time I went all the way up to flashing an UF2 bootloader on the
 SAMD21 chip, now we need to get CircuitPython running on it. Normally
-I would just use the firmware for &lt;a class="reference internal" href="../../../projects/project-171381/#project-171381"&gt;&lt;span class="std std-ref"&gt;Fluff M0&lt;/span&gt;&lt;/a&gt; — it has all the pins available, so it’s very convenient for such
+I would just use the firmware for &lt;span class="xref std std-ref"&gt;project-171381&lt;/span&gt; — it has all the pins available, so it’s very convenient for such
 things, but this time we are going to need the displayio module
 compiled into the firmware, and later we will also add the display
 initialization, so that the display just works as soon as the device
@@ -159,7 +159,7 @@ a working device:&lt;/p&gt;
     <updated>2021-06-12T00:00:00+02:00</updated>
     <content type="html">&lt;section id="first-prototype-failure"&gt;
 
-&lt;p&gt;Published on 2021-06-12 in &lt;a class="reference internal" href="../../../projects/project-180309/#project-180309"&gt;&lt;span class="std std-ref"&gt;PewPew OLED&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2021-06-12 in &lt;span class="xref std std-ref"&gt;project-180309&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;The boards finally arrived, and I got a chance to test the battery
 holder:&lt;/p&gt;
 &lt;img alt="projects/project-180309/images/6562041623448733527.jpg" src="projects/project-180309/images/6562041623448733527.jpg" /&gt;
@@ -184,7 +184,7 @@ definition for CircuitPython and get display to work on it.&lt;/p&gt;
     <updated>2021-06-15T00:00:00+02:00</updated>
     <content type="html">&lt;section id="the-pew-library"&gt;
 
-&lt;p&gt;Published on 2021-06-15 in &lt;a class="reference internal" href="../../../projects/project-180309/#project-180309"&gt;&lt;span class="std std-ref"&gt;PewPew OLED&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2021-06-15 in &lt;span class="xref std std-ref"&gt;project-180309&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;At the heart of every PewPew device is the pew Python library, which
 gives you access to the 8x8 screen and buttons. That library is
 different on different devices, but gives your code a consistent
@@ -232,7 +232,7 @@ in chunks of 10 bytes. Simple yet effective.&lt;/p&gt;
     <updated>2021-06-23T00:00:00+02:00</updated>
     <content type="html">&lt;section id="version-2"&gt;
 
-&lt;p&gt;Published on 2021-06-23 in &lt;a class="reference internal" href="../../../projects/project-180309/#project-180309"&gt;&lt;span class="std std-ref"&gt;PewPew OLED&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2021-06-23 in &lt;span class="xref std std-ref"&gt;project-180309&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;Second attempt, with longer battery tabs — so they will hopefully have
 enough flex in them to hold the battery without breaking. I also had
 to re-route some traces, as there wasn’t enough room around the holes
@@ -253,7 +253,7 @@ apparent on the front.&lt;/p&gt;
     <updated>2021-07-08T00:00:00+02:00</updated>
     <content type="html">&lt;section id="great-success"&gt;
 
-&lt;p&gt;Published on 2021-07-08 in &lt;a class="reference internal" href="../../../projects/project-180309/#project-180309"&gt;&lt;span class="std std-ref"&gt;PewPew OLED&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2021-07-08 in &lt;span class="xref std std-ref"&gt;project-180309&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;Version two has the battery holder tabs longer, and they work just
 right without breaking!&lt;/p&gt;
 &lt;img alt="projects/project-180309/images/5986901625776545457.jpg" src="projects/project-180309/images/5986901625776545457.jpg" /&gt;

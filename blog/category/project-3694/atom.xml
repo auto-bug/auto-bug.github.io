@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posts in project-3694</title>
-  <updated>2024-08-07T20:37:31.712994+00:00</updated>
+  <updated>2024-08-07T20:45:05.429347+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/category/project-3694/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -12,7 +12,7 @@
     <updated>2014-12-27T00:00:00+01:00</updated>
     <content type="html">&lt;section id="ready-to-program"&gt;
 
-&lt;p&gt;Published on 2014-12-27 in &lt;a class="reference internal" href="../../../projects/project-3694/#project-3694"&gt;&lt;span class="std std-ref"&gt;Henk the Hexapod&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2014-12-27 in &lt;span class="xref std std-ref"&gt;project-3694&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;This robot took me two days to build from scratch, but I’m pretty
 happy with it already. I think it’s pretty much finished mechanically
 (only missing some rubber endings on the legs). Software-wise, I have
@@ -33,7 +33,7 @@ they are at various angles to the body, and then make it walk.&lt;/p&gt;
     <updated>2014-12-29T00:00:00+01:00</updated>
     <content type="html">&lt;section id="moving-a-leg-and-making-sounds"&gt;
 
-&lt;p&gt;Published on 2014-12-29 in &lt;a class="reference internal" href="../../../projects/project-3694/#project-3694"&gt;&lt;span class="std std-ref"&gt;Henk the Hexapod&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2014-12-29 in &lt;span class="xref std std-ref"&gt;project-3694&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;The software for the basic inverse kinematics is going slowly, mostly
 because I’m reorganizing the code that I already used in all the other
 robots, with a goal of making a library of it. In the meantime, I had
@@ -52,7 +52,7 @@ a little distraction: I added the buzzer to a DAC pin of the &lt;a class="refere
     <updated>2016-02-13T00:00:00+01:00</updated>
     <content type="html">&lt;section id="brain-surgery"&gt;
 
-&lt;p&gt;Published on 2016-02-13 in &lt;a class="reference internal" href="../../../projects/project-3694/#project-3694"&gt;&lt;span class="std std-ref"&gt;Henk the Hexapod&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2016-02-13 in &lt;span class="xref std std-ref"&gt;project-3694&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;This robot waited on the shelf for a long time (enough for its LiPo
 battery to go bad), so when I got the &lt;span class="xref std std-ref"&gt;project-1313&lt;/span&gt;  board, I decided to install it here. I’m also replacing the Pololu
 servo controller I used in there with a much simplier &lt;span class="xref std std-ref"&gt;project-9131&lt;/span&gt;  that I built out of a Pro Mini board. Other parts will probably
@@ -92,7 +92,7 @@ and battery inside. I will keep you updated.&lt;/p&gt;
     <updated>2016-02-14T00:00:00+01:00</updated>
     <content type="html">&lt;section id="up-side-down"&gt;
 
-&lt;p&gt;Published on 2016-02-14 in &lt;a class="reference internal" href="../../../projects/project-3694/#project-3694"&gt;&lt;span class="std std-ref"&gt;Henk the Hexapod&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2016-02-14 in &lt;span class="xref std std-ref"&gt;project-3694&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;Today I worked a little bit more with the robot. It’s actually quite
 convenient to have it sit on a box (so that the legs are in the air)
 next to my computer, connected over the USB cable.&lt;/p&gt;
@@ -168,7 +168,7 @@ with the Servo class:&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;Now I can move each of the joints of the robot individually. Next up,
-leg (practically the same as in &lt;a class="reference internal" href="../../../projects/project-6050/#project-6050"&gt;&lt;span class="std std-ref"&gt;Tote&lt;/span&gt;&lt;/a&gt; ) and then body (the hard part) inverse kinematics.&lt;/p&gt;
+leg (practically the same as in &lt;span class="xref std std-ref"&gt;project-6050&lt;/span&gt; ) and then body (the hard part) inverse kinematics.&lt;/p&gt;
 &lt;/section&gt;
 </content>
     <link href="http://deshipu.art/projects/project-3694/log-31885/" rel="alternate"/>
@@ -181,7 +181,7 @@ leg (practically the same as in &lt;a class="reference internal" href="../../../
     <updated>2016-03-25T00:00:00+01:00</updated>
     <content type="html">&lt;section id="henk-mkii"&gt;
 
-&lt;p&gt;Published on 2016-03-25 in &lt;a class="reference internal" href="../../../projects/project-3694/#project-3694"&gt;&lt;span class="std std-ref"&gt;Henk the Hexapod&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2016-03-25 in &lt;span class="xref std std-ref"&gt;project-3694&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;After the rebuild, I decided to start a new project profile, &lt;span class="xref std std-ref"&gt;project-10534&lt;/span&gt; . It’s also so that I can enter this project in the Hackaday Prize
 2016. Since I’m basically starting from scratch here, it makes sense
 to start a new project. The old logs here, while still may be

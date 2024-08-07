@@ -2,17 +2,66 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posted in 2020</title>
-  <updated>2024-08-07T20:37:32.123721+00:00</updated>
+  <updated>2024-08-07T20:45:05.926723+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/2020/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <entry>
+    <id>http://deshipu.art/projects/project-175043/log-186772/</id>
+    <title>Can we go Flatter?</title>
+    <updated>2020-12-06T00:00:00+01:00</updated>
+    <content type="html">&lt;section id="can-we-go-flatter"&gt;
+
+&lt;p&gt;Published on 2020-12-06 in &lt;span class="xref std std-ref"&gt;project-175043&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;The Kailh scoissors and keycaps arrived, and I mostly assembled this
+small keyboard, which I tentatively dubbed Edward:&lt;/p&gt;
+&lt;img alt="projects/project-175043/images/2158551607279764858.jpg" src="projects/project-175043/images/2158551607279764858.jpg" /&gt;
+&lt;p&gt;(I’m still missing a few switches in there, they will arrive in a
+separate package.)&lt;/p&gt;
+&lt;p&gt;So how are the switches? Honestly, not great. On the positive side,
+they are really low. Like, this is Edward against Kamina, which is my
+everyday low-profile keyboard now:&lt;/p&gt;
+&lt;img alt="projects/project-175043/images/8638211607279893431.jpg" src="projects/project-175043/images/8638211607279893431.jpg" /&gt;
+&lt;p&gt;The key travel is 2mm, compared to the 3mm of the choc switches, and
+because of the way the spring is attached in there, you are bottoming
+out every single time. The keys are supposed to be clicky, but they
+are only sometimes — because of the way the click bar is constructed,
+and huge play between the “stem” and the switch case, this is
+completely random. For the same reason the contact is not very
+reliable, and some of the switches are basically stuck in the always
+open or always closed position. It seems like they have pretty bad QE
+problems with them.&lt;/p&gt;
+&lt;p&gt;While I soldered and re-soldered parts to make sure the problems are
+indeed with the switches and not with my soldering, I accidentally got
+one of the switches too close to the hot air gun:&lt;/p&gt;
+&lt;img alt="projects/project-175043/images/3236411607280607993.jpg" src="projects/project-175043/images/3236411607280607993.jpg" /&gt;
+&lt;p&gt;That fused the transparent “scissors” together, making the switch
+unusable, so I decided to disassemble it, to see what makes it…
+click.&lt;/p&gt;
+&lt;p&gt;Aside from and interesting rocker mechanism for the spring, the
+scissors and the “stem”, there are two separate mechanisms inside for
+the click bar and the contacts:&lt;/p&gt;
+&lt;img alt="projects/project-175043/images/7356481607280718276.jpg" src="projects/project-175043/images/7356481607280718276.jpg" /&gt;
+&lt;p&gt;As you can see, the blue stem has quite a lot of leeway on the sides,
+so it’s possible for it to not touch the click bar or the contacts at
+all, in extreme cases — that is what makes the switch so unreliable.
+Apart from better tolerances I can’t think about any workaround to
+make it better.&lt;/p&gt;
+&lt;p&gt;In conclusion, the Edward keyboard is very cute and small, super-thin,
+but too unreliable to be practical.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-175043/log-186772/" rel="alternate"/>
+    <summary>Published on 2020-12-06 in project-175043.</summary>
+    <published>2020-12-06T00:00:00+01:00</published>
+  </entry>
   <entry>
     <id>http://deshipu.art/projects/project-80626/log-187157/</id>
     <title>Tinypico Play Shield</title>
     <updated>2020-12-18T00:00:00+01:00</updated>
     <content type="html">&lt;section id="tinypico-play-shield"&gt;
 
-&lt;p&gt;Published on 2020-12-18 in &lt;a class="reference internal" href="../../projects/project-80626/#project-80626"&gt;&lt;span class="std std-ref"&gt;Stage, a Tile and Sprite Engine&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2020-12-18 in &lt;span class="xref std std-ref"&gt;project-80626&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;After watching Unexpected Maker’s stream on which he builds his Play
 Shield for Tinypico, I decided to try and see if the Stage library
 would run on it.&lt;/p&gt;
@@ -143,7 +192,7 @@ stage/tree/master/tinypicost7789&lt;/a&gt;&lt;/p&gt;
     <updated>2020-12-19T00:00:00+01:00</updated>
     <content type="html">&lt;section id="maybe-sx1509"&gt;
 
-&lt;p&gt;Published on 2020-12-19 in &lt;a class="reference internal" href="../../projects/project-13278/#project-13278"&gt;&lt;span class="std std-ref"&gt;Servo Breakout for WeMos D1 Mini&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2020-12-19 in &lt;span class="xref std std-ref"&gt;project-13278&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;It’s been a long while since I made this shield, and the PCA9685 chip
 that it uses has been in service for driving servos even longer.
 Meanwhile, I have been on a lookout for a more modern and smaller chip
@@ -185,46 +234,12 @@ keyboard matrix and blinking LEDs.&lt;/p&gt;
     <published>2020-12-19T00:00:00+01:00</published>
   </entry>
   <entry>
-    <id>http://deshipu.art/projects/project-176476/</id>
-    <title>Electronic 6-hole Ocarina</title>
-    <updated>2020-12-22T00:00:00+01:00</updated>
-    <content type="html">&lt;section id="electronic-6-hole-ocarina"&gt;
-
-&lt;p&gt;Play without annoying the neighbors&lt;/p&gt;
-&lt;div class="project-thumb"&gt;
-&lt;a class="reference external image-reference" href="/_images/3442941608673790921.jpg"&gt;&lt;img alt="projects/project-176476/images/3442941608673790921.jpg" src="projects/project-176476/images/3442941608673790921.jpg" /&gt;&lt;/a&gt;
-&lt;a class="reference external image-reference" href="/_images/1126911608748444959.png"&gt;&lt;img alt="projects/project-176476/images/1126911608748444959.png" src="projects/project-176476/images/1126911608748444959.png" /&gt;&lt;/a&gt;
-&lt;a class="reference external image-reference" href="/_images/6694221609860753175.jpg"&gt;&lt;img alt="projects/project-176476/images/6694221609860753175.jpg" src="projects/project-176476/images/6694221609860753175.jpg" /&gt;&lt;/a&gt;
-&lt;a class="reference external image-reference" href="/_images/8390531666560296220.jpg"&gt;&lt;img alt="projects/project-176476/images/8390531666560296220.jpg" src="projects/project-176476/images/8390531666560296220.jpg" /&gt;&lt;/a&gt;
-&lt;/div&gt;
-&lt;section id="logs"&gt;
-&lt;h2&gt;Logs&lt;/h2&gt;
-&lt;ul class="postlist-style-none postlist simple"&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2022-10-23 - &lt;a class="reference internal" href="../../projects/project-176476/log-212820/"&gt;Boldly Going Forward&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2022-01-15 - &lt;a class="reference internal" href="../../projects/project-176476/log-202356/"&gt;Microphone Test&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2021-12-30 - &lt;a class="reference internal" href="../../projects/project-176476/log-201829/"&gt;Designing Second Prototype&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2021-01-05 - &lt;a class="reference internal" href="../../projects/project-176476/log-187832/"&gt;First Prototype Problems&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2020-12-23 - &lt;a class="reference internal" href="../../projects/project-176476/log-187321/"&gt;PCBs&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2020-12-22 - &lt;a class="reference internal" href="../../projects/project-176476/log-187286/"&gt;What? Why? How?&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/section&gt;
-&lt;section id="instructions"&gt;
-&lt;h2&gt;Instructions&lt;/h2&gt;
-&lt;/section&gt;
-&lt;/section&gt;
-</content>
-    <link href="http://deshipu.art/projects/project-176476/" rel="alternate"/>
-    <summary>Play without annoying the neighbors</summary>
-    <category term="ongoingproject" label="ongoing project"/>
-    <published>2020-12-22T00:00:00+01:00</published>
-  </entry>
-  <entry>
     <id>http://deshipu.art/projects/project-176476/log-187286/</id>
     <title>What? Why? How?</title>
     <updated>2020-12-22T00:00:00+01:00</updated>
     <content type="html">&lt;section id="what-why-how"&gt;
 
-&lt;p&gt;Published on 2020-12-22 in &lt;a class="reference internal" href="../../projects/project-176476/#project-176476"&gt;&lt;span class="std std-ref"&gt;Electronic 6-hole Ocarina&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2020-12-22 in &lt;span class="xref std std-ref"&gt;project-176476&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;Ocarina is a pretty unique instrument. It’s officially woodwind, even
 though it usually doesn’t contain a single piece of wood, being made
 out of ceramics (though wooden ocarinas do exist, as well as plastic).
@@ -273,7 +288,7 @@ necessary to see how well this behaves, but I’m hopeful.&lt;/p&gt;
     <updated>2020-12-23T00:00:00+01:00</updated>
     <content type="html">&lt;section id="pcbs"&gt;
 
-&lt;p&gt;Published on 2020-12-23 in &lt;a class="reference internal" href="../../projects/project-176476/#project-176476"&gt;&lt;span class="std std-ref"&gt;Electronic 6-hole Ocarina&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2020-12-23 in &lt;span class="xref std std-ref"&gt;project-176476&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;I could prototype this project now with some Adafruit Feathers and
 carboard and wires, using the breakout for the sensor and some tinfoil
 for the touch pads, but I decided that I’m lazy, and went right into

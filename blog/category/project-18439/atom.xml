@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posts in project-18439</title>
-  <updated>2024-08-07T20:37:31.139948+00:00</updated>
+  <updated>2024-08-07T20:45:04.688588+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/category/project-18439/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -12,7 +12,7 @@
     <updated>2016-11-22T00:00:00+01:00</updated>
     <content type="html">&lt;section id="swd-programming"&gt;
 
-&lt;p&gt;Published on 2016-11-22 in &lt;a class="reference internal" href="../../../projects/project-18439/#project-18439"&gt;&lt;span class="std std-ref"&gt;Motor Shield Reprogramming&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2016-11-22 in &lt;span class="xref std std-ref"&gt;project-18439&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;Second approach to this is using the SWD protocol with my Chinese ST-
 Link V2 clone. That requires getting at the SWD pins. Fortunately,
 they are near the edge of the chip:&lt;/p&gt;
@@ -67,7 +67,7 @@ able to find any examples…&lt;/p&gt;
     <updated>2016-11-22T00:00:00+01:00</updated>
     <content type="html">&lt;section id="swd-programming-continued"&gt;
 
-&lt;p&gt;Published on 2016-11-22 in &lt;a class="reference internal" href="../../../projects/project-18439/#project-18439"&gt;&lt;span class="std std-ref"&gt;Motor Shield Reprogramming&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2016-11-22 in &lt;span class="xref std std-ref"&gt;project-18439&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;On a quest to configure OpenOCD properly. First of all, the error I’m
 getting &lt;a class="reference external" href="https://github.com/vsergeev/arm-bmw-sw/issues/1"&gt;was described in an issue&lt;/a&gt;  and seems like adding “reset_config none separate” fixes that. I got
 a new error with this:&lt;/p&gt;
@@ -155,7 +155,7 @@ the chip, I finally got:&lt;/p&gt;
     <updated>2017-04-21T00:00:00+02:00</updated>
     <content type="html">&lt;section id="reprogramming-without-soldering"&gt;
 
-&lt;p&gt;Published on 2017-04-21 in &lt;a class="reference internal" href="../../../projects/project-18439/#project-18439"&gt;&lt;span class="std std-ref"&gt;Motor Shield Reprogramming&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2017-04-21 in &lt;span class="xref std std-ref"&gt;project-18439&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;Turns out that the procedure in the previous log can be greatly
 simplified. You don’t need an ST-Link programmer, and you don’t need
 to solder anything. Even if your shield is locked, you can unlock and
@@ -274,7 +274,7 @@ shield to your WeMos D1 Mini, and it should work.&lt;/p&gt;
     <updated>2017-04-21T00:00:00+02:00</updated>
     <content type="html">&lt;section id="we-have-a-fixed-firmware"&gt;
 
-&lt;p&gt;Published on 2017-04-21 in &lt;a class="reference internal" href="../../../projects/project-18439/#project-18439"&gt;&lt;span class="std std-ref"&gt;Motor Shield Reprogramming&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2017-04-21 in &lt;span class="xref std std-ref"&gt;project-18439&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;a class="reference external" href="https://hackaday.iohttps://hackaday.io/hacker/214712"&gt;&amp;#64;Piotr Bugalski&lt;/a&gt;  has recently re-written the firmware for this motor shield, and
 published it at &lt;a class="reference external" href="https://github.com/pbugalski/wemos_motor_shield"&gt;https://github.com/pbugalski/wemos_motor_shield&lt;/a&gt; . From what I can tell, the new firmware is compatible with the old
 one, minus the hanging and crashing, so it should be perfect for a
@@ -361,7 +361,7 @@ needing them anymore.&lt;/p&gt;
     <updated>2017-11-08T00:00:00+01:00</updated>
     <content type="html">&lt;section id="multiple-i2c-addresses"&gt;
 
-&lt;p&gt;Published on 2017-11-08 in &lt;a class="reference internal" href="../../../projects/project-18439/#project-18439"&gt;&lt;span class="std std-ref"&gt;Motor Shield Reprogramming&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2017-11-08 in &lt;span class="xref std std-ref"&gt;project-18439&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;As mentioned by &lt;a class="reference external" href="https://hackaday.io/hacker/252214"&gt;&amp;#64;Matrix User &lt;/a&gt; in the comments, the new firmware doesn’t support selecting of the I²C
 address with the jumper pads on the bottom of the board — instead the
 address is fixed in the firmware. There is an issue reported about

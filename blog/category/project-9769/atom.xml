@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posts in project-9769</title>
-  <updated>2024-08-07T20:37:31.982158+00:00</updated>
+  <updated>2024-08-07T20:45:05.770344+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/category/project-9769/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -12,7 +12,7 @@
     <updated>2016-04-17T00:00:00+02:00</updated>
     <content type="html">&lt;section id="finished"&gt;
 
-&lt;p&gt;Published on 2016-04-17 in &lt;a class="reference internal" href="../../../projects/project-9769/#project-9769"&gt;&lt;span class="std std-ref"&gt;Mechatronic Ears&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2016-04-17 in &lt;span class="xref std std-ref"&gt;project-9769&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;So today I sat down and wrote all the code for the ears. This time I’m
 using a running average filter to smooth the signal from the
 accelerometer (because there wasn’t any room for capacitors). I also
@@ -151,7 +151,7 @@ servos and putting everything inside the hat.&lt;/p&gt;
     <updated>2016-04-17T00:00:00+02:00</updated>
     <content type="html">&lt;section id="servos-hate-grease"&gt;
 
-&lt;p&gt;Published on 2016-04-17 in &lt;a class="reference internal" href="../../../projects/project-9769/#project-9769"&gt;&lt;span class="std std-ref"&gt;Mechatronic Ears&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2016-04-17 in &lt;span class="xref std std-ref"&gt;project-9769&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;So I also made an attempt at making those servos a little bit more
 quiet. I opened one of them, and filled it with some servo grease that
 I ordered from China some time ago. Assembled it back together, and…&lt;/p&gt;
@@ -174,7 +174,7 @@ though.&lt;/p&gt;
     <updated>2016-11-25T00:00:00+01:00</updated>
     <content type="html">&lt;section id="make-it-fit-in-1kb"&gt;
 
-&lt;p&gt;Published on 2016-11-25 in &lt;a class="reference internal" href="../../../projects/project-9769/#project-9769"&gt;&lt;span class="std std-ref"&gt;Mechatronic Ears&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2016-11-25 in &lt;span class="xref std std-ref"&gt;project-9769&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;I just submitted this project to the 1kB challenge too, because I
 realized that if I only replace the pinMode calls with a suitable DDRB
 command, I can get it small enough!&lt;/p&gt;
@@ -207,8 +207,8 @@ command, I can get it small enough!&lt;/p&gt;
     <updated>2016-11-26T00:00:00+01:00</updated>
     <content type="html">&lt;section id="shrinking"&gt;
 
-&lt;p&gt;Published on 2016-11-26 in &lt;a class="reference internal" href="../../../projects/project-9769/#project-9769"&gt;&lt;span class="std std-ref"&gt;Mechatronic Ears&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;OK, now that I’ve shrunk the code for &lt;a class="reference internal" href="../../../projects/project-7860/#project-7860"&gt;&lt;span class="std std-ref"&gt;Nyan Board&lt;/span&gt;&lt;/a&gt;  to 470 bytes, it’s time to look at the code for the ears. This time
+&lt;p&gt;Published on 2016-11-26 in &lt;span class="xref std std-ref"&gt;project-9769&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;OK, now that I’ve shrunk the code for &lt;span class="xref std std-ref"&gt;project-7860&lt;/span&gt;  to 470 bytes, it’s time to look at the code for the ears. This time
 I’m going to got straight into plain C. All I need to do is to figure
 out how to do analogRead()… Turns out it’s super-simple!&lt;/p&gt;
 &lt;div class="highlight-cpp notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;#include&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="cpf"&gt;&amp;lt;avr/io.h&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;&lt;/span&gt;
@@ -344,7 +344,7 @@ average buffers – but it’s  nice and small.&lt;/p&gt;
     <updated>2017-09-12T00:00:00+02:00</updated>
     <content type="html">&lt;section id="maker-faire"&gt;
 
-&lt;p&gt;Published on 2017-09-12 in &lt;a class="reference internal" href="../../../projects/project-9769/#project-9769"&gt;&lt;span class="std std-ref"&gt;Mechatronic Ears&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2017-09-12 in &lt;span class="xref std std-ref"&gt;project-9769&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;There was a maker faire here in Zürich recently, and one of the more
 popular projects that I showed off was this. It was by a complete
 accident, I just grabbed the ears on my way out, but turns out that
@@ -353,7 +353,7 @@ them.&lt;/p&gt;
 &lt;p&gt;On the first day I disconnected and re-connected the battery so many
 times, that I finally broke one of the wires. So in the evening I
 decided to add a power switch to the board, using one of the small
-switches I had for the &lt;a class="reference internal" href="../../../projects/project-21578/#project-21578"&gt;&lt;span class="std std-ref"&gt;PewPew FeatherWing&lt;/span&gt;&lt;/a&gt; . The next day the first thing I did was break that. But no problem, I
+switches I had for the &lt;span class="xref std std-ref"&gt;project-21578&lt;/span&gt; . The next day the first thing I did was break that. But no problem, I
 have a soldering iron with me, I can fix it, right?&lt;/p&gt;
 &lt;p&gt;Turns out that soldering when you are half-conscious in the morning
 and tired after a day of maker faire is a bad idea. I didn’t

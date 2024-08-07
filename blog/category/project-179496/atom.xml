@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posts in project-179496</title>
-  <updated>2024-08-07T20:37:30.852611+00:00</updated>
+  <updated>2024-08-07T20:45:04.451646+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/category/project-179496/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -12,11 +12,11 @@
     <updated>2021-05-02T00:00:00+02:00</updated>
     <content type="html">&lt;section id="fluff-m0-micro"&gt;
 
-&lt;p&gt;Published on 2021-05-02 in &lt;a class="reference internal" href="../../../projects/project-179496/#project-179496"&gt;&lt;span class="std std-ref"&gt;Chocolad Keyboard Hacking&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2021-05-02 in &lt;span class="xref std std-ref"&gt;project-179496&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;Since I wanted to program this keyboard in CircuitPython, I needed a
 development board that would be compatible pin-wise with the Pro
 Micro, but use a bit more powerful microcontroller. So I designed this
-version of &lt;a class="reference internal" href="../../../projects/project-171381/#project-171381"&gt;&lt;span class="std std-ref"&gt;Fluff M0&lt;/span&gt;&lt;/a&gt; :&lt;/p&gt;
+version of &lt;span class="xref std std-ref"&gt;project-171381&lt;/span&gt; :&lt;/p&gt;
 &lt;img alt="projects/project-179496/images/5898261619906969912.jpg" src="projects/project-179496/images/5898261619906969912.jpg" /&gt;
 &lt;/section&gt;
 </content>
@@ -30,7 +30,7 @@ version of &lt;a class="reference internal" href="../../../projects/project-1713
     <updated>2021-05-02T00:00:00+02:00</updated>
     <content type="html">&lt;section id="the-code"&gt;
 
-&lt;p&gt;Published on 2021-05-02 in &lt;a class="reference internal" href="../../../projects/project-179496/#project-179496"&gt;&lt;span class="std std-ref"&gt;Chocolad Keyboard Hacking&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2021-05-02 in &lt;span class="xref std std-ref"&gt;project-179496&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;I’m using my uKeeb library as usual, but some small modifications were
 needed to make the split keyboard work. On the left hand side I
 removed all the key handling logic, leaving just the matrix scanning
@@ -71,7 +71,7 @@ after scanning:&lt;/p&gt;
     <updated>2021-05-02T00:00:00+02:00</updated>
     <content type="html">&lt;section id="the-keyboard"&gt;
 
-&lt;p&gt;Published on 2021-05-02 in &lt;a class="reference internal" href="../../../projects/project-179496/#project-179496"&gt;&lt;span class="std std-ref"&gt;Chocolad Keyboard Hacking&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2021-05-02 in &lt;span class="xref std std-ref"&gt;project-179496&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;Once the switches arrived, I was ready to assemble the keyboard. It
 took a little bit of detective work to figure out which way to solder
 the diodes (I soldered them the wrong way, but fixed it in software,
@@ -91,7 +91,7 @@ microcontroller board.&lt;/p&gt;
     <updated>2021-05-02T00:00:00+02:00</updated>
     <content type="html">&lt;section id="the-trrs-cable"&gt;
 
-&lt;p&gt;Published on 2021-05-02 in &lt;a class="reference internal" href="../../../projects/project-179496/#project-179496"&gt;&lt;span class="std std-ref"&gt;Chocolad Keyboard Hacking&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2021-05-02 in &lt;span class="xref std std-ref"&gt;project-179496&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;I already had my code for the keyboard, but I had to modify it
 slightly, so that it would communicate over the TRRS cable with the
 other half, to receive the keypresses from it. Initially I assumed
@@ -118,7 +118,7 @@ keyboard, and bodging it to TX.&lt;/p&gt;
     <updated>2021-05-15T00:00:00+02:00</updated>
     <content type="html">&lt;section id="dynamic-usb-descriptors"&gt;
 
-&lt;p&gt;Published on 2021-05-15 in &lt;a class="reference internal" href="../../../projects/project-179496/#project-179496"&gt;&lt;span class="std std-ref"&gt;Chocolad Keyboard Hacking&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2021-05-15 in &lt;span class="xref std std-ref"&gt;project-179496&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;A new &lt;a class="reference external" href="https://github.com/adafruit/circuitpython/pull/4689"&gt;feature landed in CircuitPython recently&lt;/a&gt; , that allows us to do a neat little trick: we can show the CIRCUITPY
 disk and Python REPL console, or not, depending on whether a certain
 key is pressed when the keyboard is powered up or reset.&lt;/p&gt;

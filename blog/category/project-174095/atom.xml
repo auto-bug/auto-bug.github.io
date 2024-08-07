@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art - Posts in project-174095</title>
-  <updated>2024-08-07T20:37:30.665882+00:00</updated>
+  <updated>2024-08-07T20:45:04.249525+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/category/project-174095/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -12,8 +12,8 @@
     <updated>2020-09-21T00:00:00+02:00</updated>
     <content type="html">&lt;section id="fork"&gt;
 
-&lt;p&gt;Published on 2020-09-21 in &lt;a class="reference internal" href="../../../projects/project-174095/#project-174095"&gt;&lt;span class="std std-ref"&gt;Dorsch 40k Keyboard&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;I moved the 48k (actually 47 keys) version to &lt;a class="reference internal" href="../../../projects/project-174917/#project-174917"&gt;&lt;span class="std std-ref"&gt;Dorsch 48k Keyboard&lt;/span&gt;&lt;/a&gt; because it has a different bill of materials and code.&lt;/p&gt;
+&lt;p&gt;Published on 2020-09-21 in &lt;span class="xref std std-ref"&gt;project-174095&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;I moved the 48k (actually 47 keys) version to &lt;span class="xref std std-ref"&gt;project-174917&lt;/span&gt; because it has a different bill of materials and code.&lt;/p&gt;
 &lt;p&gt;I also just uploaded the design files of the 40k version with LEDs
 here.&lt;/p&gt;
 &lt;/section&gt;
@@ -28,7 +28,7 @@ here.&lt;/p&gt;
     <updated>2020-10-02T00:00:00+02:00</updated>
     <content type="html">&lt;section id="dotstars"&gt;
 
-&lt;p&gt;Published on 2020-10-02 in &lt;a class="reference internal" href="../../../projects/project-174095/#project-174095"&gt;&lt;span class="std std-ref"&gt;Dorsch 40k Keyboard&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2020-10-02 in &lt;span class="xref std std-ref"&gt;project-174095&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;Finally tonight I took a look at the lights on this keyboard. The
 Adafruit’s DotStar library handles them very well, but for some reason
 the last 6 in a chain had different colors. After some experiments, I
@@ -39,7 +39,7 @@ for now. I’m going to call it a day, but tomorrow I will probably try
 to make some nice effects, like a water ripple on each keystroke, or
 something like that.&lt;/p&gt;
 &lt;img alt="projects/project-174095/images/7352931601590971709.jpg" src="projects/project-174095/images/7352931601590971709.jpg" /&gt;
-&lt;p&gt;Oh, right, because both &lt;a class="reference internal" href="../../../projects/project-167912/#project-167912"&gt;&lt;span class="std std-ref"&gt;Flounder Keyboard&lt;/span&gt;&lt;/a&gt; and &lt;a class="reference internal" href="../../../projects/project-174982/#project-174982"&gt;&lt;span class="std std-ref"&gt;Turbot Keyboard&lt;/span&gt;&lt;/a&gt; are now dead and buried, I took the black double-shot key caps from
+&lt;p&gt;Oh, right, because both &lt;span class="xref std std-ref"&gt;project-167912&lt;/span&gt; and &lt;span class="xref std std-ref"&gt;project-174982&lt;/span&gt; are now dead and buried, I took the black double-shot key caps from
 them. I think they look quite pretty with the backlight.&lt;/p&gt;
 &lt;/section&gt;
 </content>
@@ -53,7 +53,7 @@ them. I think they look quite pretty with the backlight.&lt;/p&gt;
     <updated>2020-10-03T00:00:00+02:00</updated>
     <content type="html">&lt;section id="simple-effect"&gt;
 
-&lt;p&gt;Published on 2020-10-03 in &lt;a class="reference internal" href="../../../projects/project-174095/#project-174095"&gt;&lt;span class="std std-ref"&gt;Dorsch 40k Keyboard&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2020-10-03 in &lt;span class="xref std std-ref"&gt;project-174095&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;Finally got some time to program the most basic keystroke effect:&lt;/p&gt;
 &lt;img alt="projects/project-174095/images/1441561601749690792.gif" src="projects/project-174095/images/1441561601749690792.gif" /&gt;
 &lt;p&gt;The code for it is rather simple:&lt;/p&gt;
@@ -99,7 +99,7 @@ routine when a key is detected to be pressed.&lt;/p&gt;
     <updated>2020-10-09T00:00:00+02:00</updated>
     <content type="html">&lt;section id="macros"&gt;
 
-&lt;p&gt;Published on 2020-10-09 in &lt;a class="reference internal" href="../../../projects/project-174095/#project-174095"&gt;&lt;span class="std std-ref"&gt;Dorsch 40k Keyboard&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2020-10-09 in &lt;span class="xref std std-ref"&gt;project-174095&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;Over the last weekend I worked a little bit more on the code, cleaning
 it up and making it a library. I also added the ability of sending
 keys with modifiers, and media keys. And that means I have everything
@@ -122,7 +122,7 @@ workspaces.&lt;/p&gt;
     <updated>2021-07-25T00:00:00+02:00</updated>
     <content type="html">&lt;section id="shiny-new-code"&gt;
 
-&lt;p&gt;Published on 2021-07-25 in &lt;a class="reference internal" href="../../../projects/project-174095/#project-174095"&gt;&lt;span class="std std-ref"&gt;Dorsch 40k Keyboard&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2021-07-25 in &lt;span class="xref std std-ref"&gt;project-174095&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;I fished this keyboard out of the proverbial drawer to try the new
 CircuitPython on it, with some of the new fancy features that have
 been added.&lt;/p&gt;
