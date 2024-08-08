@@ -14,31 +14,25 @@ Add 16 extra GPIO pins to your ESP8266.
 
 <div class="project-thumb">
 
-:::{image} images/7941321553511754587.jpg
-:target: /_images/7941321553511754587.jpg
-:::
-
-:::{image} images/3033211508504921589.jpg
-:target: /_images/3033211508504921589.jpg
-:::
-
-:::{image} images/2261861507029129263.png
-:target: /_images/2261861507029129263.png
-:::
-
-:::{image} images/664661553511737785.jpg
-:target: /_images/664661553511737785.jpg
-:::
-
 :::{image} images/1377131553511765502.jpg
 :target: /_images/1377131553511765502.jpg
 :::
-
+:::{image} images/664661553511737785.jpg
+:target: /_images/664661553511737785.jpg
+:::
+:::{image} images/2261861507029129263.png
+:target: /_images/2261861507029129263.png
+:::
+:::{image} images/3033211508504921589.jpg
+:target: /_images/3033211508504921589.jpg
+:::
+:::{image} images/7941321553511754587.jpg
+:target: /_images/7941321553511754587.jpg
+:::
 </div>
 
 
-
-    The ESP8266 is a great and cheap chip, but it doesn't have many GPIO
+The ESP8266 is a great and cheap chip, but it doesn't have many GPIO
 pins available. Half of them is taken up by the flash memory chip, and
 half of the remaining pins have additional function on boot, which
 makes them tricky to use. So you connect your SPI display, and some
@@ -57,12 +51,9 @@ try {ref}`project-13278` ), but they can let you free up some of the internal pi
 
 
 
-
-
 ## Logs
 
 :::{postlist}
 :category: project-27566
 :::
-
 

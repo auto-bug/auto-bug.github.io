@@ -14,19 +14,16 @@ A version of Tote with the D1 Mini ESP8266 board as a brain.
 
 <div class="project-thumb">
 
-:::{image} images/2666111485449727353.jpg
-:target: /_images/2666111485449727353.jpg
-:::
-
 :::{image} images/2334121500903935343.jpg
 :target: /_images/2334121500903935343.jpg
 :::
-
+:::{image} images/2666111485449727353.jpg
+:target: /_images/2666111485449727353.jpg
+:::
 </div>
 
 
-
-    This is the next step of evolution of {ref}`project-6050`  and {ref}`project-9927` , the spider robots that were designed to be as simple and easy to
+This is the next step of evolution of {ref}`project-6050`  and {ref}`project-9927` , the spider robots that were designed to be as simple and easy to
 build as possible, without sacrificing the proper walking algorithms.
 This time the focus is on making it easier to program and to modify by
 attaching additional hardware.
@@ -47,14 +44,11 @@ devices like this at our homes one day.
 
 
 
-
-
 ## Logs
 
 :::{postlist}
 :category: project-19603
 :::
-
 
 
 ## Instructions
@@ -68,8 +62,8 @@ devices like this at our homes one day.
 For mechanical assembly, follow the instructions at [http://tote.readthedocs.io/en/latest/assembly_v5.html#legs](http://tote.readthedocs.io/en/latest/assembly_v5.html#legs) 
 
 
----
 
+---
 
 
 ### Electronics
@@ -79,8 +73,8 @@ Solder the headers, PWM chip and resistors onto the board. Add the
 power switch and battery holder. Connect the servo plugs.
 
 
----
 
+---
 
 
 ### Programming
@@ -90,8 +84,8 @@ Copy the python code from project's repository onto your D1 Mini using
 Adafruit's Ampy utility. Plug the D1 Mini into the PCB.
 
 
----
 
+---
 
 
 ### Extending
@@ -100,6 +94,4 @@ Adafruit's Ampy utility. Plug the D1 Mini into the PCB.
 Use the D1 Mini's headers to add shields with sensors and other
 components to the robot. Modify the code to take advantage of them.
 
-
----
 

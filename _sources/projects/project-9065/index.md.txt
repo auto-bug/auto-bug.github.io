@@ -14,31 +14,25 @@ Affordable quadruped robot powered by a Pi Zero
 
 <div class="project-thumb">
 
-:::{image} images/3233411451932323412.jpg
-:target: /_images/3233411451932323412.jpg
-:::
-
-:::{image} images/6491431451932310257.jpg
-:target: /_images/6491431451932310257.jpg
-:::
-
-:::{image} images/4931971451932291720.jpg
-:target: /_images/4931971451932291720.jpg
-:::
-
-:::{image} images/3784581452083863472.jpg
-:target: /_images/3784581452083863472.jpg
-:::
-
 :::{image} images/5564861454878909155.jpg
 :target: /_images/5564861454878909155.jpg
 :::
-
+:::{image} images/3784581452083863472.jpg
+:target: /_images/3784581452083863472.jpg
+:::
+:::{image} images/4931971451932291720.jpg
+:target: /_images/4931971451932291720.jpg
+:::
+:::{image} images/6491431451932310257.jpg
+:target: /_images/6491431451932310257.jpg
+:::
+:::{image} images/3233411451932323412.jpg
+:target: /_images/3233411451932323412.jpg
+:::
 </div>
 
 
-
-    The original {ref}`project-6050`  used an Arduino Pro Mini clone for its brains, as this was the most
+The original {ref}`project-6050`  used an Arduino Pro Mini clone for its brains, as this was the most
 affordable option available at the time, and reasonably easy to use
 and program. But now that there is a $5 single-board computer
 available, why not use it instead?
@@ -58,14 +52,11 @@ can happen.
 
 
 
-
-
 ## Logs
 
 :::{postlist}
 :category: project-9065
 :::
-
 
 
 ## Instructions
@@ -75,36 +66,34 @@ can happen.
 For mechanical assembly, follow the instructions for {ref}`project-6050`  at [http://tote.readthedocs.org](http://tote.readthedocs.org) 
 
 
----
 
+---
 
 The code repository at [https://bitbucket.org/thesheep/tote0/src](https://bitbucket.org/thesheep/tote0/src)  contains all the files needed -- copy them to the pi
 
 
----
 
+---
 
 Get ServoBlaster from [https://github.com/richardghirst/PiBits/tree/master/ServoBlaster](https://github.com/richardghirst/PiBits/tree/master/ServoBlaster)  and compile it and install
 
 
----
 
+---
 
 Copy the 'servoblaster' startup script from the code repository to
 /etc/init.d and make it start at startup
 
 
----
 
+---
 
 Run the run.py program
 
 
----
 
+---
 
 PROFIT!!!
 
-
----
 

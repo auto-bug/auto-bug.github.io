@@ -14,27 +14,22 @@ Spider robot powered by Adafruit Feather boards and CircuitPython.
 
 <div class="project-thumb">
 
-:::{image} images/4253281487438198842.jpg
-:target: /_images/4253281487438198842.jpg
-:::
-
-:::{image} images/5950241497285635699.jpg
-:target: /_images/5950241497285635699.jpg
-:::
-
-:::{image} images/3137951500460500978.jpg
-:target: /_images/3137951500460500978.jpg
-:::
-
 :::{image} images/9842911577816167234.JPG
 :target: /_images/9842911577816167234.JPG
 :::
-
+:::{image} images/3137951500460500978.jpg
+:target: /_images/3137951500460500978.jpg
+:::
+:::{image} images/5950241497285635699.jpg
+:target: /_images/5950241497285635699.jpg
+:::
+:::{image} images/4253281487438198842.jpg
+:target: /_images/4253281487438198842.jpg
+:::
 </div>
 
 
-
-    This is the successor of the {ref}`project-6050`  robot, and its small family ( {ref}`project-9065` , {ref}`project-9927` , {ref}`project-19603` ). Tote itself was focused mostly on affordability, ease of assembly
+This is the successor of the {ref}`project-6050`  robot, and its small family ( {ref}`project-9065` , {ref}`project-9927` , {ref}`project-19603` ). Tote itself was focused mostly on affordability, ease of assembly
 and extensibility — and I think that it achieved those goals
 relatively well. However, it turns out that physically building the
 robot and programming the first gait is just the tip of the iceberg.
@@ -61,14 +56,11 @@ they become reliable and cheap enough to be generally useful.
 
 
 
-
-
 ## Logs
 
 :::{postlist}
 :category: project-19921
 :::
-
 
 
 ## Instructions
@@ -82,8 +74,8 @@ they become reliable and cheap enough to be generally useful.
 For mechanical assembly, follow the instructions at [http://tote.readthedocs.io/en/latest/assembly_v5.html#legs](http://tote.readthedocs.io/en/latest/assembly_v5.html#legs) 
 
 
----
 
+---
 
 
 ### Electronics
@@ -93,8 +85,8 @@ Solder the headers, the PWM chip and the two resistors onto the PCB.
 Add the power switch and the battery holder.
 
 
----
 
+---
 
 
 ### Programming
@@ -104,8 +96,8 @@ Copy the python files from the project's repository onto your feather
 board.
 
 
----
 
+---
 
 
 ### PROFIT!
@@ -113,6 +105,4 @@ board.
 
 Modify the code, add sensors, experiment.
 
-
----
 

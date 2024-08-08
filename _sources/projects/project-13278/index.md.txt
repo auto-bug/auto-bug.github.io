@@ -14,40 +14,31 @@ Connect servos to your ESP8266 dev board.
 
 <div class="project-thumb">
 
-:::{image} images/7209701473855689500.jpg
-:target: /_images/7209701473855689500.jpg
-:::
-
-:::{image} images/8422601484959160525.jpg
-:target: /_images/8422601484959160525.jpg
-:::
-
-:::{image} images/4760411471956285087.jpg
-:target: /_images/4760411471956285087.jpg
-:::
-
-:::{image} images/699801484959150101.jpg
-:target: /_images/699801484959150101.jpg
-:::
-
-:::{image} images/3952961484907213251.jpg
-:target: /_images/3952961484907213251.jpg
-:::
-
 :::{image} images/4649091501603589305.jpg
 :target: /_images/4649091501603589305.jpg
 :::
-
+:::{image} images/3952961484907213251.jpg
+:target: /_images/3952961484907213251.jpg
+:::
+:::{image} images/699801484959150101.jpg
+:target: /_images/699801484959150101.jpg
+:::
+:::{image} images/4760411471956285087.jpg
+:target: /_images/4760411471956285087.jpg
+:::
+:::{image} images/8422601484959160525.jpg
+:target: /_images/8422601484959160525.jpg
+:::
+:::{image} images/7209701473855689500.jpg
+:target: /_images/7209701473855689500.jpg
+:::
 </div>
 
 
-
-    I thought I will try to make some shields for the WeMos D1 Mini,
+I thought I will try to make some shields for the WeMos D1 Mini,
 because it's one of my favorite ESP8266 boards.  There is already an
 official motor controller shield (though I can't get it to work
 reliably), so I decided I will make some servo shields.
-
-
 
 
 
@@ -61,7 +52,6 @@ reliably), so I decided I will make some servo shields.
 :::
 
 
-
 ## Instructions
 
 
@@ -69,8 +59,8 @@ reliably), so I decided I will make some servo shields.
 Get the PCB from [https://oshpark.com/shared_projects/QrjTnDg1](https://oshpark.com/shared_projects/QrjTnDg1) 
 
 
----
 
+---
 
 Populate the PCB -- solder the ATmega328p, the reset resistor (10kΩ),
 the I2C pullup resistors (10kΩ, optional), capacitor (10-1000µF,
@@ -84,8 +74,8 @@ extra pin or wire for the reset.
 
 
 
----
 
+---
 
 Connect your ISP programmer to the 3v3, GND, MISO, MOSI, SCK and Reset
 pins as follows:
@@ -100,8 +90,8 @@ Arduino IDE. To flash the 20-channel version, run "make flash" in the
 firmware directory.
 
 
----
 
+---
 
 After flashing, set the fuses with:
 
@@ -111,11 +101,9 @@ avrdude -c usbasp -p m328p -U lfuse:w:0xE2:m -U hfuse:w:0xDF:m
 ```
 
 
----
 
+---
 
 Your shield is ready to be used!
 
-
----
 

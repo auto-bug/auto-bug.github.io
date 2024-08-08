@@ -17,12 +17,10 @@ Simple PCA9685-based servo shield for OpenMV
 :::{image} images/4138171491641694458.jpg
 :target: /_images/4138171491641694458.jpg
 :::
-
 </div>
 
 
-
-    OpenMV has a couple of pins that you can use for connecting servos
+OpenMV has a couple of pins that you can use for connecting servos
 (for example, if you want to mount it on a pan-and-tilt base), but you
 can't use those if you also want to use the WiFi shield or any other
 shield that uses up a lot of pins. Practically the only pins left to
@@ -33,8 +31,6 @@ convenient form factor that plugs directly into the OpenMV board. Due
 to space constraints, there are only 12 servo plugs -- the remaining 4
 PWM outputs are broken out as a 1.27mm-pitch header. There is one
 address jumper exposed, so you can stack two such shields.
-
-
 
 
 

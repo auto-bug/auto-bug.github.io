@@ -14,35 +14,28 @@ Learn Python programming with an affordable gaming handheld.
 
 <div class="project-thumb">
 
-:::{image} images/5126801652438487334.jpg
-:target: /_images/5126801652438487334.jpg
-:::
-
-:::{image} images/9092651653658984938.jpg
-:target: /_images/9092651653658984938.jpg
-:::
-
-:::{image} images/4599321652033186279.jpg
-:target: /_images/4599321652033186279.jpg
-:::
-
-:::{image} images/466101653686036260.jpg
-:target: /_images/466101653686036260.jpg
-:::
-
-:::{image} images/6146911653686014621.jpg
-:target: /_images/6146911653686014621.jpg
-:::
-
 :::{image} images/5608251719175785248.jpg
 :target: /_images/5608251719175785248.jpg
 :::
-
+:::{image} images/6146911653686014621.jpg
+:target: /_images/6146911653686014621.jpg
+:::
+:::{image} images/466101653686036260.jpg
+:target: /_images/466101653686036260.jpg
+:::
+:::{image} images/4599321652033186279.jpg
+:target: /_images/4599321652033186279.jpg
+:::
+:::{image} images/9092651653658984938.jpg
+:target: /_images/9092651653658984938.jpg
+:::
+:::{image} images/5126801652438487334.jpg
+:target: /_images/5126801652438487334.jpg
+:::
 </div>
 
 
-
-    Teaching programming is hard. And it's not made any easier by the fact
+Teaching programming is hard. And it's not made any easier by the fact
 that before you even start teaching, you have to first do the
 ungrateful job of an IT support worker and get your students through
 all the hoops of installing all the necessary software and libraries
@@ -73,14 +66,11 @@ spare parts that lie around.
 
 
 
-
-
 ## Logs
 
 :::{postlist}
 :category: project-185291
 :::
-
 
 
 ## Instructions
@@ -96,8 +86,8 @@ thickness of the PCB. Lead-free or gold coating recommended, as the
 device will be touched by hands.
 
 
----
 
+---
 
 
 ### Populate the PCB
@@ -108,8 +98,8 @@ soldering the edges, though a hot-air gun or hot-plate are recommended
 for convenience. All the other components are easily soldered by hand.
 
 
----
 
+---
 
 
 ### Flash the Bootloader
@@ -125,8 +115,8 @@ programming. Power can be provide through the USB connector, make sure
 the switch is in the USB position.
 
 
----
 
+---
 
 
 ### Flash the Firmware
@@ -138,8 +128,8 @@ circuitpython.org and copy it over to that disk. The device will reset
 and the CIRCUITPY disk will become available.
 
 
----
 
+---
 
 
 ### Install the Menu and Games
@@ -149,8 +139,8 @@ Copy the main.py file from the software repository, and copy any game
 files from the pewpew github onto the device.
 
 
----
 
+---
 
 
 ### Ready
@@ -159,6 +149,4 @@ files from the pewpew github onto the device.
 Safely remove the USB disk, and disconnect the device. Insert a
 battery.
 
-
----
 
