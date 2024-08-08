@@ -218,16 +218,16 @@ div.project-list li p.ablog-post-excerpt {
     background: rgba(0, 0, 0, 0.5);
     position: absolute;
     bottom: -1px;
-    left: 0;
-    right: 0;
+    left: -1px;
+    right: -1px;
     text-shadow: #051a36 1px 1px 4px;
 }
 div.project-list li p.ablog-post-title {
     position: absolute;
     top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
     z-index: 1000;
 }
 div.project-list li p.ablog-post-title a {
