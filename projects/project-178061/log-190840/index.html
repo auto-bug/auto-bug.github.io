@@ -55,19 +55,19 @@ energy to get them working until today. Yesterday I found my Universal
 Display Breakout Board™ and soldered the display to it. Today I
 connected a Feather RP2040 to it, and tried to get it working. Turns
 out there are a couple of tricks to it.</p>
-<img alt="projects/project-178061/images/9621901616709501960.jpg" src="projects/project-178061/images/9621901616709501960.jpg" />
+<img alt="../../../_images/9621901616709501960.jpg" src="../../../_images/9621901616709501960.jpg" />
 <p>First of all, the IM0-3 pins are not broken out, so there is no way to
 switch the interface mode, and it comes in the 16-bit parallel mode by
 default. But wait a minute, the Aliexpress page said it was compatible
 with 8-bit mode, so how? I asked the seller, but before I got the
 answer, I noticed this little note on the screenshots of the datasheet
 at the product page:</p>
-<img alt="projects/project-178061/images/4164511616709933038.png" src="projects/project-178061/images/4164511616709933038.png" />
+<img alt="../../../_images/4164511616709933038.png" src="../../../_images/4164511616709933038.png" />
 <p>That, I assume, explains, in perfectly clear Chinese, how to switch
 the iterface modes. It even tells you which pins to use in each mode!
 I mean, probably. I don’t read Chinese. But let’s look closer at the
 display:</p>
-<img alt="projects/project-178061/images/1646031616710053487.jpg" src="projects/project-178061/images/1646031616710053487.jpg" />
+<img alt="../../../_images/1646031616710053487.jpg" src="../../../_images/1646031616710053487.jpg" />
 <p>Ah-ha! The aforementioned R16 and R8, and only one of them is
 populated. And that is a 0Ω resistor, if I’m not mistaken. So I only
 need to move it from R16 to R8 and that should switch the mode. Easy.
@@ -143,7 +143,7 @@ at least that saves my four resistors, I suppose.</p>
 </div>
 <p>And the display is working. I even put the Vacuum Invaders on it to
 see how fast it is.</p>
-<img alt="projects/project-178061/images/5984381616710861673.jpg" src="projects/project-178061/images/5984381616710861673.jpg" />
+<img alt="../../../_images/5984381616710861673.jpg" src="../../../_images/5984381616710861673.jpg" />
 <p>And here is a disappointment. Even with a parallel interface at
 supposed 62Mhz, the refresh of the display is visibly slower than the
 ST7735 with 40MHz SPI. Sure, there are four times more pixels there,

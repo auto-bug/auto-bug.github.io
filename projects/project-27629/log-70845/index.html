@@ -63,26 +63,26 @@ that it really doesn’t have to be hard.</p>
 interesting game you will probably need much more room, so this time I
 used a Feather M0 Express, which has an additional flash chip. I also
 used a breakout board I made for displays, and a bunch of buttons:</p>
-<img alt="projects/project-27629/images/3830531511626987823.jpg" src="projects/project-27629/images/3830531511626987823.jpg" />
+<img alt="../../../_images/3830531511626987823.jpg" src="../../../_images/3830531511626987823.jpg" />
 <p>———- more ———-I had to bend the legs of those buttons a little bit, to pack them on
 the board tightly enough:</p>
-<img alt="projects/project-27629/images/2150231511627058003.jpg" src="projects/project-27629/images/2150231511627058003.jpg" />
+<img alt="../../../_images/2150231511627058003.jpg" src="../../../_images/2150231511627058003.jpg" />
 <p>A little bit of soldering:</p>
-<img alt="projects/project-27629/images/5397691511627085832.jpg" src="projects/project-27629/images/5397691511627085832.jpg" />
+<img alt="../../../_images/5397691511627085832.jpg" src="../../../_images/5397691511627085832.jpg" />
 <p>And we have out gamepad:</p>
-<img alt="projects/project-27629/images/2815221511627124565.jpg" src="projects/project-27629/images/2815221511627124565.jpg" />
+<img alt="../../../_images/2815221511627124565.jpg" src="../../../_images/2815221511627124565.jpg" />
 <p>Next, we need to wire the display module. I used a module with the
 same ST7735R display as I used on the µGame, so that I can use the
 same code, but you can also use SSD1331, SSD1351, HX8353 or ILI9341.</p>
-<img alt="projects/project-27629/images/3020811511627264689.jpg" src="projects/project-27629/images/3020811511627264689.jpg" />
+<img alt="../../../_images/3020811511627264689.jpg" src="../../../_images/3020811511627264689.jpg" />
 <p>I wired it to the SPI pins of the feather, with CS pulled low
 permanently, RST connected to feather’s reset, and LED pulled up.</p>
-<img alt="projects/project-27629/images/8730071511627424673.jpg" src="projects/project-27629/images/8730071511627424673.jpg" />
+<img alt="../../../_images/8730071511627424673.jpg" src="../../../_images/8730071511627424673.jpg" />
 <p>Then I also wired the buttons — one side of each button goes to GND,
 and the other side to one of the digital pins.</p>
-<img alt="projects/project-27629/images/3620411511627488589.jpg" src="projects/project-27629/images/3620411511627488589.jpg" />
+<img alt="../../../_images/3620411511627488589.jpg" src="../../../_images/3620411511627488589.jpg" />
 <p>And that’s it. Add some pin headers, and plug it into the feather:</p>
-<img alt="projects/project-27629/images/6671491511627538661.jpg" src="projects/project-27629/images/6671491511627538661.jpg" />
+<img alt="../../../_images/6671491511627538661.jpg" src="../../../_images/6671491511627538661.jpg" />
 <p>Next, I had to compile CircuitPython with my library enabled, and
 provide custom initialization code:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">board</span>
@@ -118,7 +118,7 @@ provide custom initialization code:</p>
 </div>
 <p>(Since that module doesn’t use the MISO pin, I used it for D/C). I
 uploaded my work-in-progress demo game, and voila, it works!</p>
-<img alt="projects/project-27629/images/1418211511627725819.jpg" src="projects/project-27629/images/1418211511627725819.jpg" />
+<img alt="../../../_images/1418211511627725819.jpg" src="../../../_images/1418211511627725819.jpg" />
 <p>UPDATE: I had to make two changes compared to these photos. One, I
 forgot a wire from the fire buttons to the GND, and two, I now
 connected the CS pin to D13, instead of directly to GND.</p>

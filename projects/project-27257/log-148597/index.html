@@ -59,20 +59,20 @@ outlines.</p>
 <p>Usually I start by designing everything on a standard rectangular PCB,
 keeping in mind the rough shape that I am going to need. Here’s an
 improved design for the <a class="reference internal" href="../../project-9769/#project-9769"><span class="std std-ref">Mechatronic Ears</span></a>  with a power switch added:</p>
-<img alt="projects/project-27257/images/4296261530465949010.png" src="projects/project-27257/images/4296261530465949010.png" />
+<img alt="../../../_images/4296261530465949010.png" src="../../../_images/4296261530465949010.png" />
 <p>Next, I export the design as an SVG image:</p>
-<img alt="projects/project-27257/images/1906711530466066806.png" src="projects/project-27257/images/1906711530466066806.png" />
+<img alt="../../../_images/1906711530466066806.png" src="../../../_images/1906711530466066806.png" />
 <p>Then I open it in Inkscape, where I can easily draw my desired board
 outline:</p>
-<img alt="projects/project-27257/images/3724381530466194782.png" src="projects/project-27257/images/3724381530466194782.png" />
+<img alt="../../../_images/3724381530466194782.png" src="../../../_images/3724381530466194782.png" />
 <p>Usually I pick some nice, partially transparent color (green, blue and
 purple work well) and draw the shape of the PCB I want with it:</p>
-<img alt="projects/project-27257/images/6047871530466476852.png" src="projects/project-27257/images/6047871530466476852.png" />
+<img alt="../../../_images/6047871530466476852.png" src="../../../_images/6047871530466476852.png" />
 <p>You can also add some silkscreen:</p>
-<img alt="projects/project-27257/images/490381530466625269.png" src="projects/project-27257/images/490381530466625269.png" />
+<img alt="../../../_images/490381530466625269.png" src="../../../_images/490381530466625269.png" />
 <p>Next, I remove all the Fritzing stuff from the image, and leave only
 the board outline and the silkscreen:</p>
-<img alt="projects/project-27257/images/7048951530466741327.png" src="projects/project-27257/images/7048951530466741327.png" />
+<img alt="../../../_images/7048951530466741327.png" src="../../../_images/7048951530466741327.png" />
 <p>Now create a new layer in Inkscape using_Layer→Add Layer…_ menu option, and name it “board”. Select the board outline, and then
 select_Layer→Move Selection to Layer…_, then select the newly created layer “board”. Repeat that with the
 silkscreen, except call it “silkscreen0” for the bottom, or
@@ -81,7 +81,7 @@ silkscreen, except call it “silkscreen0” for the bottom, or
 the way you tell it — it only adds labels to them with your names. We
 will need to go a little bit deeper to actually modify the layer IDs.
 Open the XML Editor, you should see something like this:</p>
-<img alt="projects/project-27257/images/6197001530467275980.png" src="projects/project-27257/images/6197001530467275980.png" />
+<img alt="../../../_images/6197001530467275980.png" src="../../../_images/6197001530467275980.png" />
 <p>Now you can select each of the layers, select the “id” attribute on
 the right side, and enter new value for it on the bottom. Change the
 IDs to “board”, “silkscreen0”, “silkscreen1”, etc. so that they match
@@ -90,19 +90,19 @@ saved.</p>
 <p>You are done. Now you can save your board as “Plain SVG”, and go back
 to Fritzing. In Fritzing, select the PCB, and in the properties click
 on the_load image file_ button:</p>
-<img alt="projects/project-27257/images/3061981530467466742.png" src="projects/project-27257/images/3061981530467466742.png" />
+<img alt="../../../_images/3061981530467466742.png" src="../../../_images/3061981530467466742.png" />
 <p>Select your saved SVG image. You should see a summary telling you how
 many cutouts (slots) your PCB has — make sure that number is correct.
 Finally, you will need to adjust the position of your PCB to match the
 components, and you are done:</p>
-<img alt="projects/project-27257/images/4986671530467729063.png" src="projects/project-27257/images/4986671530467729063.png" />
+<img alt="../../../_images/4986671530467729063.png" src="../../../_images/4986671530467729063.png" />
 <p>Now, when you export the board as gerbers, I recommend to do one more
 step before you send it to fabrication: open the board outline in a
 gerber viewer, such as “gerbv” and verify that the generated shape is
 indeed correct. Fritzing has some very annoying bugs around the gerber
 generation, and you might be unpleasantly surprised if you skip this
 step.</p>
-<img alt="projects/project-27257/images/1155181530467888431.png" src="projects/project-27257/images/1155181530467888431.png" />
+<img alt="../../../_images/1155181530467888431.png" src="../../../_images/1155181530467888431.png" />
 <p>This time everything is correct. If it wasn’t, I would go back to
 Inkscape and add a couple of nodes to the shape, around the places
 where something went wrong, to make sure it’s correct.</p>

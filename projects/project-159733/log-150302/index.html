@@ -61,14 +61,14 @@ connected to GPIO ports that don’t support PWM. The culprits are R5
 (PA27) and R7 (PA28). I checked if I could perhaps solder the matrix
 up-side-down to make those pins be connected to columns instead, but
 no, it works for PA28, but PA27 is then connected to R1.</p>
-<img alt="projects/project-159733/images/5114041533154243479.jpg" src="projects/project-159733/images/5114041533154243479.jpg" />
+<img alt="../../../_images/5114041533154243479.jpg" src="../../../_images/5114041533154243479.jpg" />
 <p>So I have no choice: a new PCB design is needed. To be honest, that
 was coming anyways, as the spacing of pads in the USB plug wasn’t
 perfect, and I wasn’t proud of the right-angle traces. So I removed
 the connections, rotated the microcontroller by 90°, and re-connected
 everything, paying attention to use PWM-capable pins for the rows. I
 think it came out much cleaner this time:</p>
-<img alt="projects/project-159733/images/1688501533154371536.png" src="projects/project-159733/images/1688501533154371536.png" />
+<img alt="../../../_images/1688501533154371536.png" src="../../../_images/1688501533154371536.png" />
 <p>The “forbidden” pins, PA02, PA03, PA27 and PA28 are all used for
 buttons now. I will mull over the design a little bit more, and order
 it from OSHPark this time.</p>

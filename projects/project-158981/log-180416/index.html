@@ -61,16 +61,16 @@ surprising to me, because previously I have built robots with exactly
 the same power distribution and with even more servos, and there was
 never such a problem. Oh well, so I got to figuring it out.</p>
 <p>First, the 3.3V line voltage on switching on looks like this:</p>
-<img alt="projects/project-158981/images/9566461594195189632.png" src="projects/project-158981/images/9566461594195189632.png" />
+<img alt="../../../_images/9566461594195189632.png" src="../../../_images/9566461594195189632.png" />
 <p>You can tell it’s not great — it goes up to around 3V, then drops to
 2.5V and slowly ramps up to 3.3V. This is probably the twitch of the
 servo motors overwhelming momentarily the battery. The usual solution
 to that is a beefy capacitor in parallel to the servos, so let’s try
 that. I think 1000µF will be enough?</p>
-<img alt="projects/project-158981/images/6443151594195327285.jpg" src="projects/project-158981/images/6443151594195327285.jpg" />
+<img alt="../../../_images/6443151594195327285.jpg" src="../../../_images/6443151594195327285.jpg" />
 <p>This makes the voltage curve look much smoother, but there is this
 capacitor charging now:</p>
-<img alt="projects/project-158981/images/1307801594195409111.png" src="projects/project-158981/images/1307801594195409111.png" />
+<img alt="../../../_images/1307801594195409111.png" src="../../../_images/1307801594195409111.png" />
 <p>Unfortunately, CircuitPython is still going into safe mode, and I have
 no idea why — there is code in it that is supposed to wait for the
 voltage to stabilize before proceeding with booting. So I played a
@@ -78,7 +78,7 @@ little bit more, tried to swap the LDO with the other, working robot,
 tried to add more capacitors, tried resistors on the servo signal
 lines, etc. — all for nothing. I noticed that with just 6 servos it
 works:</p>
-<img alt="projects/project-158981/images/3700341594195534259.png" src="projects/project-158981/images/3700341594195534259.png" />
+<img alt="../../../_images/3700341594195534259.png" src="../../../_images/3700341594195534259.png" />
 <p>But that’s just because the voltage drop is a little bit smaller, so I
 suppose it goes over the safe mode threshold.</p>
 <p>I’m beginning to suspect that there was actually a change in the
@@ -88,7 +88,7 @@ should be easy to verify, actually — let’s try older version. The
 working robot uses 5.0.0, so let’s try that…</p>
 <p>An nope, still goes into safe mode. So what makes the good robot good?
 Maybe we can look at its voltage curve? Let’s see:</p>
-<img alt="projects/project-158981/images/4092251594196245713.png" src="projects/project-158981/images/4092251594196245713.png" />
+<img alt="../../../_images/4092251594196245713.png" src="../../../_images/4092251594196245713.png" />
 <p>Hmm, so it’s the same bad curve from the start, only the voltage
 doesn’t quite dip as low. Probably just better quality servos, I
 suppose?</p>

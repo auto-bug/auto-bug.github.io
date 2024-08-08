@@ -55,7 +55,7 @@ minute” moment. I’m using a circuit literally copied from the
 datasheet. All connections are correct.  There is I2C communication.
 It just doesn’t display anything. Perhaps it’s the display that is
 broken? So I tried with another display, and lo and behold! It works!</p>
-<img alt="projects/project-27757/images/7316161513518850480.jpg" src="projects/project-27757/images/7316161513518850480.jpg" />
+<img alt="../../../_images/7316161513518850480.jpg" src="../../../_images/7316161513518850480.jpg" />
 <p>To be honest, I don’t think the display arrived broken — I think I
 broke it with my initial tries, when the components were taken from
 the SSD1306 datasheet, instead of the SH1106.</p>
@@ -63,7 +63,7 @@ the SSD1306 datasheet, instead of the SH1106.</p>
 and start programming for it! I quickly added all the remaining
 components, programmed the micro:bit with the “fill the display with
 random dots” demo, and it works:</p>
-<img alt="projects/project-27757/images/6312131513519065492.jpg" src="projects/project-27757/images/6312131513519065492.jpg" />
+<img alt="../../../_images/6312131513519065492.jpg" src="../../../_images/6312131513519065492.jpg" />
 <p>I even added the function to read the button states:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">buttons</span><span class="p">():</span>
     <span class="n">microbit</span><span class="o">.</span><span class="n">i2c</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="mh">0x70</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x40</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>

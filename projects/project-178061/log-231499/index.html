@@ -59,22 +59,22 @@ clocks, and that might be even faster than the parallel protocol.</p>
 display, a LiPo battery with a charging circuit, and a bunch of other
 extra features: backlight control, battery monitoring, a light sensor,
 and all the unused pins broken out to a connector on the back.</p>
-<img alt="projects/project-178061/images/9536251721943151898.png" src="projects/project-178061/images/9536251721943151898.png" />
+<img alt="../../../_images/9536251721943151898.png" src="../../../_images/9536251721943151898.png" />
 <p>I assumed the popular Nokia BL-5C battery, but I also found some very
 thin (3mm) pouch batteries of the same size, so I’m going to use those
 in my prototypes. I still need to figure out some way to hold the
 battery in place, and maybe some pogo pins for the battery connector.
 For now it’s held by some masking tape.</p>
-<img alt="projects/project-178061/images/4568981721943341933.jpg" src="projects/project-178061/images/4568981721943341933.jpg" />
+<img alt="../../../_images/4568981721943341933.jpg" src="../../../_images/4568981721943341933.jpg" />
 <p>I like the thin pouch battery, because it makes the whole console
 almost completely flat:</p>
-<img alt="projects/project-178061/images/4266341721943388017.jpg" src="projects/project-178061/images/4266341721943388017.jpg" />
+<img alt="../../../_images/4266341721943388017.jpg" src="../../../_images/4266341721943388017.jpg" />
 <p>As for the software, there were no problems. I prepared a board
 definition for CircuitPython, with 16MB flash and 8MB of PSRAM, and
 the Stage library enabled. I even added the display initialization to
 the firmware. Flashing is easy, because the BOOT button is the X
 button, like in the previous version. It worked at the first try.</p>
-<img alt="projects/project-178061/images/573811721943533443.jpg" src="projects/project-178061/images/573811721943533443.jpg" />
+<img alt="../../../_images/573811721943533443.jpg" src="../../../_images/573811721943533443.jpg" />
 <p>The power switch is only for the battery power — connecting the USB
 always turns the device on, and always charges the battery. It was
 easier to do it that way, though it might be annoying if you wanted to
@@ -83,7 +83,7 @@ just charge it without switching it on.</p>
 now I attached the PCB of one of the old prototypes on the back, and
 that seems to work pretty well. I might do something similar in the
 final version.</p>
-<img alt="projects/project-178061/images/6974671721943780003.jpg" src="projects/project-178061/images/6974671721943780003.jpg" />
+<img alt="../../../_images/6974671721943780003.jpg" src="../../../_images/6974671721943780003.jpg" />
 <p>I still have some nicer machine screws and washers on order – I should
 be able to control the spacing of the layers better with those.</p>
 <p>I’m also still not entirely happy with the buttons and the d-pad. I

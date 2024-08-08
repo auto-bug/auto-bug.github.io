@@ -57,12 +57,12 @@ clock pin optional, I decided to first try with an off-the-shelf
 module that I have, which I couldn’t use previously, because it
 doesn’t expose the master clock pin – it has a crystal oscillator on
 board for this.</p>
-<img alt="projects/project-182342/images/5808101671062604773.jpg" src="projects/project-182342/images/5808101671062604773.jpg" />
+<img alt="../../../_images/5808101671062604773.jpg" src="../../../_images/5808101671062604773.jpg" />
 <p>I got everything connected, I copied the example code, and… it just
 works, as advertised. Wow.</p>
 <p>But wait, does that mean my shield is faulty? Let’s connect it and
 see!</p>
-<img alt="projects/project-182342/images/4460811671062674536.jpg" src="projects/project-182342/images/4460811671062674536.jpg" />
+<img alt="../../../_images/4460811671062674536.jpg" src="../../../_images/4460811671062674536.jpg" />
 <p>This time it didn’t work as great – I got some data from the JPEG
 mode, but when I saved it in a file, it wasn’t recognized as a JPEG
 file. So I looked closely. A normal JPEG file starts with bytes ff d8
@@ -84,7 +84,7 @@ pin 12 as the pixel clock. Except I had it s pin 13 in my code,
 because of the mistake in the sticker. Changing it to 12 suddenly made
 everything work (with the 20MHz master clock, the 16MHz is still
 broken). Both the RGB565 and the JPEG modes work perfectly!</p>
-<img alt="projects/project-182342/images/5965751671063347687.jpg" src="projects/project-182342/images/5965751671063347687.jpg" />
+<img alt="../../../_images/5965751671063347687.jpg" src="../../../_images/5965751671063347687.jpg" />
 <p>I can’t even say how happy that makes me. This shield was a lot of
 frustration, and it the end it all turned out to be due to mistakes in
 pin numbering.</p>

@@ -71,7 +71,7 @@ also to add an EEPROM chip that will store the pin configuration and
 the device tree overlays necessary to use this board. In other words,
 I’m turning this into a proper HAT.</p>
 <p>Here’s the second version of the PCB so far:</p>
-<img alt="projects/project-25256/images/8638391498405164558.png" src="projects/project-25256/images/8638391498405164558.png" />
+<img alt="../../../_images/8638391498405164558.png" src="../../../_images/8638391498405164558.png" />
 <p>You can see that I moved the audio filters, so that they are together,
 and there is a header for their output – that’s where the amplifier
 board will go. There are no footprints for the speakers – they will
@@ -82,7 +82,7 @@ user happens to be holding that button down. There is an EEPROM chip
 with its pull-up resistors for I2C, as <a class="reference external" href="https://github.com/raspberrypi/hats/blob/master/designguide.md">specified in the HAT design guide</a> . Oh, and I switched to using through-hole buttons, because they
 actually use less space on the board, and will be easier to solder.</p>
 <p>I also took the time to actually draw a proper schematic:</p>
-<img alt="projects/project-25256/images/1816821498405427816.png" src="projects/project-25256/images/1816821498405427816.png" />
+<img alt="../../../_images/1816821498405427816.png" src="../../../_images/1816821498405427816.png" />
 <p>Then I wrote the overlay file for this board, which goes something
 like this:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
@@ -226,7 +226,7 @@ like this:</p>
 </pre></div>
 </div>
 <p>and then I tested that all of the buttons actually work properly:</p>
-<img alt="projects/project-25256/images/5348691498405674703.jpg" src="projects/project-25256/images/5348691498405674703.jpg" />
+<img alt="../../../_images/5348691498405674703.jpg" src="../../../_images/5348691498405674703.jpg" />
 <p>Turns out that it mostly all works, but I have to manually enable
 pull-ups on all the pins – for some reason the above overlay doesn’t
 enable them. Which is fine by me, because the EEPROM lets me do that

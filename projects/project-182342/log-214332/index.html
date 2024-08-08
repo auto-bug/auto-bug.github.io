@@ -61,13 +61,13 @@ oscillator to my shield, and make the PWM channel unnecessary?
 Probably. But how?</p>
 <p>Well, let’s search around for schematics of those modules and see if
 we find any useful hints. The first one I found is already promising:</p>
-<img alt="projects/project-182342/images/8081571671131448067.jpg" src="projects/project-182342/images/8081571671131448067.jpg" />
+<img alt="../../../_images/8081571671131448067.jpg" src="../../../_images/8081571671131448067.jpg" />
 <p>It shows that we only need to connect a single part to the MCLK pin,
 the one marked as X1, and labeled “24M” underneath. So probably some
 kind of a 24MHz oscillator. There is some more detailed documentation
 at  <a class="reference external" href="https://doc.embedfire.com/mcu/stm32/f407batianhu/std/zh/latest/book/DCMI_OV2640.html#id31">https://doc.embedfire.com/mcu/stm32/f407batianhu/std/zh/latest/book/DC
 MI_OV2640.html#id31</a> , together with an image:</p>
-<img alt="projects/project-182342/images/6583491671131606462.jpeg" src="projects/project-182342/images/6583491671131606462.jpeg" />
+<img alt="../../../_images/6583491671131606462.jpeg" src="../../../_images/6583491671131606462.jpeg" />
 <p>Here the oscillator Y1 is connected through a resistor, but otherwise
 it seems the same. The text under the image says ” 标号处的是一个24MHz的有源晶振”,
 which translates to “The label is a 24MHz active crystal oscillator”.

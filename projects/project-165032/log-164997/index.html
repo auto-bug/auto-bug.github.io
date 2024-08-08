@@ -58,7 +58,7 @@ the buttons finally arrived (the first one is still “on its way” after
 2 months), so I assembled both the <a class="reference internal" href="../../project-165983/#project-165983"><span class="std std-ref">D1 Mini UI Shield</span></a> and this little device. But testing it requires making a new board
 definition for CircuitPython, and also burning the bootloader, so 
 didn’t bother with that — only updated the photo on the project.</p>
-<img alt="projects/project-165032/images/2798201561405967878.jpg" src="projects/project-165032/images/2798201561405967878.jpg" />
+<img alt="../../../_images/2798201561405967878.jpg" src="../../../_images/2798201561405967878.jpg" />
 <p>Today I finally got to it. I had my J-Link out already, because I was
 re-flashing the bootloader on some older projects, so I quickly
 uploaded it to this one as well. That got me the energy to also copy
@@ -74,7 +74,7 @@ Well, technically it’s not a show-stopper, I will just need to pick
 another two pins, and there is a whole bunch of them free in there. In
 fact, I already amended the PCB design to use PA10/PA11, which I also
 tested to make sure they work:</p>
-<img alt="projects/project-165032/images/252261561406268991.png" src="projects/project-165032/images/252261561406268991.png" />
+<img alt="../../../_images/252261561406268991.png" src="../../../_images/252261561406268991.png" />
 <p>But that means a new PCB order, and desoldering/re-soldering of all
 the components, and I still don’t even know if the coin cell battery
 is going to be able to power the thing with the display on, and it
@@ -94,7 +94,7 @@ busio” to my library file. A bit of fumbling to restore the previous
 pin definition, and I have a ready firmware to flash. And… nothing.
 The device keeps restarting on the battery power. Yay.</p>
 <p>A quick swap of the battery to a rechargeable one, and lo and behold:</p>
-<img alt="projects/project-165032/images/5141161561407406718.jpg" src="projects/project-165032/images/5141161561407406718.jpg" />
+<img alt="../../../_images/5141161561407406718.jpg" src="../../../_images/5141161561407406718.jpg" />
 <p>So now I know I will need to squeeze that battery charging circuit in
 there somewhere. But I will leave that for some sleepless night.</p>
 </section>

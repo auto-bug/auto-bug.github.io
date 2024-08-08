@@ -55,10 +55,10 @@ this I have already done for <a class="reference internal" href="../../project-3
 digging up from my junk pile an old camera module from a laptop. You
 can usually find those in electronic junk, or, failing that, buy them
 as spare parts for a dollar or two. Mine looked something like this:</p>
-<img alt="projects/project-9065/images/1913191454851172345.jpg" src="projects/project-9065/images/1913191454851172345.jpg" />
+<img alt="../../../_images/1913191454851172345.jpg" src="../../../_images/1913191454851172345.jpg" />
 <hr class="docutils" />
 <p>Next I opened it and extracted the actual sensor:</p>
-<img alt="projects/project-9065/images/987571454851220600.jpg" src="projects/project-9065/images/987571454851220600.jpg" />
+<img alt="../../../_images/987571454851220600.jpg" src="../../../_images/987571454851220600.jpg" />
 <p>The cable has a plug, for convenience. I took my ohm-meter, and
 checked which cables are connected to the ground. In this case it was
 the green one, and, of course, the shielding – the first two pins.
@@ -66,11 +66,11 @@ The rest is easy: orange and red are D+ and D-, and black is VCC. In
 this cable, black and brown cables are connected to the same pin. Once
 I knew which cable is which, I used a piece of 1.27mm pin header to
 connect that to a normal USB cable:</p>
-<img alt="projects/project-9065/images/5640771454851485860.jpg" src="projects/project-9065/images/5640771454851485860.jpg" />
+<img alt="../../../_images/5640771454851485860.jpg" src="../../../_images/5640771454851485860.jpg" />
 <p>Then I needed a way to test it. I didn’t feel like risking frying my
 laptop, so instead I took a raspberry pi and some cheap USB hub, and
 used that:</p>
-<img alt="projects/project-9065/images/677751454851581296.jpg" src="projects/project-9065/images/677751454851581296.jpg" />
+<img alt="../../../_images/677751454851581296.jpg" src="../../../_images/677751454851581296.jpg" />
 <p>The camera enumerated nicely. Here’s an excerpt from_dmesg_:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span> <span class="mf">3875.068666</span><span class="p">]</span> <span class="n">usb</span> <span class="mi">1</span><span class="o">-</span><span class="mf">1.4</span><span class="p">:</span> <span class="n">new</span> <span class="n">high</span><span class="o">-</span><span class="n">speed</span> <span class="n">USB</span> <span class="n">device</span> <span class="n">number</span> <span class="mi">45</span> <span class="n">using</span> <span class="n">dwc_otg</span>
 <span class="p">[</span> <span class="mf">3875.176718</span><span class="p">]</span> <span class="n">usb</span> <span class="mi">1</span><span class="o">-</span><span class="mf">1.4</span><span class="p">:</span> <span class="n">New</span> <span class="n">USB</span> <span class="n">device</span> <span class="n">found</span><span class="p">,</span> <span class="n">idVendor</span><span class="o">=</span><span class="mi">174</span><span class="n">f</span><span class="p">,</span> <span class="n">idProduct</span><span class="o">=</span><span class="mi">5</span><span class="n">a31</span>
@@ -94,7 +94,7 @@ used that:</p>
 <p>Then I installed_motion_ and tried the camera with it. I had to modify the configuration to
 make the stream available outside of localhost. Otherwise, it just
 worked:</p>
-<img alt="projects/project-9065/images/3232061454851798928.jpg" src="projects/project-9065/images/3232061454851798928.jpg" />
+<img alt="../../../_images/3232061454851798928.jpg" src="../../../_images/3232061454851798928.jpg" />
 <p>Unfortunately,<em>motion</em> has quite a bit of a lag, and if I wanted to use the streaming for
 controlling the robot remotely, that would be unacceptable. So I
 decided to try_mjpegstreamer._ There is a simple <a class="reference external" href="http://blog.miguelgrinberg.com/post/how-to-build-and-run-mjpg-streamer-on-the-raspberry-pi">tutorial on installing mjpegstreamer on Raspberry Pi</a> . Of course instead of using files as input, I used_input_uvs.so_ plugin:</p>
@@ -106,11 +106,11 @@ decided to try_mjpegstreamer._ There is a simple <a class="reference external" h
 devices, expect lower voltage than the usual 5V. I will have to try
 and power it from Pi’s 3.3V power and see how it works then.</p>
 <p>I also made a plug for the Pi Zero, to save some space:</p>
-<img alt="projects/project-9065/images/4184981454852278897.jpg" src="projects/project-9065/images/4184981454852278897.jpg" />
+<img alt="../../../_images/4184981454852278897.jpg" src="../../../_images/4184981454852278897.jpg" />
 <p>That should work, but then I can’t have the WiFi dongle. I guess I
 will need to look into making Tote Zero compatible with the <span class="xref std std-ref">project-8678</span>  pants (or even add the ESP8266 to Tote’s PCB).</p>
 <p>Update: I made a smaller cable for the Pi Zero:</p>
-<img alt="projects/project-9065/images/5400171454853702270.jpg" src="projects/project-9065/images/5400171454853702270.jpg" />
+<img alt="../../../_images/5400171454853702270.jpg" src="../../../_images/5400171454853702270.jpg" />
 <p>While that makes it impossible to use the WiFi dongle, I can still use
 OpenCV with this camera to make the robot analyze what it sees and
 actually do something fun.</p>

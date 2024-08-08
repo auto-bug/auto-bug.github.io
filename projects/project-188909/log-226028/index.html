@@ -50,7 +50,7 @@
   <section class="tex2jax_ignore mathjax_ignore" id="wee-display">
 <h1>Wee Display<a class="headerlink" href="#wee-display" title="Permalink to this heading">¶</a></h1>
 <p>Published on 2023-12-15 in <a class="reference internal" href="../#project-188909"><span class="std std-ref">Wee Bug</span></a>.</p>
-<img alt="projects/project-188909/images/47221702660969258.gif" src="projects/project-188909/images/47221702660969258.gif" />
+<img alt="../../../_images/47221702660969258.gif" src="../../../_images/47221702660969258.gif" />
 <p>A while ago I made a <a class="reference external" href="https://hackaday.io/project/188909-wee-bug/log/224310-a-display">display shield</a>  (mask?) for the Wee Bug, but because it needs additional pins to talk
 to the microcontroller, it only works with the Waveshare Mini boards,
 and not the Xiao or QtPy boards, that don’t have those extra pins. But
@@ -82,7 +82,7 @@ what threshold voltage should the chip have, so I ordered the 3.3V
 (because that’s the voltage I will use to power the display) and 2.5V
 (because that’s the 2/3 of the final voltage) versions. Then I quickly
 made a PCB and since it was so small, ordered it from OSHPark.</p>
-<img alt="projects/project-188909/images/1458951702661857606.jpg" src="projects/project-188909/images/1458951702661857606.jpg" />
+<img alt="../../../_images/1458951702661857606.jpg" src="../../../_images/1458951702661857606.jpg" />
 <p>When it arrived a few weeks later (free shipping from US is slooooow),
 I quickly soldered it up and tested. I immediately realized that I
 forgot to add the pull-up resistors on the I2C bus, but that’s fine
@@ -108,7 +108,7 @@ wouldn’t work like that, since it didn’t get its reset after power up.
 So I once more put the reset chip in there, <em>and</em> added the pull-up
 resistor, while <em>at the same time</em> having CE connected to GND. That
 was it, that made it all work.</p>
-<img alt="projects/project-188909/images/5833931702662829258.jpg" src="projects/project-188909/images/5833931702662829258.jpg" />
+<img alt="../../../_images/5833931702662829258.jpg" src="../../../_images/5833931702662829258.jpg" />
 <p>It certainly took me more time than it should, but I have an animated
 eye working on the robot now.</p>
 </section>

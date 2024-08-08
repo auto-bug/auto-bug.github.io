@@ -63,11 +63,11 @@ worked fine. Great.</p>
 <p>Now, back to the Trinket M0, it still doesn’t work. The display
 remains blank. What’s the problem? It worked with the ESP8266. Let’s
 take a logic analyzer and see…</p>
-<img alt="projects/project-27033/images/366821504262037253.png" src="projects/project-27033/images/366821504262037253.png" />
+<img alt="../../../_images/366821504262037253.png" src="../../../_images/366821504262037253.png" />
 <p>Hmm, that doesn’t look right. Before every byte being transmitted,
 there is this weird blip both on the data and the clock lines. Let’s
 look closer.</p>
-<img alt="projects/project-27033/images/6366881504262094769.png" src="projects/project-27033/images/6366881504262094769.png" />
+<img alt="../../../_images/6366881504262094769.png" src="../../../_images/6366881504262094769.png" />
 <p>Yeah, definitely something is not right. What could it be? Probably
 something specific to the Trinket M0. So I <a class="reference external" href="https://github.com/adafruit/circuitpython/issues/219">reported the bug</a>  in the CircuitPython project, and went to sleep.</p>
 <p>The next day I had a look into the code of the display library, and
@@ -76,7 +76,7 @@ The BusDevice code calls_spi.configure() _before every transmission, to make su
 baud rate and mode — and that call resets the SPI peripheral and
 causes the blip.</p>
 <p>Sure enough, commenting that line out makes the display work:</p>
-<img alt="projects/project-27033/images/3349201504262523125.jpg" src="projects/project-27033/images/3349201504262523125.jpg" />
+<img alt="../../../_images/3349201504262523125.jpg" src="../../../_images/3349201504262523125.jpg" />
 </section>
 
 

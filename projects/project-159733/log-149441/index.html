@@ -69,7 +69,7 @@ costs considerably, because not only single-color LEDs are much
 cheaper than bi-color ones, but also I only need to charlieplex 8×8
 LEDs, which can be done with 9 pins. I can also make the whole thing
 much smaller. So I designed this:</p>
-<img alt="projects/project-159733/images/7579771531680143729.png" src="projects/project-159733/images/7579771531680143729.png" />
+<img alt="../../../_images/7579771531680143729.png" src="../../../_images/7579771531680143729.png" />
 <p>I didn’t make a proper board outline to account for the USB plug, and
 the battery is missing — it would go on the back. There are some
 problems with this design, though: the whole thing is simply too
@@ -104,7 +104,7 @@ pieces for $16. I suppose I can as well put them back. And a power
 switch too, because sleep modes of SAMD21 are not yet that well
 supported in CircuitPython. Hmm, ok, so where does that leave us?
 Basically here:</p>
-<img alt="projects/project-159733/images/6384931531681396656.png" src="projects/project-159733/images/6384931531681396656.png" />
+<img alt="../../../_images/6384931531681396656.png" src="../../../_images/6384931531681396656.png" />
 <p>It looks pretty much the same as PewPew 5.0, but has 2x fewer parts
 and is proportionately cheaper. Of course I still need to write the
 code that will drive the matrix — it has to live in a timer, so I

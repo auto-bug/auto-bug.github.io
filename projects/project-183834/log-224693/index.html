@@ -57,13 +57,13 @@ using an FPC ribbon cable, so you have to find the correct cable and
 connector. And then you have to write the code to actually make it
 work. Turns out, once all the pcbs and parts arrive, you can do it in
 a weekend.</p>
-<img alt="projects/project-183834/images/1768701698575117338.jpg" src="projects/project-183834/images/1768701698575117338.jpg" />
+<img alt="../../../_images/1768701698575117338.jpg" src="../../../_images/1768701698575117338.jpg" />
 <p>The PCB is pretty basic, it’s just the FPC connector and a pin header
 for plugging into the spare GPIO pins on my keyboard, together with
 three buttons for the mouse buttons. I made the hole for the fpc
 ribbon excessively large, just to be safe, but of course it doesn’t
 matter, because it’s covered by the touchpad anyways.</p>
-<img alt="projects/project-183834/images/8454641698575290167.jpg" src="projects/project-183834/images/8454641698575290167.jpg" />
+<img alt="../../../_images/8454641698575290167.jpg" src="../../../_images/8454641698575290167.jpg" />
 <p>I connected both the SPI and I2C pins, because I didn’t know which
 mode will be best, but that left me one pin short, so I connected the
 CS pin to GND permanently, since the touchpad is going to be the only
@@ -73,7 +73,7 @@ I2C lines, but that was fortunately easily bodged.</p>
 <p>To work on the code more comfortably, without having to use a second
 keyboard, I made a debugging rig out of a spare half of a keyboard
 PCB.</p>
-<img alt="projects/project-183834/images/9149801698575471288.jpg" src="projects/project-183834/images/9149801698575471288.jpg" />
+<img alt="../../../_images/9149801698575471288.jpg" src="../../../_images/9149801698575471288.jpg" />
 <p>I used Adafruit Cirque Pinnacle CircuitPython library as the starting
 point, but it turned out to be way too big to fit on the tiny SAMD21
 chip I’m using on my keyboard, so I had to write a minimal version. It

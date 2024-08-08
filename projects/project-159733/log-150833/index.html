@@ -58,7 +58,7 @@ DigitalInputOutput objects into PWMOut objects with 100kHz frequency,
 and instead of setting them low or high when scanning the columns, I’m
 now instead setting the duty cycle to the desired shade. The code
 compiled and should work in theory…</p>
-<img alt="projects/project-159733/images/8987431534026346377.gif" src="projects/project-159733/images/8987431534026346377.gif" />
+<img alt="../../../_images/8987431534026346377.gif" src="../../../_images/8987431534026346377.gif" />
 <p>In practice, turns out that setting the duty cycle sometimes takes
 longer to actually have an effect, and in that time we already switch
 to the next column (row on the photo, as the matrix is rotated 90°).
@@ -76,7 +76,7 @@ connecting the pins to the timer. Unfortunately I had to modify the
 peripherals library in order to add my function to the interrupt
 handler — so this is no longer a single clean patch. But lo and
 behold, it works!</p>
-<img alt="projects/project-159733/images/6927111534027106503.jpg" src="projects/project-159733/images/6927111534027106503.jpg" />
+<img alt="../../../_images/6927111534027106503.jpg" src="../../../_images/6927111534027106503.jpg" />
 <p>Pretty good for not having any idea about what I’m doing. Of course at
 the moment the code is one huge hack, but that’s not important, I can
 clean it up. And believe or not, there are actually 4 recognizable

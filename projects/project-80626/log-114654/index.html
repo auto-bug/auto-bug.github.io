@@ -56,7 +56,7 @@ really nice enclosure, and if you get the “faces” thing, even several
 keyboards. So I decided to try porting the Stage library to it first.
 After a day of work, mostly spent writing the driver for the ILI9341
 display, I ended up with something like this:</p>
-<img alt="projects/project-80626/images/2263441520724593878.jpg" src="projects/project-80626/images/2263441520724593878.jpg" />
+<img alt="../../../_images/2263441520724593878.jpg" src="../../../_images/2263441520724593878.jpg" />
 <p>The small square area is the 128×128 pixels for which the library was
 originally written. Of course with a bigger screen you can make games
 that use a larger area. But the rendering doesn’t look quite right.
@@ -65,7 +65,7 @@ but I didn’t solve the issue until I tried to reduce the speed of the
 SPI clock down to 40MHz. I have forgotten that ESP32 has really fast
 SPI, which apparently this display can’t handle reliably. With that, I
 have proper rendering:</p>
-<img alt="projects/project-80626/images/95211520724881062.jpg" src="projects/project-80626/images/95211520724881062.jpg" />
+<img alt="../../../_images/95211520724881062.jpg" src="../../../_images/95211520724881062.jpg" />
 <p>Now, the buttons. The keyboard attachments all use an ATmega328p chip
 working as an I2C slave on address 0x08 and reporting the pressed keys
 as a simple bit mask — pretty much like <a class="reference internal" href="../../project-19371/#project-19371"><span class="std std-ref">D1 Mini X-Pad Shield</span></a> or <span class="xref std std-ref">project-26823</span> . That’s a problem, because I have to poll the bus, and if I do it

@@ -54,16 +54,16 @@
 considerable amount of time designing that PCB, and it has a couple of
 Easter eggs in there. On of them is that unpopulated pin header in the
 lower right corner:</p>
-<img alt="projects/project-9065/images/7686981478428435715.jpg" src="projects/project-9065/images/7686981478428435715.jpg" />
+<img alt="../../../_images/7686981478428435715.jpg" src="../../../_images/7686981478428435715.jpg" />
 <p>Turns out that you can put a female pin header in there:</p>
-<img alt="projects/project-9065/images/1163951478428487502.jpg" src="projects/project-9065/images/1163951478428487502.jpg" />
+<img alt="../../../_images/1163951478428487502.jpg" src="../../../_images/1163951478428487502.jpg" />
 <p>And then, instead of plugging that ESP8266 module in the usual socket,
 you can plug a Raspberry Pi Zero in there:</p>
-<img alt="projects/project-9065/images/7314471478428541384.jpg" src="projects/project-9065/images/7314471478428541384.jpg" />
+<img alt="../../../_images/7314471478428541384.jpg" src="../../../_images/7314471478428541384.jpg" />
 <p>The power from the LiPo is only between 3.7 and 4.2V, but turns out
 that this is enough for the pi – its regulator will switch into a
 low-voltage mode, and everything works:</p>
-<img alt="projects/project-9065/images/5699741478428627112.jpg" src="projects/project-9065/images/5699741478428627112.jpg" />
+<img alt="../../../_images/5699741478428627112.jpg" src="../../../_images/5699741478428627112.jpg" />
 <p>Next, I will just need to take the MicroPython code I used on the
 original, and touch it up to run on regular Python on the pi, with the
 SMBus library for the I²C communication.</p>

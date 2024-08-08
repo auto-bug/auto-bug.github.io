@@ -52,20 +52,20 @@
 <p>Published on 2022-05-10 in <a class="reference internal" href="../#project-185291"><span class="std std-ref">PewPew LCD</span></a>.</p>
 <p>With an embarrassing failure that was the first PCB behind me, I went
 ahead and fixed the design somewhat:</p>
-<img alt="projects/project-185291/images/3215701648160216656.png" src="projects/project-185291/images/3215701648160216656.png" />
+<img alt="../../../_images/3215701648160216656.png" src="../../../_images/3215701648160216656.png" />
 <p>The flex connector for the display is now outside the display’s
 outline, the microontroller had to be moved, the USB is now flipped to
 correct orientation. I ordered this time at <a class="reference external" href="https://hackaday.io/hacker/147848">&#64;Elecrow </a> because they had more choice of colors for the 0.6mm thick PCBs, and
 the quality seems to be better. A month later I had the first working
 prototype in my hand:</p>
-<img alt="projects/project-185291/images/4354011649793678786.jpg" src="projects/project-185291/images/4354011649793678786.jpg" />
+<img alt="../../../_images/4354011649793678786.jpg" src="../../../_images/4354011649793678786.jpg" />
 <p>I adapted the software I used previously on the <a class="reference internal" href="../../project-180309/#project-180309"><span class="std std-ref">PewPew OLED</span></a>  – the displays are pretty similar in how they handle pixels. One
 problem I encountered is that while the driver chip has the commands
 to flip the display 180°, and the breakout module I used to test them
 worked fine, the cheap displays I got for the device ignore those
 commands – I’m guessing they don’t actually use the same driver chip,
 but some cheaper alternative.</p>
-<img alt="projects/project-185291/images/2440721649794016688.jpg" src="projects/project-185291/images/2440721649794016688.jpg" />
+<img alt="../../../_images/2440721649794016688.jpg" src="../../../_images/2440721649794016688.jpg" />
 <p>Fortunately this wasn’t a huge problem, because displayio can rotate
 the display in software, and my own driver code can easily just output
 the pages in reverse order.</p>

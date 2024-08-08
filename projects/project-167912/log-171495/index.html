@@ -57,14 +57,14 @@ PCB.</p>
 <p>First, I needed to figure out which pins go to which rows and columns,
 and let me say that the schematic view of Fritzing is not very helpful
 with that:</p>
-<img alt="projects/project-167912/images/8568871575326633423.png" src="projects/project-167912/images/8568871575326633423.png" />
+<img alt="../../../_images/8568871575326633423.png" src="../../../_images/8568871575326633423.png" />
 <p>It just piled all the switches and diodes on top of each other, and I
 really don’t have the energy to arrange them all properly. But no
 problem, we can use the PCB design view, and simply look where each
 trace goes. If we click the trace, it gets highlighted, together with
 all things that are connected to it, so that’s not too bad. While
 doing that, I noticed a curious thing:</p>
-<img alt="projects/project-167912/images/7394491575326767040.png" src="projects/project-167912/images/7394491575326767040.png" />
+<img alt="../../../_images/7394491575326767040.png" src="../../../_images/7394491575326767040.png" />
 <p>Apparently I wasted one of the pins, by connecting it directly to the
 backslash button, before the diode. This isn’t a problem, since there
 are still enough pins (just barely), and there is another pin properly
@@ -91,7 +91,7 @@ solid trace — that doesn’t look like some accidental short somewhere.
 To make sure, I took an unpopulated board, and checked there — sure
 enough, there is a short as well. That made me look closer at the
 traces, and sure enough:</p>
-<img alt="projects/project-167912/images/6568521575327403793.png" src="projects/project-167912/images/6568521575327403793.png" />
+<img alt="../../../_images/6568521575327403793.png" src="../../../_images/6568521575327403793.png" />
 <p>The row 4 is dipping under the column traces here, but there is also a
 hard-to-see trace for the row 3 going right through it on the
 underside of the PCB. It’s hard to see, because I rooted it along a
@@ -107,7 +107,7 @@ definition will look a bit confusing, but who cares.</p>
 <p>Finally, five of the keys had the diodes soldered only on one side —
 re-touching them with the iron fixed it.</p>
 <p>It all works now mechanically, even the Caps Lock led:</p>
-<img alt="projects/project-167912/images/2735891575327892749.jpg" src="projects/project-167912/images/2735891575327892749.jpg" />
+<img alt="../../../_images/2735891575327892749.jpg" src="../../../_images/2735891575327892749.jpg" />
 <p>Next time, more about the firmware.</p>
 </section>
 
