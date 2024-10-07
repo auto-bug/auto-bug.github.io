@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Better Power Circuit - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section class="tex2jax_ignore mathjax_ignore" id="better-power-circuit">
+<h1>Better Power Circuit<a class="headerlink" href="#better-power-circuit" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2024-08-07 in <a class="reference internal" href="../#project-197886"><span class="std std-ref">Tiny OLED</span></a>.</p>
+<p>I have made similar handhelds before, and if you look through hackaday.io a bit, you will find many similar consoles made by other people, all of them using the same 128x64 OLED display, six buttons, and a variety of microcontrollers. So what’s interesting in doing it one more time?</p>
+<p>Well, I’ve been iterating on my handheld game consoles for a while, and I have learned some things in the process — I’m not really a professional electrical engineer, so a lot of things I use in my designs are just tricks that I have learned from somewhere (often lifted from other people’s designs). This time I used some new tricks.</p>
+<p>First and foremost, there is a boost converter on this board, so not only will it run from a regular coin cell battery (not rechargeable), but it will run on it until there is no electron left to suck out of it. And it should even run with the weaker batteries sold in some countries.</p>
+<p>Second, the power switch is no longer switching between battery and USB power. There is now a proper power switching circuit, that cuts the battery power when USB is connected.</p>
+<p>Third, I added a reset circuit to the OLED screen, that handles the required physical reset of the display some time after powering it on. Previously I wasted a GPIO pin just for that, but adding those simple three components lets me use the pin for a speaker instead..</p>
+<p>Fourth, I’m back to physical tact switches, instead of touch pads, and I’m using some very nice, low-force clicky switches that I found through a lot of trial and error.</p>
+<p>Fifth, the display is right side up this time, with a slot in the middle of the PCB for the FPC connector. It took some work to get the spacing right for this. There are even pilot holes for soldering it more easily. I might make the slot a milimeter or so longer next time, to make it easier to get the connector through it, though (right now you have to bend it to get it through the hole).</p>
+<p>Sixth, I also added an optional footprint for a BH1/2AA battery holder, for those who want to have a battery that lasts a little bit longer, but still is pretty small.</p>
+<p>Seventh, the speaker is without amplification, just with a protecting resistor. This is because any louder sounds would rapidly drain the battery. We only want very quiet and simple sounds here.</p>
+</section>
+
+
+</div>
+  </body>
+</html>
