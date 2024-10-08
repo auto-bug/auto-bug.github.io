@@ -9,6 +9,9 @@ Published on 2024-08-07 in {ref}`project-197886`.
 
 I have made similar handhelds before, and if you look through hackaday.io a bit, you will find many similar consoles made by other people, all of them using the same 128x64 OLED display, six buttons, and a variety of microcontrollers. So what's interesting in doing it one more time?
 
+```{image} images/thumb-820851726051722654.jpg
+```
+
 Well, I've been iterating on my handheld game consoles for a while, and I have learned some things in the process — I'm not really a professional electrical engineer, so a lot of things I use in my designs are just tricks that I have learned from somewhere (often lifted from other people's designs). This time I used some new tricks.
 
 First and foremost, there is a boost converter on this board, so not only will it run from a regular coin cell battery (not rechargeable), but it will run on it until there is no electron left to suck out of it. And it should even run with the weaker batteries sold in some countries.
