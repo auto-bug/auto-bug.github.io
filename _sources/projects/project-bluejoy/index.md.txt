@@ -1,20 +1,20 @@
-:::{post} 2024-10-08
+```{post} 2024-10-08
 :category: project
 :tags: ongoing project, hardware
 :image: 1
 :exclude:
 
 Bluetooth gamepad shield for Xiao.
-:::
+```
 
 # BlueJoy
 Bluetooth gamepad shield for Xiao
 
 <div class="project-thumb">
 
-:::{image} images/thumb-Screenshot_2024-10-07_23-38-10.png
+```{image} images/thumb-Screenshot_2024-10-07_23-38-10.png
 :target: /_images/Screenshot_2024-10-07_23-38-10.png
-:::
+```
 </div>
 
 There are a lot of wireless gamepads out there, from tiny pocket things to large game console controllers. It would be nice to be able to control our projects with them, especially when those projects are robots of some kind. We can do it easily with a library like Bluepad32-AirLift, but that requires an AirLift module, which is rather large, and requires a lot of pins for its SPI connection.
@@ -23,7 +23,7 @@ This is an attempt at making a much smaller module, the size of a Seeed Xiao boa
 
 ## Logs
 
-:::{postlist}
+```{postlist}
 :category: project-bluejoy
-:::
+```
 
