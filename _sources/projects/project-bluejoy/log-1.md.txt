@@ -31,14 +31,16 @@ built-in RAM and the smallest flash chip supported, but this one is easy to get
 and it will work too, so why not. Perhaps if I get this working I can nerdsnipe
 someone into designing a cheaper custom board. Who knows.
 
-```{image} images/Screenshot_2024-10-07_23-38-10.png```
+```{image} images/Screenshot_2024-10-07_23-38-10.png
+```
 
 A bit of work in EasyEDA, and we have our basic shield done. The module
 contains almost everything we need, so the PCB is basically just an adapter.
 The only extra components are the two pull-up resistors. Otherwise it's all
 just pin headers.
 
-```{image} images/Screenshot_2024-10-07_23-39-05.png```
+```{image} images/Screenshot_2024-10-07_23-39-05.png
+```
 
 The back side just has some convenient labels: the name and version of the
 project, so I can figure out what it is in a few years, and labels for all the
