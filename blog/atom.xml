@@ -2,24 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art</title>
-  <updated>2024-10-08T15:37:45.649759+00:00</updated>
+  <updated>2024-10-08T16:11:16.029585+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
-  <entry>
-    <id>http://deshipu.art/projects/project-197769/log-1/</id>
-    <title>Should Be Fine Now</title>
-    <updated>2024-08-07T00:00:00+02:00</updated>
-    <content type="html">&lt;section class="tex2jax_ignore mathjax_ignore" id="should-be-fine-now"&gt;
-
-&lt;p&gt;Published on 2024-08-07 in &lt;a class="reference internal" href="../projects/project-197769/#project-197769"&gt;&lt;span class="std std-ref"&gt;Mini OLED SAO&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;I uploaded the corrected design files now, they should be the same as the first prototype.&lt;/p&gt;
-&lt;/section&gt;
-</content>
-    <link href="http://deshipu.art/projects/project-197769/log-1/" rel="alternate"/>
-    <summary>Published on 2024-08-07 in project-197769.</summary>
-    <published>2024-08-07T00:00:00+02:00</published>
-  </entry>
   <entry>
     <id>http://deshipu.art/projects/project-197769/</id>
     <title>Mini OLED SAO</title>
@@ -87,6 +73,7 @@
 &lt;h2&gt;Logs&lt;/h2&gt;
 &lt;ul class="postlist-style-none postlist simple"&gt;
 &lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2024-10-08 - &lt;a class="reference internal" href="../projects/project-bluejoy/log-1/"&gt;PCB Design&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2024-10-08 - &lt;a class="reference internal" href="../projects/project-bluejoy/log-2/"&gt;Firmware&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/section&gt;
 &lt;/section&gt;
@@ -95,6 +82,49 @@
     <summary>Bluetooth gamepad shield for Xiao.</summary>
     <category term="hardware" label="hardware"/>
     <category term="ongoingproject" label="ongoing project"/>
+    <published>2024-10-08T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-bluejoy/log-2/</id>
+    <title>Firmware</title>
+    <updated>2024-10-08T00:00:00+02:00</updated>
+    <content type="html">&lt;section class="tex2jax_ignore mathjax_ignore" id="firmware"&gt;
+
+&lt;p&gt;Published on 2024-10-08 in &lt;a class="reference internal" href="../projects/project-bluejoy/#project-bluejoy"&gt;&lt;span class="std std-ref"&gt;BlueJoy&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;With the PCB designed and ordered, it’s time to look at the firmware a bit. Of
+course with no hardware to test it on, we are going to need to improvise
+somewhat, and just use some off-the-shelf ESP32 development board, with pull-up
+resistors added.&lt;/p&gt;
+&lt;img alt="projects/project-bluejoy/IMG_20241004_205425_HDR.jpg" src="projects/project-bluejoy/IMG_20241004_205425_HDR.jpg" /&gt;
+&lt;p&gt;I initially planned to use the Bluepad32-Airlift firmware, only modify it to
+use I2C instead of SPI. However, after looking a little bit at the source code
+and realizing I have zero experience with ESP-IDF, I decided to pick the path
+of the least resistance, and instead use Bluepad32-Arduino together with
+Arduino’s good old Wire library.&lt;/p&gt;
+&lt;p&gt;The documentation for Bluepad32-Arduino explains very well how to setup the
+environment and get the example code compiled and working. One snag that I hit
+is that by default the example code doesn’t print anything on the serial
+console when buttons are pressed — it only changes the LEDs on the controller,
+which incidentally my gamepad didn’t have. So until I actually looked at the
+code and added some debugging prints, I was convinced it doesn’t work. But I
+only wasted an hour or two on that, and the rest went smoothly.&lt;/p&gt;
+&lt;p&gt;The example file actually gets us halfway there: it shows how to initialize
+newly connected gamepads, and how to run the update loop for them, and how to
+get their state. Adding the initialization for I2C slave and the onRequest and
+onReceive callback got the I2C working, and then it’s just a question of a
+bunch of switch statements to simulate registers.&lt;/p&gt;
+&lt;p&gt;Because the complete state of the gamepad turned out to be rather large for I2C
+at 54 bytes, I decided to split it into the basic and advanced parts, the
+former containing the d-pad, x and y axes, and buttons, and the latter having
+all the rest, including other axes, gyro, accelerometer, throttle, etc. This
+way we can keep things fast and snappy for basic use, and still have the
+advanced stuff if we need it.&lt;/p&gt;
+&lt;p&gt;I might need to rework some of the details of it further once I have tested it all somewhat. For example, the register that tells us if there has been any change since the last communication right now only returns 0 or 1, but I could make it return a bitmask of which of the gamepads have a change in their status instead, so that we can then only query those.&lt;/p&gt;
+&lt;p&gt;I will be putting the source code for this firmware, together with an example library for CircuitPython for communicating with it in a repository once I have the hardware tested an working.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-bluejoy/log-2/" rel="alternate"/>
+    <summary>Published on 2024-10-08 in project-bluejoy.</summary>
     <published>2024-10-08T00:00:00+02:00</published>
   </entry>
   <entry>

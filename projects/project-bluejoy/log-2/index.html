@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Firmware - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section class="tex2jax_ignore mathjax_ignore" id="firmware">
+<h1>Firmware<a class="headerlink" href="#firmware" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2024-10-08 in <a class="reference internal" href="../#project-bluejoy"><span class="std std-ref">BlueJoy</span></a>.</p>
+<p>With the PCB designed and ordered, it’s time to look at the firmware a bit. Of
+course with no hardware to test it on, we are going to need to improvise
+somewhat, and just use some off-the-shelf ESP32 development board, with pull-up
+resistors added.</p>
+<img alt="projects/project-bluejoy/IMG_20241004_205425_HDR.jpg" src="projects/project-bluejoy/IMG_20241004_205425_HDR.jpg" />
+<p>I initially planned to use the Bluepad32-Airlift firmware, only modify it to
+use I2C instead of SPI. However, after looking a little bit at the source code
+and realizing I have zero experience with ESP-IDF, I decided to pick the path
+of the least resistance, and instead use Bluepad32-Arduino together with
+Arduino’s good old Wire library.</p>
+<p>The documentation for Bluepad32-Arduino explains very well how to setup the
+environment and get the example code compiled and working. One snag that I hit
+is that by default the example code doesn’t print anything on the serial
+console when buttons are pressed — it only changes the LEDs on the controller,
+which incidentally my gamepad didn’t have. So until I actually looked at the
+code and added some debugging prints, I was convinced it doesn’t work. But I
+only wasted an hour or two on that, and the rest went smoothly.</p>
+<p>The example file actually gets us halfway there: it shows how to initialize
+newly connected gamepads, and how to run the update loop for them, and how to
+get their state. Adding the initialization for I2C slave and the onRequest and
+onReceive callback got the I2C working, and then it’s just a question of a
+bunch of switch statements to simulate registers.</p>
+<p>Because the complete state of the gamepad turned out to be rather large for I2C
+at 54 bytes, I decided to split it into the basic and advanced parts, the
+former containing the d-pad, x and y axes, and buttons, and the latter having
+all the rest, including other axes, gyro, accelerometer, throttle, etc. This
+way we can keep things fast and snappy for basic use, and still have the
+advanced stuff if we need it.</p>
+<p>I might need to rework some of the details of it further once I have tested it all somewhat. For example, the register that tells us if there has been any change since the last communication right now only returns 0 or 1, but I could make it return a bitmask of which of the gamepads have a change in their status instead, so that we can then only query those.</p>
+<p>I will be putting the source code for this firmware, together with an example library for CircuitPython for communicating with it in a repository once I have the hardware tested an working.</p>
+</section>
+
+
+</div>
+  </body>
+</html>
