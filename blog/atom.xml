@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art</title>
-  <updated>2024-10-08T16:11:16.029585+00:00</updated>
+  <updated>2024-10-08T16:11:46.294304+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -95,7 +95,7 @@
 course with no hardware to test it on, we are going to need to improvise
 somewhat, and just use some off-the-shelf ESP32 development board, with pull-up
 resistors added.&lt;/p&gt;
-&lt;img alt="projects/project-bluejoy/IMG_20241004_205425_HDR.jpg" src="projects/project-bluejoy/IMG_20241004_205425_HDR.jpg" /&gt;
+&lt;img alt="../_images/IMG_20241004_205425_HDR.jpg" src="../_images/IMG_20241004_205425_HDR.jpg" /&gt;
 &lt;p&gt;I initially planned to use the Bluepad32-Airlift firmware, only modify it to
 use I2C instead of SPI. However, after looking a little bit at the source code
 and realizing I have zero experience with ESP-IDF, I decided to pick the path
