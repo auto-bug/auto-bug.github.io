@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art</title>
-  <updated>2024-10-08T15:13:43.392705+00:00</updated>
+  <updated>2024-10-08T15:16:01.149499+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -46,14 +46,14 @@
     <published>2024-10-06T00:00:00+02:00</published>
   </entry>
   <entry>
-    <id>http://deshipu.art/projects/project-bluejoy/</id>
+    <id>http://deshipu.art/projects/project-197886/</id>
     <title>Tiny OLED</title>
     <updated>2024-10-07T00:00:00+02:00</updated>
     <content type="html">&lt;section class="tex2jax_ignore mathjax_ignore" id="tiny-oled"&gt;
 
 &lt;p&gt;Tiny handheld with OLED and XIAO.&lt;/p&gt;
 &lt;div class="project-thumb"&gt;
-&lt;a class="reference external image-reference" href="/_images/820851726051722654.jpg"&gt;&lt;img alt="projects/project-bluejoy/images/thumb-820851726051722654.jpg" src="projects/project-bluejoy/images/thumb-820851726051722654.jpg" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/820851726051722654.jpg"&gt;&lt;img alt="../_images/thumb-820851726051722654.jpg" src="../_images/thumb-820851726051722654.jpg" /&gt;&lt;/a&gt;
 &lt;/div&gt;
 &lt;p&gt;The “small game console with an OLED screen” is practically a genre already. There are dozens of such projects, with all kinds of microcontrollers on board. I decided to do one more iteration on this design, using all the experience I gained recently with power circuits for such boards. Since the microcontroller wasn’t the interesting part here, I just left a Seeed XIAO footprint on the back, so you can use any XIAO board – that gives you a rich selection of microcontrollers to choose from, including some 3rd party designs like the MIAO board.&lt;/p&gt;
 &lt;p&gt;For the prototype I used an RP2040 XIAO, running CircuitPython, and since I didn’t have time to write special games for it, I just ported my PewPew library to it, so that I can play all the PewPew games on it in their 8x8 pixel glory. The speaker is currently unused, but it works either with PWM or audiopwmio.&lt;/p&gt;
@@ -65,21 +65,21 @@
 &lt;/section&gt;
 &lt;/section&gt;
 </content>
-    <link href="http://deshipu.art/projects/project-bluejoy/" rel="alternate"/>
+    <link href="http://deshipu.art/projects/project-197886/" rel="alternate"/>
     <summary>Tiny handheld with OLED and XIAO.</summary>
     <category term="completedproject" label="completed project"/>
     <category term="hardware" label="hardware"/>
     <published>2024-10-07T00:00:00+02:00</published>
   </entry>
   <entry>
-    <id>http://deshipu.art/projects/project-197886/</id>
+    <id>http://deshipu.art/projects/project-bluejoy/</id>
     <title>BlueJoy</title>
     <updated>2024-10-08T00:00:00+02:00</updated>
     <content type="html">&lt;section class="tex2jax_ignore mathjax_ignore" id="bluejoy"&gt;
 
 &lt;p&gt;Bluetooth gamepad shield for Xiao&lt;/p&gt;
 &lt;div class="project-thumb"&gt;
-&lt;a class="reference external image-reference" href="/_images/Screenshot_2024-10-07_23-38-10.png"&gt;&lt;img alt="projects/project-197886/images/thumb-Screenshot_2024-10-07_23-38-10.png" src="projects/project-197886/images/thumb-Screenshot_2024-10-07_23-38-10.png" /&gt;&lt;/a&gt;
+&lt;a class="reference external image-reference" href="/_images/Screenshot_2024-10-07_23-38-10.png"&gt;&lt;img alt="../_images/thumb-Screenshot_2024-10-07_23-38-10.png" src="../_images/thumb-Screenshot_2024-10-07_23-38-10.png" /&gt;&lt;/a&gt;
 &lt;/div&gt;
 &lt;p&gt;There are a lot of wireless gamepads out there, from tiny pocket things to large game console controllers. It would be nice to be able to control our projects with them, especially when those projects are robots of some kind. We can do it easily with a library like Bluepad32-AirLift, but that requires an AirLift module, which is rather large, and requires a lot of pins for its SPI connection.&lt;/p&gt;
 &lt;p&gt;This is an attempt at making a much smaller module, the size of a Seeed Xiao board, that runs the Bluepad32-Arduino firmware, but communicates over I2C.&lt;/p&gt;
@@ -91,7 +91,7 @@
 &lt;/section&gt;
 &lt;/section&gt;
 </content>
-    <link href="http://deshipu.art/projects/project-197886/" rel="alternate"/>
+    <link href="http://deshipu.art/projects/project-bluejoy/" rel="alternate"/>
     <summary>Bluetooth gamepad shield for Xiao.</summary>
     <category term="hardware" label="hardware"/>
     <category term="ongoingproject" label="ongoing project"/>
@@ -103,7 +103,7 @@
     <updated>2024-10-08T00:00:00+02:00</updated>
     <content type="html">&lt;section class="tex2jax_ignore mathjax_ignore" id="pcb-design"&gt;
 
-&lt;p&gt;Published on 2024-10-08 in &lt;a class="reference internal" href="../projects/project-bluejoy/#project-bluejoy"&gt;&lt;span class="std std-ref"&gt;Tiny OLED&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2024-10-08 in &lt;a class="reference internal" href="../projects/project-bluejoy/#project-bluejoy"&gt;&lt;span class="std std-ref"&gt;BlueJoy&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;The goal of our little device is to be able to interface with bluetooth
 gamepads from any other microcontroller board, and any programming language.
 To achieve that, we are going to design a shield for the Xiao form factor, with

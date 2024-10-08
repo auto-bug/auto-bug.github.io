@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>Tiny OLED - deshipu.art</title>
+    <title>BlueJoy - deshipu.art</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/basic.css" />
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
@@ -47,18 +47,18 @@
 </div>
 
 <div role="main">
-  <section class="tex2jax_ignore mathjax_ignore" id="tiny-oled">
-<h1>Tiny OLED<a class="headerlink" href="#tiny-oled" title="Permalink to this heading">¶</a></h1>
-<p>Tiny handheld with OLED and XIAO.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="bluejoy">
+<h1>BlueJoy<a class="headerlink" href="#bluejoy" title="Permalink to this heading">¶</a></h1>
+<p>Bluetooth gamepad shield for Xiao</p>
 <div class="project-thumb">
-<a class="reference external image-reference" href="/_images/820851726051722654.jpg"><img alt="projects/project-bluejoy/images/thumb-820851726051722654.jpg" src="projects/project-bluejoy/images/thumb-820851726051722654.jpg" /></a>
+<a class="reference external image-reference" href="/_images/Screenshot_2024-10-07_23-38-10.png"><img alt="../../_images/thumb-Screenshot_2024-10-07_23-38-10.png" src="../../_images/thumb-Screenshot_2024-10-07_23-38-10.png" /></a>
 </div>
-<p>The “small game console with an OLED screen” is practically a genre already. There are dozens of such projects, with all kinds of microcontrollers on board. I decided to do one more iteration on this design, using all the experience I gained recently with power circuits for such boards. Since the microcontroller wasn’t the interesting part here, I just left a Seeed XIAO footprint on the back, so you can use any XIAO board – that gives you a rich selection of microcontrollers to choose from, including some 3rd party designs like the MIAO board.</p>
-<p>For the prototype I used an RP2040 XIAO, running CircuitPython, and since I didn’t have time to write special games for it, I just ported my PewPew library to it, so that I can play all the PewPew games on it in their 8x8 pixel glory. The speaker is currently unused, but it works either with PWM or audiopwmio.</p>
+<p>There are a lot of wireless gamepads out there, from tiny pocket things to large game console controllers. It would be nice to be able to control our projects with them, especially when those projects are robots of some kind. We can do it easily with a library like Bluepad32-AirLift, but that requires an AirLift module, which is rather large, and requires a lot of pins for its SPI connection.</p>
+<p>This is an attempt at making a much smaller module, the size of a Seeed Xiao board, that runs the Bluepad32-Arduino firmware, but communicates over I2C.</p>
 <section id="logs">
 <h2>Logs<a class="headerlink" href="#logs" title="Permalink to this heading">¶</a></h2>
 <ul class="postlist-style-none postlist simple">
-<li class="ablog-post"><p class="ablog-post-title">2024-08-07 - <a class="reference internal" href="log-1/">Better Power Circuit</a></p></li>
+<li class="ablog-post"><p class="ablog-post-title">2024-10-08 - <a class="reference internal" href="../project-197886/log-1/">PCB Design</a></p></li>
 </ul>
 </section>
 </section>

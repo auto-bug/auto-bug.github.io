@@ -1,48 +1,26 @@
 ---
 blogpost: true
-date: 2024-10-08
-category: project-bluejoy
+date: 2024-08-07
+category: project-197886
 ---
 
-# PCB Design
-Published on 2024-10-08 in {ref}`project-bluejoy`.
+# Better Power Circuit
+Published on 2024-08-07 in {ref}`project-197886`.
 
-The goal of our little device is to be able to interface with bluetooth
-gamepads from any other microcontroller board, and any programming language.
-To achieve that, we are going to design a shield for the Xiao form factor, with
-an I2C interface, and with an ESP32 on board. Since this is going to be used as
-an expansion board, we don't need a voltage regulator (we will get stable 3.3V
-from the parent board), USB serial connection (we will program the board once
-using an external serial to USB adapter), or any additional peripherals. As
-this is going to be an I2C module, we do want to have pull-up resistors on it,
-though.
+I have made similar handhelds before, and if you look through hackaday.io a bit, you will find many similar consoles made by other people, all of them using the same 128x64 OLED display, six buttons, and a variety of microcontrollers. So what's interesting in doing it one more time?
 
-However, what we do need is a properly working ESP32 chip with all its required
-components like crystal oscillator or flash memory, and more importantly, a
-properly designed and tuned 2.4GHz antenna for the Bluetooth communication.
-This is something that I don't want to have to deal with, so the solution
-suggests itself: we are going to use a ready ESP32 module.
+Well, I've been iterating on my handheld game consoles for a while, and I have learned some things in the process — I'm not really a professional electrical engineer, so a lot of things I use in my designs are just tricks that I have learned from somewhere (often lifted from other people's designs). This time I used some new tricks.
 
-But is there one that is small enough to fit on the Xiao footprint? Turns out
-that yes, there is one that is pretty much exactly the right size:
-ESP32-PICO-MINI-02-N8R2. To be honest, it's a bit of an overkill, even, with
-its 2MB of PSRAM and 8MB of Flash. We could easily do this with just the
-built-in RAM and the smallest flash chip supported, but this one is easy to get
-and it will work too, so why not. Perhaps if I get this working I can nerdsnipe
-someone into designing a cheaper custom board. Who knows.
+First and foremost, there is a boost converter on this board, so not only will it run from a regular coin cell battery (not rechargeable), but it will run on it until there is no electron left to suck out of it. And it should even run with the weaker batteries sold in some countries.
 
-```{image} images/Screenshot_2024-10-07_23-38-10.png```
+Second, the power switch is no longer switching between battery and USB power. There is now a proper power switching circuit, that cuts the battery power when USB is connected.
 
-A bit of work in EasyEDA, and we have our basic shield done. The module
-contains almost everything we need, so the PCB is basically just an adapter.
-The only extra components are the two pull-up resistors. Otherwise it's all
-just pin headers.
+Third, I added a reset circuit to the OLED screen, that handles the required physical reset of the display some time after powering it on. Previously I wasted a GPIO pin just for that, but adding those simple three components lets me use the pin for a speaker instead..
 
-```{image} images/Screenshot_2024-10-07_23-39-05.png```
+Fourth, I'm back to physical tact switches, instead of touch pads, and I'm using some very nice, low-force clicky switches that I found through a lot of trial and error.
 
-The back side just has some convenient labels: the name and version of the
-project, so I can figure out what it is in a few years, and labels for all the
-connected pins, so I can quickly figure out if it's compatible with a
-particular board.
+Fifth, the display is right side up this time, with a slot in the middle of the PCB for the FPC connector. It took some work to get the spacing right for this. There are even pilot holes for soldering it more easily. I might make the slot a milimeter or so longer next time, to make it easier to get the connector through it, though (right now you have to bend it to get it through the hole).
 
-Next we are going to look into the firmware.
+Sixth, I also added an optional footprint for a BH1/2AA battery holder, for those who want to have a battery that lasts a little bit longer, but still is pretty small.
+
+Seventh, the speaker is without amplification, just with a protecting resistor. This is because any louder sounds would rapidly drain the battery. We only want very quiet and simple sounds here.
