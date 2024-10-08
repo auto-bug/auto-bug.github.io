@@ -1,30 +1,29 @@
-:::{post} 2024-10-07
+:::{post} 2024-10-08
 :category: project
-:tags: completed project, hardware
+:tags: ongoing project, hardware
 :image: 1
 :exclude:
 
-Tiny handheld with OLED and XIAO.
+Bluetooth gamepad shield for Xiao.
 :::
 
-# Tiny OLED
-Tiny handheld with OLED and XIAO.
+# BlueJoy
+Bluetooth gamepad shield for Xiao
 
 <div class="project-thumb">
 
-:::{image} images/thumb-820851726051722654.jpg
-:target: /_images/820851726051722654.jpg
+:::{image} images/thumb-Screenshot_2024-10-07_23-38-10.png
+:target: /_images/Screenshot_2024-10-07_23-38-10.png
 :::
 </div>
 
-The "small game console with an OLED screen" is practically a genre already. There are dozens of such projects, with all kinds of microcontrollers on board. I decided to do one more iteration on this design, using all the experience I gained recently with power circuits for such boards. Since the microcontroller wasn't the interesting part here, I just left a Seeed XIAO footprint on the back, so you can use any XIAO board – that gives you a rich selection of microcontrollers to choose from, including some 3rd party designs like the MIAO board.
+There are a lot of wireless gamepads out there, from tiny pocket things to large game console controllers. It would be nice to be able to control our projects with them, especially when those projects are robots of some kind. We can do it easily with a library like Bluepad32-AirLift, but that requires an AirLift module, which is rather large, and requires a lot of pins for its SPI connection.
 
-For the prototype I used an RP2040 XIAO, running CircuitPython, and since I didn't have time to write special games for it, I just ported my PewPew library to it, so that I can play all the PewPew games on it in their 8x8 pixel glory. The speaker is currently unused, but it works either with PWM or audiopwmio.
-
+This is an attempt at making a much smaller module, the size of a Seeed Xiao board, that runs the Bluepad32-Arduino firmware, but communicates over I2C.
 
 ## Logs
 
 :::{postlist}
-:category: project-197886
+:category: project-bluejoy
 :::
 
