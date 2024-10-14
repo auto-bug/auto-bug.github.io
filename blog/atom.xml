@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art</title>
-  <updated>2024-10-14T20:04:51.821996+00:00</updated>
+  <updated>2024-10-14T20:06:18.556999+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -159,13 +159,7 @@ advanced stuff if we need it.&lt;/p&gt;
 with just three components there isn’t that much I can get wrong at the first
 try, is it? Well, turns out that I should have read the datasheet for that
 esp32 module more carefully. Specifically this part:&lt;/p&gt;
-&lt;aside class="system-message"&gt;
-&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;span class="docutils literal"&gt;/home/sheep/dev/ablog/deshipu.art/projects/project-bluejoy/log-3.md&lt;/span&gt;, line 16)&lt;/p&gt;
-&lt;p&gt;Directive ‘image’: No content permitted&lt;/p&gt;
-&lt;div class="highlight-default notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Schematic&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="n"&gt;an&lt;/span&gt; &lt;span class="n"&gt;example&lt;/span&gt; &lt;span class="n"&gt;circuit&lt;/span&gt; &lt;span class="n"&gt;using&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;esp32&lt;/span&gt; &lt;span class="n"&gt;module&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;/aside&gt;
+&lt;img alt="Schematic of an example circuit using the esp32 module." src="../_images/Screenshot_2024-10-14_17-47-39.png" /&gt;
 &lt;p&gt;You will note, that this example schematic contains a crystal. I assumed that a
 ready to use module would already contain a crystal under the shield, after all
 it’s one of those things you pretty much always need, and it needs some fine
@@ -182,13 +176,7 @@ decided to get the boards assembled this time — that way I don’t have to pay
 for the shipping of the parts, and since all the parts are from the basic parts
 set, the assembly is almost covered by the coupon. The module itself is not
 included in the assembly, I will have to add it myself.&lt;/p&gt;
-&lt;aside class="system-message"&gt;
-&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;span class="docutils literal"&gt;/home/sheep/dev/ablog/deshipu.art/projects/project-bluejoy/log-3.md&lt;/span&gt;, line 38)&lt;/p&gt;
-&lt;p&gt;Directive ‘image’: No content permitted&lt;/p&gt;
-&lt;div class="highlight-default notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Rendering&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;second&lt;/span&gt; &lt;span class="n"&gt;prototype&lt;/span&gt; &lt;span class="n"&gt;PCB&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;/aside&gt;
+&lt;img alt="Rendering of the second prototype PCB." src="../_images/Screenshot_2024-10-14_17-22-11.png" /&gt;
 &lt;p&gt;I still felt bad for wasting money on a bad prototype, though, so I picked the cheapest shipping option. I will work on some other projects in the mean time.&lt;/p&gt;
 &lt;/section&gt;
 </content>
