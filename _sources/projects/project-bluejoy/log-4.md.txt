@@ -1,0 +1,47 @@
+---
+blogpost: true
+date: 2024-10-15
+category: project-bluejoy
+---
+
+# First Prototype Success
+Published on 2024-10-15 in {ref}`project-bluejoy`.
+
+Rushing the design is bad, but jumping to conclusions is also not great. Turns
+out that the problem is not with the crystal at all. The module I'm using does
+contain the 40MHz crystal that is necessary for the chip to work, and the
+additional 32.7kHz crystal is entirely optional. My redesign was a complete
+waste of time and money. Sadly, it can't be cancelled anymore, but the boards
+should work perfectly fine anyways.
+
+What changed? Well, I had a chat with UnexpectedMaker, who has immense experience with the ESP32 chips and modules, and he explained it to me. He also pointed me in the right direction to get my prototype working, and that was resoldering the module. I thought that I did a pretty good job soldering it, as it was all well aligned, and there were no visible problem. But when I desoldered it, this is what I saw:
+
+
+```{image} images/IMG_20241015_115422_HDR.jpg
+:alt: Desoldered esp32 module with many pads not touched by solder.
+```
+
+As you can see, many of the pads weren't even as much as touched by solder. You can still see the golden ENIG finish on them. So I tinned both the PCB and the module pads, applied a generous amount of flux, and soldered the module on again, making sure I apply plenty of pressure all around it.
+
+And the effect was immediate. After some fumbling with connecting the USB to
+UART adapter, I got the board programmed, and it works:
+
+
+```{image} images/IMG_20241015_125228_HDR.jpg
+:alt: Working shield with a bluetooth gamepad connected to it.
+```
+
+There is one more good thing that came out of that conversation. When I said
+that I don't really need all that flash and ram that this module has,
+UnexpectedMaker pointed out that the ESP32-MINI-1 module has the same width,
+only being a little bit longer, and is cheaper because it doesn't have the
+extra ram and only has a small flash chip. So I went ahead and redesigned the
+PCB to use that module. I had to change the programming header to pads on the bottom of the module, and had to switch to smaller resistors and capacitors, but it fits, and the routing is less of a mess.
+
+```{image} images/Screenshot_2024-10-15_13-14-20.png
+:alt: A rendering of a PCB with an esp32 module.
+```
+
+It's going on the same slow shipping as the boards with the crystal, so I will
+get to them some time next month when they arrive. For now, I have the working
+first prototype to use.

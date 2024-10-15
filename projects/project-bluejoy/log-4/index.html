@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>First Prototype Success - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section class="tex2jax_ignore mathjax_ignore" id="first-prototype-success">
+<h1>First Prototype Success<a class="headerlink" href="#first-prototype-success" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2024-10-15 in <a class="reference internal" href="../#project-bluejoy"><span class="std std-ref">BlueJoy</span></a>.</p>
+<p>Rushing the design is bad, but jumping to conclusions is also not great. Turns
+out that the problem is not with the crystal at all. The module I’m using does
+contain the 40MHz crystal that is necessary for the chip to work, and the
+additional 32.7kHz crystal is entirely optional. My redesign was a complete
+waste of time and money. Sadly, it can’t be cancelled anymore, but the boards
+should work perfectly fine anyways.</p>
+<p>What changed? Well, I had a chat with UnexpectedMaker, who has immense experience with the ESP32 chips and modules, and he explained it to me. He also pointed me in the right direction to get my prototype working, and that was resoldering the module. I thought that I did a pretty good job soldering it, as it was all well aligned, and there were no visible problem. But when I desoldered it, this is what I saw:</p>
+<img alt="Desoldered esp32 module with many pads not touched by solder." src="../../../_images/IMG_20241015_115422_HDR.jpg" />
+<p>As you can see, many of the pads weren’t even as much as touched by solder. You can still see the golden ENIG finish on them. So I tinned both the PCB and the module pads, applied a generous amount of flux, and soldered the module on again, making sure I apply plenty of pressure all around it.</p>
+<p>And the effect was immediate. After some fumbling with connecting the USB to
+UART adapter, I got the board programmed, and it works:</p>
+<img alt="Working shield with a bluetooth gamepad connected to it." src="../../../_images/IMG_20241015_125228_HDR.jpg" />
+<p>There is one more good thing that came out of that conversation. When I said
+that I don’t really need all that flash and ram that this module has,
+UnexpectedMaker pointed out that the ESP32-MINI-1 module has the same width,
+only being a little bit longer, and is cheaper because it doesn’t have the
+extra ram and only has a small flash chip. So I went ahead and redesigned the
+PCB to use that module. I had to change the programming header to pads on the bottom of the module, and had to switch to smaller resistors and capacitors, but it fits, and the routing is less of a mess.</p>
+<img alt="A rendering of a PCB with an esp32 module." src="../../../_images/Screenshot_2024-10-15_13-14-20.png" />
+<p>It’s going on the same slow shipping as the boards with the crystal, so I will
+get to them some time next month when they arrive. For now, I have the working
+first prototype to use.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

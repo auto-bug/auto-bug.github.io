@@ -2,36 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art</title>
-  <updated>2024-10-14T20:06:18.556999+00:00</updated>
+  <updated>2024-10-15T11:18:25.044489+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
-  <entry>
-    <id>http://deshipu.art/projects/project-197886/</id>
-    <title>Tiny OLED</title>
-    <updated>2024-10-07T00:00:00+02:00</updated>
-    <content type="html">&lt;section class="tex2jax_ignore mathjax_ignore" id="tiny-oled"&gt;
-
-&lt;p&gt;Tiny handheld with OLED and XIAO.&lt;/p&gt;
-&lt;div class="project-thumb"&gt;
-&lt;a class="reference external image-reference" href="/_images/820851726051722654.jpg"&gt;&lt;img alt="../_images/thumb-820851726051722654.jpg" src="../_images/thumb-820851726051722654.jpg" /&gt;&lt;/a&gt;
-&lt;/div&gt;
-&lt;p&gt;The “small game console with an OLED screen” is practically a genre already. There are dozens of such projects, with all kinds of microcontrollers on board. I decided to do one more iteration on this design, using all the experience I gained recently with power circuits for such boards. Since the microcontroller wasn’t the interesting part here, I just left a Seeed XIAO footprint on the back, so you can use any XIAO board – that gives you a rich selection of microcontrollers to choose from, including some 3rd party designs like the MIAO board.&lt;/p&gt;
-&lt;p&gt;For the prototype I used an RP2040 XIAO, running CircuitPython, and since I didn’t have time to write special games for it, I just ported my PewPew library to it, so that I can play all the PewPew games on it in their 8x8 pixel glory. The speaker is currently unused, but it works either with PWM or audiopwmio.&lt;/p&gt;
-&lt;section id="logs"&gt;
-&lt;h2&gt;Logs&lt;/h2&gt;
-&lt;ul class="postlist-style-none postlist simple"&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2024-08-07 - &lt;a class="reference internal" href="../projects/project-197886/log-1/"&gt;Better Power Circuit&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/section&gt;
-&lt;/section&gt;
-</content>
-    <link href="http://deshipu.art/projects/project-197886/" rel="alternate"/>
-    <summary>Tiny handheld with OLED and XIAO.</summary>
-    <category term="completedproject" label="completed project"/>
-    <category term="hardware" label="hardware"/>
-    <published>2024-10-07T00:00:00+02:00</published>
-  </entry>
   <entry>
     <id>http://deshipu.art/projects/project-bluejoy/</id>
     <title>BlueJoy</title>
@@ -47,6 +21,7 @@
 &lt;section id="logs"&gt;
 &lt;h2&gt;Logs&lt;/h2&gt;
 &lt;ul class="postlist-style-none postlist simple"&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2024-10-15 - &lt;a class="reference internal" href="../projects/project-bluejoy/log-4/"&gt;First Prototype Success&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2024-10-14 - &lt;a class="reference internal" href="../projects/project-bluejoy/log-3/"&gt;First Prototype Fail&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2024-10-09 - &lt;a class="reference internal" href="../projects/project-bluejoy/log-2/"&gt;Firmware&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2024-10-08 - &lt;a class="reference internal" href="../projects/project-bluejoy/log-1/"&gt;PCB Design&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
@@ -183,5 +158,40 @@ included in the assembly, I will have to add it myself.&lt;/p&gt;
     <link href="http://deshipu.art/projects/project-bluejoy/log-3/" rel="alternate"/>
     <summary>Published on 2024-10-14 in project-bluejoy.</summary>
     <published>2024-10-14T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-bluejoy/log-4/</id>
+    <title>First Prototype Success</title>
+    <updated>2024-10-15T00:00:00+02:00</updated>
+    <content type="html">&lt;section class="tex2jax_ignore mathjax_ignore" id="first-prototype-success"&gt;
+
+&lt;p&gt;Published on 2024-10-15 in &lt;a class="reference internal" href="../projects/project-bluejoy/#project-bluejoy"&gt;&lt;span class="std std-ref"&gt;BlueJoy&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Rushing the design is bad, but jumping to conclusions is also not great. Turns
+out that the problem is not with the crystal at all. The module I’m using does
+contain the 40MHz crystal that is necessary for the chip to work, and the
+additional 32.7kHz crystal is entirely optional. My redesign was a complete
+waste of time and money. Sadly, it can’t be cancelled anymore, but the boards
+should work perfectly fine anyways.&lt;/p&gt;
+&lt;p&gt;What changed? Well, I had a chat with UnexpectedMaker, who has immense experience with the ESP32 chips and modules, and he explained it to me. He also pointed me in the right direction to get my prototype working, and that was resoldering the module. I thought that I did a pretty good job soldering it, as it was all well aligned, and there were no visible problem. But when I desoldered it, this is what I saw:&lt;/p&gt;
+&lt;img alt="Desoldered esp32 module with many pads not touched by solder." src="../_images/IMG_20241015_115422_HDR.jpg" /&gt;
+&lt;p&gt;As you can see, many of the pads weren’t even as much as touched by solder. You can still see the golden ENIG finish on them. So I tinned both the PCB and the module pads, applied a generous amount of flux, and soldered the module on again, making sure I apply plenty of pressure all around it.&lt;/p&gt;
+&lt;p&gt;And the effect was immediate. After some fumbling with connecting the USB to
+UART adapter, I got the board programmed, and it works:&lt;/p&gt;
+&lt;img alt="Working shield with a bluetooth gamepad connected to it." src="../_images/IMG_20241015_125228_HDR.jpg" /&gt;
+&lt;p&gt;There is one more good thing that came out of that conversation. When I said
+that I don’t really need all that flash and ram that this module has,
+UnexpectedMaker pointed out that the ESP32-MINI-1 module has the same width,
+only being a little bit longer, and is cheaper because it doesn’t have the
+extra ram and only has a small flash chip. So I went ahead and redesigned the
+PCB to use that module. I had to change the programming header to pads on the bottom of the module, and had to switch to smaller resistors and capacitors, but it fits, and the routing is less of a mess.&lt;/p&gt;
+&lt;img alt="A rendering of a PCB with an esp32 module." src="../_images/Screenshot_2024-10-15_13-14-20.png" /&gt;
+&lt;p&gt;It’s going on the same slow shipping as the boards with the crystal, so I will
+get to them some time next month when they arrive. For now, I have the working
+first prototype to use.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-bluejoy/log-4/" rel="alternate"/>
+    <summary>Published on 2024-10-15 in project-bluejoy.</summary>
+    <published>2024-10-15T00:00:00+02:00</published>
   </entry>
 </feed>
