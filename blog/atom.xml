@@ -2,39 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art</title>
-  <updated>2024-10-21T21:17:29.878153+00:00</updated>
+  <updated>2024-10-21T21:24:01.195754+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
-  <entry>
-    <id>http://deshipu.art/projects/project-bluejoy/</id>
-    <title>BlueJoy</title>
-    <updated>2024-10-08T00:00:00+02:00</updated>
-    <content type="html">&lt;section class="tex2jax_ignore mathjax_ignore" id="bluejoy"&gt;
-
-&lt;p&gt;Bluetooth gamepad shield for Xiao&lt;/p&gt;
-&lt;div class="project-thumb"&gt;
-&lt;a class="reference external image-reference" href="/_images/Screenshot_2024-10-07_23-38-10.png"&gt;&lt;img alt="../_images/thumb-Screenshot_2024-10-07_23-38-10.png" src="../_images/thumb-Screenshot_2024-10-07_23-38-10.png" /&gt;&lt;/a&gt;
-&lt;/div&gt;
-&lt;p&gt;There are a lot of wireless gamepads out there, from tiny pocket things to large game console controllers. It would be nice to be able to control our projects with them, especially when those projects are robots of some kind. We can do it easily with a library like Bluepad32-AirLift, but that requires an AirLift module, which is rather large, and requires a lot of pins for its SPI connection.&lt;/p&gt;
-&lt;p&gt;This is an attempt at making a much smaller module, the size of a Seeed Xiao board, that runs the Bluepad32-Arduino firmware, but communicates over I2C.&lt;/p&gt;
-&lt;section id="logs"&gt;
-&lt;h2&gt;Logs&lt;/h2&gt;
-&lt;ul class="postlist-style-none postlist simple"&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2024-10-15 - &lt;a class="reference internal" href="../projects/project-bluejoy/log-4/"&gt;First Prototype Success&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2024-10-14 - &lt;a class="reference internal" href="../projects/project-bluejoy/log-3/"&gt;First Prototype Fail&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2024-10-09 - &lt;a class="reference internal" href="../projects/project-bluejoy/log-2/"&gt;Firmware&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2024-10-08 - &lt;a class="reference internal" href="../projects/project-bluejoy/log-1/"&gt;PCB Design&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/section&gt;
-&lt;/section&gt;
-</content>
-    <link href="http://deshipu.art/projects/project-bluejoy/" rel="alternate"/>
-    <summary>Bluetooth gamepad shield for Xiao.</summary>
-    <category term="hardware" label="hardware"/>
-    <category term="ongoingproject" label="ongoing project"/>
-    <published>2024-10-08T00:00:00+02:00</published>
-  </entry>
   <entry>
     <id>http://deshipu.art/projects/project-bluejoy/log-1/</id>
     <title>PCB Design</title>
@@ -193,5 +164,26 @@ first prototype to use.&lt;/p&gt;
     <link href="http://deshipu.art/projects/project-bluejoy/log-4/" rel="alternate"/>
     <summary>Published on 2024-10-15 in project-bluejoy.</summary>
     <published>2024-10-15T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-188908/log-1/</id>
+    <title>Designs Published</title>
+    <updated>2024-10-21T00:00:00+02:00</updated>
+    <content type="html">&lt;section class="tex2jax_ignore mathjax_ignore" id="designs-published"&gt;
+
+&lt;p&gt;Published on 2024-10-21 in &lt;a class="reference internal" href="../projects/project-188908/#project-188908"&gt;&lt;span class="std std-ref"&gt;Moo Bug&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I just realized that for all this time I forgot to publish the designs files
+for this robot, even though I even sold some kits of it to people at the
+Hackaday Europe. I guess they were all too nice to ask me where they are.&lt;/p&gt;
+&lt;p&gt;In any case, both the design files and the basic walking code are now available
+in a &lt;a class="reference external" href="https://github.com/auto-bug/moobug"&gt;repository&lt;/a&gt; on Github. Write me an
+e-mail or create an issue if you see anything missing or wrong. The JSON files
+are EasyEDA (standard) exports.&lt;/p&gt;
+&lt;p&gt;Enjoy!&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-188908/log-1/" rel="alternate"/>
+    <summary>Published on 2024-10-21 in project-188908.</summary>
+    <published>2024-10-21T00:00:00+02:00</published>
   </entry>
 </feed>
