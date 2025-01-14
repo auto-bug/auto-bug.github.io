@@ -2,55 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art</title>
-  <updated>2025-01-14T23:04:32.252716+00:00</updated>
+  <updated>2025-01-14T23:28:47.441147+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
-  <entry>
-    <id>http://deshipu.art/projects/project-bluejoy/log-1/</id>
-    <title>PCB Design</title>
-    <updated>2024-10-08T00:00:00+02:00</updated>
-    <content type="html">&lt;section class="tex2jax_ignore mathjax_ignore" id="pcb-design"&gt;
-
-&lt;p&gt;Published on 2024-10-08 in &lt;a class="reference internal" href="../projects/project-bluejoy/#project-bluejoy"&gt;&lt;span class="std std-ref"&gt;BlueJoy&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;The goal of our little device is to be able to interface with bluetooth
-gamepads from any other microcontroller board, and any programming language.
-To achieve that, we are going to design a shield for the Xiao form factor, with
-an I2C interface, and with an ESP32 on board. Since this is going to be used as
-an expansion board, we don’t need a voltage regulator (we will get stable 3.3V
-from the parent board), USB serial connection (we will program the board once
-using an external serial to USB adapter), or any additional peripherals. As
-this is going to be an I2C module, we do want to have pull-up resistors on it,
-though.&lt;/p&gt;
-&lt;p&gt;However, what we do need is a properly working ESP32 chip with all its required
-components like crystal oscillator or flash memory, and more importantly, a
-properly designed and tuned 2.4GHz antenna for the Bluetooth communication.
-This is something that I don’t want to have to deal with, so the solution
-suggests itself: we are going to use a ready ESP32 module.&lt;/p&gt;
-&lt;p&gt;But is there one that is small enough to fit on the Xiao footprint? Turns out
-that yes, there is one that is pretty much exactly the right size:
-ESP32-PICO-MINI-02-N8R2. To be honest, it’s a bit of an overkill, even, with
-its 2MB of PSRAM and 8MB of Flash. We could easily do this with just the
-built-in RAM and the smallest flash chip supported, but this one is easy to get
-and it will work too, so why not. Perhaps if I get this working I can nerdsnipe
-someone into designing a cheaper custom board. Who knows.&lt;/p&gt;
-&lt;img alt="../_images/Screenshot_2024-10-07_23-38-10.png" src="../_images/Screenshot_2024-10-07_23-38-10.png" /&gt;
-&lt;p&gt;A bit of work in EasyEDA, and we have our basic shield done. The module
-contains almost everything we need, so the PCB is basically just an adapter.
-The only extra components are the two pull-up resistors. Otherwise it’s all
-just pin headers.&lt;/p&gt;
-&lt;img alt="../_images/Screenshot_2024-10-07_23-39-05.png" src="../_images/Screenshot_2024-10-07_23-39-05.png" /&gt;
-&lt;p&gt;The back side just has some convenient labels: the name and version of the
-project, so I can figure out what it is in a few years, and labels for all the
-connected pins, so I can quickly figure out if it’s compatible with a
-particular board.&lt;/p&gt;
-&lt;p&gt;Next we are going to look into the firmware.&lt;/p&gt;
-&lt;/section&gt;
-</content>
-    <link href="http://deshipu.art/projects/project-bluejoy/log-1/" rel="alternate"/>
-    <summary>Published on 2024-10-08 in project-bluejoy.</summary>
-    <published>2024-10-08T00:00:00+02:00</published>
-  </entry>
   <entry>
     <id>http://deshipu.art/projects/project-bluejoy/log-2/</id>
     <title>Firmware</title>
@@ -185,5 +140,26 @@ are EasyEDA (standard) exports.&lt;/p&gt;
     <link href="http://deshipu.art/projects/project-188908/log-1/" rel="alternate"/>
     <summary>Published on 2024-10-21 in project-188908.</summary>
     <published>2024-10-21T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-bluejoy/log-5/</id>
+    <title>Second prototype</title>
+    <updated>2025-01-15T00:00:00+01:00</updated>
+    <content type="html">&lt;section class="tex2jax_ignore mathjax_ignore" id="second-prototype"&gt;
+
+&lt;p&gt;Published on 2025-01-15 in &lt;a class="reference internal" href="../projects/project-bluejoy/#project-bluejoy"&gt;&lt;span class="std std-ref"&gt;BlueJoy&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I actually received the PCBs and assembled and tested the second prototype a while ago, but I never had the time to update the logs. So here it is.&lt;/p&gt;
+&lt;img alt="The new bluejoy module next to a xiao board" src="../_images/IMG_20241030_163544_HDR.jpg" /&gt;
+&lt;p&gt;This time it was pretty unexciting. It just works. As you can see on the photo,
+it’s using the ESP32-MINI-1 module, that is a bit bigger, but also cheaper,
+since it doesn’t have the extra memory that we don’t need. The programming pads
+had to go on the bottom of the board, because this module is slightly longer,
+but that’s not a big problem.&lt;/p&gt;
+&lt;p&gt;I programmed it and it just works, so that’s it.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-bluejoy/log-5/" rel="alternate"/>
+    <summary>Published on 2025-01-15 in project-bluejoy.</summary>
+    <published>2025-01-15T00:00:00+01:00</published>
   </entry>
 </feed>
