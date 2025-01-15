@@ -1,0 +1,28 @@
+---
+blogpost: true
+date: 2025-01-15
+category: project-sharp-gadget
+---
+
+# Off to a rough start
+Published on 2025-01-15 in {ref}`project-sharp-gadget`.
+
+The first version of the PCB didn't work, for the very simple reason that I
+inverted the display connector. I did obsess about its orientation a bit,
+changing it several times, and finally settled on the one that is wrong. Oh
+well. I immediately fixed the design, and also added a power switch that cuts
+off the battery connector, because it seems I'm more likely to use this with
+a battery.
+
+I worked on other things while waiting for the new PCB, so it wasn't really
+much of a waste of time.
+
+With the connector in the right orientation, the display switched on with some
+random pattern of pixels on it. And that's when I had a second surprise: the
+pixels are color. It was supposed to be a LS013B7DH03 display, but apparently I
+got LS013B7DH06 instead! Well, I can live with that. They use the same
+connector and the same protocol.
+
+I proceeded to try to use that display with CircuitPython. Earlier, I noticed that it already has a ``sharpdisplay`` module, so I expected this to be just a
+question of using it with the right options. It doesn't seem to be the case.
+There is precious little documentation, but it seems that it was written for some other sharp displays with a different protocol. Oh well, I will just have to write the driver myself.

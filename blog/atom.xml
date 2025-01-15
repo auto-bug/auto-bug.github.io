@@ -2,89 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art</title>
-  <updated>2025-01-14T23:28:47.441147+00:00</updated>
+  <updated>2025-01-15T11:05:04.707429+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
-  <entry>
-    <id>http://deshipu.art/projects/project-bluejoy/log-2/</id>
-    <title>Firmware</title>
-    <updated>2024-10-09T00:00:00+02:00</updated>
-    <content type="html">&lt;section class="tex2jax_ignore mathjax_ignore" id="firmware"&gt;
-
-&lt;p&gt;Published on 2024-10-09 in &lt;a class="reference internal" href="../projects/project-bluejoy/#project-bluejoy"&gt;&lt;span class="std std-ref"&gt;BlueJoy&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;With the PCB designed and ordered, it’s time to look at the firmware a bit. Of
-course with no hardware to test it on, we are going to need to improvise
-somewhat, and just use some off-the-shelf ESP32 development board, with pull-up
-resistors added.&lt;/p&gt;
-&lt;img alt="../_images/IMG_20241004_205425_HDR.jpg" src="../_images/IMG_20241004_205425_HDR.jpg" /&gt;
-&lt;p&gt;I initially planned to use the Bluepad32-Airlift firmware, only modify it to
-use I2C instead of SPI. However, after looking a little bit at the source code
-and realizing I have zero experience with ESP-IDF, I decided to pick the path
-of the least resistance, and instead use Bluepad32-Arduino together with
-Arduino’s good old Wire library.&lt;/p&gt;
-&lt;p&gt;The documentation for Bluepad32-Arduino explains very well how to setup the
-environment and get the example code compiled and working. One snag that I hit
-is that by default the example code doesn’t print anything on the serial
-console when buttons are pressed — it only changes the LEDs on the controller,
-which incidentally my gamepad didn’t have. So until I actually looked at the
-code and added some debugging prints, I was convinced it doesn’t work. But I
-only wasted an hour or two on that, and the rest went smoothly.&lt;/p&gt;
-&lt;p&gt;The example file actually gets us halfway there: it shows how to initialize
-newly connected gamepads, and how to run the update loop for them, and how to
-get their state. Adding the initialization for I2C slave and the onRequest and
-onReceive callback got the I2C working, and then it’s just a question of a
-bunch of switch statements to simulate registers.&lt;/p&gt;
-&lt;p&gt;Because the complete state of the gamepad turned out to be rather large for I2C
-at 54 bytes, I decided to split it into the basic and advanced parts, the
-former containing the d-pad, x and y axes, and buttons, and the latter having
-all the rest, including other axes, gyro, accelerometer, throttle, etc. This
-way we can keep things fast and snappy for basic use, and still have the
-advanced stuff if we need it.&lt;/p&gt;
-&lt;p&gt;I might need to rework some of the details of it further once I have tested it all somewhat. For example, the register that tells us if there has been any change since the last communication right now only returns 0 or 1, but I could make it return a bitmask of which of the gamepads have a change in their status instead, so that we can then only query those.&lt;/p&gt;
-&lt;p&gt;I will be putting the source code for this firmware, together with an example library for CircuitPython for communicating with it in a repository once I have the hardware tested an working.&lt;/p&gt;
-&lt;/section&gt;
-</content>
-    <link href="http://deshipu.art/projects/project-bluejoy/log-2/" rel="alternate"/>
-    <summary>Published on 2024-10-09 in project-bluejoy.</summary>
-    <published>2024-10-09T00:00:00+02:00</published>
-  </entry>
-  <entry>
-    <id>http://deshipu.art/projects/project-bluejoy/log-3/</id>
-    <title>First Prototype Fail</title>
-    <updated>2024-10-14T00:00:00+02:00</updated>
-    <content type="html">&lt;section class="tex2jax_ignore mathjax_ignore" id="first-prototype-fail"&gt;
-
-&lt;p&gt;Published on 2024-10-14 in &lt;a class="reference internal" href="../projects/project-bluejoy/#project-bluejoy"&gt;&lt;span class="std std-ref"&gt;BlueJoy&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;I rushed the design of the PCB for the first prototype, because I thought that
-with just three components there isn’t that much I can get wrong at the first
-try, is it? Well, turns out that I should have read the datasheet for that
-esp32 module more carefully. Specifically this part:&lt;/p&gt;
-&lt;img alt="Schematic of an example circuit using the esp32 module." src="../_images/Screenshot_2024-10-14_17-47-39.png" /&gt;
-&lt;p&gt;You will note, that this example schematic contains a crystal. I assumed that a
-ready to use module would already contain a crystal under the shield, after all
-it’s one of those things you pretty much always need, and it needs some fine
-tuning to get perfectly right. But turns out that no, this particular module
-requires an external crystal. And of course the way all the pads are under the
-module, I can’t even bodge one in there and see if it will work. I need a
-second PCB prototype.&lt;/p&gt;
-&lt;p&gt;So I sat down and redesigned the board a little bit. I used smaller resistors,
-and moved the programming header a little bit to the edge, to make room for the
-extra components. Apart from the crystal with its capacitors, I also added two
-extra resistors, just in case: one pulls the RST pin up, and one pulls the IO12
-pin down. Since I don’t have the required crystal and capacitors at hand, I
-decided to get the boards assembled this time — that way I don’t have to pay
-for the shipping of the parts, and since all the parts are from the basic parts
-set, the assembly is almost covered by the coupon. The module itself is not
-included in the assembly, I will have to add it myself.&lt;/p&gt;
-&lt;img alt="Rendering of the second prototype PCB." src="../_images/Screenshot_2024-10-14_17-22-11.png" /&gt;
-&lt;p&gt;I still felt bad for wasting money on a bad prototype, though, so I picked the cheapest shipping option. I will work on some other projects in the mean time.&lt;/p&gt;
-&lt;/section&gt;
-</content>
-    <link href="http://deshipu.art/projects/project-bluejoy/log-3/" rel="alternate"/>
-    <summary>Published on 2024-10-14 in project-bluejoy.</summary>
-    <published>2024-10-14T00:00:00+02:00</published>
-  </entry>
   <entry>
     <id>http://deshipu.art/projects/project-bluejoy/log-4/</id>
     <title>First Prototype Success</title>
@@ -140,6 +61,66 @@ are EasyEDA (standard) exports.&lt;/p&gt;
     <link href="http://deshipu.art/projects/project-188908/log-1/" rel="alternate"/>
     <summary>Published on 2024-10-21 in project-188908.</summary>
     <published>2024-10-21T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-sharp-gadget/</id>
+    <title>BlueJoy</title>
+    <updated>2025-01-15T00:00:00+01:00</updated>
+    <content type="html">&lt;section class="tex2jax_ignore mathjax_ignore" id="bluejoy"&gt;
+
+&lt;p&gt;Handheld device with a sharp display.&lt;/p&gt;
+&lt;div class="project-thumb"&gt;
+&lt;a class="reference external image-reference" href="/_images/IMG_20241231_194120_HDR.jpg"&gt;&lt;img alt="../_images/thumb-IMG_20241231_194120_HDR.jpg" src="../_images/thumb-IMG_20241231_194120_HDR.jpg" /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;p&gt;I got my hands on a bunch of those cool SHARP memory displays, and I decided to
+make a simple device to test them. The device is pretty generic: it has the
+display, of course, three buttons on the sides, some i2c connectors, footprint
+for a xiao dev board, and a power switch and pads for connecting a lipo
+battery.&lt;/p&gt;
+&lt;p&gt;The goal here is to test the display, and maybe make something like a
+tamagotchi with it.&lt;/p&gt;
+&lt;section id="logs"&gt;
+&lt;h2&gt;Logs&lt;/h2&gt;
+&lt;ul class="postlist-style-none postlist simple"&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2025-01-15 - &lt;a class="reference internal" href="../projects/project-sharp-gadget/log-1/"&gt;Off to a rough start&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-sharp-gadget/" rel="alternate"/>
+    <summary>Handheld device with a sharp display.</summary>
+    <category term="hardware" label="hardware"/>
+    <category term="ongoingproject" label="ongoing project"/>
+    <published>2025-01-15T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-sharp-gadget/log-1/</id>
+    <title>Off to a rough start</title>
+    <updated>2025-01-15T00:00:00+01:00</updated>
+    <content type="html">&lt;section class="tex2jax_ignore mathjax_ignore" id="off-to-a-rough-start"&gt;
+
+&lt;p&gt;Published on 2025-01-15 in &lt;a class="reference internal" href="../projects/project-sharp-gadget/#project-sharp-gadget"&gt;&lt;span class="std std-ref"&gt;BlueJoy&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The first version of the PCB didn’t work, for the very simple reason that I
+inverted the display connector. I did obsess about its orientation a bit,
+changing it several times, and finally settled on the one that is wrong. Oh
+well. I immediately fixed the design, and also added a power switch that cuts
+off the battery connector, because it seems I’m more likely to use this with
+a battery.&lt;/p&gt;
+&lt;p&gt;I worked on other things while waiting for the new PCB, so it wasn’t really
+much of a waste of time.&lt;/p&gt;
+&lt;p&gt;With the connector in the right orientation, the display switched on with some
+random pattern of pixels on it. And that’s when I had a second surprise: the
+pixels are color. It was supposed to be a LS013B7DH03 display, but apparently I
+got LS013B7DH06 instead! Well, I can live with that. They use the same
+connector and the same protocol.&lt;/p&gt;
+&lt;p&gt;I proceeded to try to use that display with CircuitPython. Earlier, I noticed that it already has a &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;sharpdisplay&lt;/span&gt;&lt;/code&gt; module, so I expected this to be just a
+question of using it with the right options. It doesn’t seem to be the case.
+There is precious little documentation, but it seems that it was written for some other sharp displays with a different protocol. Oh well, I will just have to write the driver myself.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-sharp-gadget/log-1/" rel="alternate"/>
+    <summary>Published on 2025-01-15 in project-sharp-gadget.</summary>
+    <published>2025-01-15T00:00:00+01:00</published>
   </entry>
   <entry>
     <id>http://deshipu.art/projects/project-bluejoy/log-5/</id>
