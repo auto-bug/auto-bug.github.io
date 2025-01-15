@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art</title>
-  <updated>2025-01-15T11:05:04.707429+00:00</updated>
+  <updated>2025-01-15T11:16:36.188870+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -63,43 +63,12 @@ are EasyEDA (standard) exports.&lt;/p&gt;
     <published>2024-10-21T00:00:00+02:00</published>
   </entry>
   <entry>
-    <id>http://deshipu.art/projects/project-sharp-gadget/</id>
-    <title>BlueJoy</title>
-    <updated>2025-01-15T00:00:00+01:00</updated>
-    <content type="html">&lt;section class="tex2jax_ignore mathjax_ignore" id="bluejoy"&gt;
-
-&lt;p&gt;Handheld device with a sharp display.&lt;/p&gt;
-&lt;div class="project-thumb"&gt;
-&lt;a class="reference external image-reference" href="/_images/IMG_20241231_194120_HDR.jpg"&gt;&lt;img alt="../_images/thumb-IMG_20241231_194120_HDR.jpg" src="../_images/thumb-IMG_20241231_194120_HDR.jpg" /&gt;&lt;/a&gt;
-&lt;/div&gt;
-&lt;p&gt;I got my hands on a bunch of those cool SHARP memory displays, and I decided to
-make a simple device to test them. The device is pretty generic: it has the
-display, of course, three buttons on the sides, some i2c connectors, footprint
-for a xiao dev board, and a power switch and pads for connecting a lipo
-battery.&lt;/p&gt;
-&lt;p&gt;The goal here is to test the display, and maybe make something like a
-tamagotchi with it.&lt;/p&gt;
-&lt;section id="logs"&gt;
-&lt;h2&gt;Logs&lt;/h2&gt;
-&lt;ul class="postlist-style-none postlist simple"&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2025-01-15 - &lt;a class="reference internal" href="../projects/project-sharp-gadget/log-1/"&gt;Off to a rough start&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/section&gt;
-&lt;/section&gt;
-</content>
-    <link href="http://deshipu.art/projects/project-sharp-gadget/" rel="alternate"/>
-    <summary>Handheld device with a sharp display.</summary>
-    <category term="hardware" label="hardware"/>
-    <category term="ongoingproject" label="ongoing project"/>
-    <published>2025-01-15T00:00:00+01:00</published>
-  </entry>
-  <entry>
     <id>http://deshipu.art/projects/project-sharp-gadget/log-1/</id>
     <title>Off to a rough start</title>
     <updated>2025-01-15T00:00:00+01:00</updated>
     <content type="html">&lt;section class="tex2jax_ignore mathjax_ignore" id="off-to-a-rough-start"&gt;
 
-&lt;p&gt;Published on 2025-01-15 in &lt;a class="reference internal" href="../projects/project-sharp-gadget/#project-sharp-gadget"&gt;&lt;span class="std std-ref"&gt;BlueJoy&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Published on 2025-01-15 in &lt;a class="reference internal" href="../projects/project-sharp-gadget/#project-sharp-gadget"&gt;&lt;span class="std std-ref"&gt;Sharp Gadget&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;The first version of the PCB didn’t work, for the very simple reason that I
 inverted the display connector. I did obsess about its orientation a bit,
 changing it several times, and finally settled on the one that is wrong. Oh
@@ -141,6 +110,37 @@ but that’s not a big problem.&lt;/p&gt;
 </content>
     <link href="http://deshipu.art/projects/project-bluejoy/log-5/" rel="alternate"/>
     <summary>Published on 2025-01-15 in project-bluejoy.</summary>
+    <published>2025-01-15T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-sharp-gadget/</id>
+    <title>Sharp Gadget</title>
+    <updated>2025-01-15T00:00:00+01:00</updated>
+    <content type="html">&lt;section class="tex2jax_ignore mathjax_ignore" id="sharp-gadget"&gt;
+
+&lt;p&gt;Handheld device with a sharp display.&lt;/p&gt;
+&lt;div class="project-thumb"&gt;
+&lt;a class="reference external image-reference" href="/_images/IMG_20241231_194120_HDR.jpg"&gt;&lt;img alt="../_images/thumb-IMG_20241231_194120_HDR.jpg" src="../_images/thumb-IMG_20241231_194120_HDR.jpg" /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;p&gt;I got my hands on a bunch of those cool SHARP memory displays, and I decided to
+make a simple device to test them. The device is pretty generic: it has the
+display, of course, three buttons on the sides, some i2c connectors, footprint
+for a xiao dev board, and a power switch and pads for connecting a lipo
+battery.&lt;/p&gt;
+&lt;p&gt;The goal here is to test the display, and maybe make something like a
+tamagotchi with it.&lt;/p&gt;
+&lt;section id="logs"&gt;
+&lt;h2&gt;Logs&lt;/h2&gt;
+&lt;ul class="postlist-style-none postlist simple"&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2025-01-15 - &lt;a class="reference internal" href="../projects/project-sharp-gadget/log-1/"&gt;Off to a rough start&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-sharp-gadget/" rel="alternate"/>
+    <summary>Handheld device with a sharp display.</summary>
+    <category term="hardware" label="hardware"/>
+    <category term="ongoingproject" label="ongoing project"/>
     <published>2025-01-15T00:00:00+01:00</published>
   </entry>
 </feed>
