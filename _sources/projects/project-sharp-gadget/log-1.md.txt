@@ -23,6 +23,9 @@ pixels are color. It was supposed to be a LS013B7DH03 display, but apparently I
 got LS013B7DH06 instead! Well, I can live with that. They use the same
 connector and the same protocol.
 
+```{image} images/IMG_20250113_132342_HDR.jpg
+:alt: New version of the PCB with the display showing random pixels.
+```
 I proceeded to try to use that display with CircuitPython. Earlier, I noticed that it already has a ``sharpdisplay`` module, so I expected this to be just a
 question of using it with the right options. It doesn't seem to be the case.
 There is precious little documentation, but it seems that it was written for some other sharp displays with a different protocol. Oh well, I will just have to write the driver myself.

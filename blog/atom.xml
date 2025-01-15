@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art</title>
-  <updated>2025-01-15T11:16:36.188870+00:00</updated>
+  <updated>2025-01-15T11:18:07.503813+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -82,6 +82,7 @@ random pattern of pixels on it. And that’s when I had a second surprise: the
 pixels are color. It was supposed to be a LS013B7DH03 display, but apparently I
 got LS013B7DH06 instead! Well, I can live with that. They use the same
 connector and the same protocol.&lt;/p&gt;
+&lt;img alt="New version of the PCB with the display showing random pixels." src="../_images/IMG_20250113_132342_HDR.jpg" /&gt;
 &lt;p&gt;I proceeded to try to use that display with CircuitPython. Earlier, I noticed that it already has a &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;sharpdisplay&lt;/span&gt;&lt;/code&gt; module, so I expected this to be just a
 question of using it with the right options. It doesn’t seem to be the case.
 There is precious little documentation, but it seems that it was written for some other sharp displays with a different protocol. Oh well, I will just have to write the driver myself.&lt;/p&gt;
