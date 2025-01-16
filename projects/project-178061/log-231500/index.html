@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>3D-printed Buttons - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section class="tex2jax_ignore mathjax_ignore" id="d-printed-buttons">
+<h1>3D-printed Buttons<a class="headerlink" href="#d-printed-buttons" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2025-01-16 in <a class="reference internal" href="../#project-178061"><span class="std std-ref">µGame S3</span></a>.</p>
+<p>The d-pad and buttons for the case were a long-time problem for me. Laser-cutting them gives pretty nice effects, but there is no easy way of making them stay in place. I tried gluing them to the buttons, sticking the buttons into a hole in them, gluing additional parts to the bottom to hook against the case, and finally I settled on a sticky tape applied from the back. But it never was quite right.</p>
+<p>Recently, I finally tried 3D-printing them. It’s a problem for me, because I
+don’t really have an easy access to a 3D-printer. I don’t own one, and the ones
+in the hackerspaces and fablabs around are always either broken or there is a
+long queue of people wanting to use them. But the PCB factories started to
+offer also 3D printing services, so I decided to try one of those. An
+additional advantage is that a small and precise part like those button caps is
+best printed with resin, and that’s even harder to come by in local fablabs.</p>
+<p>So I started my trusty OpenSCAD, and quickly made a 3D model of the d-pad and buttons, and then exported it as an STL file. I went through several iterations, and after I added rounded edges with Minkowsky sum, I had to actually move to my work laptop to generate the STL, because it was running out of memory. Well, I only need to render it once, so that’s fine. In the end I came up with this:</p>
+<img alt="A render of a d-pad and button caps." src="../../../_images/Screenshot_2025-01-16_22-12-44.png" />
+<p>I tried several different resins, including transparent, but I think the best
+result is with the cheap black resin that JLC offers.</p>
+<img alt="Game console with the d-pad and button caps installed." src="../../../_images/IMG_20241215_105933_HDR.jpg" />
+<p>I’m really happy with how this came out. The buttons have a slight texture to
+them, and are pleasant to touch. They also sit in there very well, and after I
+got the height of the insides right, they work very well mechanically. The
+buttons under them are clicky, but with very low force, so the end result is
+very pleasant.</p>
+<p>I also made an empty PCB with sole nice pattern and silkscreen to serve as the
+back cover. It works well with the thin pouch LiPo batteries, and with the
+large-headed machine screws.</p>
+<img alt="Back cover for the battery." src="../../../_images/IMG_20241215_105941_HDR.jpg" />
+</section>
+
+
+</div>
+  </body>
+</html>

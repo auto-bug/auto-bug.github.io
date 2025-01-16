@@ -2,31 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art</title>
-  <updated>2025-01-16T14:36:28.914279+00:00</updated>
+  <updated>2025-01-16T21:24:27.959026+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
-  <entry>
-    <id>http://deshipu.art/projects/project-188908/log-1/</id>
-    <title>Designs Published</title>
-    <updated>2024-10-21T00:00:00+02:00</updated>
-    <content type="html">&lt;section class="tex2jax_ignore mathjax_ignore" id="designs-published"&gt;
-
-&lt;p&gt;Published on 2024-10-21 in &lt;a class="reference internal" href="../projects/project-188908/#project-188908"&gt;&lt;span class="std std-ref"&gt;Moo Bug&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;I just realized that for all this time I forgot to publish the designs files
-for this robot, even though I even sold some kits of it to people at the
-Hackaday Europe. I guess they were all too nice to ask me where they are.&lt;/p&gt;
-&lt;p&gt;In any case, both the design files and the basic walking code are now available
-in a &lt;a class="reference external" href="https://github.com/auto-bug/moobug"&gt;repository&lt;/a&gt; on Github. Write me an
-e-mail or create an issue if you see anything missing or wrong. The JSON files
-are EasyEDA (standard) exports.&lt;/p&gt;
-&lt;p&gt;Enjoy!&lt;/p&gt;
-&lt;/section&gt;
-</content>
-    <link href="http://deshipu.art/projects/project-188908/log-1/" rel="alternate"/>
-    <summary>Published on 2024-10-21 in project-188908.</summary>
-    <published>2024-10-21T00:00:00+02:00</published>
-  </entry>
   <entry>
     <id>http://deshipu.art/projects/project-sharp-gadget/log-1/</id>
     <title>Off to a rough start</title>
@@ -108,6 +87,41 @@ tamagotchi with it.&lt;/p&gt;
     <category term="hardware" label="hardware"/>
     <category term="ongoingproject" label="ongoing project"/>
     <published>2025-01-15T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-178061/log-231500/</id>
+    <title>3D-printed Buttons</title>
+    <updated>2025-01-16T00:00:00+01:00</updated>
+    <content type="html">&lt;section class="tex2jax_ignore mathjax_ignore" id="d-printed-buttons"&gt;
+
+&lt;p&gt;Published on 2025-01-16 in &lt;a class="reference internal" href="../projects/project-178061/#project-178061"&gt;&lt;span class="std std-ref"&gt;µGame S3&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The d-pad and buttons for the case were a long-time problem for me. Laser-cutting them gives pretty nice effects, but there is no easy way of making them stay in place. I tried gluing them to the buttons, sticking the buttons into a hole in them, gluing additional parts to the bottom to hook against the case, and finally I settled on a sticky tape applied from the back. But it never was quite right.&lt;/p&gt;
+&lt;p&gt;Recently, I finally tried 3D-printing them. It’s a problem for me, because I
+don’t really have an easy access to a 3D-printer. I don’t own one, and the ones
+in the hackerspaces and fablabs around are always either broken or there is a
+long queue of people wanting to use them. But the PCB factories started to
+offer also 3D printing services, so I decided to try one of those. An
+additional advantage is that a small and precise part like those button caps is
+best printed with resin, and that’s even harder to come by in local fablabs.&lt;/p&gt;
+&lt;p&gt;So I started my trusty OpenSCAD, and quickly made a 3D model of the d-pad and buttons, and then exported it as an STL file. I went through several iterations, and after I added rounded edges with Minkowsky sum, I had to actually move to my work laptop to generate the STL, because it was running out of memory. Well, I only need to render it once, so that’s fine. In the end I came up with this:&lt;/p&gt;
+&lt;img alt="A render of a d-pad and button caps." src="../_images/Screenshot_2025-01-16_22-12-44.png" /&gt;
+&lt;p&gt;I tried several different resins, including transparent, but I think the best
+result is with the cheap black resin that JLC offers.&lt;/p&gt;
+&lt;img alt="Game console with the d-pad and button caps installed." src="../_images/IMG_20241215_105933_HDR.jpg" /&gt;
+&lt;p&gt;I’m really happy with how this came out. The buttons have a slight texture to
+them, and are pleasant to touch. They also sit in there very well, and after I
+got the height of the insides right, they work very well mechanically. The
+buttons under them are clicky, but with very low force, so the end result is
+very pleasant.&lt;/p&gt;
+&lt;p&gt;I also made an empty PCB with sole nice pattern and silkscreen to serve as the
+back cover. It works well with the thin pouch LiPo batteries, and with the
+large-headed machine screws.&lt;/p&gt;
+&lt;img alt="Back cover for the battery." src="../_images/IMG_20241215_105941_HDR.jpg" /&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-178061/log-231500/" rel="alternate"/>
+    <summary>Published on 2025-01-16 in project-178061.</summary>
+    <published>2025-01-16T00:00:00+01:00</published>
   </entry>
   <entry>
     <id>http://deshipu.art/projects/project-192761/log-223770/</id>
