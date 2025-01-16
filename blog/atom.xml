@@ -2,45 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art</title>
-  <updated>2025-01-15T11:18:07.503813+00:00</updated>
+  <updated>2025-01-16T14:36:28.914279+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
-  <entry>
-    <id>http://deshipu.art/projects/project-bluejoy/log-4/</id>
-    <title>First Prototype Success</title>
-    <updated>2024-10-15T00:00:00+02:00</updated>
-    <content type="html">&lt;section class="tex2jax_ignore mathjax_ignore" id="first-prototype-success"&gt;
-
-&lt;p&gt;Published on 2024-10-15 in &lt;a class="reference internal" href="../projects/project-bluejoy/#project-bluejoy"&gt;&lt;span class="std std-ref"&gt;BlueJoy&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Rushing the design is bad, but jumping to conclusions is also not great. Turns
-out that the problem is not with the crystal at all. The module I’m using does
-contain the 40MHz crystal that is necessary for the chip to work, and the
-additional 32.7kHz crystal is entirely optional. My redesign was a complete
-waste of time and money. Sadly, it can’t be cancelled anymore, but the boards
-should work perfectly fine anyways.&lt;/p&gt;
-&lt;p&gt;What changed? Well, I had a chat with UnexpectedMaker, who has immense experience with the ESP32 chips and modules, and he explained it to me. He also pointed me in the right direction to get my prototype working, and that was resoldering the module. I thought that I did a pretty good job soldering it, as it was all well aligned, and there were no visible problem. But when I desoldered it, this is what I saw:&lt;/p&gt;
-&lt;img alt="Desoldered esp32 module with many pads not touched by solder." src="../_images/IMG_20241015_115422_HDR.jpg" /&gt;
-&lt;p&gt;As you can see, many of the pads weren’t even as much as touched by solder. You can still see the golden ENIG finish on them. So I tinned both the PCB and the module pads, applied a generous amount of flux, and soldered the module on again, making sure I apply plenty of pressure all around it.&lt;/p&gt;
-&lt;p&gt;And the effect was immediate. After some fumbling with connecting the USB to
-UART adapter, I got the board programmed, and it works:&lt;/p&gt;
-&lt;img alt="Working shield with a bluetooth gamepad connected to it." src="../_images/IMG_20241015_125228_HDR.jpg" /&gt;
-&lt;p&gt;There is one more good thing that came out of that conversation. When I said
-that I don’t really need all that flash and ram that this module has,
-UnexpectedMaker pointed out that the ESP32-MINI-1 module has the same width,
-only being a little bit longer, and is cheaper because it doesn’t have the
-extra ram and only has a small flash chip. So I went ahead and redesigned the
-PCB to use that module. I had to change the programming header to pads on the bottom of the module, and had to switch to smaller resistors and capacitors, but it fits, and the routing is less of a mess.&lt;/p&gt;
-&lt;img alt="A rendering of a PCB with an esp32 module." src="../_images/Screenshot_2024-10-15_13-14-20.png" /&gt;
-&lt;p&gt;It’s going on the same slow shipping as the boards with the crystal, so I will
-get to them some time next month when they arrive. For now, I have the working
-first prototype to use.&lt;/p&gt;
-&lt;/section&gt;
-</content>
-    <link href="http://deshipu.art/projects/project-bluejoy/log-4/" rel="alternate"/>
-    <summary>Published on 2024-10-15 in project-bluejoy.</summary>
-    <published>2024-10-15T00:00:00+02:00</published>
-  </entry>
   <entry>
     <id>http://deshipu.art/projects/project-188908/log-1/</id>
     <title>Designs Published</title>
@@ -143,5 +108,38 @@ tamagotchi with it.&lt;/p&gt;
     <category term="hardware" label="hardware"/>
     <category term="ongoingproject" label="ongoing project"/>
     <published>2025-01-15T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-192761/log-223770/</id>
+    <title>Dupe SAO</title>
+    <updated>2025-01-16T00:00:00+01:00</updated>
+    <content type="html">&lt;section class="tex2jax_ignore mathjax_ignore" id="dupe-sao"&gt;
+
+&lt;p&gt;Published on 2025-01-16 in &lt;a class="reference internal" href="../projects/project-192761/#project-192761"&gt;&lt;span class="std std-ref"&gt;Astro-chan Badge&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I have been recently experimenting with different round displays and with the
+CH32V series of microcontrollers, and I decided to make another try at this
+idea, this time as a badge add-on.&lt;/p&gt;
+&lt;p&gt;I also decided to try and reproduce the look of duplicants from the game Oxygen
+Not Included. The publisher of that game might not be happy with me about this,
+but I don’t plan to sell or otherwise distribute this thing, so it should be
+fine.&lt;/p&gt;
+&lt;img alt="Duplicant SAO." src="../_images/IMG_20250113_114025_HDR.jpg" /&gt;
+&lt;p&gt;It’s not just new display and new PCB, I’m also using a RISC-V based chip,
+CH32V203 for the brains of this contraption. The original plan was to get the
+USB MSC example working, and join it with a GIF decoding library, so that you
+can just upload arbitrary GIF files to the device and have them play
+automatically. It turns out that this particular chip doesn’t have enough RAM
+to pull that off, so I’m just going to hard-code the graphics in the firmware,
+but I still want to get that idea working in a different project with a
+different chip.&lt;/p&gt;
+&lt;p&gt;Right now the project is waiting for a CHLINK-E programmer to arrive, so that I
+can flash the firmware on a new chip. I have tested it already on a development
+board that has a USB bootloader, but of course bare chips don’t come with a
+bootloader, so I will need that programmer.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-192761/log-223770/" rel="alternate"/>
+    <summary>Published on 2025-01-16 in project-192761.</summary>
+    <published>2025-01-16T00:00:00+01:00</published>
   </entry>
 </feed>
