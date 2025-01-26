@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Programming CH32V203 - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section class="tex2jax_ignore mathjax_ignore" id="programming-ch32v203">
+<h1>Programming CH32V203<a class="headerlink" href="#programming-ch32v203" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2025-01-27 in <a class="reference internal" href="../#project-192761"><span class="std std-ref">Astro-chan Badge</span></a>.</p>
+<p>I finally got a working chlink programmer, so I was able to continue with this
+project. Since I already had an LCD display demo working on a development
+board, I was expecting it will just be a question of changing the pin numbers
+and peripherals. Two days of debugging later, and I still didn’t get the board
+to even run a simple blink example. It’s all working perfectly fine on a
+development board with a crystal, but not on my board or the crystal-less LANA
+TNY development board that I also used for testing. Even though I explicitly
+enabled the internal HCI clock as the clock source.</p>
+<p>I never really figured out what was wrong. I just went back to the example
+program for LANA TNY, and re-created the LCD example based on that code. And
+that worked for some reason. I suspect it’s a question of an old version of the
+vendor libraries.</p>
+<img alt="Duplicant SAO." src="../../../_images/IMG_20250113_114025_HDR.jpg" />
+<p>In any case, I had the code that displays an image on the display, but I wanted
+that image to be animated. So I added another one, and some delays between
+displaying them in a loop. Sadly, as soon as I tried to add a third image, I
+ran out of flash space. It’s really no wonder, as 16 bits per pixel, that data takes up a lot of space.</p>
+<p>But the images I’m displaying are really simple, cartoon-like. I don’t really
+need 16-bit color for them. In fact, 16 colors (4-bit) would be more than
+enough. So with a bit of change in how the data is generated, I added a palette
+and used indexed colors. There is no visible difference in quality, but now I can fit as many as 8 or 9 frames of animation. I could make that even better if I limit the images only to areas that change (like the eyes), but that would require a little better preparation of the images.</p>
+<p>In any case, I think the whole thing is in a workable state now, so I put everything in a [github repository]{<a class="reference external" href="https://github.com/deshipu/dupe-sao">https://github.com/deshipu/dupe-sao</a>}. I want to improve this further, but we will see how that goes.</p>
+</section>
+
+
+</div>
+  </body>
+</html>
