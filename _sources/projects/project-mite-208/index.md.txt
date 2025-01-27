@@ -1,0 +1,38 @@
+```{post} 2025-01-27
+:category: project
+:tags: ongoing project, hardware
+:image: 1
+:exclude:
+
+Small development board with CH32V208.
+```
+
+# Mite 208
+Small development board with CH32V208.
+
+<div class="project-thumb">
+
+```{image} images/thumb-IMG_20250127_163658_HDR.jpg
+:target: /_images/IMG_20250127_163658_HDR.jpg
+```
+</div>
+
+I recently started to play with the CH32V family of microcontrollers, and
+they are a lot of fun, but most ready development boards you can get are for
+the cheaper models in the family, with very little RAM. This is fine for
+blinking LEDs, but if you want to start playing with USB, filesystem, displays,
+and graphic formats, you need something with a bit more oomph. Those models
+have demo boards that try to fully show off the capabilities of those chips,
+so they are huge, with multiple USB sockets, bluetooth antennas, and ethernet
+sockets. I wanted one of the more powerful chips but on a small devboard.
+
+I quite like the Xiao and QtPy form factor, so I made a board that is
+compatible with that. While the chip supports bluetooth and ethernet, those
+pins are not broken out — I just want the 64kB of RAM in this case.
+
+## Logs
+
+```{postlist}
+:category: project-mite-208
+```
+
