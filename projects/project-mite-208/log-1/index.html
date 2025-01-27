@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Blink - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section class="tex2jax_ignore mathjax_ignore" id="blink">
+<h1>Blink<a class="headerlink" href="#blink" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2025-01-27 in <a class="reference internal" href="../#project-mite-208"><span class="std std-ref">Mite 208</span></a>.</p>
+<p>I received the assembled boards from JLC and wanted to immediately test them,
+so I modified the ch32v20x blink example from the ch32v003fun library, and
+tried to program the board.</p>
+<p>Sadly, I got an error telling me that the programmer is not connected to an MCU.
+I checked all the connections again, and checked the schematic, and found out
+that I mis-labeled the programming pins — the SWD and SWC are swapped. After
+changing the connections, it worked:</p>
+<img alt="Blinking LED." src="../../../_images/IMG_20250127_153358_HDR.jpg" />
+<p>I don’t have much time to play with this right now, but the possibilities are
+in there. There is TinyUSB support for this board, and it has enough memory to
+run LUA or CircuitPython — of course getting that to work would be a
+considerable effort, but it should be possible.</p>
+</section>
+
+
+</div>
+  </body>
+</html>
