@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Hardware - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section class="tex2jax_ignore mathjax_ignore" id="hardware">
+<h1>Hardware<a class="headerlink" href="#hardware" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2025-07-17 in <a class="reference internal" href="../#project-mite-servo"><span class="std std-ref">Mite Servo</span></a>.</p>
+<p>With a plan for the software in place, it’s time to design the hardware.  I can
+comfortably fit eigth of the 1mm pitch servo sockets on a Xiao form factor
+shield, with enough room for the smallest CH32V003 chip in the middle.</p>
+<img alt="../../../_images/Screenshot_2025-04-04_20-21-14.png" src="../../../_images/Screenshot_2025-04-04_20-21-14.png" />
+<p>There are also I2C pull-up resistors, and later I also added a big footprint
+for a capacitor (not on the render), in case we need to filter the current
+spikes a bit. It’s all rather simple in terms of connections.</p>
+<img alt="../../../_images/Screenshot_2025-07-15_22-24-25.png" src="../../../_images/Screenshot_2025-07-15_22-24-25.png" />
+<p>I had to rearrange the sockets physically a bit to simplify the routing, but
+this is something we can fix in software later. There are also SWIO and NRST
+pads broken out on the bottom of the board, for programming. And that’s it,
+it should be all that is required.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

@@ -2,35 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art</title>
-  <updated>2025-07-17T16:49:51.000935+00:00</updated>
+  <updated>2025-07-17T17:04:53.722309+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
-  <entry>
-    <id>http://deshipu.art/projects/project-mite-208/log-1/</id>
-    <title>Blink</title>
-    <updated>2025-01-27T00:00:00+01:00</updated>
-    <content type="html">&lt;section class="tex2jax_ignore mathjax_ignore" id="blink"&gt;
-
-&lt;p&gt;Published on 2025-01-27 in &lt;a class="reference internal" href="../projects/project-mite-208/#project-mite-208"&gt;&lt;span class="std std-ref"&gt;Mite 208&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;I received the assembled boards from JLC and wanted to immediately test them,
-so I modified the ch32v20x blink example from the ch32v003fun library, and
-tried to program the board.&lt;/p&gt;
-&lt;p&gt;Sadly, I got an error telling me that the programmer is not connected to an MCU.
-I checked all the connections again, and checked the schematic, and found out
-that I mis-labeled the programming pins — the SWD and SWC are swapped. After
-changing the connections, it worked:&lt;/p&gt;
-&lt;img alt="Blinking LED." src="../_images/IMG_20250127_153358_HDR.jpg" /&gt;
-&lt;p&gt;I don’t have much time to play with this right now, but the possibilities are
-in there. There is TinyUSB support for this board, and it has enough memory to
-run LUA or CircuitPython — of course getting that to work would be a
-considerable effort, but it should be possible.&lt;/p&gt;
-&lt;/section&gt;
-</content>
-    <link href="http://deshipu.art/projects/project-mite-208/log-1/" rel="alternate"/>
-    <summary>Published on 2025-01-27 in project-mite-208.</summary>
-    <published>2025-01-27T00:00:00+01:00</published>
-  </entry>
   <entry>
     <id>http://deshipu.art/projects/project-mite-208/</id>
     <title>Mite 208</title>
@@ -162,6 +137,7 @@ chip, so let’s use a cheap CH32V003 chip with the right firmware.&lt;/p&gt;
 &lt;section id="logs"&gt;
 &lt;h2&gt;Logs&lt;/h2&gt;
 &lt;ul class="postlist-style-none postlist simple"&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2025-07-17 - &lt;a class="reference internal" href="../projects/project-mite-servo/log-2/"&gt;Hardware&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2025-07-15 - &lt;a class="reference internal" href="../projects/project-mite-servo/log-1/"&gt;CH32V003 as a servo controller&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/section&gt;
@@ -178,5 +154,30 @@ chip, so let’s use a cheap CH32V003 chip with the right firmware.&lt;/p&gt;
     <category term="hardware" label="hardware"/>
     <category term="ongoingproject" label="ongoing project"/>
     <published>2025-07-15T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-mite-servo/log-2/</id>
+    <title>Hardware</title>
+    <updated>2025-07-17T00:00:00+02:00</updated>
+    <content type="html">&lt;section class="tex2jax_ignore mathjax_ignore" id="hardware"&gt;
+
+&lt;p&gt;Published on 2025-07-17 in &lt;a class="reference internal" href="../projects/project-mite-servo/#project-mite-servo"&gt;&lt;span class="std std-ref"&gt;Mite Servo&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;With a plan for the software in place, it’s time to design the hardware.  I can
+comfortably fit eigth of the 1mm pitch servo sockets on a Xiao form factor
+shield, with enough room for the smallest CH32V003 chip in the middle.&lt;/p&gt;
+&lt;img alt="../_images/Screenshot_2025-04-04_20-21-14.png" src="../_images/Screenshot_2025-04-04_20-21-14.png" /&gt;
+&lt;p&gt;There are also I2C pull-up resistors, and later I also added a big footprint
+for a capacitor (not on the render), in case we need to filter the current
+spikes a bit. It’s all rather simple in terms of connections.&lt;/p&gt;
+&lt;img alt="../_images/Screenshot_2025-07-15_22-24-25.png" src="../_images/Screenshot_2025-07-15_22-24-25.png" /&gt;
+&lt;p&gt;I had to rearrange the sockets physically a bit to simplify the routing, but
+this is something we can fix in software later. There are also SWIO and NRST
+pads broken out on the bottom of the board, for programming. And that’s it,
+it should be all that is required.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-mite-servo/log-2/" rel="alternate"/>
+    <summary>Published on 2025-07-17 in project-mite-servo.</summary>
+    <published>2025-07-17T00:00:00+02:00</published>
   </entry>
 </feed>
