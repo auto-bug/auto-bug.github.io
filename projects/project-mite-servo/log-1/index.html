@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>CH32V003 as a servo controller - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section class="tex2jax_ignore mathjax_ignore" id="ch32v003-as-a-servo-controller">
+<h1>CH32V003 as a servo controller<a class="headerlink" href="#ch32v003-as-a-servo-controller" title="Permalink to this heading">¶</a></h1>
+<p>Published on 2025-07-15 in <a class="reference internal" href="../#project-mite-servo"><span class="std std-ref">Mite Servo</span></a>.</p>
+<p>We need to program a small, cheap microcontroller to act as an I2C device, and
+generate 50Hz PWM signals on at least eight pins. Can we do it with the
+CH32V003? A quick check reveals that we have two timers, with four channels
+each, and an I2C peripheral, so it should be just possible? But what about
+resolution? Servo signals are peculiar: yes, they repeat every 20ms, so they
+are 50Hz, but each impulse is only about 1-2ms long. So if you have an 8 bit
+timer, about 5 of those bits are wasted, because they are never going to be
+set. Even with 16 bit timer, you only have about 6-7 bits of effective use.
+The rest is just wasted.</p>
+<p>But 20ms is a very long time for a microcontroller, and the pulses don’t have
+to happen all at the same time. In fact, it would be better to stagger them
+somewhat, to avoid current spikes (cheap servos tend to drive the motor when
+they receive the signal). So here’s another plan: use one clock to trigger an
+interrupt every 20ms (or more often, for staggered signals), and then in that
+interrupt trigger timers in one-shot mode to actually generate the pulses.
+Those one-shot timers can then have a much smaller range, and so better
+resolution.</p>
+<p>Even better, since I can switch which pins a timer is connected to, I can use
+more than just the four channels for every timer – I can use every pin that
+has any timer connected to it, negated or normal, because I can reconfigure the
+timers in between the pulses. As long as it fits in the 18ms time in between
+the pulses, that is, but my initial experiments show that it will most likely
+work.</p>
+<p>That means that after this 8-servo controller, I will probably take a stab at
+another version of my 16-servo controller for the D1 Mini compatible boards.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

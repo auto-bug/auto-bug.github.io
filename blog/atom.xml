@@ -2,78 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art</title>
-  <updated>2025-01-27T16:07:25.706282+00:00</updated>
+  <updated>2025-07-17T16:49:51.000935+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
-  <entry>
-    <id>http://deshipu.art/projects/project-178061/log-231500/</id>
-    <title>3D-printed Buttons</title>
-    <updated>2025-01-16T00:00:00+01:00</updated>
-    <content type="html">&lt;section class="tex2jax_ignore mathjax_ignore" id="d-printed-buttons"&gt;
-
-&lt;p&gt;Published on 2025-01-16 in &lt;a class="reference internal" href="../projects/project-178061/#project-178061"&gt;&lt;span class="std std-ref"&gt;µGame S3&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;The d-pad and buttons for the case were a long-time problem for me. Laser-cutting them gives pretty nice effects, but there is no easy way of making them stay in place. I tried gluing them to the buttons, sticking the buttons into a hole in them, gluing additional parts to the bottom to hook against the case, and finally I settled on a sticky tape applied from the back. But it never was quite right.&lt;/p&gt;
-&lt;p&gt;Recently, I finally tried 3D-printing them. It’s a problem for me, because I
-don’t really have an easy access to a 3D-printer. I don’t own one, and the ones
-in the hackerspaces and fablabs around are always either broken or there is a
-long queue of people wanting to use them. But the PCB factories started to
-offer also 3D printing services, so I decided to try one of those. An
-additional advantage is that a small and precise part like those button caps is
-best printed with resin, and that’s even harder to come by in local fablabs.&lt;/p&gt;
-&lt;p&gt;So I started my trusty OpenSCAD, and quickly made a 3D model of the d-pad and buttons, and then exported it as an STL file. I went through several iterations, and after I added rounded edges with Minkowsky sum, I had to actually move to my work laptop to generate the STL, because it was running out of memory. Well, I only need to render it once, so that’s fine. In the end I came up with this:&lt;/p&gt;
-&lt;img alt="A render of a d-pad and button caps." src="../_images/Screenshot_2025-01-16_22-12-44.png" /&gt;
-&lt;p&gt;I tried several different resins, including transparent, but I think the best
-result is with the cheap black resin that JLC offers.&lt;/p&gt;
-&lt;img alt="Game console with the d-pad and button caps installed." src="../_images/IMG_20241215_105933_HDR.jpg" /&gt;
-&lt;p&gt;I’m really happy with how this came out. The buttons have a slight texture to
-them, and are pleasant to touch. They also sit in there very well, and after I
-got the height of the insides right, they work very well mechanically. The
-buttons under them are clicky, but with very low force, so the end result is
-very pleasant.&lt;/p&gt;
-&lt;p&gt;I also made an empty PCB with sole nice pattern and silkscreen to serve as the
-back cover. It works well with the thin pouch LiPo batteries, and with the
-large-headed machine screws.&lt;/p&gt;
-&lt;img alt="Back cover for the battery." src="../_images/IMG_20241215_105941_HDR.jpg" /&gt;
-&lt;/section&gt;
-</content>
-    <link href="http://deshipu.art/projects/project-178061/log-231500/" rel="alternate"/>
-    <summary>Published on 2025-01-16 in project-178061.</summary>
-    <published>2025-01-16T00:00:00+01:00</published>
-  </entry>
-  <entry>
-    <id>http://deshipu.art/projects/project-192761/log-223770/</id>
-    <title>Dupe SAO</title>
-    <updated>2025-01-16T00:00:00+01:00</updated>
-    <content type="html">&lt;section class="tex2jax_ignore mathjax_ignore" id="dupe-sao"&gt;
-
-&lt;p&gt;Published on 2025-01-16 in &lt;a class="reference internal" href="../projects/project-192761/#project-192761"&gt;&lt;span class="std std-ref"&gt;Astro-chan Badge&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;I have been recently experimenting with different round displays and with the
-CH32V series of microcontrollers, and I decided to make another try at this
-idea, this time as a badge add-on.&lt;/p&gt;
-&lt;p&gt;I also decided to try and reproduce the look of duplicants from the game Oxygen
-Not Included. The publisher of that game might not be happy with me about this,
-but I don’t plan to sell or otherwise distribute this thing, so it should be
-fine.&lt;/p&gt;
-&lt;img alt="Duplicant SAO." src="../_images/IMG_20250113_114025_HDR.jpg" /&gt;
-&lt;p&gt;It’s not just new display and new PCB, I’m also using a RISC-V based chip,
-CH32V203 for the brains of this contraption. The original plan was to get the
-USB MSC example working, and join it with a GIF decoding library, so that you
-can just upload arbitrary GIF files to the device and have them play
-automatically. It turns out that this particular chip doesn’t have enough RAM
-to pull that off, so I’m just going to hard-code the graphics in the firmware,
-but I still want to get that idea working in a different project with a
-different chip.&lt;/p&gt;
-&lt;p&gt;Right now the project is waiting for a CHLINK-E programmer to arrive, so that I
-can flash the firmware on a new chip. I have tested it already on a development
-board that has a USB bootloader, but of course bare chips don’t come with a
-bootloader, so I will need that programmer.&lt;/p&gt;
-&lt;/section&gt;
-</content>
-    <link href="http://deshipu.art/projects/project-192761/log-223770/" rel="alternate"/>
-    <summary>Published on 2025-01-16 in project-192761.</summary>
-    <published>2025-01-16T00:00:00+01:00</published>
-  </entry>
   <entry>
     <id>http://deshipu.art/projects/project-mite-208/log-1/</id>
     <title>Blink</title>
@@ -168,5 +100,83 @@ and used indexed colors. There is no visible difference in quality, but now I ca
     <link href="http://deshipu.art/projects/project-192761/log-223771/" rel="alternate"/>
     <summary>Published on 2025-01-27 in project-192761.</summary>
     <published>2025-01-27T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-mite-servo/log-1/</id>
+    <title>CH32V003 as a servo controller</title>
+    <updated>2025-07-15T00:00:00+02:00</updated>
+    <content type="html">&lt;section class="tex2jax_ignore mathjax_ignore" id="ch32v003-as-a-servo-controller"&gt;
+
+&lt;p&gt;Published on 2025-07-15 in &lt;a class="reference internal" href="../projects/project-mite-servo/#project-mite-servo"&gt;&lt;span class="std std-ref"&gt;Mite Servo&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;We need to program a small, cheap microcontroller to act as an I2C device, and
+generate 50Hz PWM signals on at least eight pins. Can we do it with the
+CH32V003? A quick check reveals that we have two timers, with four channels
+each, and an I2C peripheral, so it should be just possible? But what about
+resolution? Servo signals are peculiar: yes, they repeat every 20ms, so they
+are 50Hz, but each impulse is only about 1-2ms long. So if you have an 8 bit
+timer, about 5 of those bits are wasted, because they are never going to be
+set. Even with 16 bit timer, you only have about 6-7 bits of effective use.
+The rest is just wasted.&lt;/p&gt;
+&lt;p&gt;But 20ms is a very long time for a microcontroller, and the pulses don’t have
+to happen all at the same time. In fact, it would be better to stagger them
+somewhat, to avoid current spikes (cheap servos tend to drive the motor when
+they receive the signal). So here’s another plan: use one clock to trigger an
+interrupt every 20ms (or more often, for staggered signals), and then in that
+interrupt trigger timers in one-shot mode to actually generate the pulses.
+Those one-shot timers can then have a much smaller range, and so better
+resolution.&lt;/p&gt;
+&lt;p&gt;Even better, since I can switch which pins a timer is connected to, I can use
+more than just the four channels for every timer – I can use every pin that
+has any timer connected to it, negated or normal, because I can reconfigure the
+timers in between the pulses. As long as it fits in the 18ms time in between
+the pulses, that is, but my initial experiments show that it will most likely
+work.&lt;/p&gt;
+&lt;p&gt;That means that after this 8-servo controller, I will probably take a stab at
+another version of my 16-servo controller for the D1 Mini compatible boards.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-mite-servo/log-1/" rel="alternate"/>
+    <summary>Published on 2025-07-15 in project-mite-servo.</summary>
+    <published>2025-07-15T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-mite-servo/</id>
+    <title>Mite Servo</title>
+    <updated>2025-07-15T00:00:00+02:00</updated>
+    <content type="html">&lt;section class="tex2jax_ignore mathjax_ignore" id="mite-servo"&gt;
+
+&lt;p&gt;A servo controller shield for the Mite/Xiao boards&lt;/p&gt;
+&lt;div class="project-thumb"&gt;
+&lt;a class="reference external image-reference" href="/_images/Screenshot_2025-04-04_20-21-14.png"&gt;&lt;img alt="../_images/thumb-Screenshot_2025-04-04_20-21-14.png" src="../_images/thumb-Screenshot_2025-04-04_20-21-14.png" /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;p&gt;I grew quite fond of the little 2g servos that I have used in
+&lt;a class="reference internal" href="../projects/project-188909/#project-188909"&gt;&lt;span class="std std-ref"&gt;Wee Bug&lt;/span&gt;&lt;/a&gt; – they are strong and fast enough for making things
+move, and their compact size and small size of the plug makes them very easy to
+hide inside devices. However, that plug also creates problems, because it’s
+difficult to use them without a dedicated PCB. I don’t want to have to make a
+special PCB for every project, so I want a servo shield, with a whole bunch of
+servo connectors, and a chip that will take care of generating the PWM signals.
+And of course I want this shield to be small, the same form factor as the Xiao
+or Mite boards. That makes it impossible to use the good old PCA9685 LED driver
+chip, so let’s use a cheap CH32V003 chip with the right firmware.&lt;/p&gt;
+&lt;section id="logs"&gt;
+&lt;h2&gt;Logs&lt;/h2&gt;
+&lt;ul class="postlist-style-none postlist simple"&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2025-07-15 - &lt;a class="reference internal" href="../projects/project-mite-servo/log-1/"&gt;CH32V003 as a servo controller&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section id="links"&gt;
+&lt;h2&gt;Links&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="https://github.com/deshipu/mite-servo"&gt;Project Repository&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-mite-servo/" rel="alternate"/>
+    <summary>A servo controller shield for the Mite/Xiao boards</summary>
+    <category term="hardware" label="hardware"/>
+    <category term="ongoingproject" label="ongoing project"/>
+    <published>2025-07-15T00:00:00+02:00</published>
   </entry>
 </feed>

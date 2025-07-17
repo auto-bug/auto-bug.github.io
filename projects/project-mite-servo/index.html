@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Mite Servo - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section class="tex2jax_ignore mathjax_ignore" id="mite-servo">
+<h1>Mite Servo<a class="headerlink" href="#mite-servo" title="Permalink to this heading">¶</a></h1>
+<p>A servo controller shield for the Mite/Xiao boards</p>
+<div class="project-thumb">
+<a class="reference external image-reference" href="/_images/Screenshot_2025-04-04_20-21-14.png"><img alt="../../_images/thumb-Screenshot_2025-04-04_20-21-14.png" src="../../_images/thumb-Screenshot_2025-04-04_20-21-14.png" /></a>
+</div>
+<p>I grew quite fond of the little 2g servos that I have used in
+<a class="reference internal" href="../project-188909/#project-188909"><span class="std std-ref">Wee Bug</span></a> – they are strong and fast enough for making things
+move, and their compact size and small size of the plug makes them very easy to
+hide inside devices. However, that plug also creates problems, because it’s
+difficult to use them without a dedicated PCB. I don’t want to have to make a
+special PCB for every project, so I want a servo shield, with a whole bunch of
+servo connectors, and a chip that will take care of generating the PWM signals.
+And of course I want this shield to be small, the same form factor as the Xiao
+or Mite boards. That makes it impossible to use the good old PCA9685 LED driver
+chip, so let’s use a cheap CH32V003 chip with the right firmware.</p>
+<section id="logs">
+<h2>Logs<a class="headerlink" href="#logs" title="Permalink to this heading">¶</a></h2>
+<ul class="postlist-style-none postlist simple">
+<li class="ablog-post"><p class="ablog-post-title">2025-07-15 - <a class="reference internal" href="log-1/">CH32V003 as a servo controller</a></p></li>
+</ul>
+</section>
+<section id="links">
+<h2>Links<a class="headerlink" href="#links" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/deshipu/mite-servo">Project Repository</a></p></li>
+</ul>
+</section>
+</section>
+
+
+</div>
+  </body>
+</html>

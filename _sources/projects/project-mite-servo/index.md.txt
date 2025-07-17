@@ -1,0 +1,41 @@
+```{post} 2025-07-15
+:category: project
+:tags: ongoing project, hardware
+:image: 1
+:exclude:
+
+A servo controller shield for the Mite/Xiao boards
+```
+
+# Mite Servo
+A servo controller shield for the Mite/Xiao boards
+
+<div class="project-thumb">
+
+```{image} images/thumb-Screenshot_2025-04-04_20-21-14.png
+:target: /_images/Screenshot_2025-04-04_20-21-14.png
+```
+</div>
+
+I grew quite fond of the little 2g servos that I have used in
+{ref}`project-188909` -- they are strong and fast enough for making things
+move, and their compact size and small size of the plug makes them very easy to
+hide inside devices. However, that plug also creates problems, because it's
+difficult to use them without a dedicated PCB. I don't want to have to make a
+special PCB for every project, so I want a servo shield, with a whole bunch of
+servo connectors, and a chip that will take care of generating the PWM signals.
+And of course I want this shield to be small, the same form factor as the Xiao
+or Mite boards. That makes it impossible to use the good old PCA9685 LED driver
+chip, so let's use a cheap CH32V003 chip with the right firmware.
+
+
+## Logs
+
+```{postlist}
+:category: project-mite-servo
+```
+
+## Links
+
+* [Project Repository](https://github.com/deshipu/mite-servo)
+
