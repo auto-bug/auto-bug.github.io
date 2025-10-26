@@ -2,45 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art</title>
-  <updated>2025-08-26T20:42:05.543223+00:00</updated>
+  <updated>2025-10-26T17:40:58.751188+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
-  <entry>
-    <id>http://deshipu.art/projects/project-mite-208/</id>
-    <title>Mite 208</title>
-    <updated>2025-01-27T00:00:00+01:00</updated>
-    <content type="html">&lt;section class="tex2jax_ignore mathjax_ignore" id="mite-208"&gt;
-
-&lt;p&gt;Small development board with CH32V208.&lt;/p&gt;
-&lt;div class="project-thumb"&gt;
-&lt;a class="reference external image-reference" href="/_images/IMG_20250127_163658_HDR.jpg"&gt;&lt;img alt="../_images/thumb-IMG_20250127_163658_HDR.jpg" src="../_images/thumb-IMG_20250127_163658_HDR.jpg" /&gt;&lt;/a&gt;
-&lt;/div&gt;
-&lt;p&gt;I recently started to play with the CH32V family of microcontrollers, and
-they are a lot of fun, but most ready development boards you can get are for
-the cheaper models in the family, with very little RAM. This is fine for
-blinking LEDs, but if you want to start playing with USB, filesystem, displays,
-and graphic formats, you need something with a bit more oomph. Those models
-have demo boards that try to fully show off the capabilities of those chips,
-so they are huge, with multiple USB sockets, bluetooth antennas, and ethernet
-sockets. I wanted one of the more powerful chips but on a small devboard.&lt;/p&gt;
-&lt;p&gt;I quite like the Xiao and QtPy form factor, so I made a board that is
-compatible with that. While the chip supports bluetooth and ethernet, those
-pins are not broken out — I just want the 64kB of RAM in this case.&lt;/p&gt;
-&lt;section id="logs"&gt;
-&lt;h2&gt;Logs&lt;/h2&gt;
-&lt;ul class="postlist-style-none postlist simple"&gt;
-&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2025-01-27 - &lt;a class="reference internal" href="../projects/project-mite-208/log-1/"&gt;Blink&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/section&gt;
-&lt;/section&gt;
-</content>
-    <link href="http://deshipu.art/projects/project-mite-208/" rel="alternate"/>
-    <summary>Small development board with CH32V208.</summary>
-    <category term="hardware" label="hardware"/>
-    <category term="ongoingproject" label="ongoing project"/>
-    <published>2025-01-27T00:00:00+01:00</published>
-  </entry>
   <entry>
     <id>http://deshipu.art/projects/project-192761/log-223771/</id>
     <title>Programming CH32V203</title>
@@ -179,5 +144,34 @@ it should be all that is required.&lt;/p&gt;
     <link href="http://deshipu.art/projects/project-mite-servo/log-2/" rel="alternate"/>
     <summary>Published on 2025-07-17 in project-mite-servo.</summary>
     <published>2025-07-17T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-mvbug/</id>
+    <title>MV Bug</title>
+    <updated>2025-09-01T00:00:00+02:00</updated>
+    <content type="html">&lt;section class="tex2jax_ignore mathjax_ignore" id="mv-bug"&gt;
+
+&lt;p&gt;A quadruped robot with OpenMV camera&lt;/p&gt;
+&lt;div class="project-thumb"&gt;
+&lt;a class="reference external image-reference" href="/_images/IMG_20250716_161917_HDR.jpg"&gt;&lt;img alt="../_images/thumb-IMG_20250716_161917_HDR.jpg" src="../_images/thumb-IMG_20250716_161917_HDR.jpg" /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;p&gt;The excellent OpenMV project gives us an easy way to use a plethora of
+visual algorithms in embedded projects by simply calling them from MicroPython
+code. It only makes sense to put one of them on my robots. And since I want
+to have a specific goal, this robot will act as a work time monitor, making
+sure that I take appropriate breaks while working, by monitoring my presence
+by the desk.&lt;/p&gt;
+&lt;section id="logs"&gt;
+&lt;h2&gt;Logs&lt;/h2&gt;
+&lt;ul class="postlist-style-none postlist simple"&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-mvbug/" rel="alternate"/>
+    <summary>A quadruped robot with OpenMV camera</summary>
+    <category term="hardware" label="hardware"/>
+    <category term="ongoingproject" label="ongoing project"/>
+    <published>2025-09-01T00:00:00+02:00</published>
   </entry>
 </feed>

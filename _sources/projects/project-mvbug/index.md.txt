@@ -1,0 +1,31 @@
+```{post} 2025-09-01
+:category: project
+:tags: ongoing project, hardware
+:image: 1
+:exclude:
+
+A quadruped robot with OpenMV camera
+```
+
+# MV Bug
+A quadruped robot with OpenMV camera
+
+<div class="project-thumb">
+
+```{image} images/thumb-IMG_20250716_161917_HDR.jpg
+:target: /_images/IMG_20250716_161917_HDR.jpg
+```
+</div>
+
+The excellent OpenMV project gives us an easy way to use a plethora of
+visual algorithms in embedded projects by simply calling them from MicroPython
+code. It only makes sense to put one of them on my robots. And since I want
+to have a specific goal, this robot will act as a work time monitor, making
+sure that I take appropriate breaks while working, by monitoring my presence
+by the desk.
+
+## Logs
+
+```{postlist}
+:category: project-mvbug
+```
