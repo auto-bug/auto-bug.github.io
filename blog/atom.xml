@@ -2,83 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://deshipu.art/</id>
   <title>deshipu.art</title>
-  <updated>2025-10-26T17:40:58.751188+00:00</updated>
+  <updated>2026-02-18T23:52:51.463319+00:00</updated>
   <link href="http://deshipu.art/"/>
   <link href="http://deshipu.art/blog/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
-  <entry>
-    <id>http://deshipu.art/projects/project-192761/log-223771/</id>
-    <title>Programming CH32V203</title>
-    <updated>2025-01-27T00:00:00+01:00</updated>
-    <content type="html">&lt;section class="tex2jax_ignore mathjax_ignore" id="programming-ch32v203"&gt;
-
-&lt;p&gt;Published on 2025-01-27 in &lt;a class="reference internal" href="../projects/project-192761/#project-192761"&gt;&lt;span class="std std-ref"&gt;Astro-chan Badge&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;I finally got a working chlink programmer, so I was able to continue with this
-project. Since I already had an LCD display demo working on a development
-board, I was expecting it will just be a question of changing the pin numbers
-and peripherals. Two days of debugging later, and I still didn’t get the board
-to even run a simple blink example. It’s all working perfectly fine on a
-development board with a crystal, but not on my board or the crystal-less LANA
-TNY development board that I also used for testing. Even though I explicitly
-enabled the internal HCI clock as the clock source.&lt;/p&gt;
-&lt;p&gt;I never really figured out what was wrong. I just went back to the example
-program for LANA TNY, and re-created the LCD example based on that code. And
-that worked for some reason. I suspect it’s a question of an old version of the
-vendor libraries.&lt;/p&gt;
-&lt;img alt="Duplicant SAO." src="../_images/IMG_20250125_203924_HDR.jpg" /&gt;
-&lt;p&gt;In any case, I had the code that displays an image on the display, but I wanted
-that image to be animated. So I added another one, and some delays between
-displaying them in a loop. Sadly, as soon as I tried to add a third image, I
-ran out of flash space. It’s really no wonder, as 16 bits per pixel, that data takes up a lot of space.&lt;/p&gt;
-&lt;p&gt;But the images I’m displaying are really simple, cartoon-like. I don’t really
-need 16-bit color for them. In fact, 16 colors (4-bit) would be more than
-enough. So with a bit of change in how the data is generated, I added a palette
-and used indexed colors. There is no visible difference in quality, but now I can fit as many as 8 or 9 frames of animation. I could make that even better if I limit the images only to areas that change (like the eyes), but that would require a little better preparation of the images.&lt;/p&gt;
-&lt;p&gt;In any case, I think the whole thing is in a workable state now, so I put everything in a &lt;a class="reference external" href="https://github.com/deshipu/dupe-sao"&gt;github repository&lt;/a&gt;. I want to improve this further, but we will see how that goes.&lt;/p&gt;
-&lt;/section&gt;
-</content>
-    <link href="http://deshipu.art/projects/project-192761/log-223771/" rel="alternate"/>
-    <summary>Published on 2025-01-27 in project-192761.</summary>
-    <published>2025-01-27T00:00:00+01:00</published>
-  </entry>
-  <entry>
-    <id>http://deshipu.art/projects/project-mite-servo/log-1/</id>
-    <title>CH32V003 as a servo controller</title>
-    <updated>2025-07-15T00:00:00+02:00</updated>
-    <content type="html">&lt;section class="tex2jax_ignore mathjax_ignore" id="ch32v003-as-a-servo-controller"&gt;
-
-&lt;p&gt;Published on 2025-07-15 in &lt;a class="reference internal" href="../projects/project-mite-servo/#project-mite-servo"&gt;&lt;span class="std std-ref"&gt;Mite Servo&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;We need to program a small, cheap microcontroller to act as an I2C device, and
-generate 50Hz PWM signals on at least eight pins. Can we do it with the
-CH32V003? A quick check reveals that we have two timers, with four channels
-each, and an I2C peripheral, so it should be just possible? But what about
-resolution? Servo signals are peculiar: yes, they repeat every 20ms, so they
-are 50Hz, but each impulse is only about 1-2ms long. So if you have an 8 bit
-timer, about 5 of those bits are wasted, because they are never going to be
-set. Even with 16 bit timer, you only have about 6-7 bits of effective use.
-The rest is just wasted.&lt;/p&gt;
-&lt;p&gt;But 20ms is a very long time for a microcontroller, and the pulses don’t have
-to happen all at the same time. In fact, it would be better to stagger them
-somewhat, to avoid current spikes (cheap servos tend to drive the motor when
-they receive the signal). So here’s another plan: use one clock to trigger an
-interrupt every 20ms (or more often, for staggered signals), and then in that
-interrupt trigger timers in one-shot mode to actually generate the pulses.
-Those one-shot timers can then have a much smaller range, and so better
-resolution.&lt;/p&gt;
-&lt;p&gt;Even better, since I can switch which pins a timer is connected to, I can use
-more than just the four channels for every timer – I can use every pin that
-has any timer connected to it, negated or normal, because I can reconfigure the
-timers in between the pulses. As long as it fits in the 18ms time in between
-the pulses, that is, but my initial experiments show that it will most likely
-work.&lt;/p&gt;
-&lt;p&gt;That means that after this 8-servo controller, I will probably take a stab at
-another version of my 16-servo controller for the D1 Mini compatible boards.&lt;/p&gt;
-&lt;/section&gt;
-</content>
-    <link href="http://deshipu.art/projects/project-mite-servo/log-1/" rel="alternate"/>
-    <summary>Published on 2025-07-15 in project-mite-servo.</summary>
-    <published>2025-07-15T00:00:00+02:00</published>
-  </entry>
   <entry>
     <id>http://deshipu.art/projects/project-mite-servo/</id>
     <title>Mite Servo</title>
@@ -164,6 +91,7 @@ by the desk.&lt;/p&gt;
 &lt;section id="logs"&gt;
 &lt;h2&gt;Logs&lt;/h2&gt;
 &lt;ul class="postlist-style-none postlist simple"&gt;
+&lt;li class="ablog-post"&gt;&lt;p class="ablog-post-title"&gt;2026-01-09 - &lt;a class="reference internal" href="../projects/project-mvbug/log-1/"&gt;Vision For Small Robots&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/section&gt;
 &lt;/section&gt;
@@ -173,5 +101,70 @@ by the desk.&lt;/p&gt;
     <category term="hardware" label="hardware"/>
     <category term="ongoingproject" label="ongoing project"/>
     <published>2025-09-01T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-mvbug/log-1/</id>
+    <title>Vision For Small Robots</title>
+    <updated>2026-01-09T00:00:00+01:00</updated>
+    <content type="html">&lt;section class="tex2jax_ignore mathjax_ignore" id="vision-for-small-robots"&gt;
+
+&lt;p&gt;Published on 2026-01-09 in &lt;a class="reference internal" href="../projects/project-mvbug/#project-mvbug"&gt;&lt;span class="std std-ref"&gt;MV Bug&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;img alt="../_images/Screenshot_2026-01-08_16-04-58.png" src="../_images/Screenshot_2026-01-08_16-04-58.png" /&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-mvbug/log-1/" rel="alternate"/>
+    <summary>Published on 2026-01-09 in project-mvbug.</summary>
+    <published>2026-01-09T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://deshipu.art/projects/project-178061/log-260218/</id>
+    <title>Front Plate and Firmware</title>
+    <updated>2026-02-18T00:00:00+01:00</updated>
+    <content type="html">&lt;section class="tex2jax_ignore mathjax_ignore" id="front-plate-and-firmware"&gt;
+
+&lt;p&gt;Published on 2026-02-18 in &lt;a class="reference internal" href="../projects/project-178061/#project-178061"&gt;&lt;span class="std std-ref"&gt;µGame S3&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I have built couple more prototypes, and I have made some more experiments with
+the mechanical construction. I also decided that I’m pretty happy with the
+electronics, so I &lt;a class="reference external" href="https://circuitpython.org/board/ugame_s3/"&gt;finalized the board definition and submitted it to
+CircuitPython&lt;/a&gt;. I still haven’t
+decided how to manufacture and distribute the consoles, but I will probably
+start with in-person workshops.&lt;/p&gt;
+&lt;section id="front-plate"&gt;
+&lt;h2&gt;Front Plate&lt;/h2&gt;
+&lt;p&gt;I really like electronic devices in transparent cases, and the laser-cut
+acrylic case that I originally used gives me that aesthetic at a very
+reasonable price, not to mention providing protection for the screen. But
+I decided to also try making the front plate non-transparent, and the easiest
+way to try this was to make it out of PCB, since I was ordering PCBs anyways.&lt;/p&gt;
+&lt;img alt="Device with a PCB front plate." src="../_images/IMG_20260106_135343323.jpg" /&gt;
+&lt;p&gt;I’m actually very happy with how this came out! The PCB is just 1mm thick, compared to 2mm acrylic, so the whole thing feels thinner and lighter. The display cutout is only for the active part of the screen, so the display no longer looks shifted to the side, and there is plenty of room for the button labels.&lt;/p&gt;
+&lt;p&gt;I mis-calculated the width of the display cutout, so the top and bottom margins
+are visually bigger than the left and right ones, but it’s fixed in the final
+design file, together with rounded corners for the cutout, and nicer logo area.&lt;/p&gt;
+&lt;p&gt;I also experimented with moving the spacers that are normally soldered to the
+main PCB to the front plate instead – since it’s a PCB now. This lets me move
+the screws to the back of the device.&lt;/p&gt;
+&lt;img alt="Screws at the back of the device." src="../_images/IMG_20260108_183430106.jpg" /&gt;
+&lt;p&gt;I’m not sure if I will go with this, since it requires the front plate to also
+be soldered. I might do that if I end up soldering them myself by hand, but if
+I go for pick and place at a fab, I will probably keep the spacers on the main
+PCB to save on the assembly costs. In any case, I have the footprints for the
+spacers now both on the main PCB and on the front plate, so either works.&lt;/p&gt;
+&lt;p&gt;As for retaining the battery, I have decided to simply use a black tape on the
+back, at least for now. I might come up with some kind of 3D-printed clip later
+on, as I experiment more.&lt;/p&gt;
+&lt;/section&gt;
+&lt;section id="more-games"&gt;
+&lt;h2&gt;More Games&lt;/h2&gt;
+&lt;p&gt;I really want to focus now on making more games for the CircuitPython in
+general and for my Stage engine in particular. I have started on a new one,
+that is going to be a simple roguelike game – I always wanted to write
+something like that for CircuitPython.&lt;/p&gt;
+&lt;/section&gt;
+&lt;/section&gt;
+</content>
+    <link href="http://deshipu.art/projects/project-178061/log-260218/" rel="alternate"/>
+    <summary>Published on 2026-02-18 in project-178061.</summary>
+    <published>2026-02-18T00:00:00+01:00</published>
   </entry>
 </feed>
