@@ -1,20 +1,16 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>SSD1606 E-ink display - deshipu.art</title>
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=d8568271" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css?v=29da98fa" />
+    <script src="../../../_static/documentation_options.js?v=187304be"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <link rel="index" title="Index" href="../../../genindex/" />
     <link rel="search" title="Search" href="../../../search/" />
   
@@ -48,13 +44,13 @@
 
 <div role="main">
   <section class="tex2jax_ignore mathjax_ignore" id="ssd1606-e-ink-display">
-<h1>SSD1606 E-ink display<a class="headerlink" href="#ssd1606-e-ink-display" title="Permalink to this heading">¶</a></h1>
+<h1>SSD1606 E-ink display<a class="headerlink" href="#ssd1606-e-ink-display" title="Link to this heading">¶</a></h1>
 <p>Published on 2016-07-01 in <a class="reference internal" href="../#project-11660"><span class="std std-ref">Various Micropython Libraries and Drivers</span></a>.</p>
 <p>This is a relatively cheap SPI E-ink display that <a class="reference external" href="https://www.tindie.com/products/alexchu/e-ink-e-paper-display-module-33v-204-inch-177x72/">you can find on tindie</a> . It has 4 shades of grey per pixel, and 172x72 resolution.</p>
 <p>The code is at <a class="reference external" href="https://bitbucket.org/thesheep/micropython-ili9341/src/08804aca285229b78e2f52773bd26ae5145efe60/ssd1606.py">https://bitbucket.org/thesheep/micropython-ili9341/src/tip/ssd1606.py</a></p>
 <p>Example code:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">SPI</span>
-<span class="kn">import</span> <span class="nn">ssd1606</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">SPI</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ssd1606</span>
 <span class="n">spi</span> <span class="o">=</span> <span class="n">SPI</span><span class="p">(</span><span class="n">miso</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">12</span><span class="p">),</span> <span class="n">mosi</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">),</span> <span class="n">sck</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">))</span>
 <span class="n">display</span> <span class="o">=</span> <span class="n">ssd1606</span><span class="o">.</span><span class="n">SSD1606</span><span class="p">(</span><span class="mi">172</span><span class="p">,</span> <span class="mi">72</span><span class="p">,</span> <span class="n">spi</span><span class="p">,</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">15</span><span class="p">))</span>
 <span class="n">display</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>

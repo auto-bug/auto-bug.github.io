@@ -1,20 +1,16 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Smart Doll Badges - deshipu.art</title>
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=d8568271" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css?v=29da98fa" />
+    <script src="../../../_static/documentation_options.js?v=187304be"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <link rel="index" title="Index" href="../../../genindex/" />
     <link rel="search" title="Search" href="../../../search/" />
   
@@ -48,14 +44,14 @@
 
 <div role="main">
   <section class="tex2jax_ignore mathjax_ignore" id="smart-doll-badges">
-<h1>Smart Doll Badges<a class="headerlink" href="#smart-doll-badges" title="Permalink to this heading">¶</a></h1>
+<h1>Smart Doll Badges<a class="headerlink" href="#smart-doll-badges" title="Link to this heading">¶</a></h1>
 <p>Published on 2026-04-12 in <a class="reference internal" href="../#project-192761"><span class="std std-ref">Astro-chan Badge</span></a>.</p>
 <p>I came back recently to those projects, mostly because I was making more of the
 Dupe SAO for the upcoming conferences, and I posted some photos of them that
 interested some people, and I had some discussions with them. I think I want
 to try exploring this a little bit more.</p>
 <section id="attachment">
-<h2>Attachment<a class="headerlink" href="#attachment" title="Permalink to this heading">¶</a></h2>
+<h2>Attachment<a class="headerlink" href="#attachment" title="Link to this heading">¶</a></h2>
 <p>The idea behind the original Astro Chan was to make it work like a “smart doll”,
 sitting on your shoulder and looking alive. Turns out that there is a reason
 why we don’t see people on the street with dolls attached to their shoulders:
@@ -75,7 +71,7 @@ pocket or a front pocket. The last one is the most appealing to me, but I think
 that with some careful design, I can accommodate all three options.</p>
 </section>
 <section id="display">
-<h2>Display<a class="headerlink" href="#display" title="Permalink to this heading">¶</a></h2>
+<h2>Display<a class="headerlink" href="#display" title="Link to this heading">¶</a></h2>
 <p>When I started with Astro Chan, round displays were a novelty in the maker
 community. The 1.28” GC9A01 display I used was basically the only one widely
 available, and you couldn’t even get FPC sockets for it – I had to use the
@@ -101,7 +97,7 @@ high resolution is a worry – pushing so many pixels takes time – but
 hopefully it can be fast enough for smooth animations with the right protocol.</p>
 </section>
 <section id="storage">
-<h2>Storage<a class="headerlink" href="#storage" title="Permalink to this heading">¶</a></h2>
+<h2>Storage<a class="headerlink" href="#storage" title="Link to this heading">¶</a></h2>
 <p>Astro Chan just used a ready development board with built-in flash chip, and
 CircuitPython that used that flash as a filesystem, with GIF files on that
 filesystem for individual animations. This is perfectly fine for a one-off
@@ -131,7 +127,7 @@ flashing the final firmware for playing of the animations. Flashing the chips
 with a separate device connected to some test points is also an option.</p>
 </section>
 <section id="functionality">
-<h2>Functionality<a class="headerlink" href="#functionality" title="Permalink to this heading">¶</a></h2>
+<h2>Functionality<a class="headerlink" href="#functionality" title="Link to this heading">¶</a></h2>
 <p>But what does it <em>do</em>?</p>
 <p>At a minimum, it only displays a fixed animation of the face with eyes blinking
 and maybe some minimal movement, to make it seem alive. That’s what the Dupe
@@ -171,7 +167,7 @@ together with the graphics data.</p>
 app or even with IoT environment. This is a whole pandora box of complexity.</p>
 </section>
 <section id="movement">
-<h2>Movement<a class="headerlink" href="#movement" title="Permalink to this heading">¶</a></h2>
+<h2>Movement<a class="headerlink" href="#movement" title="Link to this heading">¶</a></h2>
 <p>Using a display for the head enables us to make it seem like the face or even
 entire head is moving, without actually mechanically moving anything. But what
 if we added some servos to that construction, to enable more movement?</p>
@@ -189,7 +185,7 @@ required to assemble the device suddenly grow as well.</p>
 preferable.</p>
 </section>
 <section id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">¶</a></h2>
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">¶</a></h2>
 <p>In the immediate future, I have some new displays to tests, and some code to
 write to read data from flash chips and send them to displays. While doing
 that, I might be able to get the USB disk working as well. In the more distant

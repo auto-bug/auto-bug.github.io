@@ -1,20 +1,16 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Firmware for the 20-servo Shield - deshipu.art</title>
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=d8568271" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css?v=29da98fa" />
+    <script src="../../../_static/documentation_options.js?v=187304be"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <link rel="index" title="Index" href="../../../genindex/" />
     <link rel="search" title="Search" href="../../../search/" />
   
@@ -48,7 +44,7 @@
 
 <div role="main">
   <section class="tex2jax_ignore mathjax_ignore" id="firmware-for-the-20-servo-shield">
-<h1>Firmware for the 20-servo Shield<a class="headerlink" href="#firmware-for-the-20-servo-shield" title="Permalink to this heading">¶</a></h1>
+<h1>Firmware for the 20-servo Shield<a class="headerlink" href="#firmware-for-the-20-servo-shield" title="Link to this heading">¶</a></h1>
 <p>Published on 2016-12-19 in <a class="reference internal" href="../#project-13278"><span class="std std-ref">Servo Breakout for WeMos D1 Mini</span></a>.</p>
 <p>It took some work, and it took some compromises. I ended up not using
 the first trick I mentioned, of sending the signals for each port
@@ -59,150 +55,149 @@ remapping the channel numbers to what is actually written on the
 shield. The whole thing has 990 bytes and you can see it below, or in
 this repository: <a class="reference external" href="https://bitbucket.org/thesheep/d1-mini-20ch-servo/src">https://bitbucket.org/thesheep/d1-mini-20ch-servo/src</a></p>
 <hr class="docutils" />
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span>#include &lt;avr/io.h&gt;
-#include &lt;avr/interrupt.h&gt;
-#include &lt;inttypes.h&gt;
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="o">#</span><span class="n">include</span><span class="w"> </span><span class="o">&lt;</span><span class="n">avr</span><span class="o">/</span><span class="n">io</span><span class="p">.</span><span class="n">h</span><span class="o">&gt;</span>
+<span class="o">#</span><span class="n">include</span><span class="w"> </span><span class="o">&lt;</span><span class="n">avr</span><span class="o">/</span><span class="n">interrupt</span><span class="p">.</span><span class="n">h</span><span class="o">&gt;</span>
+<span class="o">#</span><span class="n">include</span><span class="w"> </span><span class="o">&lt;</span><span class="n">inttypes</span><span class="p">.</span><span class="n">h</span><span class="o">&gt;</span>
 
 
-#define I2C_ADDRESS 0x10
-#define I2C_BUFFER_SIZE 32
+<span class="o">#</span><span class="n">define</span><span class="w"> </span><span class="n">I2C_ADDRESS</span><span class="w"> </span><span class="mi">0</span><span class="n">x10</span>
+<span class="o">#</span><span class="n">define</span><span class="w"> </span><span class="n">I2C_BUFFER_SIZE</span><span class="w"> </span><span class="mi">32</span>
 
 
-static unsigned char i2c_buffer[I2C_BUFFER_SIZE];
-static unsigned char i2c_cursor;
-static union {
-    unsigned char bytes[2];
-    unsigned int value;
-} bytes2int;
+<span class="k">static</span><span class="w"> </span><span class="n">unsigned</span><span class="w"> </span><span class="nb">char</span><span class="w"> </span><span class="n">i2c_buffer</span><span class="p">[</span><span class="n">I2C_BUFFER_SIZE</span><span class="p">];</span>
+<span class="k">static</span><span class="w"> </span><span class="n">unsigned</span><span class="w"> </span><span class="nb">char</span><span class="w"> </span><span class="n">i2c_cursor</span><span class="p">;</span>
+<span class="k">static</span><span class="w"> </span><span class="k">union</span><span class="w"> </span><span class="err">{</span>
+<span class="w">    </span><span class="n">unsigned</span><span class="w"> </span><span class="nb">char</span><span class="w"> </span><span class="n">bytes</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+<span class="w">    </span><span class="n">unsigned</span><span class="w"> </span><span class="nb">int</span><span class="w"> </span><span class="n">value</span><span class="p">;</span>
+<span class="err">}</span><span class="w"> </span><span class="n">bytes2int</span><span class="p">;</span>
 
 
-#define MAX_SERVO 20
+<span class="o">#</span><span class="n">define</span><span class="w"> </span><span class="n">MAX_SERVO</span><span class="w"> </span><span class="mi">20</span>
 
-static uint16_t servo_pulse[MAX_SERVO];
+<span class="k">static</span><span class="w"> </span><span class="n">uint16_t</span><span class="w"> </span><span class="n">servo_pulse</span><span class="p">[</span><span class="n">MAX_SERVO</span><span class="p">];</span>
 
-volatile static uint16_t servo_delay[MAX_SERVO + 1];
-volatile static uint8_t servo_mask_b[MAX_SERVO];
-volatile static uint8_t servo_mask_c[MAX_SERVO];
-volatile static uint8_t servo_mask_d[MAX_SERVO];
-volatile static uint8_t servo_event;
+<span class="k">volatile</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="n">uint16_t</span><span class="w"> </span><span class="n">servo_delay</span><span class="p">[</span><span class="n">MAX_SERVO</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">];</span>
+<span class="k">volatile</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="n">uint8_t</span><span class="w"> </span><span class="n">servo_mask_b</span><span class="p">[</span><span class="n">MAX_SERVO</span><span class="p">];</span>
+<span class="k">volatile</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="n">uint8_t</span><span class="w"> </span><span class="n">servo_mask_c</span><span class="p">[</span><span class="n">MAX_SERVO</span><span class="p">];</span>
+<span class="k">volatile</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="n">uint8_t</span><span class="w"> </span><span class="n">servo_mask_d</span><span class="p">[</span><span class="n">MAX_SERVO</span><span class="p">];</span>
+<span class="k">volatile</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="n">uint8_t</span><span class="w"> </span><span class="n">servo_event</span><span class="p">;</span>
 
-// Remap servo numbers to pins.
-// 0 = PB0  1 = PB1  2 = PB2  3 = PB3  4 = PB4  5 = PB5  6 = PB6 7 = PB7
-// 8 = PC0  9 = PC1  10 = PC2  11 = PC3  12 = PD0 13 = PD1  14 = PD2  15 = PD3
-// 16 = PD4  17 = PD5  18 = PD6 19 = PD7
-const static uint8_t servo_map[MAX_SERVO] = {
-    13, 10, 11, 12, 14, 15, 16, 6, 7, 17, 9, 8, 5, 4, 3, 2, 1, 0, 19, 18
-};
+<span class="o">//</span><span class="w"> </span><span class="n">Remap</span><span class="w"> </span><span class="n">servo</span><span class="w"> </span><span class="n">numbers</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">pins</span><span class="p">.</span>
+<span class="o">//</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PB0</span><span class="w">  </span><span class="mi">1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PB1</span><span class="w">  </span><span class="mi">2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PB2</span><span class="w">  </span><span class="mi">3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PB3</span><span class="w">  </span><span class="mi">4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PB4</span><span class="w">  </span><span class="mi">5</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PB5</span><span class="w">  </span><span class="mi">6</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PB6</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PB7</span>
+<span class="o">//</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PC0</span><span class="w">  </span><span class="mi">9</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PC1</span><span class="w">  </span><span class="mi">10</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PC2</span><span class="w">  </span><span class="mi">11</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PC3</span><span class="w">  </span><span class="mi">12</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PD0</span><span class="w"> </span><span class="mi">13</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PD1</span><span class="w">  </span><span class="mi">14</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PD2</span><span class="w">  </span><span class="mi">15</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PD3</span>
+<span class="o">//</span><span class="w"> </span><span class="mi">16</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PD4</span><span class="w">  </span><span class="mi">17</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PD5</span><span class="w">  </span><span class="mi">18</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PD6</span><span class="w"> </span><span class="mi">19</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PD7</span>
+<span class="n">const</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="n">uint8_t</span><span class="w"> </span><span class="n">servo_map</span><span class="p">[</span><span class="n">MAX_SERVO</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">{</span>
+<span class="w">    </span><span class="mi">13</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w"> </span><span class="mi">18</span>
+<span class="err">}</span><span class="p">;</span>
 
-ISR(TIMER1_COMPA_vect) {
-    servo_event = 0;
-    PORTB = 0b11111111;
-    PORTC = 0b00001111; // leave out RESET, SDA, SCL, PC7
-    PORTD = 0b11111111;
-    TCNT1 = 0;
-    OCR1B = servo_delay[0];
-}
-
-
-ISR(TIMER1_COMPB_vect) {
-    PORTB &amp;= servo_mask_b[servo_event];
-    PORTC &amp;= servo_mask_c[servo_event];
-    PORTD &amp;= servo_mask_d[servo_event];
-    servo_event += 1;
-    OCR1B = servo_delay[servo_event];
-}
+<span class="n">ISR</span><span class="p">(</span><span class="n">TIMER1_COMPA_vect</span><span class="p">)</span><span class="w"> </span><span class="err">{</span>
+<span class="w">    </span><span class="n">servo_event</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="n">PORTB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="n">b11111111</span><span class="p">;</span>
+<span class="w">    </span><span class="n">PORTC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="n">b00001111</span><span class="p">;</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="n">leave</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="k">RESET</span><span class="p">,</span><span class="w"> </span><span class="n">SDA</span><span class="p">,</span><span class="w"> </span><span class="n">SCL</span><span class="p">,</span><span class="w"> </span><span class="n">PC7</span>
+<span class="w">    </span><span class="n">PORTD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="n">b11111111</span><span class="p">;</span>
+<span class="w">    </span><span class="n">TCNT1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="n">OCR1B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">servo_delay</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="err">}</span>
 
 
-void servo_update() {
-    uint16_t last_pulse = 0;
-    for (uint8_t event = 0; event &lt; 8; ++event) {
-        uint16_t smallest_pulse = 0xffff;
-        for (uint8_t servo = 0; servo &lt; MAX_SERVO; ++servo) {
-            if (servo_pulse[servo] &gt; last_pulse &amp;&amp;
-                servo_pulse[servo] &lt; smallest_pulse) {
-                    smallest_pulse = servo_pulse[servo];
-            }
-        }
-        servo_delay[event] = smallest_pulse;
-        servo_mask_b[event] = 0xff;
-        for (uint8_t servo = 0; servo &lt; 8; ++servo) {
-            if (servo_pulse[servo] &lt;= smallest_pulse) {
-                servo_mask_b[event] &amp;= ~(1 &lt;&lt; servo);
-            }
-        }
-        servo_mask_c[event] = 0xff;
-        for (uint8_t servo = 0; servo &lt; 4; ++servo) {
-            if (servo_pulse[8 + servo] &lt;= smallest_pulse) {
-                servo_mask_c[event] &amp;= ~(1 &lt;&lt; servo);
-            }
-        }
-        servo_mask_d[event] = 0xff;
-        for (uint8_t servo = 0; servo &lt; 8; ++servo) {
-            if (servo_pulse[12 + servo] &lt;= smallest_pulse) {
-                servo_mask_d[event] &amp;= ~(1 &lt;&lt; servo);
-            }
-        }
-        last_pulse = smallest_pulse;
-    }
-}
+<span class="n">ISR</span><span class="p">(</span><span class="n">TIMER1_COMPB_vect</span><span class="p">)</span><span class="w"> </span><span class="err">{</span>
+<span class="w">    </span><span class="n">PORTB</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="n">servo_mask_b</span><span class="p">[</span><span class="n">servo_event</span><span class="p">];</span>
+<span class="w">    </span><span class="n">PORTC</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="n">servo_mask_c</span><span class="p">[</span><span class="n">servo_event</span><span class="p">];</span>
+<span class="w">    </span><span class="n">PORTD</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="n">servo_mask_d</span><span class="p">[</span><span class="n">servo_event</span><span class="p">];</span>
+<span class="w">    </span><span class="n">servo_event</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="n">OCR1B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">servo_delay</span><span class="p">[</span><span class="n">servo_event</span><span class="p">];</span>
+<span class="err">}</span>
 
 
-int main() {
-    // setup i2c slave
-    PORTC |= 1&lt;&lt;PC4 | 1&lt;&lt;PC5; // enable pullups
-    TWAR = I2C_ADDRESS&lt;&lt;1;
+<span class="n">void</span><span class="w"> </span><span class="n">servo_update</span><span class="p">()</span><span class="w"> </span><span class="err">{</span>
+<span class="w">    </span><span class="n">uint16_t</span><span class="w"> </span><span class="n">last_pulse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">uint8_t</span><span class="w"> </span><span class="n">event</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">event</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">event</span><span class="p">)</span><span class="w"> </span><span class="err">{</span>
+<span class="w">        </span><span class="n">uint16_t</span><span class="w"> </span><span class="n">smallest_pulse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="n">xffff</span><span class="p">;</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">uint8_t</span><span class="w"> </span><span class="n">servo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">servo</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">MAX_SERVO</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">servo</span><span class="p">)</span><span class="w"> </span><span class="err">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">servo_pulse</span><span class="p">[</span><span class="n">servo</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">last_pulse</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="w">                </span><span class="n">servo_pulse</span><span class="p">[</span><span class="n">servo</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">smallest_pulse</span><span class="p">)</span><span class="w"> </span><span class="err">{</span>
+<span class="w">                    </span><span class="n">smallest_pulse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">servo_pulse</span><span class="p">[</span><span class="n">servo</span><span class="p">];</span>
+<span class="w">            </span><span class="err">}</span>
+<span class="w">        </span><span class="err">}</span>
+<span class="w">        </span><span class="n">servo_delay</span><span class="p">[</span><span class="n">event</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">smallest_pulse</span><span class="p">;</span>
+<span class="w">        </span><span class="n">servo_mask_b</span><span class="p">[</span><span class="n">event</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="n">xff</span><span class="p">;</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">uint8_t</span><span class="w"> </span><span class="n">servo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">servo</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">servo</span><span class="p">)</span><span class="w"> </span><span class="err">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">servo_pulse</span><span class="p">[</span><span class="n">servo</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">smallest_pulse</span><span class="p">)</span><span class="w"> </span><span class="err">{</span>
+<span class="w">                </span><span class="n">servo_mask_b</span><span class="p">[</span><span class="n">event</span><span class="p">]</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">servo</span><span class="p">);</span>
+<span class="w">            </span><span class="err">}</span>
+<span class="w">        </span><span class="err">}</span>
+<span class="w">        </span><span class="n">servo_mask_c</span><span class="p">[</span><span class="n">event</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="n">xff</span><span class="p">;</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">uint8_t</span><span class="w"> </span><span class="n">servo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">servo</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">servo</span><span class="p">)</span><span class="w"> </span><span class="err">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">servo_pulse</span><span class="p">[</span><span class="mi">8</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">servo</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">smallest_pulse</span><span class="p">)</span><span class="w"> </span><span class="err">{</span>
+<span class="w">                </span><span class="n">servo_mask_c</span><span class="p">[</span><span class="n">event</span><span class="p">]</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">servo</span><span class="p">);</span>
+<span class="w">            </span><span class="err">}</span>
+<span class="w">        </span><span class="err">}</span>
+<span class="w">        </span><span class="n">servo_mask_d</span><span class="p">[</span><span class="n">event</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="n">xff</span><span class="p">;</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">uint8_t</span><span class="w"> </span><span class="n">servo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">servo</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">servo</span><span class="p">)</span><span class="w"> </span><span class="err">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">servo_pulse</span><span class="p">[</span><span class="mi">12</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">servo</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">smallest_pulse</span><span class="p">)</span><span class="w"> </span><span class="err">{</span>
+<span class="w">                </span><span class="n">servo_mask_d</span><span class="p">[</span><span class="n">event</span><span class="p">]</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">servo</span><span class="p">);</span>
+<span class="w">            </span><span class="err">}</span>
+<span class="w">        </span><span class="err">}</span>
+<span class="w">        </span><span class="n">last_pulse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">smallest_pulse</span><span class="p">;</span>
+<span class="w">    </span><span class="err">}</span>
+<span class="err">}</span>
 
-    // setup servos
-    TCCR1A = 0x00;
-    TCCR1B &amp;= ~(1&lt;&lt;CS12 | 1&lt;&lt;CS11 | 1&lt;&lt;CS10);
-    TCCR1B = 0x02; // prescaler 8
-    OCR1A = 20000; // period
-    TIMSK1 = 1&lt;&lt;OCIE1A | 1&lt;&lt;OCIE1B;
-    DDRB = 0xff;
-    DDRC = 0x0f;
-    DDRD = 0xff;
-    for (int i = 0; i &lt; MAX_SERVO; ++i) {
-        servo_pulse[i] = 0;
-        servo_delay[i] = 0xffff;
-    }
-    servo_delay[MAX_SERVO] = 0xffff;
-    servo_update();
-    sei();
-    TCCR1C |= 1&lt;&lt;FOC1A; // trigger COMPA
 
-    // run i2c slave
-    while (1) {
-        TWCR = 1&lt;&lt;TWEN | 1&lt;&lt;TWINT | 1&lt;&lt;TWEA;
-        while (!(TWCR &amp; (1&lt;&lt;TWINT))) {}
-        switch (TWSR &amp; 0xF8) {
-            case 0x60: // received address for write and acked
-                i2c_cursor = 0;
-                break;
-            case 0x80: // received data and acked
-            case 0x88: // received data and nacked
-                if (i2c_cursor &lt; I2C_BUFFER_SIZE) {
-                    i2c_buffer[i2c_cursor++] = TWDR;
-                }
-                break;
-            case 0xa0: // stop or repeated start received
-                if (i2c_cursor &gt; 0) {
-                    unsigned char i2c_servo = i2c_buffer[0];
-                    for (unsigned char i = 1; i &lt; i2c_cursor - 1; i += 2) {
-                        if (i2c_servo &gt;= 20) {
-                            i2c_servo = 0;
-                        }
-                        bytes2int.bytes[0] = i2c_buffer[i];
-                        bytes2int.bytes[1] = i2c_buffer[i + 1];
-                        servo_pulse[servo_map[i2c_servo]] = bytes2int.value;
-                        i2c_servo += 1;
-                    }
-                    servo_update();
-                }
-                break;
-        }
-    }
-}
+<span class="nb">int</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="err">{</span>
+<span class="w">    </span><span class="o">//</span><span class="w"> </span><span class="n">setup</span><span class="w"> </span><span class="n">i2c</span><span class="w"> </span><span class="n">slave</span>
+<span class="w">    </span><span class="n">PORTC</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="n">PC4</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="n">PC5</span><span class="p">;</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="n">enable</span><span class="w"> </span><span class="n">pullups</span>
+<span class="w">    </span><span class="n">TWAR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">I2C_ADDRESS</span><span class="o">&lt;&lt;</span><span class="mi">1</span><span class="p">;</span>
 
+<span class="w">    </span><span class="o">//</span><span class="w"> </span><span class="n">setup</span><span class="w"> </span><span class="n">servos</span>
+<span class="w">    </span><span class="n">TCCR1A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="n">x00</span><span class="p">;</span>
+<span class="w">    </span><span class="n">TCCR1B</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="n">CS12</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="n">CS11</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="n">CS10</span><span class="p">);</span>
+<span class="w">    </span><span class="n">TCCR1B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="n">x02</span><span class="p">;</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="n">prescaler</span><span class="w"> </span><span class="mi">8</span>
+<span class="w">    </span><span class="n">OCR1A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20000</span><span class="p">;</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="k">period</span>
+<span class="w">    </span><span class="n">TIMSK1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="n">OCIE1A</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="n">OCIE1B</span><span class="p">;</span>
+<span class="w">    </span><span class="n">DDRB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="n">xff</span><span class="p">;</span>
+<span class="w">    </span><span class="n">DDRC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="n">x0f</span><span class="p">;</span>
+<span class="w">    </span><span class="n">DDRD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="n">xff</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="nb">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">MAX_SERVO</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="err">{</span>
+<span class="w">        </span><span class="n">servo_pulse</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">        </span><span class="n">servo_delay</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="n">xffff</span><span class="p">;</span>
+<span class="w">    </span><span class="err">}</span>
+<span class="w">    </span><span class="n">servo_delay</span><span class="p">[</span><span class="n">MAX_SERVO</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="n">xffff</span><span class="p">;</span>
+<span class="w">    </span><span class="n">servo_update</span><span class="p">();</span>
+<span class="w">    </span><span class="n">sei</span><span class="p">();</span>
+<span class="w">    </span><span class="n">TCCR1C</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="n">FOC1A</span><span class="p">;</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="k">trigger</span><span class="w"> </span><span class="n">COMPA</span>
+
+<span class="w">    </span><span class="o">//</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="n">i2c</span><span class="w"> </span><span class="n">slave</span>
+<span class="w">    </span><span class="n">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="err">{</span>
+<span class="w">        </span><span class="n">TWCR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="n">TWEN</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="n">TWINT</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="n">TWEA</span><span class="p">;</span>
+<span class="w">        </span><span class="n">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">TWCR</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="n">TWINT</span><span class="p">)))</span><span class="w"> </span><span class="err">{}</span>
+<span class="w">        </span><span class="n">switch</span><span class="w"> </span><span class="p">(</span><span class="n">TWSR</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mi">0</span><span class="n">xF8</span><span class="p">)</span><span class="w"> </span><span class="err">{</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="mi">0</span><span class="n">x60</span><span class="p">:</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="n">received</span><span class="w"> </span><span class="n">address</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="k">write</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">acked</span>
+<span class="w">                </span><span class="n">i2c_cursor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">                </span><span class="n">break</span><span class="p">;</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="mi">0</span><span class="n">x80</span><span class="p">:</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="n">received</span><span class="w"> </span><span class="k">data</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">acked</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="mi">0</span><span class="n">x88</span><span class="p">:</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="n">received</span><span class="w"> </span><span class="k">data</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">nacked</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i2c_cursor</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">I2C_BUFFER_SIZE</span><span class="p">)</span><span class="w"> </span><span class="err">{</span>
+<span class="w">                    </span><span class="n">i2c_buffer</span><span class="p">[</span><span class="n">i2c_cursor</span><span class="o">++</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TWDR</span><span class="p">;</span>
+<span class="w">                </span><span class="err">}</span>
+<span class="w">                </span><span class="n">break</span><span class="p">;</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="mi">0</span><span class="n">xa0</span><span class="p">:</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="n">stop</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="n">repeated</span><span class="w"> </span><span class="k">start</span><span class="w"> </span><span class="n">received</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i2c_cursor</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="err">{</span>
+<span class="w">                    </span><span class="n">unsigned</span><span class="w"> </span><span class="nb">char</span><span class="w"> </span><span class="n">i2c_servo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i2c_buffer</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="w">                    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">unsigned</span><span class="w"> </span><span class="nb">char</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">i2c_cursor</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="err">{</span>
+<span class="w">                        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i2c_servo</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="err">{</span>
+<span class="w">                            </span><span class="n">i2c_servo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">                        </span><span class="err">}</span>
+<span class="w">                        </span><span class="n">bytes2int</span><span class="p">.</span><span class="n">bytes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i2c_buffer</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+<span class="w">                        </span><span class="n">bytes2int</span><span class="p">.</span><span class="n">bytes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i2c_buffer</span><span class="p">[</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">];</span>
+<span class="w">                        </span><span class="n">servo_pulse</span><span class="p">[</span><span class="n">servo_map</span><span class="p">[</span><span class="n">i2c_servo</span><span class="p">]]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bytes2int</span><span class="p">.</span><span class="n">value</span><span class="p">;</span>
+<span class="w">                        </span><span class="n">i2c_servo</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">                    </span><span class="err">}</span>
+<span class="w">                    </span><span class="n">servo_update</span><span class="p">();</span>
+<span class="w">                </span><span class="err">}</span>
+<span class="w">                </span><span class="n">break</span><span class="p">;</span>
+<span class="w">        </span><span class="err">}</span>
+<span class="w">    </span><span class="err">}</span>
+<span class="err">}</span>
 </pre></div>
 </div>
 <p>And output from avr-size:</p>

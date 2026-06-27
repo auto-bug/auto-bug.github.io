@@ -1,20 +1,16 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Firmware - deshipu.art</title>
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=d8568271" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css?v=29da98fa" />
+    <script src="../../../_static/documentation_options.js?v=187304be"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <link rel="index" title="Index" href="../../../genindex/" />
     <link rel="search" title="Search" href="../../../search/" />
   
@@ -48,7 +44,7 @@
 
 <div role="main">
   <section class="tex2jax_ignore mathjax_ignore" id="firmware">
-<h1>Firmware<a class="headerlink" href="#firmware" title="Permalink to this heading">¶</a></h1>
+<h1>Firmware<a class="headerlink" href="#firmware" title="Link to this heading">¶</a></h1>
 <p>Published on 2019-12-03 in <a class="reference internal" href="../#project-167912"><span class="std std-ref">Flounder Keyboard</span></a>.</p>
 <p>In its simplest form, keyboard firmware is not rocket science. You
 basically need to do three things: scan the key matrix to see which
@@ -64,9 +60,9 @@ removing all the things I didn’t need would require quite a bit of
 work, as despite having so many layers of abstraction, the code is
 actually pretty tangled. So instead I decided to just write the most
 naive code I could, and see if that works. I came up with this:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">board</span>
-<span class="kn">import</span> <span class="nn">digitalio</span>
-<span class="kn">import</span> <span class="nn">usb_hid</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">board</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">digitalio</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">usb_hid</span>
 
 
 <span class="n">COLS</span> <span class="o">=</span> <span class="p">(</span><span class="n">board</span><span class="o">.</span><span class="n">_C1</span><span class="p">,</span> <span class="n">board</span><span class="o">.</span><span class="n">_C2</span><span class="p">,</span> <span class="n">board</span><span class="o">.</span><span class="n">_C3</span><span class="p">,</span> <span class="n">board</span><span class="o">.</span><span class="n">_C4</span><span class="p">,</span> <span class="n">board</span><span class="o">.</span><span class="n">_C5</span><span class="p">,</span> <span class="n">board</span><span class="o">.</span><span class="n">_C6</span><span class="p">,</span>
@@ -75,7 +71,7 @@ naive code I could, and see if that works. I came up with this:</p>
 <span class="n">ROWS</span> <span class="o">=</span> <span class="p">(</span><span class="n">board</span><span class="o">.</span><span class="n">_R1</span><span class="p">,</span> <span class="n">board</span><span class="o">.</span><span class="n">_R2</span><span class="p">,</span> <span class="n">board</span><span class="o">.</span><span class="n">_R3</span><span class="p">,</span> <span class="n">board</span><span class="o">.</span><span class="n">_R4</span><span class="p">,</span> <span class="n">board</span><span class="o">.</span><span class="n">_R5</span><span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="n">cols</span><span class="p">,</span> <span class="n">rows</span><span class="p">,</span> <span class="n">matrix</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="n">cols</span><span class="p">,</span> <span class="n">rows</span><span class="p">,</span> <span class="n">matrix</span><span class="p">):</span>
     <span class="n">report</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
     <span class="n">report_mod_keys</span> <span class="o">=</span> <span class="nb">memoryview</span><span class="p">(</span><span class="n">report</span><span class="p">)[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">]</span>
     <span class="n">report_no_mod_keys</span> <span class="o">=</span> <span class="nb">memoryview</span><span class="p">(</span><span class="n">report</span><span class="p">)[</span><span class="mi">2</span><span class="p">:]</span>
@@ -132,7 +128,7 @@ naive code I could, and see if that works. I came up with this:</p>
 </pre></div>
 </div>
 <p>Of course you need a <a class="reference external" href="http://main.py">main.py</a>  file to run this:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">flounder</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">flounder</span>
 
 
 <span class="n">MATRIX</span> <span class="o">=</span> <span class="p">(</span>
@@ -155,8 +151,8 @@ naive code I could, and see if that works. I came up with this:</p>
 <p>Yes, it’s not very human-readable. The MATRIX actually defines the
 codes of all the keys in two layers. Of course I didn’t write it like
 that. I generated it with this code:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">micropython</span> <span class="kn">import</span> <span class="n">const</span>
-<span class="kn">import</span> <span class="nn">pprint</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">micropython</span><span class="w"> </span><span class="kn">import</span> <span class="n">const</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pprint</span>
 
 <span class="n">_A</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 <span class="n">_B</span> <span class="o">=</span> <span class="n">const</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>

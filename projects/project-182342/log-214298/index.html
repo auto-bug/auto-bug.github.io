@@ -1,20 +1,16 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Great Success - deshipu.art</title>
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=d8568271" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css?v=29da98fa" />
+    <script src="../../../_static/documentation_options.js?v=187304be"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <link rel="index" title="Index" href="../../../genindex/" />
     <link rel="search" title="Search" href="../../../search/" />
   
@@ -48,7 +44,7 @@
 
 <div role="main">
   <section class="tex2jax_ignore mathjax_ignore" id="great-success">
-<h1>Great Success<a class="headerlink" href="#great-success" title="Permalink to this heading">¶</a></h1>
+<h1>Great Success<a class="headerlink" href="#great-success" title="Link to this heading">¶</a></h1>
 <p>Published on 2022-12-15 in <a class="reference internal" href="../#project-182342"><span class="std std-ref">Camera Shield for S2 Mini</span></a>.</p>
 <p>Last time I gave up on the ESP32-S2, so today I decided to see how
 this camera works with the RP2040 instead. That uses a different
@@ -89,10 +85,10 @@ broken). Both the RGB565 and the JPEG modes work perfectly!</p>
 frustration, and it the end it all turned out to be due to mistakes in
 pin numbering.</p>
 <p>Here is the working code, if anybody is interested:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">adafruit_ili9341</span>
-<span class="kn">import</span> <span class="nn">busio</span>
-<span class="kn">import</span> <span class="nn">digitalio</span>
-<span class="kn">import</span> <span class="nn">esp32_camera</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">adafruit_ili9341</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">busio</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">digitalio</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">esp32_camera</span>
 
 
 <span class="n">displayio</span><span class="o">.</span><span class="n">release_displays</span><span class="p">()</span>

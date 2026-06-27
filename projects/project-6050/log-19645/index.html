@@ -1,20 +1,16 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Remote control with ESP8266 and Micropython - deshipu.art</title>
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=d8568271" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css?v=29da98fa" />
+    <script src="../../../_static/documentation_options.js?v=187304be"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <link rel="index" title="Index" href="../../../genindex/" />
     <link rel="search" title="Search" href="../../../search/" />
   
@@ -48,7 +44,7 @@
 
 <div role="main">
   <section class="tex2jax_ignore mathjax_ignore" id="remote-control-with-esp8266-and-micropython">
-<h1>Remote control with ESP8266 and Micropython<a class="headerlink" href="#remote-control-with-esp8266-and-micropython" title="Permalink to this heading">¶</a></h1>
+<h1>Remote control with ESP8266 and Micropython<a class="headerlink" href="#remote-control-with-esp8266-and-micropython" title="Link to this heading">¶</a></h1>
 <p>Published on 2015-06-17 in <a class="reference internal" href="../#project-6050"><span class="std std-ref">Tote</span></a>.</p>
 <section id="since-some-time-i-was-planning-to-write-a-log-about-how-to-extend-tote-with-additional-boards-i-was-planning-to-show-examples-of-connecting-the-raspberry-pi-teensy-3-1-esp8266-and-anything-else-i-could-find-all-running-different-kinds-of-python-that-would-also-let-me-score-more-points-in-the-mountain-of-prizes-as-those-boards-use-chips-from-all-kinds-of-manufacturers-and-i-could-claim-then-that-tote-uses-them-but-reality-as-always-interferes">
 <h2>Since some time I was planning to write a log about how to extend Tote
@@ -57,7 +53,7 @@ the Raspberry Pi, Teensy 3.1, ESP8266 and anything else I could find,
 all running different kinds of Python. That would also let me score
 more points in the “ <a class="reference external" href="http://hackaday.com/2015/06/08/a-mountain-of-prizes-for-projects-using-these-parts/">mountain of prizes</a> “ as those boards use chips from all kinds of manufacturers, and I
 could claim then that Tote “uses” them. But reality as always
-interferes.<a class="headerlink" href="#since-some-time-i-was-planning-to-write-a-log-about-how-to-extend-tote-with-additional-boards-i-was-planning-to-show-examples-of-connecting-the-raspberry-pi-teensy-3-1-esp8266-and-anything-else-i-could-find-all-running-different-kinds-of-python-that-would-also-let-me-score-more-points-in-the-mountain-of-prizes-as-those-boards-use-chips-from-all-kinds-of-manufacturers-and-i-could-claim-then-that-tote-uses-them-but-reality-as-always-interferes" title="Permalink to this heading">¶</a></h2>
+interferes.<a class="headerlink" href="#since-some-time-i-was-planning-to-write-a-log-about-how-to-extend-tote-with-additional-boards-i-was-planning-to-show-examples-of-connecting-the-raspberry-pi-teensy-3-1-esp8266-and-anything-else-i-could-find-all-running-different-kinds-of-python-that-would-also-let-me-score-more-points-in-the-mountain-of-prizes-as-those-boards-use-chips-from-all-kinds-of-manufacturers-and-i-could-claim-then-that-tote-uses-them-but-reality-as-always-interferes" title="Link to this heading">¶</a></h2>
 <p>Raspberry Pi now requires at least 3GB SD card for its system image,
 and turns out I don’t have any that big around.</p>
 <p>The Micropython port for Teensy 3.1 doesn’t yet support UART (even
@@ -99,10 +95,10 @@ they are enough for our purpose, as the RX and TX pins are there. I
 began by making a simple rig for programming them:</p>
 <img alt="../../../_images/9500271434528311364.jpg" src="../../../_images/9500271434528311364.jpg" />
 <p>Then I followed the excellent <a class="reference external" href="https://learn.adafruit.com/building-and-running-micropython-on-the-esp8266">Adafruit tutorial on flashing Micropython to ESP8266</a>  and got a working console. Yay! Now, diving into <a class="reference external" href="https://github.com/micropython/micropython/tree/master/docs/library">recently added documentation</a> , I figured out how to write a simple “repeater” server:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">esp</span>
-<span class="kn">import</span> <span class="nn">sys</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">esp</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
 
-<span class="k">def</span> <span class="nf">recv</span><span class="p">(</span><span class="n">socket</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">recv</span><span class="p">(</span><span class="n">socket</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
 <span class="n">socket</span> <span class="o">=</span> <span class="n">esp</span><span class="o">.</span><span class="n">socket</span><span class="p">()</span>
@@ -115,18 +111,17 @@ began by making a simple rig for programming them:</p>
 that as_esp8266/scripts/main_.<em>py</em> and recompiled – the ESP9266 port of Micropython doesn’t yet have
 filesystem support, so you have to add all files to the firmware
 itself. Then restart, get to the console with_USB2TTL_, and make it connect to the WiFi:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">network</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">network</span>
 <span class="n">network</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;your ssid&#39;</span><span class="p">,</span> <span class="s1">&#39;your password&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>That gets remembered, so you don’t have to do it every time. Quick
 test of the server using_netcat_:</p>
-<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span>$ nc 192.168.0.13 2323
-xxx
-h
-ddddd
-x
-
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="err">$</span><span class="w"> </span><span class="n">nc</span><span class="w"> </span><span class="mi">192</span><span class="o">.</span><span class="mi">168</span><span class="o">.</span><span class="mi">0</span><span class="o">.</span><span class="mi">13</span><span class="w"> </span><span class="mi">2323</span>
+<span class="n">xxx</span>
+<span class="n">h</span>
+<span class="n">ddddd</span>
+<span class="n">x</span>
 </pre></div>
 </div>
 <p>And we are finished on this side. Or so I thought. But we will get to

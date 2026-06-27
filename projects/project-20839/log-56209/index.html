@@ -1,20 +1,16 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Code - deshipu.art</title>
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=d8568271" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css?v=29da98fa" />
+    <script src="../../../_static/documentation_options.js?v=187304be"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <link rel="index" title="Index" href="../../../genindex/" />
     <link rel="search" title="Search" href="../../../search/" />
   
@@ -48,18 +44,18 @@
 
 <div role="main">
   <section class="tex2jax_ignore mathjax_ignore" id="code">
-<h1>Code<a class="headerlink" href="#code" title="Permalink to this heading">¶</a></h1>
+<h1>Code<a class="headerlink" href="#code" title="Link to this heading">¶</a></h1>
 <p>Published on 2017-04-01 in <a class="reference internal" href="../#project-20839"><span class="std std-ref">Weather Pal</span></a>.</p>
 <p>The code is far from pretty, but it works (at least as long as
 something goes wrong and it crashes). It gets the current weather
 information from the <a class="reference external" href="http://openweathermap.org/api">OpenWeatherMap API</a> , and displays the icon and temperature, alternating them every 4
 seconds. The particular prototype shield I used for testing also has 2
 buttons, but they are not used by the code.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">utime</span>
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">I2C</span><span class="p">,</span> <span class="n">Pin</span>
-<span class="kn">from</span> <span class="nn">ht16k33_matrix</span> <span class="kn">import</span> <span class="n">Matrix8x8</span>
-<span class="kn">import</span> <span class="nn">json</span>
-<span class="kn">import</span> <span class="nn">urequests</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">utime</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">I2C</span><span class="p">,</span> <span class="n">Pin</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ht16k33_matrix</span><span class="w"> </span><span class="kn">import</span> <span class="n">Matrix8x8</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">urequests</span>
 
 
 <span class="n">API_KEY</span> <span class="o">=</span> <span class="s2">&quot;generate your own&quot;</span>
@@ -271,7 +267,7 @@ buttons, but they are not used by the code.</p>
 <span class="n">wait</span> <span class="o">=</span> <span class="mi">0</span>
 
 
-<span class="k">def</span> <span class="nf">show</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">dx</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">dy</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">show</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">dx</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">dy</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">y</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">image</span><span class="p">):</span>
         <span class="n">bit</span> <span class="o">=</span> <span class="mi">1</span>
         <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">):</span>
@@ -280,7 +276,7 @@ buttons, but they are not used by the code.</p>
     <span class="n">matrix</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
 
-<span class="k">def</span> <span class="nf">show_text</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">show_text</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
     <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">c</span> <span class="ow">in</span> <span class="s1">&#39;.:-&#39;</span><span class="p">:</span>
@@ -290,7 +286,7 @@ buttons, but they are not used by the code.</p>
             <span class="n">x</span> <span class="o">+=</span> <span class="mi">4</span>
 
 
-<span class="k">def</span> <span class="nf">get_weather</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_weather</span><span class="p">():</span>
     <span class="n">r</span> <span class="o">=</span> <span class="n">urequests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;http://api.openweathermap.org/data/2.5/weather&quot;</span>
                       <span class="s2">&quot;?q=</span><span class="si">%s</span><span class="s2">&amp;appid=</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">CITY</span><span class="p">,</span> <span class="n">API_KEY</span><span class="p">))</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">r</span><span class="p">[</span><span class="s2">&quot;weather&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;icon&quot;</span><span class="p">],</span> <span class="nb">int</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="s2">&quot;main&quot;</span><span class="p">][</span><span class="s2">&quot;temp&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="mf">273.15</span><span class="p">)</span>

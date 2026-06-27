@@ -1,20 +1,16 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Use a Pro Micro in a Keyboard - deshipu.art</title>
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=d8568271" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css?v=29da98fa" />
+    <script src="../../../_static/documentation_options.js?v=187304be"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <link rel="index" title="Index" href="../../../genindex/" />
     <link rel="search" title="Search" href="../../../search/" />
   
@@ -48,7 +44,7 @@
 
 <div role="main">
   <section class="tex2jax_ignore mathjax_ignore" id="use-a-pro-micro-in-a-keyboard">
-<h1>Use a Pro Micro in a Keyboard<a class="headerlink" href="#use-a-pro-micro-in-a-keyboard" title="Permalink to this heading">¶</a></h1>
+<h1>Use a Pro Micro in a Keyboard<a class="headerlink" href="#use-a-pro-micro-in-a-keyboard" title="Link to this heading">¶</a></h1>
 <p>Published on 2015-11-02 in <a class="reference internal" href="../#project-8282"><span class="std std-ref">Alpen Clack</span></a>.</p>
 <p>So you want to build your own keyboard (or keyboard-like device), but
 you are not sure what to use for the brains and how to connect and
@@ -102,9 +98,9 @@ columns, each column being an array of keys. The layers let you setup
 cool effects with special keys and such, see the <a class="reference external" href="https://github.com/tmk/tmk_keyboard/blob/master/doc/keymap.md">keymap documentation</a>  for details.</p>
 <p>Lastly, we need to modify the_Makefile_ for our board. I used_Makefile.pjrc_, because the default one doesn’t support N-key rollover yet. Set the
 following variables:</p>
-<div class="highlight-makefile notranslate"><div class="highlight"><pre><span></span><span class="nv">MCU</span> <span class="o">=</span> atmega32u4
-<span class="nv">OPT_DEFS</span> <span class="o">+=</span> -DBOOTLOADER_SIZE<span class="o">=</span><span class="m">512</span>
-<span class="nv">PROGRAM_CMD</span> <span class="o">=</span> avrdude -p <span class="k">$(</span>MCU<span class="k">)</span> -P /dev/ttyACM0 -c avr109 -U flash:w:<span class="k">$(</span>TARGET<span class="k">)</span>.hex
+<div class="highlight-makefile notranslate"><div class="highlight"><pre><span></span><span class="nv">MCU</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>atmega32u4
+<span class="nv">OPT_DEFS</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span>-DBOOTLOADER_SIZE<span class="o">=</span><span class="m">512</span>
+<span class="nv">PROGRAM_CMD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>avrdude<span class="w"> </span>-p<span class="w"> </span><span class="k">$(</span>MCU<span class="k">)</span><span class="w"> </span>-P<span class="w"> </span>/dev/ttyACM0<span class="w"> </span>-c<span class="w"> </span>avr109<span class="w"> </span>-U<span class="w"> </span>flash:w:<span class="k">$(</span>TARGET<span class="k">)</span>.hex
 </pre></div>
 </div>
 <p>Now you are ready to program your board. Connect a switch between the

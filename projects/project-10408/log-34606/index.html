@@ -1,20 +1,16 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Designing a Keyboard - deshipu.art</title>
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=d8568271" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css?v=29da98fa" />
+    <script src="../../../_static/documentation_options.js?v=187304be"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <link rel="index" title="Index" href="../../../genindex/" />
     <link rel="search" title="Search" href="../../../search/" />
   
@@ -48,17 +44,16 @@
 
 <div role="main">
   <section class="tex2jax_ignore mathjax_ignore" id="designing-a-keyboard">
-<h1>Designing a Keyboard<a class="headerlink" href="#designing-a-keyboard" title="Permalink to this heading">¶</a></h1>
+<h1>Designing a Keyboard<a class="headerlink" href="#designing-a-keyboard" title="Link to this heading">¶</a></h1>
 <p>Published on 2016-03-26 in <a class="reference internal" href="../#project-10408"><span class="std std-ref">Steno Keyboard</span></a>.</p>
 <p>I’ve been through building a keyboard <a class="reference internal" href="../../project-8282/#project-8282"><span class="std std-ref">Alpen Clack</span></a> , so this time I knew exactly what to do. First I went to <a class="reference external" href="http://www.keyboard-layout-editor.com/">http://www.keyboard-layout-editor.com/</a>  and made a keyboard with the steno layout, which, for English at
 least, looks like this:</p>
 <img alt="../../../_images/7202511459021280392.png" src="../../../_images/7202511459021280392.png" />
 <p>Then I clicked on the “raw data” tab, and copied the keyboard
 definition, which looks like this:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>[{a:7,h:2},&quot;S&quot;,&quot;T&quot;,&quot;P&quot;,&quot;H&quot;,{h:2},&quot;&lt;i class=&#39;fa fa-asterisk&#39;&gt;&lt;/i&gt;&quot;,&quot;F&quot;,&quot;P&quot;,&quot;L&quot;,&quot;T&quot;,&quot;D&quot;],
-[{x:1},&quot;K&quot;,&quot;W&quot;,&quot;R&quot;,{x:1},&quot;R&quot;,&quot;B&quot;,&quot;G&quot;,&quot;S&quot;,&quot;Z&quot;],
-[{x:2.5},&quot;A&quot;,&quot;O&quot;,&quot;E&quot;,&quot;U&quot;
-
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">[{</span><span class="err">a</span><span class="p">:</span><span class="mi">7</span><span class="p">,</span><span class="err">h</span><span class="p">:</span><span class="mi">2</span><span class="p">},</span><span class="s2">&quot;S&quot;</span><span class="p">,</span><span class="s2">&quot;T&quot;</span><span class="p">,</span><span class="s2">&quot;P&quot;</span><span class="p">,</span><span class="s2">&quot;H&quot;</span><span class="p">,{</span><span class="err">h</span><span class="p">:</span><span class="mi">2</span><span class="p">},</span><span class="s2">&quot;&lt;i class=&#39;fa fa-asterisk&#39;&gt;&lt;/i&gt;&quot;</span><span class="p">,</span><span class="s2">&quot;F&quot;</span><span class="p">,</span><span class="s2">&quot;P&quot;</span><span class="p">,</span><span class="s2">&quot;L&quot;</span><span class="p">,</span><span class="s2">&quot;T&quot;</span><span class="p">,</span><span class="s2">&quot;D&quot;</span><span class="p">],</span>
+<span class="p">[{</span><span class="err">x</span><span class="p">:</span><span class="mi">1</span><span class="p">},</span><span class="s2">&quot;K&quot;</span><span class="p">,</span><span class="s2">&quot;W&quot;</span><span class="p">,</span><span class="s2">&quot;R&quot;</span><span class="p">,{</span><span class="err">x</span><span class="p">:</span><span class="mi">1</span><span class="p">},</span><span class="s2">&quot;R&quot;</span><span class="p">,</span><span class="s2">&quot;B&quot;</span><span class="p">,</span><span class="s2">&quot;G&quot;</span><span class="p">,</span><span class="s2">&quot;S&quot;</span><span class="p">,</span><span class="s2">&quot;Z&quot;</span><span class="p">],</span>
+<span class="p">[{</span><span class="err">x</span><span class="p">:</span><span class="mf">2.5</span><span class="p">},</span><span class="s2">&quot;A&quot;</span><span class="p">,</span><span class="s2">&quot;O&quot;</span><span class="p">,</span><span class="s2">&quot;E&quot;</span><span class="p">,</span><span class="s2">&quot;U&quot;</span>
 </pre></div>
 </div>
 <p>Then I went to <a class="reference external" href="http://builder.swillkb.com/">http://builder.swillkb.com/</a>  and pasted that code in there. After selecting some options, it

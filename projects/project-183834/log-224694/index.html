@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Version 5 - deshipu.art</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=d8568271" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css?v=29da98fa" />
+    <script src="../../../_static/documentation_options.js?v=187304be"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+     
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="icon" type="image/png" href="../../../_static/favicon.png">
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="deshipu.art">
+  
+
+  </head><body>
+<div id="topbar">
+<div id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+    <div id="logo"><a href="../../../">
+        <img
+            src="/_static/logo.png"
+            alt=""
+        />deshipu.art</a></div>
+</div>
+
+<div role="main">
+  <section class="tex2jax_ignore mathjax_ignore" id="version-5">
+<h1>Version 5<a class="headerlink" href="#version-5" title="Link to this heading">¶</a></h1>
+<p>Published on 2026-06-27 in <a class="reference internal" href="../#project-183834"><span class="std std-ref">Klap Keyboard</span></a>.</p>
+<p>I needed a travel keyboard for my portable devices, so I decided to go back
+to the good old Klap series, and make another version of this compact keyboard.
+This time, however, it’s going to use an NRF52 for the brains, and run ZMK,
+because I need it to be a bluetooth keyboard.</p>
+<img alt="../../../_images/IMG_20260620_192743.jpg" src="../../../_images/IMG_20260620_192743.jpg" />
+<p>This time I gave up on hot-swap sockets, and went with switches soldered
+directly, to make the keyboard a little thinner. I also used the narrower
+17mm spacing of chocfox keycaps, to make the whole thing smaller. The switches
+are kailh pinks, linear, with very light springs.</p>
+<p>The layout I used is similar to my usual everyday layout, minus the dedicated
+arrow keys, which are now instead on the second layer on the HJKL keys.</p>
+<img alt="../../../_images/klap-v5-layout.png" src="../../../_images/klap-v5-layout.png" />
+<p>For the brains I used a cheap nice!nano clone, mostly because that is supported
+out of the box in ZMK. I just had to define my own keyboard matrix and layout.</p>
+<p>The battery is a rechargeable lithium coin battery, with the battery holder
+soldered directly on top of the USB socket. I have initially planned to use a
+pouch battery, but discovered that all the batteries I had were dead from lying
+in my drawer. The coin battery seems to be sufficient, as the ZMK firmware is
+very efficient, sleeping as much as it can.</p>
+<p>As a finishing touch, I added a 1mm rubber matt on the bottom, to make it stay
+in place on the table better, and prevent shorts.</p>
+</section>
+
+
+</div>
+  </body>
+</html>

@@ -1,20 +1,16 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Real Steno - deshipu.art</title>
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=d8568271" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css?v=29da98fa" />
+    <script src="../../../_static/documentation_options.js?v=187304be"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <link rel="index" title="Index" href="../../../genindex/" />
     <link rel="search" title="Search" href="../../../search/" />
   
@@ -48,7 +44,7 @@
 
 <div role="main">
   <section class="tex2jax_ignore mathjax_ignore" id="real-steno">
-<h1>Real Steno<a class="headerlink" href="#real-steno" title="Permalink to this heading">¶</a></h1>
+<h1>Real Steno<a class="headerlink" href="#real-steno" title="Link to this heading">¶</a></h1>
 <p>Published on 2021-11-22 in <a class="reference internal" href="../#project-10408"><span class="std std-ref">Steno Keyboard</span></a>.</p>
 <p>I finally got back to this project and rewrote the code for it, so
 that it now acts the same as commercial stenotypes, one called “Gemini
@@ -56,17 +52,17 @@ PR” to be specific. It turned out to be much easier than I
 anticipated, mostly because CircuitPython has grown a lot of the
 features needed for it in the mean time. The code looks basically like
 this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">keypad</span>
-<span class="kn">import</span> <span class="nn">usb_cdc</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">keypad</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">usb_cdc</span>
 
 
-<span class="k">class</span> <span class="nc">Steno</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">matrix</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">rows</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Steno</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">matrix</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">rows</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span> <span class="o">=</span> <span class="n">matrix</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">keypad</span> <span class="o">=</span> <span class="n">keypad</span><span class="o">.</span><span class="n">KeyMatrix</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">cols</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">report</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
         <span class="n">report</span><span class="p">[:]</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\x80\x00\x00\x00\x00\x00</span><span class="s2">&quot;</span>
         <span class="n">pressed_count</span> <span class="o">=</span> <span class="mi">0</span>
@@ -89,11 +85,11 @@ this:</p>
 <p>That’s it.  There is also a boot.py to enable the second serial for
 data (and disable the REPL and disk unless a key is pressed when
 connecting it):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">usb_cdc</span>
-<span class="kn">import</span> <span class="nn">usb_hid</span>
-<span class="kn">import</span> <span class="nn">storage</span>
-<span class="kn">import</span> <span class="nn">board</span>
-<span class="kn">import</span> <span class="nn">digitalio</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">usb_cdc</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">usb_hid</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">storage</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">board</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">digitalio</span>
 
 
 <span class="n">row</span> <span class="o">=</span> <span class="n">digitalio</span><span class="o">.</span><span class="n">DigitalInOut</span><span class="p">(</span><span class="n">board</span><span class="o">.</span><span class="n">SCL</span><span class="p">)</span>
@@ -113,9 +109,9 @@ connecting it):</p>
 </pre></div>
 </div>
 <p>And of course the key matrix definition:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">board</span>
-<span class="kn">import</span> <span class="nn">usteno</span>
-<span class="kn">from</span> <span class="nn">micropython</span> <span class="kn">import</span> <span class="n">const</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">board</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">usteno</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">micropython</span><span class="w"> </span><span class="kn">import</span> <span class="n">const</span>
 
 
 <span class="n">ROWS</span> <span class="o">=</span> <span class="p">(</span><span class="n">board</span><span class="o">.</span><span class="n">SCL</span><span class="p">,</span> <span class="n">board</span><span class="o">.</span><span class="n">AREF</span><span class="p">,</span> <span class="n">board</span><span class="o">.</span><span class="n">D6</span><span class="p">,</span> <span class="n">board</span><span class="o">.</span><span class="n">A4</span><span class="p">)</span>

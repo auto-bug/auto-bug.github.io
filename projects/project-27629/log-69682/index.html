@@ -1,20 +1,16 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Reading BMP - deshipu.art</title>
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=d8568271" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css?v=29da98fa" />
+    <script src="../../../_static/documentation_options.js?v=187304be"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <link rel="index" title="Index" href="../../../genindex/" />
     <link rel="search" title="Search" href="../../../search/" />
   
@@ -48,7 +44,7 @@
 
 <div role="main">
   <section class="tex2jax_ignore mathjax_ignore" id="reading-bmp">
-<h1>Reading BMP<a class="headerlink" href="#reading-bmp" title="Permalink to this heading">¶</a></h1>
+<h1>Reading BMP<a class="headerlink" href="#reading-bmp" title="Link to this heading">¶</a></h1>
 <p>Published on 2017-10-26 in <a class="reference internal" href="../#project-27629"><span class="std std-ref">µGame</span></a>.</p>
 <p>This thing has a real color display for real graphics — so you will
 need graphics in your games. I could create my own format, and some
@@ -61,10 +57,10 @@ formats. And what do you know, the stupidest raster file format, BMP!</p>
 <p>So I took a tile sheet from one of my games, converted it to 16 colors
 and saved as BMP in GIMP. Then I poked around the file in Python until
 I had it displaying, with this code:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">busio</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">busio</span>
 
-<span class="kn">from</span> <span class="nn">adafruit_rgb_display</span> <span class="kn">import</span> <span class="n">st7735</span>
-<span class="kn">from</span> <span class="nn">adafruit_rgb_display.rgb</span> <span class="kn">import</span> <span class="n">color565</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">adafruit_rgb_display</span><span class="w"> </span><span class="kn">import</span> <span class="n">st7735</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">adafruit_rgb_display.rgb</span><span class="w"> </span><span class="kn">import</span> <span class="n">color565</span>
 
 
 <span class="n">rst</span> <span class="o">=</span> <span class="n">digitalio</span><span class="o">.</span><span class="n">DigitalInOut</span><span class="p">(</span><span class="n">board</span><span class="o">.</span><span class="n">D0</span><span class="p">)</span>

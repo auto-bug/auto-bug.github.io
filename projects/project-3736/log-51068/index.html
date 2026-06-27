@@ -1,20 +1,16 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Distance Sensor - deshipu.art</title>
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=d8568271" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css?v=29da98fa" />
+    <script src="../../../_static/documentation_options.js?v=187304be"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <link rel="index" title="Index" href="../../../genindex/" />
     <link rel="search" title="Search" href="../../../search/" />
   
@@ -48,7 +44,7 @@
 
 <div role="main">
   <section class="tex2jax_ignore mathjax_ignore" id="distance-sensor">
-<h1>Distance Sensor<a class="headerlink" href="#distance-sensor" title="Permalink to this heading">¶</a></h1>
+<h1>Distance Sensor<a class="headerlink" href="#distance-sensor" title="Link to this heading">¶</a></h1>
 <p>Published on 2016-12-31 in <a class="reference internal" href="../#project-3736"><span class="std std-ref">µBob biped robot</span></a>.</p>
 <p>For the first time µBob has a working distance sensor on board (you
 might recall I tried to give it a distance sensor earlier, but it
@@ -59,12 +55,12 @@ single pin for it. All I have to do is get the ADC to work. A bit of
 googling for examples, and a little bit of cross-checking with the
 datasheet, and I had the basic procedure:\</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">ADCSRA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="n">ADEN</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="n">ADPS2</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="n">ADPS1</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">0</span><span class="o">&lt;&lt;</span><span class="n">ADPS0</span><span class="p">;</span><span class="w"> </span><span class="c1">// Pre-scaler 64.</span>
-<span class="n">ADMUX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="o">&lt;&lt;</span><span class="n">ADLAR</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">0</span><span class="o">&lt;&lt;</span><span class="n">REFS1</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">0</span><span class="o">&lt;&lt;</span><span class="n">REFS0</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">pin</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0x03</span><span class="p">;</span><span class="w"></span>
-<span class="n">ADCSRA</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="n">ADSC</span><span class="p">;</span><span class="w"></span>
-<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">ADCSRA</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="n">ADSC</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="n">ADMUX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="o">&lt;&lt;</span><span class="n">ADLAR</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">0</span><span class="o">&lt;&lt;</span><span class="n">REFS1</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">0</span><span class="o">&lt;&lt;</span><span class="n">REFS0</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">pin</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0x03</span><span class="p">;</span>
+<span class="n">ADCSRA</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="n">ADSC</span><span class="p">;</span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">ADCSRA</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="n">ADSC</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// Pass.</span>
-<span class="p">}</span><span class="w"></span>
-<span class="k">return</span><span class="w"> </span><span class="n">ADCH</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">ADCL</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span>
+<span class="k">return</span><span class="w"> </span><span class="n">ADCH</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">ADCL</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>However, that didn’t work. I spent half a day trying to figure out why
@@ -77,7 +73,7 @@ out to me that the order in which you read ADCH and ADCL is important
 the middle of your reading. Sure enough, I had the order wrong. The
 fix is very simple – I can defer to the compiler to do the right
 thing by just doing:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">return</span><span class="w"> </span><span class="n">ADC</span><span class="p">;</span><span class="w"></span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">return</span><span class="w"> </span><span class="n">ADC</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>That’s it. Suddenly I started getting changing values, as expected.

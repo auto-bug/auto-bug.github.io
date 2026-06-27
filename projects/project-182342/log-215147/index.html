@@ -1,20 +1,16 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Streaming - deshipu.art</title>
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=d8568271" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css?v=29da98fa" />
+    <script src="../../../_static/documentation_options.js?v=187304be"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <link rel="index" title="Index" href="../../../genindex/" />
     <link rel="search" title="Search" href="../../../search/" />
   
@@ -48,7 +44,7 @@
 
 <div role="main">
   <section class="tex2jax_ignore mathjax_ignore" id="streaming">
-<h1>Streaming<a class="headerlink" href="#streaming" title="Permalink to this heading">¶</a></h1>
+<h1>Streaming<a class="headerlink" href="#streaming" title="Link to this heading">¶</a></h1>
 <p>Published on 2023-01-11 in <a class="reference internal" href="../#project-182342"><span class="std std-ref">Camera Shield for S2 Mini</span></a>.</p>
 <p>It doesn’t help much to have a camera on your robot, if you don’t do
 anything with the video. Displaying it on a display is cool, but not
@@ -62,15 +58,15 @@ multipart/x-mixed-replace MIME type. All we have to do is send the
 JPEG images separated with a boundary, each with its own http header.
 After a few hours of tinkering, I finally got something like this
 working:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">board</span>
-<span class="kn">import</span> <span class="nn">busio</span>
-<span class="kn">import</span> <span class="nn">esp32_camera</span>
-<span class="kn">import</span> <span class="nn">asyncio</span>
-<span class="kn">import</span> <span class="nn">socketpool</span>
-<span class="kn">import</span> <span class="nn">wifi</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">board</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">busio</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">esp32_camera</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">socketpool</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">wifi</span>
 
-<span class="kn">from</span> <span class="nn">adafruit_httpserver.server</span> <span class="kn">import</span> <span class="n">HTTPServer</span>
-<span class="kn">from</span> <span class="nn">adafruit_httpserver.response</span> <span class="kn">import</span> <span class="n">HTTPResponse</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">adafruit_httpserver.server</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTTPServer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">adafruit_httpserver.response</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTTPResponse</span>
 
 
 <span class="n">server</span> <span class="o">=</span> <span class="n">HTTPServer</span><span class="p">(</span><span class="n">socketpool</span><span class="o">.</span><span class="n">SocketPool</span><span class="p">(</span><span class="n">wifi</span><span class="o">.</span><span class="n">radio</span><span class="p">))</span>
@@ -93,7 +89,7 @@ working:</p>
 <span class="p">)</span>
 
 <span class="nd">@server</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">base</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">base</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
     <span class="k">with</span> <span class="n">HTTPResponse</span><span class="p">(</span><span class="n">request</span><span class="p">)</span> <span class="k">as</span> <span class="n">response</span><span class="p">:</span>
         <span class="n">response</span><span class="o">.</span><span class="n">_send_headers</span><span class="p">(</span><span class="n">content_type</span><span class="o">=</span><span class="s1">&#39;multipart/x-mixed-replace; boundary=</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">BOUNDARY</span><span class="p">)</span>
         <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
@@ -105,14 +101,14 @@ working:</p>
             <span class="n">response</span><span class="o">.</span><span class="n">_send_bytes</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">connection</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\r\n</span><span class="s1">&#39;</span><span class="p">)</span>
 
 
-<span class="k">async</span> <span class="k">def</span> <span class="nf">poll</span><span class="p">(</span><span class="n">interval</span><span class="p">):</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">poll</span><span class="p">(</span><span class="n">interval</span><span class="p">):</span>
     <span class="n">server</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">wifi</span><span class="o">.</span><span class="n">radio</span><span class="o">.</span><span class="n">ipv4_address</span><span class="p">),</span> <span class="n">port</span><span class="o">=</span><span class="n">PORT</span><span class="p">)</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="n">server</span><span class="o">.</span><span class="n">poll</span><span class="p">()</span>
         <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">interval</span><span class="p">)</span>
 
 
-<span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
     <span class="n">poll_task</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">poll</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
     <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="n">poll_task</span><span class="p">)</span>
 

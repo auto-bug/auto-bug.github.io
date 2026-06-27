@@ -1,20 +1,16 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Displays - deshipu.art</title>
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=d8568271" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css?v=29da98fa" />
+    <script src="../../../_static/documentation_options.js?v=187304be"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <link rel="index" title="Index" href="../../../genindex/" />
     <link rel="search" title="Search" href="../../../search/" />
   
@@ -48,7 +44,7 @@
 
 <div role="main">
   <section class="tex2jax_ignore mathjax_ignore" id="displays">
-<h1>Displays<a class="headerlink" href="#displays" title="Permalink to this heading">¶</a></h1>
+<h1>Displays<a class="headerlink" href="#displays" title="Link to this heading">¶</a></h1>
 <p>Published on 2015-08-24 in <a class="reference internal" href="../#project-6608"><span class="std std-ref">Talk Ranking Machine</span></a>.</p>
 <p>The seven-segment displays arrived today, so I should have all the
 required parts finally. I decided to start by getting the display to
@@ -58,49 +54,49 @@ display directly to the board, just like in <a class="reference internal" href="
 pins, so that only 12 pins of Pro Mini are used and I still have 6
 pins for the buttons and their LEDs. A quick Arduino program to
 display a number:</p>
-<div class="highlight-apache notranslate"><div class="highlight"><pre><span></span>const int GND_PINS[] = {9, 11, 12, A1};
-const int VCC_PINS[] = {A0, 10, 7, 5, 4, 13, 8, 6};
-const unsigned char DIGITS[] = {
-    0b01111111,
-    0b00000110,
-    0b01011011,
-    0b01001111,
-    0b01100110,
-    0b01101101,
-    0b01111101,
-    0b00000111,
-    0b01111111,
-    0b01101111,
-};
+<div class="highlight-apache notranslate"><div class="highlight"><pre><span></span><span class="nb">const</span><span class="w"> </span>int<span class="w"> </span>GND_PINS[]<span class="w"> </span>=<span class="w"> </span>{9,<span class="w"> </span><span class="m">11</span>,<span class="w"> </span><span class="m">12</span>,<span class="w"> </span>A1};
+<span class="nb">const</span><span class="w"> </span>int<span class="w"> </span>VCC_PINS[]<span class="w"> </span>=<span class="w"> </span>{A0,<span class="w"> </span><span class="m">10</span>,<span class="w"> </span><span class="m">7</span>,<span class="w"> </span><span class="m">5</span>,<span class="w"> </span><span class="m">4</span>,<span class="w"> </span><span class="m">13</span>,<span class="w"> </span><span class="m">8</span>,<span class="w"> </span><span class="m">6</span>};
+<span class="nb">const</span><span class="w"> </span>unsigned<span class="w"> </span>char<span class="w"> </span>DIGITS[]<span class="w"> </span>=<span class="w"> </span>{
+<span class="w">    </span><span class="err">0</span><span class="nb">b01111111</span>,
+<span class="w">    </span><span class="err">0</span><span class="nb">b00000110</span>,
+<span class="w">    </span><span class="err">0</span><span class="nb">b01011011</span>,
+<span class="w">    </span><span class="err">0</span><span class="nb">b01001111</span>,
+<span class="w">    </span><span class="err">0</span><span class="nb">b01100110</span>,
+<span class="w">    </span><span class="err">0</span><span class="nb">b01101101</span>,
+<span class="w">    </span><span class="err">0</span><span class="nb">b01111101</span>,
+<span class="w">    </span><span class="err">0</span><span class="nb">b00000111</span>,
+<span class="w">    </span><span class="err">0</span><span class="nb">b01111111</span>,
+<span class="w">    </span><span class="err">0</span><span class="nb">b01101111</span>,
+<span class="err">};</span>
 
 
-void show7seg(int number) {
-    unsigned char digit;
+<span class="nb">void</span><span class="w"> </span>show7seg(int<span class="w"> </span>number)<span class="w"> </span>{
+<span class="w">    </span><span class="nb">unsigned</span><span class="w"> </span>char<span class="w"> </span>digit;
 
-    for (int d = 0; d &lt; 4; ++d) {
-        digit = DIGITS[number % 10];
-        number /= 10;
-        for (int s = 0; s &lt; 8; ++s) {
-            digitalWrite(VCC_PINS[s], digit &amp; (1 &lt;&lt; s));
-        }
-        pinMode(GND_PINS[d], OUTPUT);
-        digitalWrite(GND_PINS[d], LOW);
-        delay(2);
-        pinMode(GND_PINS[d], INPUT);
-    }
-}
-
-
-void setup() {
-    for (int s = 0; s &lt; 8; ++s) {
-        pinMode(VCC_PINS[s], OUTPUT);
-    }
-}
+<span class="w">    </span><span class="nb">for</span><span class="w"> </span>(int<span class="w"> </span>d<span class="w"> </span>=<span class="w"> </span><span class="m">0</span>;<span class="w"> </span>d<span class="w"> </span>&lt;<span class="w"> </span><span class="m">4</span>;<span class="w"> </span>++d)<span class="w"> </span>{
+<span class="w">        </span><span class="nb">digit</span><span class="w"> </span>=<span class="w"> </span>DIGITS[number<span class="w"> </span>%<span class="w"> </span><span class="m">10</span>];
+<span class="w">        </span><span class="nb">number</span><span class="w"> </span>/=<span class="w"> </span><span class="m">10</span>;
+<span class="w">        </span><span class="nb">for</span><span class="w"> </span>(int<span class="w"> </span>s<span class="w"> </span>=<span class="w"> </span><span class="m">0</span>;<span class="w"> </span>s<span class="w"> </span>&lt;<span class="w"> </span><span class="m">8</span>;<span class="w"> </span>++s)<span class="w"> </span>{
+<span class="w">            </span><span class="nb">digitalWrite</span>(VCC_PINS[s],<span class="w"> </span>digit<span class="w"> </span>&amp;<span class="w"> </span>(1<span class="w"> </span>&lt;&lt;<span class="w"> </span>s));
+<span class="w">        </span><span class="err">}</span>
+<span class="w">        </span><span class="nb">pinMode</span>(GND_PINS[d],<span class="w"> </span>OUTPUT);
+<span class="w">        </span><span class="nb">digitalWrite</span>(GND_PINS[d],<span class="w"> </span>LOW);
+<span class="w">        </span><span class="nb">delay</span>(2);
+<span class="w">        </span><span class="nb">pinMode</span>(GND_PINS[d],<span class="w"> </span>INPUT);
+<span class="w">    </span><span class="err">}</span>
+<span class="err">}</span>
 
 
-void loop() {
-    show7seg(1337);
-}
+<span class="nb">void</span><span class="w"> </span>setup()<span class="w"> </span>{
+<span class="w">    </span><span class="nb">for</span><span class="w"> </span>(int<span class="w"> </span>s<span class="w"> </span>=<span class="w"> </span><span class="m">0</span>;<span class="w"> </span>s<span class="w"> </span>&lt;<span class="w"> </span><span class="m">8</span>;<span class="w"> </span>++s)<span class="w"> </span>{
+<span class="w">        </span><span class="nb">pinMode</span>(VCC_PINS[s],<span class="w"> </span>OUTPUT);
+<span class="w">    </span><span class="err">}</span>
+<span class="err">}</span>
+
+
+<span class="nb">void</span><span class="w"> </span>loop()<span class="w"> </span>{
+<span class="w">    </span><span class="nb">show7seg</span>(1337);
+<span class="err">}</span>
 </pre></div>
 </div>
 <p>And voila, it’s working!</p>

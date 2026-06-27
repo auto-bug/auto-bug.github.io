@@ -1,20 +1,16 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Command Line - deshipu.art</title>
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=d8568271" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css?v=29da98fa" />
+    <script src="../../../_static/documentation_options.js?v=187304be"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <link rel="index" title="Index" href="../../../genindex/" />
     <link rel="search" title="Search" href="../../../search/" />
   
@@ -48,7 +44,7 @@
 
 <div role="main">
   <section class="tex2jax_ignore mathjax_ignore" id="command-line">
-<h1>Command Line<a class="headerlink" href="#command-line" title="Permalink to this heading">¶</a></h1>
+<h1>Command Line<a class="headerlink" href="#command-line" title="Link to this heading">¶</a></h1>
 <p>Published on 2016-04-10 in <a class="reference internal" href="../#project-9927"><span class="std std-ref">Tote HaD</span></a>.</p>
 <p>The robots are built, but due to a bug in the communication code, they
 didn’t walk “straight out of the box”. The bug makes them wait for a
@@ -63,7 +59,7 @@ extremely useful in debugging all sorts of projects anyways, and you
 will also need to to flash the new firmware, both for the Arduino and
 the ESP8266 parts of the robot.</p>
 <section id="connecting">
-<h2>Connecting<a class="headerlink" href="#connecting" title="Permalink to this heading">¶</a></h2>
+<h2>Connecting<a class="headerlink" href="#connecting" title="Link to this heading">¶</a></h2>
 <p>To connect the serial interface of the ESP8266  on your robot to your
 computer, you will need to use the three pins on the left side of the
 robots. If you look at the bottom side of the board, you will see they
@@ -80,7 +76,7 @@ pin on the USB2TTL.</p>
 <p>Next, plug the USB2TTL into your computer (or even better, a USB hub
 connected to your computer), and open a serial terminal with speed
 115200 on the serial port that appears. On Linux, I use the_screen_ program for that, with the command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ screen /dev/ttyUSB0 <span class="m">115200</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>screen<span class="w"> </span>/dev/ttyUSB0<span class="w"> </span><span class="m">115200</span>
 </pre></div>
 </div>
 <p>On Windows you can use PuTTY for that (you might need to have the
@@ -105,7 +101,7 @@ this:</p>
 can type Python code in there, and it will get executed on the robot.</p>
 </section>
 <section id="walking">
-<h2>Walking<a class="headerlink" href="#walking" title="Permalink to this heading">¶</a></h2>
+<h2>Walking<a class="headerlink" href="#walking" title="Link to this heading">¶</a></h2>
 <p>So how do you make it walk? Type in this code:</p>
 <div class="highlight-hljs notranslate"><div class="highlight"><pre><span></span>from robot import Robot
 from gait import Creep
@@ -120,7 +116,7 @@ for frame in gait.run():
 you can set the_dx_,<em>dy</em> and_rotation_ attributes on the_gait_ object, and repeat the_for_ loop.</p>
 </section>
 <section id="network">
-<h2>Network<a class="headerlink" href="#network" title="Permalink to this heading">¶</a></h2>
+<h2>Network<a class="headerlink" href="#network" title="Link to this heading">¶</a></h2>
 <p>By default the robot will create its own network, and act as an access
 point – that’s because I didn’t know what networks will be available
 at the conference, and of course I wanted the robots to still work
@@ -131,7 +127,7 @@ mode, just assumed it would work the same way.</p>
 <p>But that means that you should be able to work around the bug by
 connecting the robot to your home network. Here is how to do it.
 First, disable the “access point” interface:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">network</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">network</span>
 <span class="n">network</span><span class="o">.</span><span class="n">WLAN</span><span class="p">(</span><span class="n">network</span><span class="o">.</span><span class="n">AP_IF</span><span class="p">)</span><span class="o">.</span><span class="n">active</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -148,7 +144,7 @@ First, disable the “access point” interface:</p>
 automatically on every boot from now on.</p>
 </section>
 <section id="remote-control">
-<h2>Remote Control<a class="headerlink" href="#remote-control" title="Permalink to this heading">¶</a></h2>
+<h2>Remote Control<a class="headerlink" href="#remote-control" title="Link to this heading">¶</a></h2>
 <p>The robot has very simple remote control through WiFi for now. Once
 you restart it, you should be able to connect to it on port 1010 with
 Telnet or Netcat, and send it “wasd” letters for arrows, and space for
@@ -158,7 +154,7 @@ keypresses, and sends them to the robot. You run it with the IP
 address of the robot as the first argument.</p>
 </section>
 <section id="moving-individual-legs">
-<h2>Moving Individual Legs<a class="headerlink" href="#moving-individual-legs" title="Permalink to this heading">¶</a></h2>
+<h2>Moving Individual Legs<a class="headerlink" href="#moving-individual-legs" title="Link to this heading">¶</a></h2>
 <p>There isn’t much other functionality implemented yet, but if you want,
 you can make the robot move its legs however you want from Python, and
 even make it dance or do something else… You can do it using the
@@ -177,7 +173,7 @@ positive being down, and negative – up. The (0, 0, 0) position is the
 robot’s starting position, with all servos centered.</p>
 </section>
 <section id="updates">
-<h2>Updates<a class="headerlink" href="#updates" title="Permalink to this heading">¶</a></h2>
+<h2>Updates<a class="headerlink" href="#updates" title="Link to this heading">¶</a></h2>
 <p>I will definitely fix the bug, and maybe even figure a better way to
 control the robot remotely. When I do, the new firmware and
 instructions for flashing it will be available here on this project

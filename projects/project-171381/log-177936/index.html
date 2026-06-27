@@ -1,20 +1,16 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Assembled and Flashed - deshipu.art</title>
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=d8568271" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css?v=29da98fa" />
+    <script src="../../../_static/documentation_options.js?v=187304be"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <link rel="index" title="Index" href="../../../genindex/" />
     <link rel="search" title="Search" href="../../../search/" />
   
@@ -48,7 +44,7 @@
 
 <div role="main">
   <section class="tex2jax_ignore mathjax_ignore" id="assembled-and-flashed">
-<h1>Assembled and Flashed<a class="headerlink" href="#assembled-and-flashed" title="Permalink to this heading">¶</a></h1>
+<h1>Assembled and Flashed<a class="headerlink" href="#assembled-and-flashed" title="Link to this heading">¶</a></h1>
 <p>Published on 2020-05-22 in <a class="reference internal" href="../#project-171381"><span class="std std-ref">Fluff M0</span></a>.</p>
 <p>Since today is a holiday for me, I had the time to immediately
 assemble of Fluff M0 and flash it with the bootloader and
@@ -57,54 +53,53 @@ out, flashing is simple:</p>
 <img alt="../../../_images/5036771590153944890.jpg" src="../../../_images/5036771590153944890.jpg" />
 <p>You just have to connect 3V to VCC, GND to GND, SCK to SWC and MISO to
 SWD. Then a couple of terminal commands:</p>
-<div class="highlight-makefile notranslate"><div class="highlight"><pre><span></span>$ JLinkExe -if SWD -device ATSAMD21E18 -speed 4000kHz
-SEGGER J-Link Commander V6.40 (Compiled Oct 26 2018 15:08:38)
-DLL version V6.40, compiled Oct 26 2018 15:08:28
+<div class="highlight-makefile notranslate"><div class="highlight"><pre><span></span><span class="err">$</span><span class="w"> </span><span class="err">JLinkExe</span><span class="w"> </span><span class="err">-if</span><span class="w"> </span><span class="err">SWD</span><span class="w"> </span><span class="err">-device</span><span class="w"> </span><span class="err">ATSAMD21E18</span><span class="w"> </span><span class="err">-speed</span><span class="w"> </span><span class="err">4000kHz</span>
+<span class="nf">SEGGER J-Link Commander V6.40 (Compiled Oct 26 2018 15</span><span class="o">:</span>08:38)
+<span class="nf">DLL version V6.40, compiled Oct 26 2018 15</span><span class="o">:</span>08:28
 
-Connecting to J-Link via USB...O.K.
-Firmware: J-Link V10 compiled Oct 26 2018 12:04:17
-Hardware version: V10.10
-S/N: 50112638
-License(s): GDB
-VTref=3.290V
-
-
-Type &quot;connect&quot; to establish a target connection, &#39;?&#39; for help
-J-Link&gt;connect
-Device &quot;ATSAMD21E18&quot; selected.
+<span class="err">Connecting</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">J-Link</span><span class="w"> </span><span class="err">via</span><span class="w"> </span><span class="err">USB...O.K.</span>
+<span class="nf">Firmware</span><span class="o">:</span><span class="w"> </span><span class="n">J</span>-<span class="n">Link</span> <span class="n">V</span>10 <span class="n">compiled</span> <span class="n">Oct</span> 26 2018 12:04:17
+<span class="nf">Hardware version</span><span class="o">:</span><span class="w"> </span><span class="n">V</span>10.10
+<span class="nf">S/N</span><span class="o">:</span><span class="w"> </span>50112638
+<span class="nf">License(s)</span><span class="o">:</span><span class="w"> </span><span class="n">GDB</span>
+<span class="nv">VTref</span><span class="o">=</span><span class="m">3</span>.290V
 
 
-Connecting to target via SWD
-InitTarget()
-Found SW-DP with ID 0x0BC11477
-Scanning AP map to find all available APs
-AP[1]: Stopped AP scan as end of AP map has been reached
-AP[0]: AHB-AP (IDR: 0x04770031)
-Iterating through AP map to find AHB-AP to use
-AP[0]: Core found
-AP[0]: AHB-AP ROM base: 0x41003000
-CPUID register: 0x410CC601. Implementer code: 0x41 (ARM)
-Found Cortex-M0 r0p1, Little endian.
-FPUnit: 4 code (BP) slots and 0 literal slots
-CoreSight components:
-ROMTbl[0] @ 41003000
-ROMTbl[0][0]: E00FF000, CID: B105100D, PID: 000BB4C0 ROM Table
-ROMTbl[1] @ E00FF000
-ROMTbl[1][0]: E000E000, CID: B105E00D, PID: 000BB008 SCS
-ROMTbl[1][1]: E0001000, CID: B105E00D, PID: 000BB00A DWT
-ROMTbl[1][2]: E0002000, CID: B105E00D, PID: 000BB00B FPB
-ROMTbl[0][1]: 41006000, CID: B105900D, PID: 001BB932 MTB-M0+
-Cortex-M0 identified.
-J-Link&gt;loadfile bootloader-fluff_m0-v3.10.0.bin 0
-Downloading file [bootloader-fluff_m0-v3.10.0.bin]...
-Comparing flash   [100%] Done.
-Erasing flash     [100%] Done.
-Programming flash [100%] Done.
-Verifying flash   [100%] Done.
-J-Link: Flash download: Bank 0 @ 0x00000000: 1 range affected (8192 bytes)
-J-Link: Flash download: Total time needed: 0.182s (Prepare: 0.026s, Compare: 0.018s, Erase: 0.000s, Program: 0.125s, Verify: 0.008s, Restore: 0.002s)
-O.K.
+<span class="err">Type</span><span class="w"> </span><span class="s2">&quot;connect&quot;</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">establish</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">target</span><span class="w"> </span><span class="err">connection,</span><span class="w"> </span><span class="s1">&#39;?&#39;</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">help</span>
+<span class="err">J-Link&gt;connect</span>
+<span class="err">Device</span><span class="w"> </span><span class="s2">&quot;ATSAMD21E18&quot;</span><span class="w"> </span><span class="err">selected.</span>
 
+
+<span class="err">Connecting</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">target</span><span class="w"> </span><span class="err">via</span><span class="w"> </span><span class="err">SWD</span>
+<span class="err">InitTarget()</span>
+<span class="err">Found</span><span class="w"> </span><span class="err">SW-DP</span><span class="w"> </span><span class="err">with</span><span class="w"> </span><span class="err">ID</span><span class="w"> </span><span class="err">0x0BC11477</span>
+<span class="err">Scanning</span><span class="w"> </span><span class="err">AP</span><span class="w"> </span><span class="err">map</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">find</span><span class="w"> </span><span class="err">all</span><span class="w"> </span><span class="err">available</span><span class="w"> </span><span class="err">APs</span>
+<span class="nf">AP[1]</span><span class="o">:</span><span class="w"> </span><span class="n">Stopped</span> <span class="n">AP</span> <span class="n">scan</span> <span class="n">as</span> <span class="n">end</span> <span class="n">of</span> <span class="n">AP</span> <span class="n">map</span> <span class="n">has</span> <span class="n">been</span> <span class="n">reached</span>
+<span class="nf">AP[0]</span><span class="o">:</span><span class="w"> </span><span class="n">AHB</span>-<span class="n">AP</span> (<span class="n">IDR</span>: 0<span class="n">x</span>04770031)
+<span class="err">Iterating</span><span class="w"> </span><span class="err">through</span><span class="w"> </span><span class="err">AP</span><span class="w"> </span><span class="err">map</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">find</span><span class="w"> </span><span class="err">AHB-AP</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">use</span>
+<span class="nf">AP[0]</span><span class="o">:</span><span class="w"> </span><span class="n">Core</span> <span class="n">found</span>
+<span class="nf">AP[0]</span><span class="o">:</span><span class="w"> </span><span class="n">AHB</span>-<span class="n">AP</span> <span class="n">ROM</span> <span class="n">base</span>: 0<span class="n">x</span>41003000
+<span class="nf">CPUID register</span><span class="o">:</span><span class="w"> </span>0<span class="n">x</span>410<span class="n">CC</span>601. <span class="n">Implementer</span> <span class="n">code</span>: 0<span class="n">x</span>41 (<span class="n">ARM</span>)
+<span class="err">Found</span><span class="w"> </span><span class="err">Cortex-M0</span><span class="w"> </span><span class="err">r0p1,</span><span class="w"> </span><span class="err">Little</span><span class="w"> </span><span class="err">endian.</span>
+<span class="nf">FPUnit</span><span class="o">:</span><span class="w"> </span>4 <span class="n">code</span> (<span class="n">BP</span>) <span class="n">slots</span> <span class="n">and</span> 0 <span class="n">literal</span> <span class="n">slots</span>
+<span class="nf">CoreSight components</span><span class="o">:</span>
+<span class="err">ROMTbl[0]</span><span class="w"> </span><span class="err">@</span><span class="w"> </span><span class="err">41003000</span>
+<span class="nf">ROMTbl[0][0]</span><span class="o">:</span><span class="w"> </span><span class="n">E</span>00<span class="n">FF</span>000<span class="p">,</span> <span class="n">CID</span>: <span class="n">B</span>105100<span class="n">D</span><span class="p">,</span> <span class="n">PID</span>: 000<span class="n">BB</span>4<span class="n">C</span>0 <span class="n">ROM</span> <span class="n">Table</span>
+<span class="err">ROMTbl[1]</span><span class="w"> </span><span class="err">@</span><span class="w"> </span><span class="err">E00FF000</span>
+<span class="nf">ROMTbl[1][0]</span><span class="o">:</span><span class="w"> </span><span class="n">E</span>000<span class="n">E</span>000<span class="p">,</span> <span class="n">CID</span>: <span class="n">B</span>105<span class="n">E</span>00<span class="n">D</span><span class="p">,</span> <span class="n">PID</span>: 000<span class="n">BB</span>008 <span class="n">SCS</span>
+<span class="nf">ROMTbl[1][1]</span><span class="o">:</span><span class="w"> </span><span class="n">E</span>0001000<span class="p">,</span> <span class="n">CID</span>: <span class="n">B</span>105<span class="n">E</span>00<span class="n">D</span><span class="p">,</span> <span class="n">PID</span>: 000<span class="n">BB</span>00<span class="n">A</span> <span class="n">DWT</span>
+<span class="nf">ROMTbl[1][2]</span><span class="o">:</span><span class="w"> </span><span class="n">E</span>0002000<span class="p">,</span> <span class="n">CID</span>: <span class="n">B</span>105<span class="n">E</span>00<span class="n">D</span><span class="p">,</span> <span class="n">PID</span>: 000<span class="n">BB</span>00<span class="n">B</span> <span class="n">FPB</span>
+<span class="nf">ROMTbl[0][1]</span><span class="o">:</span><span class="w"> </span>41006000<span class="p">,</span> <span class="n">CID</span>: <span class="n">B</span>105900<span class="n">D</span><span class="p">,</span> <span class="n">PID</span>: 001<span class="n">BB</span>932 <span class="n">MTB</span>-<span class="n">M</span>0+
+<span class="err">Cortex-M0</span><span class="w"> </span><span class="err">identified.</span>
+<span class="err">J-Link&gt;loadfile</span><span class="w"> </span><span class="err">bootloader-fluff_m0-v3.10.0.bin</span><span class="w"> </span><span class="err">0</span>
+<span class="err">Downloading</span><span class="w"> </span><span class="err">file</span><span class="w"> </span><span class="err">[bootloader-fluff_m0-v3.10.0.bin]...</span>
+<span class="err">Comparing</span><span class="w"> </span><span class="err">flash</span><span class="w">   </span><span class="err">[100%]</span><span class="w"> </span><span class="err">Done.</span>
+<span class="err">Erasing</span><span class="w"> </span><span class="err">flash</span><span class="w">     </span><span class="err">[100%]</span><span class="w"> </span><span class="err">Done.</span>
+<span class="err">Programming</span><span class="w"> </span><span class="err">flash</span><span class="w"> </span><span class="err">[100%]</span><span class="w"> </span><span class="err">Done.</span>
+<span class="err">Verifying</span><span class="w"> </span><span class="err">flash</span><span class="w">   </span><span class="err">[100%]</span><span class="w"> </span><span class="err">Done.</span>
+<span class="nf">J-Link</span><span class="o">:</span><span class="w"> </span><span class="n">Flash</span> <span class="n">download</span>: <span class="n">Bank</span> 0 @ 0<span class="n">x</span>00000000: 1 <span class="n">range</span> <span class="n">affected</span> (8192 <span class="n">bytes</span>)
+<span class="nf">J-Link</span><span class="o">:</span><span class="w"> </span><span class="n">Flash</span> <span class="n">download</span>: <span class="n">Total</span> <span class="n">time</span> <span class="n">needed</span>: 0.182<span class="n">s</span> (<span class="n">Prepare</span>: 0.026<span class="n">s</span><span class="p">,</span> <span class="n">Compare</span>: 0.018<span class="n">s</span><span class="p">,</span> <span class="n">Erase</span>: 0.000<span class="n">s</span><span class="p">,</span> <span class="n">Program</span>: 0.125<span class="n">s</span><span class="p">,</span> <span class="n">Verify</span>: 0.008<span class="n">s</span><span class="p">,</span> <span class="n">Restore</span>: 0.002<span class="n">s</span>)
+<span class="err">O.K.</span>
 </pre></div>
 </div>
 <p>And the bootloader is flashed. Now the FLUFFBOOT disk appears, and we

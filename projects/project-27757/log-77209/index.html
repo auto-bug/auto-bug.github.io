@@ -1,20 +1,16 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Why Separate Button Controller? - deshipu.art</title>
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=d8568271" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css?v=29da98fa" />
+    <script src="../../../_static/documentation_options.js?v=187304be"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <link rel="index" title="Index" href="../../../genindex/" />
     <link rel="search" title="Search" href="../../../search/" />
   
@@ -48,7 +44,7 @@
 
 <div role="main">
   <section class="tex2jax_ignore mathjax_ignore" id="why-separate-button-controller">
-<h1>Why Separate Button Controller?<a class="headerlink" href="#why-separate-button-controller" title="Permalink to this heading">¶</a></h1>
+<h1>Why Separate Button Controller?<a class="headerlink" href="#why-separate-button-controller" title="Link to this heading">¶</a></h1>
 <p>Published on 2018-01-18 in <a class="reference internal" href="../#project-27757"><span class="std std-ref">Micro:Boy</span></a>.</p>
 <p>I have been asked why I’m using a separate chip for handling the
 buttons, so I thought I will just explain it in here. The question was
@@ -56,7 +52,7 @@ why not just use the edge connector, and then use the additional pins
 available on the Micro:bit for reading the buttons. There are actually
 to reasons for that:</p>
 <section id="i-don-t-like-the-edge-connector">
-<h2>I don’t like the edge connector.<a class="headerlink" href="#i-don-t-like-the-edge-connector" title="Permalink to this heading">¶</a></h2>
+<h2>I don’t like the edge connector.<a class="headerlink" href="#i-don-t-like-the-edge-connector" title="Link to this heading">¶</a></h2>
 <p>Ever since I first saw it, I tried to work around it with something
 smaller, lighter and less expensive — you can look at my <span class="xref std std-ref">project-9685</span> — but I never managed to get a reliable connection without damaging
 the Micro:bit itself. I do have a bunch of those connectors, both
@@ -67,7 +63,7 @@ is a chore. Bolts are, on the other hand, a tested and reliable
 alternative.</p>
 </section>
 <section id="handling-buttons-is-not-trivial">
-<h2>Handling buttons is not trivial.<a class="headerlink" href="#handling-buttons-is-not-trivial" title="Permalink to this heading">¶</a></h2>
+<h2>Handling buttons is not trivial.<a class="headerlink" href="#handling-buttons-is-not-trivial" title="Link to this heading">¶</a></h2>
 <p>Looking at the code for the button controller you wouldn’t guess that,
 but handling the button presses properly is actually a non-trivial
 task. You have to de-bounce them, and you have to buffer them — those

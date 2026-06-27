@@ -1,20 +1,16 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Homebrew Trinket M0 - deshipu.art</title>
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=d8568271" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css?v=29da98fa" />
+    <script src="../../../_static/documentation_options.js?v=187304be"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <link rel="index" title="Index" href="../../../genindex/" />
     <link rel="search" title="Search" href="../../../search/" />
   
@@ -48,7 +44,7 @@
 
 <div role="main">
   <section class="tex2jax_ignore mathjax_ignore" id="homebrew-trinket-m0">
-<h1>Homebrew Trinket M0<a class="headerlink" href="#homebrew-trinket-m0" title="Permalink to this heading">¶</a></h1>
+<h1>Homebrew Trinket M0<a class="headerlink" href="#homebrew-trinket-m0" title="Link to this heading">¶</a></h1>
 <p>Published on 2017-09-15 in <a class="reference internal" href="../#project-21578"><span class="std std-ref">PewPew FeatherWing</span></a>.</p>
 <p>The PewPew Lite FeatherWing is released and on sale on Tindie, so time
 for the next steps. I’m still working on the documentation and games —
@@ -83,17 +79,17 @@ installed, and some hacking with the OpenOCD configuration, so instead
 I used <a class="reference external" href="https://github.com/adafruit/Adafruit_Adalink">https://github.com/adafruit/Adafruit_Adalink</a> . The rest of the day was spent trying to get it all to work, not
 realizing that the step I’m missing is wiping the chip. So start with
 that:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>adalink -v atsamd21g18 -p stlink -w
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>adalink<span class="w"> </span>-v<span class="w"> </span>atsamd21g18<span class="w"> </span>-p<span class="w"> </span>stlink<span class="w"> </span>-w
 </pre></div>
 </div>
 <p>Then edit the “uf2.h” file to disable some features for the bootloader
 (because they won’t all fit), and compile it with:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make <span class="nv">BOARD</span><span class="o">=</span>trinket
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span><span class="nv">BOARD</span><span class="o">=</span>trinket
 </pre></div>
 </div>
 <p>Then take the “bootloader.bin” file you find in the “build” directory,
 and do:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>adalink -v atsamd21g18 -p stlink -b bootloader.bin <span class="m">0</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>adalink<span class="w"> </span>-v<span class="w"> </span>atsamd21g18<span class="w"> </span>-p<span class="w"> </span>stlink<span class="w"> </span>-b<span class="w"> </span>bootloader.bin<span class="w"> </span><span class="m">0</span>
 </pre></div>
 </div>
 <p>This at least worked for me, though I did run the “make burn” script

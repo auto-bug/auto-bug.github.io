@@ -1,20 +1,16 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>SWD Programming Continued - deshipu.art</title>
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=d8568271" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css?v=29da98fa" />
+    <script src="../../../_static/documentation_options.js?v=187304be"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <link rel="index" title="Index" href="../../../genindex/" />
     <link rel="search" title="Search" href="../../../search/" />
   
@@ -48,7 +44,7 @@
 
 <div role="main">
   <section class="tex2jax_ignore mathjax_ignore" id="swd-programming-continued">
-<h1>SWD Programming Continued<a class="headerlink" href="#swd-programming-continued" title="Permalink to this heading">¶</a></h1>
+<h1>SWD Programming Continued<a class="headerlink" href="#swd-programming-continued" title="Link to this heading">¶</a></h1>
 <p>Published on 2016-11-22 in <a class="reference internal" href="../#project-18439"><span class="std std-ref">Motor Shield Reprogramming</span></a>.</p>
 <p>On a quest to configure OpenOCD properly. First of all, the error I’m
 getting <a class="reference external" href="https://github.com/vsergeev/arm-bmw-sw/issues/1">was described in an issue</a>  and seems like adding “reset_config none separate” fixes that. I got
@@ -113,7 +109,7 @@ the chip, I finally got:</p>
 <span class="n">target</span> <span class="n">state</span><span class="p">:</span> <span class="n">halted</span>
 <span class="n">target</span> <span class="n">halted</span> <span class="n">due</span> <span class="n">to</span> <span class="nb">breakpoint</span><span class="p">,</span> <span class="n">current</span> <span class="n">mode</span><span class="p">:</span> <span class="n">Thread</span> 
 <span class="n">xPSR</span><span class="p">:</span> <span class="mh">0x61000000</span> <span class="n">pc</span><span class="p">:</span> <span class="mh">0x2000003a</span> <span class="n">msp</span><span class="p">:</span> <span class="mh">0xfffffffc</span>
-<span class="n">wrote</span> <span class="mi">1024</span> <span class="nb">bytes</span> <span class="kn">from</span> <span class="nn">file</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">sheep</span><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="mi">3</span><span class="n">rdparty</span><span class="o">/</span><span class="n">stm32f0</span><span class="o">-</span><span class="n">discovery</span><span class="o">-</span><span class="n">basic</span><span class="o">-</span><span class="n">template</span><span class="o">/</span><span class="n">main</span><span class="o">.</span><span class="n">bin</span> <span class="ow">in</span> <span class="mf">0.104813</span><span class="n">s</span> <span class="p">(</span><span class="mf">9.541</span> <span class="n">KiB</span><span class="o">/</span><span class="n">s</span><span class="p">)</span>
+<span class="n">wrote</span> <span class="mi">1024</span> <span class="nb">bytes</span> <span class="kn">from</span><span class="w"> </span><span class="nn">file</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">sheep</span><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="mi">3</span><span class="n">rdparty</span><span class="o">/</span><span class="n">stm32f0</span><span class="o">-</span><span class="n">discovery</span><span class="o">-</span><span class="n">basic</span><span class="o">-</span><span class="n">template</span><span class="o">/</span><span class="n">main</span><span class="o">.</span><span class="n">bin</span> <span class="ow">in</span> <span class="mf">0.104813</span><span class="n">s</span> <span class="p">(</span><span class="mf">9.541</span> <span class="n">KiB</span><span class="o">/</span><span class="n">s</span><span class="p">)</span>
 <span class="n">target</span> <span class="n">state</span><span class="p">:</span> <span class="n">halted</span>
 <span class="n">target</span> <span class="n">halted</span> <span class="n">due</span> <span class="n">to</span> <span class="nb">breakpoint</span><span class="p">,</span> <span class="n">current</span> <span class="n">mode</span><span class="p">:</span> <span class="n">Thread</span> 
 <span class="n">xPSR</span><span class="p">:</span> <span class="mh">0x61000000</span> <span class="n">pc</span><span class="p">:</span> <span class="mh">0x2000002e</span> <span class="n">msp</span><span class="p">:</span> <span class="mh">0xfffffffc</span>

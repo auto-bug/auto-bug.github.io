@@ -1,20 +1,16 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Taking a Step Back - deshipu.art</title>
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=d8568271" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css?v=29da98fa" />
+    <script src="../../../_static/documentation_options.js?v=187304be"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <link rel="index" title="Index" href="../../../genindex/" />
     <link rel="search" title="Search" href="../../../search/" />
   
@@ -48,7 +44,7 @@
 
 <div role="main">
   <section class="tex2jax_ignore mathjax_ignore" id="taking-a-step-back">
-<h1>Taking a Step Back<a class="headerlink" href="#taking-a-step-back" title="Permalink to this heading">¶</a></h1>
+<h1>Taking a Step Back<a class="headerlink" href="#taking-a-step-back" title="Link to this heading">¶</a></h1>
 <p>Published on 2018-04-12 in <a class="reference internal" href="../#project-100853"><span class="std std-ref">CircuitPython Badge</span></a>.</p>
 <p>After indulging myself with trying out different hardware and
 prototypes, I realized that I really don’t have enough information to
@@ -58,11 +54,11 @@ you have to <em>design</em> something that serves a <em>purpose</em>, and if you
 don’t make that the center of your design, there is a big chance it
 will suck. So let’s take a step back and think what we need.</p>
 <section id="core-functionalities">
-<h2>Core Functionalities<a class="headerlink" href="#core-functionalities" title="Permalink to this heading">¶</a></h2>
+<h2>Core Functionalities<a class="headerlink" href="#core-functionalities" title="Link to this heading">¶</a></h2>
 <p>Things without which a badge is not a badge. These are non-negotiable
 requirements.</p>
 <section id="identification">
-<h3>Identification<a class="headerlink" href="#identification" title="Permalink to this heading">¶</a></h3>
+<h3>Identification<a class="headerlink" href="#identification" title="Link to this heading">¶</a></h3>
 <p>This is so basic, that it’s easy to forget about it, and go designing
 watches or belt buckles. First and foremost a conference badge has to
 identify its wearer to all other conference participants that they
@@ -86,7 +82,7 @@ hacking on them.</p>
 <p>I really have no idea what I was thinking with the e-ink display.</p>
 </section>
 <section id="contact">
-<h3>Contact<a class="headerlink" href="#contact" title="Permalink to this heading">¶</a></h3>
+<h3>Contact<a class="headerlink" href="#contact" title="Link to this heading">¶</a></h3>
 <p>The second function of a badge like this is to provide your contact
 information to anyone you choose. Whether it’s a vendor at a booth
 asking to scan your badge, another participant that you have just
@@ -107,12 +103,12 @@ of a dead battery.</p>
 </section>
 </section>
 <section id="extras">
-<h2>Extras<a class="headerlink" href="#extras" title="Permalink to this heading">¶</a></h2>
+<h2>Extras<a class="headerlink" href="#extras" title="Link to this heading">¶</a></h2>
 <p>Those are the thing that make the electronic badge more useful than
 the piece of paper that you normally get. They should be good enough
 to justify the extra expense and hassle.</p>
 <section id="self-expression">
-<h3>Self-expression<a class="headerlink" href="#self-expression" title="Permalink to this heading">¶</a></h3>
+<h3>Self-expression<a class="headerlink" href="#self-expression" title="Link to this heading">¶</a></h3>
 <p>This is a Python-based badge for Python conferences, so it’s
 fundamental that you should be able to (easily) program it with
 Python. That’s the whole point of using MicroPython/CircuitPython
@@ -139,7 +135,7 @@ be a fool-proof way of muting it (preferably a physical switch) for
 the talks.</p>
 </section>
 <section id="entertainment">
-<h3>Entertainment<a class="headerlink" href="#entertainment" title="Permalink to this heading">¶</a></h3>
+<h3>Entertainment<a class="headerlink" href="#entertainment" title="Link to this heading">¶</a></h3>
 <p>It would be nice if it was possible to play games on the badge —
 either provided, or — even better — written by the participants
 themselves. This can be great for the boring talks or waiting in queue
@@ -156,7 +152,7 @@ fast, so that you can do animations and so on. Of course there are
 games like 2048 or sudoku that will work on slow displays too.</p>
 </section>
 <section id="schedule">
-<h3>Schedule<a class="headerlink" href="#schedule" title="Permalink to this heading">¶</a></h3>
+<h3>Schedule<a class="headerlink" href="#schedule" title="Link to this heading">¶</a></h3>
 <p>This is my initial idea for this project, but as you can see, it got
 relegated to quite a low priority by now. If you are giving the
 participants badges, you may as well include the talk schedules on
@@ -173,7 +169,7 @@ it up close.</p>
 about it anymore. I guess it explains why no other badge does it.</p>
 </section>
 <section id="appearance">
-<h3>Appearance<a class="headerlink" href="#appearance" title="Permalink to this heading">¶</a></h3>
+<h3>Appearance<a class="headerlink" href="#appearance" title="Link to this heading">¶</a></h3>
 <p>We still want it to look nice and be appealing to non-technical
 audience, of course, but I can see to way to make you wear it outside
 of the conference, considering the size requirements and the big place
@@ -182,7 +178,7 @@ jewelry, etc. — it’s going to be a badge and it’s going to look like a
 badge.</p>
 </section>
 <section id="hardware-hacking">
-<h3>Hardware Hacking<a class="headerlink" href="#hardware-hacking" title="Permalink to this heading">¶</a></h3>
+<h3>Hardware Hacking<a class="headerlink" href="#hardware-hacking" title="Link to this heading">¶</a></h3>
 <p>The number of people who are going to actually connect anything to
 their badges is going to be small probably — there are so many other
 things you can do at a conference. But adding a breadboard-friendly

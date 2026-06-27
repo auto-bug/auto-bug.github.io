@@ -1,20 +1,16 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Progress on a Game - deshipu.art</title>
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=d8568271" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css?v=29da98fa" />
+    <script src="../../../_static/documentation_options.js?v=187304be"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <link rel="index" title="Index" href="../../../genindex/" />
     <link rel="search" title="Search" href="../../../search/" />
   
@@ -48,7 +44,7 @@
 
 <div role="main">
   <section class="tex2jax_ignore mathjax_ignore" id="progress-on-a-game">
-<h1>Progress on a Game<a class="headerlink" href="#progress-on-a-game" title="Permalink to this heading">¶</a></h1>
+<h1>Progress on a Game<a class="headerlink" href="#progress-on-a-game" title="Link to this heading">¶</a></h1>
 <p>Published on 2018-01-20 in <a class="reference internal" href="../#project-27757"><span class="std std-ref">Micro:Boy</span></a>.</p>
 <p>With the hardware finalized, the remaining work is to actually write
 at least one game, to prove that it’s possible. I decided to make a
@@ -59,7 +55,7 @@ them. So far I have the basic graphics and the player animation:</p>
 <p>———- more ———-The code for the display got a bit simplified, and merged with the
 code for buttons. I also added a “tick” function for keeping a
 constant frame rate.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">microbit</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">microbit</span>
 
 
 <span class="n">DIRT</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x8a</span><span class="s1"> </span><span class="se">\x05</span><span class="s1">P</span><span class="se">\x05</span><span class="s1"> </span><span class="se">\x8a</span><span class="s1"> &#39;</span>
@@ -71,10 +67,10 @@ constant frame rate.</p>
 <span class="n">MAN</span> <span class="o">=</span> <span class="p">(</span><span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x00\x10</span><span class="s1">z&gt;:~ </span><span class="se">\x00</span><span class="s1">&#39;</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x00</span><span class="s1"> </span><span class="se">\x1a</span><span class="s1">~z&gt;</span><span class="se">\x10\x00</span><span class="s1">&#39;</span><span class="p">)</span>
 
 
-<span class="k">class</span> <span class="nc">Console</span><span class="p">:</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Console</span><span class="p">:</span>
     <span class="n">_command</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x00\xb0\x02\x10</span><span class="s1">&#39;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">next_frame</span> <span class="o">=</span> <span class="n">microbit</span><span class="o">.</span><span class="n">running_time</span><span class="p">()</span> <span class="o">+</span> <span class="mi">100</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">buffer</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dirty_min</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">([</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">8</span><span class="p">)</span>
@@ -90,16 +86,16 @@ constant frame rate.</p>
         <span class="n">microbit</span><span class="o">.</span><span class="n">i2c</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="mh">0x3c</span><span class="p">,</span> <span class="n">_init</span><span class="p">)</span>
 
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">buttons</span><span class="p">():</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">buttons</span><span class="p">():</span>
         <span class="k">return</span> <span class="n">microbit</span><span class="o">.</span><span class="n">i2c</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mh">0x10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 
-    <span class="k">def</span> <span class="nf">tick</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">tick</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
         <span class="n">delay</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">next_frame</span> <span class="o">-</span> <span class="n">microbit</span><span class="o">.</span><span class="n">running_time</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">delay</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">microbit</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">delay</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">next_frame</span> <span class="o">+=</span> <span class="n">ms</span>
 
-    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">buf</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">buffer</span>
         <span class="n">index</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">for</span> <span class="n">page</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">):</span>
@@ -116,7 +112,7 @@ constant frame rate.</p>
             <span class="bp">self</span><span class="o">.</span><span class="n">dirty_max</span><span class="p">[</span><span class="n">page</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">dirty_min</span><span class="p">[</span><span class="n">page</span><span class="p">]</span> <span class="o">=</span> <span class="mi">127</span>
 
-    <span class="k">def</span> <span class="nf">blit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="sa">b</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">blit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="sa">b</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="o">-</span><span class="mi">8</span> <span class="o">&lt;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">128</span><span class="p">:</span>
             <span class="k">return</span>
         <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
